@@ -1,0 +1,460 @@
+{
+ "_doc": "Camada geografica curada por dia. Cada parada com 'ai' aponta para dados.json -> dias[].atividades[ai]; as demais sao pontos de apoio (base, estacoes). Tracados sao aproximados: o botao de cada perna abre a rota exata no Google Maps.",
+ "2027-03-18": {
+  "titulo": "Osaka de ponta a ponta",
+  "resumo": "Mercado de manhã, baía à tarde, o bairro retrô antes das lojas fecharem e o pôr do sol do mirante. Dois trechos longos de metrô, o resto a pé.",
+  "centro": [
+   34.681,
+   135.47
+  ],
+  "zoom": 12,
+  "paradas": [
+   {
+    "id": "base",
+    "nome": "Airbnb Namba",
+    "tipo": "base",
+    "lat": 34.6655,
+    "lng": 135.501,
+    "aprox": true,
+    "hora": "08:45",
+    "gmaps": "Namba Station, Osaka"
+   },
+   {
+    "id": "p1",
+    "foto": "File:Seafood in Kuromon Market, Osaka on June 7th, 2017.jpg",
+    "tipo": "comida",
+    "lat": 34.6658,
+    "lng": 135.5067,
+    "hora": "09:00",
+    "fim": "10:15",
+    "gmaps": "Kuromon Ichiba Market",
+    "must": [
+     "Ostra grelhada na hora",
+     "Sashimi de atum cortado na frente",
+     "Wagyu na brasa em espeto",
+     "Melão fatiado"
+    ],
+    "comidas": [
+     "Ostra grelhada ¥500–800",
+     "Espeto de wagyu ¥800–1.500",
+     "Sashimi ¥600–1.200",
+     "Melão ¥500"
+    ],
+    "compras": [
+     "Facas de cozinha na rua paralela",
+     "Chá e furikake para levar"
+    ],
+    "alerta": "Ir até 10:00 — depois o corredor lota e o carrinho vira estorvo. Muita banca fecha 17h; algumas não abrem quarta.",
+    "ativ": "Kuromon"
+   },
+   {
+    "id": "p2",
+    "foto": "File:Namba-Yasaka-Shrine-lions head theater.jpg",
+    "tipo": "templo",
+    "lat": 34.6615,
+    "lng": 135.4967,
+    "hora": "10:30",
+    "fim": "11:00",
+    "gmaps": "Namba Yasaka Jinja",
+    "must": [
+     "A cabeça de leão de 12 m que engole a má sorte"
+    ],
+    "alerta": "Grátis e quase sempre vazio. 30 min resolvem.",
+    "foco": "center 30%",
+    "ativ": "Namba Yasaka"
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Namba (Midosuji)",
+    "tipo": "estacao",
+    "lat": 34.6662,
+    "lng": 135.5003,
+    "hora": "11:05",
+    "gmaps": "Namba Station Midosuji Line"
+   },
+   {
+    "id": "e2",
+    "nome": "Baldeação Hommachi",
+    "tipo": "estacao",
+    "lat": 34.6828,
+    "lng": 135.4997,
+    "hora": "11:12",
+    "gmaps": "Hommachi Station Osaka"
+   },
+   {
+    "id": "e3",
+    "nome": "Estação Osakako (Chuo)",
+    "tipo": "estacao",
+    "lat": 34.6539,
+    "lng": 135.4344,
+    "hora": "11:28",
+    "gmaps": "Osakako Station"
+   },
+   {
+    "id": "p3",
+    "foto": "Osaka Aquarium Kaiyukan whale shark",
+    "tipo": "passeio",
+    "lat": 34.6545,
+    "lng": 135.4289,
+    "hora": "11:35",
+    "fim": "14:00",
+    "gmaps": "Osaka Aquarium Kaiyukan",
+    "must": [
+     "Tubarão-baleia do tanque central",
+     "Descida em espiral por 8 andares",
+     "Túnel Aqua Gate"
+    ],
+    "compras": [
+     "Loja do aquário: pelúcia de tubarão-baleia"
+    ],
+    "alerta": "NÃO entra no Osaka Amazing Pass. Preço dinâmico: adulto ¥2.400–2.700, 7–15 anos ¥1.200–1.400, 4–6 anos ¥500–700. Empresta carrinho na entrada.",
+    "ativ": "Kaiyukan"
+   },
+   {
+    "id": "p4",
+    "foto": "File:Tempozan Market Place.jpg",
+    "tipo": "comida",
+    "lat": 34.656,
+    "lng": 135.4303,
+    "hora": "14:00",
+    "fim": "15:00",
+    "gmaps": "Tempozan Marketplace",
+    "must": [
+     "Naniwa Kuishinbo Yokocho — praça de alimentação cenográfica dos anos 1960"
+    ],
+    "comidas": [
+     "Takoyaki",
+     "Okonomiyaki",
+     "Kushikatsu — pratos ¥600–1.100"
+    ],
+    "alerta": "Senta 13 pessoas sem reserva. Fraldário no piso 2.",
+    "ativ": "Tempozan Marketplace"
+   },
+   {
+    "id": "e4",
+    "nome": "Estação Osakako (volta)",
+    "tipo": "estacao",
+    "lat": 34.6539,
+    "lng": 135.4344,
+    "hora": "15:40",
+    "gmaps": "Osakako Station"
+   },
+   {
+    "id": "e5",
+    "nome": "Baldeação Hommachi",
+    "tipo": "estacao",
+    "lat": 34.6828,
+    "lng": 135.4997,
+    "hora": "15:56",
+    "gmaps": "Hommachi Station Osaka"
+   },
+   {
+    "id": "e6",
+    "nome": "Estação Umeda (Midosuji)",
+    "tipo": "estacao",
+    "lat": 34.7034,
+    "lng": 135.4976,
+    "hora": "16:05",
+    "gmaps": "Umeda Station Midosuji Line"
+   },
+   {
+    "id": "p7",
+    "foto": "File:Nakazakicho - panoramio.jpg",
+    "tipo": "compras",
+    "lat": 34.7072,
+    "lng": 135.5056,
+    "hora": "16:20",
+    "fim": "17:40",
+    "gmaps": "Nakazakicho, Kita Ward, Osaka",
+    "must": [
+     "Casas de madeira que escaparam de 1945, viradas em cafés e ateliês",
+     "Contraste com os arranha-céus de Umeda, a 10 min a pé"
+    ],
+    "compras": [
+     "Brechós e ateliês independentes",
+     "Cerâmica e papelaria de autor"
+    ],
+    "comidas": [
+     "Cafés minúsculos — quase nenhum comporta carrinho aberto"
+    ],
+    "alerta": "Lojas 12:00–19:00: depois disso a rua continua bonita, mas as vitrines apagam. Ruas de vila estreitas, sem calçada e com carro passando.",
+    "ativ": "Nakazakicho"
+   },
+   {
+    "id": "p6",
+    "foto": "Umeda Sky Building",
+    "tipo": "vista",
+    "lat": 34.7053,
+    "lng": 135.4905,
+    "hora": "17:55",
+    "fim": "19:20",
+    "gmaps": "Umeda Sky Building",
+    "must": [
+     "Jardim Flutuante: mirante ABERTO em anel a 173 m",
+     "Pôr do sol por volta das 18:05, já lá em cima",
+     "Takimi-koji no subsolo: rua cenográfica da Osaka de 1920"
+    ],
+    "comidas": [
+     "Takimi-koji: izakayas e okonomiyaki no subsolo"
+    ],
+    "alerta": "INCLUÍDO no Amazing Pass. Do 35º andar ao mirante é escada rolante suspensa — carrinho dobrado na mão. Canguru facilita muito.",
+    "ativ": "Umeda Sky"
+   },
+   {
+    "id": "e7",
+    "nome": "Estação Umeda",
+    "tipo": "estacao",
+    "lat": 34.7034,
+    "lng": 135.4976,
+    "hora": "19:35",
+    "gmaps": "Umeda Station Midosuji Line"
+   },
+   {
+    "id": "p8",
+    "foto": "Dotonbori night Osaka",
+    "tipo": "comida",
+    "lat": 34.669,
+    "lng": 135.5016,
+    "hora": "19:45",
+    "fim": "22:00",
+    "gmaps": "Dotonbori, Osaka",
+    "must": [
+     "Glico Man",
+     "Canal iluminado",
+     "Caranguejo mecânico do Kani Doraku"
+    ],
+    "comidas": [
+     "Takoyaki",
+     "Okonomiyaki",
+     "Kushikatsu (não molhe o espeto duas vezes)",
+     "Ramen"
+    ],
+    "compras": [
+     "Don Quijote 24h ao lado do canal",
+     "Drogarias tax-free"
+    ],
+    "alerta": "Metrô Midosuji tem elevador nas duas pontas. Se sobrar fôlego: cruzeiro Tombori River ¥1.200, 20 min, também no Amazing Pass.",
+    "ativ": "Dotonbori"
+   },
+   {
+    "id": "fim",
+    "nome": "Airbnb Namba",
+    "tipo": "base",
+    "lat": 34.6655,
+    "lng": 135.501,
+    "aprox": true,
+    "hora": "22:10",
+    "gmaps": "Namba Station, Osaka"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "p1",
+    "modo": "pe",
+    "min": 10,
+    "km": 0.7,
+    "custo": 0,
+    "desc": "Sai pela Sennichimae rumo leste até o portal do Kuromon."
+   },
+   {
+    "de": "p1",
+    "para": "p2",
+    "modo": "pe",
+    "min": 12,
+    "km": 0.9,
+    "custo": 0,
+    "desc": "Volta pela Sennichimae e desce a Motomachi."
+   },
+   {
+    "de": "p2",
+    "para": "e1",
+    "modo": "pe",
+    "min": 4,
+    "km": 0.3,
+    "custo": 0
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "km": 1.9,
+    "linha": "Midosuji",
+    "cor": "#E5171F",
+    "min": 5,
+    "custo": 0,
+    "desc": "3 estações, sentido Senri-Chuo"
+   },
+   {
+    "de": "e2",
+    "para": "e3",
+    "modo": "metro",
+    "km": 6.3,
+    "linha": "Chuo",
+    "cor": "#019A66",
+    "min": 13,
+    "custo": 290,
+    "desc": "6 estações, sentido Cosmosquare. Tarifa única ¥290 desde Namba"
+   },
+   {
+    "de": "e3",
+    "para": "p3",
+    "modo": "pe",
+    "min": 7,
+    "km": 0.5,
+    "custo": 0,
+    "desc": "Saída 1, reto pela orla até o cubo de vidro."
+   },
+   {
+    "de": "p3",
+    "para": "p4",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.3,
+    "custo": 0,
+    "desc": "É o prédio ao lado."
+   },
+   {
+    "de": "e4",
+    "para": "e5",
+    "modo": "metro",
+    "km": 6.3,
+    "linha": "Chuo",
+    "cor": "#019A66",
+    "min": 13,
+    "custo": 0,
+    "desc": "Volta pelo mesmo caminho"
+   },
+   {
+    "de": "p4",
+    "para": "e4",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.5,
+    "custo": 0,
+    "desc": "Volta pela orla até a estação."
+   },
+   {
+    "de": "e5",
+    "para": "e6",
+    "modo": "metro",
+    "km": 2.2,
+    "linha": "Midosuji",
+    "cor": "#E5171F",
+    "min": 6,
+    "custo": 290,
+    "desc": "2 estações. Tarifa ¥290 até Umeda"
+   },
+   {
+    "de": "e6",
+    "para": "p7",
+    "modo": "pe",
+    "min": 10,
+    "km": 0.7,
+    "custo": 0,
+    "desc": "Saída leste de Umeda; entra na vila pelas ruelas atrás da Ohatsu Tenjin."
+   },
+   {
+    "de": "p7",
+    "para": "p6",
+    "modo": "pe",
+    "min": 16,
+    "km": 1.2,
+    "custo": 0,
+    "desc": "Atravessa Umeda a oeste, passando por baixo dos trilhos. Chega com o sol ainda alto."
+   },
+   {
+    "de": "p6",
+    "para": "e7",
+    "modo": "pe",
+    "min": 12,
+    "km": 0.9,
+    "custo": 0,
+    "desc": "Túnel sob os trilhos de volta — placas para a estação o caminho todo."
+   },
+   {
+    "de": "e7",
+    "para": "p8",
+    "modo": "metro",
+    "km": 3.9,
+    "linha": "Midosuji",
+    "cor": "#E5171F",
+    "min": 8,
+    "custo": 240,
+    "desc": "Direto até Namba, sem baldeação"
+   },
+   {
+    "de": "p8",
+    "para": "fim",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.5,
+    "custo": 0
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "extra",
+    "titulo": "Roda-gigante Tempozan, se comprarem o Amazing Pass",
+    "texto": "Cortada do roteiro: são 112 m fechados às 15:00 contra os 173 m ao ar livre do Umeda Sky no pôr do sol, 4h depois — a mesma vista, pior. Fica ao lado do aquário, então quem comprar o Osaka Amazing Pass pode subir de graça em 30 min sem sair do lugar. Sem o passe são ¥900 por uma vista repetida.",
+    "refs": [
+     "p4"
+    ]
+   },
+   {
+    "tipo": "troca",
+    "titulo": "HEP Five no lugar do Tempozan",
+    "texto": "Roda-gigante vermelha de Umeda, ¥800, também no Amazing Pass. Fica a 5 min do Nakazakicho, o que economiza a parada extra na baía se o grupo já estiver cansado.",
+    "ponto": {
+     "nome": "HEP Five",
+     "lat": 34.7041,
+     "lng": 135.5004,
+     "gmaps": "HEP FIVE, Osaka"
+    }
+   },
+   {
+    "tipo": "corte",
+    "titulo": "Pular o Kaiyukan",
+    "texto": "É o único item caro do dia (¥2.400–2.700 por adulto), come 2h30 e não entra no Amazing Pass. Sem ele o dia cai de ~R$ 212 para ~R$ 110 por pessoa — mas some também o motivo de ir até a baía.",
+    "refs": [
+     "p3"
+    ]
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Cruzeiro Tombori River",
+    "texto": "Se sobrar fôlego depois do jantar: ¥1.200, 20 min, incluído no Amazing Pass. O embarque fica no Don Quijote, na beira do canal.",
+    "ponto": {
+     "nome": "Embarque do Tombori River Cruise",
+     "lat": 34.6693,
+     "lng": 135.5019,
+     "gmaps": "Tombori River Cruise, Dotonbori"
+    }
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Se chover",
+    "texto": "Kaiyukan e Tempozan Marketplace são cobertos e resolvem a tarde inteira. O Umeda Sky perde a graça: troque pelo Grand Front Osaka, colado na estação e todo coberto.",
+    "ponto": {
+     "nome": "Grand Front Osaka",
+     "lat": 34.704,
+     "lng": 135.4947,
+     "gmaps": "Grand Front Osaka"
+    }
+   },
+   {
+    "tipo": "troca",
+    "titulo": "Mirante antes do bairro retrô",
+    "texto": "A outra ordem possível: Umeda Sky às 17:30 e Nakazakicho depois. Rende um mirante mais vazio, mas chega ao bairro com as lojas fechando às 19:00 — sobram uns 20 min de vitrine apagada. Vale se a vista importar mais que as compras.",
+    "refs": [
+     "p7",
+     "p6"
+    ]
+   }
+  ],
+  "passe": {
+   "nome": "Osaka Amazing Pass — 1 dia, ¥3.300",
+   "texto": "Cobre metrô ilimitado + roda-gigante Tempozan (¥900) + Umeda Sky (¥2.000) + cruzeiro Tombori (¥1.200). Só o metrô do dia já dá ¥820. NÃO cobre o Kaiyukan."
+  }
+ }
+}

@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Mapa do dia 3 da viagem ao Japao: Osaka de ponta a ponta.">
+<meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A0D13" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
+<title>Osaka de ponta a ponta</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#EDEEF1; --surface:#FFFFFF; --surface-2:#E3E6EB; --sunken:#E7E9ED;
+  --ink:#11151E; --ink-2:#48505F; --ink-3:#7A8394; --line:#D2D7DF; --line-2:#BFC6D1;
+  --c-osaka:#E60012; --t-osaka:#BE000F; --c-kyoto:#6E7F3C; --t-kyoto:#4F5C2A;
+  --c-fuji:#1E50A2;  --t-fuji:#194588;  --c-tokyo:#F39700; --t-tokyo:#96590A;
+  --sakura:#E0788E; --ok:#1F7A4D; --warn:#A86212; --crit:#BE000F;
+  --panel:rgba(255,255,255,.76); --panel-2:rgba(223,228,235,.52);
+  --veu:linear-gradient(180deg,rgba(236,238,242,.46) 0%,rgba(236,238,242,.60) 45%,rgba(236,238,242,.70) 100%);
+  --wall-filtro:brightness(1.20) contrast(.90) saturate(.90);
+  --halo:rgba(236,238,242,.95);
+  --shadow:0 1px 2px rgba(17,21,30,.06),0 6px 20px -8px rgba(17,21,30,.14);
+  --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-jp:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Noto Sans JP",Meiryo,system-ui,sans-serif;
+  --f-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --c:var(--c-osaka); --t:var(--t-osaka);
+  --pad:clamp(16px,4.6vw,26px); --wrap:760px;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}
+.c-osaka{--c:var(--c-osaka);--t:var(--t-osaka)} .c-kyoto{--c:var(--c-kyoto);--t:var(--t-kyoto)}
+.c-fuji{--c:var(--c-fuji);--t:var(--t-fuji)}    .c-tokyo{--c:var(--c-tokyo);--t:var(--t-tokyo)}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:transparent;color:var(--ink);font-family:var(--f-ui);
+  font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;overflow-x:hidden;
+  padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:800;letter-spacing:-.025em;line-height:1.12}
+p{margin:0} ul{margin:0;padding:0}
+a{color:var(--t);text-underline-offset:2px}
+:focus-visible{outline:2.5px solid var(--c);outline-offset:3px;border-radius:4px}
+img,canvas,svg{max-width:100%;display:block}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--pad)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-2)}
+/* estes ficam direto sobre a foto: o halo descola do fundo sem desenhar caixa */
+.sec-head .eyebrow,.sec-head h2,.sec-head .sub,.swipe-hint,.trilho::before{
+  text-shadow:0 1px 2px var(--halo),0 0 12px var(--halo),0 0 26px var(--halo)}
+
+/* ============ LAYOUT ============ */
+body{padding-bottom:0}
+.topo{position:sticky;top:0;z-index:900;display:flex;align-items:center;gap:12px;
+  padding:10px var(--pad);background:var(--panel);backdrop-filter:blur(16px) saturate(1.2);
+  -webkit-backdrop-filter:blur(16px) saturate(1.2);border-bottom:1px solid var(--line)}
+.topo .volta{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:750;
+  text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:99px;padding:6px 12px}
+.topo .volta:hover{color:var(--t);border-color:var(--c)}
+.topo .tit{flex:1;min-width:0}
+.topo .tit b{display:block;font-size:.94rem;font-weight:800;letter-spacing:-.02em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topo .tit u{display:block;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);margin-top:2px}
+.themeBtn{flex:none;width:34px;height:34px;border-radius:99px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink-2);font-size:.95rem;cursor:pointer;line-height:1}
+
+.palco{display:grid;gap:0}
+#map{height:52svh;min-height:300px;background:var(--sunken);z-index:1}
+@media(min-width:1000px){
+  .palco{grid-template-columns:minmax(0,1fr) 430px;height:calc(100svh - 57px)}
+  .painel{overflow-y:auto;border-left:1px solid var(--line)}
+  #map{height:100%;position:sticky;top:0}
+}
+.leaflet-container{font-family:var(--f-ui);background:var(--sunken)}
+
+.leaflet-control-attribution{background:var(--panel)!important;color:var(--ink-3)!important;font-size:9px!important}
+.leaflet-control-attribution a{color:var(--ink-2)!important}
+.painel{padding:18px var(--pad) 60px}
+.semmapa{padding:16px var(--pad);font-size:.78rem;color:var(--ink-3);
+  background:var(--sunken);border-bottom:1px solid var(--line)}
+
+/* ============ PINOS ============ */
+.pin{display:grid;place-items:center;width:28px;height:28px;border-radius:99px;
+  background:var(--c);color:#fff;font-family:var(--f-mono);font-size:.72rem;font-weight:800;
+  border:2.5px solid var(--surface);box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.pin.sel{transform:scale(1.28);box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 32%,transparent)}
+.pin.apoio{width:15px;height:15px;background:var(--ink-3);border-width:2px;font-size:0}
+.pin.base{background:var(--ink-3)}
+.leaflet-popup-content-wrapper{background:var(--surface);color:var(--ink);border-radius:12px;
+  box-shadow:var(--shadow);border:1px solid var(--line)}
+.leaflet-popup-tip{background:var(--surface)}
+.leaflet-popup-content{margin:11px 13px;font-size:.8rem;line-height:1.45}
+.leaflet-popup-content b{display:block;font-size:.86rem;margin-bottom:3px}
+.leaflet-popup-content u{display:block;text-decoration:none;font-family:var(--f-mono);
+  font-size:.68rem;color:var(--ink-3);margin-bottom:6px}
+.leaflet-popup-content a{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:750}
+
+/* ============ FOTO ============ */
+.fig{margin:11px 0 0;border-radius:10px;overflow:hidden;background-size:cover;
+  background-position:center;position:relative;line-height:0}
+.fig img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.fig figcaption{position:absolute;right:0;bottom:0;line-height:1.3;
+  background:linear-gradient(90deg,transparent,rgba(0,0,0,.62) 34%);padding:5px 8px 4px 22px}
+.fig figcaption a{font-size:.56rem;color:rgba(255,255,255,.82);text-decoration:none}
+.fig figcaption a:hover{color:#fff;text-decoration:underline}
+.pop-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin-bottom:7px}
+
+/* ============ RESUMO ============ */
+.resumo{font-size:.86rem;color:var(--ink-2);margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.kpis div{background:var(--surface);padding:10px 6px;text-align:center}
+.kpis b{display:block;font-family:var(--f-mono);font-size:.94rem;font-weight:800;color:var(--t)}
+.kpis u{display:block;text-decoration:none;font-size:.6rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--ink-3);margin-top:2px}
+.gbtn{display:block;width:100%;background:var(--c);color:#fff;border:0;border-radius:12px;
+  padding:11px 14px;font-size:.82rem;font-weight:800;text-decoration:none;
+  margin-bottom:20px;text-align:center}
+.gbtn u{display:block;text-decoration:none;font-weight:600;font-size:.66rem;
+  line-height:1.4;opacity:.85;margin-top:3px}
+
+/* ============ TRILHO DO DIA ============ */
+.eyebrow{font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--ink-3);margin:24px 0 9px}
+.trilha{position:relative;padding-left:34px}
+.trilha::before{content:"";position:absolute;left:13px;top:6px;bottom:6px;width:2px;
+  background:color-mix(in srgb,var(--c) 30%,transparent)}
+
+.parada{position:relative;margin-bottom:8px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.parada.on{border-color:var(--c)}
+.parada > .num.base{background:var(--ink-3)}
+.parada > .num{position:absolute;left:-34px;top:12px;width:28px;height:28px;border-radius:99px;
+  display:grid;place-items:center;background:var(--c);color:#fff;
+  font-family:var(--f-mono);font-size:.72rem;font-weight:800;border:2.5px solid var(--paper)}
+.p-top{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;
+  background:none;border:0;color:inherit;font:inherit;padding:12px 13px;cursor:pointer}
+.p-top h3{flex:1;min-width:0;font-size:.88rem;line-height:1.3}
+.p-top .hh{flex:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);
+  font-variant-numeric:tabular-nums;text-align:right;line-height:1.4}
+.p-top .hh b{display:block;color:var(--t);font-weight:800;font-size:.72rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px;padding:0 13px 11px}
+.chip{font-size:.63rem;font-weight:750;padding:3px 9px;border-radius:99px;
+  border:1px solid var(--line-2);color:var(--ink-2)}
+.chip.pago{color:var(--t);border-color:var(--c)}
+.p-det{padding:0 13px 13px;display:none}
+.parada.on .p-det{display:block}
+.bloco{margin-top:11px}
+.bloco p.lbl{font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink-3);margin-bottom:5px}
+.bloco ul{list-style:none}
+.bloco li{font-size:.78rem;line-height:1.45;padding-left:15px;position:relative;margin-bottom:3px}
+.bloco li::before{content:"";position:absolute;left:2px;top:.55em;width:5px;height:5px;
+  border-radius:99px;background:var(--c)}
+.nota{font-size:.78rem;line-height:1.5;color:var(--ink-2)}
+.alerta{display:flex;gap:8px;font-size:.76rem;line-height:1.45;background:color-mix(in srgb,var(--warn) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--warn) 34%,transparent);border-radius:10px;padding:9px 11px;margin-top:11px}
+.alerta s{flex:none;text-decoration:none}
+.plink{display:inline-flex;align-items:center;gap:6px;margin-top:12px;max-width:100%;font-size:.72rem;font-weight:750;
+  border:1px solid var(--line-2);border-radius:99px;padding:6px 12px;text-decoration:none;color:var(--ink-2)}
+.plink:hover{color:var(--t);border-color:var(--c)}
+.plinks{display:flex;flex-wrap:wrap;gap:6px}
+
+/* ============ PERNAS ============ */
+.perna{position:relative;display:flex;gap:9px;align-items:flex-start;padding:7px 4px 11px 2px;font-size:.75rem;color:var(--ink-2)}
+.perna .ic{position:absolute;left:-30px;top:6px;width:20px;height:20px;border-radius:99px;
+  display:grid;place-items:center;font-size:.66rem;background:var(--surface-2);
+  border:1px solid var(--line);color:var(--ink-2)}
+.perna .ic.metro{color:#fff;border:0}
+.perna .tx{flex:1;min-width:0;line-height:1.4}
+.perna .tx b{font-weight:800;color:var(--ink)}
+.perna .tx em{font-style:normal;color:var(--ink-3);display:block;font-size:.71rem;margin-top:2px}
+.perna .go{flex:none;font-family:var(--f-mono);font-size:.65rem;color:var(--ink-3);text-decoration:none;
+  border:1px solid var(--line);border-radius:99px;padding:3px 8px;white-space:nowrap}
+.perna .go:hover{color:var(--t);border-color:var(--c)}
+.perna .gos{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.perna .go.alt{opacity:.72;font-weight:600}
+
+/* ============ ALTERNATIVAS / PASSE ============ */
+.alt{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow)}
+.alt b{display:block;font-size:.83rem;margin-bottom:4px}
+.alt p{font-size:.77rem;line-height:1.5;color:var(--ink-2)}
+.alt .tag{display:inline-block;font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--t);margin-bottom:6px}
+.alt.viva{cursor:pointer}
+.alt.viva:hover,.alt.viva:focus-visible{border-color:var(--c)}
+.alt.on{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 16%,transparent)}
+.alt-pe{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:9px}
+.alt-go{font-size:.7rem;font-weight:800;color:var(--t)}
+.alt-pe .plink{margin-top:0}
+.pin.alt-pin{background:var(--surface);color:var(--t);border:2.5px dashed var(--c);
+  width:26px;height:26px;font-size:.66rem;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+@keyframes pisca{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 40%,transparent)}
+  50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 22%,transparent)}}
+.parada.pisca{border-color:var(--c);animation:pisca 1.1s ease-in-out 3}
+.passe{background:color-mix(in srgb,var(--c) 9%,var(--surface));
+  border:1px solid color-mix(in srgb,var(--c) 34%,transparent);border-radius:14px;padding:13px 15px}
+.rodape{font-size:.68rem;color:var(--ink-3);line-height:1.5;margin-top:26px;
+  padding-top:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="topo c-osaka">
+  <a class="volta" href="index.html#dia3">‹ Roteiro</a>
+  <div class="tit"><b>Osaka de ponta a ponta</b><u id="subt"></u></div>
+  <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
+</div>
+
+<div class="palco c-osaka">
+  <div id="map"></div>
+  <div class="painel">
+    <p class="resumo" id="resumo"></p>
+    <div class="kpis" id="kpis"></div>
+    <a class="gbtn" id="gdia" target="_blank" rel="noopener">Ver a volta inteira no Google Maps ↗
+      <u>desenho e ordem das paradas · o transporte real de cada trecho está no <b>ir ↗</b> abaixo</u></a>
+
+    <p class="eyebrow">Hora a hora</p>
+    <div class="trilha" id="trilha"></div>
+
+    <p class="eyebrow">Alternativas e plano B</p>
+    <div id="alts"></div>
+
+    <div class="passe" id="passe"></div>
+
+    <p class="rodape">Os traçados no mapa são aproximados — para trechos a pé o desenho é uma reta e
+    para o metrô é uma linha tracejada, porque o trilho é subterrâneo. O botão <b>ir ↗</b> de cada
+    trecho abre a rota exata e turn-by-turn no Google Maps. Horários são uma sugestão de ritmo, não
+    reserva. Mapa © OpenStreetMap · tiles CARTO.</p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const DIA = {"data": "2027-03-18", "semana": "quinta", "base": "Osaka / Namba", "cidade": "osaka", "transicao": false, "atividades": [{"periodo": "Manhã", "nome": "Kuromon Ichiba — café da manhã de frutos do mar", "area": "Nipponbashi", "de": "Airbnb Namba", "como": "A pé", "km": 0.7, "min": 0.0, "pe": 10.0, "transp": 0.0, "ingresso": 0.0, "horario": "09:00–18:00", "duracao": "1h30", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Mercado coberto e plano, mas corredor estreito com gente comendo em pé. ⚠ IR ATÉ 10:00: depois disso o carrinho vira estorvo.", "obs": "A \"cozinha de Osaka\": 580 m de mercado coberto. Ostra grelhada, sashimi, atum, wagyu na brasa e melão — tudo servido na hora, para comer em pé. Muita banca fecha às 17h e algumas não abrem às quartas."}, {"periodo": "Manhã", "nome": "Namba Yasaka Jinja — a cabeça de leão de 12 m", "area": "Namba", "de": "Kuromon", "como": "A pé", "km": 0.9, "min": 0.0, "pe": 12.0, "transp": 0.0, "ingresso": 0.0, "horario": "06:30–17:00", "duracao": "30 min", "bebe": "CARRINHO OK", "terreno": "Santuário pequeno, plano, quase sempre vazio. Entra e sai de carrinho sem problema.", "obs": "Santuário com um palco em forma de cabeça gigante de leão que \"engole\" a má sorte. GRÁTIS, rápido e é uma das fotos mais diferentes do Japão."}, {"periodo": "Manhã", "nome": "Aquário Kaiyukan — tubarão-baleia", "area": "Osakako", "de": "Namba Yasaka", "como": "Metrô Midosuji até Hommachi + Chuo até Osakako", "km": 9.0, "min": 25.0, "pe": 7.0, "transp": 290.0, "ingresso": 2700.0, "horario": "10:00–20:00", "duracao": "2h30", "bebe": "CARRINHO OK", "terreno": "Percurso em espiral descendo 8 andares, todo em rampa suave — foi PROJETADO para carrinho e cadeira de rodas. Empresta carrinho na entrada se precisar.", "obs": "Um dos maiores aquários do mundo, percurso em espiral descendo 8 andares. Adulto ¥2.400–2.700 (preço dinâmico), 7–15 anos ¥1.200–1.400, 4–6 anos ¥500–700. ⚠ NÃO está incluído no Osaka Amazing Pass."}, {"periodo": "Tarde", "nome": "Almoço no Tempozan Marketplace", "area": "Osakako", "de": "Kaiyukan", "como": "A pé (ao lado)", "km": 0.3, "min": 0.0, "pe": 5.0, "transp": 0.0, "ingresso": 0.0, "horario": "11:00–20:00", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Shopping com elevador e praça de alimentação. Fraldário no piso 2. Senta grupo de 13 sem reserva.", "obs": "Dentro fica o Naniwa Kuishinbo Yokocho, uma praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Barato e resolve o almoço de 10 pessoas de uma vez."}, {"periodo": "Tarde", "nome": "Umeda Sky Building — Jardim Flutuante (173 m)", "area": "Umeda", "de": "Osakako", "como": "Metrô Chuo até Hommachi + Midosuji até Umeda", "km": 10.0, "min": 25.0, "pe": 12.0, "transp": 290.0, "ingresso": 2000.0, "horario": "09:30–22:30 (últ. 22:00)", "duracao": "1h30", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Elevador até o 35º andar; do 35º ao mirante é ESCADA ROLANTE suspensa (carrinho dobrado na mão) e o anel superior é aberto. Canguru facilita muito aqui.", "obs": "MIRANTE ABERTO em anel, ligando as duas torres — chegar por volta das 17h30 pega o pôr do sol (~18:00) e a cidade acendendo. INCLUÍDO no Osaka Amazing Pass. No subsolo há a Takimi-koji, uma rua cenográfica da Osaka de 1920."}, {"periodo": "Tarde", "nome": "Nakazakicho — bairro retrô de cafés", "area": "Kita", "de": "Umeda Sky", "como": "A pé", "km": 1.2, "min": 0.0, "pe": 16.0, "transp": 0.0, "ingresso": 0.0, "horario": "lojas 12:00–19:00", "duracao": "1h30", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Ruas de vila, estreitas e sem calçada, com carro passando. Carrinho passa, mas exige atenção. Cafés minúsculos: quase nenhum comporta carrinho aberto.", "obs": "O quarteirão que escapou dos bombardeios de 1945: casas de madeira viradas em cafés, brechós e ateliês. Contraste total com os arranha-céus de Umeda, a 10 min a pé. Alternativa: roda-gigante vermelha do HEP Five (¥800, também no Amazing Pass)."}, {"periodo": "Noite", "nome": "Volta a Namba + jantar em Dotonbori", "area": "Namba", "de": "Umeda", "como": "Metrô Midosuji — direto", "km": 4.0, "min": 8.0, "pe": 10.0, "transp": 240.0, "ingresso": 0.0, "horario": "24h", "duracao": "2h30", "bebe": "CARRINHO OK", "terreno": "Metrô Midosuji tem elevador nas duas pontas.", "obs": "Fecha o dia no mesmo lugar de sempre. Se sobrar fôlego: cruzeiro Tombori River (¥1.200, 20 min, também incluído no Amazing Pass)."}], "total": {"km": 26.1, "min": 58.0, "pe": 72.0, "transp": 820.0, "ingresso": 4700.0, "nota": "≈ R$ 212 por pessoa neste dia (transporte + ingressos)"}};
+const GEO = {"titulo": "Osaka de ponta a ponta", "resumo": "Mercado de manhã, baía à tarde, o bairro retrô antes das lojas fecharem e o pôr do sol do mirante. Dois trechos longos de metrô, o resto a pé.", "centro": [34.681, 135.47], "zoom": 12, "paradas": [{"id": "base", "nome": "Airbnb Namba", "tipo": "base", "lat": 34.6655, "lng": 135.501, "aprox": true, "hora": "08:45", "gmaps": "Namba Station, Osaka"}, {"id": "p1", "foto": "File:Seafood in Kuromon Market, Osaka on June 7th, 2017.jpg", "tipo": "comida", "lat": 34.6658, "lng": 135.5067, "hora": "09:00", "fim": "10:15", "gmaps": "Kuromon Ichiba Market", "must": ["Ostra grelhada na hora", "Sashimi de atum cortado na frente", "Wagyu na brasa em espeto", "Melão fatiado"], "comidas": ["Ostra grelhada ¥500–800", "Espeto de wagyu ¥800–1.500", "Sashimi ¥600–1.200", "Melão ¥500"], "compras": ["Facas de cozinha na rua paralela", "Chá e furikake para levar"], "alerta": "Ir até 10:00 — depois o corredor lota e o carrinho vira estorvo. Muita banca fecha 17h; algumas não abrem quarta.", "ativ": "Kuromon", "ai": 0}, {"id": "p2", "foto": "File:Namba-Yasaka-Shrine-lions head theater.jpg", "tipo": "templo", "lat": 34.6615, "lng": 135.4967, "hora": "10:30", "fim": "11:00", "gmaps": "Namba Yasaka Jinja", "must": ["A cabeça de leão de 12 m que engole a má sorte"], "alerta": "Grátis e quase sempre vazio. 30 min resolvem.", "foco": "center 30%", "ativ": "Namba Yasaka", "ai": 1}, {"id": "e1", "nome": "Estação Namba (Midosuji)", "tipo": "estacao", "lat": 34.6662, "lng": 135.5003, "hora": "11:05", "gmaps": "Namba Station Midosuji Line"}, {"id": "e2", "nome": "Baldeação Hommachi", "tipo": "estacao", "lat": 34.6828, "lng": 135.4997, "hora": "11:12", "gmaps": "Hommachi Station Osaka"}, {"id": "e3", "nome": "Estação Osakako (Chuo)", "tipo": "estacao", "lat": 34.6539, "lng": 135.4344, "hora": "11:28", "gmaps": "Osakako Station"}, {"id": "p3", "foto": "Osaka Aquarium Kaiyukan whale shark", "tipo": "passeio", "lat": 34.6545, "lng": 135.4289, "hora": "11:35", "fim": "14:00", "gmaps": "Osaka Aquarium Kaiyukan", "must": ["Tubarão-baleia do tanque central", "Descida em espiral por 8 andares", "Túnel Aqua Gate"], "compras": ["Loja do aquário: pelúcia de tubarão-baleia"], "alerta": "NÃO entra no Osaka Amazing Pass. Preço dinâmico: adulto ¥2.400–2.700, 7–15 anos ¥1.200–1.400, 4–6 anos ¥500–700. Empresta carrinho na entrada.", "ativ": "Kaiyukan", "ai": 2}, {"id": "p4", "foto": "File:Tempozan Market Place.jpg", "tipo": "comida", "lat": 34.656, "lng": 135.4303, "hora": "14:00", "fim": "15:00", "gmaps": "Tempozan Marketplace", "must": ["Naniwa Kuishinbo Yokocho — praça de alimentação cenográfica dos anos 1960"], "comidas": ["Takoyaki", "Okonomiyaki", "Kushikatsu — pratos ¥600–1.100"], "alerta": "Senta 13 pessoas sem reserva. Fraldário no piso 2.", "ativ": "Tempozan Marketplace", "ai": 3}, {"id": "e4", "nome": "Estação Osakako (volta)", "tipo": "estacao", "lat": 34.6539, "lng": 135.4344, "hora": "15:40", "gmaps": "Osakako Station"}, {"id": "e5", "nome": "Baldeação Hommachi", "tipo": "estacao", "lat": 34.6828, "lng": 135.4997, "hora": "15:56", "gmaps": "Hommachi Station Osaka"}, {"id": "e6", "nome": "Estação Umeda (Midosuji)", "tipo": "estacao", "lat": 34.7034, "lng": 135.4976, "hora": "16:05", "gmaps": "Umeda Station Midosuji Line"}, {"id": "p7", "foto": "File:Nakazakicho - panoramio.jpg", "tipo": "compras", "lat": 34.7072, "lng": 135.5056, "hora": "16:20", "fim": "17:40", "gmaps": "Nakazakicho, Kita Ward, Osaka", "must": ["Casas de madeira que escaparam de 1945, viradas em cafés e ateliês", "Contraste com os arranha-céus de Umeda, a 10 min a pé"], "compras": ["Brechós e ateliês independentes", "Cerâmica e papelaria de autor"], "comidas": ["Cafés minúsculos — quase nenhum comporta carrinho aberto"], "alerta": "Lojas 12:00–19:00: depois disso a rua continua bonita, mas as vitrines apagam. Ruas de vila estreitas, sem calçada e com carro passando.", "ativ": "Nakazakicho", "ai": 5}, {"id": "p6", "foto": "Umeda Sky Building", "tipo": "vista", "lat": 34.7053, "lng": 135.4905, "hora": "17:55", "fim": "19:20", "gmaps": "Umeda Sky Building", "must": ["Jardim Flutuante: mirante ABERTO em anel a 173 m", "Pôr do sol por volta das 18:05, já lá em cima", "Takimi-koji no subsolo: rua cenográfica da Osaka de 1920"], "comidas": ["Takimi-koji: izakayas e okonomiyaki no subsolo"], "alerta": "INCLUÍDO no Amazing Pass. Do 35º andar ao mirante é escada rolante suspensa — carrinho dobrado na mão. Canguru facilita muito.", "ativ": "Umeda Sky", "ai": 4}, {"id": "e7", "nome": "Estação Umeda", "tipo": "estacao", "lat": 34.7034, "lng": 135.4976, "hora": "19:35", "gmaps": "Umeda Station Midosuji Line"}, {"id": "p8", "foto": "Dotonbori night Osaka", "tipo": "comida", "lat": 34.669, "lng": 135.5016, "hora": "19:45", "fim": "22:00", "gmaps": "Dotonbori, Osaka", "must": ["Glico Man", "Canal iluminado", "Caranguejo mecânico do Kani Doraku"], "comidas": ["Takoyaki", "Okonomiyaki", "Kushikatsu (não molhe o espeto duas vezes)", "Ramen"], "compras": ["Don Quijote 24h ao lado do canal", "Drogarias tax-free"], "alerta": "Metrô Midosuji tem elevador nas duas pontas. Se sobrar fôlego: cruzeiro Tombori River ¥1.200, 20 min, também no Amazing Pass.", "ativ": "Dotonbori", "ai": 6}, {"id": "fim", "nome": "Airbnb Namba", "tipo": "base", "lat": 34.6655, "lng": 135.501, "aprox": true, "hora": "22:10", "gmaps": "Namba Station, Osaka"}], "pernas": [{"de": "base", "para": "p1", "modo": "pe", "min": 10, "km": 0.7, "custo": 0, "desc": "Sai pela Sennichimae rumo leste até o portal do Kuromon."}, {"de": "p1", "para": "p2", "modo": "pe", "min": 12, "km": 0.9, "custo": 0, "desc": "Volta pela Sennichimae e desce a Motomachi."}, {"de": "p2", "para": "e1", "modo": "pe", "min": 4, "km": 0.3, "custo": 0}, {"de": "e1", "para": "e2", "modo": "metro", "km": 1.9, "linha": "Midosuji", "cor": "#E5171F", "min": 5, "custo": 0, "desc": "3 estações, sentido Senri-Chuo"}, {"de": "e2", "para": "e3", "modo": "metro", "km": 6.3, "linha": "Chuo", "cor": "#019A66", "min": 13, "custo": 290, "desc": "6 estações, sentido Cosmosquare. Tarifa única ¥290 desde Namba"}, {"de": "e3", "para": "p3", "modo": "pe", "min": 7, "km": 0.5, "custo": 0, "desc": "Saída 1, reto pela orla até o cubo de vidro."}, {"de": "p3", "para": "p4", "modo": "pe", "min": 5, "km": 0.3, "custo": 0, "desc": "É o prédio ao lado."}, {"de": "e4", "para": "e5", "modo": "metro", "km": 6.3, "linha": "Chuo", "cor": "#019A66", "min": 13, "custo": 0, "desc": "Volta pelo mesmo caminho"}, {"de": "p4", "para": "e4", "modo": "pe", "min": 8, "km": 0.5, "custo": 0, "desc": "Volta pela orla até a estação."}, {"de": "e5", "para": "e6", "modo": "metro", "km": 2.2, "linha": "Midosuji", "cor": "#E5171F", "min": 6, "custo": 290, "desc": "2 estações. Tarifa ¥290 até Umeda"}, {"de": "e6", "para": "p7", "modo": "pe", "min": 10, "km": 0.7, "custo": 0, "desc": "Saída leste de Umeda; entra na vila pelas ruelas atrás da Ohatsu Tenjin."}, {"de": "p7", "para": "p6", "modo": "pe", "min": 16, "km": 1.2, "custo": 0, "desc": "Atravessa Umeda a oeste, passando por baixo dos trilhos. Chega com o sol ainda alto."}, {"de": "p6", "para": "e7", "modo": "pe", "min": 12, "km": 0.9, "custo": 0, "desc": "Túnel sob os trilhos de volta — placas para a estação o caminho todo."}, {"de": "e7", "para": "p8", "modo": "metro", "km": 3.9, "linha": "Midosuji", "cor": "#E5171F", "min": 8, "custo": 240, "desc": "Direto até Namba, sem baldeação"}, {"de": "p8", "para": "fim", "modo": "pe", "min": 8, "km": 0.5, "custo": 0}], "alternativas": [{"tipo": "extra", "titulo": "Roda-gigante Tempozan, se comprarem o Amazing Pass", "texto": "Cortada do roteiro: são 112 m fechados às 15:00 contra os 173 m ao ar livre do Umeda Sky no pôr do sol, 4h depois — a mesma vista, pior. Fica ao lado do aquário, então quem comprar o Osaka Amazing Pass pode subir de graça em 30 min sem sair do lugar. Sem o passe são ¥900 por uma vista repetida.", "refs": ["p4"]}, {"tipo": "troca", "titulo": "HEP Five no lugar do Tempozan", "texto": "Roda-gigante vermelha de Umeda, ¥800, também no Amazing Pass. Fica a 5 min do Nakazakicho, o que economiza a parada extra na baía se o grupo já estiver cansado.", "ponto": {"nome": "HEP Five", "lat": 34.7041, "lng": 135.5004, "gmaps": "HEP FIVE, Osaka"}}, {"tipo": "corte", "titulo": "Pular o Kaiyukan", "texto": "É o único item caro do dia (¥2.400–2.700 por adulto), come 2h30 e não entra no Amazing Pass. Sem ele o dia cai de ~R$ 212 para ~R$ 110 por pessoa — mas some também o motivo de ir até a baía.", "refs": ["p3"]}, {"tipo": "extra", "titulo": "Cruzeiro Tombori River", "texto": "Se sobrar fôlego depois do jantar: ¥1.200, 20 min, incluído no Amazing Pass. O embarque fica no Don Quijote, na beira do canal.", "ponto": {"nome": "Embarque do Tombori River Cruise", "lat": 34.6693, "lng": 135.5019, "gmaps": "Tombori River Cruise, Dotonbori"}}, {"tipo": "planob", "titulo": "Se chover", "texto": "Kaiyukan e Tempozan Marketplace são cobertos e resolvem a tarde inteira. O Umeda Sky perde a graça: troque pelo Grand Front Osaka, colado na estação e todo coberto.", "ponto": {"nome": "Grand Front Osaka", "lat": 34.704, "lng": 135.4947, "gmaps": "Grand Front Osaka"}}, {"tipo": "troca", "titulo": "Mirante antes do bairro retrô", "texto": "A outra ordem possível: Umeda Sky às 17:30 e Nakazakicho depois. Rende um mirante mais vazio, mas chega ao bairro com as lojas fechando às 19:00 — sobram uns 20 min de vitrine apagada. Vale se a vista importar mais que as compras.", "refs": ["p7", "p6"]}], "passe": {"nome": "Osaka Amazing Pass — 1 dia, ¥3.300", "texto": "Cobre metrô ilimitado + roda-gigante Tempozan (¥900) + Umeda Sky (¥2.000) + cruzeiro Tombori (¥1.200). Só o metrô do dia já dá ¥820. NÃO cobre o Kaiyukan."}};
+const FOTOS = {"p1": {"termo": "File:Seafood in Kuromon Market, Osaka on June 7th, 2017.jpg", "arq": "paradas/2027-03-18-p1.webp", "titulo": "Seafood in Kuromon Market, Osaka on June 7th, 2017.jpg", "autor": "Choi2451", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ASeafood_in_Kuromon_Market%2C_Osaka_on_June_7th%2C_2017.jpg", "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAwCdASoWAAwAPulep00pJSOiMAgBIB0JYgCdAB6AIv+jDejRhmQAAP2IHYWN3zpECj8jPgom+Qnex1NEhjxi/179BBeFD72kaeu0bAAAAA=="}, "p2": {"termo": "File:Namba-Yasaka-Shrine-lions head theater.jpg", "arq": "paradas/2027-03-18-p2.webp", "titulo": "Namba-Yasaka-Shrine-lions head theater.jpg", "autor": "Immanuelle", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ANamba-Yasaka-Shrine-lions_head_theater.jpg", "lqip": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBQCdASoWAB0APulmqk6pJaOiMBgIASAdCWMAqPQNbf1khHRs6AT4nbX5NC4SXbcAAOET0yWp2y1Wb6pGLnvS71ywzFTz4HTYQN+gCUz922hpjDaOG5QUl7F4yrTtgeUe/1YcXt1feJmlFy8bZKx2iDQkngpcpIH18AAA"}, "p3": {"termo": "Osaka Aquarium Kaiyukan whale shark", "arq": "paradas/2027-03-18-p3.webp", "titulo": "Star attraction of Osaka Aquarium Kaiyukan (6453172935).jpg", "autor": "Maarten Heerlien from Voorschoten, The Netherlands", "lic": "CC BY 2.0", "licurl": "https://creativecommons.org/licenses/by/2.0", "pagina": "https://commons.wikimedia.org/wiki/File%3AStar_attraction_of_Osaka_Aquarium_Kaiyukan_%286453172935%29.jpg", "lqip": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAwCdASoWAA8APulgqE2pJaOiMAgBIB0JZgCxG1yB0cQpkogutUHcAP7Le12/dD592OxUyv3Q3X+VrKDaTu3XvW/rVjdbvsAAAA=="}, "p4": {"termo": "File:Tempozan Market Place.jpg", "arq": "paradas/2027-03-18-p4.webp", "titulo": "Tempozan Market Place.jpg", "autor": "Tokumeigakarinoaoshima", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ATempozan_Market_Place.jpg", "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQBACdASoWABEAPuliqU0pJaQiMAgBIB0JaQDLpCHe6w7NgV9blZrwAAD+5xuCOTawKtaYC5GGkVQ7v8cQcd/63E62pKSuhDDKBy57YFgAAA=="}, "p5": {"termo": "Tempozan Ferris Wheel", "arq": "paradas/2027-03-18-p5.webp", "titulo": "Tempozan Giant Ferris Wheel upwards view.jpg", "autor": "Jason Zhang", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ATempozan_Giant_Ferris_Wheel_upwards_view.jpg", "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABQBACdASoWABEAPuFapk0opSOiN/VYARAcCWUAqPQR/+KNjX43iIY9cstQAP7nYJACHKm9Mz+rZjZoJAM7U82wTsfZQLqAp69SQ0QPm8fVFdW3NGxqnYAAAAA="}, "p6": {"termo": "Umeda Sky Building", "arq": "paradas/2027-03-18-p6.webp", "titulo": "Umeda Sky Building, Osaka, November 2016 -02.jpg", "autor": "Martin Falbisoner", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3AUmeda_Sky_Building%2C_Osaka%2C_November_2016_-02.jpg", "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACQAwCdASoWAA4APulkq04pJaQiMAgBIB0JZwDKAA/6PivfYN0AAP7R3dFBcCJcnc529qOQ1+QXZ2UTOd7bj44uEqBA1ZNV0xAy/LTmAAA="}, "p7": {"termo": "File:Nakazakicho - panoramio.jpg", "arq": "paradas/2027-03-18-p7.webp", "titulo": "Nakazakicho - panoramio.jpg", "autor": "DVMG", "lic": "CC BY 3.0", "licurl": "https://creativecommons.org/licenses/by/3.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ANakazakicho_-_panoramio.jpg", "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACwBACdASoWABEAPtVao00oJaMiN/qoAQAaiWcAz2QeCti2gpomdR7CSiazMgkAAP7BpfTaWIbwVGTASqmiHALmg5yJLtg28hg2TIAppI9PFPqK50TFXqUIAogHTgAA"}, "p8": {"termo": "Dotonbori night Osaka", "arq": "paradas/2027-03-18-p8.webp", "titulo": "Dotonbori Neon Sign, Osaka 20190415 1.jpg", "autor": "DXR", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ADotonbori_Neon_Sign%2C_Osaka_20190415_1.jpg", "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAwCdASoWABAAPulgqU0pJaQiMAgBIB0JZQCw7B3656G1Jbe5rEU2AP4ddM9Vh7ptLucqV1qshFWfjHboSoC1J3uwf1VnUar6JQgB+4AAAA=="}};   // por id de parada: arquivo, credito e placeholder
+const el = (id)=>document.getElementById(id);
+const esc = (s)=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nf  = (n,d=0)=>Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const gm  = (q)=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const gdir= (a,b,modo)=>"https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+
+            "&destination="+encodeURIComponent(b)+"&travelmode="+(modo==="pe"?"walking":"transit");
+
+/* ---- tema ---- */
+const raiz=document.documentElement;
+let tema=localStorage.getItem("tema-japao")||"";
+if(tema) raiz.dataset.theme=tema;
+el("themeBtn").onclick=()=>{
+  const escuro = raiz.dataset.theme ? raiz.dataset.theme==="dark"
+               : matchMedia("(prefers-color-scheme: dark)").matches;
+  tema = escuro?"light":"dark";
+  raiz.dataset.theme=tema; localStorage.setItem("tema-japao",tema);
+  if(typeof trocarTiles==="function") trocarTiles();
+};
+const ehEscuro=()=> raiz.dataset.theme ? raiz.dataset.theme==="dark"
+                  : matchMedia("(prefers-color-scheme: dark)").matches;
+
+/* ---- indice das paradas ---- */
+const P = {}; GEO.paradas.forEach(p=>{ P[p.id]=p; });
+const reais = GEO.paradas.filter(p=>p.ai!=null);
+reais.forEach((p,i)=>{ p.n=i+1; });
+// a saida e o "0" do dia; a volta e o mesmo lugar, entao nao ganha pino proprio
+GEO.paradas.forEach(p=>{ if(p.tipo==="base") p.n=0; });
+const at = (p)=> p.ai!=null ? DIA.atividades[p.ai] : null;
+const nomeDe = (p)=> p.nome || (at(p) ? at(p).nome : p.id);
+
+/* ---- mapa ---- */
+// Sem internet (avião, roaming caído) o Leaflet nao carrega: o mapa some e a pagina
+// continua inteira — hora a hora, custos, alternativas. Os links do Google Maps
+// tambem so funcionam online, mas ai o problema ja e outro.
+const TEM_MAPA = typeof L !== "undefined";
+if(!TEM_MAPA){
+  el("map").outerHTML = '<p class="semmapa">Mapa indisponível offline. O roteiro do dia continua abaixo.</p>';
+}
+// Scroll do mouse da zoom direto. No touch isso nao existe, e o arrasto de um dedo
+// no mapa roubaria a rolagem da pagina — por isso la o gesto continua sendo de dois dedos.
+const TOQUE = matchMedia("(pointer: coarse)").matches;
+const map = TEM_MAPA ? L.map("map",{
+  scrollWheelZoom:true, wheelPxPerZoomLevel:90, zoomControl:true, dragging:!TOQUE
+}).setView(GEO.centro, GEO.zoom) : null;
+if(map && TOQUE){ map.dragging.enable(); }
+let tiles=null;
+// O OSM padrao desenha cada loja e cada viela: com a rota por cima virava sopa. O Gray
+// Canvas da Esri e um fundo de dados — quase so agua, quadras e vias principais — e vem
+// em duas camadas, base sem texto + rotulos por cima, cada uma clara e escura.
+const ESRI = "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_{t}_Gray_{c}/MapServer/tile/{z}/{y}/{x}";
+function camada(tom, papel, z){
+  return L.tileLayer(ESRI.replace("{t}",tom).replace("{c}",papel),{
+    maxNativeZoom:16, maxZoom:18, zIndex:z,
+    attribution: papel==="Base" ? "Tiles &copy; Esri" : ""
+  });
+}
+let rotulos=null;
+function trocarTiles(){
+  if(!map) return;
+  const tom = ehEscuro()?"Dark":"Light";
+  if(tiles){ map.removeLayer(tiles); map.removeLayer(rotulos); }
+  tiles   = camada(tom,"Base",0).addTo(map);
+  rotulos = camada(tom,"Reference",1).addTo(map);
+}
+trocarTiles();
+
+const cor = getComputedStyle(document.querySelector(".palco")).getPropertyValue("--c").trim();
+const marcas={};
+if(map) GEO.paradas.forEach(p=>{
+  if(p.id==="fim") return;                 // mesmo ponto da saida
+  const apoio = p.ai==null && p.tipo!=="base";
+  const ico = L.divIcon({className:"", html:`<div class="pin ${apoio?"apoio":""}${p.tipo==="base"?" base":""}" data-id="${p.id}">${apoio?"":p.n}</div>`,
+    iconSize:apoio?[15,15]:[28,28], iconAnchor:apoio?[7,7]:[14,14]});
+  const m = L.marker([p.lat,p.lng],{icon:ico,zIndexOffset:apoio?0:400}).addTo(map);
+  const a = at(p);
+  const fp = FOTOS[p.id];
+  m.bindPopup(`${fp?`<img class="pop-img" src="fotos/${fp.arq}" alt="" loading="lazy">`:""
+    }<b>${esc(nomeDe(p))}</b><u>${esc(p.hora||"")}${p.fim?" – "+esc(p.fim):""}${
+      a&&a.area?" · "+esc(a.area):""}</u>${
+      p.aprox?'<i style="color:var(--ink-3);font-size:.72rem">ponto aproximado</i>':""}<a href="${gm(p.gmaps||nomeDe(p))}" target="_blank" rel="noopener">ver no Google Maps ↗</a>`);
+  if(!apoio) m.on("click",()=>abrir(p.id,false));
+  marcas[p.id]=m;
+});
+
+if(map) GEO.pernas.forEach(g=>{
+  const a=P[g.de], b=P[g.para]; if(!a||!b) return;
+  const pe = g.modo==="pe";
+  L.polyline([[a.lat,a.lng],[b.lat,b.lng]],{
+    color: pe?cor:(g.cor||cor), weight: pe?3.4:4.6, opacity: pe?.8:.9,
+    dashArray: pe?null:"2 9", lineCap:"round"
+  }).addTo(map);
+});
+if(map) map.fitBounds(L.latLngBounds(GEO.paradas.map(p=>[p.lat,p.lng])),{padding:[42,42]});
+
+/* ---- cabecalho e numeros ---- */
+const DIAS_SEM = DIA.semana;
+el("subt").textContent = DIA.data.slice(8,10)+"/"+DIA.data.slice(5,7)+"/"+DIA.data.slice(0,4)
+  +" · "+DIAS_SEM+" · dia 3 de 16";
+el("resumo").textContent = GEO.resumo;
+const t = DIA.total||{};
+el("kpis").innerHTML =
+  `<div><b>${nf(t.km,1)}</b><u>km</u></div>`+
+  `<div><b>${nf(t.pe)}</b><u>min a pé</u></div>`+
+  `<div><b>¥${nf(t.transp)}</b><u>transporte</u></div>`+
+  `<div><b>¥${nf(t.ingresso)}</b><u>ingressos</u></div>`;
+
+// O Google Maps NAO calcula transporte publico com paradas intermediarias — so
+// origem→destino. Com waypoints ele aceita apenas carro/a pe/bicicleta. Entao o botao do
+// dia abre a volta inteira em modo carro, so para ver o desenho e a ordem; o transporte
+// de verdade (metro, linha, tarifa) esta no "ir ↗" de cada trecho.
+const seq = reais.map(p=>p.gmaps||nomeDe(p));
+el("gdia").href = "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(seq[0])+
+  "&destination="+encodeURIComponent(seq[seq.length-1])+
+  "&waypoints="+seq.slice(1,-1).map(encodeURIComponent).join("%7C")+"&travelmode=driving";
+
+/* ---- trilha ---- */
+// A foto so baixa quando o card abre (loading=lazy + o card comeca fechado): abrir a
+// pagina nao puxa foto nenhuma. Ate ela chegar, o fundo e o placeholder borrado de 22px
+// que ja vem embutido no HTML.
+function foto(p){
+  const f = FOTOS[p.id]; if(!f) return "";
+  const cred = [f.autor, f.lic].filter(Boolean).join(" · ");
+  return `<figure class="fig" style="background-image:url(${f.lqip})">
+    <img src="fotos/${f.arq}" alt="${esc(nomeDe(p))}" loading="lazy" decoding="async"
+      width="620" height="349"${p.foco?` style="object-position:${esc(p.foco)}"`:""}>
+    <figcaption><a href="${esc(f.pagina)}" target="_blank" rel="noopener">${esc(cred||"Wikimedia Commons")} ↗</a></figcaption>
+  </figure>`;
+}
+
+function bloco(lbl,arr){
+  if(!arr||!arr.length) return "";
+  return `<div class="bloco"><p class="lbl">${lbl}</p><ul>${arr.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;
+}
+let anterior = null;
+const html = GEO.paradas.map((p,idx)=>{
+  const perna = GEO.pernas.find(g=>g.para===p.id);
+  const ant = anterior;
+  if(p.tipo!=="estacao") anterior = p;
+  let out = "";
+  if(perna){
+    const de=P[perna.de], ate=p;
+    const metro = perna.modo!=="pe";
+    const dd = de.gmaps||nomeDe(de), aa = p.gmaps||nomeDe(p);
+    // Cada trecho tem um modo sugerido, mas onde a outra opcao for plausivel (metro
+    // curto que da para andar, ou caminhada que da para encurtar de metro) aparece um
+    // segundo link, para comparar tempo e preco no Google.
+    const alt = metro ? (perna.km && perna.km <= 2.5) : (perna.km && perna.km >= 0.8);
+    const tit = metro
+      ? `<b>${esc(perna.linha||"Metrô")}</b> · ${perna.min} min${perna.custo?" · ¥"+nf(perna.custo):""}${
+          perna.km?" · "+nf(perna.km,1)+" km":""}`
+      : `<b>A pé</b> · ${perna.min} min${perna.km?" · "+nf(perna.km,1)+" km":""}`;
+    out += `<div class="perna">
+      <span class="ic ${metro?"metro":""}" ${metro&&perna.cor?`style="background:${perna.cor}"`:""}>${metro?"Ⓜ":"🚶"}</span>
+      <span class="tx">${tit}${perna.desc?`<em>${esc(perna.desc)}</em>`:""}</span>
+      <span class="gos">
+        <a class="go" target="_blank" rel="noopener"
+           href="${gdir(dd, aa, metro?"transporte":"pe")}">${metro?"transporte ↗":"a pé ↗"}</a>
+        ${alt?`<a class="go alt" target="_blank" rel="noopener"
+           href="${gdir(dd, aa, metro?"pe":"transporte")}">${metro?"ou a pé ↗":"ou transporte ↗"}</a>`:""}
+      </span>
+    </div>`;
+  }
+  const a = at(p);
+  if(!a){
+    if(p.tipo==="estacao") return out;   // estacao ja aparece dentro da perna
+    out += `<div class="parada" data-id="${p.id}">
+      <div class="num${p.tipo==="base"?" base":""}">${p.tipo==="base"?0:"·"}</div>
+      <button class="p-top"><h3>${esc(p.nome)}</h3><span class="hh"><b>${esc(p.hora||"")}</b></span></button>
+    </div>`;
+    return out;
+  }
+  const chips=[];
+  if(a.duracao&&a.duracao!=="—") chips.push(`<span class="chip">${esc(a.duracao)}</span>`);
+  chips.push(a.ingresso?`<span class="chip pago">¥${nf(a.ingresso)}</span>`:`<span class="chip">grátis</span>`);
+  if(a.horario&&a.horario!=="—") chips.push(`<span class="chip">abre ${esc(a.horario)}</span>`);
+  if(a.bebe) chips.push(`<span class="chip">${esc(a.bebe)}</span>`);
+
+  out += `<div class="parada" data-id="${p.id}" id="c-${p.id}">
+    <div class="num">${p.n}</div>
+    <button class="p-top" aria-expanded="false">
+      <h3>${esc(a.nome)}</h3>
+      <span class="hh"><b>${esc(p.hora||"")}</b>${p.fim?"–"+esc(p.fim):""}</span>
+    </button>
+    <div class="chips">${chips.join("")}</div>
+    <div class="p-det">
+      ${foto(p)}
+      ${bloco("Não pode perder", p.must)}
+      ${bloco("Comer", p.comidas)}
+      ${bloco("Comprar", p.compras)}
+      ${a.terreno&&a.terreno!=="—"?`<div class="bloco"><p class="lbl">Com carrinho</p><p class="nota">${esc(a.terreno)}</p></div>`:""}
+      ${a.obs&&a.obs!=="—"?`<div class="bloco"><p class="lbl">Contexto</p><p class="nota">${esc(a.obs)}</p></div>`:""}
+      ${p.alerta?`<div class="alerta"><s>⚠</s><span>${esc(p.alerta)}</span></div>`:""}
+      <div class="plinks">
+        ${ant?`<a class="plink" target="_blank" rel="noopener"
+           href="${gdir(ant.gmaps||nomeDe(ant), p.gmaps||a.nome, "transit")}">Como chegar de ${esc(nomeDe(ant))} ↗</a>`:""}
+        <a class="plink" target="_blank" rel="noopener" href="${gm(p.gmaps||a.nome)}">Abrir no Google Maps ↗</a>
+      </div>
+    </div>
+  </div>`;
+  return out;
+}).join("");
+el("trilha").innerHTML = html;
+
+// Uma alternativa ou aponta para um lugar novo ("ponto": ganha pino tracejado no mapa)
+// ou mexe em paradas que ja existem ("refs": o mapa enquadra e os cards piscam).
+const LBL={troca:"Troca",corte:"Corte",extra:"Se sobrar tempo",planob:"Plano B"};
+el("alts").innerHTML = GEO.alternativas.map((x,i)=>{
+  const acao = x.ponto ? "Ver no mapa" : (x.refs ? "Ver a parada que muda" : "");
+  return `<div class="alt${acao?" viva":""}" data-alt="${i}"${acao?' tabindex="0" role="button"':""}>
+    <span class="tag">${LBL[x.tipo]||x.tipo}</span>
+    <b>${esc(x.titulo)}</b><p>${esc(x.texto)}</p>
+    ${acao?`<span class="alt-pe"><span class="alt-go">${acao} \u2192</span>${
+      x.ponto?`<a class="plink" target="_blank" rel="noopener" href="${gm(x.ponto.gmaps||x.ponto.nome)}"
+        >${esc(x.ponto.nome)} no Google Maps \u2197</a>`:""}</span>`:""}
+  </div>`;
+}).join("");
+
+// os pinos das alternativas nascem escondidos e so aparecem quando o card e acionado
+if(map) GEO.alternativas.forEach(x=>{
+  if(!x.ponto) return;
+  x._m = L.marker([x.ponto.lat,x.ponto.lng],{opacity:0,interactive:false,
+    icon:L.divIcon({className:"",html:`<div class="pin alt-pin">${(LBL[x.tipo]||"?")[0]}</div>`,
+      iconSize:[26,26],iconAnchor:[13,13]})}).addTo(map);
+  x._m.bindPopup(`<b>${esc(x.ponto.nome)}</b><u>alternativa \u00b7 ${esc(LBL[x.tipo]||x.tipo)}</u>`);
+});
+
+function mostrarAlt(i){
+  const x = GEO.alternativas[i];
+  document.querySelectorAll(".alt.on").forEach(n=>n.classList.remove("on"));
+  el("trilha").querySelectorAll(".parada.pisca").forEach(n=>n.classList.remove("pisca"));
+  GEO.alternativas.forEach(y=>{ if(y._m) y._m.setOpacity(0); });
+  const card = el("alts").querySelector(`.alt[data-alt="${i}"]`);
+  if(card) card.classList.add("on");
+  if(x.ponto){
+    if(x._m) x._m.setOpacity(1);
+    if(map){ map.flyTo([x.ponto.lat,x.ponto.lng], 15, {duration:.6}); if(x._m) x._m.openPopup(); }
+  }else if(x.refs && x.refs.length){
+    const pts = x.refs.map(id=>P[id]).filter(Boolean);
+    if(map && pts.length) map.flyToBounds(L.latLngBounds(pts.map(q=>[q.lat,q.lng])),
+      {padding:[70,70], maxZoom:15, duration:.6});
+    x.refs.forEach(id=>{
+      const c = el("trilha").querySelector(`.parada[data-id="${id}"]`);
+      if(c) c.classList.add("pisca");
+    });
+    const primeiro = el("trilha").querySelector(`.parada[data-id="${x.refs[0]}"]`);
+    if(primeiro) primeiro.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+el("alts").addEventListener("click",ev=>{
+  if(ev.target.closest("a")) return;                 // deixa o link do Google passar
+  const c=ev.target.closest(".alt.viva"); if(c) mostrarAlt(+c.dataset.alt);
+});
+el("alts").addEventListener("keydown",ev=>{
+  if(ev.key!=="Enter" && ev.key!==" ") return;
+  const c=ev.target.closest(".alt.viva"); if(c){ ev.preventDefault(); mostrarAlt(+c.dataset.alt); }
+});
+el("passe").innerHTML = `<span class="tag" style="font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--t)">Passe</span>
+  <b style="display:block;font-size:.85rem;margin:4px 0 5px">${esc(GEO.passe.nome)}</b>
+  <p style="font-size:.78rem;line-height:1.5;color:var(--ink-2)">${esc(GEO.passe.texto)}</p>`;
+
+/* ---- selecao ---- */
+function abrir(id, rolar){
+  const card = el("trilha").querySelector(`.parada[data-id="${id}"]`);
+  if(!card) return;
+  const jaAberto = card.classList.contains("on");
+  el("trilha").querySelectorAll(".parada.on").forEach(n=>{n.classList.remove("on");
+    const b=n.querySelector(".p-top"); if(b) b.setAttribute("aria-expanded","false");});
+  document.querySelectorAll(".pin.sel").forEach(n=>n.classList.remove("sel"));
+  if(jaAberto && rolar!==false) return;
+  card.classList.add("on");
+  const b=card.querySelector(".p-top"); if(b) b.setAttribute("aria-expanded","true");
+  const pin=document.querySelector(`.pin[data-id="${id}"]`); if(pin) pin.classList.add("sel");
+  const p=P[id];
+  if(p && map){ map.flyTo([p.lat,p.lng], Math.max(map.getZoom(),15), {duration:.6}); }
+  if(rolar!==false && marcas[id]) marcas[id].openPopup();
+  else card.scrollIntoView({behavior:"smooth",block:"center"});
+}
+el("trilha").addEventListener("click",ev=>{
+  const b=ev.target.closest(".p-top"); if(!b) return;
+  abrir(b.closest(".parada").dataset.id, true);
+});
+</script>
+</body>
+</html>

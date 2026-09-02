@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# --- bastidor: nada disto vai para o repositorio publico ---
+# extrato cru da planilha, com o rateio individual entre os quatro casais
+dados.json
+# as decisoes com a justificativa de cada uma (campo "motivo")
+ajustes.json
+# analise dos lugares salvos no Google Maps, com os vereditos
+mapa/lista.json
+# a planilha, em qualquer lugar da arvore
+*.xlsx

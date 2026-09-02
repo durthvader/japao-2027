@@ -1,0 +1,42 @@
+{
+ "hero": {
+  "legenda": "Monte Fuji refletido no lago Kawaguchi",
+  "autor": "Marion &amp; Christoph Aistleitner",
+  "lic": "CC0",
+  "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AFuji_Kawaguchi_457.JPG",
+  "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACQAwCdASoWAA8APulkqU4pJaQiMAgBIB0JZQAAPB3yr3PKaEWAAP7TlcR1bfLWlJKHUPU4pfbdytqeHMiBt7xG5ULc6aUebP/aOAAA"
+ },
+ "fuji": {
+  "legenda": "Pagode Chureito, o Fuji e a sakura",
+  "autor": "https://www.flickr.com/photos/bruchez/",
+  "lic": "CC BY-SA 2.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AChuurei-tou_Fujiyoshida_33415029934_8bdb607294_o.jpg",
+  "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwBACdASoWABEAPt1ap00opSOiMAwBEBuJYwC06B6JA94JkqZNKaqiyQgA/pCAUKtQZJQmTx6VNWlUJmJmq02KHuTPiMBWtfBbZxTElocWIAq64SIcRRQAAAA="
+ },
+ "osaka": {
+  "legenda": "Dotonbori visto da ponte Ebisu",
+  "autor": "Type specimen",
+  "lic": "CC BY-SA 3.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AOsaka_Dotonbori_Ebisu_Bridge.jpg",
+  "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACQAwCdASoWAA8APulep00pJSOiMAgBIB0JQBdgAapU5e3ducOAAP70L549Ks0cmq95/nXLaKCtoiswjln2HFLrB3Yzme1ZU30exzjwiLvfUMw2DWAkHmZiyQAAAA=="
+ },
+ "kyoto": {
+  "legenda": "O tunel de torii de Fushimi Inari",
+  "autor": "Luka Peternel",
+  "lic": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AFushimi-Inari-Shrine-Senbon-Torii-2016-Luka-Peternel.jpg",
+  "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQBACdASoWAA8APuliq04pJaQiMAgBIB0JbACdMoRwN6AAYR/ThqO6JDy0oAAA/tkeheljcY8zzYfJhQTrafTH16+0iwtzrC5IURl/XxNIdqYMWRQgciLe800nE2aAAAA="
+ },
+ "tokyo": {
+  "legenda": "O cruzamento de Shibuya na hora azul",
+  "autor": "Benh LIEU SONG (Flickr)",
+  "lic": "CC BY-SA 2.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3ATokyo_Shibuya_Scramble_Crossing_2018-10-09.jpg",
+  "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoWAA8APulgqk2pJaQiMAgBIB0JagCdMoAC+8edjD/+elYvAAD+pp35Ogw7BM+snEi09T6cmtDti4SdaVn8d4c8/Ezw2E60K0QaT6/mlbjLMA6kF0irApWhvIAAAA=="
+ }
+}

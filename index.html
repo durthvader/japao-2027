@@ -1,0 +1,3260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Roteiro completo da viagem ao Japao em marco de 2027: 16 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com 82 paradas, distancias, custos, mapa, restaurantes, compras e plano B.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Japao 2027 — 16 dias de Osaka a Tokyo">
+<meta property="og:description" content="Roteiro completo da viagem ao Japao em marco de 2027: 16 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com 82 paradas, distancias, custos, mapa, restaurantes, compras e plano B.">
+<meta property="og:locale" content="pt_BR">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A0D13" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
+<title>Japão 2027</title>
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#EDEEF1; --surface:#FFFFFF; --surface-2:#E3E6EB; --sunken:#E7E9ED;
+  --ink:#11151E; --ink-2:#48505F; --ink-3:#7A8394; --line:#D2D7DF; --line-2:#BFC6D1;
+  --c-osaka:#E60012; --t-osaka:#BE000F; --c-kyoto:#6E7F3C; --t-kyoto:#4F5C2A;
+  --c-fuji:#1E50A2;  --t-fuji:#194588;  --c-tokyo:#F39700; --t-tokyo:#96590A;
+  --sakura:#E0788E; --ok:#1F7A4D; --warn:#A86212; --crit:#BE000F;
+  --panel:rgba(255,255,255,.76); --panel-2:rgba(223,228,235,.52);
+  --veu:linear-gradient(180deg,rgba(236,238,242,.46) 0%,rgba(236,238,242,.60) 45%,rgba(236,238,242,.70) 100%);
+  --wall-filtro:brightness(1.20) contrast(.90) saturate(.90);
+  --halo:rgba(236,238,242,.95);
+  --shadow:0 1px 2px rgba(17,21,30,.06),0 6px 20px -8px rgba(17,21,30,.14);
+  --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-jp:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Noto Sans JP",Meiryo,system-ui,sans-serif;
+  --f-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --c:var(--c-osaka); --t:var(--t-osaka);
+  --pad:clamp(16px,4.6vw,26px); --wrap:760px;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}
+.c-osaka{--c:var(--c-osaka);--t:var(--t-osaka)} .c-kyoto{--c:var(--c-kyoto);--t:var(--t-kyoto)}
+.c-fuji{--c:var(--c-fuji);--t:var(--t-fuji)}    .c-tokyo{--c:var(--c-tokyo);--t:var(--t-tokyo)}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:transparent;color:var(--ink);font-family:var(--f-ui);
+  font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;overflow-x:hidden;
+  padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:800;letter-spacing:-.025em;line-height:1.12}
+p{margin:0} ul{margin:0;padding:0}
+a{color:var(--t);text-underline-offset:2px}
+:focus-visible{outline:2.5px solid var(--c);outline-offset:3px;border-radius:4px}
+img,canvas,svg{max-width:100%;display:block}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--pad)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-2)}
+/* estes ficam direto sobre a foto: o halo descola do fundo sem desenhar caixa */
+.sec-head .eyebrow,.sec-head h2,.sec-head .sub,.swipe-hint,.trilho::before{
+  text-shadow:0 1px 2px var(--halo),0 0 12px var(--halo),0 0 26px var(--halo)}
+
+/* ============ PAPEL DE PAREDE ============ */
+.wall{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--paper)}
+.wall i{position:absolute;inset:-2px;background-size:cover;background-position:center;
+  filter:var(--wall-filtro);
+  opacity:0;transition:opacity 1s cubic-bezier(.4,0,.2,1);will-change:opacity}
+.wall i.on{opacity:1}
+.scrim{position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veu)}
+
+/* ============ SEÇÃO ============ */
+.sec{padding-block:clamp(44px,10vw,76px);scroll-margin-top:8px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:22px}
+.sec-head h2{font-size:clamp(1.7rem,7vw,2.5rem)}
+.sec-head .sub{color:var(--ink-2);font-size:.95rem;max-width:60ch}
+.rule{height:3px;width:46px;background:var(--c);border-radius:2px;margin-top:4px}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;background:#132A4E}
+.hero-foto{position:absolute;inset:0;background-size:cover;background-position:center 42%}
+#heroCv{position:absolute;inset:0;width:100%;height:100%}
+.hero-veil{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,9,15,.34) 0%,rgba(6,9,15,0) 30%,rgba(6,9,15,.48) 66%,rgba(6,9,15,.88) 100%)}
+.hero-in{position:relative;padding-bottom:clamp(34px,10vw,64px)}
+.hero-kanji{font-family:var(--f-jp);font-weight:800;color:#fff;
+  font-size:clamp(3.4rem,17vw,7rem);line-height:.9;letter-spacing:.02em;
+  text-shadow:0 4px 40px rgba(0,0,0,.55)}
+.hero h1{color:#fff;font-size:clamp(1.05rem,4.6vw,1.5rem);font-weight:700;margin-top:12px;
+  text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.hero .dates{color:rgba(255,255,255,.82);font-family:var(--f-mono);font-size:.75rem;margin-top:9px;letter-spacing:.02em}
+.hero-rota{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:20px}
+.hero-rota span{color:#fff;font-size:.71rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.27)}
+.hero-rota i{color:rgba(255,255,255,.5);font-style:normal;font-size:.8rem}
+.count{margin-top:22px;display:inline-flex;align-items:baseline;gap:11px;padding:11px 17px;border-radius:14px;
+  background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.23)}
+.count b{font-family:var(--f-mono);font-size:1.9rem;font-weight:800;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.count em{font-style:normal;color:rgba(255,255,255,.8);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+.scroll-hint{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);
+  font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,7px);opacity:.95}}
+
+/* ============ NÚMEROS ============ */
+.nums{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:color-mix(in srgb,var(--line) 55%,transparent);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media(min-width:560px){.nums{grid-template-columns:repeat(4,1fr)}}
+.num{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);padding:17px 15px}
+.num b{display:block;font-family:var(--f-mono);font-size:clamp(1.45rem,6.2vw,1.95rem);font-weight:800;
+  letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.num u{display:block;text-decoration:none;font-size:.6rem;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+.num i{display:block;font-style:normal;font-size:.73rem;color:var(--ink-2);margin-top:5px;line-height:1.4}
+
+/* ============ MAPA ============ */
+.mapa-box{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:var(--shadow)}
+.mapa-box svg{width:100%;height:auto}
+.coast{fill:color-mix(in srgb,var(--ink) 7%,transparent);
+  stroke:color-mix(in srgb,var(--ink) 13%,transparent);stroke-width:1}
+.rota-bg{fill:none;stroke:var(--line-2);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 6}
+.rota-fg{fill:none;stroke-width:4.4;stroke-linecap:round;stroke-linejoin:round}
+.est-lbl,.est-sub{paint-order:stroke fill;stroke:var(--surface);stroke-width:2.8px;stroke-linejoin:round}
+.est-lbl{font-family:var(--f-ui);font-size:11px;font-weight:800;fill:var(--ink)}
+.est-sub{font-family:var(--f-mono);font-size:8.2px;fill:var(--ink-3)}
+.pernas{display:flex;flex-direction:column;gap:1px;background:color-mix(in srgb,var(--line) 55%,transparent);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;margin-top:14px}
+.perna{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  padding:11px 13px;display:flex;gap:11px;align-items:center}
+.perna s{flex:none;width:3px;align-self:stretch;background:var(--c);border-radius:2px;text-decoration:none}
+.perna .nm{flex:1;min-width:0;font-size:.81rem;font-weight:750;line-height:1.3}
+.perna .nm u{display:block;text-decoration:none;font-weight:600;color:var(--ink-3);font-size:.71rem;margin-top:3px}
+.perna .dd{flex:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.5}
+.perna .dd b{display:block;color:var(--t);font-weight:800}
+.mapa-leg{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.leg{display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:700;color:var(--ink-2);
+  background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 8px}
+.leg s{width:9px;height:9px;border-radius:99px;background:var(--c);text-decoration:none;flex:none}
+
+/* ============ TIMELAPSE ============ */
+.tl{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.tl-art{position:relative;aspect-ratio:16/10;background:var(--sunken);background-size:cover;background-position:center}
+.tl-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,15,.08),rgba(6,9,15,.8))}
+.tl-over{position:absolute;inset:auto 0 0 0;padding:15px 16px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.tl-city{font-family:var(--f-jp);font-size:clamp(2rem,9.5vw,3rem);font-weight:800;color:#fff;line-height:.9;
+  text-shadow:0 3px 26px rgba(0,0,0,.65)}
+.tl-city small{display:block;font-family:var(--f-ui);font-size:.68rem;font-weight:800;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:9px;text-shadow:none}
+.tl-daynum{text-align:right;flex:none}
+.tl-daynum b{display:block;font-family:var(--f-mono);font-size:2.3rem;font-weight:800;color:#fff;line-height:.85;
+  text-shadow:0 3px 20px rgba(0,0,0,.65);font-variant-numeric:tabular-nums}
+.tl-daynum u{display:block;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;color:rgba(255,255,255,.82);margin-top:6px}
+.tl-map{position:absolute;top:11px;left:11px;width:min(40%,164px);z-index:2;
+  background:rgba(10,13,19,.44);border:1px solid rgba(255,255,255,.22);border-radius:11px;padding:6px}
+.tl-map .coast{fill:rgba(255,255,255,.14);stroke:rgba(255,255,255,.32);stroke-width:1.3}
+.tl-map .est-lbl,.tl-map .est-sub{display:none}
+.tl-body{padding:15px 16px 17px}
+.tl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.tl-stats div{background:var(--panel-2);border-radius:11px;padding:9px 6px;text-align:center}
+.tl-stats b{display:block;font-family:var(--f-mono);font-size:.95rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--t)}
+.tl-stats u{display:block;text-decoration:none;font-size:.53rem;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+.tl-list{display:flex;flex-direction:column;gap:6px;min-height:120px}
+.tl-list li{list-style:none;display:flex;gap:9px;align-items:baseline;font-size:.85rem;color:var(--ink);
+  animation:slide .34s cubic-bezier(.2,.7,.3,1) backwards}
+.tl-list li s{text-decoration:none;font-family:var(--f-mono);font-size:.6rem;font-weight:800;color:var(--t);
+  flex:none;width:46px;text-transform:uppercase;letter-spacing:.04em}
+@keyframes slide{from{opacity:0;transform:translateX(-11px)}to{opacity:1;transform:none}}
+.tl-ctrl{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);background:var(--panel-2)}
+.tl-play{flex:none;width:42px;height:42px;border-radius:99px;border:none;background:var(--c);color:#fff;
+  font-size:.95rem;cursor:pointer;display:grid;place-items:center;transition:transform .16s}
+.tl-play:active{transform:scale(.9)}
+.tl-range{flex:1;-webkit-appearance:none;appearance:none;background:transparent;height:30px;cursor:pointer}
+.tl-range::-webkit-slider-runnable-track{height:5px;border-radius:99px;
+  background:linear-gradient(90deg,var(--c) var(--pct,0%),var(--line-2) var(--pct,0%))}
+.tl-range::-moz-range-track{height:5px;border-radius:99px;background:var(--line-2)}
+.tl-range::-moz-range-progress{height:5px;border-radius:99px;background:var(--c)}
+.tl-range::-webkit-slider-thumb{-webkit-appearance:none;width:21px;height:21px;border-radius:99px;background:var(--surface);
+  border:3.5px solid var(--c);margin-top:-8px;box-shadow:0 2px 7px rgba(0,0,0,.28)}
+.tl-range::-moz-range-thumb{width:21px;height:21px;border-radius:99px;background:var(--surface);border:3.5px solid var(--c);
+  box-shadow:0 2px 7px rgba(0,0,0,.28)}
+
+/* ============ TRILHO / ROTEIRO ============ */
+.filtros{display:flex;gap:7px;overflow-x:auto;padding:3px 0 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.filtros::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line-2);background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  color:var(--ink-2);border-radius:99px;
+  padding:7px 14px;font-size:.76rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit;
+  transition:background .15s,color .15s,border-color .15s}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.vazio{padding:26px 4px;color:var(--ink-3);font-size:.86rem}
+.trilho{position:relative;padding-left:38px}
+.trilho::before{content:"";position:absolute;left:12px;top:10px;bottom:10px;width:3px;border-radius:2px;
+  background:linear-gradient(180deg,var(--c-osaka) 0%,var(--c-osaka) 16%,var(--c-kyoto) 21%,var(--c-kyoto) 36%,
+    var(--c-fuji) 41%,var(--c-fuji) 45%,var(--c-tokyo) 50%,var(--c-tokyo) 85%,var(--c-osaka) 91%,var(--c-osaka) 100%)}
+.dia{position:relative;margin-bottom:16px;scroll-margin-top:12px}
+.dia.oculto{display:none}
+.dia-mark{position:absolute;left:-38px;top:16px;width:27px;height:27px;border-radius:99px;
+  background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:3px solid var(--c);display:grid;place-items:center;font-family:var(--f-mono);font-size:.66rem;
+  font-weight:800;color:var(--t);z-index:2}
+.dia-card{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.dia-art{height:92px;background:var(--sunken);background-size:cover;background-position:center 46%;position:relative}
+.dia-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,9,15,.74),rgba(6,9,15,.14))}
+.dia-art b{position:absolute;left:15px;bottom:11px;z-index:2;font-family:var(--f-jp);font-size:1.55rem;color:#fff;
+  font-weight:800;text-shadow:0 2px 16px rgba(0,0,0,.6)}
+.dia-art i{position:absolute;right:15px;bottom:13px;z-index:2;font-style:normal;font-family:var(--f-mono);
+  font-size:.68rem;color:rgba(255,255,255,.9)}
+.dia-head{padding:14px 15px 12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.dia-head h3{font-size:1rem}
+.dia-head .base{font-size:.73rem;color:var(--ink-3);margin-top:4px;font-weight:600}
+.badge-tr{flex:none;font-size:.55rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--t);
+  background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 34%,transparent);
+  border-radius:99px;padding:4px 9px}
+.dia-stats{display:flex;gap:13px;flex-wrap:wrap;padding:10px 15px;background:var(--panel-2);
+  font-family:var(--f-mono);font-size:.68rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.dia-stats b{color:var(--ink);font-weight:800}
+.per{padding:12px 15px 0}
+.per:last-of-type{padding-bottom:14px}
+.per-lbl{font-size:.58rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--t);margin-bottom:8px}
+.ativ{border-top:1px solid var(--line);padding:11px 0}
+.per .ativ:first-of-type{border-top:none;padding-top:2px}
+.ativ.oculta{display:none}
+.ativ-top{width:100%;display:flex;gap:11px;align-items:flex-start;background:none;border:none;padding:0;
+  text-align:left;cursor:pointer;font-family:inherit;color:inherit}
+.ativ-txt{flex:1;min-width:0}
+.ativ-txt h4{font-size:.92rem;font-weight:700;letter-spacing:-.012em;line-height:1.32}
+.ativ-meta{display:flex;flex-wrap:wrap;gap:4px 11px;margin-top:6px;font-family:var(--f-mono);font-size:.66rem;
+  color:var(--ink-3);font-variant-numeric:tabular-nums}
+.ativ-meta s{text-decoration:none;color:var(--t);font-weight:700}
+.caret{flex:none;width:18px;height:18px;margin-top:4px;color:var(--ink-3);transition:transform .22s}
+.ativ-top[aria-expanded="true"] .caret{transform:rotate(90deg)}
+.ativ-det{display:none;margin-top:11px;padding:12px 13px;background:var(--panel-2);border-radius:11px;
+  border-left:3px solid var(--c)}
+.ativ-det.on{display:block;animation:fade .26s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.det-row{display:flex;gap:9px;font-size:.8rem;line-height:1.52;color:var(--ink-2);margin-bottom:9px}
+.det-row:last-child{margin-bottom:0}
+.det-row b{flex:none;width:60px;font-size:.55rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);padding-top:3px}
+.bebe{display:inline-block;font-size:.54rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  border-radius:99px;padding:3px 8px;margin-top:7px;white-space:nowrap}
+.bebe.ok{color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}
+.bebe.esf{color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.bebe.can{color:var(--crit);background:color-mix(in srgb,var(--crit) 14%,transparent)}
+.dia-nota{padding:10px 15px;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.68rem;color:var(--t);font-weight:700}
+
+.dia-mapa{display:flex;align-items:center;gap:11px;margin:12px 15px 2px;padding:11px 13px;
+  text-decoration:none;color:var(--t);background:color-mix(in srgb,var(--c) 9%,transparent);
+  border:1px solid color-mix(in srgb,var(--c) 32%,transparent);border-radius:12px}
+.dia-mapa:hover{background:color-mix(in srgb,var(--c) 15%,transparent)}
+.dia-mapa svg{flex:none;width:20px;height:20px}
+.dia-mapa span{flex:1;min-width:0;font-size:.8rem;font-weight:800;line-height:1.25}
+.dia-mapa span u{display:block;text-decoration:none;font-weight:600;font-size:.68rem;
+  color:var(--ink-3);margin-top:2px}
+.dia-mapa i{flex:none;font-style:normal;font-size:1.1rem;opacity:.6}
+
+/* ============ CARROSSEL ============ */
+.carro{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-padding-inline:var(--pad);padding:2px var(--pad) 16px;
+  margin-inline:calc(var(--pad) * -1);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.carro::-webkit-scrollbar{display:none}
+.card{flex:0 0 min(80%,300px);scroll-snap-align:start;background:var(--panel);
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border:1px solid var(--line);
+  border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.card-art{height:112px;background:var(--sunken);background-size:cover;background-position:center 60%;position:relative;flex:none}
+.card-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,15,.04),rgba(6,9,15,.7))}
+.card-art s{position:absolute;left:11px;bottom:10px;z-index:2;text-decoration:none;font-size:.55rem;font-weight:800;
+  letter-spacing:.11em;text-transform:uppercase;color:#fff;background:var(--c);padding:4px 9px;border-radius:99px}
+.card-art u{position:absolute;right:11px;bottom:11px;z-index:2;text-decoration:none;font-family:var(--f-mono);
+  font-size:.63rem;color:rgba(255,255,255,.92)}
+.card-in{padding:13px 14px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card-in h4{font-size:.94rem;line-height:1.25;font-weight:750}
+.card-in p{font-size:.8rem;color:var(--ink-2);line-height:1.5}
+.card-in .tag{margin-top:auto;font-family:var(--f-mono);font-size:.64rem;color:var(--t);font-weight:700;padding-top:4px}
+.swipe-hint{font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--ink-3);
+  margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.swipe-hint::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ============ NOTAS ============ */
+.acc{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);margin-bottom:9px}
+.acc-btn{width:100%;display:flex;gap:11px;align-items:flex-start;padding:14px 15px;background:none;border:none;
+  cursor:pointer;text-align:left;font-family:inherit;color:inherit}
+.acc-btn s{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;font-weight:800;color:var(--t);
+  width:19px;padding-top:3px}
+.acc-btn h4{flex:1;font-size:.88rem;font-weight:750;line-height:1.35;letter-spacing:-.01em}
+.acc-body{display:none;padding:0 15px 15px 45px;font-size:.84rem;line-height:1.62;color:var(--ink-2)}
+.acc-body.on{display:block;animation:fade .26s ease}
+.kind{display:inline-block;font-size:.53rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  border-radius:99px;padding:3px 8px;margin-bottom:8px}
+.kind.dec{color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}
+.kind.pen{color:var(--crit);background:color-mix(in srgb,var(--crit) 14%,transparent)}
+.kind.ale{color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.kind.inf{color:var(--t);background:color-mix(in srgb,var(--c) 14%,transparent)}
+
+/* ============ TABELA ============ */
+.tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel);
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.78rem}
+th{text-align:left;font-size:.56rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);
+  padding:11px 12px;border-bottom:1px solid var(--line);background:var(--sunken);white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:none}
+td.n{font-family:var(--f-mono);font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+td.h{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink)}
+
+/* ============ HOSPEDAGEM ============ */
+.hosp{display:flex;flex-direction:column;gap:9px}
+.hosp-item{display:flex;gap:12px;align-items:stretch;background:var(--panel);
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border:1px solid var(--line);
+  border-radius:14px;padding:13px 14px}
+.hosp-item s{flex:none;text-decoration:none;width:3px;border-radius:2px;background:var(--c)}
+.hosp-item .tx{flex:1;min-width:0}
+.hosp-item h4{font-size:.86rem;font-weight:750;line-height:1.3;overflow-wrap:anywhere}
+.hosp-item .mt{font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);margin-top:5px;font-variant-numeric:tabular-nums}
+.hosp-item .vl{flex:none;text-align:right;font-family:var(--f-mono);font-weight:800;font-size:.82rem;
+  font-variant-numeric:tabular-nums;color:var(--ink);align-self:center}
+.hosp-item .vl u{display:block;text-decoration:none;font-size:.53rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:800;margin-top:3px}
+.toggle2{display:inline-flex;background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:99px;padding:3px;margin-bottom:14px}
+.toggle2 button{border:none;background:none;font-family:inherit;font-size:.74rem;font-weight:700;color:var(--ink-3);
+  padding:7px 15px;border-radius:99px;cursor:pointer;transition:background .15s,color .15s}
+.toggle2 button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* ============ CALLOUT ============ */
+.callout{background:color-mix(in srgb,var(--c) 10%,var(--panel));backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid color-mix(in srgb,var(--c) 30%,transparent);
+  border-radius:14px;padding:15px 16px;display:flex;gap:12px;align-items:flex-start}
+.callout.crit{--c:var(--crit);--t:var(--crit)}
+.callout s{flex:none;text-decoration:none;font-size:1.1rem;line-height:1.2}
+.callout h4{font-size:.86rem;margin-bottom:5px;font-weight:800}
+.callout p{font-size:.82rem;color:var(--ink-2);line-height:1.55}
+
+/* ============ NAV ============ */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:60;background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:blur(16px) saturate(1.6);border-top:1px solid var(--line);
+  padding:8px var(--pad) calc(8px + env(safe-area-inset-bottom))}
+.nav-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;max-width:var(--wrap);margin:0 auto}
+.nav-in::-webkit-scrollbar{display:none}
+.nav a{flex:none;text-decoration:none;color:var(--ink-3);font-size:.72rem;font-weight:750;padding:9px 13px;
+  border-radius:99px;white-space:nowrap;transition:background .16s,color .16s}
+.nav a[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.themeBtn{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:61;width:38px;height:38px;
+  border-radius:99px;border:1px solid var(--line-2);background:color-mix(in srgb,var(--surface) 78%,transparent);
+  backdrop-filter:blur(10px);color:var(--ink);font-size:.95rem;cursor:pointer;display:grid;place-items:center}
+footer{padding:34px var(--pad) 22px;text-align:center;color:var(--ink-3);font-size:.71rem;line-height:1.75}
+.creditos{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);
+  font-size:.65rem;line-height:1.85;color:var(--ink-3);max-width:62ch;margin-inline:auto}
+.creditos a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line-2)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+<div class="wall" id="wall" aria-hidden="true"></div>
+<div class="scrim" aria-hidden="true"></div>
+
+<button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
+
+<header class="hero" id="inicio" data-foto="hero">
+  <div class="hero-foto" id="heroFoto"></div>
+  <canvas id="heroCv"></canvas>
+  <div class="hero-veil"></div>
+  <div class="hero-in wrap">
+    <div class="hero-kanji">日本<br>2027</div>
+    <h1>Dezesseis dias entre Osaka, Kyoto, o Fuji e Tokyo</h1>
+    <p class="dates">16 — 31 MAR 2027 · 13 PESSOAS · 8 ADULTOS, 2 ADOLESCENTES, 3 BEBÊS</p>
+    <div class="hero-rota">
+      <span>Osaka</span><i>→</i><span>Kyoto</span><i>→</i><span>Kawaguchiko</span><i>→</i><span>Tokyo</span><i>→</i><span>Osaka</span>
+    </div>
+    <div class="count"><b id="cd">—</b><em>dias até o embarque</em></div>
+  </div>
+  <div class="scroll-hint">role</div>
+</header>
+
+<main>
+<section class="sec wrap" id="numeros" data-foto="hero">
+  <div class="sec-head">
+    <p class="eyebrow">A viagem em números</p>
+    <h2>O que já está fechado</h2>
+    <div class="rule"></div>
+    <p class="sub">Transporte e ingressos por adulto — comida, compras e seguro ficam de fora.</p>
+  </div>
+  <div class="nums" id="nums"></div>
+  <div style="margin-top:16px" class="callout c-tokyo">
+    <s>🌸</s>
+    <div><h4>A sorte está do lado de vocês</h4>
+    <p>Historicamente Tokyo floresce por volta de 24/03 e chega ao pico ~31/03. Os dias de Tokyo — 23 a 30/03 — caem em cima do pico da sakura.</p></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="mapa" data-foto="fuji">
+  <div class="sec-head">
+    <p class="eyebrow">Mapa</p>
+    <h2>A rota, de ponta a ponta</h2>
+    <div class="rule"></div>
+    <p class="sub">1.425 km somando shinkansen, ônibus rodoviário, metrô e trem urbano. A linha se desenha conforme você rola a página.</p>
+  </div>
+  <div class="mapa-box"><div id="mapaSlot"></div></div>
+  <div class="mapa-leg" id="mapaLeg"></div>
+  <div id="mapaPernas"></div>
+</section>
+
+<section class="sec wrap" id="timelapse">
+  <div class="sec-head">
+    <p class="eyebrow">Timelapse</p>
+    <h2>Dia a dia, em 16 quadros</h2>
+    <div class="rule"></div>
+    <p class="sub">Arraste a barra ou toque em play para atravessar a viagem inteira. O ponto anda no mapa, a cidade troca e os números do dia acompanham.</p>
+  </div>
+  <div class="tl" id="tl">
+    <div class="tl-art" id="tlArt">
+      <div class="tl-map" id="tlMap"></div>
+      <div class="tl-over">
+        <div class="tl-city" id="tlCity">大阪<small id="tlBase">Osaka</small></div>
+        <div class="tl-daynum"><b id="tlNum">01</b><u id="tlDate">16/03</u></div>
+      </div>
+    </div>
+    <div class="tl-body">
+      <div class="tl-stats">
+        <div><b id="tlKm">—</b><u>km</u></div>
+        <div><b id="tlMin">—</b><u>min transp.</u></div>
+        <div><b id="tlPe">—</b><u>min a pé</u></div>
+        <div><b id="tlYen">—</b><u>¥ no dia</u></div>
+      </div>
+      <ul class="tl-list" id="tlList"></ul>
+    </div>
+    <div class="tl-ctrl">
+      <button class="tl-play" id="tlPlay" aria-label="Reproduzir o timelapse">▶</button>
+      <input class="tl-range" id="tlRange" type="range" min="0" max="15" value="0" step="1" aria-label="Escolher o dia da viagem">
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="roteiro">
+  <div class="sec-head">
+    <p class="eyebrow">Roteiro</p>
+    <h2>Os 16 dias, parada por parada</h2>
+    <div class="rule"></div>
+    <p class="sub">Cada parada traz distância, tempo, custo e horário. Toque para abrir o terreno e os alertas. Os filtros valem para a lista inteira.</p>
+  </div>
+  <div class="filtros" id="filtros" role="group" aria-label="Filtrar paradas"></div>
+  <div class="trilho" id="trilho"></div>
+  <p class="vazio" id="vazio" hidden>Nenhuma parada com esse filtro.</p>
+</section>
+
+<section class="sec wrap" id="comer" data-foto="osaka">
+  <div class="sec-head">
+    <p class="eyebrow">Onde comer</p>
+    <h2>Comida, por bairro</h2>
+    <div class="rule"></div>
+    <p class="sub">Os pontos de comida que já estão dentro do roteiro — com o horário que importa e o aviso de carrinho.</p>
+  </div>
+  <p class="swipe-hint">Arraste para o lado</p>
+  <div class="carro" id="comerCarro"></div>
+  <div class="callout c-osaka"><s>🍢</s><div><h4>A regra sagrada do kushikatsu</h4>
+  <p>O molho da mesa é comunitário. Mergulhe o espetinho <b>uma vez só</b> — molhar duas vezes é falta grave em Shinsekai. Para repetir, use a couve crua como concha.</p></div></div>
+</section>
+
+<section class="sec wrap" id="compras" data-foto="tokyo">
+  <div class="sec-head">
+    <p class="eyebrow">Compras</p>
+    <h2>Onde gastar, e quando</h2>
+    <div class="rule"></div>
+    <p class="sub">Eletrônicos, anime, atacado e galeria coberta. Repare nos dias — tem lugar que fecha domingo.</p>
+  </div>
+  <p class="swipe-hint">Arraste para o lado</p>
+  <div class="carro" id="comprasCarro"></div>
+  <div class="callout c-kyoto"><s>🧾</s><div><h4>Tax-free: como não perder</h4>
+  <p>Leve o <b>passaporte físico</b> (foto não vale) e some as compras <b>na mesma loja</b> para passar de ¥5.000. A última chance é 31/03 em Shinsaibashi-suji, antes de sair para o KIX. Para o excesso de bagagem, o takkyubin leva as malas de hotel a hotel.</p></div></div>
+</section>
+
+<section class="sec wrap" id="planob" data-foto="fuji">
+  <div class="sec-head">
+    <p class="eyebrow">Plano B</p>
+    <h2>Se chover, se lotar, se der errado</h2>
+    <div class="rule"></div>
+    <p class="sub">Alternativas cobertas para cada base, e as trocas que já estão mapeadas.</p>
+  </div>
+  <p class="swipe-hint">Arraste para o lado</p>
+  <div class="carro" id="planobCarro"></div>
+  <div class="callout c-fuji" style="margin-bottom:30px"><s>🗻</s><div><h4>E se o Fuji não aparecer?</h4>
+  <p>O topo fica escondido em boa parte dos dias. Se em 22/03 estiver na nuvem: o Oishi Park continua valendo pela margem do lago, e o dia se resolve dentro do ryokan — onsen e jantar. O teleférico Kachi-Kachi só compensa com céu limpo; sem ele, sobra tempo para chegar mais cedo em Tokyo no dia 23.</p></div></div>
+
+  <div class="sec-head" style="margin-top:10px">
+    <p class="eyebrow">Decisões e alertas</p>
+    <h2>As 14 notas do roteiro</h2>
+    <div class="rule"></div>
+    <p class="sub">O que já foi decidido, o que ainda está aberto e o que exige atenção. Toque para abrir.</p>
+  </div>
+  <div id="notas"></div>
+</section>
+
+<section class="sec wrap" id="logistica" data-foto="tokyo">
+  <div class="sec-head">
+    <p class="eyebrow">Logística</p>
+    <h2>Voos e hospedagem</h2>
+    <div class="rule"></div>
+    <p class="sub">Bilhete único LATAM nos dois sentidos, com dois países de conexão.</p>
+  </div>
+  <div class="tbl-scroll" style="margin-bottom:16px"><table>
+    <thead><tr><th>Voo</th><th>Trecho</th><th>Saída</th><th>Chegada</th><th>Duração</th><th>Conexão</th></tr></thead>
+    <tbody id="voosBody"></tbody>
+  </table></div>
+  <div id="voosNotas" style="margin-bottom:34px"></div>
+
+  <div class="sec-head" style="margin-top:6px">
+    <p class="eyebrow">Hospedagem</p>
+    <h2>Duas combinações na mesa</h2>
+    <div class="rule"></div>
+    <p class="sub">São dois conjuntos de reservas. Os valores são o total do grupo, em reais.</p>
+  </div>
+  <div class="toggle2" id="hospToggle">
+    <button type="button" data-set="a" aria-pressed="true">Conjunto A</button>
+    <button type="button" data-set="b" aria-pressed="false">Conjunto B</button>
+  </div>
+  <div class="hosp" id="hospLista"></div>
+</section>
+</main>
+
+<nav class="nav" aria-label="Seções do site">
+  <div class="nav-in">
+    <a href="#inicio">Início</a><a href="#numeros">Números</a><a href="#mapa">Mapa</a>
+    <a href="#timelapse">Timelapse</a><a href="#roteiro">Roteiro</a><a href="#comer">Comer</a>
+    <a href="#compras">Compras</a><a href="#planob">Plano B</a><a href="#logistica">Logística</a>
+  </div>
+</nav>
+
+<footer>
+  Gerado a partir de <span class="mono">Roteiro Japão.xlsx</span> · Câmbio ¥1 = R$ 0,033<br>
+  Ingressos com valor de adulto, referência 2026 — confirme antes de comprar.
+  <p id="creditos" class="creditos"></p>
+</footer>
+
+<script>
+"use strict";
+const DADOS = {
+ "dias": [
+  {
+   "data": "2027-03-16",
+   "semana": "terça",
+   "base": "Osaka / Namba",
+   "cidade": "osaka",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Noite",
+     "nome": "CHEGADA — voo JQ 13, pouso no KIX às 19:45",
+     "area": "Izumisano",
+     "de": "Sydney (JQ 13)",
+     "como": "Desembarque, imigração e retirada de bagagem",
+     "km": 0.0,
+     "min": 0.0,
+     "pe": 0.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "pouso 19:45",
+     "duracao": "1h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Aeroporto todo acessível. Carrinho vai até o portão na ida e é devolvido na esteira ou na porta da aeronave.",
+     "obs": "Com imigração e bagagem, saída do saguão ~21:00. Preencha o Visit Japan Web ANTES de embarcar em Sydney — quem chega com o QR pronto passa em minutos. Retirar Wi-Fi/eSIM e carregar o ICOCA ainda no aeroporto. O JQ 13 é operado pela Jetstar mas foi vendido pela LATAM no mesmo bilhete, então a franquia de bagagem é a do bilhete LATAM — não a da low cost."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "KIX → Namba (check-in no Airbnb)",
+     "area": "Namba",
+     "de": "Aeroporto KIX",
+     "como": "Nankai Airport Express (o Rapi:t custa ¥1.520 e economiza 10 min)",
+     "km": 50.0,
+     "min": 45.0,
+     "pe": 10.0,
+     "transp": 970.0,
+     "ingresso": 0.0,
+     "horario": "pegar ~21:15",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Estação do KIX e Namba com elevador. O Nankai tem espaço de bagagem — carrinho aberto cabe no vestíbulo do vagão.",
+     "obs": "Chegando ao Namba por volta das 22:00. O Airbnb foi escolhido justamente pelo acesso direto do aeroporto. Folga grande: o último Nankai sai ~23:55 do KIX."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Jantar rápido / konbini / Dotonbori",
+     "area": "Namba",
+     "de": "Airbnb",
+     "como": "A pé",
+     "km": 0.8,
+     "min": 0.0,
+     "pe": 10.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "24h",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Dotonbori é plano e calçadão. Lotado à noite, mas passa.",
+     "obs": "Dia perdido pela viagem — não programe nada pago."
+    }
+   ],
+   "total": {
+    "km": 50.8,
+    "min": 45.0,
+    "pe": 20.0,
+    "transp": 970.0,
+    "ingresso": 0.0,
+    "nota": "≈ R$ 032 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-17",
+   "semana": "quarta",
+   "base": "Osaka / Namba",
+   "cidade": "osaka",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Castelo de Osaka (torre/museu) + parque",
+     "area": "Chuo",
+     "de": "Airbnb Namba",
+     "como": "Metrô Midosuji (Namba→Hommachi) + Chuo/Tanimachi → Tanimachi 4-chome",
+     "km": 4.5,
+     "min": 15.0,
+     "pe": 12.0,
+     "transp": 240.0,
+     "ingresso": 1200.0,
+     "horario": "09:00–17:00 (últ. 16:30)",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Parque enorme, plano e asfaltado — dos melhores lugares da viagem para carrinho. ⚠ A TORRE tem elevador só até o 5º andar: os 3 últimos são escada. Quem for ao topo, sobe de canguru.",
+     "obs": "O parque é grátis; só a torre custa ¥1.200 (subiu em 2025). Menores de 15 anos NÃO pagam. Boa área de sakura."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Shitennoji (o templo mais antigo do Japão)",
+     "area": "Tennoji",
+     "de": "Castelo de Osaka",
+     "como": "Metrô Tanimachi de Tanimachi-4-chome até Shitennoji-mae Yuhigaoka — direto",
+     "km": 3.8,
+     "min": 12,
+     "pe": 7.0,
+     "transp": 240,
+     "ingresso": 500.0,
+     "horario": "08:30–16:30",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Pátio de terra batida, plano e amplo. Só o interior do pagode tem escada — a vista de fora já vale.",
+     "obs": "¥300 pagode + ¥300 jardim, ou ¥500 o combinado. O pátio externo é grátis."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Shinsekai — o bairro que parou em 1912",
+     "area": "Naniwa",
+     "de": "Shitennoji",
+     "como": "A pé (ou metrô Sakaisuji até Ebisucho)",
+     "km": 1.2,
+     "min": 0.0,
+     "pe": 15.0,
+     "transp": 0.0,
+     "ingresso": 0,
+     "horario": "10:00–20:00",
+     "duracao": "1h",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Shinsekai é plano e a rua é larga — carrinho anda bem. As casas de kushikatsu são apertadas e quase todas têm balcão em vez de mesa; para 13 pessoas, melhor dividir em dois ou três grupos ou comer em pé, como todo mundo faz ali.",
+     "obs": "O quarteirão mais retrô de Osaka: neon de cortiço, placas de kushikatsu e a Torre Tsūtenkaku no meio. NÃO subimos na torre — são 103 m, o mais baixo dos cinco mirantes da viagem, e a vista não acrescenta nada depois do Umeda Sky e do Skytree. A graça aqui é a rua. Kushikatsu é o prato do bairro: espeto empanado, e não se molha duas vezes no molho comum."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "SUMÔ — Haru Basho na EDION Arena",
+     "area": "Namba",
+     "de": "Shinsekai",
+     "como": "Metrô Midosuji de Dobutsuen-mae até Namba — 4 min, + 8 min a pé",
+     "km": 2.0,
+     "min": 4,
+     "pe": 8,
+     "transp": 190,
+     "ingresso": 5000,
+     "horario": "lutas o dia todo; divisão principal 15:45–18:00",
+     "duracao": "2h15",
+     "bebe": "CARRINHO OK",
+     "terreno": "Ginásio com cadeira numerada na arquibancada, elevador e banheiro família. Entra e sai à vontade, então dá para chegar só às 15:45, direto para a divisão principal. Os camarotes são de tatame, sem sapato e sentado no chão — com três carrinhos, cadeira é melhor.",
+     "obs": "O Haru Basho é o único dos seis torneios do ano que acontece em Osaka: 14 a 28 de março de 2027, e o dia 17 é o quarto dia. As lutas correm desde a manhã com as divisões de baixo, mas a divisão principal (makuuchi) entra por volta das 15:45 com a cerimônia de entrada no ringue e termina às 18:00 com o rito do arco — são essas 2h15 que valem. Cadeira em dia de semana: ¥3.500 (C) a ¥5.000 (B); camarote de tatame para 4, ¥34.000 a ¥40.000. A venda antecipada abre por volta de 6 de fevereiro de 2027, no Ticket Oosumo."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Dotonbori / Glico / Hozenji Yokocho",
+     "area": "Namba",
+     "de": "Shinsekai",
+     "como": "Metrô Sakaisuji + Midosuji → Namba",
+     "km": 2.0,
+     "min": 6.0,
+     "pe": 10.0,
+     "transp": 190.0,
+     "ingresso": 0.0,
+     "horario": "24h",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Calçadão plano à beira do canal. Multidão pesada das 19h às 21h — se puder, jante antes das 19h.",
+     "obs": "Jantar: takoyaki, okonomiyaki, kushikatsu. Cruzeiro Tombori River ¥1.200, 20 min."
+    }
+   ],
+   "total": {
+    "km": 13.5,
+    "min": 37.0,
+    "pe": 52.0,
+    "transp": 860.0,
+    "ingresso": 6700.0,
+    "nota": "≈ R$ 122 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-18",
+   "semana": "quinta",
+   "base": "Osaka / Namba",
+   "cidade": "osaka",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Kuromon Ichiba — café da manhã de frutos do mar",
+     "area": "Nipponbashi",
+     "de": "Airbnb Namba",
+     "como": "A pé",
+     "km": 0.7,
+     "min": 0.0,
+     "pe": 10.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "09:00–18:00",
+     "duracao": "1h30",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Mercado coberto e plano, mas corredor estreito com gente comendo em pé. ⚠ IR ATÉ 10:00: depois disso o carrinho vira estorvo.",
+     "obs": "A \"cozinha de Osaka\": 580 m de mercado coberto. Ostra grelhada, sashimi, atum, wagyu na brasa e melão — tudo servido na hora, para comer em pé. Muita banca fecha às 17h e algumas não abrem às quartas."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Namba Yasaka Jinja — a cabeça de leão de 12 m",
+     "area": "Namba",
+     "de": "Kuromon",
+     "como": "A pé",
+     "km": 0.9,
+     "min": 0.0,
+     "pe": 12.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "06:30–17:00",
+     "duracao": "30 min",
+     "bebe": "CARRINHO OK",
+     "terreno": "Santuário pequeno, plano, quase sempre vazio. Entra e sai de carrinho sem problema.",
+     "obs": "Santuário com um palco em forma de cabeça gigante de leão que \"engole\" a má sorte. GRÁTIS, rápido e é uma das fotos mais diferentes do Japão."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Aquário Kaiyukan — tubarão-baleia",
+     "area": "Osakako",
+     "de": "Namba Yasaka",
+     "como": "Metrô Midosuji até Hommachi + Chuo até Osakako",
+     "km": 9.0,
+     "min": 25.0,
+     "pe": 7.0,
+     "transp": 290.0,
+     "ingresso": 2700.0,
+     "horario": "10:00–20:00",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Percurso em espiral descendo 8 andares, todo em rampa suave — foi PROJETADO para carrinho e cadeira de rodas. Empresta carrinho na entrada se precisar.",
+     "obs": "Um dos maiores aquários do mundo, percurso em espiral descendo 8 andares. Adulto ¥2.400–2.700 (preço dinâmico), 7–15 anos ¥1.200–1.400, 4–6 anos ¥500–700. ⚠ NÃO está incluído no Osaka Amazing Pass."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Almoço no Tempozan Marketplace",
+     "area": "Osakako",
+     "de": "Kaiyukan",
+     "como": "A pé (ao lado)",
+     "km": 0.3,
+     "min": 0.0,
+     "pe": 5.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "11:00–20:00",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Shopping com elevador e praça de alimentação. Fraldário no piso 2. Senta grupo de 13 sem reserva.",
+     "obs": "Dentro fica o Naniwa Kuishinbo Yokocho, uma praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Barato e resolve o almoço de 10 pessoas de uma vez."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Umeda Sky Building — Jardim Flutuante (173 m)",
+     "area": "Umeda",
+     "de": "Osakako",
+     "como": "Metrô Chuo até Hommachi + Midosuji até Umeda",
+     "km": 10.0,
+     "min": 25.0,
+     "pe": 12.0,
+     "transp": 290.0,
+     "ingresso": 2000.0,
+     "horario": "09:30–22:30 (últ. 22:00)",
+     "duracao": "1h30",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Elevador até o 35º andar; do 35º ao mirante é ESCADA ROLANTE suspensa (carrinho dobrado na mão) e o anel superior é aberto. Canguru facilita muito aqui.",
+     "obs": "MIRANTE ABERTO em anel, ligando as duas torres — chegar por volta das 17h30 pega o pôr do sol (~18:00) e a cidade acendendo. INCLUÍDO no Osaka Amazing Pass. No subsolo há a Takimi-koji, uma rua cenográfica da Osaka de 1920."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Nakazakicho — bairro retrô de cafés",
+     "area": "Kita",
+     "de": "Umeda Sky",
+     "como": "A pé",
+     "km": 1.2,
+     "min": 0.0,
+     "pe": 16.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "lojas 12:00–19:00",
+     "duracao": "1h30",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Ruas de vila, estreitas e sem calçada, com carro passando. Carrinho passa, mas exige atenção. Cafés minúsculos: quase nenhum comporta carrinho aberto.",
+     "obs": "O quarteirão que escapou dos bombardeios de 1945: casas de madeira viradas em cafés, brechós e ateliês. Contraste total com os arranha-céus de Umeda, a 10 min a pé. Alternativa: roda-gigante vermelha do HEP Five (¥800, também no Amazing Pass)."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Volta a Namba + jantar em Dotonbori",
+     "area": "Namba",
+     "de": "Umeda",
+     "como": "Metrô Midosuji — direto",
+     "km": 4.0,
+     "min": 8.0,
+     "pe": 10.0,
+     "transp": 240.0,
+     "ingresso": 0.0,
+     "horario": "24h",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Metrô Midosuji tem elevador nas duas pontas.",
+     "obs": "Fecha o dia no mesmo lugar de sempre. Se sobrar fôlego: cruzeiro Tombori River (¥1.200, 20 min, também incluído no Amazing Pass)."
+    }
+   ],
+   "total": {
+    "km": 26.1,
+    "min": 58.0,
+    "pe": 72.0,
+    "transp": 820.0,
+    "ingresso": 4700.0,
+    "nota": "≈ R$ 212 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-19",
+   "semana": "sexta",
+   "base": "Osaka → Kyoto",
+   "cidade": "kyoto",
+   "transicao": true,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Check-out + despachar malas (opcional)",
+     "area": "Namba",
+     "de": "Airbnb",
+     "como": "Takkyubin para Kyoto, ou coin locker",
+     "km": 0.0,
+     "min": 0.0,
+     "pe": 0.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "postagem até ~12:00",
+     "duracao": "30 min",
+     "bebe": "—",
+     "terreno": "Se despacharem as malas por takkyubin, o dia inteiro fica muito mais leve com 3 carrinhos em circulação.",
+     "obs": "Takkyubin Osaka→Kyoto ~¥1.500/mala, entrega no mesmo dia à noite. Com 10 pessoas e crianças, vale cada iene."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "TRANSFER OSAKA → KYOTO",
+     "area": "Kyoto",
+     "de": "Namba",
+     "como": "Metrô Midosuji até Umeda + JR Special Rapid até Kyoto",
+     "km": 45.0,
+     "min": 45.0,
+     "pe": 15.0,
+     "transp": 820.0,
+     "ingresso": 0.0,
+     "horario": "a cada 15 min",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "⚠ PONTO DE ATENÇÃO DO DIA: Umeda é uma das estações mais confusas do Japão. Sigam as placas de elevador desde a plataforma do Midosuji e reservem 15 min a mais só para a baldeação.",
+     "obs": "Sair de Osaka por volta das 09:00. Metrô Midosuji até Umeda + JR Special Rapid — sai a cada 15 min, 45 min de viagem. Em Kyoto por volta das 10:00, com as malas guardadas no hotel antes do check-in das 15:00, o que abre a manhã inteira para os templos ao lado da estação."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Higashi e Nishi Honganji — os dois templos gigantes",
+     "area": "Shimogyo",
+     "de": "Est. Kyoto",
+     "como": "A pé — o Higashi fica ao lado do hotel; o Nishi, 800 m a oeste",
+     "km": 0.9,
+     "min": 0,
+     "pe": 12,
+     "transp": 0,
+     "ingresso": 0,
+     "horario": "05:50–17:30 — grátis",
+     "duracao": "1h15",
+     "bebe": "CARRINHO OK",
+     "terreno": "Pátios de cascalho fino e planos, com rampa de madeira na entrada dos salões. Descalço dentro dos pavilhões — meia é boa ideia. Espaço de sobra para os três carrinhos.",
+     "obs": "O Goei-dō do Higashi Honganji é uma das maiores construções de madeira do mundo, e o Nishi Honganji é Patrimônio da Humanidade, com o palco de nō mais antigo que existe. Os dois são GRÁTIS, abrem cedo e quase não têm turista — ficam a 10 min a pé do hotel, que leva o nome do primeiro."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Sanjūsangen-dō — as 1.001 estátuas de Kannon",
+     "area": "Higashiyama",
+     "de": "Nishi Honganji",
+     "como": "Ônibus 206 ou 208 até Hakubutsukan-Sanjusangendo-mae — 10 min",
+     "km": 1.9,
+     "min": 10,
+     "pe": 5,
+     "transp": 230,
+     "ingresso": 600,
+     "horario": "08:30–17:00 (últ. entrada 16:30)",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Corredor único de 120 m, plano e coberto, percorrido descalço. Carrinho fica na entrada; o piso de madeira é liso e as crianças andam bem. Não se fotografa dentro.",
+     "obs": "Um salão de madeira de 120 m — o mais comprido do Japão — com 1.001 estátuas douradas de Kannon enfileiradas, cada rosto diferente do outro, mais 28 guardiões esculpidos no século XIII. Não tem nada parecido no resto do roteiro, e é o único lugar de Kyoto onde o efeito vem da repetição em vez da paisagem."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Check-in K-style Higashi-Honganji",
+     "area": "Kyoto",
+     "de": "Est. Kyoto",
+     "como": "A pé",
+     "km": 0.9,
+     "min": 0.0,
+     "pe": 12.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "a partir das 15:00",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Hotel a 10 min plano da Estação de Kyoto.",
+     "obs": "O templo Higashi-Honganji (grátis, enorme) fica na esquina — dá para visitar enquanto espera o horário do check-in."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Nishiki Market (\"a cozinha de Kyoto\")",
+     "area": "Nakagyo",
+     "de": "Hotel K-style",
+     "como": "A pé pela Karasuma, ou metrô Karasuma até Shijo (1 parada)",
+     "km": 1.7,
+     "min": 10,
+     "pe": 8.0,
+     "transp": 0,
+     "ingresso": 0.0,
+     "horario": "09:00–18:00",
+     "duracao": "1h30",
+     "bebe": "CANGURU",
+     "terreno": "⚠ Galeria de 400 m com 3,5 m de largura e gente parada comendo dos dois lados. Com carrinho é sofrimento. Canguru, ou vá na abertura (09:00).",
+     "obs": "⚠ FECHA ÀS 18:00 — não é passeio noturno. Se não der tempo, troque por jantar em Pontocho."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Gion: Hanami-koji + Shirakawa Canal",
+     "area": "Gion",
+     "de": "Hotel",
+     "como": "Ônibus 206 ou Keihan até Gion-Shijo",
+     "km": 3.2,
+     "min": 15.0,
+     "pe": 10.0,
+     "transp": 230.0,
+     "ingresso": 0.0,
+     "horario": "24h — grátis",
+     "duracao": "1h30",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Hanami-koji é calçada de pedra irregular; Shirakawa tem trecho sem guia de calçada. Passa, mas sacode. À noite fica cheio.",
+     "obs": "⚠ PROIBIDO fotografar gueixas nas vielas privadas de Hanami-koji — multa de ¥10.000. O canal Shirakawa é o trecho mais bonito à noite."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Santuário Yasaka (iluminado) + Pontocho",
+     "area": "Gion",
+     "de": "Hanami-koji",
+     "como": "A pé",
+     "km": 1.4,
+     "min": 0.0,
+     "pe": 18.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "24h — grátis",
+     "duracao": "2h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Yasaka Jinja tem rampa lateral pelo portão oeste. Pontocho é beco de 2 m de largura: ⚠ CANGURU ou deixem o carrinho na entrada do beco.",
+     "obs": "Yasaka iluminado à noite é de graça e imperdível. Pontocho: beco de 500 m à beira do rio. O L'Escamoteur Bar fica ali perto e abre às 18:00."
+    }
+   ],
+   "total": {
+    "km": 55.0,
+    "min": 80.0,
+    "pe": 80.0,
+    "transp": 1280.0,
+    "ingresso": 600,
+    "nota": "≈ R$ 035 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-20",
+   "semana": "sábado",
+   "base": "Kyoto",
+   "cidade": "kyoto",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Arashiyama — Floresta de Bambu",
+     "area": "Arashiyama",
+     "de": "Hotel / Est. Kyoto",
+     "como": "JR Sagano até Saga-Arashiyama — 15 min. Primeiro trem ~06:00",
+     "km": 11.0,
+     "min": 15,
+     "pe": 10.0,
+     "transp": 240,
+     "ingresso": 0.0,
+     "horario": "24h — grátis",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Bambuzal é caminho plano e pavimentado. ⚠ Estreito e lotadíssimo entre 10h e 15h — vá antes das 9h ou depois das 16h e o carrinho passa tranquilo.",
+     "obs": "GRÁTIS. Vá cedo ou no fim da tarde: no feriado fica intransitável ao meio-dia. O templo Tenryu-ji, ao lado, custa ¥500."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Tenryū-ji — o jardim de 1339 ao lado do bambuzal",
+     "area": "Arashiyama",
+     "de": "Bambuzal",
+     "como": "A pé — o bambuzal sai no portão norte do templo, 5 min",
+     "km": 0.3,
+     "min": 0,
+     "pe": 5,
+     "transp": 0,
+     "ingresso": 500,
+     "horario": "08:30–17:00 (últ. entrada 16:50)",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Jardim de passeio em volta de um lago, com caminho de terra batida e plano — o carrinho anda bem. Só os pavilhões exigem descalçar, e eles são opcionais.",
+     "obs": "Patrimônio da Humanidade e templo-mãe da escola Rinzai. O jardim Sōgenchi é de 1339, desenhado pelo fundador Musō Kokushi, e nunca foi refeito: é o mesmo traçado há quase 700 anos, com as montanhas de Arashiyama e Kameyama usadas como fundo emprestado. ¥500 só o jardim, +¥300 se quiser entrar nos pavilhões. O bambuzal sai pelo portão norte, então os dois se fazem na mesma parada."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Monkey Park Iwatayama",
+     "area": "Arashiyama",
+     "de": "Bambuzal",
+     "como": "A pé pela ponte Togetsukyo + trilha de 20 min",
+     "km": 1.0,
+     "min": 0,
+     "pe": 30.0,
+     "transp": 0,
+     "ingresso": 800.0,
+     "horario": "09:00–16:00",
+     "duracao": "1h30",
+     "bebe": "CANGURU",
+     "terreno": "⚠ CANGURU OBRIGATÓRIO. São 20 min de trilha de terra em subida, ~160 m de desnível, sem alternativa. Carrinho NÃO sobe — há guarda-volumes na bilheteria da base.",
+     "obs": "⚠ ÚLTIMA ENTRADA ÀS 16:00. Subida puxada — pesado com criança pequena no colo. No topo: macacos soltos e vista panorâmica de Kyoto."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Ryoan-ji (jardim seco de pedras)",
+     "area": "Ukyo",
+     "de": "Arashiyama",
+     "como": "Bonde Randen até Kitano-Hakubaicho + ônibus 59",
+     "km": 8.0,
+     "min": 35,
+     "pe": 5.0,
+     "transp": 470,
+     "ingresso": 600.0,
+     "horario": "08:00–17:00",
+     "duracao": "45 min",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Cascalho e alguns degraus na entrada do jardim de pedras; o salão exige tirar sapato e subir. Carrinho fica na entrada.",
+     "obs": "São 15 pedras, mas de qualquer ângulo só se enxergam 14. O jardim de musgo está incluso no ingresso."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Kinkaku-ji (Pavilhão Dourado)",
+     "area": "Kita",
+     "de": "Ryoan-ji",
+     "como": "Ônibus 59 — 8 min",
+     "km": 2.0,
+     "min": 8,
+     "pe": 5.0,
+     "transp": 230,
+     "ingresso": 500.0,
+     "horario": "09:00–17:00",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Percurso de mão única em cascalho compactado, plano e largo. Carrinho de rodinha pequena sacode, mas vai. ⚠ O ÔNIBUS 205 é o problema real — ver observação sobre ônibus de Kyoto.",
+     "obs": "⚠ COMEÇA O FERIADÃO (20 a 22/03). Chegue na abertura ou encare fila. O percurso é de mão única, não dá para voltar."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Castelo Nijō — o palácio dos pisos que cantam",
+     "area": "Nakagyo",
+     "de": "Kinkaku-ji",
+     "como": "Ônibus 12 até Nijojo-mae — 25 min, direto",
+     "km": 3.3,
+     "min": 25,
+     "pe": 10,
+     "transp": 230,
+     "ingresso": 1300,
+     "horario": "08:45–17:00 (últ. entrada 16:00)",
+     "duracao": "1h30",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "O terreno é amplo, plano e de cascalho — o carrinho anda bem pelos jardins. Mas o Palácio Ninomaru se percorre DESCALÇO por corredores de madeira, com o carrinho parado na entrada: são uns 800 m de circuito interno de meia. Fraldário perto do portão leste.",
+     "obs": "Patrimônio da Humanidade e a casa dos Tokugawa em Kyoto — foi neste salão que o último xogum devolveu o poder ao imperador, em 1867. O Palácio Ninomaru tem os \"pisos rouxinol\": tábuas que rangem de propósito a cada passo, construídas para denunciar quem se aproximasse à noite. ¥1.300 com o palácio, ¥800 só o terreno e os jardins. Última entrada 16:00 — chegando do Kinkaku-ji por volta das 15:20, sobra tempo."
+    }
+   ],
+   "total": {
+    "km": 25.6,
+    "min": 83,
+    "pe": 65.0,
+    "transp": 1170,
+    "ingresso": 3700.0,
+    "nota": "≈ R$ 094 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-21",
+   "semana": "domingo",
+   "base": "Kyoto",
+   "cidade": "kyoto",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Fushimi Inari Taisha (os 10.000 torii) — AO AMANHECER",
+     "area": "Fushimi",
+     "de": "Hotel / Est. Kyoto",
+     "como": "JR Nara Line até Inari (2ª parada). Sair do hotel 06:15",
+     "km": 3.0,
+     "min": 5.0,
+     "pe": 5.0,
+     "transp": 150.0,
+     "ingresso": 0.0,
+     "horario": "24h — grátis",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "A base e o Senbon Torii (o trecho famoso de torii lado a lado) são PLANOS e pavimentados — carrinho vai bem. ⚠ Depois do santuário Okusha começam os degraus: dali para o topo é canguru, e são 233 m de subida.",
+     "obs": "⚠ FERIADO NACIONAL (Equinócio). Sair 06:15 e estar no torii às 06:45 — depois das 09:00 vira fila indiana. Trilha ao topo: 2h ida e volta, 233 m de subida. Quem não subir tudo volta no meio-caminho (Yotsutsuji)."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Ginkaku-ji (Pavilhão de Prata)",
+     "area": "Sakyo",
+     "de": "Inari",
+     "como": "Keihan até Demachiyanagi + ônibus 17 até Ginkakuji-michi",
+     "km": 9.0,
+     "min": 45.0,
+     "pe": 10.0,
+     "transp": 510.0,
+     "ingresso": 500.0,
+     "horario": "08:30–17:00",
+     "duracao": "1h",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Entrada plana, mas o circuito do jardim sobe uma colina com degraus de pedra. Dá para ver o pavilhão e o jardim de areia sem subir; para o mirante do musgo, canguru.",
+     "obs": "Jardim de areia branca (o \"Mar de Areia Prateada\") e jardim de musgo. Nunca chegou a ser revestido de prata."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "CAMINHO DOS FILÓSOFOS (2 km à beira do canal)",
+     "area": "Sakyo",
+     "de": "Ginkaku-ji",
+     "como": "A pé — o caminho começa na saída do Ginkaku-ji",
+     "km": 2.0,
+     "min": 0.0,
+     "pe": 40.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "24h — grátis",
+     "duracao": "1h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "★ O MELHOR TRECHO DA VIAGEM PARA CARRINHO: 2 km planos, pavimentados, à beira do canal, em descida suave e com sombra. Se for para escolher uma coisa em Kyoto para fazer com os 3 carrinhos, é esta.",
+     "obs": "GRÁTIS e é o corredor de cerejeiras mais bonito de Kyoto — 400 árvores sobre o canal. Vai do Ginkaku-ji até o Nanzen-ji, tudo em descida suave."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Nanzen-ji + aqueduto romano (Suirokaku)",
+     "area": "Sakyo",
+     "de": "Caminho dos Filósofos",
+     "como": "A pé (fica no fim do caminho)",
+     "km": 0.8,
+     "min": 0.0,
+     "pe": 12.0,
+     "transp": 0.0,
+     "ingresso": 600.0,
+     "horario": "08:40–17:00",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Terreno do templo é plano e de cascalho, e o aqueduto se vê de baixo, sem subir. Só o portão Sanmon e o Hojo têm escada — e são os trechos pagos, que dá para pular.",
+     "obs": "O terreno e o aqueduto de tijolos são GRÁTIS; só o portão Sanmon (¥600) e o jardim Hojo (¥600) cobram. O aqueduto é a foto do lugar."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Kiyomizu-dera (a varanda de madeira)",
+     "area": "Higashiyama",
+     "de": "Nanzen-ji",
+     "como": "Ônibus 5 até Gion + subida a pé (ou metrô Tozai até Higashiyama)",
+     "km": 3.0,
+     "min": 25.0,
+     "pe": 20.0,
+     "transp": 230.0,
+     "ingresso": 500.0,
+     "horario": "06:00–18:00",
+     "duracao": "1h30",
+     "bebe": "CANGURU",
+     "terreno": "⚠ A subida da Gojo-zaka/Chawan-zaka é ladeira longa e forte, com calçada estreita e multidão. Carrinho sobe, mas é castigo. Alternativa boa: TÁXI até o portão (~¥1.200 de Gion) e descer a pé depois.",
+     "obs": "Na fonte Otowa, beba de apenas UMA das três correntes — beber das três dá azar. Última entrada 17:30."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Ninenzaka / Sannenzaka (ruas históricas)",
+     "area": "Higashiyama",
+     "de": "Kiyomizu-dera",
+     "como": "A pé, descida",
+     "km": 0.6,
+     "min": 0.0,
+     "pe": 10.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "lojas 10:00–18:00",
+     "duracao": "1h",
+     "bebe": "CANGURU",
+     "terreno": "⚠ ESCADARIA DE PEDRA — o pior terreno da viagem. Ninenzaka e Sannenzaka são degraus largos e irregulares em ladeira. Existe desvio plano pela Kodai-ji-dori, mas perde-se justamente a rua bonita. Canguru resolve.",
+     "obs": "O Starbucks de tatame fica na Ninenzaka. Diz a lenda que tropeçar nessas escadas dá 3 anos de azar. Kodaiji (¥600) fica no caminho, se sobrar fôlego."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Yasaka Jinja → Gion → Pontocho (jantar)",
+     "area": "Gion",
+     "de": "Ninenzaka",
+     "como": "A pé",
+     "km": 0.9,
+     "min": 0.0,
+     "pe": 14.0,
+     "transp": 230.0,
+     "ingresso": 0.0,
+     "horario": "24h",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Trecho plano até o Yasaka. Pontocho de novo é beco estreito — canguru na hora do jantar.",
+     "obs": "Fecha o circuito inteiro a pé, de norte a sul. Volta ao hotel: ônibus 206 por ¥230. ⚠ Dia longo: ~10 km de caminhada no total — o mais puxado da viagem."
+    }
+   ],
+   "total": {
+    "km": 19.3,
+    "min": 75.0,
+    "pe": 111.0,
+    "transp": 1120.0,
+    "ingresso": 1600.0,
+    "nota": "≈ R$ 090 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-22",
+   "semana": "segunda",
+   "base": "Kyoto → Kawaguchiko",
+   "cidade": "fuji",
+   "transicao": true,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "TRANSFER: Kyoto → Mishima (Shinkansen)",
+     "area": "Shizuoka",
+     "de": "Est. Kyoto",
+     "como": "Tokaido Shinkansen HIKARI (o Nozomi não para em Mishima)",
+     "km": 250.0,
+     "min": 110.0,
+     "pe": 15.0,
+     "transp": 11110.0,
+     "ingresso": 0.0,
+     "horario": "~1 por hora",
+     "duracao": "1h50",
+     "bebe": "CARRINHO OK",
+     "terreno": "⚠ RESERVEM O ESPAÇO DE BAGAGEM GRANDE (últimas fileiras) — é gratuito, mas exige reserva prévia e com 3 carrinhos vocês vão precisar. Sem reserva, cobram ¥1.000 por peça.",
+     "obs": "⚠⚠ FERIADO COMPENSATÓRIO — RESERVE OS ASSENTOS 1 MÊS ANTES (venda abre às 10:00 do Japão, 30 dias antes). Não reservado: ¥10.780."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "TRANSFER: Mishima → Kawaguchiko (ônibus)",
+     "area": "Yamanashi",
+     "de": "Est. Mishima",
+     "como": "Mishima–Kawaguchiko Liner (Fujikyu), ônibus direto",
+     "km": 75.0,
+     "min": 90.0,
+     "pe": 5.0,
+     "transp": 2260.0,
+     "ingresso": 0.0,
+     "horario": "poucas saídas por dia",
+     "duracao": "1h30",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Ônibus rodoviário: carrinho vai dobrado no bagageiro. Avise na hora da reserva.",
+     "obs": "⚠ POUCAS SAÍDAS POR DIA e reserva obrigatória na prática. Confira o horário do ônibus ANTES de escolher o Shinkansen — é ele que manda no dia."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Oishi Park — Fuji refletido no Lago Kawaguchi",
+     "area": "Kawaguchiko",
+     "de": "Est. Kawaguchiko",
+     "como": "Retro Bus linha verde (ou Omni Bus 2 dias ¥1.500)",
+     "km": 12.0,
+     "min": 30.0,
+     "pe": 5.0,
+     "transp": 400.0,
+     "ingresso": 0.0,
+     "horario": "24h — grátis",
+     "duracao": "1h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Parque plano à beira do lago, com calçada larga. Ótimo com carrinho. Vento forte e frio em março — leve manta.",
+     "obs": "O cartão-postal do Fuji com o lago. O Fuji só aparece com céu limpo, e de manhã a chance é bem maior que à tarde."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Check-in ryokan La Vista Fujikawaguchiko",
+     "area": "Kawaguchiko",
+     "de": "Oishi Park",
+     "como": "Retro Bus",
+     "km": 12.0,
+     "min": 30.0,
+     "pe": 5.0,
+     "transp": 400.0,
+     "ingresso": 0.0,
+     "horario": "check-in 15:00",
+     "duracao": "—",
+     "bebe": "—",
+     "terreno": "Ryokan tem tatame: carrinho fica na entrada. Quarto japonês com futon no chão é ótimo para bebê — sem risco de queda de cama.",
+     "obs": "Onsen com vista do Fuji + jantar e café incluídos. Já pago: R$ 8.639 no grupo (R$ 2.159,75 por casal)."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Onsen + jantar no ryokan",
+     "area": "Kawaguchiko",
+     "de": "—",
+     "como": "—",
+     "km": 0.0,
+     "min": 0.0,
+     "pe": 0.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "—",
+     "duracao": "3h",
+     "bebe": "—",
+     "terreno": "⚠ Onsen com bebê: banho público não é permitido com fralda. Peça um quarto com ofurô privativo ou usem o banho do quarto.",
+     "obs": "⚠ Tatuagem pode barrar a entrada no onsen — confirme antes com o hotel. Yukata é fornecido pelo ryokan."
+    }
+   ],
+   "total": {
+    "km": 349.0,
+    "min": 260.0,
+    "pe": 30.0,
+    "transp": 14170.0,
+    "ingresso": 0.0,
+    "nota": "≈ R$ 468 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-23",
+   "semana": "terça",
+   "base": "Kawaguchiko → Tokyo",
+   "cidade": "tokyo",
+   "transicao": true,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Teleférico Kachi-Kachi (Monte Tenjo, 1.075 m)",
+     "area": "Kawaguchiko",
+     "de": "Ryokan",
+     "como": "A pé até a base, ao lado da estação",
+     "km": 1.5,
+     "min": 0.0,
+     "pe": 15.0,
+     "transp": 1000.0,
+     "ingresso": 0.0,
+     "horario": "09:00–17:00",
+     "duracao": "1h",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Teleférico tem elevador na base e o carrinho entra dobrado na cabine. ⚠ No topo há alguns degraus entre os mirantes — canguru facilita, mas a plataforma principal é acessível.",
+     "obs": "O teleférico de Kawaguchiko: vista do lago inteiro com o Fuji atrás. ¥1.000 ida e volta, ¥500 criança. 3 min de subida. Tem tobogã e mirante do \"coelho e do texugo\" (lenda Kachi-Kachi Yama)."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Pagode Chureito (opcional — a foto clássica)",
+     "area": "Fujiyoshida",
+     "de": "Kawaguchiko",
+     "como": "Fujikyu Line até Shimoyoshida + 398 degraus",
+     "km": 6.0,
+     "min": 15.0,
+     "pe": 25.0,
+     "transp": 300.0,
+     "ingresso": 0.0,
+     "horario": "24h — grátis",
+     "duracao": "1h30",
+     "bebe": "CANGURU",
+     "terreno": "⚠ 398 DEGRAUS até o pagode. Existe uma rampa lateral mais longa (~15 min), pouco sinalizada, que evita a escada. Com carrinho, só por ela; com canguru, a escada é mais rápida.",
+     "obs": "A foto mais famosa do Japão (pagode + Fuji + sakura). ⚠ A sakura DALI floresce em ABRIL — em março você provavelmente pega só o pagode."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "TRANSFER: Kawaguchiko → Tokyo (Shinjuku)",
+     "area": "Tokyo",
+     "de": "Est. Kawaguchiko",
+     "como": "Ônibus rodoviário Fujikyu/Keio — direto",
+     "km": 110.0,
+     "min": 120.0,
+     "pe": 5.0,
+     "transp": 2000.0,
+     "ingresso": 0.0,
+     "horario": "~2 por hora",
+     "duracao": "2h",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Ônibus rodoviário: carrinho dobrado no bagageiro. Avise na reserva que são 3.",
+     "obs": "⚠ RESERVE ONLINE: ¥2.000 antecipado contra ¥2.200 no guichê, e esgota em feriados. Malas vão no bagageiro."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Shinjuku → Ojima (check-in no Airbnb)",
+     "area": "Koto",
+     "de": "Shinjuku",
+     "como": "Toei Shinjuku Line — DIRETO, sem baldeação",
+     "km": 12.0,
+     "min": 30.0,
+     "pe": 8.0,
+     "transp": 280.0,
+     "ingresso": 0.0,
+     "horario": "—",
+     "duracao": "45 min",
+     "bebe": "CARRINHO OK",
+     "terreno": "Toei Shinjuku Line tem elevador em Shinjuku e em Ojima. Linha direta — nenhuma baldeação com malas e carrinhos.",
+     "obs": "Sorte grande: seu Airbnb (Ojima) tem linha DIRETA com Shinjuku. Guarde essa informação — ela resolve metade dos dias em Tokyo."
+    }
+   ],
+   "total": {
+    "km": 129.5,
+    "min": 165.0,
+    "pe": 53.0,
+    "transp": 3580.0,
+    "ingresso": 0.0,
+    "nota": "≈ R$ 118 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-24",
+   "semana": "quarta",
+   "base": "Tokyo / Ojima",
+   "cidade": "tokyo",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "TRANSFER para o parque (Maihama)",
+     "area": "Urayasu",
+     "de": "Ojima",
+     "como": "Toei Shinjuku→Sumiyoshi, Hanzomon→Kinshicho, JR Sobu→Tokyo, JR Keiyo→Maihama",
+     "km": 20.0,
+     "min": 50.0,
+     "pe": 12.0,
+     "transp": 500.0,
+     "ingresso": 0.0,
+     "horario": "—",
+     "duracao": "1h",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "⚠ A baldeação na Estação de Tokyo até a Keiyo Line são 10–12 min de corredor com escada rolante. Procurem a rota de elevador ANTES: existe, mas é mal sinalizada.",
+     "obs": "⚠ A plataforma da Keiyo Line fica a 10–12 min DE CAMINHADA dentro da Estação de Tokyo. Some esse tempo ao trajeto."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Volta do parque",
+     "area": "Koto",
+     "de": "Maihama",
+     "como": "JR Keiyo + JR Sobu + Hanzomon + Toei Shinjuku",
+     "km": 20.0,
+     "min": 50.0,
+     "pe": 12.0,
+     "transp": 500.0,
+     "ingresso": 0.0,
+     "horario": "até ~00:00",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Mesma rota da ida.",
+     "obs": "A saída às 21h é caótica: ou saia 20:30, ou espere 30 min tomando um café."
+    },
+    {
+     "periodo": "Dia todo",
+     "nome": "TOKYO DISNEYSEA — DEFINIDO",
+     "area": "Maihama",
+     "de": "Est. Maihama",
+     "como": "Disney Resort Line (monotrilho) até a estação Tokyo DisneySea",
+     "km": 1.5,
+     "min": 5.0,
+     "pe": 10.0,
+     "transp": 300.0,
+     "ingresso": 10500.0,
+     "horario": "09:00–21:00",
+     "duracao": "12h",
+     "bebe": "CARRINHO OK",
+     "terreno": "★ O LUGAR MAIS FÁCIL DA VIAGEM COM BEBÊ. Aluguel de carrinho no parque (¥1.000/dia), fraldário e sala de amamentação em toda área, e o parque inteiro é plano com rampa. Muitos brinquedos têm baby switch: os pais revezam sem perder a fila.",
+     "obs": "⚠ O DisneySea NÃO é caminhável a partir de Maihama (a Disneyland é) — precisa do monotrilho: ¥300 por trecho ou passe livre do dia ¥700. Adulto ¥7.900–10.900 / júnior 12–17 ¥6.600–9.000 / criança 4–11 ¥4.700–5.600 / até 3 anos grátis. 26/03 é sexta em plena sakura + férias escolares japonesas: PREÇO NO TOPO DA FAIXA. Compre online no dia em que a venda abrir, 2 meses antes."
+    },
+    {
+     "periodo": "Dia todo",
+     "nome": "FANTASY SPRINGS — estratégia de acesso",
+     "area": "Maihama",
+     "de": "Entrada do parque",
+     "como": "A pé, dentro do DisneySea",
+     "km": 1.0,
+     "min": 0.0,
+     "pe": 20.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "—",
+     "duracao": "—",
+     "bebe": "CARRINHO OK",
+     "terreno": "Fantasy Springs é acessível. Ao pegar Standby Pass, considere o horário do soneco — o passe marca hora fixa.",
+     "obs": "⚠ A ÁREA tem entrada livre, mas as 4 atrações EXIGEM passe: Standby Pass (GRÁTIS, pelo app) ou Disney Premier Access (PAGO, ¥1.500–2.000 por atração). Baixe o app e crie as contas da família ANTES de viajar. Nos primeiros 30 min dentro do parque: comprar o DPA do Frozen (Anna & Elsa) primeiro, depois Rapunzel e Peter Pan. Se for de DPA, some ¥3.000–6.000 por pessoa ao ingresso."
+    }
+   ],
+   "total": {
+    "km": 42.5,
+    "min": 105.0,
+    "pe": 54.0,
+    "transp": 1300.0,
+    "ingresso": 10500.0,
+    "nota": "≈ R$ 389 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-25",
+   "semana": "quinta",
+   "base": "Tokyo / Ojima",
+   "cidade": "tokyo",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Shinjuku Gyoen (o melhor hanami de Tokyo)",
+     "area": "Shinjuku",
+     "de": "Ojima",
+     "como": "Toei Shinjuku Line — DIRETO",
+     "km": 12.0,
+     "min": 30.0,
+     "pe": 10.0,
+     "transp": 280.0,
+     "ingresso": 500.0,
+     "horario": "09:00–16:00 (estendido na sakura)",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "★ Parque plano, gramado, caminho largo, banheiro com fraldário. O melhor lugar de Tokyo para deixar os bebês dormirem no carrinho enquanto o grupo faz piquenique.",
+     "obs": "⚠ FECHA ÀS SEGUNDAS (27/03 é sábado — ok). PROIBIDO ÁLCOOL dentro. 1.000 cerejeiras de 65 espécies. No pico da sakura pode exigir compra online antecipada."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "teamLab Borderless — Azabudai Hills",
+     "area": "Azabudai",
+     "de": "Shinjuku Gyoen",
+     "como": "Toei Oedo direto de Shinjuku até Azabu-juban — 15 min, + 10 min a pé",
+     "km": 4.7,
+     "min": 15,
+     "pe": 10,
+     "transp": 220,
+     "ingresso": 5600,
+     "horario": "09:00–21:00 (varia por mês; últ. entrada ~20:00)",
+     "duracao": "2h30",
+     "bebe": "CANGURU",
+     "terreno": "Museu sem mapa e sem percurso fixo, quase todo no escuro, com piso irregular em algumas salas e passagens estreitas. Carrinho NÃO entra — fica no guarda-volumes da entrada. Com bebê é canguru, e o grupo se separa fácil: combinem o ponto de reencontro antes de entrar.",
+     "obs": "Saiu de Odaiba e reabriu em Azabudai Hills em 2024. É o teamLab sem mapa: as obras atravessam as paredes e migram de sala, então não existe caminho certo — anda-se até achar. Ingresso com horário marcado; ¥3.600 a ¥5.600 por adulto conforme a data, e fim de março (sakura + férias escolares) cai na faixa de cima — o valor lançado aqui é o teto. Até 3 anos não paga. Recomendam 2h, mas não há limite de permanência; só não se pode reentrar."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Observatório do Governo (GRÁTIS — opcional)",
+     "area": "Shinjuku",
+     "de": "Azabudai Hills",
+     "como": "Toei Oedo de Azabu-juban até Tochomae — direto, sem baldeação",
+     "km": 4.7,
+     "min": 18,
+     "pe": 20.0,
+     "transp": 220,
+     "ingresso": 0.0,
+     "horario": "09:30–22:00",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Elevador expresso direto ao 45º andar. Grátis e totalmente acessível.",
+     "obs": "É o terceiro mirante da viagem, depois do Skytree (634 m, fechado, a cidade vista de fora) e do Shibuya Sky (229 m, aberto, a cidade vista de dentro). Este fica no meio: 202 m, fechado, em Shinjuku. Como é GRÁTIS e abre até as 22:00, vale deixá-lo como opção do fim do dia em vez de compromisso — fica a 800 m do Omoide Yokocho, então dá para subir depois do jantar se ainda houver fôlego."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Omoide Yokocho + Kabukicho + Godzilla",
+     "area": "Shinjuku",
+     "de": "Observatório",
+     "como": "A pé",
+     "km": 1.5,
+     "min": 0.0,
+     "pe": 20.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "17:00–00:00",
+     "duracao": "2h",
+     "bebe": "CANGURU",
+     "terreno": "⚠ Omoide Yokocho são becos de 1,5 m com bares de 6 lugares — carrinho não entra. Kabukicho é plano, mas é área de vida noturna: avaliem se querem levar os bebês à noite.",
+     "obs": "Omoide Yokocho: yakitori em bancas minúsculas de 6 lugares. Kabukicho: bares, karaokê e arcades — a cabeça do Godzilla fica no alto do prédio da Toho."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Jantar + volta",
+     "area": "Koto",
+     "de": "Shinjuku",
+     "como": "Toei Shinjuku Line — DIRETO",
+     "km": 12.0,
+     "min": 30.0,
+     "pe": 8.0,
+     "transp": 280.0,
+     "ingresso": 0.0,
+     "horario": "último ~00:20",
+     "duracao": "—",
+     "bebe": "CARRINHO OK",
+     "terreno": "Linha direta, com elevador nas duas pontas.",
+     "obs": "ALTERNATIVA para este dia: Palácio Imperial de Tokyo + Koishikawa Korakuen (¥300), que ficam colados e a 20 min de Ojima."
+    }
+   ],
+   "total": {
+    "km": 34.9,
+    "min": 93.0,
+    "pe": 68.0,
+    "transp": 1000.0,
+    "ingresso": 6100.0,
+    "nota": "≈ R$ 035 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-26",
+   "semana": "sexta",
+   "base": "Tokyo / Ojima",
+   "cidade": "tokyo",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Sensoji + Kaminarimon + Nakamise-dori",
+     "area": "Asakusa",
+     "de": "Ojima",
+     "como": "Toei Shinjuku até Bakuro-yokoyama + Toei Asakusa até Asakusa",
+     "km": 6.0,
+     "min": 20.0,
+     "pe": 8.0,
+     "transp": 220.0,
+     "ingresso": 0.0,
+     "horario": "templo 06:00–17:00 / rua 09:30–19:00",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Nakamise é calçadão plano. ⚠ Lotadíssima das 11h às 16h; antes das 9h vocês têm a rua quase só para vocês, e é quando a foto sai boa.",
+     "obs": "O templo mais antigo de Tokyo. Omikuji (sorte) ¥100 — se der azar, amarre no varal e deixe lá. Meron pan da Kagetsudo: ¥250."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Asakusa Shrine + rua Hoppy-dori",
+     "area": "Asakusa",
+     "de": "Sensoji",
+     "como": "A pé (fica ao lado)",
+     "km": 0.2,
+     "min": 0.0,
+     "pe": 3.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "24h / bares 12:00–22:00",
+     "duracao": "45 min",
+     "bebe": "CARRINHO OK",
+     "terreno": "Plano. Hoppy-dori tem mesas na calçada, algumas com espaço para carrinho ao lado.",
+     "obs": "Hoppy-dori tem izakayas que abrem de dia — solução prática para almoçar com um grupo de 10."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Kappabashi — a rua das facas e da comida de plástico",
+     "area": "Asakusa",
+     "de": "Asakusa",
+     "como": "A pé, 10 min a oeste do Sensoji",
+     "km": 0.8,
+     "min": 0,
+     "pe": 10,
+     "transp": 0,
+     "ingresso": 0,
+     "horario": "lojas 10:00–17:00 (muitas fecham domingo)",
+     "duracao": "1h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Rua comum, calçada plana, sem multidão de turista. Lojas pequenas, algumas com degrau na entrada.",
+     "obs": "800 m de lojas que abastecem os restaurantes de Tokyo: facas de aço japonês feitas à mão, panelas, louça, e as réplicas de comida em plástico que ficam nas vitrines — dá para comprar uma. É a rua de facas mais séria do Japão, e a maioria das lojas afia e grava o nome na lâmina na hora."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Sumida Park — sakura na beira do rio",
+     "area": "Sumida",
+     "de": "Kappabashi",
+     "como": "A pé, 12 min a leste",
+     "km": 1.0,
+     "min": 0,
+     "pe": 12,
+     "transp": 0,
+     "ingresso": 0,
+     "horario": "24h — grátis",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Parque plano de beira de rio, caminho largo e pavimentado nas duas margens. O melhor lugar do dia para o carrinho.",
+     "obs": "As duas margens do rio Sumida, com cerejeiras dos dois lados e o Skytree ao fundo — é a foto de hanami mais fácil de Tokyo, e não cobra nada. Historicamente Tokyo começa a florir por volta de 24/03. Da margem leste dá para seguir a pé até o Skytree em 15 min."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Tokyo Skytree (634 m) + Solamachi",
+     "area": "Sumida",
+     "de": "Asakusa",
+     "como": "Tobu Skytree Line (1 parada) ou 20 min a pé pela ponte",
+     "km": 2.0,
+     "min": 5.0,
+     "pe": 20.0,
+     "transp": 150.0,
+     "ingresso": 2100.0,
+     "horario": "10:00–22:00",
+     "duracao": "3h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Elevador direto até o Tembo Deck. Torre e Solamachi 100% acessíveis, com fraldário em vários andares. Um dos lugares mais fáceis da viagem.",
+     "obs": "Subir por volta das 17:00 pega dia, pôr do sol e noite na mesma visita. Tembo Deck (350 m) ¥1.800–2.400; com a Galleria (450 m) ~¥3.100–3.500. Comprar online com data marcada sai mais barato."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Jantar no Solamachi + volta",
+     "area": "Koto",
+     "de": "Oshiage",
+     "como": "Toei Asakusa + Toei Shinjuku",
+     "km": 6.0,
+     "min": 20.0,
+     "pe": 8.0,
+     "transp": 220.0,
+     "ingresso": 0.0,
+     "horario": "lojas até 21:00",
+     "duracao": "—",
+     "bebe": "CARRINHO OK",
+     "terreno": "Shopping com elevador, praça de alimentação e restaurantes que sentam grupo grande.",
+     "obs": "O Solamachi tem 300 lojas e restaurantes na base da torre — resolve o jantar do grupo sem sair do prédio."
+    }
+   ],
+   "total": {
+    "km": 16.0,
+    "min": 45.0,
+    "pe": 61.0,
+    "transp": 590.0,
+    "ingresso": 2100.0,
+    "nota": "≈ R$ 089 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-27",
+   "semana": "sábado",
+   "base": "Tokyo / Ojima",
+   "cidade": "tokyo",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Toyosu Market (o mercado de peixes)",
+     "area": "Toyosu",
+     "de": "Ojima",
+     "como": "Toei Shinjuku → Morishita, Oedo → Tsukishima, Yurakucho → Toyosu",
+     "km": 8.0,
+     "min": 30.0,
+     "pe": 10.0,
+     "transp": 400.0,
+     "ingresso": 0.0,
+     "horario": "05:00–13:00",
+     "duracao": "1h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "As passarelas de visitação são elevadas, planas e feitas para turista — carrinho passa bem. O piso do mercado em si é molhado e movimentado a pé.",
+     "obs": "⚠ FECHA ÀS 13:00 e não abre aos domingos. O leilão de atum (05:30) exige inscrição online meses antes. Sushi Dai / Daiwa: fila de 1 a 2h."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "teamLab PLANETS — DEFINIDO",
+     "area": "Toyosu",
+     "de": "Toyosu Market",
+     "como": "Yurikamome até Shin-Toyosu",
+     "km": 1.5,
+     "min": 6.0,
+     "pe": 5.0,
+     "transp": 200.0,
+     "ingresso": 3800.0,
+     "horario": "09:00–21:00",
+     "duracao": "1h30",
+     "bebe": "CANGURU",
+     "terreno": "⚠ ANDA-SE DESCALÇO NA ÁGUA, que bate no joelho do adulto. Carrinho fica no guarda-volumes da entrada, obrigatoriamente. Bebê vai NO COLO ou no canguru o tempo todo. Leve short e toalha; há chuveirinho na saída.",
+     "obs": "ESCOLHIDO no lugar do Borderless: fica no mesmo trajeto de Toyosu/Odaiba (o Borderless mudou para Azabudai Hills em 2024 e obrigaria a atravessar Tokyo à noite). Anda-se DESCALÇO na água — leve short/bermuda, a água bate no joelho. Adulto ¥3.800, criança 4–12 ¥1.500, até 3 anos grátis. ⚠ Ingresso com horário marcado, esgota semanas antes."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Miraikan (museu de ciência e tecnologia)",
+     "area": "Odaiba",
+     "de": "Toyosu",
+     "como": "Yurikamome até Telecom Center",
+     "km": 6.0,
+     "min": 15.0,
+     "pe": 6.0,
+     "transp": 390.0,
+     "ingresso": 630.0,
+     "horario": "10:00–17:00",
+     "duracao": "2h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Museu moderno, todo em rampa e elevador, com fraldário e sala de amamentação. Feito para criança.",
+     "obs": "⚠ FECHA ÀS TERÇAS (25/03 é quinta — tudo certo). Robô ASIMO e o globo Geo-Cosmos. Excelente com crianças."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "DiverCity (Gundam) + Odaiba Marine Pier",
+     "area": "Odaiba",
+     "de": "Miraikan",
+     "como": "A pé",
+     "km": 1.2,
+     "min": 0.0,
+     "pe": 15.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "10:00–21:00",
+     "duracao": "2h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Shopping e orla, tudo plano e com elevador. O Gundam fica numa praça aberta.",
+     "obs": "O Gundam Unicorn de 20 m se transforma de hora em hora. Praia artificial, Ponte Arco-Íris e réplica da Estátua da Liberdade."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Pôr do sol na Ponte Arco-Íris + volta",
+     "area": "Koto",
+     "de": "Odaiba",
+     "como": "Yurikamome até Shimbashi + Toei Asakusa + Toei Shinjuku",
+     "km": 14.0,
+     "min": 45.0,
+     "pe": 12.0,
+     "transp": 580.0,
+     "ingresso": 0.0,
+     "horario": "pôr do sol ~17:50",
+     "duracao": "1h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Calçadão da orla, plano. Vento na ponte — agasalhe os bebês.",
+     "obs": "Noite livre — foi o que sobrou ao escolher o Planets no lugar do Borderless (economiza 24 km de ida e volta a Roppongi). A Ponte Arco-Íris acende ao anoitecer e a vista da praia de Odaiba é grátis."
+    }
+   ],
+   "total": {
+    "km": 30.7,
+    "min": 96.0,
+    "pe": 48.0,
+    "transp": 1570.0,
+    "ingresso": 4430.0,
+    "nota": "≈ R$ 198 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-28",
+   "semana": "domingo",
+   "base": "Tokyo / Ojima",
+   "cidade": "tokyo",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Ueno Park (hanami) + Ameyoko",
+     "area": "Ueno",
+     "de": "Zoológico de Ueno",
+     "como": "A pé — o zoológico fica dentro do parque",
+     "km": 0.3,
+     "min": 0,
+     "pe": 10.0,
+     "transp": 0,
+     "ingresso": 0.0,
+     "horario": "24h — grátis",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Parque plano e largo. ⚠ No pico da sakura em domingo, a alameda central fica ombro a ombro — contornem pelas laterais com os carrinhos.",
+     "obs": "🛒 AQUI SE COMPRA: o Ameyoko é a rua de pechincha de Tokyo, 400 m de banca sob a linha do trem: tênis, mala, cosmético, doce a granel e frutos do mar. O Shimura Shoten faz leilão de chocolate no grito, e a London Sports vende tênis e outdoor com desconto agressivo. Antes disso, o parque tem 1.000 cerejeiras e é o hanami mais concorrido de Tokyo — em domingo de florada, é multidão de piquenique."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Museu Nacional de Tokyo — a coleção do Japão",
+     "area": "Ueno",
+     "de": "Ueno Park",
+     "como": "A pé — fica na ponta norte do próprio parque",
+     "km": 0.6,
+     "min": 0,
+     "pe": 8,
+     "transp": 0,
+     "ingresso": 1000,
+     "horario": "09:30–17:00 (últ. entrada 16:30)",
+     "duracao": "2h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Prédio de museu com elevador, rampa e fraldário; salas amplas e piso liso — o carrinho entra em tudo. É o oposto do Ameyoko em conforto, e o par dos dois no mesmo dia funciona bem: uma hora de silêncio depois do aperto da rua.",
+     "obs": "O museu mais antigo (1872) e maior do Japão, com a coleção nacional de arte japonesa: armadura e espada de samurai, ukiyo-e, cerâmica, budas de madeira. O prédio Honkan sozinho já é a linha do tempo do país inteiro — dá para ver só ele em 1h30. Adulto ¥1.000, universitário ¥500, e é GRÁTIS até o ensino médio e a partir dos 70. ⚠ FECHA ÀS SEGUNDAS, por isso ele só cabe neste domingo."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "AKIHABARA — eletrônicos, anime e games",
+     "area": "Akihabara",
+     "de": "Ameyoko",
+     "como": "JR Yamanote de Okachimachi até Akihabara — 2 paradas, ou 15 min a pé",
+     "km": 1.1,
+     "min": 4,
+     "pe": 8.0,
+     "transp": 140,
+     "ingresso": 0.0,
+     "horario": "10:00–20:00",
+     "duracao": "4h",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "A rua é plana e no domingo vira calçadão (12h–18h), o que ajuda muito. ⚠ MAS as lojas são verticais e apertadas: Super Potato e Mandarake têm escada estreita. Combinem revezamento na porta.",
+     "obs": "⚠ DOMINGO: a Chuo-dori vira CALÇADÃO das 12:00 às 18:00 — é o melhor dia da semana para Akiba. Lojas principais: Yodobashi, Bic Camera, Iosys, Janpara, Kotobukiya, Can Do, Donki, Super Potato, Mandarake."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Compras + despacho das caixas",
+     "area": "Akihabara",
+     "de": "—",
+     "como": "A pé entre as lojas",
+     "km": 1.5,
+     "min": 0.0,
+     "pe": 25.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "—",
+     "duracao": "—",
+     "bebe": "CARRINHO OK",
+     "terreno": "Yodobashi tem elevador e 9 andares. Fraldário no piso da seção infantil.",
+     "obs": "Akihabara é onde o eletrônico do grupo se resolve: Yodobashi-Akiba tem nove andares e um balcão só para estrangeiro; Bic Camera, Sofmap e o Don Quijote ficam a 200 m. ⚠ Desde nov/2026 não há mais isenção na loja — paga-se o preço cheio e o reembolso sai no aeroporto, no último dia. Guarde as notas e não despache o que comprou antes de passar no terminal. Para caixa grande, use takkyubin direto para o hotel de Osaka."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Volta",
+     "area": "Koto",
+     "de": "Ueno",
+     "como": "JR até Akihabara + Toei Shinjuku",
+     "km": 10.0,
+     "min": 25.0,
+     "pe": 10.0,
+     "transp": 370.0,
+     "ingresso": 0.0,
+     "horario": "—",
+     "duracao": "—",
+     "bebe": "CARRINHO OK",
+     "terreno": "—",
+     "obs": ""
+    }
+   ],
+   "total": {
+    "km": 13.5,
+    "min": 29.0,
+    "pe": 61.0,
+    "transp": 510.0,
+    "ingresso": 1000,
+    "nota": "≈ R$ 064 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-29",
+   "semana": "segunda",
+   "base": "Tokyo / Ojima",
+   "cidade": "tokyo",
+   "transicao": false,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Meiji Jingu + Yoyogi Park",
+     "area": "Harajuku",
+     "de": "Ojima",
+     "como": "Toei Shinjuku até Shinjuku + JR Yamanote até Harajuku",
+     "km": 14.0,
+     "min": 35.0,
+     "pe": 12.0,
+     "transp": 430.0,
+     "ingresso": 0.0,
+     "horario": "do nascer ao pôr do sol",
+     "duracao": "2h",
+     "bebe": "CARRINHO OK",
+     "terreno": "★ Caminho de cascalho largo e plano de 1 km sob as árvores, quase sem gente de manhã. Excelente com carrinho.",
+     "obs": "⚠ SEGUNDA fecha quase todo museu em Tokyo — por isso o dia é todo de rua. Meiji Jingu é GRÁTIS: barris de saquê e torii de 12 m. O jardim interno custa ¥500 à parte."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Takeshita-dori (o coração kawaii)",
+     "area": "Harajuku",
+     "de": "Meiji Jingu",
+     "como": "A pé (fica em frente à estação)",
+     "km": 0.4,
+     "min": 0.0,
+     "pe": 6.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "11:00–20:00",
+     "duracao": "1h",
+     "bebe": "CANGURU",
+     "terreno": "⚠ Rua de 350 m e 3 m de largura, com milhares de adolescentes. Carrinho ali é inviável em qualquer horário. Canguru, ou contornem pela Meiji-dori, que é paralela e larga.",
+     "obs": "🛒 AQUI SE COMPRA: moda jovem e papelaria kawaii, no quarteirão mais barato de Harajuku. A 200 m fica a FENDER FLAGSHIP TOKYO, única loja-conceito da marca no mundo. Rua estreita e lotadíssima — o carrinho não passa entre 11:00 e 17:00; é canguru ou revezamento."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Omotesando + Kiddy Land",
+     "area": "Omotesando",
+     "de": "Takeshita-dori",
+     "como": "A pé",
+     "km": 1.0,
+     "min": 0.0,
+     "pe": 14.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "11:00–21:00",
+     "duracao": "1h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Avenida larga e arborizada, com calçada excelente. Kiddy Land tem elevador.",
+     "obs": "🛒 AQUI SE COMPRA: é a avenida das marcas e da arquitetura — e onde ficam as UNIQLO e GU grandes de Harajuku, na Meiji-dori. O Kiddy Land tem cinco andares de brinquedo, um por franquia (Snoopy, Studio Ghibli, Sanrio, Rilakkuma). É o contraponto caro da Takeshita, a 400 m dali."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Shibuya Parco + Tower Records",
+     "area": "Shibuya",
+     "de": "Kiddy Land",
+     "como": "A pé, 13 min descendo a Meiji-dori",
+     "km": 1.0,
+     "min": 0,
+     "pe": 13,
+     "transp": 0,
+     "ingresso": 0,
+     "horario": "11:00–21:00",
+     "duracao": "1h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Loja de departamentos com elevador em todos os andares e fraldário. A Tower Records, ao lado, tem elevador mas os andares são apertados.",
+     "obs": "No 6º andar do Parco ficam lado a lado o Nintendo Tokyo (a única do Japão), o Pokémon Center Shibuya e a Jump Shop. A 160 m, a Tower Records ocupa 9 andares de CD e vinil, com café no 8º. Os dois resolvem numa quadra só o que estava espalhado por três bairros."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Shibuya Crossing + estátua do Hachiko",
+     "area": "Shibuya",
+     "de": "Omotesando",
+     "como": "A pé (1,3 km) ou JR Yamanote 1 parada",
+     "km": 1.3,
+     "min": 3.0,
+     "pe": 18.0,
+     "transp": 150.0,
+     "ingresso": 0.0,
+     "horario": "24h — grátis",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Tudo plano. O cruzamento tem semáforo longo — dá tempo de atravessar com 3 carrinhos sem correria.",
+     "obs": "Melhor vista grátis do cruzamento: 1º andar do Starbucks do Tsutaya, ou a passarela da Mag's Park."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "SHIBUYA SKY (mirante aberto, 229 m)",
+     "area": "Shibuya",
+     "de": "Hachiko",
+     "como": "A pé — fica no Shibuya Scramble Square, ao lado",
+     "km": 0.2,
+     "min": 0.0,
+     "pe": 5.0,
+     "transp": 0.0,
+     "ingresso": 3400.0,
+     "horario": "10:00–22:30 (últ. 21:20)",
+     "duracao": "1h30",
+     "bebe": "CANGURU",
+     "terreno": "⚠ CARRINHO NÃO SOBE AO ROOFTOP: guarda-volumes obrigatório, e no deck aberto nada solto é permitido (por causa do vento). Bebê sobe no colo ou no canguru. O andar interno envidraçado, esse aceita carrinho.",
+     "obs": "⚠ Online: ¥2.700 até 14:59 / ¥3.400 a partir das 15:00 (na bilheteria +¥300). O HORÁRIO DO PÔR DO SOL ESGOTA PRIMEIRO — em 29/03 o sol se põe ~17:55. No rooftop é proibido guarda-chuva e bolsa solta."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "EXTRA — noite em Shibuya (só para quem quiser)",
+     "area": "Shibuya",
+     "de": "Shibuya Sky",
+     "como": "A pé",
+     "km": 0.8,
+     "min": 0.0,
+     "pe": 12.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "23:00–05:00",
+     "duracao": "—",
+     "bebe": "—",
+     "terreno": "Balada não é programa com bebê. Se alguém for, vá depois que o grupo voltar.",
+     "obs": "NÃO é programa do grupo. As casas abrem às 23:00 e o último trem para Ojima sai ~00:20: ou são 80 minutos, ou a noite inteira até os trens voltarem às 05:00. Fica como opção para quem estiver sem criança e quiser ficar — a volta é de táxi, 12 km. O resto do grupo janta em Shibuya e volta de trem."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Volta",
+     "area": "Koto",
+     "de": "Shibuya",
+     "como": "Hanzomon direto até Sumiyoshi + Toei Shinjuku",
+     "km": 14.0,
+     "min": 35.0,
+     "pe": 8.0,
+     "transp": 400.0,
+     "ingresso": 0.0,
+     "horario": "último ~00:20",
+     "duracao": "—",
+     "bebe": "CARRINHO OK",
+     "terreno": "Hanzomon direto até Sumiyoshi, com elevador. Melhor rota noturna do grupo.",
+     "obs": "A Hanzomon liga Shibuya a Sumiyoshi SEM TROCA — depois é 1 parada até Ojima. Melhor rota noturna do grupo."
+    }
+   ],
+   "total": {
+    "km": 32.7,
+    "min": 73.0,
+    "pe": 88.0,
+    "transp": 980.0,
+    "ingresso": 3400.0,
+    "nota": "≈ R$ 145 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-30",
+   "semana": "terça",
+   "base": "Tokyo → Osaka",
+   "cidade": "osaka",
+   "transicao": true,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Check-out + Ojima → Estação de Tokyo",
+     "area": "Chiyoda",
+     "de": "Airbnb Ojima",
+     "como": "Toei Shinjuku + Toei Asakusa (com malas)",
+     "km": 8.0,
+     "min": 30.0,
+     "pe": 15.0,
+     "transp": 280.0,
+     "ingresso": 0.0,
+     "horario": "—",
+     "duracao": "45 min",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Dia de malas E carrinhos ao mesmo tempo. ⚠ Considerem takkyubin de Tokyo para o hotel de Osaka: as malas chegam no dia seguinte, e vocês viajam só com os carrinhos.",
+     "obs": "Saia com folga: a Estação de Tokyo é gigante e a plataforma do Shinkansen fica longe de qualquer entrada."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "SHINKANSEN Tokyo → Shin-Osaka (Nozomi)",
+     "area": "Osaka",
+     "de": "Est. Tokyo",
+     "como": "Tokaido Shinkansen NOZOMI, assento reservado",
+     "km": 515.0,
+     "min": 150.0,
+     "pe": 10.0,
+     "transp": 14720.0,
+     "ingresso": 0.0,
+     "horario": "a cada 10 min",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "⚠ RESERVEM O ESPAÇO DE BAGAGEM GRANDE de novo (gratuito, mas com reserva). Trocador de fraldas fica no vagão 11 nos trens N700S.",
+     "obs": "⚠ RESERVAR. Sentando do lado E (janela direita no sentido Osaka) você vê o Monte Fuji ~40 min após a partida. Ekiben (marmita de estação) ¥1.000–1.500 é parte da experiência."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Shin-Osaka → hotel + check-in",
+     "area": "Osaka",
+     "de": "Shin-Osaka",
+     "como": "Metrô Midosuji",
+     "km": 6.0,
+     "min": 12.0,
+     "pe": 10.0,
+     "transp": 240.0,
+     "ingresso": 0.0,
+     "horario": "15:00",
+     "duracao": "45 min",
+     "bebe": "CARRINHO OK",
+     "terreno": "Midosuji tem elevador.",
+     "obs": "Última noite. O hotel ainda está como \"ND\" (R$ 1.804 reservados para o grupo) — falta fechar."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Shinsaibashi-suji (galeria de 600 m)",
+     "area": "Shinsaibashi",
+     "de": "Hotel",
+     "como": "Metrô Midosuji ou a pé",
+     "km": 2.0,
+     "min": 6.0,
+     "pe": 15.0,
+     "transp": 190.0,
+     "ingresso": 0.0,
+     "horario": "11:00–21:00",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Galeria coberta de 600 m, plana — funciona até com chuva. Ótimo com carrinho.",
+     "obs": "🛒 AQUI SE COMPRA: é o melhor lugar da viagem para SKINCARE e FARMÁCIA — a maior concentração de Matsumoto Kiyoshi, Kokumin e Daikoku do roteiro, uma do lado da outra. Também tem UNIQLO e GU grandes. Galeria coberta de 600 m, então resolve chuva. Somando com o dia 31, são 5h aqui: é a hora de comprar cosmético, e não em Tokyo, onde os mesmos produtos custam igual e ocupam mala por mais dias."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "Dotonbori — a última noite",
+     "area": "Namba",
+     "de": "Shinsaibashi",
+     "como": "A pé",
+     "km": 0.7,
+     "min": 0.0,
+     "pe": 10.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "24h",
+     "duracao": "3h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Plano. Última noite: vá antes das 19h para escapar do pior da multidão.",
+     "obs": "Despedida com kushikatsu e okonomiyaki. Foto obrigatória no letreiro do Glico."
+    }
+   ],
+   "total": {
+    "km": 531.7,
+    "min": 198.0,
+    "pe": 60.0,
+    "transp": 15430.0,
+    "ingresso": 0,
+    "nota": "≈ R$ 509 por pessoa neste dia (transporte + ingressos)"
+   }
+  },
+  {
+   "data": "2027-03-31",
+   "semana": "quarta",
+   "base": "Osaka → voo",
+   "cidade": "osaka",
+   "transicao": true,
+   "atividades": [
+    {
+     "periodo": "Manhã",
+     "nome": "Check-out + guardar as malas",
+     "area": "Osaka",
+     "de": "Hotel",
+     "como": "Coin locker da estação ou guarda-volumes do hotel",
+     "km": 0.5,
+     "min": 0.0,
+     "pe": 10.0,
+     "transp": 700.0,
+     "ingresso": 0.0,
+     "horario": "—",
+     "duracao": "30 min",
+     "bebe": "—",
+     "terreno": "⚠ Coin locker grande costuma não caber carrinho. Se forem levar os 3 até o fim, o guarda-volumes do hotel é a única saída — critério de desempate na escolha da diária de 30→31.",
+     "obs": "⚠ Locker grande: ¥700/dia. Namba e Shin-Osaka têm centenas — mas em alta temporada LOTAM antes das 10h. Peça o guarda-volumes do hotel como plano A."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Tenjin-bashi-suji — a galeria coberta mais longa do Japão",
+     "area": "Kita",
+     "de": "Namba",
+     "como": "Metrô Sakaisuji de Nipponbashi até Minami-morimachi — 8 min, direto",
+     "km": 2.0,
+     "min": 8,
+     "pe": 25,
+     "transp": 240,
+     "ingresso": 0,
+     "horario": "lojas 10:00–19:00",
+     "duracao": "1h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Galeria coberta, plana e reta do começo ao fim, larga o bastante para carrinho. Tem toldo nos 2,6 km inteiros — é o melhor plano de chuva de Osaka.",
+     "obs": "2,6 km de arcada contínua, do Minami-morimachi até o Tenjinbashisuji 6-chome: a mais longa do Japão. É bairro de gente da cidade, não de turista — comida barata, brechó, papelaria, doceria e cafés antigos. Dá para entrar por uma ponta e sair de metrô na outra, sem andar tudo. Fica a 550 m do Nakazakicho, que está no dia 18."
+    },
+    {
+     "periodo": "Manhã",
+     "nome": "Compras finais em Shinsaibashi-suji",
+     "area": "Shinsaibashi",
+     "de": "Hotel / Namba",
+     "como": "A pé ou metrô Midosuji",
+     "km": 2.0,
+     "min": 6.0,
+     "pe": 20.0,
+     "transp": 190.0,
+     "ingresso": 0.0,
+     "horario": "11:00–21:00",
+     "duracao": "2h30",
+     "bebe": "CARRINHO OK",
+     "terreno": "Galeria coberta e plana.",
+     "obs": "🛒 AQUI SE COMPRA: segunda passada no Shinsaibashi, para o que ficou faltando na véspera — skincare, farmácia, UNIQLO e GU. ⚠ Último dia: tudo o que for comprado aqui precisa passar pelo terminal de reembolso do KIX antes do despacho, então guarde as notas separadas e não enfie nada no fundo da mala."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "Almoço de despedida + Den Den Town",
+     "area": "Nipponbashi",
+     "de": "Shinsaibashi",
+     "como": "A pé",
+     "km": 1.2,
+     "min": 0.0,
+     "pe": 16.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "lojas 11:00–20:00",
+     "duracao": "2h",
+     "bebe": "CARRINHO C/ ESFORÇO",
+     "terreno": "Den Den Town de novo: lojas apertadas, revezem na porta.",
+     "obs": "Última passada na Den Den Town para o que ficou faltando, e almoço de despedida no Dotonbori. Gaste o troco em iene: moeda japonesa não vale nada para trocar de volta no Brasil."
+    },
+    {
+     "periodo": "Tarde",
+     "nome": "TRANSFER: Namba → Aeroporto KIX",
+     "area": "KIX",
+     "de": "Namba",
+     "como": "Nankai Airport Express (ou Rapi:t ¥1.520)",
+     "km": 50.0,
+     "min": 45.0,
+     "pe": 15.0,
+     "transp": 970.0,
+     "ingresso": 0.0,
+     "horario": "SAIR DE NAMBA 17:20",
+     "duracao": "1h",
+     "bebe": "CARRINHO OK",
+     "terreno": "Nankai com elevador nas duas pontas. No KIX, o carrinho vai até o portão de embarque.",
+     "obs": "⚠ VOO JQ 14 DECOLA 21:25. Meta: estar no KIX às 18:25, 3h antes — voo internacional + fila do tax-free refund + grupo de 10. Contando 45 min de Nankai e 15 min de folga, o último trem aceitável sai de Namba às 17:20."
+    },
+    {
+     "periodo": "Noite",
+     "nome": "VOO DE VOLTA — JQ 14, KIX 21:25 → Sydney",
+     "area": "—",
+     "de": "KIX",
+     "como": "Jetstar JQ 14",
+     "km": 0.0,
+     "min": 0.0,
+     "pe": 0.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "decolagem 21:25",
+     "duracao": "—",
+     "bebe": "—",
+     "terreno": "Carrinho é despachado no portão e devolvido em Sydney ou em Guarulhos — confirmem com a LATAM qual dos dois.",
+     "obs": "Fim da viagem: 16 dias e 15 noites no Japão. Conexão em Sydney (LA 810 às 11:10 de 01/04) e depois Santiago → Guarulhos, pousando 16:30 de 01/04."
+    }
+   ],
+   "total": {
+    "km": 55.7,
+    "min": 59.0,
+    "pe": 86.0,
+    "transp": 2100.0,
+    "ingresso": 0,
+    "nota": "≈ R$ 061 por pessoa neste dia (transporte + ingressos)"
+   }
+  }
+ ],
+ "resumo": [
+  {
+   "label": "Distância total percorrida",
+   "valor": 1424.8,
+   "unidade": "km",
+   "nota": "Shinkansen, ônibus rodoviário, metrô e trens urbanos somados."
+  },
+  {
+   "label": "Tempo total dentro do transporte",
+   "valor": 1493.0,
+   "unidade": "min",
+   "nota": "Só o tempo em movimento — não conta espera de plataforma nem baldeação."
+  },
+  {
+   "label": "Caminhada total estimada",
+   "valor": 923.0,
+   "unidade": "min",
+   "nota": "Média de ~1h por dia, empurrando carrinho boa parte do tempo."
+  },
+  {
+   "label": "Transporte no Japão",
+   "valor": 47100.0,
+   "unidade": "¥",
+   "nota": "Aeroporto + trechos entre cidades + urbano. NÃO inclui as passagens aéreas."
+  },
+  {
+   "label": "Ingressos e atrações",
+   "valor": 33530.0,
+   "unidade": "¥",
+   "nota": "Valor adulto. Adolescente paga menos e bebê quase sempre não paga."
+  },
+  {
+   "label": "TOTAL EM IENES (transporte + ingressos)",
+   "valor": 80630.0,
+   "unidade": "¥",
+   "nota": ""
+  },
+  {
+   "label": "TOTAL EM REAIS (¥1 = R$ 0,033)",
+   "valor": 2660.79,
+   "unidade": "",
+   "nota": "NÃO inclui alimentação. Comida no cenário médio: ¥6.000/dia x 16 dias = ¥96.000 ≈ R$ 3.168 por adulto."
+  }
+ ],
+ "notas": [
+  {
+   "n": 1,
+   "titulo": "FERIADÃO DE 20 A 22/03: o que fazer",
+   "texto": "O Equinócio de Primavera cai no domingo 21/03 e a segunda 22/03 vira feriado compensatório — o único do ano. Como as datas estão travadas pelas reservas de hotel, a saída é atacar o horário, não a data. FICA ASSIM: (a) reservar o Shinkansen Kyoto–Mishima e o ônibus Mishima–Kawaguchiko no primeiro dia possível — a venda do Shinkansen abre às 10:00 do Japão, 30 dias antes, ou seja 20/02/2027; (b) escolher o Shinkansen DEPOIS de fixar o horário do ônibus de Mishima, que tem poucas saídas e é o gargalo do dia; (c) no sábado 20/03, estar no Kinkaku-ji na abertura (09:00) e deixar Arashiyama para depois das 15h; (d) no domingo 21/03, sair do hotel às 06:15 para o Fushimi Inari. Cumprindo isso, o feriado deixa de ser problema."
+  },
+  {
+   "n": 2,
+   "titulo": "KYOTO EM DOIS DIAS E MEIO",
+   "texto": "Kyoto tem dois dias e meio. No domingo 21/03 eles vêm todos em sequência, a pé: GINKAKU-JI (¥500) → CAMINHO DOS FILÓSOFOS (grátis, 2 km, 400 cerejeiras sobre o canal) → NANZEN-JI e seu aqueduto (terreno grátis; Sanmon ¥600) → Kiyomizu-dera → Ninenzaka → Gion. O dia começa no Fushimi Inari ao amanhecer e termina em Pontocho. FORA DO ROTEIRO: Castelo de Nijō e Palácio Imperial de Kyoto — não cabem sem sacrificar coisa melhor. O Kodaiji (¥600) fica no meio da Ninenzaka e é opcional, se sobrar fôlego. ATENÇÃO: 21/03 fica com ~10 km de caminhada, o dia mais puxado da viagem."
+  },
+  {
+   "n": 3,
+   "titulo": "18/03 É UM DIA CHEIO DE OSAKA",
+   "texto": "Sem o bate-volta a Nara — que custaria 65 km de trem e 2h40 dentro do vagão —, o 18/03 é um dia inteiro em Osaka, montado em dois blocos geográficos. MANHÃ NA BAÍA: Kuromon Ichiba (café da manhã de frutos do mar), Namba Yasaka Jinja — a cabeça de leão de 12 m — e o Aquário Kaiyukan. TARDE NO NORTE: Umeda Sky Building com o pôr do sol no jardim flutuante, e o bairro retrô de Nakazakicho. O dia 31/03 fica para as compras de tax-free e o almoço de despedida. Se quiserem um dia MAIS pesado no lugar, a alternativa óbvia é o Universal Studios Japan com o Super Nintendo World (~¥9.000 a ¥11.000 por adulto) — mas seria o segundo parque da viagem, depois do DisneySea."
+  },
+  {
+   "n": 4,
+   "titulo": "OPORTUNIDADE — OSAKA AMAZING PASS DE 2 DIAS",
+   "texto": "O passe de 2 dias custa ¥5.400 e virou uma decisão apertada. Do que o roteiro realmente usa em 17 e 18/03 ele cobre: metrô ilimitado (¥860 no dia 17 + ¥820 no dia 18), Castelo de Osaka (¥1.200) e Umeda Sky (¥2.000). São ¥4.880 de uso real contra ¥5.400 de custo — PREJUÍZO DE ¥520 POR ADULTO. Ele volta a compensar somando o que ficou de fora por ser repetido: com o cruzeiro Tombori River (¥1.200) o uso vai a ¥6.080 e a economia a ¥680; recolocando também a roda-gigante Tempozan (¥900) e a Tsutenkaku (¥1.200) — que com o passe saem de graça — o uso chega a ¥8.180 e a economia a ¥2.780, cerca de R$ 92 por adulto. A decisão é uma só: o passe compensa na exata medida em que vocês aceitarem fazer os mirantes que foram cortados por repetição. Mantendo o corte, COMPREM BILHETE AVULSO. NÃO cobre o Kaiyukan (¥2.700) nem o Shitennoji (¥500), que continuam pagos à parte — e o Kaiyukan é o ingresso mais caro dos dois dias. O passe é só digital (QR code) desde 2024. ⚠ O preço de ¥5.400 vale para o período de vendas de março/2026 a março/2027 — como vocês viajam bem no limite dessa janela, confirmem o valor no site oficial mais perto da data. Os valores lançados nas linhas acima são os de balcão, SEM o passe."
+  },
+  {
+   "n": 5,
+   "titulo": "teamLab: fica o PLANETS",
+   "texto": "Escolhido o teamLab PLANETS (Toyosu, ¥3.800 adulto / ¥1.500 criança 4–12 / grátis até 3 anos) em vez do Borderless. Motivo: o Borderless mudou para Azabudai Hills em 2024 e obrigaria a atravessar Tokyo à noite, com 24 km a mais de ida e volta, enquanto o Planets fica no mesmo trajeto de Toyosu e Odaiba. No Planets se caminha DESCALÇO na água (bermuda ou short, a água bate no joelho) — mais divertido com criança. A noite de 25/03 ficou livre: sugestão é o pôr do sol na Ponte Arco-Íris, que é de graça. Ingresso com horário marcado e esgota semanas antes."
+  },
+  {
+   "n": 6,
+   "titulo": "26/03 é DISNEYSEA",
+   "texto": "Confirmado o DisneySea (não a Disneyland). Dois pontos práticos: (a) o DisneySea NÃO é caminhável a partir de Maihama — precisa do monotrilho Disney Resort Line, ¥300 por trecho ou ¥700 o passe livre do dia; (b) a área nova FANTASY SPRINGS tem entrada livre, mas as 4 atrações exigem passe: Standby Pass (grátis, pelo app) ou Disney Premier Access (pago, ¥1.500–2.000 por atração). Baixe o app e crie as contas da família ANTES de viajar, e compre o DPA nos primeiros 30 minutos dentro do parque — prioridade: Frozen (Anna & Elsa), depois Rapunzel, depois Peter Pan. Ingresso: adulto ¥7.900–10.900 / júnior 12–17 ¥6.600–9.000 / criança 4–11 ¥4.700–5.600 / até 3 anos grátis. Como 26/03 é sexta em plena sakura e férias escolares japonesas, conte com o topo da faixa."
+  },
+  {
+   "n": 7,
+   "titulo": "COMO USAR A COLUNA \"COM BEBÊ\"",
+   "texto": "Cada parada foi classificada pelo terreno real, não pela fama: CARRINHO OK (plano, pavimentado, com elevador), CARRINHO C/ ESFORÇO (passa, mas tem corredor estreito, cascalho, multidão ou degrau) e CANGURU (o carrinho não vai). Dá para filtrar a coluna e planejar o que levar em cada dia. SÃO 9 AS PARADAS QUE EXIGEM CANGURU OU CARRINHO GUARDA-CHUVA: Monkey Park de Arashiyama (trilha de 20 min em subida), Nishiki Market (galeria de 3,5 m lotada), Kiyomizu-dera (ladeira Gojo-zaka — ou subam de táxi por ~¥1.200), Ninenzaka e Sannenzaka (escadaria de pedra, o pior terreno da viagem), pagode Chureito (398 degraus), teamLab Planets (anda-se descalço na água, carrinho fica no guarda-volumes), Omoide Yokocho (becos de 1,5 m), Takeshita-dori (rua de 3 m com multidão) e o rooftop do Shibuya Sky (carrinho proibido lá em cima por causa do vento). Fora essas nove, o carrinho resolve a viagem inteira — inclusive o DisneySea, que é o lugar mais fácil de todos, com aluguel de carrinho e fraldário em toda área."
+  },
+  {
+   "n": 8,
+   "titulo": "ATENÇÃO — ÔNIBUS DE KYOTO É O PIOR CENÁRIO COM CARRINHO",
+   "texto": "Kyoto é a única cidade do roteiro onde o transporte principal é ÔNIBUS URBANO, e não metrô. Os ônibus de Kyoto entram pela porta traseira, são estreitos, ficam lotados em temporada de sakura e na prática exigem dobrar o carrinho em pé — com 3 carrinhos e 13 pessoas, isso não funciona. As linhas críticas do roteiro são a 205 (para o Kinkaku-ji) e a 59. RECOMENDAÇÃO: nesses trechos, peguem TÁXI. Táxi japonês leva 4 pessoas, então são 3 ou 4 carros; Estação de Kyoto até o Kinkaku-ji sai por volta de ¥2.500 a ¥3.000 por carro, algo como ¥900 por pessoa contra ¥230 do ônibus. A diferença é de R$ 22 por pessoa e compra o dia inteiro de paz. Onde houver trem, prefiram sempre: JR para Fushimi Inari, Keihan para Gion, Randen para Arashiyama."
+  },
+  {
+   "n": 9,
+   "titulo": "GRUPO DE 13 — combinem ponto de reencontro, não andem em fila",
+   "texto": "Com 13 pessoas é inevitável que alguém queira parar numa loja enquanto outro quer seguir, e tentar manter todo mundo em bloco cansa mais do que o próprio passeio. Em vez de forçar a fila indiana, adotem o hábito de CHEGAR NUM LUGAR E JÁ COMBINAR ONDE E QUE HORAS SE ENCONTRAM. Os pontos onde o grupo naturalmente se espalha são previsíveis: Akihabara (28/03), Den Den Town (31/03), Nishiki Market (19/03), Shinsaibashi (30 e 31/03) e a Nakamise de Asakusa (24/03) — nesses cinco, marquem o reencontro antes de entrar. Duas coisas ajudam muito: um grupo de mensagens com localização compartilhada ligada, e escolher como ponto de encontro sempre a MESMA REFERÊNCIA ÓBVIA (a estação, ou a loja da esquina), nunca \"ali na frente\"."
+  },
+  {
+   "n": 10,
+   "titulo": "PENDENTE — HOSPEDAGEM: duas pontas em aberto no fim da viagem",
+   "texto": "DUAS COISAS DIFERENTES, as duas ainda sem definição. (a) A DIÁRIA DE 30 PARA 31/03 continua indefinida: o hotel ainda está como \"ND\", com R$ 1.804 previstos para o grupo. É a última noite de fato dormida no Japão, depois do Shinkansen de volta de Tokyo. (b) O DIA 31/03 é um dia inteiro em Osaka SEM QUARTO, porque o voo JQ 14 só decola às 21:25. Para esse dia a programação já assume coin locker (¥700 por mala grande); se o hotel escolhido em (a) oferecer guarda-volumes gratuito para quem se hospedou, o problema se resolve sozinho — vale usar isso como critério de desempate na escolha do hotel."
+  },
+  {
+   "n": 11,
+   "titulo": "PENDENTE — VISTO DE TRÂNSITO NA AUSTRÁLIA",
+   "texto": "A viagem passa por Sydney NOS DOIS SENTIDOS: 5h55 de conexão na ida (16/03) e 2h00 na volta (01/04). O visto australiano ainda precisa ser solicitado, e vale para as 13 pessoas — bebê também precisa de passaporte próprio e de visto — brasileiro não está na lista do eVisitor, então o caminho é o Transit (subclass 771) ou o Visitor (subclass 600), pelo site immi.homeaffairs.gov.au. É o item de MAIOR RISCO da viagem: sem ele ninguém embarca, e não adianta ter tudo o mais reservado. Peça com meses de antecedência. Ponto positivo: como as passagens foram compradas juntas no site da LATAM, em BILHETE ÚNICO, a bagagem segue despachada até Guarulhos e as conexões são protegidas — se um trecho atrasar, a reacomodação é por conta da companhia."
+  },
+  {
+   "n": 12,
+   "titulo": "FECHAMENTOS — cada parada no dia em que ela abre",
+   "texto": "No Japão, museu fecha segunda e mercado fecha domingo. Cada parada está no dia em que ela abre: Kuromon Ichiba (bancas fecham às 17h e várias não abrem às quartas) ficou logo cedo na quinta 18/03; Nishiki Market (fecha às 18h) ficou na sexta 19/03; Shinjuku Gyoen (fecha segunda) ficou na quinta 25/03; Kappabashi (boa parte fecha domingo) ficou na sexta 26/03; Toyosu Market (fecha domingo e em quartas irregulares) e Miraikan (fecha terça) ficaram juntos no sábado 27/03; Akihabara ficou no domingo 28/03, quando a Chuo-dori vira calçadão das 12h às 18h. A segunda-feira 29/03 ficou 100% de rua — Meiji Jingu, Harajuku, Shibuya e Shibuya Sky, todos abertos. E o sumô só existe porque o Haru Basho, único torneio do ano em Osaka, corre de 14 a 28/03. NÃO TROQUEM DIAS ENTRE SI sem refazer essa conferência — ela já foi refeita uma vez, quando o DisneySea passou para a quarta 24/03 e arrastou a semana inteira."
+  },
+  {
+   "n": 13,
+   "titulo": "SAKURA — a sorte está do lado de vocês",
+   "texto": "Historicamente Tokyo floresce por volta de 24/03 e atinge o pico ~31/03; Kyoto floresce ~26/03 com pico no início de abril. Os dias de Tokyo (27 a 30/03) tendem a pegar o PICO da florada, e o Caminho dos Filósofos em 21/03 pode pegar o começo em Kyoto. O outro lado da moeda: recordes de multidão em Ueno, Shinjuku Gyoen e Arashiyama. A previsão oficial da florada sai em janeiro/2027 — vale reconferir a ordem dos dias quando ela for publicada."
+  },
+  {
+   "n": 14,
+   "titulo": "O QUE AINDA NÃO ESTÁ ORÇADO EM LUGAR NENHUM",
+   "texto": "O orçamento cobre transporte e ingressos. Continuam de fora dele: alimentação (≈ R$ 3.168 por adulto no cenário médio de ¥6.000/dia; adolescente igual, bebê quase nada), compras, seguro viagem, eSIM ou Wi-Fi portátil, o takkyubin (envio de malas entre cidades, ¥1.500 a ¥2.500 por mala) e o Disney Premier Access do dia 26/03 (¥3.000 a ¥6.000 por pessoa, se optarem por ele)."
+  }
+ ],
+ "voos": [
+  {
+   "numero": "LA 8154",
+   "origem": "São Paulo (Guarulhos Intl.)",
+   "destino": "Santiago de Chile (Aeropuerto Internacional Comodoro Arturo Merino Benítez)",
+   "saidaData": "2027-03-14",
+   "saidaHora": "10:40",
+   "chegadaData": "2027-03-14",
+   "chegadaHora": "14:55",
+   "duracao": "4h15",
+   "conexao": "10h20 em Santiago",
+   "obs": "Conexão longa: está previsto dormir em Santiago na noite de 14/03. Brasileiro entra no Chile só com documento de viagem, sem visto — dá para sair do aeroporto."
+  },
+  {
+   "numero": "LA 809",
+   "origem": "Santiago de Chile (Aeropuerto Internacional Comodoro Arturo Merino Benítez)",
+   "destino": "Sydney (Kingsford Smith)",
+   "saidaData": "2027-03-15",
+   "saidaHora": "01:15",
+   "chegadaData": "2027-03-16",
+   "chegadaHora": "06:15",
+   "duracao": "15h00",
+   "conexao": "5h55 em Sydney",
+   "obs": "O trecho mais longo da viagem. Cruza a linha internacional da data: sai em 15/03 e chega em 16/03, o dia 15 praticamente desaparece."
+  },
+  {
+   "numero": "JQ 13",
+   "origem": "Sydney (Kingsford Smith)",
+   "destino": "Osaka (Aeropuerto Internacional De Kansai)",
+   "saidaData": "2027-03-16",
+   "saidaHora": "12:10",
+   "chegadaData": "2027-03-16",
+   "chegadaHora": "19:45",
+   "duracao": "9h35",
+   "conexao": "— chegada",
+   "obs": "Operado pela Jetstar, vendido pela LATAM no mesmo bilhete: a franquia de bagagem é a do bilhete LATAM. Pouso 19:45 → saída do saguão ~21:00 → Namba ~22:00."
+  },
+  {
+   "numero": "JQ 14",
+   "origem": "Osaka (Aeropuerto Internacional De Kansai)",
+   "destino": "Sydney (Kingsford Smith)",
+   "saidaData": "2027-03-31",
+   "saidaHora": "21:25",
+   "chegadaData": "2027-04-01",
+   "chegadaHora": "09:10",
+   "duracao": "9h45",
+   "conexao": "2h00 em Sydney",
+   "obs": "⚠ A conexão mais apertada da viagem. Como o bilhete é único, a bagagem segue até Guarulhos e a LATAM reacomoda em caso de atraso. Para não depender disso: estar no KIX às 18:25, saindo de Namba às 17:20."
+  },
+  {
+   "numero": "LA 810",
+   "origem": "Sydney (Kingsford Smith)",
+   "destino": "Santiago de Chile (Aeropuerto Internacional Comodoro Arturo Merino Benítez)",
+   "saidaData": "2027-04-01",
+   "saidaHora": "11:10",
+   "chegadaData": "2027-04-01",
+   "chegadaHora": "10:00",
+   "duracao": "12h50",
+   "conexao": "2h35 em Santiago",
+   "obs": "Cruzando a linha da data no sentido inverso, o relógio \"volta\": decola 01/04 às 11:10 e pousa 01/04 às 10:00."
+  },
+  {
+   "numero": "LA 750",
+   "origem": "Santiago de Chile (Aeropuerto Internacional Comodoro Arturo Merino Benítez)",
+   "destino": "São Paulo (Guarulhos Intl.)",
+   "saidaData": "2027-04-01",
+   "saidaHora": "12:35",
+   "chegadaData": "2027-04-01",
+   "chegadaHora": "16:30",
+   "duracao": "3h55",
+   "conexao": "— fim",
+   "obs": "Pouso em Guarulhos às 16:30 de 01/04."
+  }
+ ],
+ "voosNotas": [
+  {
+   "titulo": "RESUMO DOS TRAJETOS",
+   "texto": ""
+  },
+  {
+   "titulo": "IDA  — GRU 14/03 10:40  →  KIX 16/03 19:45",
+   "texto": "Total porta a porta: 45h05  =  28h50 voando  +  16h15 em conexões (10h20 em Santiago + 5h55 em Sydney). Três voos, dois países de conexão."
+  },
+  {
+   "titulo": "VOLTA — KIX 31/03 21:25  →  GRU 01/04 16:30",
+   "texto": "Total porta a porta: 31h05  =  26h30 voando  +  4h35 em conexões (2h00 em Sydney + 2h35 em Santiago). Bem mais direta que a ida."
+  },
+  {
+   "titulo": "BILHETE ÚNICO LATAM — o que isso garante",
+   "texto": "Bagagem despachada de Guarulhos direto até Kansai (e na volta até Guarulhos), sem retirar nas conexões. Conexões protegidas: atraso em um trecho obriga a companhia a reacomodar. Os trechos JQ são operados pela Jetstar, mas as regras valendo são as do bilhete LATAM."
+  },
+  {
+   "titulo": "CARRINHOS DE BEBÊ NOS VOOS",
+   "texto": "Os 3 carrinhos vão até a porta da aeronave e são devolvidos no desembarque — não contam na franquia de bagagem. ⚠ Confirmem com a LATAM se, na volta, o carrinho é devolvido em Sydney (o que ajuda muito nas 2h de conexão) ou só em Guarulhos. Berço de parede (bassinet) nos trechos longos exige pedido antecipado e tem limite de peso — peçam já, são 3 bebês."
+  },
+  {
+   "titulo": "⚠ VISTO DA AUSTRÁLIA — pendente",
+   "texto": "Sydney entra nos dois sentidos. O visto ainda precisa ser solicitado para as 13 pessoas em immi.homeaffairs.gov.au (Transit 771 ou Visitor 600). Sem ele não há embarque — é o item mais crítico do calendário de preparação. Bebê também precisa de passaporte próprio e de visto."
+  }
+ ],
+ "hospedagem": {
+  "a": [
+   {
+    "hotel": "Perto de Namba! Acesso direto do Aeroporto de Kansai!",
+    "link": "https://www.airbnb.com.br/rooms/1378982885583441111?source_impression_id=p3_1786417923_P3C8JlUl0X0TRlfj",
+    "cidade": "Osaka",
+    "checkin": "2027-03-16",
+    "checkout": "2027-03-19",
+    "noites": 3.0,
+    "total": 4054.89
+   },
+   {
+    "hotel": "K-style 東本願寺",
+    "link": "https://www.booking.com/hotel/jp/k-style-higashihonganji.pt-br.html?label=gen173nr-10CAEoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4AseW79MGwAIB0gIkM2Q4N2YyNjAtNTI5OS00NjQwLThhNGQtNTVjMGZlNzc2N2Mw2AIB4AIB&sid=0e0f590a894ee6906772e84f74e5b4f3&aid=304142&ucfs=1&arphpl=1&checkin=2027-03-19&checkout=2027-03-22&group_adults=8&req_adults=8&no_rooms=4&group_children=5&req_children=5&age=1&req_age=1&age=15&req_age=15&age=12&req_age=12&age=1&req_age=1&age=1&req_age=1&all_sr_blocks=1023852002_379397502_0_0_0%2C1023852002_379397502_0_0_0%2C1023852002_379397502_0_0_0%2C1023852003_379397502_0_0_0&highlighted_blocks=1023852002_379397502_0_0_0%2C1023852002_379397502_0_0_0%2C1023852002_379397502_0_0_0%2C1023852003_379397502_0_0_0&matching_block_id=1023852002_379397502_0_0_0&sr_pri_blocks=1023852002_379397502_0_0_0%2C1023852002_379397502_0_0_0%2C1023852002_379397502_0_0_0%2C1023852003_379397502_0_0_0&from_list=1",
+    "cidade": "Quioto",
+    "checkin": "2027-03-19",
+    "checkout": "2027-03-22",
+    "noites": 3.0,
+    "total": 7115.2
+   },
+   {
+    "hotel": "La Vista Fujikawaguchiko",
+    "link": "https://www.booking.com/hotel/jp/la-vista-fujikawaguchiko.pt-br.html?aid=2440491&label=cht532js-10CAsodUIEb2lrZUgtWANoIIgBAZgBM7gBF8gBDNgBA-gBAfgBAYgCAagCAbgC-KOI1AbAAgHSAiRhN2E4MzU0My00MmZkLTQ5YWItOTFhZS0zZDYxMTRjMmJhNGbYAgHgAgE&sid=a2f4324ab716b69ed02d96e7f65a27be&age=0&age=1&age=1&age=12&age=15&all_sr_blocks=195767702_414196715_2_0_0%2C195767701_414196715_2_0_0%2C195767703_414196715_3_0_0%2C195767705_414196715_4_17_0%2C195767705_414196715_4_17_0&checkin=2027-03-22&checkout=2027-03-23&dest_id=1957677&dest_type=hotel&dist=0&group_adults=8&group_children=5&hapos=1&highlighted_blocks=195767702_414196715_2_0_0%2C195767701_414196715_2_0_0%2C195767703_414196715_3_0_0%2C195767705_414196715_4_17_0%2C195767705_414196715_4_17_0&hpos=1&matching_block_id=195767702_414196715_2_0_0&no_rooms=4&req_adults=8&req_age=0&req_age=1&req_age=1&req_age=12&req_age=15&req_children=5&room1=A%2CA%2C0&room2=A%2CA%2C1&room3=A%2CA%2C1&room4=A%2CA%2C12%2C15&sb_price_type=total&sr_order=popularity&sr_pri_blocks=195767702_414196715_2_0_0__4761000%2C195767701_414196715_2_0_0__5175000%2C195767703_414196715_3_0_0__8383500%2C195767705_414196715_4_17_0__12297600%2C195767705_414196715_4_17_0__12297600&srepoch=1786909571&srpvid=c3698b0062580cc9&type=total&ucfs=1&",
+    "cidade": "Hakone",
+    "checkin": "2027-03-22",
+    "checkout": "2027-03-23",
+    "noites": 1.0,
+    "total": 8639.0
+   },
+   {
+    "hotel": "104㎡/3QUARTOS/22pax/4min a pé até a Estação Ojima",
+    "link": "https://www.airbnb.com.br/rooms/1189119723876585629?source_impression_id=p3_1786586535_P3Rpfdg1uCfNgUgy",
+    "cidade": "Tokyo",
+    "checkin": "2027-03-23",
+    "checkout": "2027-03-30",
+    "noites": 7.0,
+    "total": 13698.04
+   },
+   {
+    "hotel": "ND",
+    "link": "",
+    "cidade": "Osaka",
+    "checkin": "2027-03-30",
+    "checkout": "2027-03-31",
+    "noites": 1.0,
+    "total": 1804.0
+   }
+  ],
+  "b": [
+   {
+    "hotel": "Hotel Brighton City Osaka Kitahama",
+    "link": "https://www.booking.com/hotel/jp/brighton-city-osaka-kitahama.html?ssne=Osaka&ssne_untouched=Osaka&highlighted_hotels=251423&ss=Osaka&dest_id=-240905&dest_type=city&hp_avform=1&origin=hp&do_availability_check=1&label=msn-4e8aEW7dtQBZV6UbiYc9_Q-79852232563142%3Atikwd-79852393957106%3Aloc-20%3Aneo%3Amte%3Alp147333%3Adec%3Acid518941216%3Aagid1277633810718368%3Aclkidf32c095ee94315a960bc63246f26dc82&sid=5a449df1296fb2006a9cb62daafed20a&aid=2369661&lang=pt-br&sb=1&src_elem=sb&src=hotel&checkin=2027-03-16&checkout=2027-03-19&group_adults=2&no_rooms=1&group_children=2&age=15&age=1#group_recommendation",
+    "cidade": "Osaka",
+    "checkin": "2027-03-16",
+    "checkout": "2027-03-19",
+    "noites": 3.0,
+    "total": 5410.0
+   },
+   {
+    "hotel": "Petit Grande Miyabi",
+    "link": "https://www.booking.com/hotel/jp/petit-grande-miyabi.html?ssne=T%C3%B3quio&ssne_untouched=T%C3%B3quio&highlighted_hotels=5739886&ss=T%C3%B3quio&dest_id=-246227&dest_type=city&hp_avform=1&origin=hp&do_availability_check=1&label=Portuguese_Brazil_PT_BR_27123293545-y9XBu_nCOGw5GzdOAuO5DwS813028056447%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi55637687852%3Atikwl-300759773910%3Alp9245230%3Ali%3Adec%3Adm%3Aag27123293545%3Acmp597716117&sid=a2f4324ab716b69ed02d96e7f65a27be&aid=318615&lang=pt-br&sb=1&src_elem=sb&src=hotel&checkin=2027-03-23&checkout=2027-03-30&group_adults=8&no_rooms=4&group_children=5&age=15&age=12&age=1&age=1&age=1#group_recommendation",
+    "cidade": "Tokyo",
+    "checkin": "2027-03-23",
+    "checkout": "2027-03-30",
+    "noites": 7.0,
+    "total": 20929.0
+   },
+   {
+    "hotel": "Hakonenomori Okada",
+    "link": "https://www.booking.com/hotel/jp/hakonenomori-okada.html?ssne=Hakone&ssne_untouched=Hakone&highlighted_hotels=307283&ss=Hakone&dest_id=-228233&dest_type=city&hp_avform=1&origin=hp&do_availability_check=1&label=New_English_EN_BR_26761701625-AcKyBaB6RkK0cK*KfOZh5wS813058126711%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi55498552534%3Atikwl-303472601955%3Alp9245230%3Ali%3Adec%3Adm%3Aag26761701625%3Acmp394643425&sid=a1577bce498b7deaf56fb474aa2d6b3d&aid=318615&lang=pt-br&sb=1&src_elem=sb&src=hotel&checkin=2027-03-22&checkout=2027-03-23&group_adults=2&no_rooms=1&group_children=2&age=12&age=1#group_recommendation",
+    "cidade": "Hakone",
+    "checkin": "2027-03-22",
+    "checkout": "2027-03-23",
+    "noites": 1.0,
+    "total": 5559.95
+   }
+  ]
+ }
+};
+const MAPAS = [3];   // dias com mapa proprio (dia-NN.html)
+const FOTOS = {
+ "hero": {
+  "legenda": "Monte Fuji refletido no lago Kawaguchi",
+  "autor": "Marion &amp; Christoph Aistleitner",
+  "lic": "CC0",
+  "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AFuji_Kawaguchi_457.JPG",
+  "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACQAwCdASoWAA8APulkqU4pJaQiMAgBIB0JZQAAPB3yr3PKaEWAAP7TlcR1bfLWlJKHUPU4pfbdytqeHMiBt7xG5ULc6aUebP/aOAAA"
+ },
+ "fuji": {
+  "legenda": "Pagode Chureito, o Fuji e a sakura",
+  "autor": "https://www.flickr.com/photos/bruchez/",
+  "lic": "CC BY-SA 2.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AChuurei-tou_Fujiyoshida_33415029934_8bdb607294_o.jpg",
+  "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwBACdASoWABEAPt1ap00opSOiMAwBEBuJYwC06B6JA94JkqZNKaqiyQgA/pCAUKtQZJQmTx6VNWlUJmJmq02KHuTPiMBWtfBbZxTElocWIAq64SIcRRQAAAA="
+ },
+ "osaka": {
+  "legenda": "Dotonbori visto da ponte Ebisu",
+  "autor": "Type specimen",
+  "lic": "CC BY-SA 3.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AOsaka_Dotonbori_Ebisu_Bridge.jpg",
+  "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACQAwCdASoWAA8APulep00pJSOiMAgBIB0JQBdgAapU5e3ducOAAP70L549Ks0cmq95/nXLaKCtoiswjln2HFLrB3Yzme1ZU30exzjwiLvfUMw2DWAkHmZiyQAAAA=="
+ },
+ "kyoto": {
+  "legenda": "O tunel de torii de Fushimi Inari",
+  "autor": "Luka Peternel",
+  "lic": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AFushimi-Inari-Shrine-Senbon-Torii-2016-Luka-Peternel.jpg",
+  "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQBACdASoWAA8APuliq04pJaQiMAgBIB0JbACdMoRwN6AAYR/ThqO6JDy0oAAA/tkeheljcY8zzYfJhQTrafTH16+0iwtzrC5IURl/XxNIdqYMWRQgciLe800nE2aAAAA="
+ },
+ "tokyo": {
+  "legenda": "O cruzamento de Shibuya na hora azul",
+  "autor": "Benh LIEU SONG (Flickr)",
+  "lic": "CC BY-SA 2.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3ATokyo_Shibuya_Scramble_Crossing_2018-10-09.jpg",
+  "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoWAA8APulgqk2pJaQiMAgBIB0JagCdMoAC+8edjD/+elYvAAD+pp35Ogw7BM+snEi09T6cmtDti4SdaVn8d4c8/Ezw2E60K0QaT6/mlbjLMA6kF0irApWhvIAAAA=="
+ }
+};
+
+/* ---------- meta das cidades ---------- */
+const CID = {
+  osaka:{kanji:"大阪",nome:"Osaka",lon:135.50,lat:34.69},
+  kyoto:{kanji:"京都",nome:"Kyoto",lon:135.77,lat:35.01},
+  fuji: {kanji:"富士",nome:"Kawaguchiko",lon:138.76,lat:35.51},
+  tokyo:{kanji:"東京",nome:"Tokyo",lon:139.77,lat:35.68}
+};
+const REDUZIR = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const el = (id)=>document.getElementById(id);
+const esc = (s)=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nf  = (n,d=0)=>Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const dm  = (iso)=>iso.slice(8,10)+"/"+iso.slice(5,7);
+
+/* ================================================================
+   1. FOTOS — parede de fundo com transicao entre cidades
+   ================================================================ */
+const CACHE = {};
+function carregarFoto(k){
+  if(CACHE[k]) return CACHE[k];
+  return CACHE[k] = new Promise(function(res){
+    const im = new Image();
+    im.onload = im.onerror = res;
+    im.src = "fotos/" + k + "-lg.webp";
+  });
+}
+
+let trocarParede = function(){};
+function montarParede(){
+  const w = el("wall");
+  const cam = [document.createElement("i"), document.createElement("i")];
+  cam.forEach(function(n){ w.appendChild(n); });
+  let ativo = 0, atual = null;
+
+  trocarParede = function(k){
+    if(!FOTOS[k] || k === atual) return;
+    atual = k;
+    const prox = cam[1-ativo];
+    prox.style.backgroundImage = "url(" + FOTOS[k].lqip + ")";
+    carregarFoto(k).then(function(){
+      if(atual === k) prox.style.backgroundImage = "url(fotos/" + k + "-lg.webp)";
+    });
+    prox.classList.add("on");
+    cam[ativo].classList.remove("on");
+    ativo = 1 - ativo;
+  };
+  trocarParede("hero");
+
+  // Manda na foto o ultimo alvo cujo topo ja cruzou a linha de referencia.
+  // Com "o primeiro visivel" a secao que esta saindo ganhava da que esta entrando
+  // e o fundo ficava um passo atrasado.
+  const alvos = [].slice.call(document.querySelectorAll("[data-foto]"));
+  function escolher(){
+    const linha = innerHeight * .45;
+    let escolhido = alvos[0];
+    for(let i = 0; i < alvos.length; i++){
+      if(alvos[i].getBoundingClientRect().top <= linha) escolhido = alvos[i]; else break;
+    }
+    if(escolhido) trocarParede(escolhido.dataset.foto);
+  }
+  // Sem latch: escolher() e so leitura de 24 retangulos, barato o bastante para rodar
+  // direto no scroll. Um throttle com flag booleana ja congelou a parede quando o
+  // requestAnimationFrame nao chegou e a flag ficou presa em true.
+  addEventListener("scroll", escolher, {passive:true});
+  addEventListener("resize", escolher, {passive:true});
+  addEventListener("load", escolher);
+  // segundo gatilho, independente de evento de scroll
+  const io = new IntersectionObserver(escolher, {rootMargin:"-45% 0px -45% 0px"});
+  alvos.forEach(function(a){ io.observe(a); });
+  escolher();
+
+  // o resto so depois que a pagina assentar, para nao competir com o primeiro paint
+  addEventListener("load", function(){
+    setTimeout(function(){ Object.keys(FOTOS).forEach(carregarFoto); }, 1200);
+  });
+}
+
+/* ================================================================
+   2. HERO — foto + petalas de sakura
+   ================================================================ */
+function iniciarHero(){
+  el("heroFoto").style.backgroundImage =
+    "url(" + FOTOS.hero.lqip + ")";
+  carregarFoto("hero").then(function(){
+    el("heroFoto").style.backgroundImage = "url(fotos/hero-lg.webp)";
+  });
+
+  const cv = el("heroCv"), x = cv.getContext("2d");
+  let W = 0, H = 0, petalas = [];
+  function nova(inicio){
+    return {x:Math.random()*W, y:inicio?Math.random()*H:-14, r:2.4+Math.random()*4.2,
+      vy:.22+Math.random()*.55, vx:-.32+Math.random()*.64, a:Math.random()*6.3,
+      va:(Math.random()-.5)*.05, o:.30+Math.random()*.45};
+  }
+  function montar(){
+    const dpr = Math.min(devicePixelRatio||1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W*dpr; cv.height = H*dpr; x.setTransform(dpr,0,0,dpr,0,0);
+    petalas = Array.from({length: REDUZIR ? 0 : 30}, function(){ return nova(true); });
+  }
+  function quadro(){
+    x.clearRect(0,0,W,H);
+    for(const p of petalas){
+      p.y += p.vy; p.x += p.vx + Math.sin(p.y*.014)*.5; p.a += p.va;
+      if(p.y > H+14) Object.assign(p, nova(false));
+      x.save(); x.translate(p.x,p.y); x.rotate(p.a); x.globalAlpha = p.o;
+      x.fillStyle = "#FBD8E0"; x.beginPath();
+      x.ellipse(0,0,p.r,p.r*.62,0,0,7); x.fill(); x.restore();
+    }
+    requestAnimationFrame(quadro);
+  }
+  montar();
+  addEventListener("resize", function(){
+    clearTimeout(iniciarHero._t);
+    iniciarHero._t = setTimeout(montar, 220);
+  }, {passive:true});
+  if(!REDUZIR) requestAnimationFrame(quadro);
+}
+
+function montarCreditos(){
+  el("creditos").innerHTML = "Fotos do Wikimedia Commons, reduzidas e recomprimidas. " +
+    Object.keys(FOTOS).map(function(k){
+      const f = FOTOS[k];
+      return '<a href="' + esc(f.pagina) + '" target="_blank" rel="noopener">' + esc(f.legenda) +
+             '</a>, ' + esc(f.autor) + ' (<a href="' + esc(f.licurl) +
+             '" target="_blank" rel="noopener">' + esc(f.lic) + '</a>)';
+    }).join(" · ");
+}
+
+/* ================================================================
+   3. MAPA — projeção, costa e rota
+   ================================================================ */
+const VB={w:360,h:250};
+const proj=(lon,lat)=>[(lon-134.8)*57.89+15, 235-(lat-33.4)*76];
+const COSTA=[[134.60,34.78],[135.00,34.66],[135.20,34.69],[135.42,34.73],[135.33,34.45],
+ [135.17,34.23],[135.32,33.95],[135.76,33.45],[136.02,33.88],[136.25,34.10],[136.55,34.22],
+ [136.88,34.30],[136.76,34.80],[136.95,34.62],[137.30,34.62],[137.70,34.70],[138.23,34.60],
+ [138.40,34.90],[138.52,35.08],[138.75,34.92],[138.86,34.60],[139.10,34.92],[139.18,35.28],
+ [139.46,35.32],[139.66,35.16],[139.80,35.44],[139.88,35.64],[139.94,35.36],[139.92,34.94],
+ [140.38,35.44],[140.62,35.80],[140.78,36.40],[140.78,37.60],[134.60,37.60]];
+const PARADAS=[
+ {n:"KIX",        s:"pouso 16/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
+ {n:"Osaka",      s:"4 noites",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
+ {n:"Kyoto",      s:"3 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
+ {n:"Kawaguchiko",s:"1 noite",     lon:138.76,lat:35.51, c:"fuji",  dx:0,  dy:-20,an:"middle"},
+ {n:"Tokyo",      s:"7 noites",    lon:139.77,lat:35.68, c:"tokyo", dx:10, dy:2,  an:"start"}];
+const MISHIMA=[138.91,35.13];
+
+/* Catmull-Rom -> bezier: costa lisa a partir de poucos pontos */
+function suave(pts){
+  const f=(v)=>v.toFixed(1);
+  let d="M"+f(pts[0][0])+","+f(pts[0][1]);
+  for(let i=0;i<pts.length-1;i++){
+    const p0=pts[i-1]||pts[i], p1=pts[i], p2=pts[i+1], p3=pts[i+2]||p2;
+    d+="C"+f(p1[0]+(p2[0]-p0[0])/10)+","+f(p1[1]+(p2[1]-p0[1])/10)+" "+
+         f(p2[0]-(p3[0]-p1[0])/10)+","+f(p2[1]-(p3[1]-p1[1])/10)+" "+f(p2[0])+","+f(p2[1]);
+  }
+  return d+"Z";
+}
+
+function svgMapa(mini){
+  const p=PARADAS.map(o=>proj(o.lon,o.lat));
+  const mi=proj(MISHIMA[0],MISHIMA[1]);
+  const costa=suave(COSTA.map(c=>proj(c[0],c[1])));
+  const pernas=[
+    {d:`M${p[0]}L${p[1]}`,        c:"osaka"},
+    {d:`M${p[1]}L${p[2]}`,        c:"kyoto"},
+    {d:`M${p[2]}L${mi}L${p[3]}`,  c:"fuji"},
+    {d:`M${p[3]}L${p[4]}`,        c:"tokyo"},
+    {d:`M${p[4]}Q${((p[4][0]+p[1][0])/2).toFixed(1)},${(Math.max(p[4][1],p[1][1])+48).toFixed(1)} ${p[1]}`, c:"osaka"}];
+  const linhas=pernas.map((L,i)=>
+    `<path class="rota-bg" d="${L.d}"/><path class="rota-fg rota-anim" data-i="${i}" d="${L.d}" stroke="var(--c-${L.c})"/>`).join("");
+  const pinos=PARADAS.map((o,i)=>{
+    const [X,Y]=p[i], r=mini?3.4:5;
+    let g=`<circle cx="${X.toFixed(1)}" cy="${Y.toFixed(1)}" r="${r}" fill="var(--surface)" stroke="var(--c-${o.c})" stroke-width="${mini?2:2.8}"/>`;
+    if(!mini) g+=`<text class="est-lbl" x="${(X+o.dx).toFixed(1)}" y="${(Y+o.dy).toFixed(1)}" text-anchor="${o.an}">${o.n}</text>`+
+                 `<text class="est-sub" x="${(X+o.dx).toFixed(1)}" y="${(Y+o.dy+9.5).toFixed(1)}" text-anchor="${o.an}">${o.s}</text>`;
+    return g;
+  }).join("");
+  const ponto=mini?`<circle id="tlPin" r="5" cx="${p[1][0].toFixed(1)}" cy="${p[1][1].toFixed(1)}" fill="#fff" stroke="var(--c-osaka)" stroke-width="2.6"/>`:"";
+  return `<svg viewBox="0 0 ${VB.w} ${VB.h}" role="img" aria-label="Mapa da rota: KIX, Osaka, Kyoto, Kawaguchiko e Tokyo, com a volta a Osaka">
+    <path class="coast" d="${costa}"/>${linhas}${pinos}${ponto}</svg>`;
+}
+
+function montarMapa(){
+  el("mapaSlot").innerHTML=svgMapa(false);
+  el("tlMap").innerHTML=svgMapa(true);
+  el("mapaLeg").innerHTML=Object.keys(CID).map(k=>
+    `<span class="leg c-${k}"><s></s>${CID[k].nome} <span style="color:var(--ink-3);font-weight:600">${CID[k].kanji}</span></span>`).join("");
+
+  // pernas: os trechos entre bases
+  const legs=[];
+  DADOS.dias.forEach(d=>d.atividades.forEach(a=>{
+    const ehPerna=/^(TRANSFER|SHINKANSEN)/i.test(a.nome) && d.transicao;
+    if(ehPerna || /^KIX →/.test(a.nome)) legs.push({d,a});
+  }));
+  el("mapaPernas").innerHTML='<div class="pernas">'+legs.map(({d,a})=>{
+    const dist=[a.km?nf(a.km,a.km%1?1:0)+" km":"", a.min?nf(a.min)+" min":""].filter(Boolean).join(" · ");
+    return `<div class="perna c-${d.cidade}"><s></s>
+      <span class="nm">${esc(a.nome.replace(/^TRANSFER:?\s*/i,""))}<u>${esc(a.como)}</u></span>
+      <span class="dd">${esc(dist)}<b>${a.transp?"¥"+nf(a.transp):"grátis"}</b></span></div>`;
+  }).join("")+'</div>';
+
+  const linhas=[...el("mapaSlot").querySelectorAll(".rota-anim")];
+  const comps=linhas.map(l=>l.getTotalLength());
+  const total=comps.reduce((a,b)=>a+b,0);
+  linhas.forEach((l,i)=>{ l.style.strokeDasharray=comps[i]; l.style.strokeDashoffset=comps[i]; });
+  // Ancora no proprio SVG, nao na secao: a secao cresceu com a tabela de pernas e
+  // o traco terminava antes de o mapa aparecer. Agora o desenho acontece na janela
+  // em que o mapa esta inteiro na tela.
+  const alvo=el("mapaSlot"); let pedido=false;
+  function pintar(){
+    pedido=false;
+    const r=alvo.getBoundingClientRect(), vh=innerHeight||800;
+    const ini=Math.max(vh-r.height, vh*.30);   // topo do mapa quando ele acaba de caber inteiro
+    const faixa=Math.max(ini-vh*.18, vh*.28);  // nunca curta demais em tela baixa
+    const t=Math.max(0,Math.min(1,(ini-r.top)/faixa));
+    let feito=t*total;
+    linhas.forEach((l,i)=>{
+      const usado=Math.max(0,Math.min(comps[i],feito));
+      l.style.strokeDashoffset=comps[i]-usado; feito-=comps[i];
+    });
+  }
+  const agenda=()=>{ if(!pedido){pedido=true;requestAnimationFrame(pintar);} };
+  addEventListener("scroll",agenda,{passive:true});
+  addEventListener("resize",agenda,{passive:true});
+  addEventListener("load",agenda);
+  pintar();
+}
+
+/* ================================================================
+   4. NÚMEROS
+   ================================================================ */
+function montarNums(){
+  const r=(lbl)=>{const o=DADOS.resumo.find(x=>x.label.toLowerCase().indexOf(lbl)===0);return o?o.valor:0;};
+  const yen=r("total em ienes"), reais=r("total em reais");
+  const cards=[
+    {b:"16",u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
+    {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
+    {b:Math.round(r("caminhada total")/60)+"h",u:"a pé, no total",i:"Média de ~1h por dia empurrando carrinho"},
+    {b:"82",u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
+    {b:"¥"+nf(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
+    {b:"¥"+nf(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
+    {b:"¥"+nf(yen),u:"total por adulto",i:"Transporte + ingressos, sem comida"},
+    {b:"R$ "+nf(reais),u:"o mesmo em reais",i:"Some ~R$ 3.168 de comida no cenário médio"}
+  ];
+  el("nums").innerHTML=cards.map(c=>
+    `<div class="num"><b>${esc(c.b)}</b><u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
+}
+
+/* ================================================================
+   5. TIMELAPSE
+   ================================================================ */
+function montarTimelapse(){
+  const dias=DADOS.dias, art=el("tlArt"), range=el("tlRange"), play=el("tlPlay"), tl=el("tl");
+  let i=0, rodando=null;
+  const pinPos={};
+  PARADAS.forEach(o=>{ pinPos[o.c]=proj(o.lon,o.lat); });
+  function ir(k){
+    i=k; const d=dias[k], m=CID[d.cidade], t=d.total||{};
+    tl.className="tl c-"+d.cidade;
+    art.style.backgroundImage=`url(fotos/${d.cidade}-lg.webp)`;
+    tl.dataset.foto=d.cidade; trocarParede(d.cidade);
+    el("tlCity").firstChild.nodeValue=m.kanji;
+    el("tlBase").textContent=d.base;
+    el("tlNum").textContent=String(k+1).padStart(2,"0");
+    el("tlDate").textContent=dm(d.data)+" · "+d.semana;
+    el("tlKm").textContent=nf(t.km||0, (t.km||0)%1?1:0);
+    el("tlMin").textContent=nf(t.min||0);
+    el("tlPe").textContent=nf(t.pe||0);
+    el("tlYen").textContent=nf((t.transp||0)+(t.ingresso||0));
+    const pin=el("tlPin");
+    if(pin){ const p=pinPos[d.cidade];
+      pin.setAttribute("cx",p[0].toFixed(1)); pin.setAttribute("cy",p[1].toFixed(1));
+      pin.setAttribute("stroke",`var(--c-${d.cidade})`);
+      pin.style.transition=REDUZIR?"none":"cx .5s cubic-bezier(.4,0,.2,1),cy .5s cubic-bezier(.4,0,.2,1)"; }
+    el("tlList").innerHTML=d.atividades.slice(0,5).map((a,n)=>
+      `<li style="animation-delay:${n*55}ms"><s>${esc(a.periodo)}</s><span>${esc(a.nome)}</span></li>`).join("");
+    range.value=k; range.style.setProperty("--pct",(k/15*100)+"%");
+  }
+  range.addEventListener("input",()=>{ parar(); ir(+range.value); });
+  function parar(){ if(rodando){clearInterval(rodando);rodando=null;play.textContent="▶";
+    play.setAttribute("aria-label","Reproduzir o timelapse");} }
+  play.addEventListener("click",()=>{
+    if(rodando) return parar();
+    if(i>=15) ir(0);
+    play.textContent="❚❚"; play.setAttribute("aria-label","Pausar o timelapse");
+    rodando=setInterval(()=>{ if(i>=15) return parar(); ir(i+1); },1500);
+  });
+  ir(0);
+}
+
+/* ================================================================
+   6. ROTEIRO — trilho + filtros
+   ================================================================ */
+const FILTROS=[
+ {id:"tudo",   lbl:"Tudo",           f:()=>true},
+ {id:"gratis", lbl:"Grátis",         f:a=>!a.ingresso},
+ {id:"ok",     lbl:"Carrinho OK",    f:a=>a.bebe.indexOf("CARRINHO OK")>=0},
+ {id:"canguru",lbl:"Exige canguru",  f:a=>a.bebe.indexOf("CANGURU")>=0},
+ {id:"comida", lbl:"Comida",         f:a=>/jantar|almo|caf[eé]|mercado|ichiba|dotonbori|yokocho|kushikatsu|konbini|toyosu|hoppy|pontocho|onsen/i.test(a.nome+a.obs)},
+ {id:"compras",lbl:"Compras",        f:a=>/compras|den den|senba|shinsaibashi|akihabara|ameyoko|takeshita|kiddy|nakamise|solamachi|tax-free/i.test(a.nome+a.obs)},
+ {id:"vista",  lbl:"Vista do alto",  f:a=>/torre|sky|observat|mirante|roda-gigante|telef[eé]rico|deck|panor/i.test(a.nome+a.obs)},
+ {id:"templo", lbl:"Templos",        f:a=>/templo|santu[aá]rio|jinja|taisha|torii|pagode|-ji\b|-dera/i.test(a.nome+a.obs)}
+];
+const classeBebe=(b)=> b.indexOf("CARRINHO OK")>=0?"ok" : b.indexOf("CANGURU")>=0?"can" : b.indexOf("ESFOR")>=0?"esf" : "";
+
+function montarTrilho(){
+  const html=DADOS.dias.map((d,k)=>{
+    const m=CID[d.cidade], t=d.total||{};
+    const pers=[]; d.atividades.forEach(a=>{ if(pers.indexOf(a.periodo)<0) pers.push(a.periodo); });
+    const blocos=pers.map(p=>{
+      const itens=d.atividades.map((a,ai)=>({a,ai})).filter(o=>o.a.periodo===p).map(({a,ai})=>{
+        const cb=classeBebe(a.bebe), uid=`a${k}-${ai}`;
+        const meta=[];
+        if(a.km)      meta.push(`<span>${nf(a.km,a.km%1?1:0)} km</span>`);
+        if(a.min)     meta.push(`<span>${nf(a.min)} min</span>`);
+        if(a.pe)      meta.push(`<span>${nf(a.pe)} min a pé</span>`);
+        meta.push(a.ingresso?`<s>¥${nf(a.ingresso)}</s>`:`<s>grátis</s>`);
+        if(a.duracao && a.duracao!=="—") meta.push(`<span>${esc(a.duracao)}</span>`);
+        const det=[];
+        if(a.como)    det.push(["Como ir",esc(a.como)]);
+        if(a.de)      det.push(["Saindo de",esc(a.de)]);
+        if(a.horario && a.horario!=="—") det.push(["Horário",esc(a.horario)]);
+        if(a.transp)  det.push(["Transporte",`¥${nf(a.transp)}`]);
+        if(a.terreno && a.terreno!=="—") det.push(["Terreno",esc(a.terreno)]);
+        if(a.obs && a.obs!=="—")         det.push(["Nota",esc(a.obs)]);
+        return `<div class="ativ" data-ai="${ai}">
+          <button class="ativ-top" aria-expanded="false" aria-controls="${uid}">
+            <span class="ativ-txt">
+              <h4>${esc(a.nome)}</h4>
+              <span class="ativ-meta">${meta.join("")||""}</span>
+              ${cb?`<span class="bebe ${cb}">${esc(a.bebe)}</span>`:""}
+            </span>
+            <svg class="caret" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="ativ-det" id="${uid}">${det.map(r=>`<div class="det-row"><b>${r[0]}</b><span>${r[1]}</span></div>`).join("")}</div>
+        </div>`;
+      }).join("");
+      return `<div class="per"><p class="per-lbl">${esc(p)}</p>${itens}</div>`;
+    }).join("");
+    const stats=[];
+    if(t.km)      stats.push(`<span><b>${nf(t.km,t.km%1?1:0)}</b> km</span>`);
+    if(t.min)     stats.push(`<span><b>${nf(t.min)}</b> min transp.</span>`);
+    if(t.pe)      stats.push(`<span><b>${nf(t.pe)}</b> min a pé</span>`);
+    stats.push(`<span><b>¥${nf((t.transp||0)+(t.ingresso||0))}</b> no dia</span>`);
+    return `<article class="dia c-${d.cidade}" id="dia${k+1}" data-foto="${d.cidade}">
+      <div class="dia-mark">${String(k+1).padStart(2,"0")}</div>
+      <div class="dia-card">
+        <div class="dia-art" data-cid="${d.cidade}"><b>${m.kanji}</b><i>${dm(d.data)} · ${esc(d.semana)}</i></div>
+        <div class="dia-head">
+          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de 16 · dorme em ${esc(m.nome)}</p></div>
+          ${d.transicao?`<span class="badge-tr">troca de base</span>`:""}
+        </div>
+        <div class="dia-stats">${stats.join("")}</div>
+        ${MAPAS.indexOf(k+1)>=0?`<a class="dia-mapa" href="dia-${String(k+1).padStart(2,"0")}.html">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s6-5.2 6-9.4A6 6 0 0 0 4 8.6C4 12.8 10 18 10 18Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="10" cy="8.6" r="2.1" fill="currentColor"/></svg>
+          <span>Ver o mapa deste dia<u>rota, horários, custos e alternativas</u></span>
+          <i>›</i></a>`:""}
+        ${blocos}
+        ${t.nota?`<div class="dia-nota">${esc(t.nota.replace(/R\$ 0+(\d)/,"R$ $1"))}</div>`:""}
+      </div>
+    </article>`;
+  }).join("");
+  el("trilho").innerHTML=html;
+  el("trilho").querySelectorAll(".dia-art").forEach(n=>{
+    n.style.backgroundImage=`url(fotos/${n.dataset.cid}-sm.webp)`;
+  });
+  el("trilho").addEventListener("click",(ev)=>{
+    const b=ev.target.closest(".ativ-top"); if(!b) return;
+    const aberto=b.getAttribute("aria-expanded")==="true";
+    b.setAttribute("aria-expanded",String(!aberto));
+    b.parentElement.querySelector(".ativ-det").classList.toggle("on",!aberto);
+  });
+
+  el("filtros").innerHTML=FILTROS.map((f,i)=>
+    `<button class="chip" data-f="${f.id}" aria-pressed="${i===0}">${f.lbl}</button>`).join("");
+  el("filtros").addEventListener("click",(ev)=>{
+    const b=ev.target.closest(".chip"); if(!b) return;
+    el("filtros").querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",String(c===b)));
+    aplicar(FILTROS.find(f=>f.id===b.dataset.f));
+  });
+  function aplicar(filtro){
+    let visiveis=0;
+    DADOS.dias.forEach((d,k)=>{
+      const art=el("dia"+(k+1)); let n=0;
+      d.atividades.forEach((a,ai)=>{
+        const ok=filtro.f(a); if(ok) n++;
+        const no=art.querySelector(`.ativ[data-ai="${ai}"]`);
+        if(no) no.classList.toggle("oculta",!ok);
+      });
+      art.querySelectorAll(".per").forEach(p=>{
+        p.style.display=[...p.querySelectorAll(".ativ")].some(x=>!x.classList.contains("oculta"))?"":"none";
+      });
+      art.classList.toggle("oculto",n===0); if(n) visiveis++;
+    });
+    el("vazio").hidden=visiveis>0;
+  }
+}
+
+/* ================================================================
+   7. CARROSSÉIS CURADOS
+   ================================================================ */
+const COMER=[
+ {c:"osaka",d:"18/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
+ {c:"osaka",d:"17 e 30/03",n:"Dotonbori",b:"Namba",t:"Takoyaki, okonomiyaki e kushikatsu à beira do canal, sob o letreiro do Glico. A multidão pesa das 19h às 21h.",g:"24h · cruzeiro ¥1.200"},
+ {c:"osaka",d:"17/03",n:"Shinsekai",b:"Naniwa",t:"Bairro retrô dos anos 1950 aos pés da Tsūtenkaku, e a capital do kushikatsu.",g:"10:00–20:00"},
+ {c:"osaka",d:"18/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Barata e senta os 13 sem reserva.",g:"11:00–20:00 · fraldário no piso 2"},
+ {c:"osaka",d:"17/03",n:"Hozenji Yokocho",b:"Namba",t:"Beco de pedra ao lado do Dotonbori, com o templo coberto de musgo. O contraponto silencioso ao neon.",g:"24h"},
+ {c:"kyoto",d:"19 e 21/03",n:"Pontocho",b:"Gion",t:"Beco de 2 m de largura à beira do rio Kamo, com restaurantes dos dois lados. Carrinho não entra.",g:"noite · leve o canguru"},
+ {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. O único dia em que a comida já está paga.",g:"La Vista Fujikawaguchiko"},
+ {c:"tokyo",d:"25/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
+ {c:"tokyo",d:"24/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
+ {c:"tokyo",d:"24/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
+ {c:"tokyo",d:"27/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
+];
+const COMPRAS=[
+ {c:"osaka",d:"17/03",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
+ {c:"osaka",d:"19 e 31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
+ {c:"osaka",d:"30 e 31/03",n:"Shinsaibashi-suji",b:"Shinsaibashi",t:"Galeria coberta de 600 m que emenda direto no Dotonbori. Funciona com chuva e concentra quase tudo.",g:"11:00–21:00 · última chance de tax-free"},
+ {c:"tokyo",d:"24/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
+ {c:"tokyo",d:"28/03",n:"Akihabara",b:"Akihabara",t:"Eletrônicos, anime, games e lojas de vários andares. O dia inteiro cabe aqui, se deixarem.",g:"domingo · Chuo-dori vira calçadão à tarde"},
+ {c:"tokyo",d:"28/03",n:"Ameyoko",b:"Ueno",t:"Feira de rua sob a linha do trem: comida, tênis, cosmético e barulho. O preço mais baixo de Tokyo.",g:"colado no Ueno Park"},
+ {c:"tokyo",d:"29/03",n:"Takeshita-dori",b:"Harajuku",t:"350 m por 3 m de largura de puro kawaii: crepes, purikura e lojas alternativas. Segurem as crianças pela mão.",g:"11:00–20:00 · carrinho não entra"},
+ {c:"tokyo",d:"29/03",n:"Omotesando + Kiddy Land",b:"Omotesando",t:"A avenida arborizada das grifes, e cinco andares de brinquedo no Kiddy Land. Calçada larga, com elevador.",g:"11:00–21:00"}
+];
+const PLANOB=[
+ {c:"osaka",d:"qualquer dia",n:"Chuva em Osaka",b:"tudo coberto",t:"Kaiyukan em espiral por 8 andares, Umeda Sky pelo elevador interno, Senba Center no subsolo, Kuromon coberto e 600 m de galeria em Shinsaibashi. Dá para passar o dia sem tomar chuva.",g:"nenhum deles depende do tempo"},
+ {c:"osaka",d:"18/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
+ {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Kyoto é a única base onde o transporte principal é ônibus urbano, com entrada pela porta traseira e carrinho dobrado em pé. Com 3 bebês em fim de semana de feriado, considerem táxi nos trechos curtos ou dividir o grupo.",g:"feriadão de 20 a 22/03"},
+ {c:"fuji", d:"22 e 23/03",n:"Fuji na nuvem",b:"Kawaguchiko",t:"Oishi Park vale pela margem do lago mesmo sem o topo à vista. O onsen e o jantar do ryokan seguram o dia, e o teleférico Kachi-Kachi vira saída antecipada para Tokyo.",g:"o topo aparece em poucos dias do mês"},
+ {c:"tokyo",d:"qualquer dia",n:"Chuva em Tokyo",b:"tudo coberto",t:"teamLab PLANETS, Miraikan, Solamachi, o observatório gratuito do Governo Metropolitano e os andares de Akihabara. Só o Skytree perde a graça com o céu fechado.",g:"o observatório abre até 22:00"},
+ {c:"tokyo",d:"27/03",n:"Troca do dia de Shinjuku",b:"alternativa mapeada",t:"Se Shinjuku não empolgar, a troca já prevista é Palácio Imperial + Koishikawa Korakuen, colados um no outro e a 20 min de Ojima.",g:"¥300 · da lista original"},
+ {c:"tokyo",d:"29/03",n:"Shibuya Sky esgotado",b:"Shibuya",t:"O horário do pôr do sol some primeiro, e em 29/03 o sol se põe ~17:55. Sem ele, o observatório do Governo Metropolitano é grátis e tem elevador direto ao 45º andar.",g:"grátis · Shinjuku"},
+ {c:"osaka",d:"31/03",n:"A conexão de 2h em Sydney",b:"o risco da volta",t:"É a mais apertada da viagem. Como o bilhete é único, a LATAM reacomoda em caso de atraso — mas para não depender disso, estejam no KIX às 18:25, saindo de Namba às 17:20.",g:"crítico"}
+];
+function montarCarro(alvo,itens){
+  el(alvo).innerHTML=itens.map(o=>`
+    <article class="card c-${o.c}">
+      <div class="card-art" data-cid="${o.c}"><s>${esc(o.b)}</s><u>${esc(o.d)}</u></div>
+      <div class="card-in"><h4>${esc(o.n)}</h4><p>${esc(o.t)}</p><p class="tag">${esc(o.g)}</p></div>
+    </article>`).join("");
+  el(alvo).querySelectorAll(".card-art").forEach(n=>{
+    n.style.backgroundImage=`url(fotos/${n.dataset.cid}-sm.webp)`;
+  });
+}
+
+/* ================================================================
+   8. NOTAS, VOOS, HOSPEDAGEM
+   ================================================================ */
+function tipoNota(t){
+  if(/^PENDENTE/.test(t)) return ["pen","pendente"];
+  if(/^ATEN[ÇC]/.test(t)) return ["ale","atenção"];
+  if(/^OPORTUNIDADE/.test(t)) return ["inf","oportunidade"];
+  return ["inf","nota"];
+}
+function montarNotas(){
+  el("notas").innerHTML=DADOS.notas.map((n,i)=>{
+    const [k,lbl]=tipoNota(n.titulo);
+    const cor=["osaka","kyoto","fuji","tokyo"][i%4];
+    return `<div class="acc c-${cor}">
+      <button class="acc-btn" aria-expanded="false" aria-controls="n${i}">
+        <s>${String(n.n).padStart(2,"0")}</s><h4>${esc(n.titulo)}</h4>
+        <svg class="caret" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="acc-body" id="n${i}"><span class="kind ${k}">${lbl}</span><p>${esc(n.texto)}</p></div>
+    </div>`;
+  }).join("");
+  el("notas").addEventListener("click",(ev)=>{
+    const b=ev.target.closest(".acc-btn"); if(!b) return;
+    const aberto=b.getAttribute("aria-expanded")==="true";
+    b.setAttribute("aria-expanded",String(!aberto));
+    b.parentElement.querySelector(".acc-body").classList.toggle("on",!aberto);
+  });
+}
+function curto(s){ return s.replace(/\s*\([^)]*\)/g,"").trim(); }
+function montarVoos(){
+  el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr>
+    <td class="n">${esc(v.numero)}</td>
+    <td>${esc(curto(v.origem))} <span style="color:var(--ink-3)">→</span> ${esc(curto(v.destino))}</td>
+    <td class="h">${dm(v.saidaData)}<br>${esc(v.saidaHora)}</td>
+    <td class="h">${dm(v.chegadaData)}<br>${esc(v.chegadaHora)}</td>
+    <td class="h">${esc(v.duracao)}</td>
+    <td>${esc(v.conexao)}</td></tr>`).join("");
+  el("voosNotas").innerHTML=DADOS.voosNotas.filter(n=>n.texto).map(n=>{
+    const crit=/⚠|pendente/i.test(n.titulo);
+    return `<div class="callout ${crit?"crit":"c-fuji"}" style="margin-bottom:9px">
+      <s>${crit?"⚠️":"✈️"}</s><div><h4>${esc(n.titulo.replace("⚠ ",""))}</h4><p>${esc(n.texto)}</p></div></div>`;
+  }).join("");
+}
+function montarHosp(){
+  const cidCor=(c)=>/quioto|kyoto/i.test(c)?"kyoto":/hakone|fuji|kawagu/i.test(c)?"fuji":/tokyo|tóquio/i.test(c)?"tokyo":"osaka";
+  function pinta(set){
+    const lista=DADOS.hospedagem[set];
+    el("hospLista").innerHTML=lista.map(h=>`
+      <div class="hosp-item c-${cidCor(h.cidade)}">
+        <s></s>
+        <div class="tx">
+          <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
+          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p>
+        </div>
+        <div class="vl">${h.total?"R$ "+nf(h.total):"—"}<u>grupo</u></div>
+      </div>`).join("")
+      + `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
+         <div class="tx"><h4>Total do conjunto ${set.toUpperCase()}</h4>
+         <p class="mt">${lista.length} reservas lançadas</p></div>
+         <div class="vl">R$ ${nf(lista.reduce((a,b)=>a+(b.total||0),0))}<u>grupo</u></div></div>`;
+  }
+  el("hospToggle").addEventListener("click",(ev)=>{
+    const b=ev.target.closest("button"); if(!b) return;
+    el("hospToggle").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+    pinta(b.dataset.set);
+  });
+  pinta("a");
+}
+
+/* ================================================================
+   9. NAV, TEMA, CONTAGEM
+   ================================================================ */
+function montarNav(){
+  const links=[...document.querySelectorAll(".nav a")];
+  const secs=links.map(a=>el(a.getAttribute("href").slice(1))).filter(Boolean);
+  const vistos=new Set();
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{ if(e.isIntersecting) vistos.add(e.target); else vistos.delete(e.target); });
+    const atual=secs.find(s=>vistos.has(s));   // a primeira em ordem de documento, nao a ultima a disparar
+    if(!atual) return;
+    links.forEach(a=>a.setAttribute("aria-current",String(a.getAttribute("href")==="#"+atual.id)));
+    const ativo=links.find(a=>a.getAttribute("aria-current")==="true");
+    if(ativo) ativo.scrollIntoView({block:"nearest",inline:"nearest",behavior:REDUZIR?"auto":"smooth"});
+  },{rootMargin:"-45% 0px -50% 0px"});
+  secs.forEach(s=>io.observe(s));
+}
+function montarTema(){
+  const b=el("themeBtn");
+  let salvo=null; try{ salvo=localStorage.getItem("jp27tema"); }catch(e){}
+  if(salvo) document.documentElement.setAttribute("data-theme",salvo);
+  b.addEventListener("click",()=>{
+    const escuro=matchMedia("(prefers-color-scheme:dark)").matches;
+    const atual=document.documentElement.getAttribute("data-theme") || (escuro?"dark":"light");
+    const novo=atual==="dark"?"light":"dark";
+    document.documentElement.setAttribute("data-theme",novo);
+    try{ localStorage.setItem("jp27tema",novo); }catch(e){}
+  });
+}
+function montarContagem(){
+  const alvo=new Date("2027-03-14T10:40:00-03:00");
+  const dias=Math.max(0,Math.ceil((alvo-new Date())/864e5));
+  el("cd").textContent=nf(dias);
+}
+
+/* ---------- boot ---------- */
+iniciarHero();
+montarNums();
+montarMapa();
+montarTimelapse();
+montarTrilho();
+montarCarro("comerCarro",COMER);
+montarCarro("comprasCarro",COMPRAS);
+montarCarro("planobCarro",PLANOB);
+montarNotas();
+montarVoos();
+montarHosp();
+montarParede();   // depois do DOM montado: observa tambem os 16 dias
+montarNav();
+montarTema();
+montarContagem();
+montarCreditos();
+</script>
+</body>
+</html>

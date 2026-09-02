@@ -1,0 +1,472 @@
+<title>__TITULO__</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+__TOKENS__
+
+/* ============ LAYOUT ============ */
+body{padding-bottom:0}
+.topo{position:sticky;top:0;z-index:900;display:flex;align-items:center;gap:12px;
+  padding:10px var(--pad);background:var(--panel);backdrop-filter:blur(16px) saturate(1.2);
+  -webkit-backdrop-filter:blur(16px) saturate(1.2);border-bottom:1px solid var(--line)}
+.topo .volta{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:750;
+  text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:99px;padding:6px 12px}
+.topo .volta:hover{color:var(--t);border-color:var(--c)}
+.topo .tit{flex:1;min-width:0}
+.topo .tit b{display:block;font-size:.94rem;font-weight:800;letter-spacing:-.02em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topo .tit u{display:block;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);margin-top:2px}
+.themeBtn{flex:none;width:34px;height:34px;border-radius:99px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink-2);font-size:.95rem;cursor:pointer;line-height:1}
+
+.palco{display:grid;gap:0}
+#map{height:52svh;min-height:300px;background:var(--sunken);z-index:1}
+@media(min-width:1000px){
+  .palco{grid-template-columns:minmax(0,1fr) 430px;height:calc(100svh - 57px)}
+  .painel{overflow-y:auto;border-left:1px solid var(--line)}
+  #map{height:100%;position:sticky;top:0}
+}
+.leaflet-container{font-family:var(--f-ui);background:var(--sunken)}
+
+.leaflet-control-attribution{background:var(--panel)!important;color:var(--ink-3)!important;font-size:9px!important}
+.leaflet-control-attribution a{color:var(--ink-2)!important}
+.painel{padding:18px var(--pad) 60px}
+.semmapa{padding:16px var(--pad);font-size:.78rem;color:var(--ink-3);
+  background:var(--sunken);border-bottom:1px solid var(--line)}
+
+/* ============ PINOS ============ */
+.pin{display:grid;place-items:center;width:28px;height:28px;border-radius:99px;
+  background:var(--c);color:#fff;font-family:var(--f-mono);font-size:.72rem;font-weight:800;
+  border:2.5px solid var(--surface);box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.pin.sel{transform:scale(1.28);box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 32%,transparent)}
+.pin.apoio{width:15px;height:15px;background:var(--ink-3);border-width:2px;font-size:0}
+.pin.base{background:var(--ink-3)}
+.leaflet-popup-content-wrapper{background:var(--surface);color:var(--ink);border-radius:12px;
+  box-shadow:var(--shadow);border:1px solid var(--line)}
+.leaflet-popup-tip{background:var(--surface)}
+.leaflet-popup-content{margin:11px 13px;font-size:.8rem;line-height:1.45}
+.leaflet-popup-content b{display:block;font-size:.86rem;margin-bottom:3px}
+.leaflet-popup-content u{display:block;text-decoration:none;font-family:var(--f-mono);
+  font-size:.68rem;color:var(--ink-3);margin-bottom:6px}
+.leaflet-popup-content a{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:750}
+
+/* ============ FOTO ============ */
+.fig{margin:11px 0 0;border-radius:10px;overflow:hidden;background-size:cover;
+  background-position:center;position:relative;line-height:0}
+.fig img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.fig figcaption{position:absolute;right:0;bottom:0;line-height:1.3;
+  background:linear-gradient(90deg,transparent,rgba(0,0,0,.62) 34%);padding:5px 8px 4px 22px}
+.fig figcaption a{font-size:.56rem;color:rgba(255,255,255,.82);text-decoration:none}
+.fig figcaption a:hover{color:#fff;text-decoration:underline}
+.pop-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin-bottom:7px}
+
+/* ============ RESUMO ============ */
+.resumo{font-size:.86rem;color:var(--ink-2);margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.kpis div{background:var(--surface);padding:10px 6px;text-align:center}
+.kpis b{display:block;font-family:var(--f-mono);font-size:.94rem;font-weight:800;color:var(--t)}
+.kpis u{display:block;text-decoration:none;font-size:.6rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--ink-3);margin-top:2px}
+.gbtn{display:block;width:100%;background:var(--c);color:#fff;border:0;border-radius:12px;
+  padding:11px 14px;font-size:.82rem;font-weight:800;text-decoration:none;
+  margin-bottom:20px;text-align:center}
+.gbtn u{display:block;text-decoration:none;font-weight:600;font-size:.66rem;
+  line-height:1.4;opacity:.85;margin-top:3px}
+
+/* ============ TRILHO DO DIA ============ */
+.eyebrow{font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--ink-3);margin:24px 0 9px}
+.trilha{position:relative;padding-left:34px}
+.trilha::before{content:"";position:absolute;left:13px;top:6px;bottom:6px;width:2px;
+  background:color-mix(in srgb,var(--c) 30%,transparent)}
+
+.parada{position:relative;margin-bottom:8px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.parada.on{border-color:var(--c)}
+.parada > .num.base{background:var(--ink-3)}
+.parada > .num{position:absolute;left:-34px;top:12px;width:28px;height:28px;border-radius:99px;
+  display:grid;place-items:center;background:var(--c);color:#fff;
+  font-family:var(--f-mono);font-size:.72rem;font-weight:800;border:2.5px solid var(--paper)}
+.p-top{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;
+  background:none;border:0;color:inherit;font:inherit;padding:12px 13px;cursor:pointer}
+.p-top h3{flex:1;min-width:0;font-size:.88rem;line-height:1.3}
+.p-top .hh{flex:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);
+  font-variant-numeric:tabular-nums;text-align:right;line-height:1.4}
+.p-top .hh b{display:block;color:var(--t);font-weight:800;font-size:.72rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px;padding:0 13px 11px}
+.chip{font-size:.63rem;font-weight:750;padding:3px 9px;border-radius:99px;
+  border:1px solid var(--line-2);color:var(--ink-2)}
+.chip.pago{color:var(--t);border-color:var(--c)}
+.p-det{padding:0 13px 13px;display:none}
+.parada.on .p-det{display:block}
+.bloco{margin-top:11px}
+.bloco p.lbl{font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink-3);margin-bottom:5px}
+.bloco ul{list-style:none}
+.bloco li{font-size:.78rem;line-height:1.45;padding-left:15px;position:relative;margin-bottom:3px}
+.bloco li::before{content:"";position:absolute;left:2px;top:.55em;width:5px;height:5px;
+  border-radius:99px;background:var(--c)}
+.nota{font-size:.78rem;line-height:1.5;color:var(--ink-2)}
+.alerta{display:flex;gap:8px;font-size:.76rem;line-height:1.45;background:color-mix(in srgb,var(--warn) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--warn) 34%,transparent);border-radius:10px;padding:9px 11px;margin-top:11px}
+.alerta s{flex:none;text-decoration:none}
+.plink{display:inline-flex;align-items:center;gap:6px;margin-top:12px;max-width:100%;font-size:.72rem;font-weight:750;
+  border:1px solid var(--line-2);border-radius:99px;padding:6px 12px;text-decoration:none;color:var(--ink-2)}
+.plink:hover{color:var(--t);border-color:var(--c)}
+.plinks{display:flex;flex-wrap:wrap;gap:6px}
+
+/* ============ PERNAS ============ */
+.perna{position:relative;display:flex;gap:9px;align-items:flex-start;padding:7px 4px 11px 2px;font-size:.75rem;color:var(--ink-2)}
+.perna .ic{position:absolute;left:-30px;top:6px;width:20px;height:20px;border-radius:99px;
+  display:grid;place-items:center;font-size:.66rem;background:var(--surface-2);
+  border:1px solid var(--line);color:var(--ink-2)}
+.perna .ic.metro{color:#fff;border:0}
+.perna .tx{flex:1;min-width:0;line-height:1.4}
+.perna .tx b{font-weight:800;color:var(--ink)}
+.perna .tx em{font-style:normal;color:var(--ink-3);display:block;font-size:.71rem;margin-top:2px}
+.perna .go{flex:none;font-family:var(--f-mono);font-size:.65rem;color:var(--ink-3);text-decoration:none;
+  border:1px solid var(--line);border-radius:99px;padding:3px 8px;white-space:nowrap}
+.perna .go:hover{color:var(--t);border-color:var(--c)}
+.perna .gos{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.perna .go.alt{opacity:.72;font-weight:600}
+
+/* ============ ALTERNATIVAS / PASSE ============ */
+.alt{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow)}
+.alt b{display:block;font-size:.83rem;margin-bottom:4px}
+.alt p{font-size:.77rem;line-height:1.5;color:var(--ink-2)}
+.alt .tag{display:inline-block;font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--t);margin-bottom:6px}
+.alt.viva{cursor:pointer}
+.alt.viva:hover,.alt.viva:focus-visible{border-color:var(--c)}
+.alt.on{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 16%,transparent)}
+.alt-pe{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:9px}
+.alt-go{font-size:.7rem;font-weight:800;color:var(--t)}
+.alt-pe .plink{margin-top:0}
+.pin.alt-pin{background:var(--surface);color:var(--t);border:2.5px dashed var(--c);
+  width:26px;height:26px;font-size:.66rem;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+@keyframes pisca{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 40%,transparent)}
+  50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 22%,transparent)}}
+.parada.pisca{border-color:var(--c);animation:pisca 1.1s ease-in-out 3}
+.passe{background:color-mix(in srgb,var(--c) 9%,var(--surface));
+  border:1px solid color-mix(in srgb,var(--c) 34%,transparent);border-radius:14px;padding:13px 15px}
+.rodape{font-size:.68rem;color:var(--ink-3);line-height:1.5;margin-top:26px;
+  padding-top:14px;border-top:1px solid var(--line)}
+</style>
+
+<div class="topo c-__CIDADE__">
+  <a class="volta" href="index.html#dia__NDIA__">‹ Roteiro</a>
+  <div class="tit"><b>__TITULO__</b><u id="subt"></u></div>
+  <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
+</div>
+
+<div class="palco c-__CIDADE__">
+  <div id="map"></div>
+  <div class="painel">
+    <p class="resumo" id="resumo"></p>
+    <div class="kpis" id="kpis"></div>
+    <a class="gbtn" id="gdia" target="_blank" rel="noopener">Ver a volta inteira no Google Maps ↗
+      <u>desenho e ordem das paradas · o transporte real de cada trecho está no <b>ir ↗</b> abaixo</u></a>
+
+    <p class="eyebrow">Hora a hora</p>
+    <div class="trilha" id="trilha"></div>
+
+    <p class="eyebrow">Alternativas e plano B</p>
+    <div id="alts"></div>
+
+    <div class="passe" id="passe"></div>
+
+    <p class="rodape">Os traçados no mapa são aproximados — para trechos a pé o desenho é uma reta e
+    para o metrô é uma linha tracejada, porque o trilho é subterrâneo. O botão <b>ir ↗</b> de cada
+    trecho abre a rota exata e turn-by-turn no Google Maps. Horários são uma sugestão de ritmo, não
+    reserva. Mapa © OpenStreetMap · tiles CARTO.</p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const DIA = __DIA__;
+const GEO = __GEO__;
+const FOTOS = __FOTOS__;   // por id de parada: arquivo, credito e placeholder
+const el = (id)=>document.getElementById(id);
+const esc = (s)=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nf  = (n,d=0)=>Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const gm  = (q)=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const gdir= (a,b,modo)=>"https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+
+            "&destination="+encodeURIComponent(b)+"&travelmode="+(modo==="pe"?"walking":"transit");
+
+/* ---- tema ---- */
+const raiz=document.documentElement;
+let tema=localStorage.getItem("tema-japao")||"";
+if(tema) raiz.dataset.theme=tema;
+el("themeBtn").onclick=()=>{
+  const escuro = raiz.dataset.theme ? raiz.dataset.theme==="dark"
+               : matchMedia("(prefers-color-scheme: dark)").matches;
+  tema = escuro?"light":"dark";
+  raiz.dataset.theme=tema; localStorage.setItem("tema-japao",tema);
+  if(typeof trocarTiles==="function") trocarTiles();
+};
+const ehEscuro=()=> raiz.dataset.theme ? raiz.dataset.theme==="dark"
+                  : matchMedia("(prefers-color-scheme: dark)").matches;
+
+/* ---- indice das paradas ---- */
+const P = {}; GEO.paradas.forEach(p=>{ P[p.id]=p; });
+const reais = GEO.paradas.filter(p=>p.ai!=null);
+reais.forEach((p,i)=>{ p.n=i+1; });
+// a saida e o "0" do dia; a volta e o mesmo lugar, entao nao ganha pino proprio
+GEO.paradas.forEach(p=>{ if(p.tipo==="base") p.n=0; });
+const at = (p)=> p.ai!=null ? DIA.atividades[p.ai] : null;
+const nomeDe = (p)=> p.nome || (at(p) ? at(p).nome : p.id);
+
+/* ---- mapa ---- */
+// Sem internet (avião, roaming caído) o Leaflet nao carrega: o mapa some e a pagina
+// continua inteira — hora a hora, custos, alternativas. Os links do Google Maps
+// tambem so funcionam online, mas ai o problema ja e outro.
+const TEM_MAPA = typeof L !== "undefined";
+if(!TEM_MAPA){
+  el("map").outerHTML = '<p class="semmapa">Mapa indisponível offline. O roteiro do dia continua abaixo.</p>';
+}
+// Scroll do mouse da zoom direto. No touch isso nao existe, e o arrasto de um dedo
+// no mapa roubaria a rolagem da pagina — por isso la o gesto continua sendo de dois dedos.
+const TOQUE = matchMedia("(pointer: coarse)").matches;
+const map = TEM_MAPA ? L.map("map",{
+  scrollWheelZoom:true, wheelPxPerZoomLevel:90, zoomControl:true, dragging:!TOQUE
+}).setView(GEO.centro, GEO.zoom) : null;
+if(map && TOQUE){ map.dragging.enable(); }
+let tiles=null;
+// O OSM padrao desenha cada loja e cada viela: com a rota por cima virava sopa. O Gray
+// Canvas da Esri e um fundo de dados — quase so agua, quadras e vias principais — e vem
+// em duas camadas, base sem texto + rotulos por cima, cada uma clara e escura.
+const ESRI = "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_{t}_Gray_{c}/MapServer/tile/{z}/{y}/{x}";
+function camada(tom, papel, z){
+  return L.tileLayer(ESRI.replace("{t}",tom).replace("{c}",papel),{
+    maxNativeZoom:16, maxZoom:18, zIndex:z,
+    attribution: papel==="Base" ? "Tiles &copy; Esri" : ""
+  });
+}
+let rotulos=null;
+function trocarTiles(){
+  if(!map) return;
+  const tom = ehEscuro()?"Dark":"Light";
+  if(tiles){ map.removeLayer(tiles); map.removeLayer(rotulos); }
+  tiles   = camada(tom,"Base",0).addTo(map);
+  rotulos = camada(tom,"Reference",1).addTo(map);
+}
+trocarTiles();
+
+const cor = getComputedStyle(document.querySelector(".palco")).getPropertyValue("--c").trim();
+const marcas={};
+if(map) GEO.paradas.forEach(p=>{
+  if(p.id==="fim") return;                 // mesmo ponto da saida
+  const apoio = p.ai==null && p.tipo!=="base";
+  const ico = L.divIcon({className:"", html:`<div class="pin ${apoio?"apoio":""}${p.tipo==="base"?" base":""}" data-id="${p.id}">${apoio?"":p.n}</div>`,
+    iconSize:apoio?[15,15]:[28,28], iconAnchor:apoio?[7,7]:[14,14]});
+  const m = L.marker([p.lat,p.lng],{icon:ico,zIndexOffset:apoio?0:400}).addTo(map);
+  const a = at(p);
+  const fp = FOTOS[p.id];
+  m.bindPopup(`${fp?`<img class="pop-img" src="fotos/${fp.arq}" alt="" loading="lazy">`:""
+    }<b>${esc(nomeDe(p))}</b><u>${esc(p.hora||"")}${p.fim?" – "+esc(p.fim):""}${
+      a&&a.area?" · "+esc(a.area):""}</u>${
+      p.aprox?'<i style="color:var(--ink-3);font-size:.72rem">ponto aproximado</i>':""}<a href="${gm(p.gmaps||nomeDe(p))}" target="_blank" rel="noopener">ver no Google Maps ↗</a>`);
+  if(!apoio) m.on("click",()=>abrir(p.id,false));
+  marcas[p.id]=m;
+});
+
+if(map) GEO.pernas.forEach(g=>{
+  const a=P[g.de], b=P[g.para]; if(!a||!b) return;
+  const pe = g.modo==="pe";
+  L.polyline([[a.lat,a.lng],[b.lat,b.lng]],{
+    color: pe?cor:(g.cor||cor), weight: pe?3.4:4.6, opacity: pe?.8:.9,
+    dashArray: pe?null:"2 9", lineCap:"round"
+  }).addTo(map);
+});
+if(map) map.fitBounds(L.latLngBounds(GEO.paradas.map(p=>[p.lat,p.lng])),{padding:[42,42]});
+
+/* ---- cabecalho e numeros ---- */
+const DIAS_SEM = DIA.semana;
+el("subt").textContent = DIA.data.slice(8,10)+"/"+DIA.data.slice(5,7)+"/"+DIA.data.slice(0,4)
+  +" · "+DIAS_SEM+" · dia __NDIA__ de 16";
+el("resumo").textContent = GEO.resumo;
+const t = DIA.total||{};
+el("kpis").innerHTML =
+  `<div><b>${nf(t.km,1)}</b><u>km</u></div>`+
+  `<div><b>${nf(t.pe)}</b><u>min a pé</u></div>`+
+  `<div><b>¥${nf(t.transp)}</b><u>transporte</u></div>`+
+  `<div><b>¥${nf(t.ingresso)}</b><u>ingressos</u></div>`;
+
+// O Google Maps NAO calcula transporte publico com paradas intermediarias — so
+// origem→destino. Com waypoints ele aceita apenas carro/a pe/bicicleta. Entao o botao do
+// dia abre a volta inteira em modo carro, so para ver o desenho e a ordem; o transporte
+// de verdade (metro, linha, tarifa) esta no "ir ↗" de cada trecho.
+const seq = reais.map(p=>p.gmaps||nomeDe(p));
+el("gdia").href = "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(seq[0])+
+  "&destination="+encodeURIComponent(seq[seq.length-1])+
+  "&waypoints="+seq.slice(1,-1).map(encodeURIComponent).join("%7C")+"&travelmode=driving";
+
+/* ---- trilha ---- */
+// A foto so baixa quando o card abre (loading=lazy + o card comeca fechado): abrir a
+// pagina nao puxa foto nenhuma. Ate ela chegar, o fundo e o placeholder borrado de 22px
+// que ja vem embutido no HTML.
+function foto(p){
+  const f = FOTOS[p.id]; if(!f) return "";
+  const cred = [f.autor, f.lic].filter(Boolean).join(" · ");
+  return `<figure class="fig" style="background-image:url(${f.lqip})">
+    <img src="fotos/${f.arq}" alt="${esc(nomeDe(p))}" loading="lazy" decoding="async"
+      width="620" height="349"${p.foco?` style="object-position:${esc(p.foco)}"`:""}>
+    <figcaption><a href="${esc(f.pagina)}" target="_blank" rel="noopener">${esc(cred||"Wikimedia Commons")} ↗</a></figcaption>
+  </figure>`;
+}
+
+function bloco(lbl,arr){
+  if(!arr||!arr.length) return "";
+  return `<div class="bloco"><p class="lbl">${lbl}</p><ul>${arr.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;
+}
+let anterior = null;
+const html = GEO.paradas.map((p,idx)=>{
+  const perna = GEO.pernas.find(g=>g.para===p.id);
+  const ant = anterior;
+  if(p.tipo!=="estacao") anterior = p;
+  let out = "";
+  if(perna){
+    const de=P[perna.de], ate=p;
+    const metro = perna.modo!=="pe";
+    const dd = de.gmaps||nomeDe(de), aa = p.gmaps||nomeDe(p);
+    // Cada trecho tem um modo sugerido, mas onde a outra opcao for plausivel (metro
+    // curto que da para andar, ou caminhada que da para encurtar de metro) aparece um
+    // segundo link, para comparar tempo e preco no Google.
+    const alt = metro ? (perna.km && perna.km <= 2.5) : (perna.km && perna.km >= 0.8);
+    const tit = metro
+      ? `<b>${esc(perna.linha||"Metrô")}</b> · ${perna.min} min${perna.custo?" · ¥"+nf(perna.custo):""}${
+          perna.km?" · "+nf(perna.km,1)+" km":""}`
+      : `<b>A pé</b> · ${perna.min} min${perna.km?" · "+nf(perna.km,1)+" km":""}`;
+    out += `<div class="perna">
+      <span class="ic ${metro?"metro":""}" ${metro&&perna.cor?`style="background:${perna.cor}"`:""}>${metro?"Ⓜ":"🚶"}</span>
+      <span class="tx">${tit}${perna.desc?`<em>${esc(perna.desc)}</em>`:""}</span>
+      <span class="gos">
+        <a class="go" target="_blank" rel="noopener"
+           href="${gdir(dd, aa, metro?"transporte":"pe")}">${metro?"transporte ↗":"a pé ↗"}</a>
+        ${alt?`<a class="go alt" target="_blank" rel="noopener"
+           href="${gdir(dd, aa, metro?"pe":"transporte")}">${metro?"ou a pé ↗":"ou transporte ↗"}</a>`:""}
+      </span>
+    </div>`;
+  }
+  const a = at(p);
+  if(!a){
+    if(p.tipo==="estacao") return out;   // estacao ja aparece dentro da perna
+    out += `<div class="parada" data-id="${p.id}">
+      <div class="num${p.tipo==="base"?" base":""}">${p.tipo==="base"?0:"·"}</div>
+      <button class="p-top"><h3>${esc(p.nome)}</h3><span class="hh"><b>${esc(p.hora||"")}</b></span></button>
+    </div>`;
+    return out;
+  }
+  const chips=[];
+  if(a.duracao&&a.duracao!=="—") chips.push(`<span class="chip">${esc(a.duracao)}</span>`);
+  chips.push(a.ingresso?`<span class="chip pago">¥${nf(a.ingresso)}</span>`:`<span class="chip">grátis</span>`);
+  if(a.horario&&a.horario!=="—") chips.push(`<span class="chip">abre ${esc(a.horario)}</span>`);
+  if(a.bebe) chips.push(`<span class="chip">${esc(a.bebe)}</span>`);
+
+  out += `<div class="parada" data-id="${p.id}" id="c-${p.id}">
+    <div class="num">${p.n}</div>
+    <button class="p-top" aria-expanded="false">
+      <h3>${esc(a.nome)}</h3>
+      <span class="hh"><b>${esc(p.hora||"")}</b>${p.fim?"–"+esc(p.fim):""}</span>
+    </button>
+    <div class="chips">${chips.join("")}</div>
+    <div class="p-det">
+      ${foto(p)}
+      ${bloco("Não pode perder", p.must)}
+      ${bloco("Comer", p.comidas)}
+      ${bloco("Comprar", p.compras)}
+      ${a.terreno&&a.terreno!=="—"?`<div class="bloco"><p class="lbl">Com carrinho</p><p class="nota">${esc(a.terreno)}</p></div>`:""}
+      ${a.obs&&a.obs!=="—"?`<div class="bloco"><p class="lbl">Contexto</p><p class="nota">${esc(a.obs)}</p></div>`:""}
+      ${p.alerta?`<div class="alerta"><s>⚠</s><span>${esc(p.alerta)}</span></div>`:""}
+      <div class="plinks">
+        ${ant?`<a class="plink" target="_blank" rel="noopener"
+           href="${gdir(ant.gmaps||nomeDe(ant), p.gmaps||a.nome, "transit")}">Como chegar de ${esc(nomeDe(ant))} ↗</a>`:""}
+        <a class="plink" target="_blank" rel="noopener" href="${gm(p.gmaps||a.nome)}">Abrir no Google Maps ↗</a>
+      </div>
+    </div>
+  </div>`;
+  return out;
+}).join("");
+el("trilha").innerHTML = html;
+
+// Uma alternativa ou aponta para um lugar novo ("ponto": ganha pino tracejado no mapa)
+// ou mexe em paradas que ja existem ("refs": o mapa enquadra e os cards piscam).
+const LBL={troca:"Troca",corte:"Corte",extra:"Se sobrar tempo",planob:"Plano B"};
+el("alts").innerHTML = GEO.alternativas.map((x,i)=>{
+  const acao = x.ponto ? "Ver no mapa" : (x.refs ? "Ver a parada que muda" : "");
+  return `<div class="alt${acao?" viva":""}" data-alt="${i}"${acao?' tabindex="0" role="button"':""}>
+    <span class="tag">${LBL[x.tipo]||x.tipo}</span>
+    <b>${esc(x.titulo)}</b><p>${esc(x.texto)}</p>
+    ${acao?`<span class="alt-pe"><span class="alt-go">${acao} \u2192</span>${
+      x.ponto?`<a class="plink" target="_blank" rel="noopener" href="${gm(x.ponto.gmaps||x.ponto.nome)}"
+        >${esc(x.ponto.nome)} no Google Maps \u2197</a>`:""}</span>`:""}
+  </div>`;
+}).join("");
+
+// os pinos das alternativas nascem escondidos e so aparecem quando o card e acionado
+if(map) GEO.alternativas.forEach(x=>{
+  if(!x.ponto) return;
+  x._m = L.marker([x.ponto.lat,x.ponto.lng],{opacity:0,interactive:false,
+    icon:L.divIcon({className:"",html:`<div class="pin alt-pin">${(LBL[x.tipo]||"?")[0]}</div>`,
+      iconSize:[26,26],iconAnchor:[13,13]})}).addTo(map);
+  x._m.bindPopup(`<b>${esc(x.ponto.nome)}</b><u>alternativa \u00b7 ${esc(LBL[x.tipo]||x.tipo)}</u>`);
+});
+
+function mostrarAlt(i){
+  const x = GEO.alternativas[i];
+  document.querySelectorAll(".alt.on").forEach(n=>n.classList.remove("on"));
+  el("trilha").querySelectorAll(".parada.pisca").forEach(n=>n.classList.remove("pisca"));
+  GEO.alternativas.forEach(y=>{ if(y._m) y._m.setOpacity(0); });
+  const card = el("alts").querySelector(`.alt[data-alt="${i}"]`);
+  if(card) card.classList.add("on");
+  if(x.ponto){
+    if(x._m) x._m.setOpacity(1);
+    if(map){ map.flyTo([x.ponto.lat,x.ponto.lng], 15, {duration:.6}); if(x._m) x._m.openPopup(); }
+  }else if(x.refs && x.refs.length){
+    const pts = x.refs.map(id=>P[id]).filter(Boolean);
+    if(map && pts.length) map.flyToBounds(L.latLngBounds(pts.map(q=>[q.lat,q.lng])),
+      {padding:[70,70], maxZoom:15, duration:.6});
+    x.refs.forEach(id=>{
+      const c = el("trilha").querySelector(`.parada[data-id="${id}"]`);
+      if(c) c.classList.add("pisca");
+    });
+    const primeiro = el("trilha").querySelector(`.parada[data-id="${x.refs[0]}"]`);
+    if(primeiro) primeiro.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+el("alts").addEventListener("click",ev=>{
+  if(ev.target.closest("a")) return;                 // deixa o link do Google passar
+  const c=ev.target.closest(".alt.viva"); if(c) mostrarAlt(+c.dataset.alt);
+});
+el("alts").addEventListener("keydown",ev=>{
+  if(ev.key!=="Enter" && ev.key!==" ") return;
+  const c=ev.target.closest(".alt.viva"); if(c){ ev.preventDefault(); mostrarAlt(+c.dataset.alt); }
+});
+el("passe").innerHTML = `<span class="tag" style="font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--t)">Passe</span>
+  <b style="display:block;font-size:.85rem;margin:4px 0 5px">${esc(GEO.passe.nome)}</b>
+  <p style="font-size:.78rem;line-height:1.5;color:var(--ink-2)">${esc(GEO.passe.texto)}</p>`;
+
+/* ---- selecao ---- */
+function abrir(id, rolar){
+  const card = el("trilha").querySelector(`.parada[data-id="${id}"]`);
+  if(!card) return;
+  const jaAberto = card.classList.contains("on");
+  el("trilha").querySelectorAll(".parada.on").forEach(n=>{n.classList.remove("on");
+    const b=n.querySelector(".p-top"); if(b) b.setAttribute("aria-expanded","false");});
+  document.querySelectorAll(".pin.sel").forEach(n=>n.classList.remove("sel"));
+  if(jaAberto && rolar!==false) return;
+  card.classList.add("on");
+  const b=card.querySelector(".p-top"); if(b) b.setAttribute("aria-expanded","true");
+  const pin=document.querySelector(`.pin[data-id="${id}"]`); if(pin) pin.classList.add("sel");
+  const p=P[id];
+  if(p && map){ map.flyTo([p.lat,p.lng], Math.max(map.getZoom(),15), {duration:.6}); }
+  if(rolar!==false && marcas[id]) marcas[id].openPopup();
+  else card.scrollIntoView({behavior:"smooth",block:"center"});
+}
+el("trilha").addEventListener("click",ev=>{
+  const b=ev.target.closest(".p-top"); if(!b) return;
+  abrir(b.closest(".parada").dataset.id, true);
+});
+</script>

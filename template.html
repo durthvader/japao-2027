@@ -1,0 +1,1118 @@
+<title>Japão 2027</title>
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#EDEEF1; --surface:#FFFFFF; --surface-2:#E3E6EB; --sunken:#E7E9ED;
+  --ink:#11151E; --ink-2:#48505F; --ink-3:#7A8394; --line:#D2D7DF; --line-2:#BFC6D1;
+  --c-osaka:#E60012; --t-osaka:#BE000F; --c-kyoto:#6E7F3C; --t-kyoto:#4F5C2A;
+  --c-fuji:#1E50A2;  --t-fuji:#194588;  --c-tokyo:#F39700; --t-tokyo:#96590A;
+  --sakura:#E0788E; --ok:#1F7A4D; --warn:#A86212; --crit:#BE000F;
+  --panel:rgba(255,255,255,.76); --panel-2:rgba(223,228,235,.52);
+  --veu:linear-gradient(180deg,rgba(236,238,242,.46) 0%,rgba(236,238,242,.60) 45%,rgba(236,238,242,.70) 100%);
+  --wall-filtro:brightness(1.20) contrast(.90) saturate(.90);
+  --halo:rgba(236,238,242,.95);
+  --shadow:0 1px 2px rgba(17,21,30,.06),0 6px 20px -8px rgba(17,21,30,.14);
+  --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-jp:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Noto Sans JP",Meiryo,system-ui,sans-serif;
+  --f-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --c:var(--c-osaka); --t:var(--t-osaka);
+  --pad:clamp(16px,4.6vw,26px); --wrap:760px;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}
+.c-osaka{--c:var(--c-osaka);--t:var(--t-osaka)} .c-kyoto{--c:var(--c-kyoto);--t:var(--t-kyoto)}
+.c-fuji{--c:var(--c-fuji);--t:var(--t-fuji)}    .c-tokyo{--c:var(--c-tokyo);--t:var(--t-tokyo)}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:transparent;color:var(--ink);font-family:var(--f-ui);
+  font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;overflow-x:hidden;
+  padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:800;letter-spacing:-.025em;line-height:1.12}
+p{margin:0} ul{margin:0;padding:0}
+a{color:var(--t);text-underline-offset:2px}
+:focus-visible{outline:2.5px solid var(--c);outline-offset:3px;border-radius:4px}
+img,canvas,svg{max-width:100%;display:block}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--pad)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-2)}
+/* estes ficam direto sobre a foto: o halo descola do fundo sem desenhar caixa */
+.sec-head .eyebrow,.sec-head h2,.sec-head .sub,.swipe-hint,.trilho::before{
+  text-shadow:0 1px 2px var(--halo),0 0 12px var(--halo),0 0 26px var(--halo)}
+
+/* ============ PAPEL DE PAREDE ============ */
+.wall{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--paper)}
+.wall i{position:absolute;inset:-2px;background-size:cover;background-position:center;
+  filter:var(--wall-filtro);
+  opacity:0;transition:opacity 1s cubic-bezier(.4,0,.2,1);will-change:opacity}
+.wall i.on{opacity:1}
+.scrim{position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--veu)}
+
+/* ============ SEÇÃO ============ */
+.sec{padding-block:clamp(44px,10vw,76px);scroll-margin-top:8px}
+.sec-head{display:flex;flex-direction:column;gap:6px;margin-bottom:22px}
+.sec-head h2{font-size:clamp(1.7rem,7vw,2.5rem)}
+.sec-head .sub{color:var(--ink-2);font-size:.95rem;max-width:60ch}
+.rule{height:3px;width:46px;background:var(--c);border-radius:2px;margin-top:4px}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;background:#132A4E}
+.hero-foto{position:absolute;inset:0;background-size:cover;background-position:center 42%}
+#heroCv{position:absolute;inset:0;width:100%;height:100%}
+.hero-veil{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,9,15,.34) 0%,rgba(6,9,15,0) 30%,rgba(6,9,15,.48) 66%,rgba(6,9,15,.88) 100%)}
+.hero-in{position:relative;padding-bottom:clamp(34px,10vw,64px)}
+.hero-kanji{font-family:var(--f-jp);font-weight:800;color:#fff;
+  font-size:clamp(3.4rem,17vw,7rem);line-height:.9;letter-spacing:.02em;
+  text-shadow:0 4px 40px rgba(0,0,0,.55)}
+.hero h1{color:#fff;font-size:clamp(1.05rem,4.6vw,1.5rem);font-weight:700;margin-top:12px;
+  text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.hero .dates{color:rgba(255,255,255,.82);font-family:var(--f-mono);font-size:.75rem;margin-top:9px;letter-spacing:.02em}
+.hero-rota{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:20px}
+.hero-rota span{color:#fff;font-size:.71rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.27)}
+.hero-rota i{color:rgba(255,255,255,.5);font-style:normal;font-size:.8rem}
+.count{margin-top:22px;display:inline-flex;align-items:baseline;gap:11px;padding:11px 17px;border-radius:14px;
+  background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.23)}
+.count b{font-family:var(--f-mono);font-size:1.9rem;font-weight:800;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.count em{font-style:normal;color:rgba(255,255,255,.8);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+.scroll-hint{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);
+  font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,7px);opacity:.95}}
+
+/* ============ NÚMEROS ============ */
+.nums{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:color-mix(in srgb,var(--line) 55%,transparent);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media(min-width:560px){.nums{grid-template-columns:repeat(4,1fr)}}
+.num{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);padding:17px 15px}
+.num b{display:block;font-family:var(--f-mono);font-size:clamp(1.45rem,6.2vw,1.95rem);font-weight:800;
+  letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.num u{display:block;text-decoration:none;font-size:.6rem;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+.num i{display:block;font-style:normal;font-size:.73rem;color:var(--ink-2);margin-top:5px;line-height:1.4}
+
+/* ============ MAPA ============ */
+.mapa-box{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:var(--shadow)}
+.mapa-box svg{width:100%;height:auto}
+.coast{fill:color-mix(in srgb,var(--ink) 7%,transparent);
+  stroke:color-mix(in srgb,var(--ink) 13%,transparent);stroke-width:1}
+.rota-bg{fill:none;stroke:var(--line-2);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 6}
+.rota-fg{fill:none;stroke-width:4.4;stroke-linecap:round;stroke-linejoin:round}
+.est-lbl,.est-sub{paint-order:stroke fill;stroke:var(--surface);stroke-width:2.8px;stroke-linejoin:round}
+.est-lbl{font-family:var(--f-ui);font-size:11px;font-weight:800;fill:var(--ink)}
+.est-sub{font-family:var(--f-mono);font-size:8.2px;fill:var(--ink-3)}
+.pernas{display:flex;flex-direction:column;gap:1px;background:color-mix(in srgb,var(--line) 55%,transparent);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;margin-top:14px}
+.perna{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  padding:11px 13px;display:flex;gap:11px;align-items:center}
+.perna s{flex:none;width:3px;align-self:stretch;background:var(--c);border-radius:2px;text-decoration:none}
+.perna .nm{flex:1;min-width:0;font-size:.81rem;font-weight:750;line-height:1.3}
+.perna .nm u{display:block;text-decoration:none;font-weight:600;color:var(--ink-3);font-size:.71rem;margin-top:3px}
+.perna .dd{flex:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.5}
+.perna .dd b{display:block;color:var(--t);font-weight:800}
+.mapa-leg{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.leg{display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:700;color:var(--ink-2);
+  background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 8px}
+.leg s{width:9px;height:9px;border-radius:99px;background:var(--c);text-decoration:none;flex:none}
+
+/* ============ TIMELAPSE ============ */
+.tl{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.tl-art{position:relative;aspect-ratio:16/10;background:var(--sunken);background-size:cover;background-position:center}
+.tl-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,15,.08),rgba(6,9,15,.8))}
+.tl-over{position:absolute;inset:auto 0 0 0;padding:15px 16px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.tl-city{font-family:var(--f-jp);font-size:clamp(2rem,9.5vw,3rem);font-weight:800;color:#fff;line-height:.9;
+  text-shadow:0 3px 26px rgba(0,0,0,.65)}
+.tl-city small{display:block;font-family:var(--f-ui);font-size:.68rem;font-weight:800;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:9px;text-shadow:none}
+.tl-daynum{text-align:right;flex:none}
+.tl-daynum b{display:block;font-family:var(--f-mono);font-size:2.3rem;font-weight:800;color:#fff;line-height:.85;
+  text-shadow:0 3px 20px rgba(0,0,0,.65);font-variant-numeric:tabular-nums}
+.tl-daynum u{display:block;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;color:rgba(255,255,255,.82);margin-top:6px}
+.tl-map{position:absolute;top:11px;left:11px;width:min(40%,164px);z-index:2;
+  background:rgba(10,13,19,.44);border:1px solid rgba(255,255,255,.22);border-radius:11px;padding:6px}
+.tl-map .coast{fill:rgba(255,255,255,.14);stroke:rgba(255,255,255,.32);stroke-width:1.3}
+.tl-map .est-lbl,.tl-map .est-sub{display:none}
+.tl-body{padding:15px 16px 17px}
+.tl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.tl-stats div{background:var(--panel-2);border-radius:11px;padding:9px 6px;text-align:center}
+.tl-stats b{display:block;font-family:var(--f-mono);font-size:.95rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--t)}
+.tl-stats u{display:block;text-decoration:none;font-size:.53rem;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+.tl-list{display:flex;flex-direction:column;gap:6px;min-height:120px}
+.tl-list li{list-style:none;display:flex;gap:9px;align-items:baseline;font-size:.85rem;color:var(--ink);
+  animation:slide .34s cubic-bezier(.2,.7,.3,1) backwards}
+.tl-list li s{text-decoration:none;font-family:var(--f-mono);font-size:.6rem;font-weight:800;color:var(--t);
+  flex:none;width:46px;text-transform:uppercase;letter-spacing:.04em}
+@keyframes slide{from{opacity:0;transform:translateX(-11px)}to{opacity:1;transform:none}}
+.tl-ctrl{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);background:var(--panel-2)}
+.tl-play{flex:none;width:42px;height:42px;border-radius:99px;border:none;background:var(--c);color:#fff;
+  font-size:.95rem;cursor:pointer;display:grid;place-items:center;transition:transform .16s}
+.tl-play:active{transform:scale(.9)}
+.tl-range{flex:1;-webkit-appearance:none;appearance:none;background:transparent;height:30px;cursor:pointer}
+.tl-range::-webkit-slider-runnable-track{height:5px;border-radius:99px;
+  background:linear-gradient(90deg,var(--c) var(--pct,0%),var(--line-2) var(--pct,0%))}
+.tl-range::-moz-range-track{height:5px;border-radius:99px;background:var(--line-2)}
+.tl-range::-moz-range-progress{height:5px;border-radius:99px;background:var(--c)}
+.tl-range::-webkit-slider-thumb{-webkit-appearance:none;width:21px;height:21px;border-radius:99px;background:var(--surface);
+  border:3.5px solid var(--c);margin-top:-8px;box-shadow:0 2px 7px rgba(0,0,0,.28)}
+.tl-range::-moz-range-thumb{width:21px;height:21px;border-radius:99px;background:var(--surface);border:3.5px solid var(--c);
+  box-shadow:0 2px 7px rgba(0,0,0,.28)}
+
+/* ============ TRILHO / ROTEIRO ============ */
+.filtros{display:flex;gap:7px;overflow-x:auto;padding:3px 0 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.filtros::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line-2);background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  color:var(--ink-2);border-radius:99px;
+  padding:7px 14px;font-size:.76rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit;
+  transition:background .15s,color .15s,border-color .15s}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.vazio{padding:26px 4px;color:var(--ink-3);font-size:.86rem}
+.trilho{position:relative;padding-left:38px}
+.trilho::before{content:"";position:absolute;left:12px;top:10px;bottom:10px;width:3px;border-radius:2px;
+  background:linear-gradient(180deg,var(--c-osaka) 0%,var(--c-osaka) 16%,var(--c-kyoto) 21%,var(--c-kyoto) 36%,
+    var(--c-fuji) 41%,var(--c-fuji) 45%,var(--c-tokyo) 50%,var(--c-tokyo) 85%,var(--c-osaka) 91%,var(--c-osaka) 100%)}
+.dia{position:relative;margin-bottom:16px;scroll-margin-top:12px}
+.dia.oculto{display:none}
+.dia-mark{position:absolute;left:-38px;top:16px;width:27px;height:27px;border-radius:99px;
+  background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:3px solid var(--c);display:grid;place-items:center;font-family:var(--f-mono);font-size:.66rem;
+  font-weight:800;color:var(--t);z-index:2}
+.dia-card{background:var(--panel);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.dia-art{height:92px;background:var(--sunken);background-size:cover;background-position:center 46%;position:relative}
+.dia-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,9,15,.74),rgba(6,9,15,.14))}
+.dia-art b{position:absolute;left:15px;bottom:11px;z-index:2;font-family:var(--f-jp);font-size:1.55rem;color:#fff;
+  font-weight:800;text-shadow:0 2px 16px rgba(0,0,0,.6)}
+.dia-art i{position:absolute;right:15px;bottom:13px;z-index:2;font-style:normal;font-family:var(--f-mono);
+  font-size:.68rem;color:rgba(255,255,255,.9)}
+.dia-head{padding:14px 15px 12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.dia-head h3{font-size:1rem}
+.dia-head .base{font-size:.73rem;color:var(--ink-3);margin-top:4px;font-weight:600}
+.badge-tr{flex:none;font-size:.55rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--t);
+  background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 34%,transparent);
+  border-radius:99px;padding:4px 9px}
+.dia-stats{display:flex;gap:13px;flex-wrap:wrap;padding:10px 15px;background:var(--panel-2);
+  font-family:var(--f-mono);font-size:.68rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.dia-stats b{color:var(--ink);font-weight:800}
+.per{padding:12px 15px 0}
+.per:last-of-type{padding-bottom:14px}
+.per-lbl{font-size:.58rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--t);margin-bottom:8px}
+.ativ{border-top:1px solid var(--line);padding:11px 0}
+.per .ativ:first-of-type{border-top:none;padding-top:2px}
+.ativ.oculta{display:none}
+.ativ-top{width:100%;display:flex;gap:11px;align-items:flex-start;background:none;border:none;padding:0;
+  text-align:left;cursor:pointer;font-family:inherit;color:inherit}
+.ativ-txt{flex:1;min-width:0}
+.ativ-txt h4{font-size:.92rem;font-weight:700;letter-spacing:-.012em;line-height:1.32}
+.ativ-meta{display:flex;flex-wrap:wrap;gap:4px 11px;margin-top:6px;font-family:var(--f-mono);font-size:.66rem;
+  color:var(--ink-3);font-variant-numeric:tabular-nums}
+.ativ-meta s{text-decoration:none;color:var(--t);font-weight:700}
+.caret{flex:none;width:18px;height:18px;margin-top:4px;color:var(--ink-3);transition:transform .22s}
+.ativ-top[aria-expanded="true"] .caret{transform:rotate(90deg)}
+.ativ-det{display:none;margin-top:11px;padding:12px 13px;background:var(--panel-2);border-radius:11px;
+  border-left:3px solid var(--c)}
+.ativ-det.on{display:block;animation:fade .26s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.det-row{display:flex;gap:9px;font-size:.8rem;line-height:1.52;color:var(--ink-2);margin-bottom:9px}
+.det-row:last-child{margin-bottom:0}
+.det-row b{flex:none;width:60px;font-size:.55rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);padding-top:3px}
+.bebe{display:inline-block;font-size:.54rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  border-radius:99px;padding:3px 8px;margin-top:7px;white-space:nowrap}
+.bebe.ok{color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}
+.bebe.esf{color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.bebe.can{color:var(--crit);background:color-mix(in srgb,var(--crit) 14%,transparent)}
+.dia-nota{padding:10px 15px;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.68rem;color:var(--t);font-weight:700}
+
+.dia-mapa{display:flex;align-items:center;gap:11px;margin:12px 15px 2px;padding:11px 13px;
+  text-decoration:none;color:var(--t);background:color-mix(in srgb,var(--c) 9%,transparent);
+  border:1px solid color-mix(in srgb,var(--c) 32%,transparent);border-radius:12px}
+.dia-mapa:hover{background:color-mix(in srgb,var(--c) 15%,transparent)}
+.dia-mapa svg{flex:none;width:20px;height:20px}
+.dia-mapa span{flex:1;min-width:0;font-size:.8rem;font-weight:800;line-height:1.25}
+.dia-mapa span u{display:block;text-decoration:none;font-weight:600;font-size:.68rem;
+  color:var(--ink-3);margin-top:2px}
+.dia-mapa i{flex:none;font-style:normal;font-size:1.1rem;opacity:.6}
+
+/* ============ CARROSSEL ============ */
+.carro{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-padding-inline:var(--pad);padding:2px var(--pad) 16px;
+  margin-inline:calc(var(--pad) * -1);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.carro::-webkit-scrollbar{display:none}
+.card{flex:0 0 min(80%,300px);scroll-snap-align:start;background:var(--panel);
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border:1px solid var(--line);
+  border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.card-art{height:112px;background:var(--sunken);background-size:cover;background-position:center 60%;position:relative;flex:none}
+.card-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,15,.04),rgba(6,9,15,.7))}
+.card-art s{position:absolute;left:11px;bottom:10px;z-index:2;text-decoration:none;font-size:.55rem;font-weight:800;
+  letter-spacing:.11em;text-transform:uppercase;color:#fff;background:var(--c);padding:4px 9px;border-radius:99px}
+.card-art u{position:absolute;right:11px;bottom:11px;z-index:2;text-decoration:none;font-family:var(--f-mono);
+  font-size:.63rem;color:rgba(255,255,255,.92)}
+.card-in{padding:13px 14px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card-in h4{font-size:.94rem;line-height:1.25;font-weight:750}
+.card-in p{font-size:.8rem;color:var(--ink-2);line-height:1.5}
+.card-in .tag{margin-top:auto;font-family:var(--f-mono);font-size:.64rem;color:var(--t);font-weight:700;padding-top:4px}
+.swipe-hint{font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--ink-3);
+  margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.swipe-hint::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ============ NOTAS ============ */
+.acc{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);margin-bottom:9px}
+.acc-btn{width:100%;display:flex;gap:11px;align-items:flex-start;padding:14px 15px;background:none;border:none;
+  cursor:pointer;text-align:left;font-family:inherit;color:inherit}
+.acc-btn s{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;font-weight:800;color:var(--t);
+  width:19px;padding-top:3px}
+.acc-btn h4{flex:1;font-size:.88rem;font-weight:750;line-height:1.35;letter-spacing:-.01em}
+.acc-body{display:none;padding:0 15px 15px 45px;font-size:.84rem;line-height:1.62;color:var(--ink-2)}
+.acc-body.on{display:block;animation:fade .26s ease}
+.kind{display:inline-block;font-size:.53rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  border-radius:99px;padding:3px 8px;margin-bottom:8px}
+.kind.dec{color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}
+.kind.pen{color:var(--crit);background:color-mix(in srgb,var(--crit) 14%,transparent)}
+.kind.ale{color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.kind.inf{color:var(--t);background:color-mix(in srgb,var(--c) 14%,transparent)}
+
+/* ============ TABELA ============ */
+.tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel);
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.78rem}
+th{text-align:left;font-size:.56rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);
+  padding:11px 12px;border-bottom:1px solid var(--line);background:var(--sunken);white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:none}
+td.n{font-family:var(--f-mono);font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+td.h{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink)}
+
+/* ============ HOSPEDAGEM ============ */
+.hosp{display:flex;flex-direction:column;gap:9px}
+.hosp-item{display:flex;gap:12px;align-items:stretch;background:var(--panel);
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border:1px solid var(--line);
+  border-radius:14px;padding:13px 14px}
+.hosp-item s{flex:none;text-decoration:none;width:3px;border-radius:2px;background:var(--c)}
+.hosp-item .tx{flex:1;min-width:0}
+.hosp-item h4{font-size:.86rem;font-weight:750;line-height:1.3;overflow-wrap:anywhere}
+.hosp-item .mt{font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);margin-top:5px;font-variant-numeric:tabular-nums}
+.hosp-item .vl{flex:none;text-align:right;font-family:var(--f-mono);font-weight:800;font-size:.82rem;
+  font-variant-numeric:tabular-nums;color:var(--ink);align-self:center}
+.hosp-item .vl u{display:block;text-decoration:none;font-size:.53rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:800;margin-top:3px}
+.toggle2{display:inline-flex;background:var(--panel);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:99px;padding:3px;margin-bottom:14px}
+.toggle2 button{border:none;background:none;font-family:inherit;font-size:.74rem;font-weight:700;color:var(--ink-3);
+  padding:7px 15px;border-radius:99px;cursor:pointer;transition:background .15s,color .15s}
+.toggle2 button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* ============ CALLOUT ============ */
+.callout{background:color-mix(in srgb,var(--c) 10%,var(--panel));backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid color-mix(in srgb,var(--c) 30%,transparent);
+  border-radius:14px;padding:15px 16px;display:flex;gap:12px;align-items:flex-start}
+.callout.crit{--c:var(--crit);--t:var(--crit)}
+.callout s{flex:none;text-decoration:none;font-size:1.1rem;line-height:1.2}
+.callout h4{font-size:.86rem;margin-bottom:5px;font-weight:800}
+.callout p{font-size:.82rem;color:var(--ink-2);line-height:1.55}
+
+/* ============ NAV ============ */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:60;background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:blur(16px) saturate(1.6);border-top:1px solid var(--line);
+  padding:8px var(--pad) calc(8px + env(safe-area-inset-bottom))}
+.nav-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;max-width:var(--wrap);margin:0 auto}
+.nav-in::-webkit-scrollbar{display:none}
+.nav a{flex:none;text-decoration:none;color:var(--ink-3);font-size:.72rem;font-weight:750;padding:9px 13px;
+  border-radius:99px;white-space:nowrap;transition:background .16s,color .16s}
+.nav a[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.themeBtn{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:61;width:38px;height:38px;
+  border-radius:99px;border:1px solid var(--line-2);background:color-mix(in srgb,var(--surface) 78%,transparent);
+  backdrop-filter:blur(10px);color:var(--ink);font-size:.95rem;cursor:pointer;display:grid;place-items:center}
+footer{padding:34px var(--pad) 22px;text-align:center;color:var(--ink-3);font-size:.71rem;line-height:1.75}
+.creditos{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);
+  font-size:.65rem;line-height:1.85;color:var(--ink-3);max-width:62ch;margin-inline:auto}
+.creditos a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line-2)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+</style>
+
+<div class="wall" id="wall" aria-hidden="true"></div>
+<div class="scrim" aria-hidden="true"></div>
+
+<button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
+
+<header class="hero" id="inicio" data-foto="hero">
+  <div class="hero-foto" id="heroFoto"></div>
+  <canvas id="heroCv"></canvas>
+  <div class="hero-veil"></div>
+  <div class="hero-in wrap">
+    <div class="hero-kanji">日本<br>2027</div>
+    <h1>Dezesseis dias entre Osaka, Kyoto, o Fuji e Tokyo</h1>
+    <p class="dates">16 — 31 MAR 2027 · 13 PESSOAS · 8 ADULTOS, 2 ADOLESCENTES, 3 BEBÊS</p>
+    <div class="hero-rota">
+      <span>Osaka</span><i>→</i><span>Kyoto</span><i>→</i><span>Kawaguchiko</span><i>→</i><span>Tokyo</span><i>→</i><span>Osaka</span>
+    </div>
+    <div class="count"><b id="cd">—</b><em>dias até o embarque</em></div>
+  </div>
+  <div class="scroll-hint">role</div>
+</header>
+
+<main>
+<section class="sec wrap" id="numeros" data-foto="hero">
+  <div class="sec-head">
+    <p class="eyebrow">A viagem em números</p>
+    <h2>O que já está fechado</h2>
+    <div class="rule"></div>
+    <p class="sub">Transporte e ingressos por adulto — comida, compras e seguro ficam de fora.</p>
+  </div>
+  <div class="nums" id="nums"></div>
+  <div style="margin-top:16px" class="callout c-tokyo">
+    <s>🌸</s>
+    <div><h4>A sorte está do lado de vocês</h4>
+    <p>Historicamente Tokyo floresce por volta de 24/03 e chega ao pico ~31/03. Os dias de Tokyo — 23 a 30/03 — caem em cima do pico da sakura.</p></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="mapa" data-foto="fuji">
+  <div class="sec-head">
+    <p class="eyebrow">Mapa</p>
+    <h2>A rota, de ponta a ponta</h2>
+    <div class="rule"></div>
+    <p class="sub">1.425 km somando shinkansen, ônibus rodoviário, metrô e trem urbano. A linha se desenha conforme você rola a página.</p>
+  </div>
+  <div class="mapa-box"><div id="mapaSlot"></div></div>
+  <div class="mapa-leg" id="mapaLeg"></div>
+  <div id="mapaPernas"></div>
+</section>
+
+<section class="sec wrap" id="timelapse">
+  <div class="sec-head">
+    <p class="eyebrow">Timelapse</p>
+    <h2>Dia a dia, em 16 quadros</h2>
+    <div class="rule"></div>
+    <p class="sub">Arraste a barra ou toque em play para atravessar a viagem inteira. O ponto anda no mapa, a cidade troca e os números do dia acompanham.</p>
+  </div>
+  <div class="tl" id="tl">
+    <div class="tl-art" id="tlArt">
+      <div class="tl-map" id="tlMap"></div>
+      <div class="tl-over">
+        <div class="tl-city" id="tlCity">大阪<small id="tlBase">Osaka</small></div>
+        <div class="tl-daynum"><b id="tlNum">01</b><u id="tlDate">16/03</u></div>
+      </div>
+    </div>
+    <div class="tl-body">
+      <div class="tl-stats">
+        <div><b id="tlKm">—</b><u>km</u></div>
+        <div><b id="tlMin">—</b><u>min transp.</u></div>
+        <div><b id="tlPe">—</b><u>min a pé</u></div>
+        <div><b id="tlYen">—</b><u>¥ no dia</u></div>
+      </div>
+      <ul class="tl-list" id="tlList"></ul>
+    </div>
+    <div class="tl-ctrl">
+      <button class="tl-play" id="tlPlay" aria-label="Reproduzir o timelapse">▶</button>
+      <input class="tl-range" id="tlRange" type="range" min="0" max="15" value="0" step="1" aria-label="Escolher o dia da viagem">
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="roteiro">
+  <div class="sec-head">
+    <p class="eyebrow">Roteiro</p>
+    <h2>Os 16 dias, parada por parada</h2>
+    <div class="rule"></div>
+    <p class="sub">Cada parada traz distância, tempo, custo e horário. Toque para abrir o terreno e os alertas. Os filtros valem para a lista inteira.</p>
+  </div>
+  <div class="filtros" id="filtros" role="group" aria-label="Filtrar paradas"></div>
+  <div class="trilho" id="trilho"></div>
+  <p class="vazio" id="vazio" hidden>Nenhuma parada com esse filtro.</p>
+</section>
+
+<section class="sec wrap" id="comer" data-foto="osaka">
+  <div class="sec-head">
+    <p class="eyebrow">Onde comer</p>
+    <h2>Comida, por bairro</h2>
+    <div class="rule"></div>
+    <p class="sub">Os pontos de comida que já estão dentro do roteiro — com o horário que importa e o aviso de carrinho.</p>
+  </div>
+  <p class="swipe-hint">Arraste para o lado</p>
+  <div class="carro" id="comerCarro"></div>
+  <div class="callout c-osaka"><s>🍢</s><div><h4>A regra sagrada do kushikatsu</h4>
+  <p>O molho da mesa é comunitário. Mergulhe o espetinho <b>uma vez só</b> — molhar duas vezes é falta grave em Shinsekai. Para repetir, use a couve crua como concha.</p></div></div>
+</section>
+
+<section class="sec wrap" id="compras" data-foto="tokyo">
+  <div class="sec-head">
+    <p class="eyebrow">Compras</p>
+    <h2>Onde gastar, e quando</h2>
+    <div class="rule"></div>
+    <p class="sub">Eletrônicos, anime, atacado e galeria coberta. Repare nos dias — tem lugar que fecha domingo.</p>
+  </div>
+  <p class="swipe-hint">Arraste para o lado</p>
+  <div class="carro" id="comprasCarro"></div>
+  <div class="callout c-kyoto"><s>🧾</s><div><h4>Tax-free: como não perder</h4>
+  <p>Leve o <b>passaporte físico</b> (foto não vale) e some as compras <b>na mesma loja</b> para passar de ¥5.000. A última chance é 31/03 em Shinsaibashi-suji, antes de sair para o KIX. Para o excesso de bagagem, o takkyubin leva as malas de hotel a hotel.</p></div></div>
+</section>
+
+<section class="sec wrap" id="planob" data-foto="fuji">
+  <div class="sec-head">
+    <p class="eyebrow">Plano B</p>
+    <h2>Se chover, se lotar, se der errado</h2>
+    <div class="rule"></div>
+    <p class="sub">Alternativas cobertas para cada base, e as trocas que já estão mapeadas.</p>
+  </div>
+  <p class="swipe-hint">Arraste para o lado</p>
+  <div class="carro" id="planobCarro"></div>
+  <div class="callout c-fuji" style="margin-bottom:30px"><s>🗻</s><div><h4>E se o Fuji não aparecer?</h4>
+  <p>O topo fica escondido em boa parte dos dias. Se em 22/03 estiver na nuvem: o Oishi Park continua valendo pela margem do lago, e o dia se resolve dentro do ryokan — onsen e jantar. O teleférico Kachi-Kachi só compensa com céu limpo; sem ele, sobra tempo para chegar mais cedo em Tokyo no dia 23.</p></div></div>
+
+  <div class="sec-head" style="margin-top:10px">
+    <p class="eyebrow">Decisões e alertas</p>
+    <h2>As 14 notas do roteiro</h2>
+    <div class="rule"></div>
+    <p class="sub">O que já foi decidido, o que ainda está aberto e o que exige atenção. Toque para abrir.</p>
+  </div>
+  <div id="notas"></div>
+</section>
+
+<section class="sec wrap" id="logistica" data-foto="tokyo">
+  <div class="sec-head">
+    <p class="eyebrow">Logística</p>
+    <h2>Voos e hospedagem</h2>
+    <div class="rule"></div>
+    <p class="sub">Bilhete único LATAM nos dois sentidos, com dois países de conexão.</p>
+  </div>
+  <div class="tbl-scroll" style="margin-bottom:16px"><table>
+    <thead><tr><th>Voo</th><th>Trecho</th><th>Saída</th><th>Chegada</th><th>Duração</th><th>Conexão</th></tr></thead>
+    <tbody id="voosBody"></tbody>
+  </table></div>
+  <div id="voosNotas" style="margin-bottom:34px"></div>
+
+  <div class="sec-head" style="margin-top:6px">
+    <p class="eyebrow">Hospedagem</p>
+    <h2>Duas combinações na mesa</h2>
+    <div class="rule"></div>
+    <p class="sub">São dois conjuntos de reservas. Os valores são o total do grupo, em reais.</p>
+  </div>
+  <div class="toggle2" id="hospToggle">
+    <button type="button" data-set="a" aria-pressed="true">Conjunto A</button>
+    <button type="button" data-set="b" aria-pressed="false">Conjunto B</button>
+  </div>
+  <div class="hosp" id="hospLista"></div>
+</section>
+</main>
+
+<nav class="nav" aria-label="Seções do site">
+  <div class="nav-in">
+    <a href="#inicio">Início</a><a href="#numeros">Números</a><a href="#mapa">Mapa</a>
+    <a href="#timelapse">Timelapse</a><a href="#roteiro">Roteiro</a><a href="#comer">Comer</a>
+    <a href="#compras">Compras</a><a href="#planob">Plano B</a><a href="#logistica">Logística</a>
+  </div>
+</nav>
+
+<footer>
+  Gerado a partir de <span class="mono">Roteiro Japão.xlsx</span> · Câmbio ¥1 = R$ 0,033<br>
+  Ingressos com valor de adulto, referência 2026 — confirme antes de comprar.
+  <p id="creditos" class="creditos"></p>
+</footer>
+
+<script>
+"use strict";
+const DADOS = __DADOS__;
+const MAPAS = __MAPAS__;   // dias com mapa proprio (dia-NN.html)
+const FOTOS = __FOTOS__;
+
+/* ---------- meta das cidades ---------- */
+const CID = {
+  osaka:{kanji:"大阪",nome:"Osaka",lon:135.50,lat:34.69},
+  kyoto:{kanji:"京都",nome:"Kyoto",lon:135.77,lat:35.01},
+  fuji: {kanji:"富士",nome:"Kawaguchiko",lon:138.76,lat:35.51},
+  tokyo:{kanji:"東京",nome:"Tokyo",lon:139.77,lat:35.68}
+};
+const REDUZIR = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const el = (id)=>document.getElementById(id);
+const esc = (s)=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nf  = (n,d=0)=>Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const dm  = (iso)=>iso.slice(8,10)+"/"+iso.slice(5,7);
+
+/* ================================================================
+   1. FOTOS — parede de fundo com transicao entre cidades
+   ================================================================ */
+const CACHE = {};
+function carregarFoto(k){
+  if(CACHE[k]) return CACHE[k];
+  return CACHE[k] = new Promise(function(res){
+    const im = new Image();
+    im.onload = im.onerror = res;
+    im.src = "fotos/" + k + "-lg.webp";
+  });
+}
+
+let trocarParede = function(){};
+function montarParede(){
+  const w = el("wall");
+  const cam = [document.createElement("i"), document.createElement("i")];
+  cam.forEach(function(n){ w.appendChild(n); });
+  let ativo = 0, atual = null;
+
+  trocarParede = function(k){
+    if(!FOTOS[k] || k === atual) return;
+    atual = k;
+    const prox = cam[1-ativo];
+    prox.style.backgroundImage = "url(" + FOTOS[k].lqip + ")";
+    carregarFoto(k).then(function(){
+      if(atual === k) prox.style.backgroundImage = "url(fotos/" + k + "-lg.webp)";
+    });
+    prox.classList.add("on");
+    cam[ativo].classList.remove("on");
+    ativo = 1 - ativo;
+  };
+  trocarParede("hero");
+
+  // Manda na foto o ultimo alvo cujo topo ja cruzou a linha de referencia.
+  // Com "o primeiro visivel" a secao que esta saindo ganhava da que esta entrando
+  // e o fundo ficava um passo atrasado.
+  const alvos = [].slice.call(document.querySelectorAll("[data-foto]"));
+  function escolher(){
+    const linha = innerHeight * .45;
+    let escolhido = alvos[0];
+    for(let i = 0; i < alvos.length; i++){
+      if(alvos[i].getBoundingClientRect().top <= linha) escolhido = alvos[i]; else break;
+    }
+    if(escolhido) trocarParede(escolhido.dataset.foto);
+  }
+  // Sem latch: escolher() e so leitura de 24 retangulos, barato o bastante para rodar
+  // direto no scroll. Um throttle com flag booleana ja congelou a parede quando o
+  // requestAnimationFrame nao chegou e a flag ficou presa em true.
+  addEventListener("scroll", escolher, {passive:true});
+  addEventListener("resize", escolher, {passive:true});
+  addEventListener("load", escolher);
+  // segundo gatilho, independente de evento de scroll
+  const io = new IntersectionObserver(escolher, {rootMargin:"-45% 0px -45% 0px"});
+  alvos.forEach(function(a){ io.observe(a); });
+  escolher();
+
+  // o resto so depois que a pagina assentar, para nao competir com o primeiro paint
+  addEventListener("load", function(){
+    setTimeout(function(){ Object.keys(FOTOS).forEach(carregarFoto); }, 1200);
+  });
+}
+
+/* ================================================================
+   2. HERO — foto + petalas de sakura
+   ================================================================ */
+function iniciarHero(){
+  el("heroFoto").style.backgroundImage =
+    "url(" + FOTOS.hero.lqip + ")";
+  carregarFoto("hero").then(function(){
+    el("heroFoto").style.backgroundImage = "url(fotos/hero-lg.webp)";
+  });
+
+  const cv = el("heroCv"), x = cv.getContext("2d");
+  let W = 0, H = 0, petalas = [];
+  function nova(inicio){
+    return {x:Math.random()*W, y:inicio?Math.random()*H:-14, r:2.4+Math.random()*4.2,
+      vy:.22+Math.random()*.55, vx:-.32+Math.random()*.64, a:Math.random()*6.3,
+      va:(Math.random()-.5)*.05, o:.30+Math.random()*.45};
+  }
+  function montar(){
+    const dpr = Math.min(devicePixelRatio||1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W*dpr; cv.height = H*dpr; x.setTransform(dpr,0,0,dpr,0,0);
+    petalas = Array.from({length: REDUZIR ? 0 : 30}, function(){ return nova(true); });
+  }
+  function quadro(){
+    x.clearRect(0,0,W,H);
+    for(const p of petalas){
+      p.y += p.vy; p.x += p.vx + Math.sin(p.y*.014)*.5; p.a += p.va;
+      if(p.y > H+14) Object.assign(p, nova(false));
+      x.save(); x.translate(p.x,p.y); x.rotate(p.a); x.globalAlpha = p.o;
+      x.fillStyle = "#FBD8E0"; x.beginPath();
+      x.ellipse(0,0,p.r,p.r*.62,0,0,7); x.fill(); x.restore();
+    }
+    requestAnimationFrame(quadro);
+  }
+  montar();
+  addEventListener("resize", function(){
+    clearTimeout(iniciarHero._t);
+    iniciarHero._t = setTimeout(montar, 220);
+  }, {passive:true});
+  if(!REDUZIR) requestAnimationFrame(quadro);
+}
+
+function montarCreditos(){
+  el("creditos").innerHTML = "Fotos do Wikimedia Commons, reduzidas e recomprimidas. " +
+    Object.keys(FOTOS).map(function(k){
+      const f = FOTOS[k];
+      return '<a href="' + esc(f.pagina) + '" target="_blank" rel="noopener">' + esc(f.legenda) +
+             '</a>, ' + esc(f.autor) + ' (<a href="' + esc(f.licurl) +
+             '" target="_blank" rel="noopener">' + esc(f.lic) + '</a>)';
+    }).join(" · ");
+}
+
+/* ================================================================
+   3. MAPA — projeção, costa e rota
+   ================================================================ */
+const VB={w:360,h:250};
+const proj=(lon,lat)=>[(lon-134.8)*57.89+15, 235-(lat-33.4)*76];
+const COSTA=[[134.60,34.78],[135.00,34.66],[135.20,34.69],[135.42,34.73],[135.33,34.45],
+ [135.17,34.23],[135.32,33.95],[135.76,33.45],[136.02,33.88],[136.25,34.10],[136.55,34.22],
+ [136.88,34.30],[136.76,34.80],[136.95,34.62],[137.30,34.62],[137.70,34.70],[138.23,34.60],
+ [138.40,34.90],[138.52,35.08],[138.75,34.92],[138.86,34.60],[139.10,34.92],[139.18,35.28],
+ [139.46,35.32],[139.66,35.16],[139.80,35.44],[139.88,35.64],[139.94,35.36],[139.92,34.94],
+ [140.38,35.44],[140.62,35.80],[140.78,36.40],[140.78,37.60],[134.60,37.60]];
+const PARADAS=[
+ {n:"KIX",        s:"pouso 16/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
+ {n:"Osaka",      s:"4 noites",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
+ {n:"Kyoto",      s:"3 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
+ {n:"Kawaguchiko",s:"1 noite",     lon:138.76,lat:35.51, c:"fuji",  dx:0,  dy:-20,an:"middle"},
+ {n:"Tokyo",      s:"7 noites",    lon:139.77,lat:35.68, c:"tokyo", dx:10, dy:2,  an:"start"}];
+const MISHIMA=[138.91,35.13];
+
+/* Catmull-Rom -> bezier: costa lisa a partir de poucos pontos */
+function suave(pts){
+  const f=(v)=>v.toFixed(1);
+  let d="M"+f(pts[0][0])+","+f(pts[0][1]);
+  for(let i=0;i<pts.length-1;i++){
+    const p0=pts[i-1]||pts[i], p1=pts[i], p2=pts[i+1], p3=pts[i+2]||p2;
+    d+="C"+f(p1[0]+(p2[0]-p0[0])/10)+","+f(p1[1]+(p2[1]-p0[1])/10)+" "+
+         f(p2[0]-(p3[0]-p1[0])/10)+","+f(p2[1]-(p3[1]-p1[1])/10)+" "+f(p2[0])+","+f(p2[1]);
+  }
+  return d+"Z";
+}
+
+function svgMapa(mini){
+  const p=PARADAS.map(o=>proj(o.lon,o.lat));
+  const mi=proj(MISHIMA[0],MISHIMA[1]);
+  const costa=suave(COSTA.map(c=>proj(c[0],c[1])));
+  const pernas=[
+    {d:`M${p[0]}L${p[1]}`,        c:"osaka"},
+    {d:`M${p[1]}L${p[2]}`,        c:"kyoto"},
+    {d:`M${p[2]}L${mi}L${p[3]}`,  c:"fuji"},
+    {d:`M${p[3]}L${p[4]}`,        c:"tokyo"},
+    {d:`M${p[4]}Q${((p[4][0]+p[1][0])/2).toFixed(1)},${(Math.max(p[4][1],p[1][1])+48).toFixed(1)} ${p[1]}`, c:"osaka"}];
+  const linhas=pernas.map((L,i)=>
+    `<path class="rota-bg" d="${L.d}"/><path class="rota-fg rota-anim" data-i="${i}" d="${L.d}" stroke="var(--c-${L.c})"/>`).join("");
+  const pinos=PARADAS.map((o,i)=>{
+    const [X,Y]=p[i], r=mini?3.4:5;
+    let g=`<circle cx="${X.toFixed(1)}" cy="${Y.toFixed(1)}" r="${r}" fill="var(--surface)" stroke="var(--c-${o.c})" stroke-width="${mini?2:2.8}"/>`;
+    if(!mini) g+=`<text class="est-lbl" x="${(X+o.dx).toFixed(1)}" y="${(Y+o.dy).toFixed(1)}" text-anchor="${o.an}">${o.n}</text>`+
+                 `<text class="est-sub" x="${(X+o.dx).toFixed(1)}" y="${(Y+o.dy+9.5).toFixed(1)}" text-anchor="${o.an}">${o.s}</text>`;
+    return g;
+  }).join("");
+  const ponto=mini?`<circle id="tlPin" r="5" cx="${p[1][0].toFixed(1)}" cy="${p[1][1].toFixed(1)}" fill="#fff" stroke="var(--c-osaka)" stroke-width="2.6"/>`:"";
+  return `<svg viewBox="0 0 ${VB.w} ${VB.h}" role="img" aria-label="Mapa da rota: KIX, Osaka, Kyoto, Kawaguchiko e Tokyo, com a volta a Osaka">
+    <path class="coast" d="${costa}"/>${linhas}${pinos}${ponto}</svg>`;
+}
+
+function montarMapa(){
+  el("mapaSlot").innerHTML=svgMapa(false);
+  el("tlMap").innerHTML=svgMapa(true);
+  el("mapaLeg").innerHTML=Object.keys(CID).map(k=>
+    `<span class="leg c-${k}"><s></s>${CID[k].nome} <span style="color:var(--ink-3);font-weight:600">${CID[k].kanji}</span></span>`).join("");
+
+  // pernas: os trechos entre bases
+  const legs=[];
+  DADOS.dias.forEach(d=>d.atividades.forEach(a=>{
+    const ehPerna=/^(TRANSFER|SHINKANSEN)/i.test(a.nome) && d.transicao;
+    if(ehPerna || /^KIX →/.test(a.nome)) legs.push({d,a});
+  }));
+  el("mapaPernas").innerHTML='<div class="pernas">'+legs.map(({d,a})=>{
+    const dist=[a.km?nf(a.km,a.km%1?1:0)+" km":"", a.min?nf(a.min)+" min":""].filter(Boolean).join(" · ");
+    return `<div class="perna c-${d.cidade}"><s></s>
+      <span class="nm">${esc(a.nome.replace(/^TRANSFER:?\s*/i,""))}<u>${esc(a.como)}</u></span>
+      <span class="dd">${esc(dist)}<b>${a.transp?"¥"+nf(a.transp):"grátis"}</b></span></div>`;
+  }).join("")+'</div>';
+
+  const linhas=[...el("mapaSlot").querySelectorAll(".rota-anim")];
+  const comps=linhas.map(l=>l.getTotalLength());
+  const total=comps.reduce((a,b)=>a+b,0);
+  linhas.forEach((l,i)=>{ l.style.strokeDasharray=comps[i]; l.style.strokeDashoffset=comps[i]; });
+  // Ancora no proprio SVG, nao na secao: a secao cresceu com a tabela de pernas e
+  // o traco terminava antes de o mapa aparecer. Agora o desenho acontece na janela
+  // em que o mapa esta inteiro na tela.
+  const alvo=el("mapaSlot"); let pedido=false;
+  function pintar(){
+    pedido=false;
+    const r=alvo.getBoundingClientRect(), vh=innerHeight||800;
+    const ini=Math.max(vh-r.height, vh*.30);   // topo do mapa quando ele acaba de caber inteiro
+    const faixa=Math.max(ini-vh*.18, vh*.28);  // nunca curta demais em tela baixa
+    const t=Math.max(0,Math.min(1,(ini-r.top)/faixa));
+    let feito=t*total;
+    linhas.forEach((l,i)=>{
+      const usado=Math.max(0,Math.min(comps[i],feito));
+      l.style.strokeDashoffset=comps[i]-usado; feito-=comps[i];
+    });
+  }
+  const agenda=()=>{ if(!pedido){pedido=true;requestAnimationFrame(pintar);} };
+  addEventListener("scroll",agenda,{passive:true});
+  addEventListener("resize",agenda,{passive:true});
+  addEventListener("load",agenda);
+  pintar();
+}
+
+/* ================================================================
+   4. NÚMEROS
+   ================================================================ */
+function montarNums(){
+  const r=(lbl)=>{const o=DADOS.resumo.find(x=>x.label.toLowerCase().indexOf(lbl)===0);return o?o.valor:0;};
+  const yen=r("total em ienes"), reais=r("total em reais");
+  const cards=[
+    {b:"16",u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
+    {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
+    {b:Math.round(r("caminhada total")/60)+"h",u:"a pé, no total",i:"Média de ~1h por dia empurrando carrinho"},
+    {b:"82",u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
+    {b:"¥"+nf(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
+    {b:"¥"+nf(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
+    {b:"¥"+nf(yen),u:"total por adulto",i:"Transporte + ingressos, sem comida"},
+    {b:"R$ "+nf(reais),u:"o mesmo em reais",i:"Some ~R$ 3.168 de comida no cenário médio"}
+  ];
+  el("nums").innerHTML=cards.map(c=>
+    `<div class="num"><b>${esc(c.b)}</b><u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
+}
+
+/* ================================================================
+   5. TIMELAPSE
+   ================================================================ */
+function montarTimelapse(){
+  const dias=DADOS.dias, art=el("tlArt"), range=el("tlRange"), play=el("tlPlay"), tl=el("tl");
+  let i=0, rodando=null;
+  const pinPos={};
+  PARADAS.forEach(o=>{ pinPos[o.c]=proj(o.lon,o.lat); });
+  function ir(k){
+    i=k; const d=dias[k], m=CID[d.cidade], t=d.total||{};
+    tl.className="tl c-"+d.cidade;
+    art.style.backgroundImage=`url(fotos/${d.cidade}-lg.webp)`;
+    tl.dataset.foto=d.cidade; trocarParede(d.cidade);
+    el("tlCity").firstChild.nodeValue=m.kanji;
+    el("tlBase").textContent=d.base;
+    el("tlNum").textContent=String(k+1).padStart(2,"0");
+    el("tlDate").textContent=dm(d.data)+" · "+d.semana;
+    el("tlKm").textContent=nf(t.km||0, (t.km||0)%1?1:0);
+    el("tlMin").textContent=nf(t.min||0);
+    el("tlPe").textContent=nf(t.pe||0);
+    el("tlYen").textContent=nf((t.transp||0)+(t.ingresso||0));
+    const pin=el("tlPin");
+    if(pin){ const p=pinPos[d.cidade];
+      pin.setAttribute("cx",p[0].toFixed(1)); pin.setAttribute("cy",p[1].toFixed(1));
+      pin.setAttribute("stroke",`var(--c-${d.cidade})`);
+      pin.style.transition=REDUZIR?"none":"cx .5s cubic-bezier(.4,0,.2,1),cy .5s cubic-bezier(.4,0,.2,1)"; }
+    el("tlList").innerHTML=d.atividades.slice(0,5).map((a,n)=>
+      `<li style="animation-delay:${n*55}ms"><s>${esc(a.periodo)}</s><span>${esc(a.nome)}</span></li>`).join("");
+    range.value=k; range.style.setProperty("--pct",(k/15*100)+"%");
+  }
+  range.addEventListener("input",()=>{ parar(); ir(+range.value); });
+  function parar(){ if(rodando){clearInterval(rodando);rodando=null;play.textContent="▶";
+    play.setAttribute("aria-label","Reproduzir o timelapse");} }
+  play.addEventListener("click",()=>{
+    if(rodando) return parar();
+    if(i>=15) ir(0);
+    play.textContent="❚❚"; play.setAttribute("aria-label","Pausar o timelapse");
+    rodando=setInterval(()=>{ if(i>=15) return parar(); ir(i+1); },1500);
+  });
+  ir(0);
+}
+
+/* ================================================================
+   6. ROTEIRO — trilho + filtros
+   ================================================================ */
+const FILTROS=[
+ {id:"tudo",   lbl:"Tudo",           f:()=>true},
+ {id:"gratis", lbl:"Grátis",         f:a=>!a.ingresso},
+ {id:"ok",     lbl:"Carrinho OK",    f:a=>a.bebe.indexOf("CARRINHO OK")>=0},
+ {id:"canguru",lbl:"Exige canguru",  f:a=>a.bebe.indexOf("CANGURU")>=0},
+ {id:"comida", lbl:"Comida",         f:a=>/jantar|almo|caf[eé]|mercado|ichiba|dotonbori|yokocho|kushikatsu|konbini|toyosu|hoppy|pontocho|onsen/i.test(a.nome+a.obs)},
+ {id:"compras",lbl:"Compras",        f:a=>/compras|den den|senba|shinsaibashi|akihabara|ameyoko|takeshita|kiddy|nakamise|solamachi|tax-free/i.test(a.nome+a.obs)},
+ {id:"vista",  lbl:"Vista do alto",  f:a=>/torre|sky|observat|mirante|roda-gigante|telef[eé]rico|deck|panor/i.test(a.nome+a.obs)},
+ {id:"templo", lbl:"Templos",        f:a=>/templo|santu[aá]rio|jinja|taisha|torii|pagode|-ji\b|-dera/i.test(a.nome+a.obs)}
+];
+const classeBebe=(b)=> b.indexOf("CARRINHO OK")>=0?"ok" : b.indexOf("CANGURU")>=0?"can" : b.indexOf("ESFOR")>=0?"esf" : "";
+
+function montarTrilho(){
+  const html=DADOS.dias.map((d,k)=>{
+    const m=CID[d.cidade], t=d.total||{};
+    const pers=[]; d.atividades.forEach(a=>{ if(pers.indexOf(a.periodo)<0) pers.push(a.periodo); });
+    const blocos=pers.map(p=>{
+      const itens=d.atividades.map((a,ai)=>({a,ai})).filter(o=>o.a.periodo===p).map(({a,ai})=>{
+        const cb=classeBebe(a.bebe), uid=`a${k}-${ai}`;
+        const meta=[];
+        if(a.km)      meta.push(`<span>${nf(a.km,a.km%1?1:0)} km</span>`);
+        if(a.min)     meta.push(`<span>${nf(a.min)} min</span>`);
+        if(a.pe)      meta.push(`<span>${nf(a.pe)} min a pé</span>`);
+        meta.push(a.ingresso?`<s>¥${nf(a.ingresso)}</s>`:`<s>grátis</s>`);
+        if(a.duracao && a.duracao!=="—") meta.push(`<span>${esc(a.duracao)}</span>`);
+        const det=[];
+        if(a.como)    det.push(["Como ir",esc(a.como)]);
+        if(a.de)      det.push(["Saindo de",esc(a.de)]);
+        if(a.horario && a.horario!=="—") det.push(["Horário",esc(a.horario)]);
+        if(a.transp)  det.push(["Transporte",`¥${nf(a.transp)}`]);
+        if(a.terreno && a.terreno!=="—") det.push(["Terreno",esc(a.terreno)]);
+        if(a.obs && a.obs!=="—")         det.push(["Nota",esc(a.obs)]);
+        return `<div class="ativ" data-ai="${ai}">
+          <button class="ativ-top" aria-expanded="false" aria-controls="${uid}">
+            <span class="ativ-txt">
+              <h4>${esc(a.nome)}</h4>
+              <span class="ativ-meta">${meta.join("")||""}</span>
+              ${cb?`<span class="bebe ${cb}">${esc(a.bebe)}</span>`:""}
+            </span>
+            <svg class="caret" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="ativ-det" id="${uid}">${det.map(r=>`<div class="det-row"><b>${r[0]}</b><span>${r[1]}</span></div>`).join("")}</div>
+        </div>`;
+      }).join("");
+      return `<div class="per"><p class="per-lbl">${esc(p)}</p>${itens}</div>`;
+    }).join("");
+    const stats=[];
+    if(t.km)      stats.push(`<span><b>${nf(t.km,t.km%1?1:0)}</b> km</span>`);
+    if(t.min)     stats.push(`<span><b>${nf(t.min)}</b> min transp.</span>`);
+    if(t.pe)      stats.push(`<span><b>${nf(t.pe)}</b> min a pé</span>`);
+    stats.push(`<span><b>¥${nf((t.transp||0)+(t.ingresso||0))}</b> no dia</span>`);
+    return `<article class="dia c-${d.cidade}" id="dia${k+1}" data-foto="${d.cidade}">
+      <div class="dia-mark">${String(k+1).padStart(2,"0")}</div>
+      <div class="dia-card">
+        <div class="dia-art" data-cid="${d.cidade}"><b>${m.kanji}</b><i>${dm(d.data)} · ${esc(d.semana)}</i></div>
+        <div class="dia-head">
+          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de 16 · dorme em ${esc(m.nome)}</p></div>
+          ${d.transicao?`<span class="badge-tr">troca de base</span>`:""}
+        </div>
+        <div class="dia-stats">${stats.join("")}</div>
+        ${MAPAS.indexOf(k+1)>=0?`<a class="dia-mapa" href="dia-${String(k+1).padStart(2,"0")}.html">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s6-5.2 6-9.4A6 6 0 0 0 4 8.6C4 12.8 10 18 10 18Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="10" cy="8.6" r="2.1" fill="currentColor"/></svg>
+          <span>Ver o mapa deste dia<u>rota, horários, custos e alternativas</u></span>
+          <i>›</i></a>`:""}
+        ${blocos}
+        ${t.nota?`<div class="dia-nota">${esc(t.nota.replace(/R\$ 0+(\d)/,"R$ $1"))}</div>`:""}
+      </div>
+    </article>`;
+  }).join("");
+  el("trilho").innerHTML=html;
+  el("trilho").querySelectorAll(".dia-art").forEach(n=>{
+    n.style.backgroundImage=`url(fotos/${n.dataset.cid}-sm.webp)`;
+  });
+  el("trilho").addEventListener("click",(ev)=>{
+    const b=ev.target.closest(".ativ-top"); if(!b) return;
+    const aberto=b.getAttribute("aria-expanded")==="true";
+    b.setAttribute("aria-expanded",String(!aberto));
+    b.parentElement.querySelector(".ativ-det").classList.toggle("on",!aberto);
+  });
+
+  el("filtros").innerHTML=FILTROS.map((f,i)=>
+    `<button class="chip" data-f="${f.id}" aria-pressed="${i===0}">${f.lbl}</button>`).join("");
+  el("filtros").addEventListener("click",(ev)=>{
+    const b=ev.target.closest(".chip"); if(!b) return;
+    el("filtros").querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",String(c===b)));
+    aplicar(FILTROS.find(f=>f.id===b.dataset.f));
+  });
+  function aplicar(filtro){
+    let visiveis=0;
+    DADOS.dias.forEach((d,k)=>{
+      const art=el("dia"+(k+1)); let n=0;
+      d.atividades.forEach((a,ai)=>{
+        const ok=filtro.f(a); if(ok) n++;
+        const no=art.querySelector(`.ativ[data-ai="${ai}"]`);
+        if(no) no.classList.toggle("oculta",!ok);
+      });
+      art.querySelectorAll(".per").forEach(p=>{
+        p.style.display=[...p.querySelectorAll(".ativ")].some(x=>!x.classList.contains("oculta"))?"":"none";
+      });
+      art.classList.toggle("oculto",n===0); if(n) visiveis++;
+    });
+    el("vazio").hidden=visiveis>0;
+  }
+}
+
+/* ================================================================
+   7. CARROSSÉIS CURADOS
+   ================================================================ */
+const COMER=[
+ {c:"osaka",d:"18/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
+ {c:"osaka",d:"17 e 30/03",n:"Dotonbori",b:"Namba",t:"Takoyaki, okonomiyaki e kushikatsu à beira do canal, sob o letreiro do Glico. A multidão pesa das 19h às 21h.",g:"24h · cruzeiro ¥1.200"},
+ {c:"osaka",d:"17/03",n:"Shinsekai",b:"Naniwa",t:"Bairro retrô dos anos 1950 aos pés da Tsūtenkaku, e a capital do kushikatsu.",g:"10:00–20:00"},
+ {c:"osaka",d:"18/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Barata e senta os 13 sem reserva.",g:"11:00–20:00 · fraldário no piso 2"},
+ {c:"osaka",d:"17/03",n:"Hozenji Yokocho",b:"Namba",t:"Beco de pedra ao lado do Dotonbori, com o templo coberto de musgo. O contraponto silencioso ao neon.",g:"24h"},
+ {c:"kyoto",d:"19 e 21/03",n:"Pontocho",b:"Gion",t:"Beco de 2 m de largura à beira do rio Kamo, com restaurantes dos dois lados. Carrinho não entra.",g:"noite · leve o canguru"},
+ {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. O único dia em que a comida já está paga.",g:"La Vista Fujikawaguchiko"},
+ {c:"tokyo",d:"25/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
+ {c:"tokyo",d:"24/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
+ {c:"tokyo",d:"24/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
+ {c:"tokyo",d:"27/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
+];
+const COMPRAS=[
+ {c:"osaka",d:"17/03",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
+ {c:"osaka",d:"19 e 31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
+ {c:"osaka",d:"30 e 31/03",n:"Shinsaibashi-suji",b:"Shinsaibashi",t:"Galeria coberta de 600 m que emenda direto no Dotonbori. Funciona com chuva e concentra quase tudo.",g:"11:00–21:00 · última chance de tax-free"},
+ {c:"tokyo",d:"24/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
+ {c:"tokyo",d:"28/03",n:"Akihabara",b:"Akihabara",t:"Eletrônicos, anime, games e lojas de vários andares. O dia inteiro cabe aqui, se deixarem.",g:"domingo · Chuo-dori vira calçadão à tarde"},
+ {c:"tokyo",d:"28/03",n:"Ameyoko",b:"Ueno",t:"Feira de rua sob a linha do trem: comida, tênis, cosmético e barulho. O preço mais baixo de Tokyo.",g:"colado no Ueno Park"},
+ {c:"tokyo",d:"29/03",n:"Takeshita-dori",b:"Harajuku",t:"350 m por 3 m de largura de puro kawaii: crepes, purikura e lojas alternativas. Segurem as crianças pela mão.",g:"11:00–20:00 · carrinho não entra"},
+ {c:"tokyo",d:"29/03",n:"Omotesando + Kiddy Land",b:"Omotesando",t:"A avenida arborizada das grifes, e cinco andares de brinquedo no Kiddy Land. Calçada larga, com elevador.",g:"11:00–21:00"}
+];
+const PLANOB=[
+ {c:"osaka",d:"qualquer dia",n:"Chuva em Osaka",b:"tudo coberto",t:"Kaiyukan em espiral por 8 andares, Umeda Sky pelo elevador interno, Senba Center no subsolo, Kuromon coberto e 600 m de galeria em Shinsaibashi. Dá para passar o dia sem tomar chuva.",g:"nenhum deles depende do tempo"},
+ {c:"osaka",d:"18/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
+ {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Kyoto é a única base onde o transporte principal é ônibus urbano, com entrada pela porta traseira e carrinho dobrado em pé. Com 3 bebês em fim de semana de feriado, considerem táxi nos trechos curtos ou dividir o grupo.",g:"feriadão de 20 a 22/03"},
+ {c:"fuji", d:"22 e 23/03",n:"Fuji na nuvem",b:"Kawaguchiko",t:"Oishi Park vale pela margem do lago mesmo sem o topo à vista. O onsen e o jantar do ryokan seguram o dia, e o teleférico Kachi-Kachi vira saída antecipada para Tokyo.",g:"o topo aparece em poucos dias do mês"},
+ {c:"tokyo",d:"qualquer dia",n:"Chuva em Tokyo",b:"tudo coberto",t:"teamLab PLANETS, Miraikan, Solamachi, o observatório gratuito do Governo Metropolitano e os andares de Akihabara. Só o Skytree perde a graça com o céu fechado.",g:"o observatório abre até 22:00"},
+ {c:"tokyo",d:"27/03",n:"Troca do dia de Shinjuku",b:"alternativa mapeada",t:"Se Shinjuku não empolgar, a troca já prevista é Palácio Imperial + Koishikawa Korakuen, colados um no outro e a 20 min de Ojima.",g:"¥300 · da lista original"},
+ {c:"tokyo",d:"29/03",n:"Shibuya Sky esgotado",b:"Shibuya",t:"O horário do pôr do sol some primeiro, e em 29/03 o sol se põe ~17:55. Sem ele, o observatório do Governo Metropolitano é grátis e tem elevador direto ao 45º andar.",g:"grátis · Shinjuku"},
+ {c:"osaka",d:"31/03",n:"A conexão de 2h em Sydney",b:"o risco da volta",t:"É a mais apertada da viagem. Como o bilhete é único, a LATAM reacomoda em caso de atraso — mas para não depender disso, estejam no KIX às 18:25, saindo de Namba às 17:20.",g:"crítico"}
+];
+function montarCarro(alvo,itens){
+  el(alvo).innerHTML=itens.map(o=>`
+    <article class="card c-${o.c}">
+      <div class="card-art" data-cid="${o.c}"><s>${esc(o.b)}</s><u>${esc(o.d)}</u></div>
+      <div class="card-in"><h4>${esc(o.n)}</h4><p>${esc(o.t)}</p><p class="tag">${esc(o.g)}</p></div>
+    </article>`).join("");
+  el(alvo).querySelectorAll(".card-art").forEach(n=>{
+    n.style.backgroundImage=`url(fotos/${n.dataset.cid}-sm.webp)`;
+  });
+}
+
+/* ================================================================
+   8. NOTAS, VOOS, HOSPEDAGEM
+   ================================================================ */
+function tipoNota(t){
+  if(/^PENDENTE/.test(t)) return ["pen","pendente"];
+  if(/^ATEN[ÇC]/.test(t)) return ["ale","atenção"];
+  if(/^OPORTUNIDADE/.test(t)) return ["inf","oportunidade"];
+  return ["inf","nota"];
+}
+function montarNotas(){
+  el("notas").innerHTML=DADOS.notas.map((n,i)=>{
+    const [k,lbl]=tipoNota(n.titulo);
+    const cor=["osaka","kyoto","fuji","tokyo"][i%4];
+    return `<div class="acc c-${cor}">
+      <button class="acc-btn" aria-expanded="false" aria-controls="n${i}">
+        <s>${String(n.n).padStart(2,"0")}</s><h4>${esc(n.titulo)}</h4>
+        <svg class="caret" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="acc-body" id="n${i}"><span class="kind ${k}">${lbl}</span><p>${esc(n.texto)}</p></div>
+    </div>`;
+  }).join("");
+  el("notas").addEventListener("click",(ev)=>{
+    const b=ev.target.closest(".acc-btn"); if(!b) return;
+    const aberto=b.getAttribute("aria-expanded")==="true";
+    b.setAttribute("aria-expanded",String(!aberto));
+    b.parentElement.querySelector(".acc-body").classList.toggle("on",!aberto);
+  });
+}
+function curto(s){ return s.replace(/\s*\([^)]*\)/g,"").trim(); }
+function montarVoos(){
+  el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr>
+    <td class="n">${esc(v.numero)}</td>
+    <td>${esc(curto(v.origem))} <span style="color:var(--ink-3)">→</span> ${esc(curto(v.destino))}</td>
+    <td class="h">${dm(v.saidaData)}<br>${esc(v.saidaHora)}</td>
+    <td class="h">${dm(v.chegadaData)}<br>${esc(v.chegadaHora)}</td>
+    <td class="h">${esc(v.duracao)}</td>
+    <td>${esc(v.conexao)}</td></tr>`).join("");
+  el("voosNotas").innerHTML=DADOS.voosNotas.filter(n=>n.texto).map(n=>{
+    const crit=/⚠|pendente/i.test(n.titulo);
+    return `<div class="callout ${crit?"crit":"c-fuji"}" style="margin-bottom:9px">
+      <s>${crit?"⚠️":"✈️"}</s><div><h4>${esc(n.titulo.replace("⚠ ",""))}</h4><p>${esc(n.texto)}</p></div></div>`;
+  }).join("");
+}
+function montarHosp(){
+  const cidCor=(c)=>/quioto|kyoto/i.test(c)?"kyoto":/hakone|fuji|kawagu/i.test(c)?"fuji":/tokyo|tóquio/i.test(c)?"tokyo":"osaka";
+  function pinta(set){
+    const lista=DADOS.hospedagem[set];
+    el("hospLista").innerHTML=lista.map(h=>`
+      <div class="hosp-item c-${cidCor(h.cidade)}">
+        <s></s>
+        <div class="tx">
+          <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
+          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p>
+        </div>
+        <div class="vl">${h.total?"R$ "+nf(h.total):"—"}<u>grupo</u></div>
+      </div>`).join("")
+      + `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
+         <div class="tx"><h4>Total do conjunto ${set.toUpperCase()}</h4>
+         <p class="mt">${lista.length} reservas lançadas</p></div>
+         <div class="vl">R$ ${nf(lista.reduce((a,b)=>a+(b.total||0),0))}<u>grupo</u></div></div>`;
+  }
+  el("hospToggle").addEventListener("click",(ev)=>{
+    const b=ev.target.closest("button"); if(!b) return;
+    el("hospToggle").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+    pinta(b.dataset.set);
+  });
+  pinta("a");
+}
+
+/* ================================================================
+   9. NAV, TEMA, CONTAGEM
+   ================================================================ */
+function montarNav(){
+  const links=[...document.querySelectorAll(".nav a")];
+  const secs=links.map(a=>el(a.getAttribute("href").slice(1))).filter(Boolean);
+  const vistos=new Set();
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{ if(e.isIntersecting) vistos.add(e.target); else vistos.delete(e.target); });
+    const atual=secs.find(s=>vistos.has(s));   // a primeira em ordem de documento, nao a ultima a disparar
+    if(!atual) return;
+    links.forEach(a=>a.setAttribute("aria-current",String(a.getAttribute("href")==="#"+atual.id)));
+    const ativo=links.find(a=>a.getAttribute("aria-current")==="true");
+    if(ativo) ativo.scrollIntoView({block:"nearest",inline:"nearest",behavior:REDUZIR?"auto":"smooth"});
+  },{rootMargin:"-45% 0px -50% 0px"});
+  secs.forEach(s=>io.observe(s));
+}
+function montarTema(){
+  const b=el("themeBtn");
+  let salvo=null; try{ salvo=localStorage.getItem("jp27tema"); }catch(e){}
+  if(salvo) document.documentElement.setAttribute("data-theme",salvo);
+  b.addEventListener("click",()=>{
+    const escuro=matchMedia("(prefers-color-scheme:dark)").matches;
+    const atual=document.documentElement.getAttribute("data-theme") || (escuro?"dark":"light");
+    const novo=atual==="dark"?"light":"dark";
+    document.documentElement.setAttribute("data-theme",novo);
+    try{ localStorage.setItem("jp27tema",novo); }catch(e){}
+  });
+}
+function montarContagem(){
+  const alvo=new Date("2027-03-14T10:40:00-03:00");
+  const dias=Math.max(0,Math.ceil((alvo-new Date())/864e5));
+  el("cd").textContent=nf(dias);
+}
+
+/* ---------- boot ---------- */
+iniciarHero();
+montarNums();
+montarMapa();
+montarTimelapse();
+montarTrilho();
+montarCarro("comerCarro",COMER);
+montarCarro("comprasCarro",COMPRAS);
+montarCarro("planobCarro",PLANOB);
+montarNotas();
+montarVoos();
+montarHosp();
+montarParede();   // depois do DOM montado: observa tambem os 16 dias
+montarNav();
+montarTema();
+montarContagem();
+montarCreditos();
+</script>
