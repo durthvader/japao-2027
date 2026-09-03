@@ -127,6 +127,9 @@ botão "Ver o mapa deste dia" aparece sozinho no card daquele dia.
 - `dados.json` — o roteiro extraído da planilha. **Fora do repositório.**
 - `ajustes.py` / `ajustes.json` — a camada de decisões por cima do extrato; o
   `.json` fica **fora do repositório** porque guarda o motivo de cada uma.
+- `exportar_xlsx.py` — grava o roteiro já ajustado em `Roteiro Japao - FINAL.xlsx`,
+  na pasta acima. É saída, não entrada: a fonte continua sendo a planilha original
+  mais o `ajustes.json`. Reescrever a fonte faria os ajustes se aplicarem duas vezes.
 - `fotos.py` — baixa as fotos do Commons e grava `fotos/` + `creditos.json`.
 - `fotos/` — as imagens em dois tamanhos, mais os créditos.
 
