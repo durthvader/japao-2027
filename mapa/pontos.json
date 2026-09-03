@@ -2096,12 +2096,12 @@
   },
   "fuji": {
    "nome": "La Vista Fujikawaguchiko",
-   "lat": 35.5265,
-   "lng": 138.76986,
-   "aprox": true,
+   "lat": 35.5296567,
+   "lng": 138.7627726,
+   "aprox": false,
    "gmaps": "La Vista Fujikawaguchiko",
    "endereco": "Kawaguchi 2395, Fujikawaguchiko, Yamanashi",
-   "confere": "PONTO FRACO: o hotel não existe no OpenStreetMap. É o centro do bairro Kawaguchi, na margem norte do lago. Vale acertar depois."
+   "confere": "marcador do Google Maps enviado pelo grupo — ponto exato, na margem norte do lago Kawaguchi"
   },
   "tokyo": {
    "nome": "Hotel Oojima",
