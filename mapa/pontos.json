@@ -4,20 +4,21 @@
   "titulo": "Osaka de ponta a ponta",
   "resumo": "Mercado de manhã, baía à tarde, o bairro retrô antes das lojas fecharem e o pôr do sol do mirante. Dois trechos longos de metrô, o resto a pé.",
   "centro": [
-   34.681,
-   135.47
+   34.664,
+   135.472
   ],
   "zoom": 12,
   "paradas": [
    {
     "id": "base",
-    "nome": "Airbnb Namba",
+    "nome": "Airbnb Tengachaya",
     "tipo": "base",
-    "lat": 34.6655,
-    "lng": 135.501,
+    "lat": 34.63808,
+    "lng": 135.4989,
     "aprox": true,
     "hora": "08:45",
-    "gmaps": "Namba Station, Osaka"
+    "gmaps": "Tengachaya Station, Osaka",
+    "alerta": "A hospedagem fica em Nishinari, o bairro mais barato de Osaka. A parte de fama pesada é Kamagasaki, entre Shin-Imamiya e Dobutsuen-mae; Tengachaya 2-chome fica ao sul disso, é residencial e tranquilo, e a estação tem galeria coberta com comércio. À noite, voltem pela avenida e pela estação em vez de cortar caminho pelas ruas internas — é o mesmo conselho que se dá em qualquer cidade grande."
    },
    {
     "id": "p1",
@@ -238,24 +239,40 @@
    },
    {
     "id": "fim",
-    "nome": "Airbnb Namba",
+    "nome": "Airbnb Tengachaya",
     "tipo": "base",
-    "lat": 34.6655,
-    "lng": 135.501,
+    "lat": 34.63808,
+    "lng": 135.4989,
     "aprox": true,
     "hora": "22:10",
-    "gmaps": "Namba Station, Osaka"
+    "gmaps": "Tengachaya Station, Osaka"
+   },
+   {
+    "id": "e8",
+    "nome": "Tengachaya (Sakaisuji)",
+    "tipo": "estacao",
+    "lat": 34.63768,
+    "lng": 135.49713,
+    "gmaps": "Tengachaya Station, Osaka"
+   },
+   {
+    "id": "e9",
+    "nome": "Nipponbashi (Sakaisuji)",
+    "tipo": "estacao",
+    "lat": 34.66679,
+    "lng": 135.50739,
+    "gmaps": "Nippombashi Station, Osaka"
    }
   ],
   "pernas": [
    {
     "de": "base",
-    "para": "p1",
+    "para": "e8",
     "modo": "pe",
-    "min": 10,
-    "km": 0.7,
+    "min": 3,
+    "km": 0.2,
     "custo": 0,
-    "desc": "Sai pela Sennichimae rumo leste até o portal do Kuromon."
+    "desc": "Duzentos metros até a boca do metrô."
    },
    {
     "de": "p1",
@@ -385,11 +402,43 @@
    },
    {
     "de": "p8",
-    "para": "fim",
+    "para": "e9",
     "modo": "pe",
+    "min": 5,
+    "km": 0.4,
+    "custo": 0,
+    "desc": "Do canal até a boca do Nipponbashi, pela Sennichimae."
+   },
+   {
+    "de": "e8",
+    "para": "e9",
+    "modo": "metro",
+    "linha": "Sakaisuji",
+    "cor": "#814721",
     "min": 8,
-    "km": 0.5,
-    "custo": 0
+    "km": 3.1,
+    "custo": 240,
+    "desc": "3 estações, sentido norte — o mercado fica na saída"
+   },
+   {
+    "de": "e9",
+    "para": "p1",
+    "modo": "pe",
+    "min": 4,
+    "km": 0.3,
+    "custo": 0,
+    "desc": "Sai da estação direto no portal do Kuromon."
+   },
+   {
+    "de": "e9",
+    "para": "fim",
+    "modo": "metro",
+    "linha": "Sakaisuji",
+    "cor": "#814721",
+    "min": 8,
+    "km": 3.1,
+    "custo": 240,
+    "desc": "3 estações até o fim da linha"
    }
   ],
   "alternativas": [
@@ -461,36 +510,37 @@
   "titulo": "Do castelo ao sumô",
   "resumo": "Um arco de norte a sul: o castelo pela manhã, o templo mais antigo do Japão no meio, o bairro retrô no almoço e o torneio de sumô no fim da tarde — a 9 min a pé do jantar em Dotonbori.",
   "centro": [
-   34.669,
-   135.512
+   34.665,
+   135.51
   ],
   "zoom": 13,
   "paradas": [
    {
     "id": "base",
-    "nome": "Airbnb Namba",
+    "nome": "Airbnb Tengachaya",
     "tipo": "base",
-    "lat": 34.6655,
-    "lng": 135.501,
+    "lat": 34.63808,
+    "lng": 135.4989,
     "aprox": true,
     "hora": "08:30",
-    "gmaps": "Namba Station, Osaka"
+    "gmaps": "Tengachaya Station, Osaka",
+    "alerta": "A hospedagem fica em Nishinari, o bairro mais barato de Osaka. A parte de fama pesada é Kamagasaki, entre Shin-Imamiya e Dobutsuen-mae; Tengachaya 2-chome fica ao sul disso, é residencial e tranquilo, e a estação tem galeria coberta com comércio. À noite, voltem pela avenida e pela estação em vez de cortar caminho pelas ruas internas — é o mesmo conselho que se dá em qualquer cidade grande."
    },
    {
     "id": "e1",
-    "nome": "Namba (Midosuji)",
+    "nome": "Tengachaya (Sakaisuji)",
     "tipo": "estacao",
-    "lat": 34.66616,
-    "lng": 135.50027,
-    "gmaps": "Namba Station Midosuji Line"
+    "lat": 34.63768,
+    "lng": 135.49713,
+    "gmaps": "Tengachaya Station, Osaka"
    },
    {
     "id": "e2",
-    "nome": "Hommachi",
+    "nome": "Sakaisuji-Hommachi",
     "tipo": "estacao",
-    "lat": 34.68354,
-    "lng": 135.50067,
-    "gmaps": "Hommachi Station, Osaka"
+    "lat": 34.68262,
+    "lng": 135.50646,
+    "gmaps": "Sakaisujihommachi Station"
    },
    {
     "id": "e3",
@@ -640,11 +690,27 @@
     "id": "fim",
     "nome": "Volta ao Airbnb",
     "tipo": "base",
-    "lat": 34.6655,
-    "lng": 135.501,
+    "lat": 34.63808,
+    "lng": 135.4989,
     "aprox": true,
     "hora": "21:00",
-    "gmaps": "Namba Station, Osaka"
+    "gmaps": "Tengachaya Station, Osaka"
+   },
+   {
+    "id": "e8",
+    "nome": "Namba (Midosuji)",
+    "tipo": "estacao",
+    "lat": 34.66616,
+    "lng": 135.50027,
+    "gmaps": "Namba Station Midosuji Line"
+   },
+   {
+    "id": "e7",
+    "nome": "Nipponbashi (Sakaisuji)",
+    "tipo": "estacao",
+    "lat": 34.66679,
+    "lng": 135.50739,
+    "gmaps": "Nippombashi Station, Osaka"
    }
   ],
   "pernas": [
@@ -652,21 +718,21 @@
     "de": "base",
     "para": "e1",
     "modo": "pe",
-    "min": 5,
-    "km": 0.3,
+    "min": 3,
+    "km": 0.2,
     "custo": 0,
-    "desc": "Descer a Midosuji até a boca do metrô."
+    "desc": "Duzentos metros até a boca do metrô, na galeria da estação."
    },
    {
     "de": "e1",
     "para": "e2",
     "modo": "metro",
-    "linha": "Midosuji",
-    "cor": "#E5171F",
-    "min": 4,
-    "km": 1.5,
+    "linha": "Sakaisuji",
+    "cor": "#814721",
+    "min": 12,
+    "km": 5.2,
     "custo": 240,
-    "desc": "2 estações, sentido Senri-Chuo"
+    "desc": "6 estações, sentido Tenjinbashisuji 6-chome — Tengachaya é o começo da linha, então sempre há lugar"
    },
    {
     "de": "e2",
@@ -674,10 +740,10 @@
     "modo": "metro",
     "linha": "Chuo",
     "cor": "#019A66",
-    "min": 4,
-    "km": 1.6,
+    "min": 2,
+    "km": 0.9,
     "custo": 0,
-    "desc": "2 estações, sentido Cosmosquare→leste — mesma tarifa"
+    "desc": "1 estação, mesma tarifa"
    },
    {
     "de": "e3",
@@ -737,7 +803,7 @@
    },
    {
     "de": "e6",
-    "para": "e1",
+    "para": "e8",
     "modo": "metro",
     "linha": "Midosuji",
     "cor": "#E5171F",
@@ -747,7 +813,7 @@
     "desc": "2 estações, sentido Senri-Chuo"
    },
    {
-    "de": "e1",
+    "de": "e8",
     "para": "p4",
     "modo": "pe",
     "min": 8,
@@ -775,12 +841,23 @@
    },
    {
     "de": "p6",
-    "para": "fim",
+    "para": "e7",
     "modo": "pe",
-    "min": 8,
-    "km": 0.5,
+    "min": 5,
+    "km": 0.4,
     "custo": 0,
-    "desc": "Volta pela Sennichimae."
+    "desc": "Sai do beco na Sennichimae, na boca do Nipponbashi."
+   },
+   {
+    "de": "e7",
+    "para": "fim",
+    "modo": "metro",
+    "linha": "Sakaisuji",
+    "cor": "#814721",
+    "min": 8,
+    "km": 3.1,
+    "custo": 240,
+    "desc": "3 estações até o fim da linha — não tem como passar do ponto"
    }
   ],
   "alternativas": [
@@ -873,55 +950,55 @@
    },
    {
     "id": "e2",
-    "nome": "Namba (Nankai)",
+    "nome": "Tengachaya (Nankai)",
     "tipo": "estacao",
-    "lat": 34.66366,
-    "lng": 135.50178,
-    "gmaps": "Nankai Namba Station"
+    "lat": 34.63768,
+    "lng": 135.49713,
+    "gmaps": "Tengachaya Station, Osaka"
    },
    {
     "id": "p1",
-    "ativ": "KIX → Namba",
+    "ativ": "KIX → Tengachaya",
     "tipo": "hospedagem",
-    "lat": 34.6655,
-    "lng": 135.501,
+    "lat": 34.63808,
+    "lng": 135.4989,
     "aprox": true,
     "hora": "22:15",
-    "gmaps": "Namba Station, Osaka",
-    "alerta": "O Airport Express não tem lugar marcado e o bagageiro é pequeno: com 13 pessoas, entrem espalhados por dois vagões em vez de tentar ficar juntos. Da estação até a hospedagem são uns 400 m — de madrugada, com mala e carrinho, vale conferir antes por onde tem elevador na saída da estação."
+    "gmaps": "Tengachaya Station, Osaka",
+    "alerta": "O Airport Express PARA EM TENGACHAYA, uma estação antes de Namba: não sigam até o fim da linha. São 40 min em vez de 45, mesma tarifa, e desembarcar aqui evita a Namba lotada com 13 pessoas e mala. Da estação até a hospedagem são 200 m. A hospedagem fica em Nishinari, o bairro mais barato de Osaka. A parte de fama pesada é Kamagasaki, entre Shin-Imamiya e Dobutsuen-mae; Tengachaya 2-chome fica ao sul disso, é residencial e tranquilo, e a estação tem galeria coberta com comércio. À noite, voltem pela avenida e pela estação em vez de cortar caminho pelas ruas internas — é o mesmo conselho que se dá em qualquer cidade grande."
    },
    {
     "id": "p2",
     "ativ": "Jantar",
     "tipo": "comida",
-    "lat": 34.66893,
-    "lng": 135.50105,
-    "hora": "22:45",
-    "fim": "23:45",
-    "gmaps": "Dotonbori, Osaka",
-    "foto": "Dotonbori canal night Osaka",
+    "lat": 34.6378,
+    "lng": 135.4975,
+    "hora": "22:30",
+    "fim": "23:30",
+    "gmaps": "Tengachaya Station shopping street, Osaka",
+    "foto": "File:Tengachaya - panoramio (3).jpg",
     "must": [
-     "A primeira vista do letreiro do Glico, que amanhã vocês veem com calma"
+     "A galeria coberta na saída da estação, que é o comércio do bairro"
     ],
     "comidas": [
-     "Takoyaki na rua ¥500–700, o mais rápido a esta hora",
-     "Ramen — as casas de balcão viram a noite",
-     "Konbini: onigiri ¥150, karaage, e o leite e a água dos bebês"
+     "Konbini: onigiri ¥150, karaage, e o leite e a água dos bebês",
+     "As casas de ramen e izakaya da galeria viram a noite",
+     "Rede de gyudon aberta 24h a 300 m da estação"
     ],
     "compras": [
-     "Don Quijote da beira do canal, aberto 24h — se faltar fralda, adaptador de tomada ou remédio, é aqui e é agora"
+     "Supermercado e drogaria na galeria — o básico para o primeiro dia"
     ],
-    "alerta": "Chegando 22:45 depois de um voo longo, o realista é konbini e cama. A cozinha da maioria das casas de Dotonbori fecha por volta das 23:00; o konbini e o Don Quijote não fecham. Não force o programa no primeiro dia — amanhã começa 09:00 no castelo."
+    "alerta": "Dotonbori fica a 3,4 km daqui, não a 800 m: são 3 estações de metrô Sakaisuji e a mesma volta à meia-noite. Chegando 22:30 depois de um voo longo, com três bebês, o realista é resolver o jantar no próprio bairro. Dotonbori é o programa de amanhã à noite, com calma."
    },
    {
     "id": "fim",
     "nome": "Airbnb Namba",
     "tipo": "base",
-    "lat": 34.6655,
-    "lng": 135.501,
+    "lat": 34.63808,
+    "lng": 135.4989,
     "aprox": true,
     "hora": "00:00",
-    "gmaps": "Namba Station, Osaka"
+    "gmaps": "Tengachaya Station, Osaka"
    }
   ],
   "pernas": [
@@ -940,37 +1017,37 @@
     "modo": "metro",
     "linha": "Nankai Airport Express",
     "cor": "#0060A9",
-    "min": 45,
-    "km": 50.0,
+    "min": 40,
+    "km": 46.0,
     "custo": 970,
-    "desc": "Direto até Namba, sem baldeação. Último do dia sai por volta de 23:55."
+    "desc": "Direto até Tengachaya, sem baldeação. Último do dia sai por volta de 23:55."
    },
    {
     "de": "e2",
     "para": "p1",
     "modo": "pe",
-    "min": 6,
-    "km": 0.4,
+    "min": 3,
+    "km": 0.2,
     "custo": 0,
-    "desc": "Saída norte da Nankai, já dentro do bairro."
+    "desc": "Saída da estação, 200 m pela galeria."
    },
    {
     "de": "p1",
     "para": "p2",
     "modo": "pe",
-    "min": 8,
-    "km": 0.6,
+    "min": 3,
+    "km": 0.2,
     "custo": 0,
-    "desc": "Sobe a Sennichimae até a beira do canal."
+    "desc": "Volta à galeria da estação, onde está o comércio."
    },
    {
     "de": "p2",
     "para": "fim",
     "modo": "pe",
-    "min": 8,
-    "km": 0.6,
+    "min": 3,
+    "km": 0.2,
     "custo": 0,
-    "desc": "Mesma volta, agora devagar."
+    "desc": "Os mesmos 200 m, agora devagar."
    }
   ],
   "alternativas": [
@@ -981,6 +1058,17 @@
     "refs": [
      "p1"
     ]
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Dotonbori ainda hoje, para quem tiver fôlego",
+    "texto": "Metrô Sakaisuji de Tengachaya até Nipponbashi, 3 estações, ¥240, e 400 m a pé até o canal. São uns 20 min por trecho. Faz sentido para quem estiver inteiro e quiser ver o Glico aceso na primeira noite — mas a cozinha da maioria das casas fecha por volta das 23:00, e o grupo com bebê tem 09:00 no castelo amanhã.",
+    "ponto": {
+     "nome": "Dotonbori",
+     "lat": 34.66893,
+     "lng": 135.50105,
+     "gmaps": "Dotonbori, Osaka"
+    }
    },
    {
     "tipo": "extra",
@@ -1019,24 +1107,25 @@
   "paradas": [
    {
     "id": "base",
-    "nome": "Airbnb Namba",
+    "nome": "Airbnb Tengachaya",
     "tipo": "base",
-    "lat": 34.6655,
-    "lng": 135.501,
+    "lat": 34.63808,
+    "lng": 135.4989,
     "aprox": true,
     "hora": "08:15",
-    "gmaps": "Namba Station, Osaka"
+    "gmaps": "Tengachaya Station, Osaka",
+    "alerta": "A hospedagem fica em Nishinari, o bairro mais barato de Osaka. A parte de fama pesada é Kamagasaki, entre Shin-Imamiya e Dobutsuen-mae; Tengachaya 2-chome fica ao sul disso, é residencial e tranquilo, e a estação tem galeria coberta com comércio. À noite, voltem pela avenida e pela estação em vez de cortar caminho pelas ruas internas — é o mesmo conselho que se dá em qualquer cidade grande."
    },
    {
     "id": "p1",
     "ativ": "Check-out + despachar malas",
     "tipo": "evento",
-    "lat": 34.6655,
-    "lng": 135.501,
+    "lat": 34.63808,
+    "lng": 135.4989,
     "aprox": true,
     "hora": "08:15",
     "fim": "08:45",
-    "gmaps": "Yamato Transport, Namba, Osaka",
+    "gmaps": "Tengachaya Station, Osaka",
     "foto": "Yamato Transport delivery truck",
     "must": [
      "Despachar as malas grandes por takkyubin direto para o hotel de Kyoto",
@@ -1046,12 +1135,12 @@
    },
    {
     "id": "e1",
-    "nome": "Estação Namba (Midosuji)",
+    "nome": "Tengachaya (Sakaisuji)",
     "tipo": "estacao",
-    "lat": 34.66616,
-    "lng": 135.50027,
+    "lat": 34.63768,
+    "lng": 135.49713,
     "hora": "08:55",
-    "gmaps": "Namba Station Midosuji Line"
+    "gmaps": "Tengachaya Station, Osaka"
    },
    {
     "id": "p2",
@@ -1082,11 +1171,11 @@
     "id": "e3",
     "nome": "Hotel — guarda-volumes",
     "tipo": "base",
-    "lat": 34.9905,
-    "lng": 135.7605,
+    "lat": 34.9897,
+    "lng": 135.7567,
     "aprox": true,
     "hora": "10:20",
-    "gmaps": "Higashi Honganji, Kyoto"
+    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
    },
    {
     "id": "p3",
@@ -1171,12 +1260,12 @@
     "id": "p5",
     "ativ": "Check-in K-style",
     "tipo": "evento",
-    "lat": 34.9905,
-    "lng": 135.7605,
+    "lat": 34.9897,
+    "lng": 135.7567,
     "aprox": true,
     "hora": "15:15",
     "fim": "15:45",
-    "gmaps": "Higashi Honganji, Kyoto",
+    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
     "must": [
      "Conferir se as malas do takkyubin já chegaram antes de subir",
      "Trocar de sapato: a noite em Gion é toda em pedra irregular"
@@ -1274,11 +1363,19 @@
     "id": "fim",
     "nome": "Hotel K-style Higashi-Honganji",
     "tipo": "base",
-    "lat": 34.9905,
-    "lng": 135.7605,
+    "lat": 34.9897,
+    "lng": 135.7567,
     "aprox": true,
     "hora": "22:10",
-    "gmaps": "Higashi Honganji, Kyoto"
+    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
+   },
+   {
+    "id": "e11",
+    "nome": "Dobutsuen-mae (baldeação)",
+    "tipo": "estacao",
+    "lat": 34.64869,
+    "lng": 135.50544,
+    "gmaps": "Dobutsuen-mae Station"
    }
   ],
   "pernas": [
@@ -1295,21 +1392,21 @@
     "de": "p1",
     "para": "e1",
     "modo": "pe",
-    "min": 10,
-    "km": 0.6,
+    "min": 3,
+    "km": 0.2,
     "custo": 0,
-    "desc": "Sigam a placa do elevador na entrada da Midosuji, não a escadaria."
+    "desc": "Duzentos metros até a boca do metrô."
    },
    {
     "de": "e1",
-    "para": "p2",
+    "para": "e11",
     "modo": "metro",
-    "linha": "Midosuji",
-    "cor": "#E5171F",
-    "min": 12,
-    "km": 3.4,
-    "custo": 240,
-    "desc": "8 estações, sentido Senri-Chuo. O vagão da ponta é mais vazio às 09:00."
+    "linha": "Sakaisuji",
+    "cor": "#814721",
+    "min": 2,
+    "km": 1.3,
+    "custo": 290,
+    "desc": "1 estação. Tarifa até Umeda, com a baldeação incluída"
    },
    {
     "de": "p2",
@@ -1461,6 +1558,17 @@
     "km": 0.9,
     "custo": 0,
     "desc": "Karasuma acima, o mesmo caminho de sempre."
+   },
+   {
+    "de": "e11",
+    "para": "p2",
+    "modo": "metro",
+    "linha": "Midosuji",
+    "cor": "#E5171F",
+    "min": 16,
+    "km": 8.0,
+    "custo": 0,
+    "desc": "Direto até Umeda — a mesma passagem"
    }
   ],
   "alternativas": [
@@ -1965,6 +2073,44 @@
   "passe": {
    "nome": "Nenhum passe compensa hoje — paguem por viagem",
    "texto": "O candidato seria o Subway & Bus 1-Day (¥1.100 adulto, ¥550 criança), mas ele NÃO cobre o JR nem o Randen, que são justamente os dois trechos longos do dia. Do que vocês gastam, ele cobriria só o ônibus 59 (¥230), o ônibus 12 (¥230) e o metrô da volta (¥260) = ¥720. Perde ¥380 por adulto. O dia inteiro sai por ¥1.210 por adulto: JR ¥240 + Randen ¥250 + ¥230 + ¥230 + metrô ¥260. O passe do Randen (¥800 o dia) também não fecha — vocês usam ¥250 dele. Carreguem ICOCA/Suica e não pensem mais nisso; menores de 6 anos não pagam trem nem ônibus, então os 3 bebês viajam de graça."
+  }
+ },
+ "_bases": {
+  "osaka": {
+   "nome": "Airbnb Tengachaya",
+   "lat": 34.63808,
+   "lng": 135.4989,
+   "aprox": true,
+   "gmaps": "Tengachaya Station, Osaka",
+   "endereco": "2-6-25 Tengachaya, Nishinari-ku, Osaka 557-0014",
+   "confere": "Tengachaya 2-chome; a estação Tengachaya (Nankai + metrô Sakaisuji) fica a 170 m"
+  },
+  "kyoto": {
+   "nome": "K-style 東本願寺",
+   "lat": 34.9897,
+   "lng": 135.7567,
+   "aprox": true,
+   "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
+   "endereco": "749-5 Tatsumi-cho, Shinmachi-dori Shichijo-agaru, Shimogyo-ku, Kyoto",
+   "confere": "cruzamento Shinmachi × Shichijo, um pouco ao norte; dá 469 m até a Estação de Kyoto, e o anúncio diz 500 m"
+  },
+  "fuji": {
+   "nome": "La Vista Fujikawaguchiko",
+   "lat": 35.5265,
+   "lng": 138.76986,
+   "aprox": true,
+   "gmaps": "La Vista Fujikawaguchiko",
+   "endereco": "Kawaguchi 2395, Fujikawaguchiko, Yamanashi",
+   "confere": "PONTO FRACO: o hotel não existe no OpenStreetMap. É o centro do bairro Kawaguchi, na margem norte do lago. Vale acertar depois."
+  },
+  "tokyo": {
+   "nome": "Hotel Oojima",
+   "lat": 35.68799,
+   "lng": 139.83535,
+   "aprox": true,
+   "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A",
+   "endereco": "Edifício Hikariyama 2F-5F, 5-37-5 Oshima, Koto-ku, Tokyo 136-0072",
+   "confere": "Oshima 5-chome, o mesmo quarteirão da estação Ojima (Toei Shinjuku), a 199 m"
   }
  }
 }
