@@ -98,6 +98,19 @@ body{padding-bottom:0}
 .topo .tit b{display:block;font-size:.94rem;font-weight:800;letter-spacing:-.02em;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
 .topo .tit u{display:block;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);margin-top:2px}
+.topo-nav{display:flex;align-items:center;gap:6px;flex:none}
+.btn-dia{display:inline-flex;align-items:center;gap:4px;font-size:.74rem;font-weight:750;
+  text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:99px;
+  padding:6px 11px;background:var(--surface);transition:all .15s;line-height:1}
+.btn-dia:hover{color:var(--t);border-color:var(--c);background:var(--surface-2)}
+.btn-dia.next{background:color-mix(in srgb,var(--c) 10%,var(--surface));border-color:color-mix(in srgb,var(--c) 30%,transparent);color:var(--t)}
+.btn-dia.next:hover{background:var(--c);color:#fff}
+.btn-dia.next:hover b{color:#fff}
+.btn-dia b{font-family:var(--f-mono);font-weight:800}
+.btn-dia span{display:none}
+@media(min-width:640px){
+  .btn-dia span{display:inline}
+}
 .themeBtn{flex:none;width:34px;height:34px;border-radius:99px;border:1px solid var(--line);
   background:var(--surface);color:var(--ink);font-size:.95rem;cursor:pointer;line-height:1;
   display:grid;place-items:center;transition:border-color .15s}
@@ -171,11 +184,11 @@ body{padding-bottom:0}
 
 .parada{position:relative;margin-bottom:8px;background:var(--surface);border:1px solid var(--line);
   border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
-.parada.on{border-color:var(--c)}
-.parada > .num.base{background:var(--ink-3)}
-.parada > .num{position:absolute;left:-34px;top:12px;width:28px;height:28px;border-radius:99px;
-  display:grid;place-items:center;background:var(--c);color:#fff;
-  font-family:var(--f-mono);font-size:.72rem;font-weight:800;border:2.5px solid var(--paper)}
+.p-badge{flex:none;width:24px;height:24px;border-radius:99px;display:grid;place-items:center;
+  background:var(--c);color:#fff;font-family:var(--f-mono);font-size:.75rem;font-weight:800;
+  line-height:1;box-shadow:0 1px 3px rgba(0,0,0,.2);margin-top:1px;transition:transform .15s,box-shadow .15s}
+.p-badge.base{background:var(--ink-3)}
+.parada.on .p-badge{transform:scale(1.08);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 30%,transparent)}
 .p-top{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;
   background:none;border:0;color:inherit;font:inherit;padding:12px 13px;cursor:pointer}
 .p-top h3{flex:1;min-width:0;font-size:.88rem;line-height:1.3}
@@ -241,12 +254,35 @@ body{padding-bottom:0}
   border:1px solid color-mix(in srgb,var(--c) 34%,transparent);border-radius:14px;padding:13px 15px}
 .rodape{font-size:.68rem;color:var(--ink-3);line-height:1.5;margin-top:26px;
   padding-top:14px;border-top:1px solid var(--line)}
+
+/* ============ NAVEGACAO FIM DO DIA ============ */
+.painel-dia-nav{margin-top:24px;margin-bottom:14px;display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:540px){
+  .painel-dia-nav.tem-ambos{grid-template-columns:1fr 1.3fr}
+}
+.nav-dia-card{display:flex;flex-direction:column;gap:5px;padding:14px 16px;border-radius:14px;
+  text-decoration:none;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-sm);
+  transition:border-color .15s,box-shadow .15s,transform .15s}
+.nav-dia-card:hover{border-color:var(--c);box-shadow:var(--shadow);transform:translateY(-1px)}
+.nav-dia-card.next{background:color-mix(in srgb,var(--c) 8%,var(--surface));
+  border-color:color-mix(in srgb,var(--c) 32%,transparent)}
+.nav-dia-card.next:hover{background:color-mix(in srgb,var(--c) 14%,var(--surface))}
+.ndc-sub{font-family:var(--f-mono);font-size:.62rem;font-weight:800;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3)}
+.nav-dia-card.next .ndc-sub{color:var(--t)}
+.ndc-tit{font-size:.88rem;font-weight:750;color:var(--ink);display:flex;align-items:center;
+  justify-content:space-between;gap:8px;line-height:1.3}
+.ndc-arr{font-size:1.1rem;color:var(--t);transition:transform .15s}
+.nav-dia-card:hover .ndc-arr{transform:translateX(3px)}
 </style>
 </head>
 <body>
 <div class="topo c-osaka">
-  <a class="volta" href="index.html#dia3">‹ Roteiro</a>
+  <a class="volta" href="index.html#dia3" title="Voltar ao roteiro geral">‹ Roteiro</a>
   <div class="tit"><b>Osaka de ponta a ponta</b><u id="subt"></u></div>
+  <div class="topo-nav">
+    <a class="btn-dia prev" href="dia-02.html" title="Dia anterior: Do castelo ao sumô"><b>‹ D02</b></a><a class="btn-dia next" href="dia-04.html" title="Próximo dia: Osaka fica para trás, Kyoto começa pelos templos da estação"><span>Próximo dia</span> <b>D04 ›</b></a>
+  </div>
   <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
 </div>
 
@@ -265,6 +301,8 @@ body{padding-bottom:0}
     <div id="alts"></div>
 
     <div class="passe" id="passe"></div>
+
+    <div class="painel-dia-nav tem-ambos"><a class="nav-dia-card prev" href="dia-02.html"><div class="ndc-sub">‹ DIA ANTERIOR · DIA 2</div><div class="ndc-tit"><span>Do castelo ao sumô</span></div></a><a class="nav-dia-card next" href="dia-04.html"><div class="ndc-sub">PRÓXIMO DIA · DIA 4 DE 16</div><div class="ndc-tit"><span>Osaka fica para trás, Kyoto começa pelos templos da estação</span> <span class="ndc-arr">→</span></div></a></div>
 
     <p class="rodape">Os traçados no mapa são aproximados — para trechos a pé o desenho é uma reta e
     para o metrô é uma linha tracejada, porque o trilho é subterrâneo. O botão <b>ir ↗</b> de cada
@@ -451,8 +489,7 @@ const html = GEO.paradas.map((p,idx)=>{
   if(!a){
     if(p.tipo==="estacao") return out;   // estacao ja aparece dentro da perna
     out += `<div class="parada" data-id="${p.id}">
-      <div class="num${p.tipo==="base"?" base":""}">${p.tipo==="base"?0:"·"}</div>
-      <button class="p-top"><h3>${esc(p.nome)}</h3><span class="hh"><b>${esc(p.hora||"")}</b></span></button>
+      <button class="p-top"><span class="p-badge base">0</span><h3>${esc(p.nome)}</h3><span class="hh"><b>${esc(p.hora||"")}</b></span></button>
     </div>`;
     return out;
   }
@@ -463,8 +500,8 @@ const html = GEO.paradas.map((p,idx)=>{
   if(a.bebe) chips.push(`<span class="chip">${esc(a.bebe)}</span>`);
 
   out += `<div class="parada" data-id="${p.id}" id="c-${p.id}">
-    <div class="num">${p.n}</div>
     <button class="p-top" aria-expanded="false">
+      <span class="p-badge${p.tipo==="base"?" base":""}">${p.n!=null?p.n:(p.tipo==="base"?0:"·")}</span>
       <h3>${esc(a.nome)}</h3>
       <span class="hh"><b>${esc(p.hora||"")}</b>${p.fim?"–"+esc(p.fim):""}</span>
     </button>

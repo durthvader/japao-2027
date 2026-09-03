@@ -309,8 +309,8 @@ img,canvas,svg{max-width:100%;display:block}
   color:var(--ink);box-shadow:var(--shadow);cursor:pointer;font-size:1.2rem;place-items:center;transition:background .15s,transform .15s}
 .carro-ctrl:hover{background:var(--surface-2)}
 .carro-ctrl:active{transform:translateY(-50%) scale(.92)}
-.carro-ctrl.prev{left:-20px}
-.carro-ctrl.next{right:-20px}
+.carro-ctrl.prev{left:-14px}
+.carro-ctrl.next{right:-14px}
 @media(min-width:900px){
   .carro-ctrl{display:grid}
 }
@@ -1377,17 +1377,17 @@ const DADOS = {
      "nome": "TRANSFER: Kyoto → Mishima (Shinkansen)",
      "area": "Shizuoka",
      "de": "Est. Kyoto",
-     "como": "Tokaido Shinkansen HIKARI (o Nozomi não para em Mishima)",
+     "como": "Tokaido Shinkansen — só ALGUNS Hikari param em Mishima; o Kodama para sempre",
      "km": 250.0,
-     "min": 110.0,
+     "min": 117,
      "pe": 15.0,
      "transp": 11110.0,
      "ingresso": 0.0,
      "horario": "~1 por hora",
-     "duracao": "1h50",
+     "duracao": "1h57–2h20",
      "bebe": "CARRINHO OK",
      "terreno": "⚠ RESERVEM O ESPAÇO DE BAGAGEM GRANDE (últimas fileiras) — é gratuito, mas exige reserva prévia e com 3 carrinhos vocês vão precisar. Sem reserva, cobram ¥1.000 por peça.",
-     "obs": "⚠⚠ FERIADO COMPENSATÓRIO — RESERVE OS ASSENTOS 1 MÊS ANTES (venda abre às 10:00 do Japão, 30 dias antes). Não reservado: ¥10.780."
+     "obs": "O Nozomi não para em Mishima, e o Hikari só às vezes: a maioria dos serviços do dia é Kodama, ou Hikari até Shizuoka com baldeação para o Kodama. Direto dá 1h57; com baldeação, perto de 2h20. Contem com o número maior ao escolher a saída, porque o ônibus do outro lado tem hora marcada.\n⚠ MALA GRANDE PRECISA DE RESERVA. No Tokaido, bagagem cuja soma de altura + largura + profundidade passa de 160 cm exige assento reservado com espaço de bagagem — a reserva é GRÁTIS, mas tem que ser feita antes. Sem ela são ¥1.000 por peça, cobrados a bordo. Acima de 250 cm não embarca. Uma mala de 28 polegadas já passa dos 160 cm, então isso vale para praticamente todas as malas grandes do grupo: reservem os assentos das últimas fileiras de uma vez."
     },
     {
      "periodo": "Manhã",
@@ -1398,22 +1398,22 @@ const DADOS = {
      "km": 75.0,
      "min": 90.0,
      "pe": 5.0,
-     "transp": 2260.0,
+     "transp": 2700,
      "ingresso": 0.0,
      "horario": "poucas saídas por dia",
      "duracao": "1h30",
      "bebe": "CARRINHO C/ ESFORÇO",
      "terreno": "Ônibus rodoviário: carrinho vai dobrado no bagageiro. Avise na hora da reserva.",
-     "obs": "Ônibus direto da Fujikyu, 1h30. ⚠ FERIADÃO: 21/03 é o Equinócio de Primavera, feriado nacional, e como cai num domingo a segunda 22/03 vira feriado compensatório. São três dias seguidos de folga no Japão inteiro, e este é o segundo deles. Isso enche o ônibus, que já tem poucas saídas por dia e não comporta 13 pessoas de improviso. RESERVEM COM ANTECEDÊNCIA, e escolham uma saída com folga depois do Shinkansen: perder o ônibus aqui significa esperar horas, porque não há alternativa fácil entre Mishima e o lago."
+     "obs": "Ônibus direto da Fujikyu, 1h30, saindo da praça SUL da estação de Mishima. São 11 saídas por dia, de hora em hora por volta dos :20, das 07:20 às 17:20, e TODOS os assentos são marcados: sem reserva não se embarca. A reserva abre um mês antes e vai até 10 min da partida, pela internet, pelo guichê da saída sul ou por telefone. ¥2.700 no guichê, ¥2.500 pela internet; criança ¥1.350 / ¥1.250; menor de 6 anos sem assento não paga. ⚠ FERIADÃO: 22/03 é feriado compensatório do Equinócio de Primavera, que caiu no domingo 21. Com o sábado 20, são três dias seguidos de folga no Japão inteiro, e este é o terceiro. Isso enche o ônibus, então reservem cedo e escolham uma saída com folga real depois do Shinkansen.\n⚠ O bagageiro aceita UM VOLUME POR PASSAGEIRO. Com 13 malas grandes mais três carrinhos, o grupo estoura a conta — vale despachar as malas maiores por takkyubin de Kyoto direto para Tokyo e atravessar o Fuji só com o de dois dias."
     },
     {
      "periodo": "Tarde",
      "nome": "Oishi Park — Fuji refletido no Lago Kawaguchi",
      "area": "Kawaguchiko",
      "de": "Est. Kawaguchiko",
-     "como": "Retro Bus linha verde (ou Omni Bus 2 dias ¥1.500)",
-     "km": 12.0,
-     "min": 30.0,
+     "como": "Retro Bus linha VERMELHA — passando pelo ryokan para largar as malas",
+     "km": 7.5,
+     "min": 35,
      "pe": 5.0,
      "transp": 400.0,
      "ingresso": 0.0,
@@ -1421,16 +1421,16 @@ const DADOS = {
      "duracao": "1h30",
      "bebe": "CARRINHO OK",
      "terreno": "Parque plano à beira do lago, com calçada larga. Ótimo com carrinho. Vento forte e frio em março — leve manta.",
-     "obs": "O cartão-postal do Fuji com o lago. O Fuji só aparece com céu limpo, e de manhã a chance é bem maior que à tarde."
+     "obs": "O parque fica na margem norte, de frente para o Fuji do outro lado da água — é o cartão-postal do lago, com a lavanda em julho e os alpes atrás. A linha certa é a VERMELHA, que faz a volta pela margem leste e norte; a verde vai para o lago Saiko, do outro lado. O ryokan fica no caminho entre a estação e o parque, então passem lá antes para largar as 13 malas — o check-in só abre às 15:00, mas a bagagem fica. O passe de 2 dias dos ônibus (¥1.500) cobre estes trechos e ainda a manhã de amanhã, que também é no lago."
     },
     {
      "periodo": "Tarde",
      "nome": "Check-in ryokan La Vista Fujikawaguchiko",
      "area": "Kawaguchiko",
      "de": "Oishi Park",
-     "como": "Retro Bus",
-     "km": 12.0,
-     "min": 30.0,
+     "como": "Retro Bus linha vermelha — 2 paradas de volta",
+     "km": 2.0,
+     "min": 10,
      "pe": 5.0,
      "transp": 400.0,
      "ingresso": 0.0,
@@ -1438,7 +1438,7 @@ const DADOS = {
      "duracao": "—",
      "bebe": "—",
      "terreno": "Ryokan tem tatame: carrinho fica na entrada. Quarto japonês com futon no chão é ótimo para bebê — sem risco de queda de cama.",
-     "obs": "Onsen com vista do Fuji + jantar e café incluídos. Já pago: R$ 8.639 no grupo (R$ 2.159,75 por casal)."
+     "obs": "Check-in das 15:00 às 19:00, check-out às 11:00. O jantar é bufê com sessão marcada, escolhida na chegada — decidam o horário pensando nos bebês. Quarto de tatame: sapato fica na entrada, o futon é arrumado enquanto vocês jantam, e o yukata do armário se usa no corredor e no jantar, sem constrangimento.\n⚠ TATUAGEM: o banho público da casa não aceita tatuagem, nem coberta com adesivo. Quem tiver usa um dos três banhos privativos ou o banho do próprio quarto — que é também a solução para os bebês que ainda usam fralda, porque eles não entram no banho coletivo."
     },
     {
      "periodo": "Noite",
@@ -1459,10 +1459,10 @@ const DADOS = {
     }
    ],
    "total": {
-    "km": 349.0,
-    "min": 260.0,
+    "km": 334.5,
+    "min": 252.0,
     "pe": 30.0,
-    "transp": 14170.0,
+    "transp": 14610.0,
     "ingresso": 0,
     "nota": "≈ R$ 468 por pessoa neste dia (transporte + ingressos)"
    }
@@ -2732,7 +2732,7 @@ const DADOS = {
   ]
  }
 };
-const MAPAS = [1, 2, 3, 4, 5, 6];   // dias com mapa proprio (dia-NN.html)
+const MAPAS = [1, 2, 3, 4, 5, 6, 7];   // dias com mapa proprio (dia-NN.html)
 const FOTOS = {
  "hero": {
   "legenda": "Monte Fuji refletido no lago Kawaguchi",

@@ -90,7 +90,8 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
     dtpl = io.open(DTPL, encoding='utf-8').read()
     fpar_f = os.path.join(BASE, 'fotos', 'paradas.json')
     fpar = json.loads(io.open(fpar_f, encoding='utf-8').read()) if os.path.exists(fpar_f) else {}
-    for n, dia in enumerate(djs['dias'], 1):
+    dias_list = djs['dias']
+    for n, dia in enumerate(dias_list, 1):
         g = geo.get(dia['data'])
         if not g:
             continue
@@ -106,10 +107,61 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
                                  % (dia['data'], par['ativ']))
             par['ai'] = achou[0]
 
+        # Navegacao dia anterior / proximo dia
+        prev_btn = ""
+        prev_card = ""
+        if n > 1:
+            p_dia = dias_list[n - 2]
+            p_data = p_dia['data']
+            if p_data in geo:
+                p_url = 'dia-%02d.html' % (n - 1)
+                p_tit = geo[p_data]['titulo']
+            else:
+                p_url = 'index.html#dia%d' % (n - 1)
+                p_tit = 'Dia %d · %s' % (n - 1, p_dia.get('cidade', '').title())
+            prev_btn = (
+                f'<a class="btn-dia prev" href="{p_url}" title="Dia anterior: {p_tit}">'
+                f'<b>‹ D{n-1:02d}</b></a>'
+            )
+            prev_card = (
+                f'<a class="nav-dia-card prev" href="{p_url}">'
+                f'<div class="ndc-sub">‹ DIA ANTERIOR · DIA {n-1}</div>'
+                f'<div class="ndc-tit"><span>{p_tit}</span></div>'
+                f'</a>'
+            )
+
+        next_btn = ""
+        next_card = ""
+        if n < len(dias_list):
+            nx_dia = dias_list[n]
+            nx_data = nx_dia['data']
+            if nx_data in geo:
+                nx_url = 'dia-%02d.html' % (n + 1)
+                nx_tit = geo[nx_data]['titulo']
+            else:
+                nx_url = 'index.html#dia%d' % (n + 1)
+                nx_tit = 'Dia %d · %s' % (n + 1, nx_dia.get('cidade', '').title())
+            next_btn = (
+                f'<a class="btn-dia next" href="{nx_url}" title="Próximo dia: {nx_tit}">'
+                f'<span>Próximo dia</span> <b>D{n+1:02d} ›</b></a>'
+            )
+            next_card = (
+                f'<a class="nav-dia-card next" href="{nx_url}">'
+                f'<div class="ndc-sub">PRÓXIMO DIA · DIA {n+1} DE {len(dias_list)}</div>'
+                f'<div class="ndc-tit"><span>{nx_tit}</span> <span class="ndc-arr">→</span></div>'
+                f'</a>'
+            )
+
+        topo_nav = f'{prev_btn}{next_btn}'
+        tem_ambos = ' tem-ambos' if (prev_card and next_card) else ''
+        fim_dia_nav = f'<div class="painel-dia-nav{tem_ambos}">{prev_card}{next_card}</div>' if (prev_card or next_card) else ''
+
         pag = (dtpl.replace('__TOKENS__', tokens)
                    .replace('__TITULO__', g['titulo'])
                    .replace('__CIDADE__', dia['cidade'])
                    .replace('__NDIA__', str(n))
+                   .replace('__TOPO_NAV__', topo_nav)
+                   .replace('__FIM_DIA_NAV__', fim_dia_nav)
                    .replace('__DIA__', json.dumps(podar(dia), ensure_ascii=False))
                    .replace('__GEO__', json.dumps(g, ensure_ascii=False))
                    .replace('__FOTOS__', json.dumps(
