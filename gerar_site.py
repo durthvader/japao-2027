@@ -6,6 +6,11 @@ Uso:  python gerar_site.py
 Reextrai a planilha sozinho se ela estiver mais nova que dados.json.
 """
 import os, io, json, subprocess, sys
+if sys.stdout and hasattr(sys.stdout, 'reconfigure'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 XLSX = os.path.join(os.path.dirname(BASE), 'Roteiro Japão.xlsx')
@@ -65,6 +70,7 @@ def montar(pagina, head_extra):
 <meta name="color-scheme" content="light dark">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="{ICON}">
+<script>try{{var _th=localStorage.getItem("jp27_theme")||localStorage.getItem("jp27tema")||localStorage.getItem("tema-japao");if(_th)document.documentElement.setAttribute("data-theme",_th);}}catch(e){{}}</script>
 {cabeca}
 </head>
 <body>

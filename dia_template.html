@@ -6,22 +6,25 @@ __TOKENS__
 /* ============ LAYOUT ============ */
 body{padding-bottom:0}
 .topo{position:sticky;top:0;z-index:900;display:flex;align-items:center;gap:12px;
-  padding:10px var(--pad);background:var(--panel);backdrop-filter:blur(16px) saturate(1.2);
-  -webkit-backdrop-filter:blur(16px) saturate(1.2);border-bottom:1px solid var(--line)}
+  padding:10px var(--pad);background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .topo .volta{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:750;
-  text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:99px;padding:6px 12px}
+  text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:99px;padding:6px 12px;
+  background:var(--surface);transition:border-color .15s,color .15s}
 .topo .volta:hover{color:var(--t);border-color:var(--c)}
 .topo .tit{flex:1;min-width:0}
 .topo .tit b{display:block;font-size:.94rem;font-weight:800;letter-spacing:-.02em;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
 .topo .tit u{display:block;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);margin-top:2px}
 .themeBtn{flex:none;width:34px;height:34px;border-radius:99px;border:1px solid var(--line);
-  background:var(--surface);color:var(--ink-2);font-size:.95rem;cursor:pointer;line-height:1}
+  background:var(--surface);color:var(--ink);font-size:.95rem;cursor:pointer;line-height:1;
+  display:grid;place-items:center;transition:border-color .15s}
+.themeBtn:hover{border-color:var(--line-2)}
 
 .palco{display:grid;gap:0}
 #map{height:52svh;min-height:300px;background:var(--sunken);z-index:1}
 @media(min-width:1000px){
-  .palco{grid-template-columns:minmax(0,1fr) 430px;height:calc(100svh - 57px)}
+  .palco{grid-template-columns:minmax(0,1fr) 430px;height:calc(100svh - 55px)}
   .painel{overflow-y:auto;border-left:1px solid var(--line)}
   #map{height:100%;position:sticky;top:0}
 }
@@ -62,16 +65,20 @@ body{padding-bottom:0}
 /* ============ RESUMO ============ */
 .resumo{font-size:.86rem;color:var(--ink-2);margin-bottom:14px}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px}
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+@media(max-width:460px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+}
 .kpis div{background:var(--surface);padding:10px 6px;text-align:center}
 .kpis b{display:block;font-family:var(--f-mono);font-size:.94rem;font-weight:800;color:var(--t)}
 .kpis u{display:block;text-decoration:none;font-size:.6rem;text-transform:uppercase;
   letter-spacing:.07em;color:var(--ink-3);margin-top:2px}
 .gbtn{display:block;width:100%;background:var(--c);color:#fff;border:0;border-radius:12px;
-  padding:11px 14px;font-size:.82rem;font-weight:800;text-decoration:none;
-  margin-bottom:20px;text-align:center}
-.gbtn u{display:block;text-decoration:none;font-weight:600;font-size:.66rem;
-  line-height:1.4;opacity:.85;margin-top:3px}
+  padding:12px 14px;font-size:.84rem;font-weight:800;text-decoration:none;
+  margin-bottom:20px;text-align:center;box-shadow:var(--shadow-sm);transition:opacity .15s}
+.gbtn:hover{opacity:.92}
+.gbtn u{display:block;text-decoration:none;font-weight:500;font-size:.68rem;
+  line-height:1.4;opacity:.9;margin-top:3px}
 
 /* ============ TRILHO DO DIA ============ */
 .eyebrow{font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;
@@ -197,13 +204,18 @@ const gdir= (a,b,modo)=>"https://www.google.com/maps/dir/?api=1&origin="+encodeU
 
 /* ---- tema ---- */
 const raiz=document.documentElement;
-let tema=localStorage.getItem("tema-japao")||"";
+let tema=localStorage.getItem("jp27_theme")||localStorage.getItem("jp27tema")||localStorage.getItem("tema-japao")||"";
 if(tema) raiz.dataset.theme=tema;
 el("themeBtn").onclick=()=>{
   const escuro = raiz.dataset.theme ? raiz.dataset.theme==="dark"
                : matchMedia("(prefers-color-scheme: dark)").matches;
   tema = escuro?"light":"dark";
-  raiz.dataset.theme=tema; localStorage.setItem("tema-japao",tema);
+  raiz.dataset.theme=tema;
+  try{
+    localStorage.setItem("jp27_theme",tema);
+    localStorage.setItem("jp27tema",tema);
+    localStorage.setItem("tema-japao",tema);
+  }catch(e){}
   if(typeof trocarTiles==="function") trocarTiles();
 };
 const ehEscuro=()=> raiz.dataset.theme ? raiz.dataset.theme==="dark"
@@ -446,9 +458,13 @@ el("alts").addEventListener("keydown",ev=>{
   if(ev.key!=="Enter" && ev.key!==" ") return;
   const c=ev.target.closest(".alt.viva"); if(c){ ev.preventDefault(); mostrarAlt(+c.dataset.alt); }
 });
-el("passe").innerHTML = `<span class="tag" style="font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--t)">Passe</span>
-  <b style="display:block;font-size:.85rem;margin:4px 0 5px">${esc(GEO.passe.nome)}</b>
-  <p style="font-size:.78rem;line-height:1.5;color:var(--ink-2)">${esc(GEO.passe.texto)}</p>`;
+if(GEO.passe){
+  el("passe").innerHTML = `<span class="tag" style="font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--t)">Passe</span>
+    <b style="display:block;font-size:.85rem;margin:4px 0 5px">${esc(GEO.passe.nome)}</b>
+    <p style="font-size:.78rem;line-height:1.5;color:var(--ink-2)">${esc(GEO.passe.texto)}</p>`;
+}else{
+  el("passe").style.display = "none";
+}
 
 /* ---- selecao ---- */
 function abrir(id, rolar){
