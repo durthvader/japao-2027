@@ -456,5 +456,385 @@
    "nome": "Osaka Amazing Pass — 1 dia, ¥3.300",
    "texto": "Cobre metrô ilimitado + roda-gigante Tempozan (¥900) + Umeda Sky (¥2.000) + cruzeiro Tombori (¥1.200). Só o metrô do dia já dá ¥820. NÃO cobre o Kaiyukan."
   }
+ },
+ "2027-03-17": {
+  "titulo": "Do castelo ao sumô",
+  "resumo": "Um arco de norte a sul: o castelo pela manhã, o templo mais antigo do Japão no meio, o bairro retrô no almoço e o torneio de sumô no fim da tarde — a 9 min a pé do jantar em Dotonbori.",
+  "centro": [
+   34.669,
+   135.512
+  ],
+  "zoom": 13,
+  "paradas": [
+   {
+    "id": "base",
+    "nome": "Airbnb Namba",
+    "tipo": "base",
+    "lat": 34.6655,
+    "lng": 135.501,
+    "aprox": true,
+    "hora": "08:30",
+    "gmaps": "Namba Station, Osaka"
+   },
+   {
+    "id": "e1",
+    "nome": "Namba (Midosuji)",
+    "tipo": "estacao",
+    "lat": 34.66616,
+    "lng": 135.50027,
+    "gmaps": "Namba Station Midosuji Line"
+   },
+   {
+    "id": "e2",
+    "nome": "Hommachi",
+    "tipo": "estacao",
+    "lat": 34.68354,
+    "lng": 135.50067,
+    "gmaps": "Hommachi Station, Osaka"
+   },
+   {
+    "id": "e3",
+    "nome": "Tanimachi 4-chome",
+    "tipo": "estacao",
+    "lat": 34.6819,
+    "lng": 135.5174,
+    "gmaps": "Tanimachi 4-chome Station"
+   },
+   {
+    "id": "p1",
+    "ativ": "Castelo de Osaka",
+    "tipo": "monumento",
+    "lat": 34.68749,
+    "lng": 135.52589,
+    "hora": "09:00",
+    "fim": "11:30",
+    "gmaps": "Osaka Castle Main Tower",
+    "foto": "Osaka Castle cherry blossom",
+    "must": [
+     "A torre de 8 andares — elevador direto ao 8º, e desce-se a pé pelo museu",
+     "Nishinomaru Garden: 300 cerejeiras com a torre ao fundo (¥350 na florada)",
+     "Tako-ishi, a pedra de 130 toneladas do portão Sakura",
+     "O fosso interno e a muralha de 32 m, a mais alta do Japão"
+    ],
+    "compras": [
+     "Loja da torre: só aqui tem o goshuin do castelo"
+    ],
+    "alerta": "Chegar às 09:00, na abertura. Depois das 11:00 a fila do elevador passa de 40 min, e em pico de sakura o parque é um dos hanami mais concorridos de Osaka. Da estação até a torre é 1 km de subida leve — carrinho anda bem no parque, mas a torre por dentro é escada entre andares."
+   },
+   {
+    "id": "e5",
+    "nome": "Shitennoji-mae Yuhigaoka",
+    "tipo": "estacao",
+    "lat": 34.65882,
+    "lng": 135.51425,
+    "gmaps": "Shitennoji-mae Yuhigaoka Station"
+   },
+   {
+    "id": "p2",
+    "ativ": "Shitennoji",
+    "tipo": "templo",
+    "lat": 34.65472,
+    "lng": 135.5168,
+    "hora": "11:55",
+    "fim": "12:55",
+    "gmaps": "Shitennoji Temple, Osaka",
+    "foto": "Shitennoji pagoda Osaka",
+    "must": [
+     "O pagode de cinco andares — dá para subir até o topo",
+     "Chushin Garan, o pátio central reconstruído no traçado de 593",
+     "Jardim Gokuraku-jōdo, nos fundos, quase sempre vazio",
+     "O portão de pedra oeste, alinhado com o pôr do sol"
+    ],
+    "alerta": "O recinto externo é grátis e já mostra o pagode; só o Chushin Garan (¥300) e o jardim (¥300) cobram. Fecha 16:30, então este é o horário certo. Terreno plano, saibro batido — carrinho passa, mas os prédios internos pedem tirar o sapato e subir degrau."
+   },
+   {
+    "id": "p3",
+    "ativ": "Shinsekai",
+    "tipo": "comida",
+    "lat": 34.65254,
+    "lng": 135.50631,
+    "hora": "13:10",
+    "fim": "14:50",
+    "gmaps": "Shinsekai, Osaka",
+    "foto": "Shinsekai Osaka Tsutenkaku street night",
+    "must": [
+     "A Tsūtenkaku vista de baixo, com o neon todo em volta",
+     "Janjan Yokocho, o beco de 180 m de casas de espeto e shogi",
+     "Billiken, o deus da sorte de pé chato — esfregar a sola dá sorte"
+    ],
+    "comidas": [
+     "Kushikatsu ¥130–250 o espeto — Daruma e Yaekatsu são as casas antigas",
+     "Dote-yaki, bochecha de boi no missô ¥400",
+     "Cerveja tirada ¥500"
+    ],
+    "alerta": "Aqui é o almoço do dia, e é a parada mais longa de propósito: o sumô só começa a valer às 15:45. O molho de kushikatsu é COMUM à mesa — mergulha uma vez só, nunca duas. As casas são apertadas e quase todas de balcão; com 13 pessoas, dividir em dois ou três grupos."
+   },
+   {
+    "id": "e6",
+    "nome": "Dobutsuen-mae",
+    "tipo": "estacao",
+    "lat": 34.64869,
+    "lng": 135.50544,
+    "gmaps": "Dobutsuen-mae Station"
+   },
+   {
+    "id": "p4",
+    "ativ": "SUMÔ",
+    "tipo": "evento",
+    "lat": 34.6623,
+    "lng": 135.49923,
+    "hora": "15:15",
+    "fim": "18:00",
+    "gmaps": "EDION Arena Osaka",
+    "foto": "Sumo wrestling tournament dohyo",
+    "must": [
+     "Dohyō-iri: a entrada cerimonial da divisão principal, ~15:45",
+     "As lutas makuuchi, das 16:00 até a última do dia",
+     "Yumitori-shiki, a dança do arco que fecha o torneio"
+    ],
+    "comidas": [
+     "Chanko-nabe no saguão, o ensopado dos lutadores ¥600",
+     "Bentô e cerveja entram na arena — todo mundo come no lugar"
+    ],
+    "compras": [
+     "Banzuke, o cartaz com o ranking do torneio, ¥100 — a melhor lembrança barata"
+    ],
+    "alerta": "Chegar 15:15 pega a arena enchendo e o dohyō-iri inteiro; antes disso são as divisões de baixo, com a arquibancada vazia. Entrar e sair é livre. Cadeira ocidental é mais confortável que o box de tatame, que é para quatro pessoas sentadas no chão. É barulhento mas curto — cada luta dura segundos."
+   },
+   {
+    "id": "p5",
+    "ativ": "Dotonbori",
+    "tipo": "comida",
+    "lat": 34.66893,
+    "lng": 135.50105,
+    "hora": "18:15",
+    "fim": "20:45",
+    "gmaps": "Glico Sign Dotonbori",
+    "foto": "Dotonbori Glico sign night",
+    "must": [
+     "O letreiro do Glico, de frente para a ponte Ebisubashi",
+     "O caranguejo mecânico do Kani Doraku",
+     "Kuidaore Tarō, o boneco tamborileiro",
+     "Hozenji Yokocho, o beco de pedra logo ao sul"
+    ],
+    "comidas": [
+     "Takoyaki ¥500–700 — Wanaka e Kukuru têm fila constante",
+     "Okonomiyaki ¥900–1.400",
+     "Kushikatsu, de novo, se ainda couber"
+    ],
+    "compras": [
+     "🛒 Don Quijote da beira do canal, aberto 24h — é a parada de última hora para remédio, snack e eletrônico pequeno"
+    ],
+    "alerta": "A ponte Ebisubashi é o ponto mais cheio de Osaka à noite; com carrinho, passar pela margem do canal em vez da ponte. Muita casa fecha a cozinha 23:00."
+   },
+   {
+    "id": "p6",
+    "nome": "Hozenji Yokocho",
+    "tipo": "apoio",
+    "lat": 34.66818,
+    "lng": 135.50267,
+    "gmaps": "Hozenji Yokocho",
+    "hora": "20:00"
+   },
+   {
+    "id": "fim",
+    "nome": "Volta ao Airbnb",
+    "tipo": "base",
+    "lat": 34.6655,
+    "lng": 135.501,
+    "aprox": true,
+    "hora": "21:00",
+    "gmaps": "Namba Station, Osaka"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "e1",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.3,
+    "custo": 0,
+    "desc": "Descer a Midosuji até a boca do metrô."
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "linha": "Midosuji",
+    "cor": "#E5171F",
+    "min": 4,
+    "km": 1.5,
+    "custo": 240,
+    "desc": "2 estações, sentido Senri-Chuo"
+   },
+   {
+    "de": "e2",
+    "para": "e3",
+    "modo": "metro",
+    "linha": "Chuo",
+    "cor": "#019A66",
+    "min": 4,
+    "km": 1.6,
+    "custo": 0,
+    "desc": "2 estações, sentido Cosmosquare→leste — mesma tarifa"
+   },
+   {
+    "de": "e3",
+    "para": "p1",
+    "modo": "pe",
+    "min": 15,
+    "km": 1.1,
+    "custo": 0,
+    "desc": "Atravessa o parque pelo portão Otemon e sobe até a torre."
+   },
+   {
+    "de": "p1",
+    "para": "e3",
+    "modo": "pe",
+    "min": 15,
+    "km": 1.1,
+    "custo": 0,
+    "desc": "Mesma travessia de volta, agora descendo."
+   },
+   {
+    "de": "e3",
+    "para": "e5",
+    "modo": "metro",
+    "linha": "Tanimachi",
+    "cor": "#A45BA5",
+    "min": 6,
+    "km": 2.6,
+    "custo": 240,
+    "desc": "3 estações, sentido Yaominami — direto"
+   },
+   {
+    "de": "e5",
+    "para": "p2",
+    "modo": "pe",
+    "min": 7,
+    "km": 0.5,
+    "custo": 0,
+    "desc": "Desce a Tanimachi-suji até o portão norte do templo."
+   },
+   {
+    "de": "p2",
+    "para": "p3",
+    "modo": "pe",
+    "min": 15,
+    "km": 1.2,
+    "custo": 0,
+    "desc": "Rua plana rumo oeste; a Tsūtenkaku aparece no fim e serve de bússola."
+   },
+   {
+    "de": "p3",
+    "para": "e6",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.4,
+    "custo": 0,
+    "desc": "Sai do Janjan Yokocho direto na boca da estação."
+   },
+   {
+    "de": "e6",
+    "para": "e1",
+    "modo": "metro",
+    "linha": "Midosuji",
+    "cor": "#E5171F",
+    "min": 4,
+    "km": 1.9,
+    "custo": 190,
+    "desc": "2 estações, sentido Senri-Chuo"
+   },
+   {
+    "de": "e1",
+    "para": "p4",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Sai pela boca sul de Namba rumo à arena."
+   },
+   {
+    "de": "p4",
+    "para": "p5",
+    "modo": "pe",
+    "min": 9,
+    "km": 0.7,
+    "custo": 0,
+    "desc": "Sobe a Namba rumo norte até a beira do canal — sem metrô, o sumô já é em Namba."
+   },
+   {
+    "de": "p5",
+    "para": "p6",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Um quarteirão ao sul, pelo beco de pedra."
+   },
+   {
+    "de": "p6",
+    "para": "fim",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.5,
+    "custo": 0,
+    "desc": "Volta pela Sennichimae."
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "extra",
+    "titulo": "Subir a Tsūtenkaku, se quiserem mesmo",
+    "texto": "Cortada do roteiro: são 103 m, o mais baixo dos mirantes da viagem, e a vista não acrescenta nada depois do Umeda Sky amanhã e do Skytree em Tokyo. ¥1.200, ou de graça com o Osaka Amazing Pass — o que é justamente o que faria o passe compensar. A graça do Shinsekai é a rua, não a torre.",
+    "refs": [
+     "p3"
+    ]
+   },
+   {
+    "tipo": "troca",
+    "titulo": "Museu de História de Osaka, se a fila da torre estiver absurda",
+    "texto": "Fica colado na estação Tanimachi 4-chome, com a melhor vista do castelo pela janela do 10º andar — de graça, sem fila. ¥600, 1h, todo coberto e com elevador. Boa troca se chegarem tarde e a torre estiver com 40 min de espera.",
+    "ponto": {
+     "nome": "Museu de História de Osaka",
+     "lat": 34.6817,
+     "lng": 135.5203,
+     "gmaps": "Osaka Museum of History"
+    }
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Se chover",
+    "texto": "O castelo por dentro e o museu resolvem a manhã. À tarde, o Shinsekai é quase todo coberto (Janjan Yokocho tem teto) e a arena de sumô é fechada — o dia aguenta chuva melhor que a maioria. O que sofre é a travessia de 1,2 km entre o templo e o Shinsekai: nesse caso, metrô Sakaisuji de Ebisucho, 1 estação.",
+    "refs": [
+     "p2",
+     "p3"
+    ]
+   },
+   {
+    "tipo": "corte",
+    "titulo": "Se o ingresso do sumô não sair",
+    "texto": "As vendas do Haru Basho abrem por volta de 6 de fevereiro de 2027 e os dias de semana esgotam mais devagar que o fim de semana, mas nada é garantido. Sem o sumô, a tarde volta a ser livre a partir das 14:50: o Shinsekai estica com calma, ou o grupo sobe para Dotonbori mais cedo e janta sem pressa. O dia cai de ¥6.700 para ¥1.700 de ingresso por adulto.",
+    "refs": [
+     "p4"
+    ]
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Abeno Harukas, se alguém quiser o prédio mais alto do Japão",
+    "texto": "300 m, a 1,4 km do Shitennoji, ¥2.000. Está fora do roteiro por ser o quarto mirante da viagem, mas é o único que dá para encaixar sem desviar: fica no caminho entre o templo e o Shinsekai. Quem não for pode seguir a pé e esperar no Janjan Yokocho.",
+    "ponto": {
+     "nome": "Abeno Harukas",
+     "lat": 34.6457,
+     "lng": 135.5136,
+     "gmaps": "Abeno Harukas"
+    }
+   }
+  ],
+  "passe": {
+   "nome": "Osaka Amazing Pass — 1 dia, ¥3.300",
+   "texto": "Neste dia ele NÃO compensa: o uso real é o metrô (¥670) mais o castelo (¥1.200) = ¥1.870, contra ¥3.300 de custo. Só viraria negócio somando a Tsūtenkaku (¥1.200) e mais um mirante. O Shitennoji (¥500) não entra no passe."
+  }
  }
 }

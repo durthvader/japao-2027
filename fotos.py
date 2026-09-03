@@ -192,6 +192,9 @@ def main():
 
     with io.open(os.path.join(DEST, 'creditos.json'), 'w', encoding='utf-8') as f:
         json.dump(creditos, f, ensure_ascii=False, indent=1)
+    # as fotos das paradas dos mapas do dia saem na mesma rodada
+    paradas()
+
     total = sum(os.path.getsize(os.path.join(DEST, f))
                 for f in os.listdir(DEST) if f.endswith('.webp'))
     print('\ntotal em fotos/: %d KB — rode gerar_site.py em seguida' % (total // 1024))
