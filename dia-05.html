@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Mapa do dia 5 da viagem ao Japao: O bambuzal ao amanhecer, o oeste inteiro.">
+<meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A0D13" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
+<title>O bambuzal ao amanhecer, o oeste inteiro</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#EDEEF1; --surface:#FFFFFF; --surface-2:#E3E6EB; --sunken:#E7E9ED;
+  --ink:#11151E; --ink-2:#48505F; --ink-3:#7A8394; --line:#D2D7DF; --line-2:#BFC6D1;
+  --c-osaka:#E60012; --t-osaka:#BE000F; --c-kyoto:#6E7F3C; --t-kyoto:#4F5C2A;
+  --c-fuji:#1E50A2;  --t-fuji:#194588;  --c-tokyo:#F39700; --t-tokyo:#96590A;
+  --sakura:#E0788E; --ok:#1F7A4D; --warn:#A86212; --crit:#BE000F;
+  --panel:rgba(255,255,255,.76); --panel-2:rgba(223,228,235,.52);
+  --veu:linear-gradient(180deg,rgba(236,238,242,.46) 0%,rgba(236,238,242,.60) 45%,rgba(236,238,242,.70) 100%);
+  --wall-filtro:brightness(1.20) contrast(.90) saturate(.90);
+  --halo:rgba(236,238,242,.95);
+  --shadow:0 1px 2px rgba(17,21,30,.06),0 6px 20px -8px rgba(17,21,30,.14);
+  --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-jp:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Noto Sans JP",Meiryo,system-ui,sans-serif;
+  --f-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --c:var(--c-osaka); --t:var(--t-osaka);
+  --pad:clamp(16px,4.6vw,26px); --wrap:760px;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}
+.c-osaka{--c:var(--c-osaka);--t:var(--t-osaka)} .c-kyoto{--c:var(--c-kyoto);--t:var(--t-kyoto)}
+.c-fuji{--c:var(--c-fuji);--t:var(--t-fuji)}    .c-tokyo{--c:var(--c-tokyo);--t:var(--t-tokyo)}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:transparent;color:var(--ink);font-family:var(--f-ui);
+  font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;overflow-x:hidden;
+  padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:800;letter-spacing:-.025em;line-height:1.12}
+p{margin:0} ul{margin:0;padding:0}
+a{color:var(--t);text-underline-offset:2px}
+:focus-visible{outline:2.5px solid var(--c);outline-offset:3px;border-radius:4px}
+img,canvas,svg{max-width:100%;display:block}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--pad)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-2)}
+/* estes ficam direto sobre a foto: o halo descola do fundo sem desenhar caixa */
+.sec-head .eyebrow,.sec-head h2,.sec-head .sub,.swipe-hint,.trilho::before{
+  text-shadow:0 1px 2px var(--halo),0 0 12px var(--halo),0 0 26px var(--halo)}
+
+/* ============ LAYOUT ============ */
+body{padding-bottom:0}
+.topo{position:sticky;top:0;z-index:900;display:flex;align-items:center;gap:12px;
+  padding:10px var(--pad);background:var(--panel);backdrop-filter:blur(16px) saturate(1.2);
+  -webkit-backdrop-filter:blur(16px) saturate(1.2);border-bottom:1px solid var(--line)}
+.topo .volta{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:750;
+  text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:99px;padding:6px 12px}
+.topo .volta:hover{color:var(--t);border-color:var(--c)}
+.topo .tit{flex:1;min-width:0}
+.topo .tit b{display:block;font-size:.94rem;font-weight:800;letter-spacing:-.02em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topo .tit u{display:block;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);margin-top:2px}
+.themeBtn{flex:none;width:34px;height:34px;border-radius:99px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink-2);font-size:.95rem;cursor:pointer;line-height:1}
+
+.palco{display:grid;gap:0}
+#map{height:52svh;min-height:300px;background:var(--sunken);z-index:1}
+@media(min-width:1000px){
+  .palco{grid-template-columns:minmax(0,1fr) 430px;height:calc(100svh - 57px)}
+  .painel{overflow-y:auto;border-left:1px solid var(--line)}
+  #map{height:100%;position:sticky;top:0}
+}
+.leaflet-container{font-family:var(--f-ui);background:var(--sunken)}
+
+.leaflet-control-attribution{background:var(--panel)!important;color:var(--ink-3)!important;font-size:9px!important}
+.leaflet-control-attribution a{color:var(--ink-2)!important}
+.painel{padding:18px var(--pad) 60px}
+.semmapa{padding:16px var(--pad);font-size:.78rem;color:var(--ink-3);
+  background:var(--sunken);border-bottom:1px solid var(--line)}
+
+/* ============ PINOS ============ */
+.pin{display:grid;place-items:center;width:28px;height:28px;border-radius:99px;
+  background:var(--c);color:#fff;font-family:var(--f-mono);font-size:.72rem;font-weight:800;
+  border:2.5px solid var(--surface);box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.pin.sel{transform:scale(1.28);box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 32%,transparent)}
+.pin.apoio{width:15px;height:15px;background:var(--ink-3);border-width:2px;font-size:0}
+.pin.base{background:var(--ink-3)}
+.leaflet-popup-content-wrapper{background:var(--surface);color:var(--ink);border-radius:12px;
+  box-shadow:var(--shadow);border:1px solid var(--line)}
+.leaflet-popup-tip{background:var(--surface)}
+.leaflet-popup-content{margin:11px 13px;font-size:.8rem;line-height:1.45}
+.leaflet-popup-content b{display:block;font-size:.86rem;margin-bottom:3px}
+.leaflet-popup-content u{display:block;text-decoration:none;font-family:var(--f-mono);
+  font-size:.68rem;color:var(--ink-3);margin-bottom:6px}
+.leaflet-popup-content a{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:750}
+
+/* ============ FOTO ============ */
+.fig{margin:11px 0 0;border-radius:10px;overflow:hidden;background-size:cover;
+  background-position:center;position:relative;line-height:0}
+.fig img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.fig figcaption{position:absolute;right:0;bottom:0;line-height:1.3;
+  background:linear-gradient(90deg,transparent,rgba(0,0,0,.62) 34%);padding:5px 8px 4px 22px}
+.fig figcaption a{font-size:.56rem;color:rgba(255,255,255,.82);text-decoration:none}
+.fig figcaption a:hover{color:#fff;text-decoration:underline}
+.pop-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin-bottom:7px}
+
+/* ============ RESUMO ============ */
+.resumo{font-size:.86rem;color:var(--ink-2);margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.kpis div{background:var(--surface);padding:10px 6px;text-align:center}
+.kpis b{display:block;font-family:var(--f-mono);font-size:.94rem;font-weight:800;color:var(--t)}
+.kpis u{display:block;text-decoration:none;font-size:.6rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--ink-3);margin-top:2px}
+.gbtn{display:block;width:100%;background:var(--c);color:#fff;border:0;border-radius:12px;
+  padding:11px 14px;font-size:.82rem;font-weight:800;text-decoration:none;
+  margin-bottom:20px;text-align:center}
+.gbtn u{display:block;text-decoration:none;font-weight:600;font-size:.66rem;
+  line-height:1.4;opacity:.85;margin-top:3px}
+
+/* ============ TRILHO DO DIA ============ */
+.eyebrow{font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--ink-3);margin:24px 0 9px}
+.trilha{position:relative;padding-left:34px}
+.trilha::before{content:"";position:absolute;left:13px;top:6px;bottom:6px;width:2px;
+  background:color-mix(in srgb,var(--c) 30%,transparent)}
+
+.parada{position:relative;margin-bottom:8px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.parada.on{border-color:var(--c)}
+.parada > .num.base{background:var(--ink-3)}
+.parada > .num{position:absolute;left:-34px;top:12px;width:28px;height:28px;border-radius:99px;
+  display:grid;place-items:center;background:var(--c);color:#fff;
+  font-family:var(--f-mono);font-size:.72rem;font-weight:800;border:2.5px solid var(--paper)}
+.p-top{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;
+  background:none;border:0;color:inherit;font:inherit;padding:12px 13px;cursor:pointer}
+.p-top h3{flex:1;min-width:0;font-size:.88rem;line-height:1.3}
+.p-top .hh{flex:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);
+  font-variant-numeric:tabular-nums;text-align:right;line-height:1.4}
+.p-top .hh b{display:block;color:var(--t);font-weight:800;font-size:.72rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px;padding:0 13px 11px}
+.chip{font-size:.63rem;font-weight:750;padding:3px 9px;border-radius:99px;
+  border:1px solid var(--line-2);color:var(--ink-2)}
+.chip.pago{color:var(--t);border-color:var(--c)}
+.p-det{padding:0 13px 13px;display:none}
+.parada.on .p-det{display:block}
+.bloco{margin-top:11px}
+.bloco p.lbl{font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink-3);margin-bottom:5px}
+.bloco ul{list-style:none}
+.bloco li{font-size:.78rem;line-height:1.45;padding-left:15px;position:relative;margin-bottom:3px}
+.bloco li::before{content:"";position:absolute;left:2px;top:.55em;width:5px;height:5px;
+  border-radius:99px;background:var(--c)}
+.nota{font-size:.78rem;line-height:1.5;color:var(--ink-2)}
+.alerta{display:flex;gap:8px;font-size:.76rem;line-height:1.45;background:color-mix(in srgb,var(--warn) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--warn) 34%,transparent);border-radius:10px;padding:9px 11px;margin-top:11px}
+.alerta s{flex:none;text-decoration:none}
+.plink{display:inline-flex;align-items:center;gap:6px;margin-top:12px;max-width:100%;font-size:.72rem;font-weight:750;
+  border:1px solid var(--line-2);border-radius:99px;padding:6px 12px;text-decoration:none;color:var(--ink-2)}
+.plink:hover{color:var(--t);border-color:var(--c)}
+.plinks{display:flex;flex-wrap:wrap;gap:6px}
+
+/* ============ PERNAS ============ */
+.perna{position:relative;display:flex;gap:9px;align-items:flex-start;padding:7px 4px 11px 2px;font-size:.75rem;color:var(--ink-2)}
+.perna .ic{position:absolute;left:-30px;top:6px;width:20px;height:20px;border-radius:99px;
+  display:grid;place-items:center;font-size:.66rem;background:var(--surface-2);
+  border:1px solid var(--line);color:var(--ink-2)}
+.perna .ic.metro{color:#fff;border:0}
+.perna .tx{flex:1;min-width:0;line-height:1.4}
+.perna .tx b{font-weight:800;color:var(--ink)}
+.perna .tx em{font-style:normal;color:var(--ink-3);display:block;font-size:.71rem;margin-top:2px}
+.perna .go{flex:none;font-family:var(--f-mono);font-size:.65rem;color:var(--ink-3);text-decoration:none;
+  border:1px solid var(--line);border-radius:99px;padding:3px 8px;white-space:nowrap}
+.perna .go:hover{color:var(--t);border-color:var(--c)}
+.perna .gos{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.perna .go.alt{opacity:.72;font-weight:600}
+
+/* ============ ALTERNATIVAS / PASSE ============ */
+.alt{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow)}
+.alt b{display:block;font-size:.83rem;margin-bottom:4px}
+.alt p{font-size:.77rem;line-height:1.5;color:var(--ink-2)}
+.alt .tag{display:inline-block;font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--t);margin-bottom:6px}
+.alt.viva{cursor:pointer}
+.alt.viva:hover,.alt.viva:focus-visible{border-color:var(--c)}
+.alt.on{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 16%,transparent)}
+.alt-pe{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:9px}
+.alt-go{font-size:.7rem;font-weight:800;color:var(--t)}
+.alt-pe .plink{margin-top:0}
+.pin.alt-pin{background:var(--surface);color:var(--t);border:2.5px dashed var(--c);
+  width:26px;height:26px;font-size:.66rem;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+@keyframes pisca{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 40%,transparent)}
+  50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 22%,transparent)}}
+.parada.pisca{border-color:var(--c);animation:pisca 1.1s ease-in-out 3}
+.passe{background:color-mix(in srgb,var(--c) 9%,var(--surface));
+  border:1px solid color-mix(in srgb,var(--c) 34%,transparent);border-radius:14px;padding:13px 15px}
+.rodape{font-size:.68rem;color:var(--ink-3);line-height:1.5;margin-top:26px;
+  padding-top:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="topo c-kyoto">
+  <a class="volta" href="index.html#dia5">‹ Roteiro</a>
+  <div class="tit"><b>O bambuzal ao amanhecer, o oeste inteiro</b><u id="subt"></u></div>
+  <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
+</div>
+
+<div class="palco c-kyoto">
+  <div id="map"></div>
+  <div class="painel">
+    <p class="resumo" id="resumo"></p>
+    <div class="kpis" id="kpis"></div>
+    <a class="gbtn" id="gdia" target="_blank" rel="noopener">Ver a volta inteira no Google Maps ↗
+      <u>desenho e ordem das paradas · o transporte real de cada trecho está no <b>ir ↗</b> abaixo</u></a>
+
+    <p class="eyebrow">Hora a hora</p>
+    <div class="trilha" id="trilha"></div>
+
+    <p class="eyebrow">Alternativas e plano B</p>
+    <div id="alts"></div>
+
+    <div class="passe" id="passe"></div>
+
+    <p class="rodape">Os traçados no mapa são aproximados — para trechos a pé o desenho é uma reta e
+    para o metrô é uma linha tracejada, porque o trilho é subterrâneo. O botão <b>ir ↗</b> de cada
+    trecho abre a rota exata e turn-by-turn no Google Maps. Horários são uma sugestão de ritmo, não
+    reserva. Mapa © OpenStreetMap · tiles CARTO.</p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const DIA = {"data": "2027-03-20", "semana": "sábado", "base": "Kyoto", "cidade": "kyoto", "transicao": false, "atividades": [{"periodo": "Manhã", "nome": "Arashiyama — Floresta de Bambu", "area": "Arashiyama", "de": "Hotel / Est. Kyoto", "como": "JR Sagano até Saga-Arashiyama — 15 min. Primeiro trem ~06:00", "km": 11.0, "min": 15, "pe": 10.0, "transp": 240, "ingresso": 0.0, "horario": "24h — grátis", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Bambuzal é caminho plano e pavimentado. ⚠ Estreito e lotadíssimo entre 10h e 15h — vá antes das 9h ou depois das 16h e o carrinho passa tranquilo.", "obs": "GRÁTIS. Vá cedo ou no fim da tarde: no feriado fica intransitável ao meio-dia. O templo Tenryu-ji, ao lado, custa ¥500."}, {"periodo": "Manhã", "nome": "Tenryū-ji — o jardim de 1339 ao lado do bambuzal", "area": "Arashiyama", "de": "Bambuzal", "como": "A pé — o bambuzal sai no portão norte do templo, 5 min", "km": 0.3, "min": 0, "pe": 5, "transp": 0, "ingresso": 500, "horario": "08:30–17:00 (últ. entrada 16:50)", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Jardim de passeio em volta de um lago, com caminho de terra batida e plano — o carrinho anda bem. Só os pavilhões exigem descalçar, e eles são opcionais.", "obs": "Patrimônio da Humanidade e templo-mãe da escola Rinzai. O jardim Sōgenchi é de 1339, desenhado pelo fundador Musō Kokushi, e nunca foi refeito: é o mesmo traçado há quase 700 anos, com as montanhas de Arashiyama e Kameyama usadas como fundo emprestado. ¥500 só o jardim, +¥300 se quiser entrar nos pavilhões. O bambuzal sai pelo portão norte, então os dois se fazem na mesma parada."}, {"periodo": "Manhã", "nome": "Monkey Park Iwatayama", "area": "Arashiyama", "de": "Bambuzal", "como": "A pé pela ponte Togetsukyo + trilha de 20 min", "km": 1.0, "min": 0, "pe": 30.0, "transp": 0, "ingresso": 800.0, "horario": "09:00–16:00", "duracao": "1h30", "bebe": "CANGURU", "terreno": "⚠ CANGURU OBRIGATÓRIO. São 20 min de trilha de terra em subida, ~160 m de desnível, sem alternativa. Carrinho NÃO sobe — há guarda-volumes na bilheteria da base.", "obs": "⚠ ÚLTIMA ENTRADA ÀS 16:00. Subida puxada — pesado com criança pequena no colo. No topo: macacos soltos e vista panorâmica de Kyoto."}, {"periodo": "Tarde", "nome": "Ryoan-ji (jardim seco de pedras)", "area": "Ukyo", "de": "Arashiyama", "como": "Randen até Ryoanji (baldeação em Katabiranotsuji) + 700 m a pé", "km": 9.0, "min": 25, "pe": 10, "transp": 250, "ingresso": 600.0, "horario": "08:00–17:00", "duracao": "45 min", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Cascalho e alguns degraus na entrada do jardim de pedras; o salão exige tirar sapato e subir. Carrinho fica na entrada.", "obs": "São 15 pedras, mas de qualquer ângulo só se enxergam 14. O jardim de musgo está incluso no ingresso."}, {"periodo": "Tarde", "nome": "Kinkaku-ji (Pavilhão Dourado)", "area": "Kita", "de": "Ryoan-ji", "como": "Ônibus 59 — 8 min", "km": 2.0, "min": 8, "pe": 5.0, "transp": 230, "ingresso": 500.0, "horario": "09:00–17:00", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Percurso de mão única em cascalho compactado, plano e largo. Carrinho de rodinha pequena sacode, mas vai. ⚠ O ÔNIBUS 205 é o problema real — ver observação sobre ônibus de Kyoto.", "obs": "⚠ COMEÇA O FERIADÃO (20 a 22/03). Chegue na abertura ou encare fila. O percurso é de mão única, não dá para voltar."}, {"periodo": "Tarde", "nome": "Castelo Nijō — o palácio dos pisos que cantam", "area": "Nakagyo", "de": "Kinkaku-ji", "como": "Ônibus 12 até Nijojo-mae — 25 min, direto", "km": 3.3, "min": 25, "pe": 10, "transp": 230, "ingresso": 1300, "horario": "08:45–17:00 (últ. entrada 16:00)", "duracao": "1h30", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "O terreno é amplo, plano e de cascalho — o carrinho anda bem pelos jardins. Mas o Palácio Ninomaru se percorre DESCALÇO por corredores de madeira, com o carrinho parado na entrada: são uns 800 m de circuito interno de meia. Fraldário perto do portão leste.", "obs": "Patrimônio da Humanidade e a casa dos Tokugawa em Kyoto — foi neste salão que o último xogum devolveu o poder ao imperador, em 1867. O Palácio Ninomaru tem os \"pisos rouxinol\": tábuas que rangem de propósito a cada passo, construídas para denunciar quem se aproximasse à noite. ¥1.300 com o palácio, ¥800 só o terreno e os jardins. Última entrada 16:00 — chegando do Kinkaku-ji por volta das 15:20, sobra tempo."}], "total": {"km": 26.6, "min": 73, "pe": 70.0, "transp": 950, "ingresso": 3700.0, "nota": "≈ R$ 094 por pessoa neste dia (transporte + ingressos)"}};
+const GEO = {"titulo": "O bambuzal ao amanhecer, o oeste inteiro", "resumo": "Sábado invertido de propósito: o bambuzal de Arashiyama às 7h30, quando ainda dá para andar nele, e o Tenryū-ji do lado, a 300 m. Depois o dia atravessa o oeste devagar — Ryoan-ji, Kinkaku-ji, Castelo Nijō — e acaba antes das 18h. É o dia mais leve da viagem em tempo de pé, e sobra a noite inteira.", "centro": [35.0155, 135.713], "zoom": 12, "paradas": [{"id": "base", "nome": "Hotel K-style (Higashi Honganji)", "tipo": "base", "lat": 34.9908, "lng": 135.7572, "aprox": true, "hora": "06:45", "gmaps": "Higashi Honganji, Kyoto"}, {"id": "e1", "nome": "Estação de Kyoto — plataformas 32/33 (Sagano)", "tipo": "estacao", "lat": 34.98577, "lng": 135.75857, "hora": "06:57", "gmaps": "Kyoto Station"}, {"id": "e2", "nome": "Saga-Arashiyama (JR)", "tipo": "estacao", "lat": 35.01878, "lng": 135.68141, "hora": "07:18", "gmaps": "Saga-Arashiyama Station"}, {"id": "p1", "ativ": "Floresta de Bambu", "tipo": "parque", "lat": 35.01674, "lng": 135.67115, "hora": "07:30", "fim": "08:25", "gmaps": "Arashiyama Bamboo Grove", "foto": "Arashiyama bamboo grove", "must": ["O corredor principal, do santuário Nonomiya até a subida do Ōkōchi Sansō — uns 400 m", "O Nonomiya, no meio do bambuzal, com portal de madeira crua sem casca", "Ouvir o bambu rangendo com o vento: só dá antes de a multidão chegar"], "alerta": "Grátis, aberto 24h, sem portão. Às 7h30 vocês dividem o caminho com meia dúzia de fotógrafos; às 10h já é fila indiana e às 14h o carrinho não passa. Quem quiser deserto de verdade pega o primeiro JR (~06:00) e chega 06:30, com o sol nascendo por volta das 6h. Piso plano e pavimentado, o carrinho passa bem — nesse horário.", "ai": 0}, {"id": "p2", "ativ": "jardim de 1339", "tipo": "templo", "lat": 35.01622, "lng": 135.67294, "hora": "08:30", "fim": "09:25", "gmaps": "Tenryu-ji, Kyoto", "foto": "File:Tenryū-ji Garten.jpg", "must": ["O jardim Sōgenchi visto da varanda: o mesmo traçado desde 1339, nunca refeito", "As montanhas de Arashiyama e Kameyama usadas como fundo emprestado do jardim", "O dragão pintado no teto do Hattō — sala separada, ingresso à parte"], "comidas": ["Shigetsu, restaurante vegetariano zen dentro do templo — a partir de ¥3.300, só almoço e com reserva"], "compras": ["Amuletos e incenso na loja ao lado da bilheteria"], "alerta": "Abre 08:30 todo dia, sábado inclusive, e fecha 17:00 (última entrada 16:50). ¥500 só o jardim, que é o que interessa; +¥300 se quiserem entrar nos pavilhões, e aí é descalço. Entrem pelo portão principal e SAIAM pelo portão norte: ele dá direto no bambuzal, por isso as duas paradas são a mesma caminhada. Jardim plano de terra batida, o carrinho anda.", "ai": 1}, {"id": "p3", "ativ": "Monkey Park", "tipo": "parque", "lat": 35.01142, "lng": 135.67673, "hora": "09:55", "fim": "11:15", "gmaps": "Arashiyama Monkey Park Iwatayama", "foto": "Iwatayama Monkey Park Arashiyama", "must": ["Macacos-japoneses soltos no topo — quem fica na casa de tela para dar comida são vocês", "A vista de Kyoto inteira lá de cima, 160 m acima do rio"], "alerta": "⚠ CANGURU OBRIGATÓRIO: 20 min de trilha de terra em subida, ~160 m de desnível, sem alternativa. O carrinho fica no guarda-volumes da bilheteria, na base. Abre 09:00 e a última entrada é 16:00 — chegando 09:55 não há corrida nenhuma contra o relógio. ¥800 adulto, cerca de ¥400 de 4 a 15 anos. Lá em cima: não encare macaco nos olhos e não mostre comida fora da casa de tela.", "ai": 2}, {"id": "e3", "nome": "Almoço na rua principal de Arashiyama", "tipo": "comida", "lat": 35.0143, "lng": 135.6774, "hora": "11:25", "gmaps": "Arashiyama Main Street, Kyoto"}, {"id": "e4", "nome": "Randen Arashiyama (Kimono Forest)", "tipo": "estacao", "lat": 35.01522, "lng": 135.6777, "hora": "12:20", "gmaps": "Randen Arashiyama Station"}, {"id": "e5", "nome": "Katabiranotsuji — baldeação para a linha Kitano", "tipo": "estacao", "lat": 35.01524, "lng": 135.7002, "hora": "12:33", "gmaps": "Katabiranotsuji Station"}, {"id": "e6", "nome": "Ryoanji (Randen)", "tipo": "estacao", "lat": 35.02789, "lng": 135.72119, "hora": "12:45", "gmaps": "Ryoanji Station Randen"}, {"id": "p4", "ativ": "Ryoan-ji", "tipo": "templo", "lat": 35.03346, "lng": 135.71809, "hora": "12:55", "fim": "13:40", "gmaps": "Ryoanji Temple, Kyoto", "foto": "Ryoanji rock garden", "must": ["As 15 pedras: de qualquer ponto do deque só se enxergam 14", "O jardim de musgo e o lago Kyōyōchi, no mesmo ingresso e quase sempre vazio", "A bacia de pedra tsukubai, com os quatro caracteres do \"só sei que me basta\""], "alerta": "08:00–17:00 de março a novembro, aberto todo dia. ¥600 adulto, cerca de ¥300 criança. O salão do jardim de pedras é descalço e tem degraus: o carrinho fica na entrada, e o caminho até lá é de cascalho. Se o deque estiver cheio, esperem 10 min — os ônibus de excursão chegam em ondas e esvaziam junto.", "ai": 3}, {"id": "p5", "ativ": "Kinkaku-ji", "tipo": "templo", "lat": 35.03953, "lng": 135.72954, "hora": "14:00", "fim": "15:00", "gmaps": "Kinkaku-ji, Kyoto", "foto": "Kinkakuji golden pavilion", "must": ["O pavilhão refletido no lago Kyōko-chi — é o primeiro ângulo, logo depois da bilheteria", "O ingresso é um ofuda, um talismã de papel: guardem, é a melhor lembrança grátis do dia", "A cascata Ryūmon e a casa de chá Sekka-tei, já no fim do percurso"], "comidas": ["Casa de chá no fim do percurso: matchá com doce, na faixa de ¥500", "Sorvete de matchá e de folha de ouro nas barracas da saída, ¥400–600"], "compras": ["Omamori dourados na saída — os de estudos são os mais procurados"], "alerta": "⚠ COMEÇA O FERIADÃO (20 a 22/03) e este é o templo mais cheio de Kyoto. O percurso é de MÃO ÚNICA: passou, não volta — combinem os pontos de encontro antes de entrar e não deixem ninguém para trás. 09:00–17:00, ¥500 adulto, cerca de ¥300 criança. Cascalho compactado e plano: o carrinho sacode, mas vai.", "ai": 4}, {"id": "p6", "ativ": "pisos que cantam", "tipo": "monumento", "lat": 35.01401, "lng": 135.74854, "hora": "15:35", "fim": "17:00", "gmaps": "Nijo Castle, Kyoto", "foto": "Nijo Castle Ninomaru Palace", "must": ["Os pisos rouxinol do Palácio Ninomaru: tábuas que rangem de propósito a cada passo, feitas para denunciar quem se aproximasse à noite", "O salão onde o último xogum devolveu o poder ao imperador, em 1867", "O jardim Ninomaru, de Kobori Enshū, e a base de pedra da torre que queimou em 1750"], "comidas": ["Casa de chá perto do portão leste: sorvete de matchá e dango, ¥400–700"], "alerta": "⚠ A ÚLTIMA ENTRADA NO PALÁCIO É 16:00 — chegando 15:35 dá, mas comprem o ingresso e entrem no Ninomaru ANTES de passear pelos jardins; o terreno continua aberto até 17:00. ¥1.300 com o palácio, ¥800 só terreno e jardins. O Ninomaru se percorre DESCALÇO, uns 800 m de corredor de madeira, com o carrinho parado na entrada — é hora do canguru e de meia grossa, porque o chão é gelado. Fraldário perto do portão leste; no resto, terreno amplo e plano de cascalho.", "ai": 5}, {"id": "e7", "nome": "Nijōjō-mae (linha Tozai)", "tipo": "estacao", "lat": 35.01189, "lng": 135.75028, "hora": "17:07", "gmaps": "Nijojo-mae Station"}, {"id": "e8", "nome": "Karasuma Oike — baldeação", "tipo": "estacao", "lat": 35.01082, "lng": 135.75965, "hora": "17:11", "gmaps": "Karasuma Oike Station"}, {"id": "e9", "nome": "Estação de Kyoto (metrô)", "tipo": "estacao", "lat": 34.98577, "lng": 135.75857, "hora": "17:22", "gmaps": "Kyoto Station"}, {"id": "fim", "nome": "Hotel K-style (Higashi Honganji)", "tipo": "base", "lat": 34.9908, "lng": 135.7572, "aprox": true, "hora": "17:35", "gmaps": "Higashi Honganji, Kyoto"}], "pernas": [{"de": "base", "para": "e1", "modo": "pe", "min": 12, "km": 0.9, "custo": 0, "desc": "Descida plana pela Karasuma até a estação, em calçada larga o tempo todo."}, {"de": "e1", "para": "e2", "modo": "metro", "linha": "JR Sagano (San'in)", "cor": "#008C46", "min": 15, "km": 11.0, "custo": 240, "desc": "Direto, sem baldeação. Aqui o trem ganha do ônibus com folga: o ônibus 28 faz o mesmo caminho em uns 45 min e chega lotado."}, {"de": "e2", "para": "p1", "modo": "pe", "min": 12, "km": 0.9, "custo": 0, "desc": "Saída sul e rumo oeste pela rua do templo; o bambuzal começa logo depois do Nonomiya."}, {"de": "p1", "para": "p2", "modo": "pe", "min": 5, "km": 0.3, "custo": 0, "desc": "O portão norte do Tenryū-ji abre no meio do bambuzal — é só entrar."}, {"de": "p2", "para": "p3", "modo": "pe", "min": 30, "km": 1.3, "custo": 0, "desc": "Sai na rua principal, atravessa a ponte Togetsukyo e sobe 20 min de trilha de terra. O carrinho não sobe."}, {"de": "p3", "para": "e3", "modo": "pe", "min": 10, "km": 0.6, "custo": 0, "desc": "Desce a trilha, pega o carrinho no guarda-volumes e volta pela ponte."}, {"de": "e3", "para": "e4", "modo": "pe", "min": 5, "km": 0.4, "custo": 0, "desc": "A estação fica no fim da rua de lojas; as colunas de quimono iluminadas ficam no caminho do trem."}, {"de": "e4", "para": "e5", "modo": "metro", "linha": "Randen — linha Arashiyama", "cor": "#7A0F2E", "min": 13, "km": 5.5, "custo": 250, "desc": "Bondinho de um ou dois vagões, tarifa única de ¥250 paga na saída, valendo até o destino final com a baldeação inclusa."}, {"de": "e5", "para": "e6", "modo": "metro", "linha": "Randen — linha Kitano", "cor": "#7A0F2E", "min": 12, "km": 3.5, "custo": 0, "desc": "Mesma passagem, cinco paradas até Ryoanji. É este caminho que dispensa o ônibus 59 vindo de Arashiyama."}, {"de": "e6", "para": "p4", "modo": "pe", "min": 10, "km": 0.7, "custo": 0, "desc": "Rua reta rumo norte, em subida leve o tempo todo, até o portão do templo."}, {"de": "p4", "para": "p5", "modo": "metro", "linha": "Ônibus 59", "cor": "#3A7D3A", "min": 8, "km": 2.0, "custo": 230, "desc": "Três pontos pela Kinukake-no-michi. Dá para fazer a pé em 20 min (1,3 km, plano) e poupar ¥230 por pessoa."}, {"de": "p5", "para": "p6", "modo": "metro", "linha": "Ônibus 12", "cor": "#3A7D3A", "min": 25, "km": 3.3, "custo": 230, "desc": "Direto até Nijojo-mae. É o único trecho do dia sem opção de trem: se o ponto estiver com fila enorme, deixem passar um — vem outro em uns 10 min. Não peguem o 205: ele vai para a estação, não para o castelo."}, {"de": "p6", "para": "e7", "modo": "pe", "min": 7, "km": 0.4, "custo": 0, "desc": "Saída pelo portão leste; a boca do metrô fica na esquina, com elevador."}, {"de": "e7", "para": "e8", "modo": "metro", "linha": "Tozai", "cor": "#B11E22", "min": 4, "km": 1.1, "custo": 260, "desc": "Duas estações, sentido Rokujizo."}, {"de": "e8", "para": "e9", "modo": "metro", "linha": "Karasuma", "cor": "#009A41", "min": 6, "km": 2.4, "custo": 0, "desc": "Mesma passagem, quatro estações até Kyoto. Elevador nas duas pontas."}, {"de": "e9", "para": "fim", "modo": "pe", "min": 12, "km": 0.9, "custo": 0, "desc": "Volta plana pela Karasuma, com o Higashi Honganji do lado."}], "alternativas": [{"tipo": "extra", "titulo": "Trem Romântico de Sagano — o lugar óbvio para gastar a folga", "texto": "Este é o dia mais leve da viagem, e o jeito mais bonito de gastar a sobra sai da porta ao lado: a estação Torokko Saga fica colada na Saga-Arashiyama. São uns 25 min de trem aberto pela garganta do rio Hozu até Kameoka, na faixa de ¥880 por trecho e por pessoa; ida e volta pela mesma linha fecha em cerca de 2h. Roda de 1º de março a 29 de dezembro e não roda às quartas — sábado está de pé. ⚠ Assento é marcado e esgota: reservem antes, ainda mais em fim de semana de feriado. Encaixa entre o Tenryū-ji e o almoço se abrirem mão do Monkey Park.", "ponto": {"nome": "Torokko Saga — Trem Romântico de Sagano", "lat": 35.01856, "lng": 135.68076, "gmaps": "Torokko Saga Station"}}, {"tipo": "extra", "titulo": "Ōkōchi Sansō, no fim do bambuzal", "texto": "A casa e o jardim de um ator de cinema mudo, no alto do bambuzal — o corredor de bambu termina no portão dele. Cerca de ¥1.000, e o ingresso já inclui matchá com doce numa casa de chá com vista para Kyoto. Aberto 09:00–17:00. São uns 40 min a mais na parada do bambuzal, e quase ninguém entra, porque o ingresso espanta a multidão. Caminho de pedra irregular com degraus: carrinho não sobe.", "ponto": {"nome": "Ōkōchi Sansō", "lat": 35.01663, "lng": 135.66959, "gmaps": "Okochi Sanso Garden"}}, {"tipo": "troca", "titulo": "Ninna-ji no lugar do Ryoan-ji", "texto": "Fica uma estação antes, na mesma linha do Randen (Omuro-Ninnaji), e é o oposto do Ryoan-ji: terreno enorme, pagode de cinco andares, quase vazio. Andar pelo terreno não custa nada; o Palácio Goten, que é a parte que vale, sai por volta de ¥800. Troca 45 min de jardim de pedras — descalço, com degraus — por 1h de espaço aberto onde o carrinho anda à vontade. Só não contem com as cerejeiras: as de Omuro são as últimas de Kyoto a abrir, já em abril.", "ponto": {"nome": "Ninna-ji", "lat": 35.02981, "lng": 135.71415, "gmaps": "Ninnaji Temple, Kyoto"}}, {"tipo": "corte", "titulo": "Pular o Monkey Park", "texto": "É a única coisa dura do dia: 20 min de trilha de terra em subida, 160 m de desnível, canguru obrigatório e ¥800 por adulto. Cortando, sobram 1h30 e a manhã inteira fica plana — dá para almoçar sem pressa em Arashiyama e ainda chegar ao Ryoan-ji uma hora antes, ou usar o tempo no trem de Sagano. O que se perde é a vista do alto e os macacos soltos, que não se repetem em nenhum outro dia da viagem.", "refs": ["p3"]}, {"tipo": "planob", "titulo": "Se chover", "texto": "A trilha do Monkey Park vira barro escorregadio com criança no colo: cortem sem pena. O bambuzal continua bonito na chuva e o Tenryū-ji tem varandas cobertas de onde se vê o jardim inteiro sem se molhar; o Ninomaru, no Nijō, são 800 m de corredor coberto. Para tapar o buraco da manhã, o Museu Internacional do Mangá fica em Karasuma Oike, exatamente na baldeação da volta: 50.000 gibis nas prateleiras para pegar e ler, ingresso na faixa de ¥1.000–1.200, aberto 10:30–17:30 e FECHADO às quartas.", "ponto": {"nome": "Museu Internacional do Mangá de Kyoto", "lat": 35.0117, "lng": 135.75918, "gmaps": "Kyoto International Manga Museum"}}], "passe": {"nome": "Nenhum passe compensa hoje — paguem por viagem", "texto": "O candidato seria o Subway & Bus 1-Day (¥1.100 adulto, ¥550 criança), mas ele NÃO cobre o JR nem o Randen, que são justamente os dois trechos longos do dia. Do que vocês gastam, ele cobriria só o ônibus 59 (¥230), o ônibus 12 (¥230) e o metrô da volta (¥260) = ¥720. Perde ¥380 por adulto. O dia inteiro sai por ¥1.210 por adulto: JR ¥240 + Randen ¥250 + ¥230 + ¥230 + metrô ¥260. O passe do Randen (¥800 o dia) também não fecha — vocês usam ¥250 dele. Carreguem ICOCA/Suica e não pensem mais nisso; menores de 6 anos não pagam trem nem ônibus, então os 3 bebês viajam de graça."}};
+const FOTOS = {"p1": {"termo": "Arashiyama bamboo grove", "arq": "paradas/2027-03-20-p1.webp", "titulo": "Bamboo Forest, Arashiyama, Kyoto, Japan.jpg", "autor": "Basile Morin", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ABamboo_Forest%2C_Arashiyama%2C_Kyoto%2C_Japan.jpg", "lqip": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAABwAwCdASoWAA8APulep00pJSOiMAgBIB0JZwAAN39qxNQXooAA7JlHi0Cj/Dcl+vEiEPBYPbfEF+aAAAA="}, "p3": {"termo": "Iwatayama Monkey Park Arashiyama", "arq": "paradas/2027-03-20-p3.webp", "titulo": "Macaca fuscata Iwatayama.jpg", "autor": "Leyo", "lic": "CC BY-SA 2.5 ch", "licurl": "https://creativecommons.org/licenses/by-sa/2.5/ch/deed.en", "pagina": "https://commons.wikimedia.org/wiki/File%3AMacaca_fuscata_Iwatayama.jpg", "lqip": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQBACdASoWABEAPulmrk+pJaQiKAqpIB0JZQCo9BDDmalWZiHvCadT4GMVVU/YMAD+jpIFy7rlcI88nTrgX/jJcLo2DrRYuK8+WLnGnHN6KiuChFNv+yhEow92DZOybaPPRxsYpAMsAAAA"}, "p4": {"termo": "Ryoanji rock garden", "arq": "paradas/2027-03-20-p4.webp", "titulo": "RyoanJi-Dry garden.jpg", "autor": "Stephane D'Alu", "lic": "CC BY-SA 3.0", "licurl": "http://creativecommons.org/licenses/by-sa/3.0/", "pagina": "https://commons.wikimedia.org/wiki/File%3ARyoanJi-Dry_garden.jpg", "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAwBACdASoWAA8APulgq00pJaQiMAgBIB0JZwC2yCKQYFOEMEElEBS/0MAA/uO2eHDXuoA5de3wgreg/Gaxkb31mzLCHS9TFBGQvDSiqE0+wAAA"}, "p5": {"termo": "Kinkakuji golden pavilion", "arq": "paradas/2027-03-20-p5.webp", "titulo": "Japan Kyoto Kinkakuji DSC00117.jpg", "autor": "David Monniaux", "lic": "CC BY-SA 3.0", "licurl": "http://creativecommons.org/licenses/by-sa/3.0/", "pagina": "https://commons.wikimedia.org/wiki/File%3AJapan_Kyoto_Kinkakuji_DSC00117.jpg", "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAwCdASoWAA8APulep00pJSOiMAgBIB0JQAqP0PQRUfyfF1gMb6AA/vAWOgtmqHErsQxyPOJvcA9dhE008/b5u9+8e6jI4nk7yuunpZjnH9Bg8AA="}, "p6": {"termo": "Nijo Castle Ninomaru Palace", "arq": "paradas/2027-03-20-p6.webp", "titulo": "Ninomaru Palace, November 2016.jpg", "autor": "Martin Falbisoner", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ANinomaru_Palace%2C_November_2016.jpg", "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoWAA4APulkq04pJaQiMAgBIB0JYgCdACHacXEQ3bXF4N3AAP7DPa+ybaw0RB0BqgEKL9r8B5ISXCycEjOLwlzR7MYbCdDEIYCabERXGRb/Le/wcTsE+8OHNY9AAA=="}, "p2": {"termo": "File:Tenryū-ji Garten.jpg", "arq": "paradas/2027-03-20-p2.webp", "titulo": "Tenryū-ji Garten.jpg", "autor": "Marco Almbauer", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ATenry%C5%AB-ji_Garten.jpg", "lqip": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACQAwCdASoWAAwAPulgqE0pJaOiMAgBIB0JYwAATvP3dqjRL/4AAP57tztBrFq+AjOI2lxf9ycqQ4/P1Qp6SlMNsR6G2AAA"}};   // por id de parada: arquivo, credito e placeholder
+const el = (id)=>document.getElementById(id);
+const esc = (s)=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nf  = (n,d=0)=>Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const gm  = (q)=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const gdir= (a,b,modo)=>"https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+
+            "&destination="+encodeURIComponent(b)+"&travelmode="+(modo==="pe"?"walking":"transit");
+
+/* ---- tema ---- */
+const raiz=document.documentElement;
+let tema=localStorage.getItem("tema-japao")||"";
+if(tema) raiz.dataset.theme=tema;
+el("themeBtn").onclick=()=>{
+  const escuro = raiz.dataset.theme ? raiz.dataset.theme==="dark"
+               : matchMedia("(prefers-color-scheme: dark)").matches;
+  tema = escuro?"light":"dark";
+  raiz.dataset.theme=tema; localStorage.setItem("tema-japao",tema);
+  if(typeof trocarTiles==="function") trocarTiles();
+};
+const ehEscuro=()=> raiz.dataset.theme ? raiz.dataset.theme==="dark"
+                  : matchMedia("(prefers-color-scheme: dark)").matches;
+
+/* ---- indice das paradas ---- */
+const P = {}; GEO.paradas.forEach(p=>{ P[p.id]=p; });
+// a saida pode ter atividade propria (num dia de chegada, o aeroporto e a
+// primeira coisa que acontece) — mas ela e o "0", nao entra na contagem
+const reais = GEO.paradas.filter(p=>p.ai!=null && p.tipo!=="base");
+reais.forEach((p,i)=>{ p.n=i+1; });
+// a saida e o "0" do dia; a volta e o mesmo lugar, entao nao ganha pino proprio
+GEO.paradas.forEach(p=>{ if(p.tipo==="base") p.n=0; });
+const at = (p)=> p.ai!=null ? DIA.atividades[p.ai] : null;
+const nomeDe = (p)=> p.nome || (at(p) ? at(p).nome : p.id);
+
+/* ---- mapa ---- */
+// Sem internet (avião, roaming caído) o Leaflet nao carrega: o mapa some e a pagina
+// continua inteira — hora a hora, custos, alternativas. Os links do Google Maps
+// tambem so funcionam online, mas ai o problema ja e outro.
+const TEM_MAPA = typeof L !== "undefined";
+if(!TEM_MAPA){
+  el("map").outerHTML = '<p class="semmapa">Mapa indisponível offline. O roteiro do dia continua abaixo.</p>';
+}
+// Scroll do mouse da zoom direto. No touch isso nao existe, e o arrasto de um dedo
+// no mapa roubaria a rolagem da pagina — por isso la o gesto continua sendo de dois dedos.
+const TOQUE = matchMedia("(pointer: coarse)").matches;
+const map = TEM_MAPA ? L.map("map",{
+  scrollWheelZoom:true, wheelPxPerZoomLevel:90, zoomControl:true, dragging:!TOQUE
+}).setView(GEO.centro, GEO.zoom) : null;
+if(map && TOQUE){ map.dragging.enable(); }
+let tiles=null;
+// O OSM padrao desenha cada loja e cada viela: com a rota por cima virava sopa. O Gray
+// Canvas da Esri e um fundo de dados — quase so agua, quadras e vias principais — e vem
+// em duas camadas, base sem texto + rotulos por cima, cada uma clara e escura.
+const ESRI = "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_{t}_Gray_{c}/MapServer/tile/{z}/{y}/{x}";
+function camada(tom, papel, z){
+  return L.tileLayer(ESRI.replace("{t}",tom).replace("{c}",papel),{
+    maxNativeZoom:16, maxZoom:18, zIndex:z,
+    attribution: papel==="Base" ? "Tiles &copy; Esri" : ""
+  });
+}
+let rotulos=null;
+function trocarTiles(){
+  if(!map) return;
+  const tom = ehEscuro()?"Dark":"Light";
+  if(tiles){ map.removeLayer(tiles); map.removeLayer(rotulos); }
+  tiles   = camada(tom,"Base",0).addTo(map);
+  rotulos = camada(tom,"Reference",1).addTo(map);
+}
+trocarTiles();
+
+const cor = getComputedStyle(document.querySelector(".palco")).getPropertyValue("--c").trim();
+const marcas={};
+if(map) GEO.paradas.forEach(p=>{
+  if(p.id==="fim") return;                 // mesmo ponto da saida
+  const apoio = p.ai==null && p.tipo!=="base";
+  const ico = L.divIcon({className:"", html:`<div class="pin ${apoio?"apoio":""}${p.tipo==="base"?" base":""}" data-id="${p.id}">${apoio?"":p.n}</div>`,
+    iconSize:apoio?[15,15]:[28,28], iconAnchor:apoio?[7,7]:[14,14]});
+  const m = L.marker([p.lat,p.lng],{icon:ico,zIndexOffset:apoio?0:400}).addTo(map);
+  const a = at(p);
+  const fp = FOTOS[p.id];
+  m.bindPopup(`${fp?`<img class="pop-img" src="fotos/${fp.arq}" alt="" loading="lazy">`:""
+    }<b>${esc(nomeDe(p))}</b><u>${esc(p.hora||"")}${p.fim?" – "+esc(p.fim):""}${
+      a&&a.area?" · "+esc(a.area):""}</u>${
+      p.aprox?'<i style="color:var(--ink-3);font-size:.72rem">ponto aproximado</i>':""}<a href="${gm(p.gmaps||nomeDe(p))}" target="_blank" rel="noopener">ver no Google Maps ↗</a>`);
+  if(!apoio) m.on("click",()=>abrir(p.id,false));
+  marcas[p.id]=m;
+});
+
+if(map) GEO.pernas.forEach(g=>{
+  const a=P[g.de], b=P[g.para]; if(!a||!b) return;
+  const pe = g.modo==="pe";
+  L.polyline([[a.lat,a.lng],[b.lat,b.lng]],{
+    color: pe?cor:(g.cor||cor), weight: pe?3.4:4.6, opacity: pe?.8:.9,
+    dashArray: pe?null:"2 9", lineCap:"round"
+  }).addTo(map);
+});
+if(map) map.fitBounds(L.latLngBounds(GEO.paradas.map(p=>[p.lat,p.lng])),{padding:[42,42]});
+
+/* ---- cabecalho e numeros ---- */
+const DIAS_SEM = DIA.semana;
+el("subt").textContent = DIA.data.slice(8,10)+"/"+DIA.data.slice(5,7)+"/"+DIA.data.slice(0,4)
+  +" · "+DIAS_SEM+" · dia 5 de 16";
+el("resumo").textContent = GEO.resumo;
+const t = DIA.total||{};
+el("kpis").innerHTML =
+  `<div><b>${nf(t.km,1)}</b><u>km</u></div>`+
+  `<div><b>${nf(t.pe)}</b><u>min a pé</u></div>`+
+  `<div><b>¥${nf(t.transp)}</b><u>transporte</u></div>`+
+  `<div><b>¥${nf(t.ingresso)}</b><u>ingressos</u></div>`;
+
+// O Google Maps NAO calcula transporte publico com paradas intermediarias — so
+// origem→destino. Com waypoints ele aceita apenas carro/a pe/bicicleta. Entao o botao do
+// dia abre a volta inteira em modo carro, so para ver o desenho e a ordem; o transporte
+// de verdade (metro, linha, tarifa) esta no "ir ↗" de cada trecho.
+const seq = reais.map(p=>p.gmaps||nomeDe(p));
+el("gdia").href = "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(seq[0])+
+  "&destination="+encodeURIComponent(seq[seq.length-1])+
+  "&waypoints="+seq.slice(1,-1).map(encodeURIComponent).join("%7C")+"&travelmode=driving";
+
+/* ---- trilha ---- */
+// A foto so baixa quando o card abre (loading=lazy + o card comeca fechado): abrir a
+// pagina nao puxa foto nenhuma. Ate ela chegar, o fundo e o placeholder borrado de 22px
+// que ja vem embutido no HTML.
+function foto(p){
+  const f = FOTOS[p.id]; if(!f) return "";
+  const cred = [f.autor, f.lic].filter(Boolean).join(" · ");
+  return `<figure class="fig" style="background-image:url(${f.lqip})">
+    <img src="fotos/${f.arq}" alt="${esc(nomeDe(p))}" loading="lazy" decoding="async"
+      width="620" height="349"${p.foco?` style="object-position:${esc(p.foco)}"`:""}>
+    <figcaption><a href="${esc(f.pagina)}" target="_blank" rel="noopener">${esc(cred||"Wikimedia Commons")} ↗</a></figcaption>
+  </figure>`;
+}
+
+function bloco(lbl,arr){
+  if(!arr||!arr.length) return "";
+  return `<div class="bloco"><p class="lbl">${lbl}</p><ul>${arr.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;
+}
+let anterior = null;
+const html = GEO.paradas.map((p,idx)=>{
+  const perna = GEO.pernas.find(g=>g.para===p.id);
+  const ant = anterior;
+  if(p.tipo!=="estacao") anterior = p;
+  let out = "";
+  if(perna){
+    const de=P[perna.de], ate=p;
+    const metro = perna.modo!=="pe";
+    const dd = de.gmaps||nomeDe(de), aa = p.gmaps||nomeDe(p);
+    // Cada trecho tem um modo sugerido, mas onde a outra opcao for plausivel (metro
+    // curto que da para andar, ou caminhada que da para encurtar de metro) aparece um
+    // segundo link, para comparar tempo e preco no Google.
+    const alt = metro ? (perna.km && perna.km <= 2.5) : (perna.km && perna.km >= 0.8);
+    const tit = metro
+      ? `<b>${esc(perna.linha||"Metrô")}</b> · ${perna.min} min${perna.custo?" · ¥"+nf(perna.custo):""}${
+          perna.km?" · "+nf(perna.km,1)+" km":""}`
+      : `<b>A pé</b> · ${perna.min} min${perna.km?" · "+nf(perna.km,1)+" km":""}`;
+    out += `<div class="perna">
+      <span class="ic ${metro?"metro":""}" ${metro&&perna.cor?`style="background:${perna.cor}"`:""}>${metro?"Ⓜ":"🚶"}</span>
+      <span class="tx">${tit}${perna.desc?`<em>${esc(perna.desc)}</em>`:""}</span>
+      <span class="gos">
+        <a class="go" target="_blank" rel="noopener"
+           href="${gdir(dd, aa, metro?"transporte":"pe")}">${metro?"transporte ↗":"a pé ↗"}</a>
+        ${alt?`<a class="go alt" target="_blank" rel="noopener"
+           href="${gdir(dd, aa, metro?"pe":"transporte")}">${metro?"ou a pé ↗":"ou transporte ↗"}</a>`:""}
+      </span>
+    </div>`;
+  }
+  const a = at(p);
+  if(!a){
+    if(p.tipo==="estacao") return out;   // estacao ja aparece dentro da perna
+    out += `<div class="parada" data-id="${p.id}">
+      <div class="num${p.tipo==="base"?" base":""}">${p.tipo==="base"?0:"·"}</div>
+      <button class="p-top"><h3>${esc(p.nome)}</h3><span class="hh"><b>${esc(p.hora||"")}</b></span></button>
+    </div>`;
+    return out;
+  }
+  const chips=[];
+  if(a.duracao&&a.duracao!=="—") chips.push(`<span class="chip">${esc(a.duracao)}</span>`);
+  chips.push(a.ingresso?`<span class="chip pago">¥${nf(a.ingresso)}</span>`:`<span class="chip">grátis</span>`);
+  if(a.horario&&a.horario!=="—") chips.push(`<span class="chip">abre ${esc(a.horario)}</span>`);
+  if(a.bebe) chips.push(`<span class="chip">${esc(a.bebe)}</span>`);
+
+  out += `<div class="parada" data-id="${p.id}" id="c-${p.id}">
+    <div class="num">${p.n}</div>
+    <button class="p-top" aria-expanded="false">
+      <h3>${esc(a.nome)}</h3>
+      <span class="hh"><b>${esc(p.hora||"")}</b>${p.fim?"–"+esc(p.fim):""}</span>
+    </button>
+    <div class="chips">${chips.join("")}</div>
+    <div class="p-det">
+      ${foto(p)}
+      ${bloco("Não pode perder", p.must)}
+      ${bloco("Comer", p.comidas)}
+      ${bloco("Comprar", p.compras)}
+      ${a.terreno&&a.terreno!=="—"?`<div class="bloco"><p class="lbl">Com carrinho</p><p class="nota">${esc(a.terreno)}</p></div>`:""}
+      ${a.obs&&a.obs!=="—"?`<div class="bloco"><p class="lbl">Contexto</p><p class="nota">${esc(a.obs)}</p></div>`:""}
+      ${p.alerta?`<div class="alerta"><s>⚠</s><span>${esc(p.alerta)}</span></div>`:""}
+      <div class="plinks">
+        ${ant?`<a class="plink" target="_blank" rel="noopener"
+           href="${gdir(ant.gmaps||nomeDe(ant), p.gmaps||a.nome, "transit")}">Como chegar de ${esc(nomeDe(ant))} ↗</a>`:""}
+        <a class="plink" target="_blank" rel="noopener" href="${gm(p.gmaps||a.nome)}">Abrir no Google Maps ↗</a>
+      </div>
+    </div>
+  </div>`;
+  return out;
+}).join("");
+el("trilha").innerHTML = html;
+
+// Uma alternativa ou aponta para um lugar novo ("ponto": ganha pino tracejado no mapa)
+// ou mexe em paradas que ja existem ("refs": o mapa enquadra e os cards piscam).
+const LBL={troca:"Troca",corte:"Corte",extra:"Se sobrar tempo",planob:"Plano B"};
+el("alts").innerHTML = GEO.alternativas.map((x,i)=>{
+  const acao = x.ponto ? "Ver no mapa" : (x.refs ? "Ver a parada que muda" : "");
+  return `<div class="alt${acao?" viva":""}" data-alt="${i}"${acao?' tabindex="0" role="button"':""}>
+    <span class="tag">${LBL[x.tipo]||x.tipo}</span>
+    <b>${esc(x.titulo)}</b><p>${esc(x.texto)}</p>
+    ${acao?`<span class="alt-pe"><span class="alt-go">${acao} \u2192</span>${
+      x.ponto?`<a class="plink" target="_blank" rel="noopener" href="${gm(x.ponto.gmaps||x.ponto.nome)}"
+        >${esc(x.ponto.nome)} no Google Maps \u2197</a>`:""}</span>`:""}
+  </div>`;
+}).join("");
+
+// os pinos das alternativas nascem escondidos e so aparecem quando o card e acionado
+if(map) GEO.alternativas.forEach(x=>{
+  if(!x.ponto) return;
+  x._m = L.marker([x.ponto.lat,x.ponto.lng],{opacity:0,interactive:false,
+    icon:L.divIcon({className:"",html:`<div class="pin alt-pin">${(LBL[x.tipo]||"?")[0]}</div>`,
+      iconSize:[26,26],iconAnchor:[13,13]})}).addTo(map);
+  x._m.bindPopup(`<b>${esc(x.ponto.nome)}</b><u>alternativa \u00b7 ${esc(LBL[x.tipo]||x.tipo)}</u>`);
+});
+
+function mostrarAlt(i){
+  const x = GEO.alternativas[i];
+  document.querySelectorAll(".alt.on").forEach(n=>n.classList.remove("on"));
+  el("trilha").querySelectorAll(".parada.pisca").forEach(n=>n.classList.remove("pisca"));
+  GEO.alternativas.forEach(y=>{ if(y._m) y._m.setOpacity(0); });
+  const card = el("alts").querySelector(`.alt[data-alt="${i}"]`);
+  if(card) card.classList.add("on");
+  if(x.ponto){
+    if(x._m) x._m.setOpacity(1);
+    if(map){ map.flyTo([x.ponto.lat,x.ponto.lng], 15, {duration:.6}); if(x._m) x._m.openPopup(); }
+  }else if(x.refs && x.refs.length){
+    const pts = x.refs.map(id=>P[id]).filter(Boolean);
+    if(map && pts.length) map.flyToBounds(L.latLngBounds(pts.map(q=>[q.lat,q.lng])),
+      {padding:[70,70], maxZoom:15, duration:.6});
+    x.refs.forEach(id=>{
+      const c = el("trilha").querySelector(`.parada[data-id="${id}"]`);
+      if(c) c.classList.add("pisca");
+    });
+    const primeiro = el("trilha").querySelector(`.parada[data-id="${x.refs[0]}"]`);
+    if(primeiro) primeiro.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+el("alts").addEventListener("click",ev=>{
+  if(ev.target.closest("a")) return;                 // deixa o link do Google passar
+  const c=ev.target.closest(".alt.viva"); if(c) mostrarAlt(+c.dataset.alt);
+});
+el("alts").addEventListener("keydown",ev=>{
+  if(ev.key!=="Enter" && ev.key!==" ") return;
+  const c=ev.target.closest(".alt.viva"); if(c){ ev.preventDefault(); mostrarAlt(+c.dataset.alt); }
+});
+el("passe").innerHTML = `<span class="tag" style="font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--t)">Passe</span>
+  <b style="display:block;font-size:.85rem;margin:4px 0 5px">${esc(GEO.passe.nome)}</b>
+  <p style="font-size:.78rem;line-height:1.5;color:var(--ink-2)">${esc(GEO.passe.texto)}</p>`;
+
+/* ---- selecao ---- */
+function abrir(id, rolar){
+  const card = el("trilha").querySelector(`.parada[data-id="${id}"]`);
+  if(!card) return;
+  const jaAberto = card.classList.contains("on");
+  el("trilha").querySelectorAll(".parada.on").forEach(n=>{n.classList.remove("on");
+    const b=n.querySelector(".p-top"); if(b) b.setAttribute("aria-expanded","false");});
+  document.querySelectorAll(".pin.sel").forEach(n=>n.classList.remove("sel"));
+  if(jaAberto && rolar!==false) return;
+  card.classList.add("on");
+  const b=card.querySelector(".p-top"); if(b) b.setAttribute("aria-expanded","true");
+  const pin=document.querySelector(`.pin[data-id="${id}"]`); if(pin) pin.classList.add("sel");
+  const p=P[id];
+  if(p && map){ map.flyTo([p.lat,p.lng], Math.max(map.getZoom(),15), {duration:.6}); }
+  if(rolar!==false && marcas[id]) marcas[id].openPopup();
+  else card.scrollIntoView({behavior:"smooth",block:"center"});
+}
+el("trilha").addEventListener("click",ev=>{
+  const b=ev.target.closest(".p-top"); if(!b) return;
+  abrir(b.closest(".parada").dataset.id, true);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Mapa do dia 4 da viagem ao Japao: Osaka fica para trás, Kyoto começa pelos templos da estação.">
+<meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A0D13" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
+<title>Osaka fica para trás, Kyoto começa pelos templos da estação</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#EDEEF1; --surface:#FFFFFF; --surface-2:#E3E6EB; --sunken:#E7E9ED;
+  --ink:#11151E; --ink-2:#48505F; --ink-3:#7A8394; --line:#D2D7DF; --line-2:#BFC6D1;
+  --c-osaka:#E60012; --t-osaka:#BE000F; --c-kyoto:#6E7F3C; --t-kyoto:#4F5C2A;
+  --c-fuji:#1E50A2;  --t-fuji:#194588;  --c-tokyo:#F39700; --t-tokyo:#96590A;
+  --sakura:#E0788E; --ok:#1F7A4D; --warn:#A86212; --crit:#BE000F;
+  --panel:rgba(255,255,255,.76); --panel-2:rgba(223,228,235,.52);
+  --veu:linear-gradient(180deg,rgba(236,238,242,.46) 0%,rgba(236,238,242,.60) 45%,rgba(236,238,242,.70) 100%);
+  --wall-filtro:brightness(1.20) contrast(.90) saturate(.90);
+  --halo:rgba(236,238,242,.95);
+  --shadow:0 1px 2px rgba(17,21,30,.06),0 6px 20px -8px rgba(17,21,30,.14);
+  --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-jp:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Noto Sans JP",Meiryo,system-ui,sans-serif;
+  --f-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --c:var(--c-osaka); --t:var(--t-osaka);
+  --pad:clamp(16px,4.6vw,26px); --wrap:760px;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}
+.c-osaka{--c:var(--c-osaka);--t:var(--t-osaka)} .c-kyoto{--c:var(--c-kyoto);--t:var(--t-kyoto)}
+.c-fuji{--c:var(--c-fuji);--t:var(--t-fuji)}    .c-tokyo{--c:var(--c-tokyo);--t:var(--t-tokyo)}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:transparent;color:var(--ink);font-family:var(--f-ui);
+  font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;overflow-x:hidden;
+  padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:800;letter-spacing:-.025em;line-height:1.12}
+p{margin:0} ul{margin:0;padding:0}
+a{color:var(--t);text-underline-offset:2px}
+:focus-visible{outline:2.5px solid var(--c);outline-offset:3px;border-radius:4px}
+img,canvas,svg{max-width:100%;display:block}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--pad)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-2)}
+/* estes ficam direto sobre a foto: o halo descola do fundo sem desenhar caixa */
+.sec-head .eyebrow,.sec-head h2,.sec-head .sub,.swipe-hint,.trilho::before{
+  text-shadow:0 1px 2px var(--halo),0 0 12px var(--halo),0 0 26px var(--halo)}
+
+/* ============ LAYOUT ============ */
+body{padding-bottom:0}
+.topo{position:sticky;top:0;z-index:900;display:flex;align-items:center;gap:12px;
+  padding:10px var(--pad);background:var(--panel);backdrop-filter:blur(16px) saturate(1.2);
+  -webkit-backdrop-filter:blur(16px) saturate(1.2);border-bottom:1px solid var(--line)}
+.topo .volta{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:750;
+  text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:99px;padding:6px 12px}
+.topo .volta:hover{color:var(--t);border-color:var(--c)}
+.topo .tit{flex:1;min-width:0}
+.topo .tit b{display:block;font-size:.94rem;font-weight:800;letter-spacing:-.02em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topo .tit u{display:block;text-decoration:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);margin-top:2px}
+.themeBtn{flex:none;width:34px;height:34px;border-radius:99px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink-2);font-size:.95rem;cursor:pointer;line-height:1}
+
+.palco{display:grid;gap:0}
+#map{height:52svh;min-height:300px;background:var(--sunken);z-index:1}
+@media(min-width:1000px){
+  .palco{grid-template-columns:minmax(0,1fr) 430px;height:calc(100svh - 57px)}
+  .painel{overflow-y:auto;border-left:1px solid var(--line)}
+  #map{height:100%;position:sticky;top:0}
+}
+.leaflet-container{font-family:var(--f-ui);background:var(--sunken)}
+
+.leaflet-control-attribution{background:var(--panel)!important;color:var(--ink-3)!important;font-size:9px!important}
+.leaflet-control-attribution a{color:var(--ink-2)!important}
+.painel{padding:18px var(--pad) 60px}
+.semmapa{padding:16px var(--pad);font-size:.78rem;color:var(--ink-3);
+  background:var(--sunken);border-bottom:1px solid var(--line)}
+
+/* ============ PINOS ============ */
+.pin{display:grid;place-items:center;width:28px;height:28px;border-radius:99px;
+  background:var(--c);color:#fff;font-family:var(--f-mono);font-size:.72rem;font-weight:800;
+  border:2.5px solid var(--surface);box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.pin.sel{transform:scale(1.28);box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 32%,transparent)}
+.pin.apoio{width:15px;height:15px;background:var(--ink-3);border-width:2px;font-size:0}
+.pin.base{background:var(--ink-3)}
+.leaflet-popup-content-wrapper{background:var(--surface);color:var(--ink);border-radius:12px;
+  box-shadow:var(--shadow);border:1px solid var(--line)}
+.leaflet-popup-tip{background:var(--surface)}
+.leaflet-popup-content{margin:11px 13px;font-size:.8rem;line-height:1.45}
+.leaflet-popup-content b{display:block;font-size:.86rem;margin-bottom:3px}
+.leaflet-popup-content u{display:block;text-decoration:none;font-family:var(--f-mono);
+  font-size:.68rem;color:var(--ink-3);margin-bottom:6px}
+.leaflet-popup-content a{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:750}
+
+/* ============ FOTO ============ */
+.fig{margin:11px 0 0;border-radius:10px;overflow:hidden;background-size:cover;
+  background-position:center;position:relative;line-height:0}
+.fig img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.fig figcaption{position:absolute;right:0;bottom:0;line-height:1.3;
+  background:linear-gradient(90deg,transparent,rgba(0,0,0,.62) 34%);padding:5px 8px 4px 22px}
+.fig figcaption a{font-size:.56rem;color:rgba(255,255,255,.82);text-decoration:none}
+.fig figcaption a:hover{color:#fff;text-decoration:underline}
+.pop-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin-bottom:7px}
+
+/* ============ RESUMO ============ */
+.resumo{font-size:.86rem;color:var(--ink-2);margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.kpis div{background:var(--surface);padding:10px 6px;text-align:center}
+.kpis b{display:block;font-family:var(--f-mono);font-size:.94rem;font-weight:800;color:var(--t)}
+.kpis u{display:block;text-decoration:none;font-size:.6rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--ink-3);margin-top:2px}
+.gbtn{display:block;width:100%;background:var(--c);color:#fff;border:0;border-radius:12px;
+  padding:11px 14px;font-size:.82rem;font-weight:800;text-decoration:none;
+  margin-bottom:20px;text-align:center}
+.gbtn u{display:block;text-decoration:none;font-weight:600;font-size:.66rem;
+  line-height:1.4;opacity:.85;margin-top:3px}
+
+/* ============ TRILHO DO DIA ============ */
+.eyebrow{font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--ink-3);margin:24px 0 9px}
+.trilha{position:relative;padding-left:34px}
+.trilha::before{content:"";position:absolute;left:13px;top:6px;bottom:6px;width:2px;
+  background:color-mix(in srgb,var(--c) 30%,transparent)}
+
+.parada{position:relative;margin-bottom:8px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.parada.on{border-color:var(--c)}
+.parada > .num.base{background:var(--ink-3)}
+.parada > .num{position:absolute;left:-34px;top:12px;width:28px;height:28px;border-radius:99px;
+  display:grid;place-items:center;background:var(--c);color:#fff;
+  font-family:var(--f-mono);font-size:.72rem;font-weight:800;border:2.5px solid var(--paper)}
+.p-top{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;
+  background:none;border:0;color:inherit;font:inherit;padding:12px 13px;cursor:pointer}
+.p-top h3{flex:1;min-width:0;font-size:.88rem;line-height:1.3}
+.p-top .hh{flex:none;font-family:var(--f-mono);font-size:.66rem;color:var(--ink-3);
+  font-variant-numeric:tabular-nums;text-align:right;line-height:1.4}
+.p-top .hh b{display:block;color:var(--t);font-weight:800;font-size:.72rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px;padding:0 13px 11px}
+.chip{font-size:.63rem;font-weight:750;padding:3px 9px;border-radius:99px;
+  border:1px solid var(--line-2);color:var(--ink-2)}
+.chip.pago{color:var(--t);border-color:var(--c)}
+.p-det{padding:0 13px 13px;display:none}
+.parada.on .p-det{display:block}
+.bloco{margin-top:11px}
+.bloco p.lbl{font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink-3);margin-bottom:5px}
+.bloco ul{list-style:none}
+.bloco li{font-size:.78rem;line-height:1.45;padding-left:15px;position:relative;margin-bottom:3px}
+.bloco li::before{content:"";position:absolute;left:2px;top:.55em;width:5px;height:5px;
+  border-radius:99px;background:var(--c)}
+.nota{font-size:.78rem;line-height:1.5;color:var(--ink-2)}
+.alerta{display:flex;gap:8px;font-size:.76rem;line-height:1.45;background:color-mix(in srgb,var(--warn) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--warn) 34%,transparent);border-radius:10px;padding:9px 11px;margin-top:11px}
+.alerta s{flex:none;text-decoration:none}
+.plink{display:inline-flex;align-items:center;gap:6px;margin-top:12px;max-width:100%;font-size:.72rem;font-weight:750;
+  border:1px solid var(--line-2);border-radius:99px;padding:6px 12px;text-decoration:none;color:var(--ink-2)}
+.plink:hover{color:var(--t);border-color:var(--c)}
+.plinks{display:flex;flex-wrap:wrap;gap:6px}
+
+/* ============ PERNAS ============ */
+.perna{position:relative;display:flex;gap:9px;align-items:flex-start;padding:7px 4px 11px 2px;font-size:.75rem;color:var(--ink-2)}
+.perna .ic{position:absolute;left:-30px;top:6px;width:20px;height:20px;border-radius:99px;
+  display:grid;place-items:center;font-size:.66rem;background:var(--surface-2);
+  border:1px solid var(--line);color:var(--ink-2)}
+.perna .ic.metro{color:#fff;border:0}
+.perna .tx{flex:1;min-width:0;line-height:1.4}
+.perna .tx b{font-weight:800;color:var(--ink)}
+.perna .tx em{font-style:normal;color:var(--ink-3);display:block;font-size:.71rem;margin-top:2px}
+.perna .go{flex:none;font-family:var(--f-mono);font-size:.65rem;color:var(--ink-3);text-decoration:none;
+  border:1px solid var(--line);border-radius:99px;padding:3px 8px;white-space:nowrap}
+.perna .go:hover{color:var(--t);border-color:var(--c)}
+.perna .gos{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.perna .go.alt{opacity:.72;font-weight:600}
+
+/* ============ ALTERNATIVAS / PASSE ============ */
+.alt{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow)}
+.alt b{display:block;font-size:.83rem;margin-bottom:4px}
+.alt p{font-size:.77rem;line-height:1.5;color:var(--ink-2)}
+.alt .tag{display:inline-block;font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--t);margin-bottom:6px}
+.alt.viva{cursor:pointer}
+.alt.viva:hover,.alt.viva:focus-visible{border-color:var(--c)}
+.alt.on{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 16%,transparent)}
+.alt-pe{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:9px}
+.alt-go{font-size:.7rem;font-weight:800;color:var(--t)}
+.alt-pe .plink{margin-top:0}
+.pin.alt-pin{background:var(--surface);color:var(--t);border:2.5px dashed var(--c);
+  width:26px;height:26px;font-size:.66rem;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+@keyframes pisca{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 40%,transparent)}
+  50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 22%,transparent)}}
+.parada.pisca{border-color:var(--c);animation:pisca 1.1s ease-in-out 3}
+.passe{background:color-mix(in srgb,var(--c) 9%,var(--surface));
+  border:1px solid color-mix(in srgb,var(--c) 34%,transparent);border-radius:14px;padding:13px 15px}
+.rodape{font-size:.68rem;color:var(--ink-3);line-height:1.5;margin-top:26px;
+  padding-top:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="topo c-kyoto">
+  <a class="volta" href="index.html#dia4">‹ Roteiro</a>
+  <div class="tit"><b>Osaka fica para trás, Kyoto começa pelos templos da estação</b><u id="subt"></u></div>
+  <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
+</div>
+
+<div class="palco c-kyoto">
+  <div id="map"></div>
+  <div class="painel">
+    <p class="resumo" id="resumo"></p>
+    <div class="kpis" id="kpis"></div>
+    <a class="gbtn" id="gdia" target="_blank" rel="noopener">Ver a volta inteira no Google Maps ↗
+      <u>desenho e ordem das paradas · o transporte real de cada trecho está no <b>ir ↗</b> abaixo</u></a>
+
+    <p class="eyebrow">Hora a hora</p>
+    <div class="trilha" id="trilha"></div>
+
+    <p class="eyebrow">Alternativas e plano B</p>
+    <div id="alts"></div>
+
+    <div class="passe" id="passe"></div>
+
+    <p class="rodape">Os traçados no mapa são aproximados — para trechos a pé o desenho é uma reta e
+    para o metrô é uma linha tracejada, porque o trilho é subterrâneo. O botão <b>ir ↗</b> de cada
+    trecho abre a rota exata e turn-by-turn no Google Maps. Horários são uma sugestão de ritmo, não
+    reserva. Mapa © OpenStreetMap · tiles CARTO.</p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const DIA = {"data": "2027-03-19", "semana": "sexta", "base": "Osaka → Kyoto", "cidade": "kyoto", "transicao": true, "atividades": [{"periodo": "Manhã", "nome": "Check-out + despachar malas (opcional)", "area": "Namba", "de": "Airbnb", "como": "Takkyubin para Kyoto, ou coin locker", "km": 0.0, "min": 0.0, "pe": 0.0, "transp": 0.0, "ingresso": 0.0, "horario": "postagem até ~12:00", "duracao": "30 min", "bebe": "—", "terreno": "Se despacharem as malas por takkyubin, o dia inteiro fica muito mais leve com 3 carrinhos em circulação.", "obs": "Takkyubin Osaka→Kyoto ~¥1.500/mala, entrega no mesmo dia à noite. Com 10 pessoas e crianças, vale cada iene."}, {"periodo": "Manhã", "nome": "TRANSFER OSAKA → KYOTO", "area": "Kyoto", "de": "Namba", "como": "Metrô Midosuji até Umeda + JR Special Rapid até Kyoto", "km": 45.0, "min": 45.0, "pe": 15.0, "transp": 820.0, "ingresso": 0.0, "horario": "a cada 15 min", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "⚠ PONTO DE ATENÇÃO DO DIA: Umeda é uma das estações mais confusas do Japão. Sigam as placas de elevador desde a plataforma do Midosuji e reservem 15 min a mais só para a baldeação.", "obs": "Sair de Osaka por volta das 09:00. Metrô Midosuji até Umeda + JR Special Rapid — sai a cada 15 min, 45 min de viagem. Em Kyoto por volta das 10:00, com as malas guardadas no hotel antes do check-in das 15:00, o que abre a manhã inteira para os templos ao lado da estação."}, {"periodo": "Tarde", "nome": "Higashi e Nishi Honganji — os dois templos gigantes", "area": "Shimogyo", "de": "Est. Kyoto", "como": "A pé — o Higashi fica ao lado do hotel; o Nishi, 800 m a oeste", "km": 0.9, "min": 0, "pe": 12, "transp": 0, "ingresso": 0, "horario": "Higashi 05:50–17:30 · Nishi 05:30–17:00 — grátis", "duracao": "1h15", "bebe": "CARRINHO OK", "terreno": "Pátios de cascalho fino e planos, com rampa de madeira na entrada dos salões. Descalço dentro dos pavilhões — meia é boa ideia. Espaço de sobra para os três carrinhos.", "obs": "O Goei-dō do Higashi Honganji é uma das maiores construções de madeira do mundo, e o Nishi Honganji é Patrimônio da Humanidade, com o palco de nō mais antigo que existe. Os dois são GRÁTIS, abrem cedo e quase não têm turista — ficam a 10 min a pé do hotel, que leva o nome do primeiro."}, {"periodo": "Tarde", "nome": "Sanjūsangen-dō — as 1.001 estátuas de Kannon", "area": "Higashiyama", "de": "Nishi Honganji", "como": "Ônibus 206 ou 208 até Hakubutsukan-Sanjusangendo-mae — 10 min", "km": 1.9, "min": 10, "pe": 5, "transp": 230, "ingresso": 600, "horario": "09:00–16:00 (últ. entrada 15:30) — horário de inverno", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Corredor único de 120 m, plano e coberto, percorrido descalço. Carrinho fica na entrada; o piso de madeira é liso e as crianças andam bem. Não se fotografa dentro.", "obs": "1.001 estátuas de Kannon em fila dentro de um salão de 120 m, o prédio de madeira mais comprido do Japão. ⚠ ATENÇÃO AO HORÁRIO: de 16 de novembro a 31 de março o templo fecha às 16:00, com última entrada 15:30 — uma hora antes do horário de verão que aparece na maioria dos guias. Por isso esta parada vem ANTES do check-in das 15:00, e não depois: invertendo a ordem, ela não acontece. Fotografar dentro do salão é proibido. Piso de madeira, sapato na mão, e o carrinho fica na entrada."}, {"periodo": "Tarde", "nome": "Check-in K-style Higashi-Honganji", "area": "Kyoto", "de": "Sanjūsangen-dō", "como": "Ônibus 206 ou 208 de volta à Estação de Kyoto + 12 min a pé", "km": 1.9, "min": 10, "pe": 12, "transp": 230, "ingresso": 0.0, "horario": "a partir das 15:00", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Hotel a 10 min plano da Estação de Kyoto.", "obs": "O templo Higashi-Honganji (grátis, enorme) fica na esquina — dá para visitar enquanto espera o horário do check-in."}, {"periodo": "Tarde", "nome": "Nishiki Market (\"a cozinha de Kyoto\")", "area": "Nakagyo", "de": "Hotel K-style", "como": "A pé pela Karasuma, ou metrô Karasuma até Shijo (1 parada)", "km": 1.7, "min": 10, "pe": 8.0, "transp": 0, "ingresso": 0.0, "horario": "09:00–18:00", "duracao": "1h30", "bebe": "CANGURU", "terreno": "⚠ Galeria de 400 m com 3,5 m de largura e gente parada comendo dos dois lados. Com carrinho é sofrimento. Canguru, ou vá na abertura (09:00).", "obs": "⚠ FECHA ÀS 18:00 — não é passeio noturno. Se não der tempo, troque por jantar em Pontocho."}, {"periodo": "Noite", "nome": "Gion: Hanami-koji + Shirakawa Canal", "area": "Gion", "de": "Nishiki Market", "como": "A pé pela ponte Shijo-Ōhashi — 1,3 km, 17 min", "km": 1.3, "min": 0, "pe": 17, "transp": 0, "ingresso": 0.0, "horario": "24h — grátis", "duracao": "1h30", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Hanami-koji é calçada de pedra irregular; Shirakawa tem trecho sem guia de calçada. Passa, mas sacode. À noite fica cheio.", "obs": "⚠ PROIBIDO fotografar gueixas nas vielas privadas de Hanami-koji — multa de ¥10.000. O canal Shirakawa é o trecho mais bonito à noite."}, {"periodo": "Noite", "nome": "Santuário Yasaka (iluminado) + Pontocho", "area": "Gion", "de": "Hanami-koji", "como": "A pé", "km": 1.4, "min": 0.0, "pe": 18.0, "transp": 0.0, "ingresso": 0.0, "horario": "24h — grátis", "duracao": "2h", "bebe": "CARRINHO OK", "terreno": "Yasaka Jinja tem rampa lateral pelo portão oeste. Pontocho é beco de 2 m de largura: ⚠ CANGURU ou deixem o carrinho na entrada do beco.", "obs": "Yasaka iluminado à noite é de graça e imperdível. Pontocho: beco de 500 m à beira do rio. O L'Escamoteur Bar fica ali perto e abre às 18:00."}], "total": {"km": 54.1, "min": 75.0, "pe": 87.0, "transp": 1280.0, "ingresso": 600, "nota": "≈ R$ 035 por pessoa neste dia (transporte + ingressos)"}};
+const GEO = {"titulo": "Osaka fica para trás, Kyoto começa pelos templos da estação", "resumo": "A manhã é a mudança: metrô até Umeda, JR até Kyoto e as malas fora das mãos antes das 11:00. O resto do dia gira em volta da estação — dois templos gigantes e grátis, o salão das 1.001 Kannon, e à noite o mercado e Gion.", "centro": [34.835, 135.63], "zoom": 10, "paradas": [{"id": "base", "nome": "Airbnb Namba", "tipo": "base", "lat": 34.6655, "lng": 135.501, "aprox": true, "hora": "08:15", "gmaps": "Namba Station, Osaka"}, {"id": "p1", "ativ": "Check-out + despachar malas", "tipo": "evento", "lat": 34.6655, "lng": 135.501, "aprox": true, "hora": "08:15", "fim": "08:45", "gmaps": "Yamato Transport, Namba, Osaka", "foto": "Yamato Transport delivery truck", "must": ["Despachar as malas grandes por takkyubin direto para o hotel de Kyoto", "Ficar só com uma mochila de um dia por adulto e a bolsa de fralda"], "alerta": "É a decisão que define o dia. São 13 pessoas com mala e 3 carrinhos: com as malas despachadas, a baldeação de Umeda deixa de ser um problema. Takkyubin Osaka→Kyoto sai por volta de ¥1.500 por mala; postando até ~12:00 costuma chegar no mesmo dia à noite, mas confirmem no balcão — com prazo apertado vira entrega na manhã seguinte, então separem pijama e fralda na mochila. Plano B: coin locker grande na Estação de Kyoto, ¥400–700 por dia, mas às 10:00 os grandes já costumam estar ocupados.", "ai": 0}, {"id": "e1", "nome": "Estação Namba (Midosuji)", "tipo": "estacao", "lat": 34.66616, "lng": 135.50027, "hora": "08:55", "gmaps": "Namba Station Midosuji Line"}, {"id": "p2", "ativ": "TRANSFER OSAKA", "tipo": "evento", "lat": 34.70341, "lng": 135.49759, "hora": "09:12", "fim": "09:37", "gmaps": "Umeda Station Midosuji Line", "foto": "Umeda Station Osaka concourse", "must": ["Descer do Midosuji e seguir as placas de JR / Osaka Station, nunca as de Hankyu ou Hanshin", "Pegar o JR Special Rapid sentido Kyoto — 29 min, quase sem parar"], "alerta": "É o ponto de atenção do dia. Umeda/Osaka é uma das estações mais confusas do Japão e a baldeação Midosuji→JR é uma caminhada de uns 900 m por corredores subterrâneos. Procurem o elevador desde a própria plataforma do Midosuji — existe, mas é um só por plataforma e forma fila. Reservem 20 min só para atravessar e combinem um ponto de reencontro ANTES de entrar no corredor, porque o grupo se parte. O Special Rapid não tem lugar marcado e vai cheio: com 3 carrinhos, entrem pela porta mais próxima da ponta do trem e fiquem na área de bagagem em vez de tentar sentar todo mundo junto.", "ai": 1}, {"id": "e2", "nome": "Estação de Kyoto", "tipo": "estacao", "lat": 34.98577, "lng": 135.75857, "hora": "10:06", "gmaps": "Kyoto Station"}, {"id": "e3", "nome": "Hotel — guarda-volumes", "tipo": "base", "lat": 34.9905, "lng": 135.7605, "aprox": true, "hora": "10:20", "gmaps": "Higashi Honganji, Kyoto"}, {"id": "p3", "ativ": "Higashi e Nishi Honganji", "tipo": "templo", "lat": 34.99123, "lng": 135.75839, "hora": "10:40", "fim": "11:35", "gmaps": "Higashi Honganji, Kyoto", "foto": "Higashi Honganji Goeido Kyoto", "must": ["Goei-dō do Higashi Honganji: uma das maiores construções de madeira do mundo", "A corda trançada com cabelo doado por fiéis, exposta no corredor", "800 m a oeste, o Nishi Honganji: Patrimônio da Humanidade, com o palco de nō mais antigo que existe"], "alerta": "Os dois são grátis e quase vazios. Pátios de cascalho fino e plano, rampa de madeira na entrada dos salões — os três carrinhos passam sem drama, mas dentro dos pavilhões se entra descalço: levem meia, o piso em março está gelado. Os horários não são iguais: Higashi 05:50–17:30, Nishi 05:30–17:00. Não se compra comida dentro; o café mais próximo é na Estação de Kyoto.", "ai": 2}, {"id": "e4", "nome": "Nishi Honganji", "tipo": "templo", "lat": 34.99183, "lng": 135.75105, "hora": "11:45", "gmaps": "Nishi Honganji, Kyoto"}, {"id": "e5", "nome": "Estação de Kyoto (almoço)", "tipo": "estacao", "lat": 34.98577, "lng": 135.75857, "hora": "12:40", "gmaps": "Kyoto Station"}, {"id": "e6", "nome": "Parada Hakubutsukan-Sanjusangendo-mae", "tipo": "estacao", "lat": 34.98908, "lng": 135.77174, "hora": "13:32", "gmaps": "Hakubutsukan Sanjusangendo-mae bus stop"}, {"id": "p4", "ativ": "Sanjūsangen-dō", "tipo": "templo", "lat": 34.98817, "lng": 135.77178, "hora": "13:35", "fim": "14:35", "gmaps": "Sanjusangendo, Kyoto", "foto": "Sanjusangendo Kyoto", "must": ["As 1.001 Kannon douradas em fila, cada rosto diferente do outro", "Os 28 guardiões esculpidos no século XIII, na frente da fila", "O corredor de 120 m — o salão de madeira mais comprido do Japão"], "alerta": "⚠ Em 19 de março ainda vale o horário de inverno: 09:00–16:00, ÚLTIMA ENTRADA 15:30 — o horário 08:30–17:00 só começa em 1º de abril. Cheguem até 15:00 com folga. Ingresso ¥600 adulto, ¥400 adolescente, ¥300 criança de fundamental; bebê não paga. O percurso é todo descalço em piso de madeira liso, o carrinho fica na entrada — quem estiver com bebê vai precisar do canguru. Proibido fotografar dentro. Abre normalmente numa sexta.", "ai": 3}, {"id": "e7", "nome": "Parada Sanjusangendo-mae (volta)", "tipo": "estacao", "lat": 34.98908, "lng": 135.77174, "hora": "14:45", "gmaps": "Hakubutsukan Sanjusangendo-mae bus stop"}, {"id": "e8", "nome": "Estação de Kyoto", "tipo": "estacao", "lat": 34.98577, "lng": 135.75857, "hora": "15:00", "gmaps": "Kyoto Station"}, {"id": "p5", "ativ": "Check-in K-style", "tipo": "evento", "lat": 34.9905, "lng": 135.7605, "aprox": true, "hora": "15:15", "fim": "15:45", "gmaps": "Higashi Honganji, Kyoto", "must": ["Conferir se as malas do takkyubin já chegaram antes de subir", "Trocar de sapato: a noite em Gion é toda em pedra irregular"], "alerta": "Check-in só a partir das 15:00. Se as malas foram por takkyubin e o pacote atrasar, não travem o dia esperando — o hotel recebe e guarda. Meia hora resolve: deixem as coisas, peguem casaco (março anoitece frio em Kyoto) e saiam logo, porque o Nishiki fecha cedo.", "ai": 4}, {"id": "p6", "ativ": "Nishiki Market", "tipo": "comida", "lat": 35.00502, "lng": 135.76557, "hora": "16:10", "fim": "17:40", "gmaps": "Nishiki Market, Kyoto", "foto": "Nishiki Market Kyoto", "must": ["Galeria coberta de 400 m com cerca de 130 bancas, muitas da mesma família há gerações", "Tako tamago — polvinho recheado com ovo de codorna, no espeto", "Tsukemono: os picles de Kyoto, com degustação no balcão"], "comidas": ["Tako tamago ¥300–500", "Espeto de wagyu ¥800–1.500", "Croquete frito ¥150–300", "Yuba, a nata de soja de Kyoto ¥400–700", "Mochi e dango ¥150–400"], "compras": ["🛒 AQUI SE COMPRA: faca de cozinha japonesa na Aritsugu, a loja mais famosa do mercado — gravam o nome na lâmina, mas a fila é longa", "Tsukemono e furikake embalados, que aguentam a viagem na mala", "Chá matcha e utensílio de chá", "Pauzinho e cerâmica de Kyoto"], "alerta": "⚠ FECHA ÀS 18:00, não é passeio noturno — e pior: boa parte das bancas boas começa a baixar a porta entre 17:00 e 17:30, e algumas nem abrem à tarde. Cheguem até 16:00 se quiserem escolher com calma. O corredor tem 3,5 m de largura com gente parada comendo dos dois lados: com carrinho é sofrimento, usem canguru ou deixem dois adultos com os carrinhos na Shijo enquanto o resto entra. Comer andando é malvisto ali — a regra é comer em pé, ao lado da banca onde comprou.", "ai": 5}, {"id": "p7", "ativ": "Gion: Hanami-koji", "tipo": "monumento", "lat": 35.0028, "lng": 135.7751, "aprox": true, "hora": "18:00", "fim": "19:30", "gmaps": "Hanamikoji Dori, Gion, Kyoto", "foto": "Hanamikoji Gion Kyoto", "must": ["Hanami-koji: 300 m de casas de chá de madeira entre a Shijo e o Kennin-ji", "Canal Shirakawa e a ponte Tatsumi, 500 m ao norte — o trecho mais bonito à noite", "As lanternas acendendo por volta das 18:00, na hora azul"], "alerta": "⚠ É PROIBIDO fotografar nas vielas privadas de Hanami-koji: multa de ¥10.000. Gueixa a caminho do trabalho não é atração — não parem na frente, não sigam, não puxem para foto. Calçada de pedra irregular e trechos sem guia: o carrinho passa, mas sacode muito, e à noite fica cheio. Não tem banheiro na viela; o último fácil é no Nishiki ou nas lojas da Shijo.", "ai": 6}, {"id": "p8", "ativ": "Santuário Yasaka", "tipo": "templo", "lat": 35.0036, "lng": 135.77826, "hora": "19:30", "fim": "21:30", "gmaps": "Yasaka Shrine, Kyoto", "foto": "Yasaka Shrine night Kyoto", "must": ["As centenas de lanternas de papel do palco central acesas, com o nome do doador em cada uma", "O portão vermelho da Shijo visto de dentro, à noite", "Pontocho: beco de 500 m e 2 m de largura na beira do Kamogawa, do outro lado do rio"], "comidas": ["Jantar em Pontocho: yakitori, izakaya, kaiseki simples — pratos ¥800–2.500", "Muita casa de Pontocho cobra taxa de mesa (otōshi) de ¥300–500 por pessoa"], "alerta": "Yasaka é 24h e de graça, com rampa lateral pelo portão oeste — o carrinho entra bem. Pontocho é o contrário: beco de 2 m, canguru ou deixem o carrinho na boca do beco. Com 13 pessoas, nenhuma casa de Pontocho senta o grupo inteiro sem reserva: ou reservem, ou se dividam em duas ou três mesas, ou jantem na Kawaramachi, que tem restaurante grande. Várias casas de Pontocho não aceitam criança pequena à noite — perguntem na porta antes de entrar.", "ai": 7}, {"id": "e9", "nome": "Parada Shijo-Kawaramachi", "tipo": "estacao", "lat": 35.0037, "lng": 135.7682, "hora": "21:40", "gmaps": "Shijo Kawaramachi bus stop, Kyoto"}, {"id": "e10", "nome": "Estação de Kyoto", "tipo": "estacao", "lat": 34.98577, "lng": 135.75857, "hora": "21:58", "gmaps": "Kyoto Station"}, {"id": "fim", "nome": "Hotel K-style Higashi-Honganji", "tipo": "base", "lat": 34.9905, "lng": 135.7605, "aprox": true, "hora": "22:10", "gmaps": "Higashi Honganji, Kyoto"}], "pernas": [{"de": "base", "para": "p1", "modo": "pe", "min": 0, "km": 0.0, "custo": 0, "desc": "O despacho sai do próprio apartamento: a Yamato busca no endereço, ou se leva a pé até a loja de conveniência da esquina."}, {"de": "p1", "para": "e1", "modo": "pe", "min": 10, "km": 0.6, "custo": 0, "desc": "Sigam a placa do elevador na entrada da Midosuji, não a escadaria."}, {"de": "e1", "para": "p2", "modo": "metro", "linha": "Midosuji", "cor": "#E5171F", "min": 12, "km": 3.4, "custo": 240, "desc": "8 estações, sentido Senri-Chuo. O vagão da ponta é mais vazio às 09:00."}, {"de": "p2", "para": "e2", "modo": "metro", "linha": "JR Special Rapid", "cor": "#008C46", "min": 29, "km": 42.8, "custo": 580, "desc": "Osaka → Kyoto direto, sai a cada 15 min. Sem lugar marcado."}, {"de": "e2", "para": "e3", "modo": "pe", "min": 14, "km": 0.9, "custo": 0, "desc": "Saída Karasuma da estação e reto rumo norte. Plano o caminho todo, calçada larga."}, {"de": "e3", "para": "p3", "modo": "pe", "min": 5, "km": 0.3, "custo": 0, "desc": "O Higashi Honganji é o muro branco do outro lado da rua."}, {"de": "p3", "para": "e4", "modo": "pe", "min": 12, "km": 0.8, "custo": 0, "desc": "Reto rumo oeste pela Hanaya-cho, atravessando a Horikawa."}, {"de": "e4", "para": "e5", "modo": "pe", "min": 15, "km": 1.0, "custo": 0, "desc": "Volta pela Shichijo até a estação. O almoço fácil para 13 pessoas está no 10º andar do prédio da estação ou no subsolo do Porta."}, {"de": "e5", "para": "e6", "modo": "metro", "linha": "Ônibus 206 / 208", "cor": "#3A7D3A", "min": 12, "km": 1.9, "custo": 230, "desc": "Sai do terminal de ônibus da estação. Tarifa única ¥230, paga na saída."}, {"de": "e6", "para": "p4", "modo": "pe", "min": 3, "km": 0.2, "custo": 0, "desc": "A parada é na frente do muro; a bilheteria fica na ponta norte."}, {"de": "p4", "para": "e7", "modo": "pe", "min": 3, "km": 0.2, "custo": 0}, {"de": "e7", "para": "e8", "modo": "metro", "linha": "Ônibus 206 / 208", "cor": "#3A7D3A", "min": 15, "km": 1.9, "custo": 230, "desc": "Volta pela Shichijo. No fim da tarde o 206 já vem cheio da Higashiyama."}, {"de": "e8", "para": "p5", "modo": "pe", "min": 14, "km": 0.9, "custo": 0, "desc": "Mesmo caminho da manhã pela Karasuma."}, {"de": "p5", "para": "p6", "modo": "pe", "min": 25, "km": 1.7, "custo": 0, "desc": "Reto pela Karasuma até a Nishikikoji. Quem estiver cansado pega o metrô Karasuma de Gojo a Shijo, 1 parada, ¥220, e anda só 500 m."}, {"de": "p6", "para": "p7", "modo": "pe", "min": 18, "km": 1.3, "custo": 0, "desc": "Sai do mercado na Teramachi, desce até a Shijo e atravessa o Kamogawa pela ponte Shijo-Ohashi — a vista do rio ao anoitecer é o melhor trecho a pé do dia."}, {"de": "p7", "para": "p8", "modo": "pe", "min": 18, "km": 1.4, "custo": 0, "desc": "Sobe a Hanami-koji até a Shijo e segue rumo leste até o portão vermelho do Yasaka; depois volta para a beira do rio, onde fica Pontocho."}, {"de": "p8", "para": "e9", "modo": "pe", "min": 5, "km": 0.3, "custo": 0, "desc": "Saída norte de Pontocho, direto na esquina da Shijo com a Kawaramachi."}, {"de": "e9", "para": "e10", "modo": "metro", "linha": "Ônibus 4 / 5 / 205", "cor": "#3A7D3A", "min": 18, "km": 4.0, "custo": 230, "desc": "Desce a Kawaramachi até a estação. Passa até por volta das 23:00."}, {"de": "e10", "para": "fim", "modo": "pe", "min": 14, "km": 0.9, "custo": 0, "desc": "Karasuma acima, o mesmo caminho de sempre."}], "alternativas": [{"tipo": "troca", "titulo": "Nishiki antes do check-in, não depois", "texto": "Nesta ordem vocês chegam ao mercado às 16:10, e as bancas boas do Nishiki começam a fechar entre 17:00 e 17:30 — sobra pouco mais de uma hora útil. Invertendo, dá para ir do Sanjūsangen-dō direto ao Nishiki (ônibus 206 até Shijo-Kawaramachi, ¥230, 15 min), ficar das 15:00 às 16:45 com o mercado ainda inteiro, e fazer o check-in às 17:15 antes de sair para o jantar. As malas já estão no hotel desde as 10:20, então nada se perde.", "refs": ["p5", "p6"]}, {"tipo": "troca", "titulo": "Shinkansen de Shin-Osaka, se a bagagem não for despachada", "texto": "Se o takkyubin não rolar e todo mundo viajar com mala na mão, o JR Special Rapid lotado é o pior cenário do dia. A saída é o Midosuji até Shin-Osaka (¥290, 17 min) e o Shinkansen Hikari ou Kodama até Kyoto: 14 min, ¥1.450 por adulto sem reserva, plataforma larga, elevador em tudo e espaço para carrinho no fim do vagão. São uns ¥900 a mais por adulto para trocar 45 min de sufoco por 30 min tranquilos.", "ponto": {"nome": "Estação Shin-Osaka", "lat": 34.73349, "lng": 135.49789, "gmaps": "Shin-Osaka Station"}}, {"tipo": "corte", "titulo": "Ficar só no Higashi Honganji", "texto": "O Nishi é mais bonito e é Patrimônio da Humanidade, mas custa 1,8 km a pé de desvio numa manhã que já teve estação, trem e baldeação. Cortando, a manhã encolhe para uns 50 min de templo, sobra tempo de almoçar sem pressa e o dia cai de 10,5 para 9,6 km a pé. Quem estiver com bebê no colo agradece.", "refs": ["e4"]}, {"tipo": "extra", "titulo": "Torre de Kyoto no fim do dia", "texto": "Fica em frente à estação, no caminho de volta do ônibus da noite. Mirante a 100 m de altura, aberto até as 21:00, ¥900 adulto e ¥700 adolescente — é a única vista de cima da cidade em todo o trecho de Kyoto, e nesse horário não tem fila. Só vale se o jantar em Pontocho terminar cedo.", "ponto": {"nome": "Torre de Kyoto", "lat": 34.98755, "lng": 135.75933, "gmaps": "Kyoto Tower"}}, {"tipo": "planob", "titulo": "Se chover", "texto": "Os dois Honganji viram passeio ruim: cascalho encharcado e pátio aberto entre um pavilhão e outro. O Sanjūsangen-dō é coberto de ponta a ponta e resolve sozinho a tarde. Para o buraco da manhã, o Museu Nacional de Kyoto fica a 200 m do Sanjūsangen-dō, é coberto, tem elevador e fraldário, e a coleção permanente sai em torno de ¥700. O Nishiki também é coberto, então a noite quase não muda — só Gion, que com chuva fica escorregadio na pedra: nesse caso, com carrinho, pulem Hanami-koji e fiquem no Yasaka, que tem piso firme.", "ponto": {"nome": "Museu Nacional de Kyoto", "lat": 34.99, "lng": 135.7726, "gmaps": "Kyoto National Museum"}}], "passe": {"nome": "Passe de 1 dia de metrô + ônibus de Kyoto — ¥1.100", "texto": "Não compensa neste dia. Depois de chegar, são quatro deslocamentos dentro de Kyoto: ônibus para o Sanjūsangen-dō (¥230), a volta (¥230), o metrô opcional de Gojo a Shijo (¥220) e o ônibus da noite de volta de Gion (¥230) — ¥910 no total, ¥190 abaixo do passe. Só passa a valer se acrescentarem mais um trajeto de ônibus. A viagem Osaka→Kyoto (¥820) não entra em passe nenhum de Kyoto."}};
+const FOTOS = {"p1": {"termo": "Yamato Transport delivery truck", "arq": "paradas/2027-03-19-p1.webp", "titulo": "Yamato delivery electrick truck, Hino.jpg", "autor": "Syced", "lic": "CC0", "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en", "pagina": "https://commons.wikimedia.org/wiki/File%3AYamato_delivery_electrick_truck%2C_Hino.jpg", "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQBACdASoWABEAPuVap00pJKOiN/VYASAciWcAAB45F//i2BB83v0kAAD+gTYAWw0Ilhzju4rcgvXAU4mUQ4x5uM/u59MNZ+3VXHoPdXZpum3j8gZvFEjMB3l7edjv6OzNiA8U8p9AAA=="}, "p2": {"termo": "Umeda Station Osaka concourse", "arq": "paradas/2027-03-19-p2.webp", "titulo": "Hankyu-Osaka-Umeda Station on 13th April 2020.jpg", "autor": "Tokumeigakarinoaoshima", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3AHankyu-Osaka-Umeda_Station_on_13th_April_2020.jpg", "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwBACdASoWABEAPulmqU6pJaOiMBgIASAdCWUAvdALKeS0jU+ZJZnIRwAA9x7oU8SJAx+WmaLvWiwldHy4NtajTYuZe1k8JLYCrqcsx/lJnF7YAAA="}, "p3": {"termo": "Higashi Honganji Goeido Kyoto", "arq": "paradas/2027-03-19-p3.webp", "titulo": "Founder's Hall gate of Higashi-Honganji Temple, with water reflection, Kyoto, Japan.jpg", "autor": "Basile Morin", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3AFounder%27s_Hall_gate_of_Higashi-Honganji_Temple%2C_with_water_reflection%2C_Kyoto%2C_Japan.jpg", "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQBACdASoWAA8APulkqU4pJaQiMAgBIB0JYwCsAB4Qj9Hi6S+/53qUAAD+w6YXGzx1N/V/cs/5sg8tetcwEu91/cwHc2G+LJtSwd9X8HUJ9aAA"}, "p4": {"termo": "Sanjusangendo Kyoto", "arq": "paradas/2027-03-19-p4.webp", "titulo": "Sanjusangendo temple01s1408.jpg", "autor": "663highland", "lic": "CC BY 2.5", "licurl": "https://creativecommons.org/licenses/by/2.5", "pagina": "https://commons.wikimedia.org/wiki/File%3ASanjusangendo_temple01s1408.jpg", "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABwAwCdASoWAA8ALq10ul0jKSkpCQCsSgCw7EJFdqq+BxZf7MAA/vHQLWZLrktIc0WlHk5KcZ5gbjT2SC1RrJxGv+oxuWYn/UnXbbN4Zi4oAAAA"}, "p6": {"termo": "Nishiki Market Kyoto", "arq": "paradas/2027-03-19-p6.webp", "titulo": "Tsukemono shop by collinox in Nishiki Ichiba, Kyoto.jpg", "autor": "collinox", "lic": "CC BY 2.0", "licurl": "https://creativecommons.org/licenses/by/2.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ATsukemono_shop_by_collinox_in_Nishiki_Ichiba%2C_Kyoto.jpg", "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQBACdASoWAA8APulep00pJSOiMAgBIB0JQBOgBDvjX3leBtrUaPo5EAD+7tkSt9GvqHCpe4fr9CDbWvAj4qnehjGJSO+s+uOFBSJtxwAAAA=="}, "p7": {"termo": "Hanamikoji Gion Kyoto", "arq": "paradas/2027-03-19-p7.webp", "titulo": "Streets of Gion, Kyoto - Gion7708.jpg", "autor": "lumoplank", "lic": "CC0", "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en", "pagina": "https://commons.wikimedia.org/wiki/File%3AStreets_of_Gion%2C_Kyoto_-_Gion7708.jpg", "lqip": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoWAA8APuliqk2pJaQiMAgBIB0JYwCdACHUo46EQTEfAAD+9CEMFR+1lDO5peqcfC11eJ8SMQFSGoPQLoPshRfeHukAAA=="}, "p8": {"termo": "Yasaka Shrine night Kyoto", "arq": "paradas/2027-03-19-p8.webp", "titulo": "Yasaka Shrine Kyoto.png", "autor": "Estorgik", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3AYasaka_Shrine_Kyoto.png", "lqip": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQBACdASoWAA8APuliqk2pJaQiMAgBIB0JYwCzgCHf/VcZWl8WmkfRAAD+9W4WrIqGdxzgvGdPnEnGvEeIvSJgNYHhNlRAAAA="}};   // por id de parada: arquivo, credito e placeholder
+const el = (id)=>document.getElementById(id);
+const esc = (s)=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nf  = (n,d=0)=>Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const gm  = (q)=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const gdir= (a,b,modo)=>"https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+
+            "&destination="+encodeURIComponent(b)+"&travelmode="+(modo==="pe"?"walking":"transit");
+
+/* ---- tema ---- */
+const raiz=document.documentElement;
+let tema=localStorage.getItem("tema-japao")||"";
+if(tema) raiz.dataset.theme=tema;
+el("themeBtn").onclick=()=>{
+  const escuro = raiz.dataset.theme ? raiz.dataset.theme==="dark"
+               : matchMedia("(prefers-color-scheme: dark)").matches;
+  tema = escuro?"light":"dark";
+  raiz.dataset.theme=tema; localStorage.setItem("tema-japao",tema);
+  if(typeof trocarTiles==="function") trocarTiles();
+};
+const ehEscuro=()=> raiz.dataset.theme ? raiz.dataset.theme==="dark"
+                  : matchMedia("(prefers-color-scheme: dark)").matches;
+
+/* ---- indice das paradas ---- */
+const P = {}; GEO.paradas.forEach(p=>{ P[p.id]=p; });
+// a saida pode ter atividade propria (num dia de chegada, o aeroporto e a
+// primeira coisa que acontece) — mas ela e o "0", nao entra na contagem
+const reais = GEO.paradas.filter(p=>p.ai!=null && p.tipo!=="base");
+reais.forEach((p,i)=>{ p.n=i+1; });
+// a saida e o "0" do dia; a volta e o mesmo lugar, entao nao ganha pino proprio
+GEO.paradas.forEach(p=>{ if(p.tipo==="base") p.n=0; });
+const at = (p)=> p.ai!=null ? DIA.atividades[p.ai] : null;
+const nomeDe = (p)=> p.nome || (at(p) ? at(p).nome : p.id);
+
+/* ---- mapa ---- */
+// Sem internet (avião, roaming caído) o Leaflet nao carrega: o mapa some e a pagina
+// continua inteira — hora a hora, custos, alternativas. Os links do Google Maps
+// tambem so funcionam online, mas ai o problema ja e outro.
+const TEM_MAPA = typeof L !== "undefined";
+if(!TEM_MAPA){
+  el("map").outerHTML = '<p class="semmapa">Mapa indisponível offline. O roteiro do dia continua abaixo.</p>';
+}
+// Scroll do mouse da zoom direto. No touch isso nao existe, e o arrasto de um dedo
+// no mapa roubaria a rolagem da pagina — por isso la o gesto continua sendo de dois dedos.
+const TOQUE = matchMedia("(pointer: coarse)").matches;
+const map = TEM_MAPA ? L.map("map",{
+  scrollWheelZoom:true, wheelPxPerZoomLevel:90, zoomControl:true, dragging:!TOQUE
+}).setView(GEO.centro, GEO.zoom) : null;
+if(map && TOQUE){ map.dragging.enable(); }
+let tiles=null;
+// O OSM padrao desenha cada loja e cada viela: com a rota por cima virava sopa. O Gray
+// Canvas da Esri e um fundo de dados — quase so agua, quadras e vias principais — e vem
+// em duas camadas, base sem texto + rotulos por cima, cada uma clara e escura.
+const ESRI = "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_{t}_Gray_{c}/MapServer/tile/{z}/{y}/{x}";
+function camada(tom, papel, z){
+  return L.tileLayer(ESRI.replace("{t}",tom).replace("{c}",papel),{
+    maxNativeZoom:16, maxZoom:18, zIndex:z,
+    attribution: papel==="Base" ? "Tiles &copy; Esri" : ""
+  });
+}
+let rotulos=null;
+function trocarTiles(){
+  if(!map) return;
+  const tom = ehEscuro()?"Dark":"Light";
+  if(tiles){ map.removeLayer(tiles); map.removeLayer(rotulos); }
+  tiles   = camada(tom,"Base",0).addTo(map);
+  rotulos = camada(tom,"Reference",1).addTo(map);
+}
+trocarTiles();
+
+const cor = getComputedStyle(document.querySelector(".palco")).getPropertyValue("--c").trim();
+const marcas={};
+if(map) GEO.paradas.forEach(p=>{
+  if(p.id==="fim") return;                 // mesmo ponto da saida
+  const apoio = p.ai==null && p.tipo!=="base";
+  const ico = L.divIcon({className:"", html:`<div class="pin ${apoio?"apoio":""}${p.tipo==="base"?" base":""}" data-id="${p.id}">${apoio?"":p.n}</div>`,
+    iconSize:apoio?[15,15]:[28,28], iconAnchor:apoio?[7,7]:[14,14]});
+  const m = L.marker([p.lat,p.lng],{icon:ico,zIndexOffset:apoio?0:400}).addTo(map);
+  const a = at(p);
+  const fp = FOTOS[p.id];
+  m.bindPopup(`${fp?`<img class="pop-img" src="fotos/${fp.arq}" alt="" loading="lazy">`:""
+    }<b>${esc(nomeDe(p))}</b><u>${esc(p.hora||"")}${p.fim?" – "+esc(p.fim):""}${
+      a&&a.area?" · "+esc(a.area):""}</u>${
+      p.aprox?'<i style="color:var(--ink-3);font-size:.72rem">ponto aproximado</i>':""}<a href="${gm(p.gmaps||nomeDe(p))}" target="_blank" rel="noopener">ver no Google Maps ↗</a>`);
+  if(!apoio) m.on("click",()=>abrir(p.id,false));
+  marcas[p.id]=m;
+});
+
+if(map) GEO.pernas.forEach(g=>{
+  const a=P[g.de], b=P[g.para]; if(!a||!b) return;
+  const pe = g.modo==="pe";
+  L.polyline([[a.lat,a.lng],[b.lat,b.lng]],{
+    color: pe?cor:(g.cor||cor), weight: pe?3.4:4.6, opacity: pe?.8:.9,
+    dashArray: pe?null:"2 9", lineCap:"round"
+  }).addTo(map);
+});
+if(map) map.fitBounds(L.latLngBounds(GEO.paradas.map(p=>[p.lat,p.lng])),{padding:[42,42]});
+
+/* ---- cabecalho e numeros ---- */
+const DIAS_SEM = DIA.semana;
+el("subt").textContent = DIA.data.slice(8,10)+"/"+DIA.data.slice(5,7)+"/"+DIA.data.slice(0,4)
+  +" · "+DIAS_SEM+" · dia 4 de 16";
+el("resumo").textContent = GEO.resumo;
+const t = DIA.total||{};
+el("kpis").innerHTML =
+  `<div><b>${nf(t.km,1)}</b><u>km</u></div>`+
+  `<div><b>${nf(t.pe)}</b><u>min a pé</u></div>`+
+  `<div><b>¥${nf(t.transp)}</b><u>transporte</u></div>`+
+  `<div><b>¥${nf(t.ingresso)}</b><u>ingressos</u></div>`;
+
+// O Google Maps NAO calcula transporte publico com paradas intermediarias — so
+// origem→destino. Com waypoints ele aceita apenas carro/a pe/bicicleta. Entao o botao do
+// dia abre a volta inteira em modo carro, so para ver o desenho e a ordem; o transporte
+// de verdade (metro, linha, tarifa) esta no "ir ↗" de cada trecho.
+const seq = reais.map(p=>p.gmaps||nomeDe(p));
+el("gdia").href = "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(seq[0])+
+  "&destination="+encodeURIComponent(seq[seq.length-1])+
+  "&waypoints="+seq.slice(1,-1).map(encodeURIComponent).join("%7C")+"&travelmode=driving";
+
+/* ---- trilha ---- */
+// A foto so baixa quando o card abre (loading=lazy + o card comeca fechado): abrir a
+// pagina nao puxa foto nenhuma. Ate ela chegar, o fundo e o placeholder borrado de 22px
+// que ja vem embutido no HTML.
+function foto(p){
+  const f = FOTOS[p.id]; if(!f) return "";
+  const cred = [f.autor, f.lic].filter(Boolean).join(" · ");
+  return `<figure class="fig" style="background-image:url(${f.lqip})">
+    <img src="fotos/${f.arq}" alt="${esc(nomeDe(p))}" loading="lazy" decoding="async"
+      width="620" height="349"${p.foco?` style="object-position:${esc(p.foco)}"`:""}>
+    <figcaption><a href="${esc(f.pagina)}" target="_blank" rel="noopener">${esc(cred||"Wikimedia Commons")} ↗</a></figcaption>
+  </figure>`;
+}
+
+function bloco(lbl,arr){
+  if(!arr||!arr.length) return "";
+  return `<div class="bloco"><p class="lbl">${lbl}</p><ul>${arr.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;
+}
+let anterior = null;
+const html = GEO.paradas.map((p,idx)=>{
+  const perna = GEO.pernas.find(g=>g.para===p.id);
+  const ant = anterior;
+  if(p.tipo!=="estacao") anterior = p;
+  let out = "";
+  if(perna){
+    const de=P[perna.de], ate=p;
+    const metro = perna.modo!=="pe";
+    const dd = de.gmaps||nomeDe(de), aa = p.gmaps||nomeDe(p);
+    // Cada trecho tem um modo sugerido, mas onde a outra opcao for plausivel (metro
+    // curto que da para andar, ou caminhada que da para encurtar de metro) aparece um
+    // segundo link, para comparar tempo e preco no Google.
+    const alt = metro ? (perna.km && perna.km <= 2.5) : (perna.km && perna.km >= 0.8);
+    const tit = metro
+      ? `<b>${esc(perna.linha||"Metrô")}</b> · ${perna.min} min${perna.custo?" · ¥"+nf(perna.custo):""}${
+          perna.km?" · "+nf(perna.km,1)+" km":""}`
+      : `<b>A pé</b> · ${perna.min} min${perna.km?" · "+nf(perna.km,1)+" km":""}`;
+    out += `<div class="perna">
+      <span class="ic ${metro?"metro":""}" ${metro&&perna.cor?`style="background:${perna.cor}"`:""}>${metro?"Ⓜ":"🚶"}</span>
+      <span class="tx">${tit}${perna.desc?`<em>${esc(perna.desc)}</em>`:""}</span>
+      <span class="gos">
+        <a class="go" target="_blank" rel="noopener"
+           href="${gdir(dd, aa, metro?"transporte":"pe")}">${metro?"transporte ↗":"a pé ↗"}</a>
+        ${alt?`<a class="go alt" target="_blank" rel="noopener"
+           href="${gdir(dd, aa, metro?"pe":"transporte")}">${metro?"ou a pé ↗":"ou transporte ↗"}</a>`:""}
+      </span>
+    </div>`;
+  }
+  const a = at(p);
+  if(!a){
+    if(p.tipo==="estacao") return out;   // estacao ja aparece dentro da perna
+    out += `<div class="parada" data-id="${p.id}">
+      <div class="num${p.tipo==="base"?" base":""}">${p.tipo==="base"?0:"·"}</div>
+      <button class="p-top"><h3>${esc(p.nome)}</h3><span class="hh"><b>${esc(p.hora||"")}</b></span></button>
+    </div>`;
+    return out;
+  }
+  const chips=[];
+  if(a.duracao&&a.duracao!=="—") chips.push(`<span class="chip">${esc(a.duracao)}</span>`);
+  chips.push(a.ingresso?`<span class="chip pago">¥${nf(a.ingresso)}</span>`:`<span class="chip">grátis</span>`);
+  if(a.horario&&a.horario!=="—") chips.push(`<span class="chip">abre ${esc(a.horario)}</span>`);
+  if(a.bebe) chips.push(`<span class="chip">${esc(a.bebe)}</span>`);
+
+  out += `<div class="parada" data-id="${p.id}" id="c-${p.id}">
+    <div class="num">${p.n}</div>
+    <button class="p-top" aria-expanded="false">
+      <h3>${esc(a.nome)}</h3>
+      <span class="hh"><b>${esc(p.hora||"")}</b>${p.fim?"–"+esc(p.fim):""}</span>
+    </button>
+    <div class="chips">${chips.join("")}</div>
+    <div class="p-det">
+      ${foto(p)}
+      ${bloco("Não pode perder", p.must)}
+      ${bloco("Comer", p.comidas)}
+      ${bloco("Comprar", p.compras)}
+      ${a.terreno&&a.terreno!=="—"?`<div class="bloco"><p class="lbl">Com carrinho</p><p class="nota">${esc(a.terreno)}</p></div>`:""}
+      ${a.obs&&a.obs!=="—"?`<div class="bloco"><p class="lbl">Contexto</p><p class="nota">${esc(a.obs)}</p></div>`:""}
+      ${p.alerta?`<div class="alerta"><s>⚠</s><span>${esc(p.alerta)}</span></div>`:""}
+      <div class="plinks">
+        ${ant?`<a class="plink" target="_blank" rel="noopener"
+           href="${gdir(ant.gmaps||nomeDe(ant), p.gmaps||a.nome, "transit")}">Como chegar de ${esc(nomeDe(ant))} ↗</a>`:""}
+        <a class="plink" target="_blank" rel="noopener" href="${gm(p.gmaps||a.nome)}">Abrir no Google Maps ↗</a>
+      </div>
+    </div>
+  </div>`;
+  return out;
+}).join("");
+el("trilha").innerHTML = html;
+
+// Uma alternativa ou aponta para um lugar novo ("ponto": ganha pino tracejado no mapa)
+// ou mexe em paradas que ja existem ("refs": o mapa enquadra e os cards piscam).
+const LBL={troca:"Troca",corte:"Corte",extra:"Se sobrar tempo",planob:"Plano B"};
+el("alts").innerHTML = GEO.alternativas.map((x,i)=>{
+  const acao = x.ponto ? "Ver no mapa" : (x.refs ? "Ver a parada que muda" : "");
+  return `<div class="alt${acao?" viva":""}" data-alt="${i}"${acao?' tabindex="0" role="button"':""}>
+    <span class="tag">${LBL[x.tipo]||x.tipo}</span>
+    <b>${esc(x.titulo)}</b><p>${esc(x.texto)}</p>
+    ${acao?`<span class="alt-pe"><span class="alt-go">${acao} \u2192</span>${
+      x.ponto?`<a class="plink" target="_blank" rel="noopener" href="${gm(x.ponto.gmaps||x.ponto.nome)}"
+        >${esc(x.ponto.nome)} no Google Maps \u2197</a>`:""}</span>`:""}
+  </div>`;
+}).join("");
+
+// os pinos das alternativas nascem escondidos e so aparecem quando o card e acionado
+if(map) GEO.alternativas.forEach(x=>{
+  if(!x.ponto) return;
+  x._m = L.marker([x.ponto.lat,x.ponto.lng],{opacity:0,interactive:false,
+    icon:L.divIcon({className:"",html:`<div class="pin alt-pin">${(LBL[x.tipo]||"?")[0]}</div>`,
+      iconSize:[26,26],iconAnchor:[13,13]})}).addTo(map);
+  x._m.bindPopup(`<b>${esc(x.ponto.nome)}</b><u>alternativa \u00b7 ${esc(LBL[x.tipo]||x.tipo)}</u>`);
+});
+
+function mostrarAlt(i){
+  const x = GEO.alternativas[i];
+  document.querySelectorAll(".alt.on").forEach(n=>n.classList.remove("on"));
+  el("trilha").querySelectorAll(".parada.pisca").forEach(n=>n.classList.remove("pisca"));
+  GEO.alternativas.forEach(y=>{ if(y._m) y._m.setOpacity(0); });
+  const card = el("alts").querySelector(`.alt[data-alt="${i}"]`);
+  if(card) card.classList.add("on");
+  if(x.ponto){
+    if(x._m) x._m.setOpacity(1);
+    if(map){ map.flyTo([x.ponto.lat,x.ponto.lng], 15, {duration:.6}); if(x._m) x._m.openPopup(); }
+  }else if(x.refs && x.refs.length){
+    const pts = x.refs.map(id=>P[id]).filter(Boolean);
+    if(map && pts.length) map.flyToBounds(L.latLngBounds(pts.map(q=>[q.lat,q.lng])),
+      {padding:[70,70], maxZoom:15, duration:.6});
+    x.refs.forEach(id=>{
+      const c = el("trilha").querySelector(`.parada[data-id="${id}"]`);
+      if(c) c.classList.add("pisca");
+    });
+    const primeiro = el("trilha").querySelector(`.parada[data-id="${x.refs[0]}"]`);
+    if(primeiro) primeiro.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+el("alts").addEventListener("click",ev=>{
+  if(ev.target.closest("a")) return;                 // deixa o link do Google passar
+  const c=ev.target.closest(".alt.viva"); if(c) mostrarAlt(+c.dataset.alt);
+});
+el("alts").addEventListener("keydown",ev=>{
+  if(ev.key!=="Enter" && ev.key!==" ") return;
+  const c=ev.target.closest(".alt.viva"); if(c){ ev.preventDefault(); mostrarAlt(+c.dataset.alt); }
+});
+el("passe").innerHTML = `<span class="tag" style="font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--t)">Passe</span>
+  <b style="display:block;font-size:.85rem;margin:4px 0 5px">${esc(GEO.passe.nome)}</b>
+  <p style="font-size:.78rem;line-height:1.5;color:var(--ink-2)">${esc(GEO.passe.texto)}</p>`;
+
+/* ---- selecao ---- */
+function abrir(id, rolar){
+  const card = el("trilha").querySelector(`.parada[data-id="${id}"]`);
+  if(!card) return;
+  const jaAberto = card.classList.contains("on");
+  el("trilha").querySelectorAll(".parada.on").forEach(n=>{n.classList.remove("on");
+    const b=n.querySelector(".p-top"); if(b) b.setAttribute("aria-expanded","false");});
+  document.querySelectorAll(".pin.sel").forEach(n=>n.classList.remove("sel"));
+  if(jaAberto && rolar!==false) return;
+  card.classList.add("on");
+  const b=card.querySelector(".p-top"); if(b) b.setAttribute("aria-expanded","true");
+  const pin=document.querySelector(`.pin[data-id="${id}"]`); if(pin) pin.classList.add("sel");
+  const p=P[id];
+  if(p && map){ map.flyTo([p.lat,p.lng], Math.max(map.getZoom(),15), {duration:.6}); }
+  if(rolar!==false && marcas[id]) marcas[id].openPopup();
+  else card.scrollIntoView({behavior:"smooth",block:"center"});
+}
+el("trilha").addEventListener("click",ev=>{
+  const b=ev.target.closest(".p-top"); if(!b) return;
+  abrir(b.closest(".parada").dataset.id, true);
+});
+</script>
+</body>
+</html>

@@ -1007,5 +1007,964 @@
     ]
    }
   ]
+ },
+ "2027-03-19": {
+  "titulo": "Osaka fica para trás, Kyoto começa pelos templos da estação",
+  "resumo": "A manhã é a mudança: metrô até Umeda, JR até Kyoto e as malas fora das mãos antes das 11:00. O resto do dia gira em volta da estação — dois templos gigantes e grátis, o salão das 1.001 Kannon, e à noite o mercado e Gion.",
+  "centro": [
+   34.835,
+   135.63
+  ],
+  "zoom": 10,
+  "paradas": [
+   {
+    "id": "base",
+    "nome": "Airbnb Namba",
+    "tipo": "base",
+    "lat": 34.6655,
+    "lng": 135.501,
+    "aprox": true,
+    "hora": "08:15",
+    "gmaps": "Namba Station, Osaka"
+   },
+   {
+    "id": "p1",
+    "ativ": "Check-out + despachar malas",
+    "tipo": "evento",
+    "lat": 34.6655,
+    "lng": 135.501,
+    "aprox": true,
+    "hora": "08:15",
+    "fim": "08:45",
+    "gmaps": "Yamato Transport, Namba, Osaka",
+    "foto": "Yamato Transport delivery truck",
+    "must": [
+     "Despachar as malas grandes por takkyubin direto para o hotel de Kyoto",
+     "Ficar só com uma mochila de um dia por adulto e a bolsa de fralda"
+    ],
+    "alerta": "É a decisão que define o dia. São 13 pessoas com mala e 3 carrinhos: com as malas despachadas, a baldeação de Umeda deixa de ser um problema. Takkyubin Osaka→Kyoto sai por volta de ¥1.500 por mala; postando até ~12:00 costuma chegar no mesmo dia à noite, mas confirmem no balcão — com prazo apertado vira entrega na manhã seguinte, então separem pijama e fralda na mochila. Plano B: coin locker grande na Estação de Kyoto, ¥400–700 por dia, mas às 10:00 os grandes já costumam estar ocupados."
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Namba (Midosuji)",
+    "tipo": "estacao",
+    "lat": 34.66616,
+    "lng": 135.50027,
+    "hora": "08:55",
+    "gmaps": "Namba Station Midosuji Line"
+   },
+   {
+    "id": "p2",
+    "ativ": "TRANSFER OSAKA",
+    "tipo": "evento",
+    "lat": 34.70341,
+    "lng": 135.49759,
+    "hora": "09:12",
+    "fim": "09:37",
+    "gmaps": "Umeda Station Midosuji Line",
+    "foto": "Umeda Station Osaka concourse",
+    "must": [
+     "Descer do Midosuji e seguir as placas de JR / Osaka Station, nunca as de Hankyu ou Hanshin",
+     "Pegar o JR Special Rapid sentido Kyoto — 29 min, quase sem parar"
+    ],
+    "alerta": "É o ponto de atenção do dia. Umeda/Osaka é uma das estações mais confusas do Japão e a baldeação Midosuji→JR é uma caminhada de uns 900 m por corredores subterrâneos. Procurem o elevador desde a própria plataforma do Midosuji — existe, mas é um só por plataforma e forma fila. Reservem 20 min só para atravessar e combinem um ponto de reencontro ANTES de entrar no corredor, porque o grupo se parte. O Special Rapid não tem lugar marcado e vai cheio: com 3 carrinhos, entrem pela porta mais próxima da ponta do trem e fiquem na área de bagagem em vez de tentar sentar todo mundo junto."
+   },
+   {
+    "id": "e2",
+    "nome": "Estação de Kyoto",
+    "tipo": "estacao",
+    "lat": 34.98577,
+    "lng": 135.75857,
+    "hora": "10:06",
+    "gmaps": "Kyoto Station"
+   },
+   {
+    "id": "e3",
+    "nome": "Hotel — guarda-volumes",
+    "tipo": "base",
+    "lat": 34.9905,
+    "lng": 135.7605,
+    "aprox": true,
+    "hora": "10:20",
+    "gmaps": "Higashi Honganji, Kyoto"
+   },
+   {
+    "id": "p3",
+    "ativ": "Higashi e Nishi Honganji",
+    "tipo": "templo",
+    "lat": 34.99123,
+    "lng": 135.75839,
+    "hora": "10:40",
+    "fim": "11:35",
+    "gmaps": "Higashi Honganji, Kyoto",
+    "foto": "Higashi Honganji Goeido Kyoto",
+    "must": [
+     "Goei-dō do Higashi Honganji: uma das maiores construções de madeira do mundo",
+     "A corda trançada com cabelo doado por fiéis, exposta no corredor",
+     "800 m a oeste, o Nishi Honganji: Patrimônio da Humanidade, com o palco de nō mais antigo que existe"
+    ],
+    "alerta": "Os dois são grátis e quase vazios. Pátios de cascalho fino e plano, rampa de madeira na entrada dos salões — os três carrinhos passam sem drama, mas dentro dos pavilhões se entra descalço: levem meia, o piso em março está gelado. Os horários não são iguais: Higashi 05:50–17:30, Nishi 05:30–17:00. Não se compra comida dentro; o café mais próximo é na Estação de Kyoto."
+   },
+   {
+    "id": "e4",
+    "nome": "Nishi Honganji",
+    "tipo": "templo",
+    "lat": 34.99183,
+    "lng": 135.75105,
+    "hora": "11:45",
+    "gmaps": "Nishi Honganji, Kyoto"
+   },
+   {
+    "id": "e5",
+    "nome": "Estação de Kyoto (almoço)",
+    "tipo": "estacao",
+    "lat": 34.98577,
+    "lng": 135.75857,
+    "hora": "12:40",
+    "gmaps": "Kyoto Station"
+   },
+   {
+    "id": "e6",
+    "nome": "Parada Hakubutsukan-Sanjusangendo-mae",
+    "tipo": "estacao",
+    "lat": 34.98908,
+    "lng": 135.77174,
+    "hora": "13:32",
+    "gmaps": "Hakubutsukan Sanjusangendo-mae bus stop"
+   },
+   {
+    "id": "p4",
+    "ativ": "Sanjūsangen-dō",
+    "tipo": "templo",
+    "lat": 34.98817,
+    "lng": 135.77178,
+    "hora": "13:35",
+    "fim": "14:35",
+    "gmaps": "Sanjusangendo, Kyoto",
+    "foto": "Sanjusangendo Kyoto",
+    "must": [
+     "As 1.001 Kannon douradas em fila, cada rosto diferente do outro",
+     "Os 28 guardiões esculpidos no século XIII, na frente da fila",
+     "O corredor de 120 m — o salão de madeira mais comprido do Japão"
+    ],
+    "alerta": "⚠ Em 19 de março ainda vale o horário de inverno: 09:00–16:00, ÚLTIMA ENTRADA 15:30 — o horário 08:30–17:00 só começa em 1º de abril. Cheguem até 15:00 com folga. Ingresso ¥600 adulto, ¥400 adolescente, ¥300 criança de fundamental; bebê não paga. O percurso é todo descalço em piso de madeira liso, o carrinho fica na entrada — quem estiver com bebê vai precisar do canguru. Proibido fotografar dentro. Abre normalmente numa sexta."
+   },
+   {
+    "id": "e7",
+    "nome": "Parada Sanjusangendo-mae (volta)",
+    "tipo": "estacao",
+    "lat": 34.98908,
+    "lng": 135.77174,
+    "hora": "14:45",
+    "gmaps": "Hakubutsukan Sanjusangendo-mae bus stop"
+   },
+   {
+    "id": "e8",
+    "nome": "Estação de Kyoto",
+    "tipo": "estacao",
+    "lat": 34.98577,
+    "lng": 135.75857,
+    "hora": "15:00",
+    "gmaps": "Kyoto Station"
+   },
+   {
+    "id": "p5",
+    "ativ": "Check-in K-style",
+    "tipo": "evento",
+    "lat": 34.9905,
+    "lng": 135.7605,
+    "aprox": true,
+    "hora": "15:15",
+    "fim": "15:45",
+    "gmaps": "Higashi Honganji, Kyoto",
+    "must": [
+     "Conferir se as malas do takkyubin já chegaram antes de subir",
+     "Trocar de sapato: a noite em Gion é toda em pedra irregular"
+    ],
+    "alerta": "Check-in só a partir das 15:00. Se as malas foram por takkyubin e o pacote atrasar, não travem o dia esperando — o hotel recebe e guarda. Meia hora resolve: deixem as coisas, peguem casaco (março anoitece frio em Kyoto) e saiam logo, porque o Nishiki fecha cedo."
+   },
+   {
+    "id": "p6",
+    "ativ": "Nishiki Market",
+    "tipo": "comida",
+    "lat": 35.00502,
+    "lng": 135.76557,
+    "hora": "16:10",
+    "fim": "17:40",
+    "gmaps": "Nishiki Market, Kyoto",
+    "foto": "Nishiki Market Kyoto",
+    "must": [
+     "Galeria coberta de 400 m com cerca de 130 bancas, muitas da mesma família há gerações",
+     "Tako tamago — polvinho recheado com ovo de codorna, no espeto",
+     "Tsukemono: os picles de Kyoto, com degustação no balcão"
+    ],
+    "comidas": [
+     "Tako tamago ¥300–500",
+     "Espeto de wagyu ¥800–1.500",
+     "Croquete frito ¥150–300",
+     "Yuba, a nata de soja de Kyoto ¥400–700",
+     "Mochi e dango ¥150–400"
+    ],
+    "compras": [
+     "🛒 AQUI SE COMPRA: faca de cozinha japonesa na Aritsugu, a loja mais famosa do mercado — gravam o nome na lâmina, mas a fila é longa",
+     "Tsukemono e furikake embalados, que aguentam a viagem na mala",
+     "Chá matcha e utensílio de chá",
+     "Pauzinho e cerâmica de Kyoto"
+    ],
+    "alerta": "⚠ FECHA ÀS 18:00, não é passeio noturno — e pior: boa parte das bancas boas começa a baixar a porta entre 17:00 e 17:30, e algumas nem abrem à tarde. Cheguem até 16:00 se quiserem escolher com calma. O corredor tem 3,5 m de largura com gente parada comendo dos dois lados: com carrinho é sofrimento, usem canguru ou deixem dois adultos com os carrinhos na Shijo enquanto o resto entra. Comer andando é malvisto ali — a regra é comer em pé, ao lado da banca onde comprou."
+   },
+   {
+    "id": "p7",
+    "ativ": "Gion: Hanami-koji",
+    "tipo": "monumento",
+    "lat": 35.0028,
+    "lng": 135.7751,
+    "aprox": true,
+    "hora": "18:00",
+    "fim": "19:30",
+    "gmaps": "Hanamikoji Dori, Gion, Kyoto",
+    "foto": "Hanamikoji Gion Kyoto",
+    "must": [
+     "Hanami-koji: 300 m de casas de chá de madeira entre a Shijo e o Kennin-ji",
+     "Canal Shirakawa e a ponte Tatsumi, 500 m ao norte — o trecho mais bonito à noite",
+     "As lanternas acendendo por volta das 18:00, na hora azul"
+    ],
+    "alerta": "⚠ É PROIBIDO fotografar nas vielas privadas de Hanami-koji: multa de ¥10.000. Gueixa a caminho do trabalho não é atração — não parem na frente, não sigam, não puxem para foto. Calçada de pedra irregular e trechos sem guia: o carrinho passa, mas sacode muito, e à noite fica cheio. Não tem banheiro na viela; o último fácil é no Nishiki ou nas lojas da Shijo."
+   },
+   {
+    "id": "p8",
+    "ativ": "Santuário Yasaka",
+    "tipo": "templo",
+    "lat": 35.0036,
+    "lng": 135.77826,
+    "hora": "19:30",
+    "fim": "21:30",
+    "gmaps": "Yasaka Shrine, Kyoto",
+    "foto": "Yasaka Shrine night Kyoto",
+    "must": [
+     "As centenas de lanternas de papel do palco central acesas, com o nome do doador em cada uma",
+     "O portão vermelho da Shijo visto de dentro, à noite",
+     "Pontocho: beco de 500 m e 2 m de largura na beira do Kamogawa, do outro lado do rio"
+    ],
+    "comidas": [
+     "Jantar em Pontocho: yakitori, izakaya, kaiseki simples — pratos ¥800–2.500",
+     "Muita casa de Pontocho cobra taxa de mesa (otōshi) de ¥300–500 por pessoa"
+    ],
+    "alerta": "Yasaka é 24h e de graça, com rampa lateral pelo portão oeste — o carrinho entra bem. Pontocho é o contrário: beco de 2 m, canguru ou deixem o carrinho na boca do beco. Com 13 pessoas, nenhuma casa de Pontocho senta o grupo inteiro sem reserva: ou reservem, ou se dividam em duas ou três mesas, ou jantem na Kawaramachi, que tem restaurante grande. Várias casas de Pontocho não aceitam criança pequena à noite — perguntem na porta antes de entrar."
+   },
+   {
+    "id": "e9",
+    "nome": "Parada Shijo-Kawaramachi",
+    "tipo": "estacao",
+    "lat": 35.0037,
+    "lng": 135.7682,
+    "hora": "21:40",
+    "gmaps": "Shijo Kawaramachi bus stop, Kyoto"
+   },
+   {
+    "id": "e10",
+    "nome": "Estação de Kyoto",
+    "tipo": "estacao",
+    "lat": 34.98577,
+    "lng": 135.75857,
+    "hora": "21:58",
+    "gmaps": "Kyoto Station"
+   },
+   {
+    "id": "fim",
+    "nome": "Hotel K-style Higashi-Honganji",
+    "tipo": "base",
+    "lat": 34.9905,
+    "lng": 135.7605,
+    "aprox": true,
+    "hora": "22:10",
+    "gmaps": "Higashi Honganji, Kyoto"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "p1",
+    "modo": "pe",
+    "min": 0,
+    "km": 0.0,
+    "custo": 0,
+    "desc": "O despacho sai do próprio apartamento: a Yamato busca no endereço, ou se leva a pé até a loja de conveniência da esquina."
+   },
+   {
+    "de": "p1",
+    "para": "e1",
+    "modo": "pe",
+    "min": 10,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Sigam a placa do elevador na entrada da Midosuji, não a escadaria."
+   },
+   {
+    "de": "e1",
+    "para": "p2",
+    "modo": "metro",
+    "linha": "Midosuji",
+    "cor": "#E5171F",
+    "min": 12,
+    "km": 3.4,
+    "custo": 240,
+    "desc": "8 estações, sentido Senri-Chuo. O vagão da ponta é mais vazio às 09:00."
+   },
+   {
+    "de": "p2",
+    "para": "e2",
+    "modo": "metro",
+    "linha": "JR Special Rapid",
+    "cor": "#008C46",
+    "min": 29,
+    "km": 42.8,
+    "custo": 580,
+    "desc": "Osaka → Kyoto direto, sai a cada 15 min. Sem lugar marcado."
+   },
+   {
+    "de": "e2",
+    "para": "e3",
+    "modo": "pe",
+    "min": 14,
+    "km": 0.9,
+    "custo": 0,
+    "desc": "Saída Karasuma da estação e reto rumo norte. Plano o caminho todo, calçada larga."
+   },
+   {
+    "de": "e3",
+    "para": "p3",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.3,
+    "custo": 0,
+    "desc": "O Higashi Honganji é o muro branco do outro lado da rua."
+   },
+   {
+    "de": "p3",
+    "para": "e4",
+    "modo": "pe",
+    "min": 12,
+    "km": 0.8,
+    "custo": 0,
+    "desc": "Reto rumo oeste pela Hanaya-cho, atravessando a Horikawa."
+   },
+   {
+    "de": "e4",
+    "para": "e5",
+    "modo": "pe",
+    "min": 15,
+    "km": 1.0,
+    "custo": 0,
+    "desc": "Volta pela Shichijo até a estação. O almoço fácil para 13 pessoas está no 10º andar do prédio da estação ou no subsolo do Porta."
+   },
+   {
+    "de": "e5",
+    "para": "e6",
+    "modo": "metro",
+    "linha": "Ônibus 206 / 208",
+    "cor": "#3A7D3A",
+    "min": 12,
+    "km": 1.9,
+    "custo": 230,
+    "desc": "Sai do terminal de ônibus da estação. Tarifa única ¥230, paga na saída."
+   },
+   {
+    "de": "e6",
+    "para": "p4",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "A parada é na frente do muro; a bilheteria fica na ponta norte."
+   },
+   {
+    "de": "p4",
+    "para": "e7",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0
+   },
+   {
+    "de": "e7",
+    "para": "e8",
+    "modo": "metro",
+    "linha": "Ônibus 206 / 208",
+    "cor": "#3A7D3A",
+    "min": 15,
+    "km": 1.9,
+    "custo": 230,
+    "desc": "Volta pela Shichijo. No fim da tarde o 206 já vem cheio da Higashiyama."
+   },
+   {
+    "de": "e8",
+    "para": "p5",
+    "modo": "pe",
+    "min": 14,
+    "km": 0.9,
+    "custo": 0,
+    "desc": "Mesmo caminho da manhã pela Karasuma."
+   },
+   {
+    "de": "p5",
+    "para": "p6",
+    "modo": "pe",
+    "min": 25,
+    "km": 1.7,
+    "custo": 0,
+    "desc": "Reto pela Karasuma até a Nishikikoji. Quem estiver cansado pega o metrô Karasuma de Gojo a Shijo, 1 parada, ¥220, e anda só 500 m."
+   },
+   {
+    "de": "p6",
+    "para": "p7",
+    "modo": "pe",
+    "min": 18,
+    "km": 1.3,
+    "custo": 0,
+    "desc": "Sai do mercado na Teramachi, desce até a Shijo e atravessa o Kamogawa pela ponte Shijo-Ohashi — a vista do rio ao anoitecer é o melhor trecho a pé do dia."
+   },
+   {
+    "de": "p7",
+    "para": "p8",
+    "modo": "pe",
+    "min": 18,
+    "km": 1.4,
+    "custo": 0,
+    "desc": "Sobe a Hanami-koji até a Shijo e segue rumo leste até o portão vermelho do Yasaka; depois volta para a beira do rio, onde fica Pontocho."
+   },
+   {
+    "de": "p8",
+    "para": "e9",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.3,
+    "custo": 0,
+    "desc": "Saída norte de Pontocho, direto na esquina da Shijo com a Kawaramachi."
+   },
+   {
+    "de": "e9",
+    "para": "e10",
+    "modo": "metro",
+    "linha": "Ônibus 4 / 5 / 205",
+    "cor": "#3A7D3A",
+    "min": 18,
+    "km": 4.0,
+    "custo": 230,
+    "desc": "Desce a Kawaramachi até a estação. Passa até por volta das 23:00."
+   },
+   {
+    "de": "e10",
+    "para": "fim",
+    "modo": "pe",
+    "min": 14,
+    "km": 0.9,
+    "custo": 0,
+    "desc": "Karasuma acima, o mesmo caminho de sempre."
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "troca",
+    "titulo": "Nishiki antes do check-in, não depois",
+    "texto": "Nesta ordem vocês chegam ao mercado às 16:10, e as bancas boas do Nishiki começam a fechar entre 17:00 e 17:30 — sobra pouco mais de uma hora útil. Invertendo, dá para ir do Sanjūsangen-dō direto ao Nishiki (ônibus 206 até Shijo-Kawaramachi, ¥230, 15 min), ficar das 15:00 às 16:45 com o mercado ainda inteiro, e fazer o check-in às 17:15 antes de sair para o jantar. As malas já estão no hotel desde as 10:20, então nada se perde.",
+    "refs": [
+     "p5",
+     "p6"
+    ]
+   },
+   {
+    "tipo": "troca",
+    "titulo": "Shinkansen de Shin-Osaka, se a bagagem não for despachada",
+    "texto": "Se o takkyubin não rolar e todo mundo viajar com mala na mão, o JR Special Rapid lotado é o pior cenário do dia. A saída é o Midosuji até Shin-Osaka (¥290, 17 min) e o Shinkansen Hikari ou Kodama até Kyoto: 14 min, ¥1.450 por adulto sem reserva, plataforma larga, elevador em tudo e espaço para carrinho no fim do vagão. São uns ¥900 a mais por adulto para trocar 45 min de sufoco por 30 min tranquilos.",
+    "ponto": {
+     "nome": "Estação Shin-Osaka",
+     "lat": 34.73349,
+     "lng": 135.49789,
+     "gmaps": "Shin-Osaka Station"
+    }
+   },
+   {
+    "tipo": "corte",
+    "titulo": "Ficar só no Higashi Honganji",
+    "texto": "O Nishi é mais bonito e é Patrimônio da Humanidade, mas custa 1,8 km a pé de desvio numa manhã que já teve estação, trem e baldeação. Cortando, a manhã encolhe para uns 50 min de templo, sobra tempo de almoçar sem pressa e o dia cai de 10,5 para 9,6 km a pé. Quem estiver com bebê no colo agradece.",
+    "refs": [
+     "e4"
+    ]
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Torre de Kyoto no fim do dia",
+    "texto": "Fica em frente à estação, no caminho de volta do ônibus da noite. Mirante a 100 m de altura, aberto até as 21:00, ¥900 adulto e ¥700 adolescente — é a única vista de cima da cidade em todo o trecho de Kyoto, e nesse horário não tem fila. Só vale se o jantar em Pontocho terminar cedo.",
+    "ponto": {
+     "nome": "Torre de Kyoto",
+     "lat": 34.98755,
+     "lng": 135.75933,
+     "gmaps": "Kyoto Tower"
+    }
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Se chover",
+    "texto": "Os dois Honganji viram passeio ruim: cascalho encharcado e pátio aberto entre um pavilhão e outro. O Sanjūsangen-dō é coberto de ponta a ponta e resolve sozinho a tarde. Para o buraco da manhã, o Museu Nacional de Kyoto fica a 200 m do Sanjūsangen-dō, é coberto, tem elevador e fraldário, e a coleção permanente sai em torno de ¥700. O Nishiki também é coberto, então a noite quase não muda — só Gion, que com chuva fica escorregadio na pedra: nesse caso, com carrinho, pulem Hanami-koji e fiquem no Yasaka, que tem piso firme.",
+    "ponto": {
+     "nome": "Museu Nacional de Kyoto",
+     "lat": 34.99,
+     "lng": 135.7726,
+     "gmaps": "Kyoto National Museum"
+    }
+   }
+  ],
+  "passe": {
+   "nome": "Passe de 1 dia de metrô + ônibus de Kyoto — ¥1.100",
+   "texto": "Não compensa neste dia. Depois de chegar, são quatro deslocamentos dentro de Kyoto: ônibus para o Sanjūsangen-dō (¥230), a volta (¥230), o metrô opcional de Gojo a Shijo (¥220) e o ônibus da noite de volta de Gion (¥230) — ¥910 no total, ¥190 abaixo do passe. Só passa a valer se acrescentarem mais um trajeto de ônibus. A viagem Osaka→Kyoto (¥820) não entra em passe nenhum de Kyoto."
+  }
+ },
+ "2027-03-20": {
+  "titulo": "O bambuzal ao amanhecer, o oeste inteiro",
+  "resumo": "Sábado invertido de propósito: o bambuzal de Arashiyama às 7h30, quando ainda dá para andar nele, e o Tenryū-ji do lado, a 300 m. Depois o dia atravessa o oeste devagar — Ryoan-ji, Kinkaku-ji, Castelo Nijō — e acaba antes das 18h. É o dia mais leve da viagem em tempo de pé, e sobra a noite inteira.",
+  "centro": [
+   35.0155,
+   135.713
+  ],
+  "zoom": 12,
+  "paradas": [
+   {
+    "id": "base",
+    "nome": "Hotel K-style (Higashi Honganji)",
+    "tipo": "base",
+    "lat": 34.9908,
+    "lng": 135.7572,
+    "aprox": true,
+    "hora": "06:45",
+    "gmaps": "Higashi Honganji, Kyoto"
+   },
+   {
+    "id": "e1",
+    "nome": "Estação de Kyoto — plataformas 32/33 (Sagano)",
+    "tipo": "estacao",
+    "lat": 34.98577,
+    "lng": 135.75857,
+    "hora": "06:57",
+    "gmaps": "Kyoto Station"
+   },
+   {
+    "id": "e2",
+    "nome": "Saga-Arashiyama (JR)",
+    "tipo": "estacao",
+    "lat": 35.01878,
+    "lng": 135.68141,
+    "hora": "07:18",
+    "gmaps": "Saga-Arashiyama Station"
+   },
+   {
+    "id": "p1",
+    "ativ": "Floresta de Bambu",
+    "tipo": "parque",
+    "lat": 35.01674,
+    "lng": 135.67115,
+    "hora": "07:30",
+    "fim": "08:25",
+    "gmaps": "Arashiyama Bamboo Grove",
+    "foto": "Arashiyama bamboo grove",
+    "must": [
+     "O corredor principal, do santuário Nonomiya até a subida do Ōkōchi Sansō — uns 400 m",
+     "O Nonomiya, no meio do bambuzal, com portal de madeira crua sem casca",
+     "Ouvir o bambu rangendo com o vento: só dá antes de a multidão chegar"
+    ],
+    "alerta": "Grátis, aberto 24h, sem portão. Às 7h30 vocês dividem o caminho com meia dúzia de fotógrafos; às 10h já é fila indiana e às 14h o carrinho não passa. Quem quiser deserto de verdade pega o primeiro JR (~06:00) e chega 06:30, com o sol nascendo por volta das 6h. Piso plano e pavimentado, o carrinho passa bem — nesse horário."
+   },
+   {
+    "id": "p2",
+    "ativ": "jardim de 1339",
+    "tipo": "templo",
+    "lat": 35.01622,
+    "lng": 135.67294,
+    "hora": "08:30",
+    "fim": "09:25",
+    "gmaps": "Tenryu-ji, Kyoto",
+    "foto": "File:Tenryū-ji Garten.jpg",
+    "must": [
+     "O jardim Sōgenchi visto da varanda: o mesmo traçado desde 1339, nunca refeito",
+     "As montanhas de Arashiyama e Kameyama usadas como fundo emprestado do jardim",
+     "O dragão pintado no teto do Hattō — sala separada, ingresso à parte"
+    ],
+    "comidas": [
+     "Shigetsu, restaurante vegetariano zen dentro do templo — a partir de ¥3.300, só almoço e com reserva"
+    ],
+    "compras": [
+     "Amuletos e incenso na loja ao lado da bilheteria"
+    ],
+    "alerta": "Abre 08:30 todo dia, sábado inclusive, e fecha 17:00 (última entrada 16:50). ¥500 só o jardim, que é o que interessa; +¥300 se quiserem entrar nos pavilhões, e aí é descalço. Entrem pelo portão principal e SAIAM pelo portão norte: ele dá direto no bambuzal, por isso as duas paradas são a mesma caminhada. Jardim plano de terra batida, o carrinho anda."
+   },
+   {
+    "id": "p3",
+    "ativ": "Monkey Park",
+    "tipo": "parque",
+    "lat": 35.01142,
+    "lng": 135.67673,
+    "hora": "09:55",
+    "fim": "11:15",
+    "gmaps": "Arashiyama Monkey Park Iwatayama",
+    "foto": "Iwatayama Monkey Park Arashiyama",
+    "must": [
+     "Macacos-japoneses soltos no topo — quem fica na casa de tela para dar comida são vocês",
+     "A vista de Kyoto inteira lá de cima, 160 m acima do rio"
+    ],
+    "alerta": "⚠ CANGURU OBRIGATÓRIO: 20 min de trilha de terra em subida, ~160 m de desnível, sem alternativa. O carrinho fica no guarda-volumes da bilheteria, na base. Abre 09:00 e a última entrada é 16:00 — chegando 09:55 não há corrida nenhuma contra o relógio. ¥800 adulto, cerca de ¥400 de 4 a 15 anos. Lá em cima: não encare macaco nos olhos e não mostre comida fora da casa de tela."
+   },
+   {
+    "id": "e3",
+    "nome": "Almoço na rua principal de Arashiyama",
+    "tipo": "comida",
+    "lat": 35.0143,
+    "lng": 135.6774,
+    "hora": "11:25",
+    "gmaps": "Arashiyama Main Street, Kyoto"
+   },
+   {
+    "id": "e4",
+    "nome": "Randen Arashiyama (Kimono Forest)",
+    "tipo": "estacao",
+    "lat": 35.01522,
+    "lng": 135.6777,
+    "hora": "12:20",
+    "gmaps": "Randen Arashiyama Station"
+   },
+   {
+    "id": "e5",
+    "nome": "Katabiranotsuji — baldeação para a linha Kitano",
+    "tipo": "estacao",
+    "lat": 35.01524,
+    "lng": 135.7002,
+    "hora": "12:33",
+    "gmaps": "Katabiranotsuji Station"
+   },
+   {
+    "id": "e6",
+    "nome": "Ryoanji (Randen)",
+    "tipo": "estacao",
+    "lat": 35.02789,
+    "lng": 135.72119,
+    "hora": "12:45",
+    "gmaps": "Ryoanji Station Randen"
+   },
+   {
+    "id": "p4",
+    "ativ": "Ryoan-ji",
+    "tipo": "templo",
+    "lat": 35.03346,
+    "lng": 135.71809,
+    "hora": "12:55",
+    "fim": "13:40",
+    "gmaps": "Ryoanji Temple, Kyoto",
+    "foto": "Ryoanji rock garden",
+    "must": [
+     "As 15 pedras: de qualquer ponto do deque só se enxergam 14",
+     "O jardim de musgo e o lago Kyōyōchi, no mesmo ingresso e quase sempre vazio",
+     "A bacia de pedra tsukubai, com os quatro caracteres do \"só sei que me basta\""
+    ],
+    "alerta": "08:00–17:00 de março a novembro, aberto todo dia. ¥600 adulto, cerca de ¥300 criança. O salão do jardim de pedras é descalço e tem degraus: o carrinho fica na entrada, e o caminho até lá é de cascalho. Se o deque estiver cheio, esperem 10 min — os ônibus de excursão chegam em ondas e esvaziam junto."
+   },
+   {
+    "id": "p5",
+    "ativ": "Kinkaku-ji",
+    "tipo": "templo",
+    "lat": 35.03953,
+    "lng": 135.72954,
+    "hora": "14:00",
+    "fim": "15:00",
+    "gmaps": "Kinkaku-ji, Kyoto",
+    "foto": "Kinkakuji golden pavilion",
+    "must": [
+     "O pavilhão refletido no lago Kyōko-chi — é o primeiro ângulo, logo depois da bilheteria",
+     "O ingresso é um ofuda, um talismã de papel: guardem, é a melhor lembrança grátis do dia",
+     "A cascata Ryūmon e a casa de chá Sekka-tei, já no fim do percurso"
+    ],
+    "comidas": [
+     "Casa de chá no fim do percurso: matchá com doce, na faixa de ¥500",
+     "Sorvete de matchá e de folha de ouro nas barracas da saída, ¥400–600"
+    ],
+    "compras": [
+     "Omamori dourados na saída — os de estudos são os mais procurados"
+    ],
+    "alerta": "⚠ COMEÇA O FERIADÃO (20 a 22/03) e este é o templo mais cheio de Kyoto. O percurso é de MÃO ÚNICA: passou, não volta — combinem os pontos de encontro antes de entrar e não deixem ninguém para trás. 09:00–17:00, ¥500 adulto, cerca de ¥300 criança. Cascalho compactado e plano: o carrinho sacode, mas vai."
+   },
+   {
+    "id": "p6",
+    "ativ": "pisos que cantam",
+    "tipo": "monumento",
+    "lat": 35.01401,
+    "lng": 135.74854,
+    "hora": "15:35",
+    "fim": "17:00",
+    "gmaps": "Nijo Castle, Kyoto",
+    "foto": "Nijo Castle Ninomaru Palace",
+    "must": [
+     "Os pisos rouxinol do Palácio Ninomaru: tábuas que rangem de propósito a cada passo, feitas para denunciar quem se aproximasse à noite",
+     "O salão onde o último xogum devolveu o poder ao imperador, em 1867",
+     "O jardim Ninomaru, de Kobori Enshū, e a base de pedra da torre que queimou em 1750"
+    ],
+    "comidas": [
+     "Casa de chá perto do portão leste: sorvete de matchá e dango, ¥400–700"
+    ],
+    "alerta": "⚠ A ÚLTIMA ENTRADA NO PALÁCIO É 16:00 — chegando 15:35 dá, mas comprem o ingresso e entrem no Ninomaru ANTES de passear pelos jardins; o terreno continua aberto até 17:00. ¥1.300 com o palácio, ¥800 só terreno e jardins. O Ninomaru se percorre DESCALÇO, uns 800 m de corredor de madeira, com o carrinho parado na entrada — é hora do canguru e de meia grossa, porque o chão é gelado. Fraldário perto do portão leste; no resto, terreno amplo e plano de cascalho."
+   },
+   {
+    "id": "e7",
+    "nome": "Nijōjō-mae (linha Tozai)",
+    "tipo": "estacao",
+    "lat": 35.01189,
+    "lng": 135.75028,
+    "hora": "17:07",
+    "gmaps": "Nijojo-mae Station"
+   },
+   {
+    "id": "e8",
+    "nome": "Karasuma Oike — baldeação",
+    "tipo": "estacao",
+    "lat": 35.01082,
+    "lng": 135.75965,
+    "hora": "17:11",
+    "gmaps": "Karasuma Oike Station"
+   },
+   {
+    "id": "e9",
+    "nome": "Estação de Kyoto (metrô)",
+    "tipo": "estacao",
+    "lat": 34.98577,
+    "lng": 135.75857,
+    "hora": "17:22",
+    "gmaps": "Kyoto Station"
+   },
+   {
+    "id": "fim",
+    "nome": "Hotel K-style (Higashi Honganji)",
+    "tipo": "base",
+    "lat": 34.9908,
+    "lng": 135.7572,
+    "aprox": true,
+    "hora": "17:35",
+    "gmaps": "Higashi Honganji, Kyoto"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "e1",
+    "modo": "pe",
+    "min": 12,
+    "km": 0.9,
+    "custo": 0,
+    "desc": "Descida plana pela Karasuma até a estação, em calçada larga o tempo todo."
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "linha": "JR Sagano (San'in)",
+    "cor": "#008C46",
+    "min": 15,
+    "km": 11.0,
+    "custo": 240,
+    "desc": "Direto, sem baldeação. Aqui o trem ganha do ônibus com folga: o ônibus 28 faz o mesmo caminho em uns 45 min e chega lotado."
+   },
+   {
+    "de": "e2",
+    "para": "p1",
+    "modo": "pe",
+    "min": 12,
+    "km": 0.9,
+    "custo": 0,
+    "desc": "Saída sul e rumo oeste pela rua do templo; o bambuzal começa logo depois do Nonomiya."
+   },
+   {
+    "de": "p1",
+    "para": "p2",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.3,
+    "custo": 0,
+    "desc": "O portão norte do Tenryū-ji abre no meio do bambuzal — é só entrar."
+   },
+   {
+    "de": "p2",
+    "para": "p3",
+    "modo": "pe",
+    "min": 30,
+    "km": 1.3,
+    "custo": 0,
+    "desc": "Sai na rua principal, atravessa a ponte Togetsukyo e sobe 20 min de trilha de terra. O carrinho não sobe."
+   },
+   {
+    "de": "p3",
+    "para": "e3",
+    "modo": "pe",
+    "min": 10,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Desce a trilha, pega o carrinho no guarda-volumes e volta pela ponte."
+   },
+   {
+    "de": "e3",
+    "para": "e4",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.4,
+    "custo": 0,
+    "desc": "A estação fica no fim da rua de lojas; as colunas de quimono iluminadas ficam no caminho do trem."
+   },
+   {
+    "de": "e4",
+    "para": "e5",
+    "modo": "metro",
+    "linha": "Randen — linha Arashiyama",
+    "cor": "#7A0F2E",
+    "min": 13,
+    "km": 5.5,
+    "custo": 250,
+    "desc": "Bondinho de um ou dois vagões, tarifa única de ¥250 paga na saída, valendo até o destino final com a baldeação inclusa."
+   },
+   {
+    "de": "e5",
+    "para": "e6",
+    "modo": "metro",
+    "linha": "Randen — linha Kitano",
+    "cor": "#7A0F2E",
+    "min": 12,
+    "km": 3.5,
+    "custo": 0,
+    "desc": "Mesma passagem, cinco paradas até Ryoanji. É este caminho que dispensa o ônibus 59 vindo de Arashiyama."
+   },
+   {
+    "de": "e6",
+    "para": "p4",
+    "modo": "pe",
+    "min": 10,
+    "km": 0.7,
+    "custo": 0,
+    "desc": "Rua reta rumo norte, em subida leve o tempo todo, até o portão do templo."
+   },
+   {
+    "de": "p4",
+    "para": "p5",
+    "modo": "metro",
+    "linha": "Ônibus 59",
+    "cor": "#3A7D3A",
+    "min": 8,
+    "km": 2.0,
+    "custo": 230,
+    "desc": "Três pontos pela Kinukake-no-michi. Dá para fazer a pé em 20 min (1,3 km, plano) e poupar ¥230 por pessoa."
+   },
+   {
+    "de": "p5",
+    "para": "p6",
+    "modo": "metro",
+    "linha": "Ônibus 12",
+    "cor": "#3A7D3A",
+    "min": 25,
+    "km": 3.3,
+    "custo": 230,
+    "desc": "Direto até Nijojo-mae. É o único trecho do dia sem opção de trem: se o ponto estiver com fila enorme, deixem passar um — vem outro em uns 10 min. Não peguem o 205: ele vai para a estação, não para o castelo."
+   },
+   {
+    "de": "p6",
+    "para": "e7",
+    "modo": "pe",
+    "min": 7,
+    "km": 0.4,
+    "custo": 0,
+    "desc": "Saída pelo portão leste; a boca do metrô fica na esquina, com elevador."
+   },
+   {
+    "de": "e7",
+    "para": "e8",
+    "modo": "metro",
+    "linha": "Tozai",
+    "cor": "#B11E22",
+    "min": 4,
+    "km": 1.1,
+    "custo": 260,
+    "desc": "Duas estações, sentido Rokujizo."
+   },
+   {
+    "de": "e8",
+    "para": "e9",
+    "modo": "metro",
+    "linha": "Karasuma",
+    "cor": "#009A41",
+    "min": 6,
+    "km": 2.4,
+    "custo": 0,
+    "desc": "Mesma passagem, quatro estações até Kyoto. Elevador nas duas pontas."
+   },
+   {
+    "de": "e9",
+    "para": "fim",
+    "modo": "pe",
+    "min": 12,
+    "km": 0.9,
+    "custo": 0,
+    "desc": "Volta plana pela Karasuma, com o Higashi Honganji do lado."
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "extra",
+    "titulo": "Trem Romântico de Sagano — o lugar óbvio para gastar a folga",
+    "texto": "Este é o dia mais leve da viagem, e o jeito mais bonito de gastar a sobra sai da porta ao lado: a estação Torokko Saga fica colada na Saga-Arashiyama. São uns 25 min de trem aberto pela garganta do rio Hozu até Kameoka, na faixa de ¥880 por trecho e por pessoa; ida e volta pela mesma linha fecha em cerca de 2h. Roda de 1º de março a 29 de dezembro e não roda às quartas — sábado está de pé. ⚠ Assento é marcado e esgota: reservem antes, ainda mais em fim de semana de feriado. Encaixa entre o Tenryū-ji e o almoço se abrirem mão do Monkey Park.",
+    "ponto": {
+     "nome": "Torokko Saga — Trem Romântico de Sagano",
+     "lat": 35.01856,
+     "lng": 135.68076,
+     "gmaps": "Torokko Saga Station"
+    }
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Ōkōchi Sansō, no fim do bambuzal",
+    "texto": "A casa e o jardim de um ator de cinema mudo, no alto do bambuzal — o corredor de bambu termina no portão dele. Cerca de ¥1.000, e o ingresso já inclui matchá com doce numa casa de chá com vista para Kyoto. Aberto 09:00–17:00. São uns 40 min a mais na parada do bambuzal, e quase ninguém entra, porque o ingresso espanta a multidão. Caminho de pedra irregular com degraus: carrinho não sobe.",
+    "ponto": {
+     "nome": "Ōkōchi Sansō",
+     "lat": 35.01663,
+     "lng": 135.66959,
+     "gmaps": "Okochi Sanso Garden"
+    }
+   },
+   {
+    "tipo": "troca",
+    "titulo": "Ninna-ji no lugar do Ryoan-ji",
+    "texto": "Fica uma estação antes, na mesma linha do Randen (Omuro-Ninnaji), e é o oposto do Ryoan-ji: terreno enorme, pagode de cinco andares, quase vazio. Andar pelo terreno não custa nada; o Palácio Goten, que é a parte que vale, sai por volta de ¥800. Troca 45 min de jardim de pedras — descalço, com degraus — por 1h de espaço aberto onde o carrinho anda à vontade. Só não contem com as cerejeiras: as de Omuro são as últimas de Kyoto a abrir, já em abril.",
+    "ponto": {
+     "nome": "Ninna-ji",
+     "lat": 35.02981,
+     "lng": 135.71415,
+     "gmaps": "Ninnaji Temple, Kyoto"
+    }
+   },
+   {
+    "tipo": "corte",
+    "titulo": "Pular o Monkey Park",
+    "texto": "É a única coisa dura do dia: 20 min de trilha de terra em subida, 160 m de desnível, canguru obrigatório e ¥800 por adulto. Cortando, sobram 1h30 e a manhã inteira fica plana — dá para almoçar sem pressa em Arashiyama e ainda chegar ao Ryoan-ji uma hora antes, ou usar o tempo no trem de Sagano. O que se perde é a vista do alto e os macacos soltos, que não se repetem em nenhum outro dia da viagem.",
+    "refs": [
+     "p3"
+    ]
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Se chover",
+    "texto": "A trilha do Monkey Park vira barro escorregadio com criança no colo: cortem sem pena. O bambuzal continua bonito na chuva e o Tenryū-ji tem varandas cobertas de onde se vê o jardim inteiro sem se molhar; o Ninomaru, no Nijō, são 800 m de corredor coberto. Para tapar o buraco da manhã, o Museu Internacional do Mangá fica em Karasuma Oike, exatamente na baldeação da volta: 50.000 gibis nas prateleiras para pegar e ler, ingresso na faixa de ¥1.000–1.200, aberto 10:30–17:30 e FECHADO às quartas.",
+    "ponto": {
+     "nome": "Museu Internacional do Mangá de Kyoto",
+     "lat": 35.0117,
+     "lng": 135.75918,
+     "gmaps": "Kyoto International Manga Museum"
+    }
+   }
+  ],
+  "passe": {
+   "nome": "Nenhum passe compensa hoje — paguem por viagem",
+   "texto": "O candidato seria o Subway & Bus 1-Day (¥1.100 adulto, ¥550 criança), mas ele NÃO cobre o JR nem o Randen, que são justamente os dois trechos longos do dia. Do que vocês gastam, ele cobriria só o ônibus 59 (¥230), o ônibus 12 (¥230) e o metrô da volta (¥260) = ¥720. Perde ¥380 por adulto. O dia inteiro sai por ¥1.210 por adulto: JR ¥240 + Randen ¥250 + ¥230 + ¥230 + metrô ¥260. O passe do Randen (¥800 o dia) também não fecha — vocês usam ¥250 dele. Carreguem ICOCA/Suica e não pensem mais nisso; menores de 6 anos não pagam trem nem ônibus, então os 3 bebês viajam de graça."
+  }
  }
 }
