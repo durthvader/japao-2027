@@ -836,5 +836,176 @@
    "nome": "Osaka Amazing Pass — 1 dia, ¥3.300",
    "texto": "Neste dia ele NÃO compensa: o uso real é o metrô (¥670) mais o castelo (¥1.200) = ¥1.870, contra ¥3.300 de custo. Só viraria negócio somando a Tsūtenkaku (¥1.200) e mais um mirante. O Shitennoji (¥500) não entra no passe."
   }
+ },
+ "2027-03-16": {
+  "titulo": "Pousar e chegar inteiro em Namba",
+  "resumo": "Um trajeto só, mas com 13 pessoas, mala e três bebês depois de um voo longo: o aeroporto, o trem de 45 min e a última caminhada até a cama. O jantar é o que sobrar de fôlego.",
+  "centro": [
+   34.55,
+   135.37
+  ],
+  "zoom": 11,
+  "paradas": [
+   {
+    "id": "base",
+    "ativ": "CHEGADA",
+    "tipo": "base",
+    "lat": 34.43433,
+    "lng": 135.2442,
+    "hora": "19:45",
+    "fim": "21:15",
+    "gmaps": "Kansai International Airport Terminal 1",
+    "foto": "File:関西国際空港全体写真20220811 (cropped).jpg",
+    "must": [
+     "Preencher o Visit Japan Web ANTES de embarcar — o QR pronto troca duas filas por uma leitura de código",
+     "Caixa eletrônico 7-Bank no saguão, que aceita cartão estrangeiro",
+     "Chip ou wi-fi portátil retirado no balcão do desembarque"
+    ],
+    "alerta": "1h30 entre o pouso e o trem é realista para o KIX, mas só com o Visit Japan Web feito em casa: sem ele, imigração para 13 pessoas passa fácil de 1h. Quem tiver bebê pode usar a fila prioritária — pergunte ao agente na entrada do saguão. Já saiam com uns ienes em espécie ou saquem aqui: muita casa pequena de Namba ainda é só dinheiro."
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Kansai Airport",
+    "tipo": "estacao",
+    "lat": 34.4358,
+    "lng": 135.24354,
+    "gmaps": "Kansai Airport Station"
+   },
+   {
+    "id": "e2",
+    "nome": "Namba (Nankai)",
+    "tipo": "estacao",
+    "lat": 34.66366,
+    "lng": 135.50178,
+    "gmaps": "Nankai Namba Station"
+   },
+   {
+    "id": "p1",
+    "ativ": "KIX → Namba",
+    "tipo": "hospedagem",
+    "lat": 34.6655,
+    "lng": 135.501,
+    "aprox": true,
+    "hora": "22:15",
+    "gmaps": "Namba Station, Osaka",
+    "alerta": "O Airport Express não tem lugar marcado e o bagageiro é pequeno: com 13 pessoas, entrem espalhados por dois vagões em vez de tentar ficar juntos. Da estação até a hospedagem são uns 400 m — de madrugada, com mala e carrinho, vale conferir antes por onde tem elevador na saída da estação."
+   },
+   {
+    "id": "p2",
+    "ativ": "Jantar",
+    "tipo": "comida",
+    "lat": 34.66893,
+    "lng": 135.50105,
+    "hora": "22:45",
+    "fim": "23:45",
+    "gmaps": "Dotonbori, Osaka",
+    "foto": "Dotonbori canal night Osaka",
+    "must": [
+     "A primeira vista do letreiro do Glico, que amanhã vocês veem com calma"
+    ],
+    "comidas": [
+     "Takoyaki na rua ¥500–700, o mais rápido a esta hora",
+     "Ramen — as casas de balcão viram a noite",
+     "Konbini: onigiri ¥150, karaage, e o leite e a água dos bebês"
+    ],
+    "compras": [
+     "Don Quijote da beira do canal, aberto 24h — se faltar fralda, adaptador de tomada ou remédio, é aqui e é agora"
+    ],
+    "alerta": "Chegando 22:45 depois de um voo longo, o realista é konbini e cama. A cozinha da maioria das casas de Dotonbori fecha por volta das 23:00; o konbini e o Don Quijote não fecham. Não force o programa no primeiro dia — amanhã começa 09:00 no castelo."
+   },
+   {
+    "id": "fim",
+    "nome": "Airbnb Namba",
+    "tipo": "base",
+    "lat": 34.6655,
+    "lng": 135.501,
+    "aprox": true,
+    "hora": "00:00",
+    "gmaps": "Namba Station, Osaka"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "e1",
+    "modo": "pe",
+    "min": 6,
+    "km": 0.4,
+    "custo": 0,
+    "desc": "Passarela coberta do Terminal 1 até a estação, no 2º andar — tem elevador."
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "linha": "Nankai Airport Express",
+    "cor": "#0060A9",
+    "min": 45,
+    "km": 50.0,
+    "custo": 970,
+    "desc": "Direto até Namba, sem baldeação. Último do dia sai por volta de 23:55."
+   },
+   {
+    "de": "e2",
+    "para": "p1",
+    "modo": "pe",
+    "min": 6,
+    "km": 0.4,
+    "custo": 0,
+    "desc": "Saída norte da Nankai, já dentro do bairro."
+   },
+   {
+    "de": "p1",
+    "para": "p2",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Sobe a Sennichimae até a beira do canal."
+   },
+   {
+    "de": "p2",
+    "para": "fim",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Mesma volta, agora devagar."
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "troca",
+    "titulo": "Rapi:t em vez do Airport Express",
+    "texto": "¥1.520 contra ¥970, e economiza uns 10 min. O que se compra de verdade não é o tempo: é o assento marcado. Para 13 pessoas com mala às 21:15, entrar num trem com lugar garantido e bagageiro de verdade muda a chegada. São ¥550 a mais por pessoa, uns R$ 18. Reserve antes pelo site da Nankai.",
+    "refs": [
+     "p1"
+    ]
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Despachar as malas grandes direto para o hotel",
+    "texto": "O balcão de takkyubin do KIX entrega em Osaka no dia seguinte por ¥2.000–2.500 a mala. Vale se o grupo chegar destruído: o trem de 45 min e a caminhada final ficam sem bagagem. O porém é que o balcão fecha por volta das 21:00 — com pouso às 19:45 é apertado, e só dá certo se a imigração andar.",
+    "refs": [
+     "base"
+    ]
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Se o voo atrasar",
+    "texto": "O Airport Express roda até por volta de 23:55, então há folga de umas 2h30 sobre o horário previsto. Passando disso, é táxi — 50 km, uns ¥18.000, que para 13 pessoas viram três carros. Nesse cenário o jantar simplesmente não acontece: konbini e dormir.",
+    "refs": [
+     "p1"
+    ]
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Se chover",
+    "texto": "Quase todo o dia é coberto: passarela do terminal, trem, e a saída da Nankai cai dentro da galeria da Sennichimae. Os 600 m até Dotonbori são o único trecho aberto, e dá para fazer quase inteiro por dentro da galeria coberta.",
+    "refs": [
+     "p2"
+    ]
+   }
+  ]
  }
 }

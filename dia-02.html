@@ -284,7 +284,9 @@ const ehEscuro=()=> raiz.dataset.theme ? raiz.dataset.theme==="dark"
 
 /* ---- indice das paradas ---- */
 const P = {}; GEO.paradas.forEach(p=>{ P[p.id]=p; });
-const reais = GEO.paradas.filter(p=>p.ai!=null);
+// a saida pode ter atividade propria (num dia de chegada, o aeroporto e a
+// primeira coisa que acontece) — mas ela e o "0", nao entra na contagem
+const reais = GEO.paradas.filter(p=>p.ai!=null && p.tipo!=="base");
 reais.forEach((p,i)=>{ p.n=i+1; });
 // a saida e o "0" do dia; a volta e o mesmo lugar, entao nao ganha pino proprio
 GEO.paradas.forEach(p=>{ if(p.tipo==="base") p.n=0; });

@@ -1,7 +1,79 @@
-<title>__TITULO__</title>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Mapa do dia 1 da viagem ao Japao: Pousar e chegar inteiro em Namba.">
+<meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A0D13" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
+<title>Pousar e chegar inteiro em Namba</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
-__TOKENS__
+/* ============ TOKENS ============ */
+:root{
+  --paper:#EDEEF1; --surface:#FFFFFF; --surface-2:#E3E6EB; --sunken:#E7E9ED;
+  --ink:#11151E; --ink-2:#48505F; --ink-3:#7A8394; --line:#D2D7DF; --line-2:#BFC6D1;
+  --c-osaka:#E60012; --t-osaka:#BE000F; --c-kyoto:#6E7F3C; --t-kyoto:#4F5C2A;
+  --c-fuji:#1E50A2;  --t-fuji:#194588;  --c-tokyo:#F39700; --t-tokyo:#96590A;
+  --sakura:#E0788E; --ok:#1F7A4D; --warn:#A86212; --crit:#BE000F;
+  --panel:rgba(255,255,255,.76); --panel-2:rgba(223,228,235,.52);
+  --veu:linear-gradient(180deg,rgba(236,238,242,.46) 0%,rgba(236,238,242,.60) 45%,rgba(236,238,242,.70) 100%);
+  --wall-filtro:brightness(1.20) contrast(.90) saturate(.90);
+  --halo:rgba(236,238,242,.95);
+  --shadow:0 1px 2px rgba(17,21,30,.06),0 6px 20px -8px rgba(17,21,30,.14);
+  --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-jp:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Noto Sans JP",Meiryo,system-ui,sans-serif;
+  --f-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --c:var(--c-osaka); --t:var(--t-osaka);
+  --pad:clamp(16px,4.6vw,26px); --wrap:760px;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --paper:#0A0D13; --surface:#141922; --surface-2:#1C222D; --sunken:#0F131A;
+  --ink:#E9ECF2; --ink-2:#A6AFBF; --ink-3:#6D7789; --line:#252D3A; --line-2:#333C4C;
+  --c-osaka:#FF4A57; --t-osaka:#FF8A93; --c-kyoto:#A9C46B; --t-kyoto:#BDD489;
+  --c-fuji:#6DA0EA;  --t-fuji:#93BAF2;  --c-tokyo:#FFB13D; --t-tokyo:#FFC876;
+  --sakura:#F0A2B2; --ok:#57C48A; --warn:#F0B44F; --crit:#FF8A93;
+  --panel:rgba(17,22,30,.74); --panel-2:rgba(8,12,18,.48);
+  --veu:linear-gradient(180deg,rgba(7,10,16,.52) 0%,rgba(7,10,16,.66) 45%,rgba(7,10,16,.78) 100%);
+  --wall-filtro:brightness(.58) contrast(1.06) saturate(1.02);
+  --halo:rgba(7,10,16,.95);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -10px rgba(0,0,0,.6);
+}
+.c-osaka{--c:var(--c-osaka);--t:var(--t-osaka)} .c-kyoto{--c:var(--c-kyoto);--t:var(--t-kyoto)}
+.c-fuji{--c:var(--c-fuji);--t:var(--t-fuji)}    .c-tokyo{--c:var(--c-tokyo);--t:var(--t-tokyo)}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:transparent;color:var(--ink);font-family:var(--f-ui);
+  font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;overflow-x:hidden;
+  padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:800;letter-spacing:-.025em;line-height:1.12}
+p{margin:0} ul{margin:0;padding:0}
+a{color:var(--t);text-underline-offset:2px}
+:focus-visible{outline:2.5px solid var(--c);outline-offset:3px;border-radius:4px}
+img,canvas,svg{max-width:100%;display:block}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--pad)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-2)}
+/* estes ficam direto sobre a foto: o halo descola do fundo sem desenhar caixa */
+.sec-head .eyebrow,.sec-head h2,.sec-head .sub,.swipe-hint,.trilho::before{
+  text-shadow:0 1px 2px var(--halo),0 0 12px var(--halo),0 0 26px var(--halo)}
 
 /* ============ LAYOUT ============ */
 body{padding-bottom:0}
@@ -153,14 +225,15 @@ body{padding-bottom:0}
 .rodape{font-size:.68rem;color:var(--ink-3);line-height:1.5;margin-top:26px;
   padding-top:14px;border-top:1px solid var(--line)}
 </style>
-
-<div class="topo c-__CIDADE__">
-  <a class="volta" href="index.html#dia__NDIA__">‹ Roteiro</a>
-  <div class="tit"><b>__TITULO__</b><u id="subt"></u></div>
+</head>
+<body>
+<div class="topo c-osaka">
+  <a class="volta" href="index.html#dia1">‹ Roteiro</a>
+  <div class="tit"><b>Pousar e chegar inteiro em Namba</b><u id="subt"></u></div>
   <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
 </div>
 
-<div class="palco c-__CIDADE__">
+<div class="palco c-osaka">
   <div id="map"></div>
   <div class="painel">
     <p class="resumo" id="resumo"></p>
@@ -185,9 +258,9 @@ body{padding-bottom:0}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-const DIA = __DIA__;
-const GEO = __GEO__;
-const FOTOS = __FOTOS__;   // por id de parada: arquivo, credito e placeholder
+const DIA = {"data": "2027-03-16", "semana": "terça", "base": "Osaka / Namba", "cidade": "osaka", "transicao": false, "atividades": [{"periodo": "Noite", "nome": "CHEGADA — voo JQ 13, pouso no KIX às 19:45", "area": "Izumisano", "de": "Sydney (JQ 13)", "como": "Desembarque, imigração e retirada de bagagem", "km": 0.0, "min": 0.0, "pe": 0.0, "transp": 0.0, "ingresso": 0.0, "horario": "pouso 19:45", "duracao": "1h30", "bebe": "CARRINHO OK", "terreno": "Aeroporto todo acessível. Carrinho vai até o portão na ida e é devolvido na esteira ou na porta da aeronave.", "obs": "Com imigração e bagagem, saída do saguão ~21:00. Preencha o Visit Japan Web ANTES de embarcar em Sydney — quem chega com o QR pronto passa em minutos. Retirar Wi-Fi/eSIM e carregar o ICOCA ainda no aeroporto. O JQ 13 é operado pela Jetstar mas foi vendido pela LATAM no mesmo bilhete, então a franquia de bagagem é a do bilhete LATAM — não a da low cost."}, {"periodo": "Noite", "nome": "KIX → Namba (check-in no Airbnb)", "area": "Namba", "de": "Aeroporto KIX", "como": "Nankai Airport Express (o Rapi:t custa ¥1.520 e economiza 10 min)", "km": 50.0, "min": 45.0, "pe": 10.0, "transp": 970.0, "ingresso": 0.0, "horario": "pegar ~21:15", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Estação do KIX e Namba com elevador. O Nankai tem espaço de bagagem — carrinho aberto cabe no vestíbulo do vagão.", "obs": "Chegando ao Namba por volta das 22:00. O Airbnb foi escolhido justamente pelo acesso direto do aeroporto. Folga grande: o último Nankai sai ~23:55 do KIX."}, {"periodo": "Noite", "nome": "Jantar rápido / konbini / Dotonbori", "area": "Namba", "de": "Airbnb", "como": "A pé", "km": 0.8, "min": 0.0, "pe": 10.0, "transp": 0.0, "ingresso": 0.0, "horario": "24h", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Dotonbori é plano e calçadão. Lotado à noite, mas passa.", "obs": "Dia perdido pela viagem — não programe nada pago."}], "total": {"km": 50.8, "min": 45.0, "pe": 20.0, "transp": 970.0, "ingresso": 0.0, "nota": "≈ R$ 032 por pessoa neste dia (transporte + ingressos)"}};
+const GEO = {"titulo": "Pousar e chegar inteiro em Namba", "resumo": "Um trajeto só, mas com 13 pessoas, mala e três bebês depois de um voo longo: o aeroporto, o trem de 45 min e a última caminhada até a cama. O jantar é o que sobrar de fôlego.", "centro": [34.55, 135.37], "zoom": 11, "paradas": [{"id": "base", "ativ": "CHEGADA", "tipo": "base", "lat": 34.43433, "lng": 135.2442, "hora": "19:45", "fim": "21:15", "gmaps": "Kansai International Airport Terminal 1", "foto": "File:関西国際空港全体写真20220811 (cropped).jpg", "must": ["Preencher o Visit Japan Web ANTES de embarcar — o QR pronto troca duas filas por uma leitura de código", "Caixa eletrônico 7-Bank no saguão, que aceita cartão estrangeiro", "Chip ou wi-fi portátil retirado no balcão do desembarque"], "alerta": "1h30 entre o pouso e o trem é realista para o KIX, mas só com o Visit Japan Web feito em casa: sem ele, imigração para 13 pessoas passa fácil de 1h. Quem tiver bebê pode usar a fila prioritária — pergunte ao agente na entrada do saguão. Já saiam com uns ienes em espécie ou saquem aqui: muita casa pequena de Namba ainda é só dinheiro.", "ai": 0}, {"id": "e1", "nome": "Estação Kansai Airport", "tipo": "estacao", "lat": 34.4358, "lng": 135.24354, "gmaps": "Kansai Airport Station"}, {"id": "e2", "nome": "Namba (Nankai)", "tipo": "estacao", "lat": 34.66366, "lng": 135.50178, "gmaps": "Nankai Namba Station"}, {"id": "p1", "ativ": "KIX → Namba", "tipo": "hospedagem", "lat": 34.6655, "lng": 135.501, "aprox": true, "hora": "22:15", "gmaps": "Namba Station, Osaka", "alerta": "O Airport Express não tem lugar marcado e o bagageiro é pequeno: com 13 pessoas, entrem espalhados por dois vagões em vez de tentar ficar juntos. Da estação até a hospedagem são uns 400 m — de madrugada, com mala e carrinho, vale conferir antes por onde tem elevador na saída da estação.", "ai": 1}, {"id": "p2", "ativ": "Jantar", "tipo": "comida", "lat": 34.66893, "lng": 135.50105, "hora": "22:45", "fim": "23:45", "gmaps": "Dotonbori, Osaka", "foto": "Dotonbori canal night Osaka", "must": ["A primeira vista do letreiro do Glico, que amanhã vocês veem com calma"], "comidas": ["Takoyaki na rua ¥500–700, o mais rápido a esta hora", "Ramen — as casas de balcão viram a noite", "Konbini: onigiri ¥150, karaage, e o leite e a água dos bebês"], "compras": ["Don Quijote da beira do canal, aberto 24h — se faltar fralda, adaptador de tomada ou remédio, é aqui e é agora"], "alerta": "Chegando 22:45 depois de um voo longo, o realista é konbini e cama. A cozinha da maioria das casas de Dotonbori fecha por volta das 23:00; o konbini e o Don Quijote não fecham. Não force o programa no primeiro dia — amanhã começa 09:00 no castelo.", "ai": 2}, {"id": "fim", "nome": "Airbnb Namba", "tipo": "base", "lat": 34.6655, "lng": 135.501, "aprox": true, "hora": "00:00", "gmaps": "Namba Station, Osaka"}], "pernas": [{"de": "base", "para": "e1", "modo": "pe", "min": 6, "km": 0.4, "custo": 0, "desc": "Passarela coberta do Terminal 1 até a estação, no 2º andar — tem elevador."}, {"de": "e1", "para": "e2", "modo": "metro", "linha": "Nankai Airport Express", "cor": "#0060A9", "min": 45, "km": 50.0, "custo": 970, "desc": "Direto até Namba, sem baldeação. Último do dia sai por volta de 23:55."}, {"de": "e2", "para": "p1", "modo": "pe", "min": 6, "km": 0.4, "custo": 0, "desc": "Saída norte da Nankai, já dentro do bairro."}, {"de": "p1", "para": "p2", "modo": "pe", "min": 8, "km": 0.6, "custo": 0, "desc": "Sobe a Sennichimae até a beira do canal."}, {"de": "p2", "para": "fim", "modo": "pe", "min": 8, "km": 0.6, "custo": 0, "desc": "Mesma volta, agora devagar."}], "alternativas": [{"tipo": "troca", "titulo": "Rapi:t em vez do Airport Express", "texto": "¥1.520 contra ¥970, e economiza uns 10 min. O que se compra de verdade não é o tempo: é o assento marcado. Para 13 pessoas com mala às 21:15, entrar num trem com lugar garantido e bagageiro de verdade muda a chegada. São ¥550 a mais por pessoa, uns R$ 18. Reserve antes pelo site da Nankai.", "refs": ["p1"]}, {"tipo": "extra", "titulo": "Despachar as malas grandes direto para o hotel", "texto": "O balcão de takkyubin do KIX entrega em Osaka no dia seguinte por ¥2.000–2.500 a mala. Vale se o grupo chegar destruído: o trem de 45 min e a caminhada final ficam sem bagagem. O porém é que o balcão fecha por volta das 21:00 — com pouso às 19:45 é apertado, e só dá certo se a imigração andar.", "refs": ["base"]}, {"tipo": "planob", "titulo": "Se o voo atrasar", "texto": "O Airport Express roda até por volta de 23:55, então há folga de umas 2h30 sobre o horário previsto. Passando disso, é táxi — 50 km, uns ¥18.000, que para 13 pessoas viram três carros. Nesse cenário o jantar simplesmente não acontece: konbini e dormir.", "refs": ["p1"]}, {"tipo": "planob", "titulo": "Se chover", "texto": "Quase todo o dia é coberto: passarela do terminal, trem, e a saída da Nankai cai dentro da galeria da Sennichimae. Os 600 m até Dotonbori são o único trecho aberto, e dá para fazer quase inteiro por dentro da galeria coberta.", "refs": ["p2"]}]};
+const FOTOS = {"base": {"termo": "File:関西国際空港全体写真20220811 (cropped).jpg", "arq": "paradas/2027-03-16-base.webp", "titulo": "関西国際空港全体写真20220811 (cropped).jpg", "autor": "User:Ankou1192", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3A%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%E5%85%A8%E4%BD%93%E5%86%99%E7%9C%9F20220811_%28cropped%29.jpg", "lqip": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABwAwCdASoWAAoAPuleqE0pJSQiMAgBIB0JQBOgA9DGdXS8wAAA+cm4lKwzQGSDLc7Pu9y7GqYTWdkZcdnLRR7zgAA="}, "p2": {"termo": "Dotonbori canal night Osaka", "arq": "paradas/2027-03-16-p2.webp", "titulo": "Osaka Dotonbori Ebisu Bridge.jpg", "autor": "Type specimen", "lic": "CC BY-SA 3.0", "licurl": "https://creativecommons.org/licenses/by-sa/3.0", "pagina": "https://commons.wikimedia.org/wiki/File%3AOsaka_Dotonbori_Ebisu_Bridge.jpg", "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABwAwCdASoWAA8APulep00pJSOiMAgBIB0JQBdgAaoxG+x64GAA/vKw3cx6aj8iGeXYbI9ryygbxZhHLPsDf/gmnwg8t4Nt6XIlJsjIwp+mp/USBwTM6AAA"}};   // por id de parada: arquivo, credito e placeholder
 const el = (id)=>document.getElementById(id);
 const esc = (s)=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const nf  = (n,d=0)=>Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -287,7 +360,7 @@ if(map) map.fitBounds(L.latLngBounds(GEO.paradas.map(p=>[p.lat,p.lng])),{padding
 /* ---- cabecalho e numeros ---- */
 const DIAS_SEM = DIA.semana;
 el("subt").textContent = DIA.data.slice(8,10)+"/"+DIA.data.slice(5,7)+"/"+DIA.data.slice(0,4)
-  +" · "+DIAS_SEM+" · dia __NDIA__ de 16";
+  +" · "+DIAS_SEM+" · dia 1 de 16";
 el("resumo").textContent = GEO.resumo;
 const t = DIA.total||{};
 el("kpis").innerHTML =
@@ -472,3 +545,5 @@ el("trilha").addEventListener("click",ev=>{
   abrir(b.closest(".parada").dataset.id, true);
 });
 </script>
+</body>
+</html>
