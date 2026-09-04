@@ -185,11 +185,11 @@ PAGINAS = [
         'desc': 'Roteiro completo da viagem ao Japão em março de 2027: 16 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com 82 paradas, distâncias, custos, mapa, restaurantes, compras e plano B.',
     },
     {
-        'id': 'numeros',
-        'arquivo': 'numeros.html',
-        'label': 'Números',
-        'titulo': 'A Viagem em Números · Japão 2027',
-        'desc': 'Indicadores, distâncias totais, custos em ienes e reais por adulto, e estimativa da florada da sakura.',
+        'id': 'roteiro',
+        'arquivo': 'roteiro.html',
+        'label': 'Roteiro',
+        'titulo': 'Roteiro dos 16 Dias · Japão 2027',
+        'desc': 'Cronograma detalhado dos 16 dias, horários, ritmo, transportes, custos e filtros de atividade.',
     },
     {
         'id': 'mapa',
@@ -206,11 +206,11 @@ PAGINAS = [
         'desc': 'Player dinâmico dia a dia em 16 quadros com mapa animado e métricas de cada etapa.',
     },
     {
-        'id': 'roteiro',
-        'arquivo': 'roteiro.html',
-        'label': 'Roteiro',
-        'titulo': 'Roteiro dos 16 Dias · Japão 2027',
-        'desc': 'Cronograma detalhado dos 16 dias, horários, ritmo, transportes, custos e filtros de atividade.',
+        'id': 'numeros',
+        'arquivo': 'numeros.html',
+        'label': 'Números',
+        'titulo': 'A Viagem em Números · Japão 2027',
+        'desc': 'Indicadores, distâncias totais, custos em ienes e reais por adulto, e estimativa da florada da sakura.',
     },
     {
         'id': 'comer',
