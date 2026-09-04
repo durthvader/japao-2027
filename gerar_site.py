@@ -32,6 +32,16 @@ tpl = io.open(TPL, encoding='utf-8').read()
 import ajustes
 djs = ajustes.aplicar(json.loads(dados))
 
+if os.path.exists(GEO_F):
+    geo_all = json.loads(io.open(GEO_F, encoding='utf-8').read())
+    for d in djs['dias']:
+        g = geo_all.get(d['data'])
+        if g and 'pernas' in g:
+            km_pe = sum(p.get('km', 0) for p in g['pernas'] if p.get('modo') == 'pe')
+            d.setdefault('total', {})['km_pe'] = round(km_pe, 1)
+        elif d.get('total', {}).get('pe'):
+            d.setdefault('total', {})['km_pe'] = round(d['total']['pe'] / 14.0, 1)
+
 # O payload vai inteiro para dentro do HTML, entao o que nao e para o grupo ler nao
 # pode nem chegar la: 'motivo' e a justificativa de cada decisao e 'ajuste'/'ajustes'
 # sao o historico de edicao. Ficam no ajustes.json, aqui no disco.

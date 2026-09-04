@@ -345,9 +345,12 @@ el("subt").textContent = DIA.data.slice(8,10)+"/"+DIA.data.slice(5,7)+"/"+DIA.da
   +" · "+DIAS_SEM+" · dia __NDIA__ de 16";
 el("resumo").textContent = GEO.resumo;
 const t = DIA.total||{};
+const kmPe = GEO.pernas
+  ? GEO.pernas.filter(g=>g.modo==="pe").reduce((acc,g)=>acc+(g.km||0), 0)
+  : (t.km_pe||0);
 el("kpis").innerHTML =
-  `<div><b>${nf(t.km,1)}</b><u>km</u></div>`+
-  `<div><b>${nf(t.pe)}</b><u>min a pé</u></div>`+
+  `<div><b>${nf(t.km,1)}</b><u>km total</u></div>`+
+  `<div><b>${nf(kmPe,1)}</b><u>km a pé</u></div>`+
   `<div><b>¥${nf(t.transp)}</b><u>transporte</u></div>`+
   `<div><b>¥${nf(t.ingresso)}</b><u>ingressos</u></div>`;
 

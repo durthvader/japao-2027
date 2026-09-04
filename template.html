@@ -976,9 +976,10 @@ function montarTrilho(){
       return `<div class="per"><p class="per-lbl">${esc(p)}</p>${itens}</div>`;
     }).join("");
     const stats=[];
-    if(t.km)      stats.push(`<span><b>${nf(t.km,t.km%1?1:0)}</b> km</span>`);
+    if(t.km)      stats.push(`<span><b>${nf(t.km,t.km%1?1:0)}</b> km total</span>`);
     if(t.min)     stats.push(`<span><b>${nf(t.min)}</b> min transp.</span>`);
-    if(t.pe)      stats.push(`<span><b>${nf(t.pe)}</b> min a pé</span>`);
+    if(t.km_pe)   stats.push(`<span><b>${nf(t.km_pe,1)}</b> km a pé</span>`);
+    else if(t.pe) stats.push(`<span><b>${nf(t.pe/14,1)}</b> km a pé</span>`);
     stats.push(`<span><b>¥${nf((t.transp||0)+(t.ingresso||0))}</b> no dia</span>`);
     return `<article class="dia c-${d.cidade}" id="dia${k+1}" data-foto="${d.cidade}">
       <div class="dia-mark">${String(k+1).padStart(2,"0")}</div>
