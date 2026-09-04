@@ -4545,5 +4545,370 @@
    "nome": "Toei Marugoto Kippu (passe diário Toei) — ¥700 adulto, ¥350 criança",
    "texto": "NÃO COMPENSA hoje, e por uma margem larga. O dia inteiro usa duas passagens de metrô e mais nada: ¥220 de Ojima a Asakusa e ¥220 de Oshiage a Ojima, ¥440 por adulto. O passe custa ¥700 — vocês pagariam ¥260 a mais por pessoa, cerca de ¥2.600 jogados fora pelo grupo pagante. Comprem passagem avulsa, ou simplesmente encostem o Suica ou o Pasmo na catraca. ⚠ O passe Toei de ¥500 só vale sábado, domingo e feriado, e 26 de março de 2027 é sexta-feira, então também não serve. ⚠ E cuidado com o raciocínio inverso: o passe Toei não cobriria a Tobu Skytree Line do plano de chuva, que é de outra empresa. Criança de 6 a 11 anos paga metade da tarifa (¥110 por trecho) e abaixo de 6 anos não paga nada — os três bebês viajam de graça o dia inteiro."
   }
+ },
+ "2027-03-28": {
+  "titulo": "Domingo de sakura em Ueno e calçadão em Akihabara",
+  "resumo": "O dia sobe cedo para Ueno enquanto o parque ainda respira, resolve o museu na ponta norte, desce pela Ameyoko e termina em Akihabara dentro da janela em que a Chuo-dori fecha para carros. A ordem é norte para sul, sem voltar pelo próprio caminho, e a chegada é pela Saída do Parque de Ueno, o único acesso ao parque sem degrau nem ladeira para quem empurra carrinho.",
+  "centro": [
+   35.708,
+   139.7745
+  ],
+  "zoom": 14,
+  "paradas": [
+   {
+    "id": "base",
+    "nome": "Hotel em Ojima",
+    "tipo": "base",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "hora": "08:30",
+    "gmaps": "Ojima Station, Koto, Tokyo"
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Ojima (Toei Shinjuku)",
+    "tipo": "estacao",
+    "lat": 35.68977,
+    "lng": 139.83508,
+    "gmaps": "Ojima Station Toei Shinjuku Line"
+   },
+   {
+    "id": "e2",
+    "nome": "Estação Iwamotocho (Toei Shinjuku)",
+    "tipo": "estacao",
+    "lat": 35.69561,
+    "lng": 139.77532,
+    "gmaps": "Iwamotocho Station Tokyo"
+   },
+   {
+    "id": "e3",
+    "nome": "Estação Akihabara (JR)",
+    "tipo": "estacao",
+    "lat": 35.69917,
+    "lng": 139.77263,
+    "gmaps": "Akihabara Station Electric Town Exit"
+   },
+   {
+    "id": "e4",
+    "nome": "Estação Ueno — Saída do Parque (Koen-guchi)",
+    "tipo": "estacao",
+    "lat": 35.7151,
+    "lng": 139.776,
+    "aprox": true,
+    "gmaps": "Ueno Station Park Exit"
+   },
+   {
+    "id": "p1",
+    "ativ": "Ueno Park (hanami)",
+    "tipo": "parque",
+    "lat": 35.71402,
+    "lng": 139.77393,
+    "hora": "09:15",
+    "fim": "10:45",
+    "gmaps": "Ueno Park, Taito, Tokyo",
+    "foto": "Ueno Park cherry blossom",
+    "must": [
+     "São cerca de 1.200 cerejeiras. A alameda central, a Sakura-dori, é o cartão-postal — e é onde a multidão anda em fila indiana depois das 10:00. Cheguem antes disso.",
+     "A Sakura-dori é passagem, não piquenique: estender lona ali é proibido. As lonas ficam no Green Park e no Suribachiyama, e é lá que o chão some sob o plástico azul.",
+     "Com três carrinhos, o caminho bom é o de baixo: pela beira do Shinobazu, o lago dos lótus, largo, plano e com uma fração da gente.",
+     "A festa da sakura segue à noite com lanternas e vai até por volta das 20:00 — mas o dia de vocês não volta aqui."
+    ],
+    "comidas": [
+     "Barraca de yakisoba, karaage ou dango ¥400–700",
+     "Café e onigiri do konbini da estação, se a fila das barracas estiver longa"
+    ],
+    "alerta": "Domingo de pico de florada é o hanami mais concorrido do Japão. Combinem um ponto de reencontro fixo antes de entrar — dentro da alameda ninguém acha ninguém. Fraldário e banheiro acessível existem no parque, mas são poucos para o volume de gente: usem o do museu ou o da estação, que são melhores. Evitem as escadarias do lado sul (Suribachiyama e a subida do Kiyomizu Kannon-do) com carrinho — contornem."
+   },
+   {
+    "id": "p2",
+    "ativ": "Museu Nacional de Tokyo",
+    "tipo": "museu",
+    "lat": 35.71904,
+    "lng": 139.77597,
+    "hora": "10:50",
+    "fim": "12:50",
+    "gmaps": "Tokyo National Museum",
+    "foto": "Tokyo National Museum Honkan",
+    "must": [
+     "Abre 09:30 e fecha 17:00, última entrada 16:30. A noite estendida até 20:00 é só sexta e sábado — no domingo de vocês vale o horário normal.",
+     "Fecha às segundas: este domingo é a única brecha da semana em Tóquio para ele.",
+     "Adulto ¥1.000, universitário ¥500, grátis até 18 anos e a partir de 70. No grupo isso dá 8 entradas pagas — os dois adolescentes e os três bebês não pagam.",
+     "Se o tempo apertar, façam só o Honkan: ele sozinho é a linha do tempo do Japão, de armadura e espada a ukiyo-e, e resolve em 1h30."
+    ],
+    "alerta": "O ingresso de ¥1.000 é da coleção permanente. Quando há exposição especial no Heiseikan, ela é ingresso à parte e costuma ter fila — confiram o cartaz na bilheteria e decidam ali; a permanente sozinha já dá as 2h. Elevador, rampa e fraldário existem no Honkan, e o carrinho circula em tudo."
+   },
+   {
+    "id": "p3",
+    "ativ": "Ameyoko",
+    "tipo": "compras",
+    "lat": 35.71002,
+    "lng": 139.77454,
+    "hora": "13:05",
+    "fim": "14:05",
+    "gmaps": "Ameyoko Shopping Street Ueno",
+    "foto": "Ameyoko market street Tokyo",
+    "compras": [
+     "🛒 AQUI SE COMPRA: são mais de 400 lojas em cerca de 500 m sob o viaduto do trem, entre Ueno e Okachimachi. É a rua de pechincha de Tóquio: tênis, mala, cosmético, doce a granel, frutos do mar.",
+     "Shimura Shoten faz o leilão de chocolate no grito — sacola cheia por preço fixo, e é espetáculo mesmo para quem não compra.",
+     "London Sports vende tênis e roupa outdoor com desconto agressivo.",
+     "Doce e castanha a granel se pesa e se paga na hora: separem dinheiro vivo, várias bancas pequenas não passam cartão."
+    ],
+    "comidas": [
+     "Espetinho e frutos do mar de banca ¥300–800",
+     "Kebab e gyoza de rua ¥500–900"
+    ],
+    "alerta": "A maioria das lojas abre por volta das 10:00 e fecha entre 19:00 e 20:00; algumas bancas de peixe abrem antes e fecham cedo. O corredor é estreito e no domingo à tarde vira aperto — dois carrinhos lado a lado não passam. Andem em fila, um adulto por carrinho, e deixem a compra pesada para o fim para não empurrar peso."
+   },
+   {
+    "id": "e5",
+    "nome": "Estação Okachimachi (JR)",
+    "tipo": "estacao",
+    "lat": 35.70695,
+    "lng": 139.77463,
+    "gmaps": "Okachimachi Station"
+   },
+   {
+    "id": "p4",
+    "ativ": "AKIHABARA",
+    "tipo": "compras",
+    "lat": 35.7,
+    "lng": 139.7725,
+    "hora": "14:20",
+    "fim": "18:20",
+    "gmaps": "Akihabara Electric Town, Chuo-dori",
+    "foto": "Akihabara Chuo dori street",
+    "must": [
+     "Domingo é o melhor dia: a Chuo-dori vira calçadão entre o cruzamento de Sotokanda 5-chome e o de Manseibashi, cerca de 570 m sem carro.",
+     "Nesta época do ano o calçadão é das 13:00 às 17:00 — o horário mais longo, até 18:00, só vale de abril a setembro. Quanto mais cedo vocês chegarem, mais rua sem carro sobra.",
+     "Chuva, vento forte ou só a previsão ruim cancelam o calçadão no próprio dia. Não montem o passeio inteiro em cima dele."
+    ],
+    "compras": [
+     "🛒 AQUI SE COMPRA: Yodobashi-Akiba (9 andares, 09:30–22:00), Bic Camera, Sofmap, Don Quijote, Kotobukiya, Iosys, Janpara e as lojas de game usado.",
+     "Super Potato (game retrô) abre 11:00 e fecha 20:00. Mandarake Complex abre bem depois da média da rua — não contem com ele de manhã."
+    ],
+    "comidas": [
+     "Curry ou ramen de balcão ¥900–1.300",
+     "Crepe e café no térreo das lojas ¥500–800"
+    ],
+    "alerta": "A rua é plana, mas as lojas são verticais e apertadas: Super Potato e Mandarake têm escada estreita e o carrinho não sobe. Combinem revezamento na porta antes de entrar na primeira. Quem quiser conforto com carrinho fica no Yodobashi, que tem elevador grande, corredor largo e fraldário."
+   },
+   {
+    "id": "p5",
+    "ativ": "Compras + despacho das caixas",
+    "tipo": "compras",
+    "lat": 35.69878,
+    "lng": 139.77473,
+    "hora": "18:20",
+    "fim": "19:00",
+    "gmaps": "Yodobashi Camera Multimedia Akiba",
+    "compras": [
+     "🛒 AQUI SE COMPRA: o eletrônico do grupo se resolve aqui. Yodobashi-Akiba tem balcão para estrangeiro; Bic Camera, Sofmap e Don Quijote ficam a menos de 300 m.",
+     "Guardem TODAS as notas juntas, num envelope só, e anotem em qual mala foi cada compra."
+    ],
+    "alerta": "Duas coisas mudaram e valem dinheiro. (1) Desde 1/11/2026 a loja cobra o preço com imposto e o reembolso vem depois: no aeroporto vocês passam no quiosque da alfândega com passaporte e com as mercadorias, e é a LOJA (ou a empresa que ela contratou) que devolve o valor, pelo meio que ela escolher — não é dinheiro na mão no balcão do aeroporto. O piso continua ¥5.000 por loja por dia. (2) Mandar a compra isenta pelo correio para fora do Japão deixou de valer: o que não estiver com vocês na hora da alfândega perde a isenção da compra inteira. Despachar caixa para casa e ter isenção não combinam. Para mandar caixa DENTRO do Japão (ao hotel de Osaka), domingo tem saída: a loja da Yamato em frente à estação de Akihabara (Sotokanda 1-15-8) abre domingo 09:00–19:00, e 7-Eleven e FamilyMart aceitam takkyubin a qualquer hora. Balcão comum de Correio não abre domingo — só o guichê Yu-Yu das agências grandes, como a de Ueno, aberta domingo das 07:00 às 18:00."
+   },
+   {
+    "id": "fim",
+    "nome": "Hotel em Ojima",
+    "tipo": "base",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "hora": "20:00",
+    "gmaps": "Ojima Station, Koto, Tokyo"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "e1",
+    "modo": "pe",
+    "min": 4,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Duas quadras até a boca da estação, calçada larga e plana."
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "linha": "Toei Shinjuku",
+    "cor": "#6CBB5A",
+    "min": 17,
+    "km": 7.0,
+    "custo": 220,
+    "desc": "Direto, sem baldeação, sentido Shinjuku. Elevador nas duas pontas."
+   },
+   {
+    "de": "e2",
+    "para": "e3",
+    "modo": "pe",
+    "min": 7,
+    "km": 0.5,
+    "custo": 0,
+    "desc": "Sobe a Chuo-dori a céu aberto até a Saída Electric Town de Akihabara. Tudo plano."
+   },
+   {
+    "de": "e3",
+    "para": "e4",
+    "modo": "metro",
+    "linha": "JR Yamanote",
+    "cor": "#008C46",
+    "min": 4,
+    "km": 2.2,
+    "custo": 160,
+    "desc": "2 estações (Okachimachi, Ueno). Desçam pela Saída do Parque, que tem elevador."
+   },
+   {
+    "de": "e4",
+    "para": "p1",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "A Saída do Parque sai no nível do parque: nenhum degrau entre a catraca e as cerejeiras."
+   },
+   {
+    "de": "p1",
+    "para": "p2",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Até a ponta norte do parque, onde fica o museu."
+   },
+   {
+    "de": "p2",
+    "para": "p3",
+    "modo": "pe",
+    "min": 18,
+    "km": 1.2,
+    "custo": 0,
+    "desc": "Desce o parque inteiro de volta para o sul e sai na entrada norte da Ameyoko."
+   },
+   {
+    "de": "p3",
+    "para": "e5",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "A Ameyoko termina na porta de Okachimachi."
+   },
+   {
+    "de": "e5",
+    "para": "e3",
+    "modo": "metro",
+    "linha": "JR Yamanote",
+    "cor": "#008C46",
+    "min": 3,
+    "km": 1.0,
+    "custo": 160,
+    "desc": "1 estação só. Quem preferir desce a Chuo-dori a pé: 1,1 km plano, uns 15 min, e já entra no calçadão."
+   },
+   {
+    "de": "e3",
+    "para": "p4",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Saída Electric Town e a Chuo-dori começa ali."
+   },
+   {
+    "de": "p4",
+    "para": "p5",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.3,
+    "custo": 0,
+    "desc": "Entre as lojas, tudo dentro do quarteirão da estação."
+   },
+   {
+    "de": "p5",
+    "para": "e2",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Volta pela Chuo-dori até Iwamotocho, agora com as sacolas."
+   },
+   {
+    "de": "e2",
+    "para": "e1",
+    "modo": "metro",
+    "linha": "Toei Shinjuku",
+    "cor": "#6CBB5A",
+    "min": 17,
+    "km": 7.0,
+    "custo": 220,
+    "desc": "Direto para Ojima, sentido Motoyawata. Sem baldeação com sacola na mão."
+   },
+   {
+    "de": "e1",
+    "para": "fim",
+    "modo": "pe",
+    "min": 4,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Da estação ao hotel."
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "planob",
+    "titulo": "Se chover, o calçadão some e o dia entra para dentro",
+    "texto": "Chuva, vento forte ou só previsão ruim cancelam o fechamento da Chuo-dori no mesmo dia — e o hanami vira lama com carrinho. Plano B: esticar o museu, que é seco, quente e liso e tem café, e passar a tarde no Yodobashi-Akiba, nove andares cobertos com elevador, banheiro e fraldário, colado na estação.",
+    "ponto": {
+     "nome": "Yodobashi-Akiba",
+     "lat": 35.69878,
+     "lng": 139.77473,
+     "gmaps": "Yodobashi Camera Multimedia Akiba"
+    }
+   },
+   {
+    "tipo": "troca",
+    "titulo": "Contornar a multidão pelo Shinobazu",
+    "texto": "Se a alameda central estiver ombro a ombro — e num domingo de pico ela vai estar —, entrem pela beira do lago Shinobazu em vez da Sakura-dori. É plano, largo, tem cerejeira na margem e uma fração da gente, e dá para subir até o museu por dentro do parque sem nunca pegar a alameda.",
+    "ponto": {
+     "nome": "Lago Shinobazu",
+     "lat": 35.71187,
+     "lng": 139.77086,
+     "gmaps": "Shinobazu Pond, Ueno"
+    }
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Museu de Ciências, se o dia render",
+    "texto": "Fica a 200 m do Museu Nacional, no mesmo parque: baleia azul em tamanho real na porta, esqueleto de dinossauro e uma ala inteira que prende adolescente. Tem elevador e fraldário. Só entra se cortarem tempo em outro lugar — o domingo já é longo de pé.",
+    "ponto": {
+     "nome": "Museu Nacional de Ciências",
+     "lat": 35.7159,
+     "lng": 139.77669,
+     "gmaps": "National Museum of Nature and Science Tokyo"
+    }
+   },
+   {
+    "tipo": "corte",
+    "titulo": "Pular a Ameyoko e ganhar uma hora de calçadão",
+    "texto": "A Ameyoko é o trecho mais apertado do dia e com três carrinhos rende pouco. Cortando-a, vocês chegam em Akihabara por volta das 13:10, no começo da janela sem carro, em vez de 14:20 — e a rua fechada com carrinho vale mais que o corredor estreito. As compras de rua dá para fazer na Don Quijote de Akihabara.",
+    "refs": [
+     "p3"
+    ]
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Despachar caixa num domingo: onde dá certo",
+    "texto": "Domingo derruba o balcão comum dos Correios, mas não derruba o despacho. A loja da Yamato em frente à estação de Akihabara abre 09:00–19:00 no domingo; 7-Eleven e FamilyMart aceitam takkyubin a qualquer hora (Lawson não — lá só sai Yu-Pack dos Correios); e a agência dos Correios de Ueno tem guichê Yu-Yu aberto domingo, 07:00–18:00. Escolham uma antes de encher a sacola, e lembrem: o que for isento de imposto tem de estar com vocês na alfândega, esse não vai por caixa.",
+    "refs": [
+     "p5"
+    ]
+   }
+  ],
+  "passe": {
+   "nome": "Nenhum passe compensa — usem o IC (Suica/Pasmo)",
+   "texto": "O dia gasta ¥760 por pessoa em trem: ¥220 Ojima→Iwamotocho, ¥160 Akihabara→Ueno, ¥160 Okachimachi→Akihabara e ¥220 na volta. O Tokyo Subway Ticket de 24h custa ¥800 e nem cobre a JR; o passe diário do Toei custa ¥700 e cobriria só os ¥440 de metrô. Os dois perdem. Passem o IC e pronto — e as três crianças abaixo de 6 anos não pagam trem."
+  }
  }
 }

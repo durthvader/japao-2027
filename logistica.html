@@ -238,6 +238,14 @@ img,canvas,svg{max-width:100%;display:block}
 
 /* ============ TRILHO / ROTEIRO ============ */
 .dia-nav-wrap{margin-bottom:14px}
+.prep-banner{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:var(--radius-sm);
+  background:color-mix(in srgb,var(--warn) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--warn) 30%,transparent);
+  text-decoration:none;margin-bottom:14px;transition:background .15s}
+.prep-banner:hover{background:color-mix(in srgb,var(--warn) 18%,var(--surface))}
+.prep-banner-icon{font-size:1.3rem;flex:none}
+.prep-banner-txt{flex:1;font-size:.83rem;color:var(--ink);line-height:1.4}
+.prep-banner-txt b{color:var(--warn);font-weight:800}
+.prep-banner-cta{flex:none;font-size:.76rem;font-weight:800;color:var(--warn);white-space:nowrap}
 .dia-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 @media(min-width:680px){
   .dia-nav{grid-template-columns:repeat(8,1fr);gap:7px}
@@ -922,7 +930,7 @@ function montarTrilho(){
         const meta=[];
         if(a.km)      meta.push(`<span>${nf(a.km,a.km%1?1:0)} km</span>`);
         if(a.min)     meta.push(`<span>${nf(a.min)} min</span>`);
-        if(a.pe)      meta.push(`<span>${nf(a.pe)} min a pé</span>`);
+        if(a.pe)      meta.push(`<span>${nf(a.pe/14,1)} km a pé</span>`);
         meta.push(a.ingresso?`<s>¥${nf(a.ingresso)}</s>`:`<s>grátis</s>`);
         if(a.duracao && a.duracao!=="—") meta.push(`<span>${esc(a.duracao)}</span>`);
         const det=[];
