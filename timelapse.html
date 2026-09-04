@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Roteiro completo da viagem ao Japão em março de 2027: 16 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com 82 paradas, distâncias, custos, mapa, restaurantes, compras e plano B.">
+<meta name="description" content="Player dinâmico dia a dia em 16 quadros com mapa animado e métricas de cada etapa.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Japão 2027 — 16 dias de Osaka a Tokyo">
-<meta property="og:description" content="Roteiro completo da viagem ao Japão em março de 2027: 16 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com 82 paradas, distâncias, custos, mapa, restaurantes, compras e plano B.">
+<meta property="og:title" content="Timelapse · Japão 2027">
+<meta property="og:description" content="Player dinâmico dia a dia em 16 quadros com mapa animado e métricas de cada etapa.">
 <meta property="og:locale" content="pt_BR">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
@@ -15,7 +15,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
 <script>try{var _th=localStorage.getItem("jp27_theme")||localStorage.getItem("jp27tema")||localStorage.getItem("tema-japao");if(_th)document.documentElement.setAttribute("data-theme",_th);}catch(e){}</script>
-<title>Japão 2027 — 16 dias de Osaka a Tokyo</title>
+<title>Timelapse · Japão 2027</title>
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -460,7 +460,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 }
 </style>
 </head>
-<body class="has-hero">
+<body>
 <div class="wall" id="wall" aria-hidden="true"></div>
 <div class="scrim" aria-hidden="true"></div>
 
@@ -468,99 +468,51 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="top-nav-in">
     <a class="nav-brand" href="index.html"><b>日本</b> 2027 <small>Roteiro</small></a>
     <nav class="top-links" aria-label="Seções do site">
-      <a href="index.html" aria-current="page">Início</a><a href="numeros.html">Números</a><a href="mapa.html">Mapa</a><a href="timelapse.html">Timelapse</a><a href="roteiro.html">Roteiro</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a>
+      <a href="index.html">Início</a><a href="numeros.html">Números</a><a href="mapa.html">Mapa</a><a href="timelapse.html" aria-current="page">Timelapse</a><a href="roteiro.html">Roteiro</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a>
     </nav>
     <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
-<header class="hero" id="inicio" data-foto="hero">
-  <div class="hero-foto" id="heroFoto"></div>
-  <canvas id="heroCv"></canvas>
-  <div class="hero-veil"></div>
-  <div class="hero-in wrap">
-    <div class="hero-kanji">日本<br>2027</div>
-    <h1>Dezesseis dias entre Osaka, Kyoto, o Fuji e Tokyo</h1>
-    <p class="dates">16 — 31 MAR 2027 · 13 PESSOAS · 8 ADULTOS, 2 ADOLESCENTES, 3 BEBÊS</p>
-    <div class="hero-rota">
-      <span>Osaka</span><i>→</i><span>Kyoto</span><i>→</i><span>Kawaguchiko</span><i>→</i><span>Tokyo</span><i>→</i><span>Osaka</span>
-    </div>
-    <div class="count"><b id="cd">—</b><em>dias até o embarque</em></div>
-  </div>
-  <div class="scroll-hint">role</div>
-</header>
-
-<main class="sec wrap-wide" id="portal" data-foto="hero">
-  <div class="sec-head" style="text-align:center;align-items:center">
-    <p class="eyebrow">Planejamento da viagem</p>
-    <h2>Explore cada parte do roteiro</h2>
+<main>
+<section class="sec wrap-wide" id="timelapse" data-foto="osaka">
+  <div class="sec-head">
+    <p class="eyebrow">Timelapse</p>
+    <h2>Dia a dia, em 16 quadros</h2>
     <div class="rule"></div>
-    <p class="sub">Acesse as páginas dedicadas para ver detalhes dia a dia, mapas interativos, gastronomia e logística.</p>
+    <p class="sub">Arraste a barra ou toque em play para atravessar a viagem inteira. O ponto anda no mapa, a cidade troca e os números do dia acompanham.</p>
   </div>
-  <div class="hub-grid">
-    <a class="hub-card c-osaka" href="roteiro.html">
-      <s></s>
-      <span class="hub-badge">D01 — D16</span>
-      <h3>Roteiro dos 16 Dias</h3>
-      <p>Cronograma dia a dia com horários, transportes, custos, filtros por tema e mapas diários interativos.</p>
-      <span class="hub-link">Abrir roteiro <i>→</i></span>
-    </a>
-    <a class="hub-card c-fuji" href="mapa.html">
-      <s></s>
-      <span class="hub-badge">1.425 km</span>
-      <h3>Mapa Geral da Rota</h3>
-      <p>Trajeto completo do Japão de ponta a ponta com paradas entre cidades, shinkansen e conexões.</p>
-      <span class="hub-link">Ver mapa geral <i>→</i></span>
-    </a>
-    <a class="hub-card c-tokyo" href="timelapse.html">
-      <s></s>
-      <span class="hub-badge">Player Dinâmico</span>
-      <h3>Timelapse da Viagem</h3>
-      <p>Player interativo dia a dia com mapa dinâmico, evolução de quilômetros e ritmo de cada etapa.</p>
-      <span class="hub-link">Assistir timelapse <i>→</i></span>
-    </a>
-    <a class="hub-card c-kyoto" href="numeros.html">
-      <s></s>
-      <span class="hub-badge">Custos & Métricas</span>
-      <h3>A Viagem em Números</h3>
-      <p>Resumo de transporte, ingressos por adulto, conversão de moedas (¥ e R$) e previsão da sakura.</p>
-      <span class="hub-link">Conferir números <i>→</i></span>
-    </a>
-    <a class="hub-card c-osaka" href="comer.html">
-      <s></s>
-      <span class="hub-badge">Gastronomia</span>
-      <h3>Onde Comer</h3>
-      <p>Mercados de rua, takoyaki em Dotonbori, sushi em Toyosu, becos tradicionais e etiquetas locais.</p>
-      <span class="hub-link">Explorar restaurantes <i>→</i></span>
-    </a>
-    <a class="hub-card c-tokyo" href="compras.html">
-      <s></s>
-      <span class="hub-badge">Lojas & Tax-Free</span>
-      <h3>Guia de Compras</h3>
-      <p>Eletrônicos e anime em Akihabara e Den Den Town, atacado Senba e regras de tax-free.</p>
-      <span class="hub-link">Ver dicas de compras <i>→</i></span>
-    </a>
-    <a class="hub-card c-fuji" href="planob.html">
-      <s></s>
-      <span class="hub-badge">Contingências</span>
-      <h3>Plano B & Alternativas</h3>
-      <p>Opções para dias de chuva ou cansaço com bebês, alternativas para o Fuji e as 14 notas do roteiro.</p>
-      <span class="hub-link">Ver plano B <i>→</i></span>
-    </a>
-    <a class="hub-card c-kyoto" href="logistica.html">
-      <s></s>
-      <span class="hub-badge">Voos & Hotéis</span>
-      <h3>Logística & Hospedagem</h3>
-      <p>Horários dos voos LATAM, conexões internacionais e comparativo entre conjuntos A e B de hotéis.</p>
-      <span class="hub-link">Ver logística <i>→</i></span>
-    </a>
+  <div class="tl" id="tl">
+    <div class="tl-art" id="tlArt">
+      <div class="tl-map" id="tlMap"></div>
+      <div class="tl-over">
+        <div class="tl-city" id="tlCity">大阪<small id="tlBase">Osaka</small></div>
+        <div class="tl-daynum"><b id="tlNum">01</b><u id="tlDate">16/03</u></div>
+      </div>
+    </div>
+    <div class="tl-body">
+      <div>
+        <div class="tl-stats">
+          <div><b id="tlKm">—</b><u>km</u></div>
+          <div><b id="tlMin">—</b><u>min transp.</u></div>
+          <div><b id="tlPe">—</b><u>km a pé</u></div>
+          <div><b id="tlYen">—</b><u>¥ no dia</u></div>
+        </div>
+        <ul class="tl-list" id="tlList"></ul>
+      </div>
+      <div class="tl-ctrl">
+        <button class="tl-play" id="tlPlay" aria-label="Reproduzir o timelapse">▶</button>
+        <input class="tl-range" id="tlRange" type="range" min="0" max="15" value="0" step="1" aria-label="Escolher o dia da viagem">
+      </div>
+    </div>
   </div>
+</section>
 </main>
 
 <nav class="nav" aria-label="Seções do site">
   <div class="nav-in">
-    <a href="index.html" aria-current="page">Início</a><a href="numeros.html">Números</a><a href="mapa.html">Mapa</a><a href="timelapse.html">Timelapse</a><a href="roteiro.html">Roteiro</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a>
+    <a href="index.html">Início</a><a href="numeros.html">Números</a><a href="mapa.html">Mapa</a><a href="timelapse.html" aria-current="page">Timelapse</a><a href="roteiro.html">Roteiro</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a>
   </div>
 </nav>
 
@@ -572,7 +524,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <script>
 "use strict";
-const DADOS = {};
+const DADOS = {"dias": [{"cidade": "osaka", "base": "Osaka / Namba", "data": "2027-03-16", "semana": "terça", "total": {"km": 46.4, "min": 40, "pe": 18.0, "transp": 970.0, "ingresso": 0, "nota": "≈ R$ 032 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Noite", "nome": "CHEGADA — voo JQ 13, pouso no KIX às 19:45"}, {"periodo": "Noite", "nome": "KIX → Tengachaya (check-in na hospedagem)"}, {"periodo": "Noite", "nome": "Jantar rápido no bairro"}]}, {"cidade": "osaka", "base": "Osaka / Namba", "data": "2027-03-17", "semana": "quarta", "total": {"km": 14.2, "min": 38, "pe": 53.0, "transp": 670, "ingresso": 6700.0, "nota": "≈ R$ 122 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Castelo de Osaka (torre/museu) + parque"}, {"periodo": "Tarde", "nome": "Shitennoji (o templo mais antigo do Japão)"}, {"periodo": "Tarde", "nome": "Shinsekai — o bairro que parou em 1912"}, {"periodo": "Tarde", "nome": "SUMÔ — Haru Basho na EDION Arena"}, {"periodo": "Noite", "nome": "Dotonbori / Glico / Hozenji Yokocho"}]}, {"cidade": "osaka", "base": "Osaka / Namba", "data": "2027-03-18", "semana": "quinta", "total": {"km": 28.7, "min": 66.0, "pe": 68.0, "transp": 1060.0, "ingresso": 4700.0, "nota": "≈ R$ 212 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Kuromon Ichiba — café da manhã de frutos do mar"}, {"periodo": "Manhã", "nome": "Namba Yasaka Jinja — a cabeça de leão de 12 m"}, {"periodo": "Manhã", "nome": "Aquário Kaiyukan — tubarão-baleia"}, {"periodo": "Tarde", "nome": "Almoço no Tempozan Marketplace"}, {"periodo": "Tarde", "nome": "Umeda Sky Building — Jardim Flutuante (173 m)"}]}, {"cidade": "kyoto", "base": "Osaka → Kyoto", "data": "2027-03-19", "semana": "sexta", "total": {"km": 57.1, "min": 75.0, "pe": 87.0, "transp": 1330, "ingresso": 600, "nota": "≈ R$ 035 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Check-out + despachar malas (opcional)"}, {"periodo": "Manhã", "nome": "TRANSFER OSAKA → KYOTO"}, {"periodo": "Tarde", "nome": "Higashi e Nishi Honganji — os dois templos gigantes"}, {"periodo": "Tarde", "nome": "Sanjūsangen-dō — as 1.001 estátuas de Kannon"}, {"periodo": "Tarde", "nome": "Check-in K-style Higashi-Honganji"}]}, {"cidade": "kyoto", "base": "Kyoto", "data": "2027-03-20", "semana": "sábado", "total": {"km": 26.6, "min": 73, "pe": 70.0, "transp": 950, "ingresso": 3700.0, "nota": "≈ R$ 094 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Arashiyama — Floresta de Bambu"}, {"periodo": "Manhã", "nome": "Tenryū-ji — o jardim de 1339 ao lado do bambuzal"}, {"periodo": "Manhã", "nome": "Monkey Park Iwatayama"}, {"periodo": "Tarde", "nome": "Ryoan-ji (jardim seco de pedras)"}, {"periodo": "Tarde", "nome": "Kinkaku-ji (Pavilhão Dourado)"}]}, {"cidade": "kyoto", "base": "Kyoto", "data": "2027-03-21", "semana": "domingo", "total": {"km": 19.7, "min": 62.0, "pe": 114.0, "transp": 1340.0, "ingresso": 1600.0, "nota": "≈ R$ 090 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Fushimi Inari Taisha (os 10.000 torii) — AO AMANHECER"}, {"periodo": "Manhã", "nome": "Ginkaku-ji (Pavilhão de Prata)"}, {"periodo": "Tarde", "nome": "CAMINHO DOS FILÓSOFOS (2 km à beira do canal)"}, {"periodo": "Tarde", "nome": "Nanzen-ji + aqueduto romano (Suirokaku)"}, {"periodo": "Tarde", "nome": "Kiyomizu-dera (a varanda de madeira)"}]}, {"cidade": "fuji", "base": "Kyoto → Kawaguchiko", "data": "2027-03-22", "semana": "segunda", "total": {"km": 334.5, "min": 252.0, "pe": 30.0, "transp": 14610.0, "ingresso": 0, "nota": "≈ R$ 468 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER: Kyoto → Mishima (Shinkansen)"}, {"periodo": "Manhã", "nome": "TRANSFER: Mishima → Kawaguchiko (ônibus)"}, {"periodo": "Tarde", "nome": "Oishi Park — Fuji refletido no Lago Kawaguchi"}, {"periodo": "Tarde", "nome": "Check-in ryokan La Vista Fujikawaguchiko"}, {"periodo": "Noite", "nome": "Onsen + jantar no ryokan"}]}, {"cidade": "tokyo", "base": "Kawaguchiko → Tokyo", "data": "2027-03-23", "semana": "terça", "total": {"km": 134.4, "min": 176.0, "pe": 50.0, "transp": 3900.0, "ingresso": 0, "nota": "≈ R$ 118 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Teleférico Kachi-Kachi (Monte Tenjo, 1.075 m)"}, {"periodo": "Manhã", "nome": "Pagode Chureito (opcional — a foto clássica)"}, {"periodo": "Tarde", "nome": "TRANSFER: Kawaguchiko → Tokyo (Shinjuku)"}, {"periodo": "Noite", "nome": "Shinjuku → Ojima (check-in no Airbnb)"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-24", "semana": "quarta", "total": {"km": 35.5, "min": 103.0, "pe": 50.0, "transp": 1632, "ingresso": 10500.0, "nota": "≈ R$ 389 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER para o parque (Maihama)"}, {"periodo": "Noite", "nome": "Volta do parque"}, {"periodo": "Dia todo", "nome": "TOKYO DISNEYSEA — DEFINIDO"}, {"periodo": "Dia todo", "nome": "FANTASY SPRINGS — a área nova"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-25", "semana": "quinta", "total": {"km": 34.9, "min": 93.0, "pe": 76.0, "transp": 1000.0, "ingresso": 6100.0, "nota": "≈ R$ 035 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Shinjuku Gyoen (o melhor hanami de Tokyo)"}, {"periodo": "Tarde", "nome": "teamLab Borderless — Azabudai Hills"}, {"periodo": "Tarde", "nome": "Observatório do Governo (GRÁTIS — opcional)"}, {"periodo": "Tarde", "nome": "Omoide Yokocho + Kabukicho + Godzilla"}, {"periodo": "Noite", "nome": "Jantar + volta"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-26", "semana": "sexta", "total": {"km": 16.0, "min": 45.0, "pe": 61.0, "transp": 590.0, "ingresso": 2100.0, "nota": "≈ R$ 089 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Sensoji + Kaminarimon + Nakamise-dori"}, {"periodo": "Manhã", "nome": "Asakusa Shrine + rua Hoppy-dori"}, {"periodo": "Tarde", "nome": "Kappabashi — a rua das facas e da comida de plástico"}, {"periodo": "Tarde", "nome": "Sumida Park — sakura na beira do rio"}, {"periodo": "Tarde", "nome": "Tokyo Skytree (634 m) + Solamachi"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-27", "semana": "sábado", "total": {"km": 30.7, "min": 96.0, "pe": 48.0, "transp": 1570.0, "ingresso": 4430.0, "nota": "≈ R$ 198 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Toyosu Market (o mercado de peixes)"}, {"periodo": "Manhã", "nome": "teamLab PLANETS — DEFINIDO"}, {"periodo": "Tarde", "nome": "Miraikan (museu de ciência e tecnologia)"}, {"periodo": "Tarde", "nome": "DiverCity (Gundam) + Odaiba Marine Pier"}, {"periodo": "Noite", "nome": "Pôr do sol na Ponte Arco-Íris + volta"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-28", "semana": "domingo", "total": {"km": 13.5, "min": 29.0, "pe": 61.0, "transp": 510.0, "ingresso": 1000, "nota": "≈ R$ 064 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Ueno Park (hanami) + Ameyoko"}, {"periodo": "Manhã", "nome": "Museu Nacional de Tokyo — a coleção do Japão"}, {"periodo": "Tarde", "nome": "AKIHABARA — eletrônicos, anime e games"}, {"periodo": "Tarde", "nome": "Compras + despacho das caixas"}, {"periodo": "Noite", "nome": "Volta"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-29", "semana": "segunda", "total": {"km": 32.7, "min": 73.0, "pe": 88.0, "transp": 980.0, "ingresso": 3400.0, "nota": "≈ R$ 145 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Meiji Jingu + Yoyogi Park"}, {"periodo": "Manhã", "nome": "Takeshita-dori (o coração kawaii)"}, {"periodo": "Tarde", "nome": "Omotesando + Kiddy Land"}, {"periodo": "Tarde", "nome": "Shibuya Parco + Tower Records"}, {"periodo": "Tarde", "nome": "Shibuya Crossing + estátua do Hachiko"}]}, {"cidade": "osaka", "base": "Tokyo → Osaka", "data": "2027-03-30", "semana": "terça", "total": {"km": 531.7, "min": 198.0, "pe": 60.0, "transp": 15430.0, "ingresso": 0, "nota": "≈ R$ 509 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Check-out + Ojima → Estação de Tokyo"}, {"periodo": "Manhã", "nome": "SHINKANSEN Tokyo → Shin-Osaka (Nozomi)"}, {"periodo": "Tarde", "nome": "Shin-Osaka → hotel + check-in"}, {"periodo": "Tarde", "nome": "Shinsaibashi-suji (galeria de 600 m)"}, {"periodo": "Noite", "nome": "Dotonbori — a última noite"}]}, {"cidade": "osaka", "base": "Osaka → voo", "data": "2027-03-31", "semana": "quarta", "total": {"km": 55.7, "min": 59.0, "pe": 86.0, "transp": 2100.0, "ingresso": 0, "nota": "≈ R$ 061 por pessoa neste dia (transporte + ingressos)"}, "atividades": [{"periodo": "Manhã", "nome": "Check-out + guardar as malas"}, {"periodo": "Manhã", "nome": "Tenjin-bashi-suji — a galeria coberta mais longa do Japão"}, {"periodo": "Manhã", "nome": "Compras finais em Shinsaibashi-suji"}, {"periodo": "Tarde", "nome": "Almoço de despedida + Den Den Town"}, {"periodo": "Tarde", "nome": "TRANSFER: Namba → Aeroporto KIX"}]}]};
 const MAPAS = [];   // dias com mapa proprio (dia-NN.html)
 const FOTOS = {
  "hero": {

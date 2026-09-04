@@ -1,4 +1,4 @@
-<title>Japão 2027</title>
+<title>__TITULO__</title>
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -57,6 +57,7 @@ body{margin:0;background:transparent;color:var(--ink);font-family:var(--f-ui);
   padding-bottom:calc(74px + env(safe-area-inset-bottom))}
 @media(min-width:900px){
   body{padding-top:60px;padding-bottom:20px}
+  body.has-hero{padding-top:0}
 }
 h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:800;letter-spacing:-.025em;line-height:1.15}
 p{margin:0} ul{margin:0;padding:0}
@@ -110,6 +111,23 @@ img,canvas,svg{max-width:100%;display:block}
 .scroll-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.65);
   font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;animation:bob 2.4s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,6px);opacity:.95}}
+
+/* ============ HUB / PORTAL ============ */
+.hub-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
+@media(min-width:600px){.hub-grid{grid-template-columns:repeat(2,1fr);gap:16px}}
+@media(min-width:1024px){.hub-grid{grid-template-columns:repeat(4,1fr);gap:18px}}
+.hub-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 18px 18px;display:flex;flex-direction:column;text-decoration:none;
+  box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  position:relative;overflow:hidden}
+.hub-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--c)}
+.hub-card s{flex:none;position:absolute;top:0;left:0;right:0;height:4px;background:var(--c);text-decoration:none}
+.hub-badge{font-family:var(--f-mono);font-size:.65rem;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--t);margin-bottom:8px;display:inline-block}
+.hub-card h3{font-size:1.02rem;color:var(--ink);margin-bottom:8px;font-weight:800;line-height:1.25}
+.hub-card p{font-size:.80rem;color:var(--ink-2);line-height:1.52;margin-bottom:14px;flex:1}
+.hub-link{font-size:.76rem;font-weight:800;color:var(--t);display:inline-flex;align-items:center;gap:5px}
+.hub-card:hover .hub-link{text-decoration:underline}
 
 /* ============ NÚMEROS ============ */
 .nums{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
@@ -396,7 +414,7 @@ td.h{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-n
   .top-links a{text-decoration:none;color:var(--ink-3);font-size:.75rem;font-weight:700;padding:6px 12px;
     border-radius:99px;transition:background .15s,color .15s}
   .top-links a:hover{color:var(--ink);background:var(--sunken)}
-  .top-links a[aria-current="true"]{background:var(--ink);color:var(--paper)}
+  .top-links a[aria-current="true"],.top-links a[aria-current="page"]{background:var(--ink);color:var(--paper)}
   .nav{display:none!important}
 }
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:80;background:color-mix(in srgb,var(--surface) 94%,transparent);
@@ -406,7 +424,7 @@ td.h{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-n
 .nav-in::-webkit-scrollbar{display:none}
 .nav a{flex:none;text-decoration:none;color:var(--ink-3);font-size:.72rem;font-weight:750;padding:8px 13px;
   border-radius:99px;white-space:nowrap;transition:background .15s,color .15s}
-.nav a[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.nav a[aria-current="true"],.nav a[aria-current="page"]{background:var(--ink);color:var(--paper)}
 .themeBtn{width:36px;height:36px;border-radius:99px;border:1px solid var(--line);
   background:var(--surface);color:var(--ink);font-size:.92rem;cursor:pointer;
   display:grid;place-items:center;box-shadow:var(--shadow-sm);transition:border-color .15s}
@@ -430,17 +448,17 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <header class="top-nav" id="topNav">
   <div class="top-nav-in">
-    <a class="nav-brand" href="#inicio"><b>日本</b> 2027 <small>Roteiro</small></a>
+    <a class="nav-brand" href="index.html"><b>日本</b> 2027 <small>Roteiro</small></a>
     <nav class="top-links" aria-label="Seções do site">
-      <a href="#inicio">Início</a><a href="#numeros">Números</a><a href="#mapa">Mapa</a>
-      <a href="#timelapse">Timelapse</a><a href="#roteiro">Roteiro</a><a href="#comer">Comer</a>
-      <a href="#compras">Compras</a><a href="#planob">Plano B</a><a href="#logistica">Logística</a>
+      __NAV_TOP__
     </nav>
     <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
+<!-- SECOES_INICIO -->
+<!-- SECAO:inicio -->
 <header class="hero" id="inicio" data-foto="hero">
   <div class="hero-foto" id="heroFoto"></div>
   <canvas id="heroCv"></canvas>
@@ -457,6 +475,75 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="scroll-hint">role</div>
 </header>
 
+<main class="sec wrap-wide" id="portal" data-foto="hero">
+  <div class="sec-head" style="text-align:center;align-items:center">
+    <p class="eyebrow">Planejamento da viagem</p>
+    <h2>Explore cada parte do roteiro</h2>
+    <div class="rule"></div>
+    <p class="sub">Acesse as páginas dedicadas para ver detalhes dia a dia, mapas interativos, gastronomia e logística.</p>
+  </div>
+  <div class="hub-grid">
+    <a class="hub-card c-osaka" href="roteiro.html">
+      <s></s>
+      <span class="hub-badge">D01 — D16</span>
+      <h3>Roteiro dos 16 Dias</h3>
+      <p>Cronograma dia a dia com horários, transportes, custos, filtros por tema e mapas diários interativos.</p>
+      <span class="hub-link">Abrir roteiro <i>→</i></span>
+    </a>
+    <a class="hub-card c-fuji" href="mapa.html">
+      <s></s>
+      <span class="hub-badge">1.425 km</span>
+      <h3>Mapa Geral da Rota</h3>
+      <p>Trajeto completo do Japão de ponta a ponta com paradas entre cidades, shinkansen e conexões.</p>
+      <span class="hub-link">Ver mapa geral <i>→</i></span>
+    </a>
+    <a class="hub-card c-tokyo" href="timelapse.html">
+      <s></s>
+      <span class="hub-badge">Player Dinâmico</span>
+      <h3>Timelapse da Viagem</h3>
+      <p>Player interativo dia a dia com mapa dinâmico, evolução de quilômetros e ritmo de cada etapa.</p>
+      <span class="hub-link">Assistir timelapse <i>→</i></span>
+    </a>
+    <a class="hub-card c-kyoto" href="numeros.html">
+      <s></s>
+      <span class="hub-badge">Custos & Métricas</span>
+      <h3>A Viagem em Números</h3>
+      <p>Resumo de transporte, ingressos por adulto, conversão de moedas (¥ e R$) e previsão da sakura.</p>
+      <span class="hub-link">Conferir números <i>→</i></span>
+    </a>
+    <a class="hub-card c-osaka" href="comer.html">
+      <s></s>
+      <span class="hub-badge">Gastronomia</span>
+      <h3>Onde Comer</h3>
+      <p>Mercados de rua, takoyaki em Dotonbori, sushi em Toyosu, becos tradicionais e etiquetas locais.</p>
+      <span class="hub-link">Explorar restaurantes <i>→</i></span>
+    </a>
+    <a class="hub-card c-tokyo" href="compras.html">
+      <s></s>
+      <span class="hub-badge">Lojas & Tax-Free</span>
+      <h3>Guia de Compras</h3>
+      <p>Eletrônicos e anime em Akihabara e Den Den Town, atacado Senba e regras de tax-free.</p>
+      <span class="hub-link">Ver dicas de compras <i>→</i></span>
+    </a>
+    <a class="hub-card c-fuji" href="planob.html">
+      <s></s>
+      <span class="hub-badge">Contingências</span>
+      <h3>Plano B & Alternativas</h3>
+      <p>Opções para dias de chuva ou cansaço com bebês, alternativas para o Fuji e as 14 notas do roteiro.</p>
+      <span class="hub-link">Ver plano B <i>→</i></span>
+    </a>
+    <a class="hub-card c-kyoto" href="logistica.html">
+      <s></s>
+      <span class="hub-badge">Voos & Hotéis</span>
+      <h3>Logística & Hospedagem</h3>
+      <p>Horários dos voos LATAM, conexões internacionais e comparativo entre conjuntos A e B de hotéis.</p>
+      <span class="hub-link">Ver logística <i>→</i></span>
+    </a>
+  </div>
+</main>
+<!-- /SECAO:inicio -->
+
+<!-- SECAO:numeros -->
 <main>
 <section class="sec wrap" id="numeros" data-foto="hero">
   <div class="sec-head">
@@ -472,7 +559,11 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     <p>Historicamente Tokyo floresce por volta de 24/03 e chega ao pico ~31/03. Os dias de Tokyo — 23 a 30/03 — caem em cima do pico da sakura.</p></div>
   </div>
 </section>
+</main>
+<!-- /SECAO:numeros -->
 
+<!-- SECAO:mapa -->
+<main>
 <section class="sec wrap-wide" id="mapa" data-foto="fuji">
   <div class="sec-head">
     <p class="eyebrow">Mapa</p>
@@ -488,8 +579,12 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     <div id="mapaPernas"></div>
   </div>
 </section>
+</main>
+<!-- /SECAO:mapa -->
 
-<section class="sec wrap-wide" id="timelapse">
+<!-- SECAO:timelapse -->
+<main>
+<section class="sec wrap-wide" id="timelapse" data-foto="osaka">
   <div class="sec-head">
     <p class="eyebrow">Timelapse</p>
     <h2>Dia a dia, em 16 quadros</h2>
@@ -509,7 +604,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
         <div class="tl-stats">
           <div><b id="tlKm">—</b><u>km</u></div>
           <div><b id="tlMin">—</b><u>min transp.</u></div>
-          <div><b id="tlPe">—</b><u>min a pé</u></div>
+          <div><b id="tlPe">—</b><u>km a pé</u></div>
           <div><b id="tlYen">—</b><u>¥ no dia</u></div>
         </div>
         <ul class="tl-list" id="tlList"></ul>
@@ -521,7 +616,11 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     </div>
   </div>
 </section>
+</main>
+<!-- /SECAO:timelapse -->
 
+<!-- SECAO:roteiro -->
+<main>
 <section class="sec wrap" id="roteiro">
   <div class="sec-head">
     <p class="eyebrow">Roteiro</p>
@@ -536,7 +635,11 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="trilho" id="trilho"></div>
   <p class="vazio" id="vazio" hidden>Nenhuma parada com esse filtro.</p>
 </section>
+</main>
+<!-- /SECAO:roteiro -->
 
+<!-- SECAO:comer -->
+<main>
 <section class="sec wrap" id="comer" data-foto="osaka">
   <div class="sec-head">
     <p class="eyebrow">Onde comer</p>
@@ -553,7 +656,11 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="callout c-osaka" style="margin-top:16px"><s>🍢</s><div><h4>A regra sagrada do kushikatsu</h4>
   <p>O molho da mesa é comunitário. Mergulhe o espetinho <b>uma vez só</b> — molhar duas vezes é falta grave em Shinsekai. Para repetir, use a couve crua como concha.</p></div></div>
 </section>
+</main>
+<!-- /SECAO:comer -->
 
+<!-- SECAO:compras -->
+<main>
 <section class="sec wrap" id="compras" data-foto="tokyo">
   <div class="sec-head">
     <p class="eyebrow">Compras</p>
@@ -570,7 +677,11 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="callout c-kyoto" style="margin-top:16px"><s>🧾</s><div><h4>Tax-free: como não perder</h4>
   <p>Leve o <b>passaporte físico</b> (foto não vale) e some as compras <b>na mesma loja</b> para passar de ¥5.000. A última chance é 31/03 em Shinsaibashi-suji, antes de sair para o KIX. Para o excesso de bagagem, o takkyubin leva as malas de hotel a hotel.</p></div></div>
 </section>
+</main>
+<!-- /SECAO:compras -->
 
+<!-- SECAO:planob -->
+<main>
 <section class="sec wrap" id="planob" data-foto="fuji">
   <div class="sec-head">
     <p class="eyebrow">Plano B</p>
@@ -595,7 +706,11 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   </div>
   <div id="notas"></div>
 </section>
+</main>
+<!-- /SECAO:planob -->
 
+<!-- SECAO:logistica -->
+<main>
 <section class="sec wrap" id="logistica" data-foto="tokyo">
   <div class="sec-head">
     <p class="eyebrow">Logística</p>
@@ -622,12 +737,12 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="hosp" id="hospLista"></div>
 </section>
 </main>
+<!-- /SECAO:logistica -->
+<!-- SECOES_FIM -->
 
 <nav class="nav" aria-label="Seções do site">
   <div class="nav-in">
-    <a href="#inicio">Início</a><a href="#numeros">Números</a><a href="#mapa">Mapa</a>
-    <a href="#timelapse">Timelapse</a><a href="#roteiro">Roteiro</a><a href="#comer">Comer</a>
-    <a href="#compras">Compras</a><a href="#planob">Plano B</a><a href="#logistica">Logística</a>
+    __NAV_BOT__
   </div>
 </nav>
 
@@ -688,7 +803,9 @@ function montarParede(){
     cam[ativo].classList.remove("on");
     ativo = 1 - ativo;
   };
-  trocarParede("hero");
+  const primeiroAlvo = document.querySelector("[data-foto]");
+  const fotoInicial = (primeiroAlvo && primeiroAlvo.dataset.foto) || "hero";
+  trocarParede(fotoInicial);
 
   // Manda na foto o ultimo alvo cujo topo ja cruzou a linha de referencia.
   // Com "o primeiro visivel" a secao que esta saindo ganhava da que esta entrando
@@ -911,7 +1028,7 @@ function montarTimelapse(){
     el("tlDate").textContent=dm(d.data)+" · "+d.semana;
     el("tlKm").textContent=nf(t.km||0, (t.km||0)%1?1:0);
     el("tlMin").textContent=nf(t.min||0);
-    el("tlPe").textContent=nf(t.pe||0);
+    el("tlPe").textContent=nf(t.km_pe || (t.pe ? t.pe/14 : 0), 1);
     el("tlYen").textContent=nf((t.transp||0)+(t.ingresso||0));
     const pin=el("tlPin");
     if(pin){ const p=pinPos[d.cidade];
@@ -1180,18 +1297,8 @@ function montarHosp(){
    9. NAV, TEMA, CONTAGEM
    ================================================================ */
 function montarNav(){
-  const links=[...document.querySelectorAll(".nav a, .top-links a")];
-  const secs=[...new Set(links.map(a=>el(a.getAttribute("href").slice(1))).filter(Boolean))];
-  const vistos=new Set();
-  const io=new IntersectionObserver((ents)=>{
-    ents.forEach(e=>{ if(e.isIntersecting) vistos.add(e.target); else vistos.delete(e.target); });
-    const atual=secs.find(s=>vistos.has(s));
-    if(!atual) return;
-    links.forEach(a=>a.setAttribute("aria-current",String(a.getAttribute("href")==="#"+atual.id)));
-    const ativoMobile=document.querySelector(".nav a[aria-current='true']");
-    if(ativoMobile) ativoMobile.scrollIntoView({block:"nearest",inline:"nearest",behavior:REDUZIR?"auto":"smooth"});
-  },{rootMargin:"-40% 0px -45% 0px"});
-  secs.forEach(s=>io.observe(s));
+  const ativoMobile=document.querySelector(".nav a[aria-current='page'], .nav a[aria-current='true']");
+  if(ativoMobile) ativoMobile.scrollIntoView({block:"nearest",inline:"center",behavior:"auto"});
 }
 function montarTema(){
   const btns=[el("themeBtn"),el("themeBtnMobile")].filter(Boolean);
@@ -1212,27 +1319,37 @@ function montarTema(){
   btns.forEach(b=>b.addEventListener("click",alternar));
 }
 function montarContagem(){
+  const cd=el("cd");
+  if(!cd) return;
   const alvo=new Date("2027-03-14T10:40:00-03:00");
   const dias=Math.max(0,Math.ceil((alvo-new Date())/864e5));
-  el("cd").textContent=nf(dias);
+  cd.textContent=nf(dias);
 }
 
 /* ---------- boot ---------- */
-iniciarHero();
-montarNums();
-montarMapa();
-montarTimelapse();
-montarTrilho();
-montarCarro("comerCarro",COMER);
-montarCarro("comprasCarro",COMPRAS);
-montarCarro("planobCarro",PLANOB);
-ativarControlesCarrossel();
-montarNotas();
-montarVoos();
-montarHosp();
-montarParede();   // depois do DOM montado: observa tambem os 16 dias
+if(el("inicio")) { iniciarHero(); montarContagem(); }
+if(el("nums")) montarNums();
+if(el("mapaSlot")) montarMapa();
+if(el("tl")) montarTimelapse();
+if(el("trilho")) {
+  montarTrilho();
+  if(location.hash){
+    const m=location.hash.match(/^#dia0?(\d+)$/);
+    if(m){
+      const target=el("dia"+parseInt(m[1],10));
+      if(target) setTimeout(()=>target.scrollIntoView({behavior:"smooth"}),80);
+    }
+  }
+}
+if(el("comerCarro")) montarCarro("comerCarro",COMER);
+if(el("comprasCarro")) montarCarro("comprasCarro",COMPRAS);
+if(el("planobCarro")) montarCarro("planobCarro",PLANOB);
+if(document.querySelector(".carro-ctrl")) ativarControlesCarrossel();
+if(el("notas")) montarNotas();
+if(el("voosBody")) montarVoos();
+if(el("hospLista")) montarHosp();
+montarParede();
 montarNav();
 montarTema();
-montarContagem();
-montarCreditos();
+if(el("creditos")) montarCreditos();
 </script>

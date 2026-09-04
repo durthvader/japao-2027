@@ -5,7 +5,7 @@ para cada dia que tiver camada geografica em mapa/pontos.json.
 Uso:  python gerar_site.py
 Reextrai a planilha sozinho se ela estiver mais nova que dados.json.
 """
-import os, io, json, subprocess, sys
+import os, io, json, subprocess, sys, re
 if sys.stdout and hasattr(sys.stdout, 'reconfigure'):
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -55,10 +55,11 @@ DESC = ('Roteiro completo da viagem ao Japao em marco de 2027: 16 dias entre Osa
 ICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'"
         "%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E")
 
-def montar(pagina, head_extra):
+def montar(pagina, head_extra, body_classe=''):
     """Corta o template em <head> (title + style) e <body> e embrulha no documento."""
     corte = pagina.index('</style>') + len('</style>')
     cabeca, corpo = pagina[:corte].strip(), pagina[corte:].strip()
+    b_cls = f' class="{body_classe}"' if body_classe else ''
     return f'''<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -73,7 +74,7 @@ def montar(pagina, head_extra):
 <script>try{{var _th=localStorage.getItem("jp27_theme")||localStorage.getItem("jp27tema")||localStorage.getItem("tema-japao");if(_th)document.documentElement.setAttribute("data-theme",_th);}}catch(e){{}}</script>
 {cabeca}
 </head>
-<body>
+<body{b_cls}>
 {corpo}
 </body>
 </html>
@@ -117,7 +118,7 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
                 p_url = 'dia-%02d.html' % (n - 1)
                 p_tit = geo[p_data]['titulo']
             else:
-                p_url = 'index.html#dia%d' % (n - 1)
+                p_url = 'roteiro.html#dia%d' % (n - 1)
                 p_tit = 'Dia %d · %s' % (n - 1, p_dia.get('cidade', '').title())
             prev_btn = (
                 f'<a class="btn-dia prev" href="{p_url}" title="Dia anterior: {p_tit}">'
@@ -139,7 +140,7 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
                 nx_url = 'dia-%02d.html' % (n + 1)
                 nx_tit = geo[nx_data]['titulo']
             else:
-                nx_url = 'index.html#dia%d' % (n + 1)
+                nx_url = 'roteiro.html#dia%d' % (n + 1)
                 nx_tit = 'Dia %d · %s' % (n + 1, nx_dia.get('cidade', '').title())
             next_btn = (
                 f'<a class="btn-dia next" href="{nx_url}" title="Próximo dia: {nx_tit}">'
@@ -174,19 +175,153 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
         mapeados.append(n)
         print('OK  dia-%02d.html  %s bytes' % (n, os.path.getsize(alvo)))
 
-# ------------------------------------------------------------------- index
+# ------------------------------------------------------------------- paginas do site
+PAGINAS = [
+    {
+        'id': 'inicio',
+        'arquivo': 'index.html',
+        'label': 'Início',
+        'titulo': 'Japão 2027 — 16 dias de Osaka a Tokyo',
+        'desc': 'Roteiro completo da viagem ao Japão em março de 2027: 16 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com 82 paradas, distâncias, custos, mapa, restaurantes, compras e plano B.',
+    },
+    {
+        'id': 'numeros',
+        'arquivo': 'numeros.html',
+        'label': 'Números',
+        'titulo': 'A Viagem em Números · Japão 2027',
+        'desc': 'Indicadores, distâncias totais, custos em ienes e reais por adulto, e estimativa da florada da sakura.',
+    },
+    {
+        'id': 'mapa',
+        'arquivo': 'mapa.html',
+        'label': 'Mapa',
+        'titulo': 'Mapa da Rota · Japão 2027',
+        'desc': 'Trajeto de ponta a ponta de 1.425 km entre Osaka, Kyoto, Kawaguchiko e Tokyo com conexões e pernas.',
+    },
+    {
+        'id': 'timelapse',
+        'arquivo': 'timelapse.html',
+        'label': 'Timelapse',
+        'titulo': 'Timelapse · Japão 2027',
+        'desc': 'Player dinâmico dia a dia em 16 quadros com mapa animado e métricas de cada etapa.',
+    },
+    {
+        'id': 'roteiro',
+        'arquivo': 'roteiro.html',
+        'label': 'Roteiro',
+        'titulo': 'Roteiro dos 16 Dias · Japão 2027',
+        'desc': 'Cronograma detalhado dos 16 dias, horários, ritmo, transportes, custos e filtros de atividade.',
+    },
+    {
+        'id': 'comer',
+        'arquivo': 'comer.html',
+        'label': 'Comer',
+        'titulo': 'Onde Comer · Japão 2027',
+        'desc': 'Guia gastronômico por bairro: Kuromon, Dotonbori, Pontocho, Toyosu e regras de etiqueta à mesa.',
+    },
+    {
+        'id': 'compras',
+        'arquivo': 'compras.html',
+        'label': 'Compras',
+        'titulo': 'Guia de Compras · Japão 2027',
+        'desc': 'Lojas de eletrônicos, anime, atacado Senba Center e regras práticas para aproveitar o tax-free.',
+    },
+    {
+        'id': 'planob',
+        'arquivo': 'planob.html',
+        'label': 'Plano B',
+        'titulo': 'Plano B & Alternativas · Japão 2027',
+        'desc': 'Alternativas para dias de chuva, fuga de multidões com bebês e as 14 notas do roteiro.',
+    },
+    {
+        'id': 'logistica',
+        'arquivo': 'logistica.html',
+        'label': 'Logística',
+        'titulo': 'Logística & Hospedagem · Japão 2027',
+        'desc': 'Voos LATAM com conexões e comparação de valores entre os conjuntos A e B de hospedagens.',
+    },
+]
+
+def podar_dias_mapa(dias):
+    res = []
+    for d in dias:
+        ativs = [a for a in d.get('atividades', [])
+                 if (re.search(r'^(TRANSFER|SHINKANSEN)', a.get('nome', ''), re.I) and d.get('transicao'))
+                 or a.get('nome', '').startswith('KIX →')]
+        if ativs:
+            res.append({'cidade': d.get('cidade'), 'transicao': d.get('transicao'), 'atividades': ativs})
+    return res
+
+def podar_dias_timelapse(dias):
+    res = []
+    for d in dias:
+        res.append({
+            'cidade': d.get('cidade'), 'base': d.get('base'), 'data': d.get('data'),
+            'semana': d.get('semana'), 'total': d.get('total'),
+            'atividades': [{'periodo': a.get('periodo'), 'nome': a.get('nome')} for a in d.get('atividades', [])[:5]]
+        })
+    return res
+
+def obter_dados_pagina(pid):
+    if pid == 'inicio':
+        return {}
+    elif pid == 'numeros':
+        return {'resumo': podar(djs.get('resumo', []))}
+    elif pid == 'mapa':
+        return {'dias': podar_dias_mapa(podar(djs.get('dias', [])))}
+    elif pid == 'timelapse':
+        return {'dias': podar_dias_timelapse(podar(djs.get('dias', [])))}
+    elif pid == 'roteiro':
+        return {'dias': podar(djs.get('dias', []))}
+    elif pid == 'comer' or pid == 'compras':
+        return {}
+    elif pid == 'planob':
+        return {'notas': podar(djs.get('notas', []))}
+    elif pid == 'logistica':
+        return {'voos': podar(djs.get('voos', [])),
+                'voosNotas': podar(djs.get('voosNotas', [])),
+                'hospedagem': podar(djs.get('hospedagem', {}))}
+    return {}
+
 for marca in ('__DADOS__', '__FOTOS__', '__MAPAS__'):
     assert marca in tpl, 'template.html perdeu o marcador ' + marca
-tpl = (tpl.replace('__DADOS__', dados)
-          .replace('__FOTOS__', fotos)
-          .replace('__MAPAS__', json.dumps(mapeados)))
+tpl = tpl.replace('__FOTOS__', fotos)
 
-head = f'''<meta name="description" content="{DESC}">
+secoes = {}
+for m in re.finditer(r'<!-- SECAO:(\w+) -->([\s\S]*?)<!-- /SECAO:\1 -->', tpl):
+    secoes[m.group(1)] = m.group(2).strip()
+
+for p in PAGINAS:
+    assert p['id'] in secoes, f'Seção {p["id"]} não encontrada em template.html'
+
+shell = re.sub(r'<!-- SECOES_INICIO -->[\s\S]*?<!-- SECOES_FIM -->', '__CONTEUDO__', tpl)
+
+for pag in PAGINAS:
+    nav_top = ''.join(
+        f'<a href="{p["arquivo"]}"{" aria-current=\"page\"" if p["id"] == pag["id"] else ""}>{p["label"]}</a>'
+        for p in PAGINAS
+    )
+    nav_bot = ''.join(
+        f'<a href="{p["arquivo"]}"{" aria-current=\"page\"" if p["id"] == pag["id"] else ""}>{p["label"]}</a>'
+        for p in PAGINAS
+    )
+    conteudo = secoes[pag['id']]
+    dados_pag_str = json.dumps(obter_dados_pagina(pag['id']), ensure_ascii=False)
+    mapas_pag_str = json.dumps(mapeados) if pag['id'] == 'roteiro' else '[]'
+
+    pag_tpl = (shell.replace('__CONTEUDO__', conteudo)
+                    .replace('__TITULO__', pag['titulo'])
+                    .replace('__NAV_TOP__', nav_top)
+                    .replace('__NAV_BOT__', nav_bot)
+                    .replace('__DADOS__', dados_pag_str)
+                    .replace('__MAPAS__', mapas_pag_str))
+    head = f'''<meta name="description" content="{pag['desc']}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Japao 2027 — 16 dias de Osaka a Tokyo">
-<meta property="og:description" content="{DESC}">
+<meta property="og:title" content="{pag['titulo']}">
+<meta property="og:description" content="{pag['desc']}">
 <meta property="og:locale" content="pt_BR">
 <link rel="apple-touch-icon" href="{ICON}">'''
-
-io.open(OUT, 'w', encoding='utf-8', newline='\n').write(montar(tpl, head))
-print('OK  index.html  {:,} bytes'.format(os.path.getsize(OUT)).replace(',', '.'))
+    body_cls = 'has-hero' if pag['id'] == 'inicio' else ''
+    alvo = os.path.join(BASE, pag['arquivo'])
+    io.open(alvo, 'w', encoding='utf-8', newline='\n').write(montar(pag_tpl, head, body_cls))
+    print('OK  %-15s %s bytes' % (pag['arquivo'], f'{os.path.getsize(alvo):,}'.replace(',', '.')))

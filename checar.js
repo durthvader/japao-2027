@@ -33,8 +33,9 @@ function constante(html, nome) {
   }
 }
 
+const PAGINAS_SITE = ['index.html', 'numeros.html', 'mapa.html', 'timelapse.html', 'roteiro.html', 'comer.html', 'compras.html', 'planob.html', 'logistica.html'];
 const paginas = fs.readdirSync(BASE)
-  .filter(f => /^dia-\d\d\.html$/.test(f) || f === 'index.html')
+  .filter(f => /^dia-\d\d\.html$/.test(f) || PAGINAS_SITE.includes(f))
   .sort();
 
 for (const arq of paginas) {
@@ -56,8 +57,8 @@ for (const arq of paginas) {
     if (html.includes(termo)) aviso(arq, 'texto que nao devia estar publicado: ' + termo);
   }
 
-  if (arq === 'index.html') {
-    console.log(arq.padEnd(13) + ' ' + scripts.length + ' script(s), '
+  if (PAGINAS_SITE.includes(arq)) {
+    console.log(arq.padEnd(16) + ' ' + scripts.length + ' script(s), '
       + (html.length / 1024).toFixed(0) + ' KB');
     continue;
   }
