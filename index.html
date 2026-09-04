@@ -219,16 +219,24 @@ img,canvas,svg{max-width:100%;display:block}
   box-shadow:0 2px 6px rgba(0,0,0,.25)}
 
 /* ============ TRILHO / ROTEIRO ============ */
-.dia-nav-wrap{margin-bottom:14px;overflow:hidden}
-.dia-nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.dia-nav::-webkit-scrollbar{display:none}
-.dia-chip{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
-  border-radius:8px;padding:5px 9px;font-size:.70rem;font-weight:750;text-decoration:none;
-  display:inline-flex;align-items:center;gap:5px;transition:border-color .15s,color .15s}
+.dia-nav-wrap{margin-bottom:14px}
+.dia-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+@media(min-width:680px){
+  .dia-nav{grid-template-columns:repeat(8,1fr);gap:7px}
+}
+.dia-chip{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+  border-radius:9px;padding:7px 5px;font-size:.71rem;font-weight:750;text-decoration:none;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  box-shadow:var(--shadow-sm);transition:all .15s}
 .dia-chip s{width:7px;height:7px;border-radius:99px;background:var(--c);text-decoration:none;flex:none}
-.dia-chip:hover{border-color:var(--c);color:var(--t)}
-.filtros{display:flex;gap:7px;overflow-x:auto;padding:2px 0 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.dia-chip b{font-family:var(--f-mono);font-weight:800}
+.dia-chip span{font-family:var(--f-mono);font-size:.65rem;color:var(--ink-3);font-weight:600}
+.dia-chip:hover{border-color:var(--c);color:var(--t);background:var(--surface-2);transform:translateY(-1px)}
+.filtros{display:flex;gap:7px;overflow-x:auto;padding:4px 0 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .filtros::-webkit-scrollbar{display:none}
+@media(min-width:680px){
+  .filtros{flex-wrap:wrap}
+}
 .chip{flex:none;border:1px solid var(--line-2);background:var(--surface);
   color:var(--ink-2);border-radius:99px;padding:7px 14px;font-size:.76rem;font-weight:700;
   cursor:pointer;white-space:nowrap;font-family:inherit;box-shadow:var(--shadow-sm);
@@ -716,8 +724,7 @@ const DADOS = {
     "pe": 18.0,
     "transp": 970.0,
     "ingresso": 0,
-    "nota": "≈ R$ 032 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 1.0
+    "nota": "≈ R$ 032 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -819,8 +826,7 @@ const DADOS = {
     "pe": 53.0,
     "transp": 670,
     "ingresso": 6700.0,
-    "nota": "≈ R$ 122 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 6.4
+    "nota": "≈ R$ 122 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -956,8 +962,7 @@ const DADOS = {
     "pe": 68.0,
     "transp": 1060.0,
     "ingresso": 4700.0,
-    "nota": "≈ R$ 212 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 6.2
+    "nota": "≈ R$ 212 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -1110,8 +1115,7 @@ const DADOS = {
     "pe": 87.0,
     "transp": 1330,
     "ingresso": 600,
-    "nota": "≈ R$ 035 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 10.1
+    "nota": "≈ R$ 035 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -1230,8 +1234,7 @@ const DADOS = {
     "pe": 70.0,
     "transp": 950,
     "ingresso": 3700.0,
-    "nota": "≈ R$ 094 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 6.4
+    "nota": "≈ R$ 094 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -1367,8 +1370,7 @@ const DADOS = {
     "pe": 114.0,
     "transp": 1340.0,
     "ingresso": 1600.0,
-    "nota": "≈ R$ 090 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 8.8
+    "nota": "≈ R$ 090 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -1470,8 +1472,7 @@ const DADOS = {
     "pe": 30.0,
     "transp": 14610.0,
     "ingresso": 0,
-    "nota": "≈ R$ 468 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 1.4
+    "nota": "≈ R$ 468 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -1556,8 +1557,7 @@ const DADOS = {
     "pe": 50.0,
     "transp": 3900.0,
     "ingresso": 0,
-    "nota": "≈ R$ 118 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 4.6
+    "nota": "≈ R$ 118 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -1642,8 +1642,7 @@ const DADOS = {
     "pe": 50.0,
     "transp": 1632,
     "ingresso": 10500.0,
-    "nota": "≈ R$ 389 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 2.8
+    "nota": "≈ R$ 389 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -1745,8 +1744,7 @@ const DADOS = {
     "pe": 76.0,
     "transp": 1000.0,
     "ingresso": 6100.0,
-    "nota": "≈ R$ 035 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 5.0
+    "nota": "≈ R$ 035 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -1865,8 +1863,7 @@ const DADOS = {
     "pe": 61.0,
     "transp": 590.0,
     "ingresso": 2100.0,
-    "nota": "≈ R$ 089 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 4.4
+    "nota": "≈ R$ 089 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -1968,8 +1965,7 @@ const DADOS = {
     "pe": 48.0,
     "transp": 1570.0,
     "ingresso": 4430.0,
-    "nota": "≈ R$ 198 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 3.4
+    "nota": "≈ R$ 198 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -2071,8 +2067,7 @@ const DADOS = {
     "pe": 61.0,
     "transp": 510.0,
     "ingresso": 1000,
-    "nota": "≈ R$ 064 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 4.4
+    "nota": "≈ R$ 064 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -2225,8 +2220,7 @@ const DADOS = {
     "pe": 88.0,
     "transp": 980.0,
     "ingresso": 3400.0,
-    "nota": "≈ R$ 145 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 6.3
+    "nota": "≈ R$ 145 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -2328,8 +2322,7 @@ const DADOS = {
     "pe": 60.0,
     "transp": 15430.0,
     "ingresso": 0,
-    "nota": "≈ R$ 509 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 4.3
+    "nota": "≈ R$ 509 por pessoa neste dia (transporte + ingressos)"
    }
   },
   {
@@ -2448,8 +2441,7 @@ const DADOS = {
     "pe": 86.0,
     "transp": 2100.0,
     "ingresso": 0,
-    "nota": "≈ R$ 061 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 6.1
+    "nota": "≈ R$ 061 por pessoa neste dia (transporte + ingressos)"
    }
   }
  ],

@@ -202,16 +202,24 @@ img,canvas,svg{max-width:100%;display:block}
   box-shadow:0 2px 6px rgba(0,0,0,.25)}
 
 /* ============ TRILHO / ROTEIRO ============ */
-.dia-nav-wrap{margin-bottom:14px;overflow:hidden}
-.dia-nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.dia-nav::-webkit-scrollbar{display:none}
-.dia-chip{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
-  border-radius:8px;padding:5px 9px;font-size:.70rem;font-weight:750;text-decoration:none;
-  display:inline-flex;align-items:center;gap:5px;transition:border-color .15s,color .15s}
+.dia-nav-wrap{margin-bottom:14px}
+.dia-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+@media(min-width:680px){
+  .dia-nav{grid-template-columns:repeat(8,1fr);gap:7px}
+}
+.dia-chip{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+  border-radius:9px;padding:7px 5px;font-size:.71rem;font-weight:750;text-decoration:none;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  box-shadow:var(--shadow-sm);transition:all .15s}
 .dia-chip s{width:7px;height:7px;border-radius:99px;background:var(--c);text-decoration:none;flex:none}
-.dia-chip:hover{border-color:var(--c);color:var(--t)}
-.filtros{display:flex;gap:7px;overflow-x:auto;padding:2px 0 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.dia-chip b{font-family:var(--f-mono);font-weight:800}
+.dia-chip span{font-family:var(--f-mono);font-size:.65rem;color:var(--ink-3);font-weight:600}
+.dia-chip:hover{border-color:var(--c);color:var(--t);background:var(--surface-2);transform:translateY(-1px)}
+.filtros{display:flex;gap:7px;overflow-x:auto;padding:4px 0 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .filtros::-webkit-scrollbar{display:none}
+@media(min-width:680px){
+  .filtros{flex-wrap:wrap}
+}
 .chip{flex:none;border:1px solid var(--line-2);background:var(--surface);
   color:var(--ink-2);border-radius:99px;padding:7px 14px;font-size:.76rem;font-weight:700;
   cursor:pointer;white-space:nowrap;font-family:inherit;box-shadow:var(--shadow-sm);
