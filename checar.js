@@ -33,7 +33,7 @@ function constante(html, nome) {
   }
 }
 
-const PAGINAS_SITE = ['index.html', 'numeros.html', 'mapa.html', 'timelapse.html', 'roteiro.html', 'comer.html', 'compras.html', 'planob.html', 'logistica.html'];
+const PAGINAS_SITE = ['index.html', 'roteiro.html', 'mapa.html', 'timelapse.html', 'numeros.html', 'comer.html', 'compras.html', 'planob.html', 'logistica.html', 'preparacao.html'];
 const paginas = fs.readdirSync(BASE)
   .filter(f => /^dia-\d\d\.html$/.test(f) || PAGINAS_SITE.includes(f))
   .sort();

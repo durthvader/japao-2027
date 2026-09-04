@@ -240,6 +240,13 @@ PAGINAS = [
         'titulo': 'Logística & Hospedagem · Japão 2027',
         'desc': 'Voos LATAM com conexões e comparação de valores entre os conjuntos A e B de hospedagens.',
     },
+    {
+        'id': 'preparacao',
+        'arquivo': 'preparacao.html',
+        'label': 'Preparação',
+        'titulo': 'Preparação & Checklist · Japão 2027',
+        'desc': 'Cronograma de reservas e compras obrigatórias com datas-limite: ingressos, transportes, vistos, teamLab, DisneySea, Sumô e muito mais.',
+    },
 ]
 
 def podar_dias_mapa(dias):
