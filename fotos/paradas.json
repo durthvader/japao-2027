@@ -530,14 +530,14 @@
   "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQBACdASoWAA8APulkqU2pJaQiMAgBIB0JQBOmUABWrkbPEolKwW8EgAD+40tcS6FWYDuxEQBcEv/Wvty1khGK76EyzmRPAeulUpn1enX4OL5o4poJLcrDBoIAAA=="
  },
  "2027-03-27-p2": {
-  "termo": "teamLab Planets Tokyo",
+  "termo": "File:Toyosu Market Tokyo 2.jpg",
   "arq": "paradas/2027-03-27-p2.webp",
-  "titulo": "Photos at teamlab planets tokyo.jpg",
-  "autor": "Sasa0403",
-  "lic": "CC BY-SA 4.0",
-  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "pagina": "https://commons.wikimedia.org/wiki/File%3APhotos_at_teamlab_planets_tokyo.jpg",
-  "lqip": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAwCdASoWAAwAPulgqU0pJaQiMAgBIB0JQBOmUABpwiXJRcx9mfAA/vDHnPxbvGw/YJ086cXa0wN+rENxjnp9vWs3k5oAAAA="
+  "titulo": "Toyosu Market Tokyo 2.jpg",
+  "autor": "Arne Müseler",
+  "lic": "CC BY-SA 3.0 de",
+  "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AToyosu_Market_Tokyo_2.jpg",
+  "lqip": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAwCdASoWAAwAPuloq06pJiQiMAgBIB0JZQCdACHWxgeRGf5mjwAA/rCTFoJf0q51xhPcHMFjXZNMImMXfomClp5WFgAA"
  },
  "2027-03-27-p3": {
   "termo": "Tsukiji Outer Market street food",
@@ -570,13 +570,73 @@
   "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQBACdASoWAA8APulgqE0pJaQiMAgBIB0JQBdgA0SRhqq3EgmkgDqV8AD+eIm0/F4zqr6CjAs2C6LrnIVuvoSif3qLXYNdseyRn2qZNxJWAAAA"
  },
  "2027-03-27-p1": {
-  "termo": "File:Toyosu Market Tokyo 2.jpg",
+  "termo": "teamLab Planets Tokyo",
   "arq": "paradas/2027-03-27-p1.webp",
-  "titulo": "Toyosu Market Tokyo 2.jpg",
-  "autor": "Arne Müseler",
-  "lic": "CC BY-SA 3.0 de",
-  "licurl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
-  "pagina": "https://commons.wikimedia.org/wiki/File%3AToyosu_Market_Tokyo_2.jpg",
-  "lqip": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAwCdASoWAAwAPuloq06pJiQiMAgBIB0JZQCdACHWxgeRGf5mjwAA/rCTFoJf0q51xhPcHMFjXZNMImMXfomClp5WFgAA"
+  "titulo": "Photos at teamlab planets tokyo.jpg",
+  "autor": "Sasa0403",
+  "lic": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3APhotos_at_teamlab_planets_tokyo.jpg",
+  "lqip": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAwCdASoWAAwAPulgqU0pJaQiMAgBIB0JQBOmUABpwiXJRcx9mfAA/vDHnPxbvGw/YJ086cXa0wN+rENxjnp9vWs3k5oAAAA="
+ },
+ "2027-03-29-p1": {
+  "termo": "Meiji Shrine torii gate",
+  "arq": "paradas/2027-03-29-p1.webp",
+  "titulo": "Torii gate for the Meiji Shrine (14628328081).jpg",
+  "autor": "Mustang Joe",
+  "lic": "CC0",
+  "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3ATorii_gate_for_the_Meiji_Shrine_%2814628328081%29.jpg",
+  "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwBACdASoWAAwAPuliq04pJaQiMAgBIB0JYwC7ACBjDTdQZbrC3Trs34AA/ulCZdnl3oKd3CdEUVh5VH33OpK+gLQY7VZtgwXmJ0AA"
+ },
+ "2027-03-29-p2": {
+  "termo": "Takeshita Street Harajuku",
+  "arq": "paradas/2027-03-29-p2.webp",
+  "titulo": "Marion Crêpes in Harajuku Takeshita 2.jpg",
+  "autor": "Syced",
+  "lic": "CC0",
+  "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AMarion_Cr%C3%AApes_in_Harajuku_Takeshita_2.jpg",
+  "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwBACdASoWABEAPuFapk0opSOiN/VYARAcCUAWI+E4I48dMLmJ6ehTagAA/tAs2Mm2+Y/ySogGWccaRUDe8cGoHWe+GM5TAGB4Z5CENQNzWWXmXrX6d6W4qbzX1/XG009OffhKMiAAAA=="
+ },
+ "2027-03-29-p3": {
+  "termo": "Omotesando avenue Tokyo",
+  "arq": "paradas/2027-03-29-p3.webp",
+  "titulo": "Omotesando Avenue at sunset from pedestrian bridge, Jingumae, Shibuya, Tokyo.jpg",
+  "autor": "gog.creator",
+  "lic": "CC BY 4.0",
+  "licurl": "https://creativecommons.org/licenses/by/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AOmotesando_Avenue_at_sunset_from_pedestrian_bridge%2C_Jingumae%2C_Shibuya%2C_Tokyo.jpg",
+  "lqip": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQBACdASoWAA8APulkqE0pJaQiMAgBIB0JZQAAVOSY91On17+Ok7ii/AD+6/9DPpj44fWLFqc+TLJHCidpd6ccMAvNTpcB+OAAAA=="
+ },
+ "2027-03-29-p4": {
+  "termo": "Shibuya PARCO building",
+  "arq": "paradas/2027-03-29-p4.webp",
+  "titulo": "Shibuya Parco Hulic Building.jpg",
+  "autor": "稲妻ノ歯鯨",
+  "lic": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AShibuya_Parco_Hulic_Building.jpg",
+  "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADQBACdASoWABEAPuFiqU0opiQiMBgMARAcCWcAw3AM53zSGcYTOozM9vxu8VjPIAD+uYZREMaSA2FiNnbSnuDgTrYhZPEAmHcFZWJPR3oFlbyZFUuTHinZsx3Hg4+R6ZLdXXsVlQAAAA=="
+ },
+ "2027-03-29-p5": {
+  "termo": "Shibuya Crossing crowd",
+  "arq": "paradas/2027-03-29-p5.webp",
+  "titulo": "Tokyo Shibuya Scramble Crossing 2021-04-27.jpg",
+  "autor": "しんぎんぐきゃっと",
+  "lic": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3ATokyo_Shibuya_Scramble_Crossing_2021-04-27.jpg",
+  "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwBACdASoWABEAPulgp00pJaOiMAgBIB0JZwAAW9pXyp4RG2ZjfOJiywAA/vQgDlqR/3kz/7oPWNy/XM+mNfV0xXg4cilKjdV4fwAA"
+ },
+ "2027-03-29-p6": {
+  "termo": "Shibuya Sky observation deck",
+  "arq": "paradas/2027-03-29-p6.webp",
+  "titulo": "Tokyo Tower and Skyscrapers from Shibuya Sky Observation Deck (53416648661).jpg",
+  "autor": "Stephen Kelly from San Francisco, CA, USA",
+  "lic": "CC BY 2.0",
+  "licurl": "https://creativecommons.org/licenses/by/2.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3ATokyo_Tower_and_Skyscrapers_from_Shibuya_Sky_Observation_Deck_%2853416648661%29.jpg",
+  "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQBACdASoWABEAPulmo00pJiMiMBgMASAdCWcAzcAQ7UEBlSIohACTwAD+xJ4wZLYjIc4Wl0nVkPOmFeCr5CBPulgVQWEG7nPnO5l9AAA="
  }
 }

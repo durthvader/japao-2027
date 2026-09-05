@@ -5252,5 +5252,320 @@
    "nome": "Yurikamome — passe de 1 dia (¥820 adulto, ¥410 criança)",
    "texto": "Nesta rota o passe NÃO compensa. Os trechos de Yurikamome do dia somam ¥189 de Toyosu a Shijo-mae, ¥251 de Shin-Toyosu a Telecom Center e cerca de ¥330 de Daiba a Shimbashi: uns ¥770, contra ¥820 do passe. Paguem no cartão IC. Ele só passa a valer se entrar uma quarta parada na linha, como o Small Worlds em Ariake. Criança de 1 a 6 anos anda de graça, duas por adulto pagante, então os três bebês não pagam trem nenhum no dia."
   }
+ },
+ "2027-03-29": {
+  "titulo": "Segunda de rua: a descida de Meiji Jingu até o alto de Shibuya",
+  "resumo": "Segunda-feira fecha quase todo museu de Tóquio, e o último dia inteiro é de rua de propósito. Depois do trem da manhã não se pega mais nada: são 3,5 km de descida contínua, do silêncio da floresta do Meiji Jingu ao aperto da Takeshita, à avenida larga de Omotesando, ao 6º andar do Parco e ao terraço aberto a 229 m, com o pôr do sol às 18:00 no fim. Duas coisas precisam estar resolvidas antes de sair: o horário do Shibuya Sky, comprado online — e a consciência de que o ingresso de criança dele não é vendido pela internet.",
+  "centro": [
+   35.6664,
+   139.701
+  ],
+  "zoom": 14,
+  "paradas": [
+   {
+    "id": "base",
+    "tipo": "base",
+    "hora": "08:15",
+    "nome": "Hotel Oojima",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A",
+    "alerta": "Último dia inteiro em Tóquio, e de propósito é o dia de rua: SEGUNDA fecha quase todo museu da cidade. A descida de Harajuku até Shibuya são 3,5 km a pé e não se pega mais nenhum trem entre a chegada e a volta. Duas coisas têm de estar compradas antes: o horário do SHIBUYA SKY e — atenção — o ingresso de criança dele NÃO se compra pela internet, só na bilheteria do 14º andar no próprio dia."
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Ojima (Toei Shinjuku)",
+    "tipo": "estacao",
+    "lat": 35.689769,
+    "lng": 139.835076,
+    "hora": "08:20",
+    "gmaps": "Ojima Station, Koto"
+   },
+   {
+    "id": "e2",
+    "nome": "Estação de Shinjuku (baldeação para a JR)",
+    "tipo": "estacao",
+    "lat": 35.68888,
+    "lng": 139.69872,
+    "aprox": true,
+    "gmaps": "Shinjuku Station Tokyo"
+   },
+   {
+    "id": "e3",
+    "nome": "Estação de Harajuku (JR Yamanote)",
+    "tipo": "estacao",
+    "lat": 35.6705,
+    "lng": 139.70241,
+    "gmaps": "Harajuku Station Tokyo"
+   },
+   {
+    "id": "p1",
+    "ativ": "Meiji Jingu",
+    "tipo": "monumento",
+    "lat": 35.67484,
+    "lng": 139.69962,
+    "hora": "09:10",
+    "fim": "11:00",
+    "gmaps": "Meiji Jingu, Shibuya, Tokyo",
+    "foto": "Meiji Shrine torii gate",
+    "must": [
+     "O torii de cipreste de 12 m na entrada sul, o maior do Japão em estilo myojin — a madeira veio de um cipreste de 1.500 anos de Taiwan.",
+     "A parede de barris de saquê doados pelas cascatas do país inteiro, e do outro lado do caminho a fileira de barris de vinho da Borgonha, presente dos franceses.",
+     "As 100.000 árvores da floresta foram TODAS plantadas à mão em 1920, doadas de todo o Japão: o que parece mata antiga tem pouco mais de cem anos e é obra humana.",
+     "Casamento xintoísta: às manhãs de fim de semana e feriados é comum ver a procissão atravessar o pátio, com a noiva de shiromuku e o guarda-sol vermelho."
+    ],
+    "comidas": []
+   },
+   {
+    "id": "p2",
+    "ativ": "Takeshita-dori",
+    "tipo": "compras",
+    "lat": 35.67116,
+    "lng": 139.70495,
+    "hora": "11:15",
+    "fim": "12:15",
+    "gmaps": "Takeshita Street, Harajuku",
+    "foto": "Takeshita Street Harajuku",
+    "must": [
+     "Crepe de Harajuku, servido em cone de papel com chantilly e morango — é o que todo mundo está comendo na foto da rua.",
+     "Purikura: as cabines de foto que alargam o olho e clareiam a pele, no subsolo do prédio da entrada. É barato e rende mais risada que qualquer lembrança comprada.",
+     "A 200 m, na Meiji-dori, a FENDER FLAGSHIP TOKYO — única loja-conceito da marca no mundo, com quatro andares e estúdio."
+    ],
+    "comidas": [
+     "Crepe de morango com chantilly, o clássico da rua.",
+     "Batata frita em cone gigante e algodão-doce do tamanho da cabeça."
+    ]
+   },
+   {
+    "id": "p3",
+    "ativ": "Omotesando",
+    "tipo": "compras",
+    "lat": 35.66908,
+    "lng": 139.70539,
+    "aprox": true,
+    "hora": "12:20",
+    "fim": "14:00",
+    "gmaps": "Omotesando Jingumae Crossing, Harajuku",
+    "foto": "Omotesando avenue Tokyo",
+    "must": [
+     "KIDDY LAND, 250 m avenida acima: cinco andares de brinquedo, um por franquia — Snoopy, Studio Ghibli, Sanrio, Rilakkuma. Tem elevador.",
+     "A arquitetura é o passeio: Prada de Herzog & de Meuron, Tod's de Toyo Ito, Dior de SANAA. Anda-se pela calçada olhando para cima, e não custa nada.",
+     "As UNIQLO e GU grandes de Harajuku ficam na Meiji-dori, no cruzamento — é onde o grupo resolve roupa por preço de Japão.",
+     "A Cat Street, entre Omotesando e Shibuya, é rua sem carro, arborizada e cheia de loja pequena — é por ela que se desce para Shibuya sem enfrentar avenida."
+    ],
+    "comidas": [
+     "Andares de restaurante do Omotesando Hills e do Tokyu Plaza.",
+     "Cafés da Cat Street, muito mais fáceis de sentar em grupo."
+    ]
+   },
+   {
+    "id": "p4",
+    "ativ": "Shibuya Parco",
+    "tipo": "compras",
+    "lat": 35.66193,
+    "lng": 139.69874,
+    "hora": "14:20",
+    "fim": "16:00",
+    "gmaps": "Shibuya PARCO, Udagawacho, Tokyo",
+    "foto": "Shibuya PARCO building",
+    "must": [
+     "6º ANDAR: Nintendo TOKYO (a única do Japão), Pokémon Center Shibuya, Jump Shop e Capcom Store, lado a lado. Uma quadra resolve o que estaria em três bairros.",
+     "⚠ Esse andar trabalha com SENHA. O papel diz a hora de ENTRAR NA FILA, não de entrar na loja — peguem a senha assim que chegarem e usem a espera no resto.",
+     "TOWER RECORDS, a 300 m: nove andares de CD e vinil, com café no 8º. É a maior loja de disco do mundo e sobreviveu à internet inteira.",
+     "O terraço do último andar do Parco é aberto e gratuito, com vista da cidade."
+    ],
+    "comidas": [
+     "Praça de alimentação do Parco e restaurantes do 10º andar.",
+     "Café do 8º da Tower Records, com mesa grande e vista da rua."
+    ]
+   },
+   {
+    "id": "p5",
+    "ativ": "Shibuya Crossing",
+    "tipo": "monumento",
+    "lat": 35.65906,
+    "lng": 139.70062,
+    "hora": "16:10",
+    "fim": "17:00",
+    "gmaps": "Hachiko Statue, Shibuya",
+    "foto": "Shibuya Crossing crowd",
+    "must": [
+     "A estátua do Hachiko, o cão que esperou o dono na estação por nove anos depois da morte dele. É o ponto de encontro de Tóquio — e, com 13 pessoas, é bom ponto de encontro de verdade.",
+     "Melhor vista GRÁTIS do cruzamento: o 1º andar do Starbucks do Tsutaya, de janela para a rua. Chegar antes das 17:00 para conseguir lugar.",
+     "A passarela do Mag's Park, no alto do Magnet by Shibuya109, cobra pouco e olha o cruzamento de cima, na vertical."
+    ],
+    "comidas": []
+   },
+   {
+    "id": "p6",
+    "ativ": "SHIBUYA SKY",
+    "tipo": "mirante",
+    "lat": 35.65838,
+    "lng": 139.70221,
+    "hora": "17:10",
+    "fim": "18:40",
+    "gmaps": "Shibuya Sky, Shibuya Scramble Square",
+    "foto": "Shibuya Sky observation deck",
+    "must": [
+     "O rooftop é o maior terraço de mirante do Japão, a 229 m e a céu aberto — não há vidro entre você e a cidade.",
+     "O pôr do sol de 29/03 é às 18:00: entrar por volta das 17:10 pega dia, poente e cidade acesa na mesma visita.",
+     "O SKY EDGE, o canto voltado para o cruzamento, é onde sai a foto — e é onde a fila se forma. Subam direto para lá ao chegar e deixem o resto para depois."
+    ],
+    "comidas": [
+     "THE ROOF, o bar do terraço, cobra à parte e costuma exigir reserva."
+    ]
+   },
+   {
+    "id": "e4",
+    "nome": "Estação de Shibuya (Metro Hanzomon)",
+    "tipo": "estacao",
+    "lat": 35.65963,
+    "lng": 139.70007,
+    "aprox": true,
+    "hora": "20:40",
+    "gmaps": "Shibuya Station Tokyo"
+   },
+   {
+    "id": "fim",
+    "tipo": "base",
+    "hora": "21:20",
+    "nome": "Hotel Oojima",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "e1",
+    "modo": "pe",
+    "km": 0.25,
+    "min": 4
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "km": 12.5,
+    "min": 30,
+    "nota": "Toei Shinjuku DIRETO até Shinjuku — ¥280, sem baldeação"
+   },
+   {
+    "de": "e2",
+    "para": "e3",
+    "modo": "metro",
+    "km": 1.8,
+    "min": 4,
+    "nota": "JR Yamanote até Harajuku, 2 estações — ¥160"
+   },
+   {
+    "de": "e3",
+    "para": "p1",
+    "modo": "pe",
+    "km": 1.0,
+    "min": 15,
+    "nota": "1 km de floresta sob o torii — no cascalho, andem pelas lajes das bordas"
+   },
+   {
+    "de": "p1",
+    "para": "p2",
+    "modo": "pe",
+    "km": 1.2,
+    "min": 17,
+    "nota": "de volta pela floresta até a frente da estação"
+   },
+   {
+    "de": "p2",
+    "para": "p3",
+    "modo": "pe",
+    "km": 0.5,
+    "min": 8,
+    "nota": "os 350 m da Takeshita e mais um quarteirão até o cruzamento de Jingumae"
+   },
+   {
+    "de": "p3",
+    "para": "p4",
+    "modo": "pe",
+    "km": 1.1,
+    "min": 16,
+    "nota": "descendo pela Cat Street, sem carro e arborizada"
+   },
+   {
+    "de": "p4",
+    "para": "p5",
+    "modo": "pe",
+    "km": 0.45,
+    "min": 6
+   },
+   {
+    "de": "p5",
+    "para": "p6",
+    "modo": "pe",
+    "km": 0.2,
+    "min": 3,
+    "nota": "o Scramble Square é o prédio colado à estação"
+   },
+   {
+    "de": "p6",
+    "para": "e4",
+    "modo": "pe",
+    "km": 0.2,
+    "min": 3
+   },
+   {
+    "de": "e4",
+    "para": "fim",
+    "modo": "metro",
+    "km": 14.0,
+    "min": 35,
+    "nota": "Hanzomon DIRETO até Sumiyoshi + 1 parada de Toei Shinjuku — ¥400"
+   }
+  ],
+  "alternativas": [
+   {
+    "titulo": "SHIBUYA SKY: o ingresso de criança não sai pela internet",
+    "refs": [
+     "p6"
+    ],
+    "texto": "⚠ Isto parte o grupo na porta se ninguém souber. O ingresso ADULTO se compra online — ¥2.700 para entrar antes das 15:00 e ¥3.400 das 15:00 em diante (na bilheteria, ¥3.000 e ¥3.700). Mas o ingresso de CRIANÇA é vendido SÓ NA BILHETERIA DO 14º ANDAR, no próprio dia. Menores de 5 anos não pagam, então os três bebês entram de graça; o problema são os dois adolescentes, se tiverem menos de 18. Comprem os adultos online para o horário do pôr do sol, cheguem com folga e resolvam os dois no balcão antes de subir — o horário do poente é o primeiro a esgotar."
+   },
+   {
+    "titulo": "O que não sobe ao rooftop",
+    "refs": [
+     "p6"
+    ],
+    "texto": "O terraço é aberto a 229 m, e por causa do vento NADA SOLTO passa: bolsa, mochila, pochete, tripé, pau de selfie, GUARDA-CHUVA e até CHAPÉU ficam nos armários do 46º andar (¥100, devolvidos no fim). CARRINHO TAMBÉM NÃO SOBE — e o seu próprio nem entra no prédio: eles emprestam um lá dentro, e no terraço o bebê vai no colo ou no canguru. O andar envidraçado de baixo aceita carrinho. Se der vento forte ou chuva, o rooftop fecha e só o mirante interno funciona."
+   },
+   {
+    "titulo": "A senha do 6º andar do Parco",
+    "refs": [
+     "p4"
+    ],
+    "texto": "Nintendo TOKYO, Pokémon Center e Capcom Store dividem o mesmo andar, e o transbordo de um enche o outro: em 2026 o Pokémon Center Shibuya virou o mais congestionado do país, com espera de até duas horas e fila de caixa saindo pela escada. Segunda-feira é o melhor dia possível — o pico é fim de semana e SEXTA, quando saem os lançamentos. Ainda assim: peguem a senha ASSIM QUE CHEGAREM em Shibuya, antes de qualquer outra coisa, porque o papel marca a hora de entrar na fila e não a de entrar na loja. Com a senha na mão, façam a Tower Records e o cruzamento enquanto a hora não chega."
+   },
+   {
+    "titulo": "Yoyogi Park, se quiserem sakura sem multidão",
+    "ponto": {
+     "nome": "Yoyogi Park",
+     "lat": 35.67141,
+     "lng": 139.69517
+    },
+    "texto": "Colado ao Meiji Jingu, do outro lado da ponte, e de graça. Não tem as 1.200 cerejeiras do Ueno, mas tem gramado largo, caminho plano e espaço para as crianças correrem — e em segunda-feira de manhã está quase vazio, que é o oposto do que vocês encontraram no domingo. Vale meia hora entre o santuário e a Takeshita, e é o único lugar do dia onde dá para sentar na grama."
+   },
+   {
+    "titulo": "O jardim interno do Meiji Jingu vale os ¥500?",
+    "refs": [
+     "p1"
+    ],
+    "texto": "O Gyoen é um jardim cercado dentro da floresta, com entrada à parte de ¥500. Em junho ele é imperdível, com 1.500 íris floridas — em fim de março, não: as íris não estão, e o que resta é bosque silencioso e o Kiyomasa no Ido, o poço do século XVI que os japoneses tratam como ponto de energia e onde costuma haver fila. Para 10 pagantes são ¥5.000. A recomendação honesta é pular e gastar o tempo no parque, que é de graça e mais útil com criança."
+   }
+  ],
+  "passe": {
+   "nome": "Nenhum passe compensa — usem o IC (Suica/Pasmo)",
+   "texto": "O dia gasta ¥840 por pessoa em trem, e em duas viagens só: ¥440 na ida (¥280 de Toei até Shinjuku e ¥160 de JR até Harajuku) e ¥400 na volta. Entre elas são 3,5 km a pé, sem catraca nenhuma. O Tokyo Subway Ticket de 24h custa ¥800 mas não cobre a JR da ida nem a Toei; o passe diário da Toei custa ¥700 e não cobre a Hanzomon da volta. Nenhum dos dois fecha a conta."
+  }
  }
 }
