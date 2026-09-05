@@ -217,8 +217,16 @@ def aplicar(dados, verboso=True):
             for t in sorted(nao_usadas):
                 print('   nao achei: %s' % t[:70])
 
-    # o periodo manda na leitura do dia: Manha, Tarde, Noite, sem embaralhar
-    ORDEM = {'Manhã': 0, 'Tarde': 1, 'Noite': 2}
+    # O periodo manda na leitura do dia. 'Dia todo' precisa estar aqui: sem ele
+    # caia no balde 9 e ia parar DEPOIS da noite — foi o que punha a volta do
+    # DisneySea antes da propria visita ao parque. Periodo desconhecido agora
+    # avisa em vez de sumir para o fim da lista em silencio.
+    ORDEM = {'Manhã': 0, 'Dia todo': 1, 'Tarde': 2, 'Noite': 3}
+    desconhecidos = {a.get('periodo') for d in dados['dias'] for a in d['atividades']
+                     if a.get('periodo') not in ORDEM}
+    if desconhecidos and verboso:
+        print('ajustes: periodo fora da ordem conhecida, vai para o fim do dia: %s'
+              % ', '.join(repr(x) for x in sorted(desconhecidos, key=str)))
     for d in dados['dias']:
         d['atividades'].sort(key=lambda a: ORDEM.get(a.get('periodo'), 9))
 
