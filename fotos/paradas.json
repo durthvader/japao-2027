@@ -638,5 +638,65 @@
   "licurl": "https://creativecommons.org/licenses/by/2.0",
   "pagina": "https://commons.wikimedia.org/wiki/File%3ATokyo_Tower_and_Skyscrapers_from_Shibuya_Sky_Observation_Deck_%2853416648661%29.jpg",
   "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQBACdASoWABEAPulmo00pJiMiMBgMASAdCWcAzcAQ7UEBlSIohACTwAD+xJ4wZLYjIc4Wl0nVkPOmFeCr5CBPulgVQWEG7nPnO5l9AAA="
+ },
+ "2027-03-30-p2": {
+  "termo": "N700S Shinkansen Tokaido",
+  "arq": "paradas/2027-03-30-p2.webp",
+  "titulo": "Series-N700S-J2.jpg",
+  "autor": "MaedaAkihiko",
+  "lic": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3ASeries-N700S-J2.jpg",
+  "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADQAwCdASoWAA8APulkqU2pJaQiMAgBIB0JQBOgA79wga1U5KvvuPAA+dlUdKiv3CdVqgvwc0XcCQyGj0lwAgzP9ablCIrq5vHNDpW221koGVuAAAA="
+ },
+ "2027-03-30-p4": {
+  "termo": "Shinsaibashi shopping arcade Osaka",
+  "arq": "paradas/2027-03-30-p4.webp",
+  "titulo": "Shinsaibashi-suji 201408.JPG",
+  "autor": "Mc681",
+  "lic": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AShinsaibashi-suji_201408.JPG",
+  "lqip": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAwBQCdASoWABYAPulmqk+pJaOiMBgIASAdCWcAw6wQ1C4ZP1kfVc+A4FUmjKPKkOo8IAD9+P1vtBUB4jX6dYggvUsXi+Ml9/Co8vmnnmgCa4SRbv+nwgn0pEoVeBLu0rbA1Ti0o7LkMgAA"
+ },
+ "2027-03-30-p5": {
+  "termo": "Dotonbori Glico sign night",
+  "arq": "paradas/2027-03-30-p5.webp",
+  "titulo": "Neon signs in Dotonbori at night,16th August 2014 (1).JPG",
+  "autor": "Tokumeigakarinoaoshima",
+  "lic": "CC0",
+  "licurl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3ANeon_signs_in_Dotonbori_at_night%2C16th_August_2014_%281%29.JPG",
+  "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQBACdASoWABEAPulgqE2pJaOyMAgCQB0JQBYdhDvkT/CUpsT8oI6f+y2MAP7qMI6P92Do6MvheC+vP4tBIMQ0YN2JL8Yy7/oYVtdK2GvzgvPrL9LU88H0pV8gGAXY7/Huci2sj2YAAA=="
+ },
+ "2027-03-31-p2": {
+  "termo": "Tenjinbashisuji shopping street Osaka",
+  "arq": "paradas/2027-03-31-p2.webp",
+  "titulo": "Tenjinbashisuji Shopping Street 2024 Dec 31 various.jpeg",
+  "autor": "Nesnad",
+  "lic": "CC BY 4.0",
+  "licurl": "https://creativecommons.org/licenses/by/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3ATenjinbashisuji_Shopping_Street_2024_Dec_31_various.jpeg",
+  "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQBACdASoWABEAPuliqU2pJaQiMAgBIB0JZwDHMCG5uWCDn8zaFLu4HRPVcNGMgAD+V1bdxRnCbNBWNgoCFiQTMBlckOcgyHneHiKTldEgiZ389PFwmIAA"
+ },
+ "2027-03-31-p3": {
+  "termo": "Shinsaibashi Suji arcade",
+  "arq": "paradas/2027-03-31-p3.webp",
+  "titulo": "UNIQLO Shinsaibashisuji Shopping Street shop and GU Shinsaibashi shop.jpg",
+  "autor": "Tokumeigakarinoaoshima",
+  "lic": "CC BY-SA 4.0",
+  "licurl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3AUNIQLO_Shinsaibashisuji_Shopping_Street_shop_and_GU_Shinsaibashi_shop.jpg",
+  "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoWABEAPtVcok0oJaMiN/qoAQAaiWUAxNgJ4StJRndR7NMAAK6LXs3BkDcJys3RgspGvgxUXnTj/s3PaR/QPNk7qSn8XZYfaAfjvRprUVhPBaUjXp94YRH46wAAAA=="
+ },
+ "2027-03-31-p4": {
+  "termo": "Nipponbashi Den Den Town Osaka",
+  "arq": "paradas/2027-03-31-p4.webp",
+  "titulo": "Den-Den Town, Nipponbashi, Osaka - Jul 12, 2023.jpg",
+  "autor": "Clemens Vasters",
+  "lic": "CC BY 2.0",
+  "licurl": "https://creativecommons.org/licenses/by/2.0",
+  "pagina": "https://commons.wikimedia.org/wiki/File%3ADen-Den_Town%2C_Nipponbashi%2C_Osaka_-_Jul_12%2C_2023.jpg",
+  "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoWAA8APulep00pJSOiMAgBIB0JZwAAO4oq6+4E8eUoAAD+3WpRK8lz2HVMuC/ObGDm8uqGoLN0XM3rd0fBewKFyTQOiTVqDgA="
  }
 }

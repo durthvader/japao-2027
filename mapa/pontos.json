@@ -5567,5 +5567,522 @@
    "nome": "Nenhum passe compensa — usem o IC (Suica/Pasmo)",
    "texto": "O dia gasta ¥840 por pessoa em trem, e em duas viagens só: ¥440 na ida (¥280 de Toei até Shinjuku e ¥160 de JR até Harajuku) e ¥400 na volta. Entre elas são 3,5 km a pé, sem catraca nenhuma. O Tokyo Subway Ticket de 24h custa ¥800 mas não cobre a JR da ida nem a Toei; o passe diário da Toei custa ¥700 e não cobre a Hanzomon da volta. Nenhum dos dois fecha a conta."
   }
+ },
+ "2027-03-30": {
+  "titulo": "515 km de trem e a volta a Osaka para a última noite",
+  "resumo": "O dia é quase todo trem: check-out em Ojima, Shinkansen até Shin-Osaka e Midosuji até Namba, com a tarde e a noite livres em Shinsaibashi e Dotonbori. É o dia mais caro da viagem e o único que depende de reserva feita com antecedência — assento marcado e, para quem levar mala grande, o espaço de bagagem que só existe reservado. E é o dia em que o hotel de Osaka precisa estar fechado: ele ainda não está.",
+  "centro": [
+   35.05,
+   137.6
+  ],
+  "zoom": 7,
+  "paradas": [
+   {
+    "id": "base",
+    "tipo": "base",
+    "hora": "08:30",
+    "nome": "Airbnb Ojima",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A",
+    "alerta": "Dia de mala E carrinho ao mesmo tempo, e é o único da viagem em que uma reserva feita meses antes decide como o dia corre. Duas coisas: o assento do Nozomi e — se alguma mala passar de 160 cm somando as três medidas — o espaço de bagagem grande, que é gratuito mas SÓ EXISTE RESERVADO. Sem ele são ¥1.000 de multa por mala e nenhum lugar para pô-la. A alternativa que resolve tudo é o takkyubin: as malas saem de Tóquio na véspera e esperam vocês no hotel de Osaka."
+   },
+   {
+    "id": "p1",
+    "ativ": "Check-out",
+    "tipo": "evento",
+    "lat": 35.689769,
+    "lng": 139.835076,
+    "hora": "08:45",
+    "gmaps": "Ojima Station, Koto",
+    "foto": null
+   },
+   {
+    "id": "e1",
+    "nome": "Ogawamachi / Awajicho (a mesma estação, dois nomes)",
+    "tipo": "estacao",
+    "lat": 35.695,
+    "lng": 139.76689,
+    "aprox": true,
+    "gmaps": "Ogawamachi Station Tokyo"
+   },
+   {
+    "id": "p2",
+    "ativ": "SHINKANSEN",
+    "tipo": "evento",
+    "lat": 35.67762,
+    "lng": 139.76536,
+    "aprox": true,
+    "hora": "09:50",
+    "fim": "12:20",
+    "gmaps": "Tokyo Station Shinkansen",
+    "foto": "N700S Shinkansen Tokaido",
+    "must": [
+     "Sentem do lado E — janela à direita no sentido de Osaka. O Fuji aparece uns 40 min depois da partida, entre Shin-Fuji e Shizuoka, e dura menos de um minuto.",
+     "Ekiben: a marmita de estação, ¥1.000–1.500, comprada na plataforma e comida a bordo. Faz parte da viagem tanto quanto o trem.",
+     "Trocador de fraldas fica no vagão 11 nos trens N700S, junto do banheiro grande.",
+     "O trem parte de Tóquio, então embarca-se num vagão vazio e com tempo — é por isso que vale pegar aqui e não em Shinagawa, onde a parada dura um minuto."
+    ],
+    "comidas": [
+     "Ekiben da plataforma: o de Tóquio mais clássico é o Shumai Bento do Kiyoken."
+    ]
+   },
+   {
+    "id": "e2",
+    "nome": "Estação de Shin-Osaka",
+    "tipo": "estacao",
+    "lat": 34.73349,
+    "lng": 135.49789,
+    "aprox": true,
+    "hora": "12:20",
+    "gmaps": "Shin-Osaka Station"
+   },
+   {
+    "id": "p3",
+    "ativ": "Shin-Osaka",
+    "tipo": "evento",
+    "lat": 34.66725,
+    "lng": 135.49972,
+    "aprox": true,
+    "hora": "13:00",
+    "fim": "15:00",
+    "gmaps": "Namba Station, Osaka",
+    "foto": null
+   },
+   {
+    "id": "p4",
+    "ativ": "Shinsaibashi-suji",
+    "tipo": "compras",
+    "lat": 34.67335,
+    "lng": 135.50137,
+    "hora": "15:15",
+    "fim": "17:45",
+    "gmaps": "Shinsaibashi-suji Shopping Street",
+    "foto": "Shinsaibashi shopping arcade Osaka",
+    "must": [
+     "🛒 É O MELHOR LUGAR DA VIAGEM PARA FARMÁCIA E SKINCARE: Matsumoto Kiyoshi, Kokumin e Daikoku ficam uma do lado da outra, competindo em preço na mesma quadra.",
+     "UNIQLO e GU grandes, e a Daimaru histórica de 1933, com fachada art déco de Vories.",
+     "600 m de arcada coberta e plana, do começo ao fim — chuva não atrapalha e o carrinho anda o tempo todo."
+    ],
+    "comidas": [
+     "Os subsolos de comida da Daimaru, para levar ao hotel.",
+     "Cafés antigos das travessas, muito mais fáceis de sentar em grupo."
+    ]
+   },
+   {
+    "id": "p5",
+    "ativ": "Dotonbori",
+    "tipo": "comida",
+    "lat": 34.66907,
+    "lng": 135.5013,
+    "hora": "18:00",
+    "fim": "21:00",
+    "gmaps": "Ebisubashi, Dotonbori, Osaka",
+    "foto": "Dotonbori Glico sign night",
+    "must": [
+     "O letreiro do Glico, aceso desde 1935 na ponte Ebisubashi — a foto obrigatória da última noite, e a ponte é o ponto de encontro do grupo.",
+     "O caranguejo mecânico do Kani Doraku e o baiacu do Zuboraya: as fachadas gigantes de Dotonbori são o que Osaka chama de kuidaore, comer até falir.",
+     "A Tonbori River Walk, na beira do canal, é plana, larga e muito menos cheia que a rua de cima — é por ela que se anda com carrinho."
+    ],
+    "comidas": [
+     "Kushikatsu (espeto empanado) — ⚠ o molho é comunitário: NÃO se mergulha duas vezes.",
+     "Okonomiyaki e takoyaki, os dois pratos que Osaka inventou.",
+     "Ramen do Kinryu, aberto 24h, com o dragão verde na fachada."
+    ]
+   },
+   {
+    "id": "fim",
+    "tipo": "base",
+    "hora": "21:30",
+    "nome": "Hotel em Osaka — AINDA NÃO DEFINIDO (âncora em Namba)",
+    "lat": 34.66725,
+    "lng": 135.49972,
+    "aprox": true,
+    "gmaps": "Namba Station, Osaka"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "p1",
+    "modo": "pe",
+    "km": 0.25,
+    "min": 4,
+    "nota": "com malas e carrinhos ao mesmo tempo"
+   },
+   {
+    "de": "p1",
+    "para": "e1",
+    "modo": "metro",
+    "km": 6.5,
+    "min": 20,
+    "nota": "Toei Shinjuku DIRETO até Ogawamachi"
+   },
+   {
+    "de": "e1",
+    "para": "p2",
+    "modo": "metro",
+    "km": 1.8,
+    "min": 6,
+    "nota": "passagem interna até Awajicho + Metro Marunouchi, 2 estações — ¥286 no total"
+   },
+   {
+    "de": "p2",
+    "para": "e2",
+    "modo": "trem",
+    "km": 515,
+    "min": 150,
+    "nota": "Tokaido Shinkansen NOZOMI, assento reservado — ¥14.920 em alta temporada"
+   },
+   {
+    "de": "e2",
+    "para": "p3",
+    "modo": "metro",
+    "km": 8.5,
+    "min": 13,
+    "nota": "Metro Midosuji direto até Namba — ¥290"
+   },
+   {
+    "de": "p3",
+    "para": "p4",
+    "modo": "pe",
+    "km": 0.7,
+    "min": 10
+   },
+   {
+    "de": "p4",
+    "para": "p5",
+    "modo": "pe",
+    "km": 0.5,
+    "min": 7,
+    "nota": "a arcada desemboca na ponte Ebisubashi"
+   },
+   {
+    "de": "p5",
+    "para": "fim",
+    "modo": "pe",
+    "km": 0.4,
+    "min": 6
+   }
+  ],
+  "alternativas": [
+   {
+    "titulo": "O hotel de Osaka ainda não está fechado",
+    "refs": [
+     "p3"
+    ],
+    "texto": "Esta é a única reserva da viagem que continua em aberto, e ela decide três coisas: quanto custa o metrô desde Shin-Osaka, quanto se anda até Shinsaibashi e Dotonbori, e — o que mais importa no dia seguinte — se há guarda-volumes no hotel para os três carrinhos enquanto vocês passam o último dia na rua. O mapa assume Namba, que é o que o roteiro pressupõe. Ao fechar, peçam explicitamente guarda-volumes até o fim da tarde do dia 31."
+   },
+   {
+    "titulo": "A mala grande precisa de reserva, e ela é de graça",
+    "refs": [
+     "p2"
+    ],
+    "texto": "⚠ No Tokaido Shinkansen, bagagem que passe de 160 cm somando altura, largura e profundidade só entra com o ASSENTO COM ESPAÇO DE BAGAGEM, na última fileira do vagão. Ele não custa nada, mas tem de ser escolhido na hora da reserva e são poucos por vagão — quem aparecer sem ele paga ¥1.000 por mala e ainda fica sem onde pôr. Mala de porão de 28 polegadas costuma passar dos 160 cm; a de 24, não. Meçam antes de reservar."
+   },
+   {
+    "titulo": "Takkyubin: a saída que resolve o dia inteiro",
+    "refs": [
+     "p1",
+     "p2"
+    ],
+    "texto": "Mandar as malas de Tóquio para o hotel de Osaka custa cerca de ¥2.000 por volume e elas chegam no dia seguinte — ou seja, DESPACHEM NA VÉSPERA, no dia 29. Aí o dia 30 vira só gente e carrinho: some a reserva de bagagem grande, some a multa, some o aperto na plataforma e some a caminhada dentro da Estação de Tóquio com mala na mão. Para 13 pessoas é a diferença entre um dia de logística e um dia de viagem. ⚠ Só vale para dentro do Japão: mandar mercadoria isenta de imposto para fora do país anula a isenção da compra inteira."
+   },
+   {
+    "titulo": "Por que embarcar em Tóquio e não em Shinagawa",
+    "refs": [
+     "p2"
+    ],
+    "texto": "Shinagawa fica no caminho e é mais perto de muita gente, mas o trem PARTE de Tóquio: ali ele já está parado na plataforma, vazio, e dá para subir 13 pessoas com calma, acomodar mala e carrinho e sentar antes de andar. Em Shinagawa a parada dura cerca de um minuto, com o corredor já ocupado. Com três bebês, esse minuto é o que decide."
+   },
+   {
+    "titulo": "Kushikatsu: a regra que todo mundo quebra uma vez",
+    "refs": [
+     "p5"
+    ],
+    "texto": "O molho de cada mesa fica numa cuba comunitária, e É PROIBIDO MERGULHAR O ESPETO DUAS VEZES — mordeu, acabou. Quem quiser mais molho usa o repolho cru que vem de graça, como concha. Não é frescura de turista: está escrito na parede de todas as casas, em japonês e em inglês, e é a única etiqueta de Osaka que realmente importa saber antes."
+   }
+  ],
+  "passe": {
+   "nome": "Nenhum passe compensa, mas a reserva do Shinkansen é obrigatória",
+   "texto": "O gasto do dia é quase todo num bilhete só. O Japan Rail Pass não entra na conta: ele custaria mais de ¥50.000 por pessoa e vocês usam o Shinkansen uma vez. Em Osaka, o metrô do fim de tarde são ¥290 avulsos — nenhum passe diário se paga em duas viagens."
+  }
+ },
+ "2027-03-31": {
+  "titulo": "O último dia: duas arcadas, o troco em iene e o trem para o KIX",
+  "resumo": "Dia sem mala na mão e com hora marcada no fim: o voo JQ 14 decola às 21:25 e o último trem aceitável sai de Namba às 17:20. Entre uma coisa e outra cabem a arcada mais longa do Japão, a última passada em Shinsaibashi e a despedida na Den Den Town. O que pode estragar o fim não é o trânsito: é a fila do reembolso de imposto no aeroporto, que desde novembro de 2026 é feita ANTES do despacho, com a mercadoria em mãos e 13 passaportes.",
+  "centro": [
+   34.6,
+   135.38
+  ],
+  "zoom": 10,
+  "paradas": [
+   {
+    "id": "base",
+    "tipo": "base",
+    "hora": "09:00",
+    "nome": "Hotel em Osaka — AINDA NÃO DEFINIDO (âncora em Namba)",
+    "lat": 34.66725,
+    "lng": 135.49972,
+    "aprox": true,
+    "gmaps": "Namba Station, Osaka"
+   },
+   {
+    "id": "p1",
+    "ativ": "Check-out",
+    "tipo": "evento",
+    "lat": 34.6639,
+    "lng": 135.50151,
+    "aprox": true,
+    "hora": "09:15",
+    "fim": "09:45",
+    "gmaps": "Namba CITY, Osaka",
+    "foto": null
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Nipponbashi (Metro Sakaisuji)",
+    "tipo": "estacao",
+    "lat": 34.66679,
+    "lng": 135.50739,
+    "aprox": true,
+    "gmaps": "Nipponbashi Station Osaka"
+   },
+   {
+    "id": "e2",
+    "nome": "Estação Minami-morimachi — a ponta sul da arcada",
+    "tipo": "estacao",
+    "lat": 34.69751,
+    "lng": 135.51116,
+    "gmaps": "Minami-morimachi Station Osaka"
+   },
+   {
+    "id": "p2",
+    "ativ": "Tenjin-bashi-suji",
+    "tipo": "compras",
+    "lat": 34.70955,
+    "lng": 135.51125,
+    "hora": "10:15",
+    "fim": "11:45",
+    "gmaps": "Tenjinbashisuji Shopping Street",
+    "foto": "Tenjinbashisuji shopping street Osaka",
+    "must": [
+     "2,6 km de arcada contínua, a mais longa do Japão, ligando duas estações da MESMA linha: entra-se em Minami-morimachi e sai-se em Tenjinbashisuji 6-chome, sem refazer o caminho e sem precisar andar tudo.",
+     "Não é rua de turista: é bairro de gente da cidade. Comida barata, brechó, papelaria, doceria e kissaten antigos — é aqui que o troco em iene rende mais.",
+     "Toldo do começo ao fim: é o melhor plano de chuva de Osaka, e o carrinho anda plano os 2,6 km inteiros."
+    ],
+    "comidas": [
+     "Kissaten antigos com café e torrada grossa, o café da manhã de Osaka.",
+     "Doceria e takoyaki de bairro, a metade do preço de Dotonbori."
+    ]
+   },
+   {
+    "id": "e3",
+    "nome": "Estação Tenjinbashisuji 6-chome — a ponta norte",
+    "tipo": "estacao",
+    "lat": 34.71029,
+    "lng": 135.51085,
+    "aprox": true,
+    "gmaps": "Tenjinbashisuji 6-chome Station"
+   },
+   {
+    "id": "e4",
+    "nome": "Estação Nagahoribashi",
+    "tipo": "estacao",
+    "lat": 34.67532,
+    "lng": 135.5063,
+    "gmaps": "Nagahoribashi Station Osaka"
+   },
+   {
+    "id": "p3",
+    "ativ": "Compras finais",
+    "tipo": "compras",
+    "lat": 34.67335,
+    "lng": 135.50137,
+    "hora": "12:15",
+    "fim": "14:15",
+    "gmaps": "Shinsaibashi-suji Shopping Street",
+    "foto": "Shinsaibashi Suji arcade",
+    "must": [
+     "Segunda passada, para o que ficou faltando na véspera: farmácia, skincare, UNIQLO e GU.",
+     "⚠ ÚLTIMO DIA: tudo o que for comprado aqui precisa passar pelo quiosque da alfândega no KIX ANTES do despacho, com a mercadoria em mãos. Guardem as notas separadas e não enfiem nada no fundo da mala.",
+     "Gastem o troco: iene em espécie não vale quase nada para trocar de volta no Brasil, e a arcada tem 100-yen shop para zerar moeda."
+    ],
+    "comidas": []
+   },
+   {
+    "id": "p4",
+    "ativ": "Almoço de despedida",
+    "tipo": "comida",
+    "lat": 34.65922,
+    "lng": 135.50582,
+    "hora": "14:30",
+    "fim": "16:30",
+    "gmaps": "Den Den Town, Nipponbashi, Osaka",
+    "foto": "Nipponbashi Den Den Town Osaka",
+    "must": [
+     "A Den Den Town é a Akihabara de Osaka, mas menor e mais barata: última passada para o que ficou faltando em eletrônico, anime e game.",
+     "⚠ As lojas são verticais e apertadas, com escada estreita — revezem na porta em vez de tentar subir com os três carrinhos.",
+     "O almoço de despedida se faz voltando 600 m para Dotonbori, onde há mesa para 13."
+    ],
+    "comidas": [
+     "Última chance de okonomiyaki e kushikatsu.",
+     "Doce de despedida: taiyaki ou melonpan da arcada de Sennichimae."
+    ]
+   },
+   {
+    "id": "p5",
+    "ativ": "TRANSFER",
+    "tipo": "evento",
+    "lat": 34.4358,
+    "lng": 135.24354,
+    "hora": "18:10",
+    "gmaps": "Kansai Airport Station",
+    "foto": null
+   },
+   {
+    "id": "fim",
+    "tipo": "base",
+    "nome": "KIX — Terminal 1, voo JQ 14",
+    "lat": 34.4358,
+    "lng": 135.24354,
+    "aprox": true,
+    "hora": "21:25",
+    "gmaps": "Kansai International Airport"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "p1",
+    "modo": "pe",
+    "km": 0.45,
+    "min": 6,
+    "nota": "check-out e as malas para o guarda-volumes"
+   },
+   {
+    "de": "p1",
+    "para": "e1",
+    "modo": "pe",
+    "km": 0.6,
+    "min": 8
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "km": 3.6,
+    "min": 8,
+    "nota": "Metro Sakaisuji DIRETO até Minami-morimachi — ¥240"
+   },
+   {
+    "de": "e2",
+    "para": "p2",
+    "modo": "pe",
+    "km": 1.3,
+    "min": 18,
+    "nota": "subindo a arcada, sempre coberta"
+   },
+   {
+    "de": "p2",
+    "para": "e3",
+    "modo": "pe",
+    "km": 0.15,
+    "min": 2,
+    "nota": "a arcada termina na própria estação"
+   },
+   {
+    "de": "e3",
+    "para": "e4",
+    "modo": "metro",
+    "km": 4.6,
+    "min": 11,
+    "nota": "Sakaisuji de volta até Nagahoribashi — ¥240"
+   },
+   {
+    "de": "e4",
+    "para": "p3",
+    "modo": "pe",
+    "km": 0.45,
+    "min": 6
+   },
+   {
+    "de": "p3",
+    "para": "p4",
+    "modo": "pe",
+    "km": 1.6,
+    "min": 22,
+    "nota": "descendo a arcada até Dotonbori e seguindo para leste"
+   },
+   {
+    "de": "p4",
+    "para": "p1",
+    "modo": "pe",
+    "km": 0.75,
+    "min": 10,
+    "nota": "⚠ DE VOLTA para resgatar as malas — este passo é o que costuma faltar na conta"
+   },
+   {
+    "de": "p1",
+    "para": "p5",
+    "modo": "trem",
+    "km": 50,
+    "min": 45,
+    "nota": "Nankai da estação de Namba até o KIX — sair 17:20, no mais tardar"
+   },
+   {
+    "de": "p5",
+    "para": "fim",
+    "modo": "pe",
+    "km": 0.4,
+    "min": 8,
+    "nota": "da plataforma ao balcão de check-in, tudo coberto e plano"
+   }
+  ],
+  "alternativas": [
+   {
+    "titulo": "O passo que some da conta: voltar para buscar as malas",
+    "refs": [
+     "p1",
+     "p4"
+    ],
+    "texto": "O dia inteiro é feito sem mala na mão, e é por isso que ele funciona — mas alguém tem de voltar aos armários antes de embarcar, e isso são 10 min de caminhada mais o tempo de resgatar e redistribuir 13 bagagens. Com saída de Namba às 17:20, significa encerrar a Den Den Town às 16:30 sem discussão. Armário grande custa ¥700 por dia e em alta temporada LOTA antes das 10:00 — por isso o guarda-volumes do hotel é o plano A, e por isso ele deve ser pedido ao fechar a reserva."
+   },
+   {
+    "titulo": "Rapi:t ou Airport Express? A conta mudou",
+    "refs": [
+     "p5"
+    ],
+    "texto": "O Airport Express custa ¥970 e é trem comum: sem assento marcado, sem espaço de bagagem, e às 17:20 ele pega o começo do movimento da volta do trabalho. O RAPI:T custa ¥1.490 na bilheteria — mas ¥1.300 no bilhete DIGITAL pelo celular, e a Super Seat sai por ¥1.490 no digital, ou seja, a poltrona melhor pelo preço da comum no guichê. São ¥330 a mais que o trem comum, uns ¥3.300 no grupo, por assento garantido e lugar para mala no último trajeto de uma viagem de 16 dias com três bebês. Comprem digital, e comprem antes."
+   },
+   {
+    "titulo": "A fila que pode custar o voo",
+    "refs": [
+     "p5"
+    ],
+    "texto": "⚠ Desde novembro de 2026 o tax-free é por REEMBOLSO: paga-se cheio na loja e, no aeroporto, faz-se a confirmação da alfândega no quiosque — com passaporte E COM A MERCADORIA EM MÃOS, antes de despachar. Com 13 passaportes e compras espalhadas por várias malas, isso não é um carimbo, é uma operação. Cheguem com as compras separadas e as notas juntas, e considerem sair de Namba às 16:50 em vez de 17:20: a folga de 30 min custa meia hora de Den Den Town e compra tranquilidade num aeroporto que vocês não conhecem."
+   },
+   {
+    "titulo": "Se preferirem cortar o Tenjin-bashi-suji",
+    "refs": [
+     "p2",
+     "p3"
+    ],
+    "texto": "A arcada do norte é ótima e é a mais longa do Japão, mas custa 40 min de metrô ida e volta num dia com hora marcada, e é a única coisa do dia que não é despedida nem compra final. Largando-a, o dia começa às 11:00 em Shinsaibashi com quatro horas inteiras de arcada e almoço sem relógio — e sobra folga real para a fila do aeroporto. É a decisão a tomar na noite do dia 30, olhando o que ainda falta comprar."
+   },
+   {
+    "titulo": "Gastem o troco antes do aeroporto",
+    "refs": [
+     "p3",
+     "p4"
+    ],
+    "texto": "Iene em espécie não vale quase nada para trocar de volta no Brasil, e moeda não se troca de jeito nenhum. As duas arcadas do dia estão cheias de 100-yen shop, que é onde se zera o bolso comprando coisa que presta. No KIX os preços são de aeroporto e a escolha é pior — o que sobrar ali, sobrou."
+   }
+  ],
+  "passe": {
+   "nome": "Nenhum passe — mas o bilhete do Rapi:t vale ser digital",
+   "texto": "O dia gasta ¥480 de metrô (dois trechos de ¥240 na Sakaisuji) mais o trem do aeroporto. Nenhum passe diário de Osaka se paga em duas viagens. O que rende de verdade é comprar o Rapi:t pelo aplicativo: ¥1.300 contra ¥1.490 no guichê, ou a Super Seat por ¥1.490."
+  }
  }
 }

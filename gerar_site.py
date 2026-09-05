@@ -55,6 +55,26 @@ DESC = ('Roteiro completo da viagem ao Japao em marco de 2027: 16 dias entre Osa
 ICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'"
         "%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E")
 
+# O rateio individual entre os quatro ja vazou duas vezes neste repositorio, e das
+# duas quem pegou foi o checar.js — depois de a pagina ja existir no disco. Esta
+# trava vem antes: se qualquer um destes termos aparecer no HTML montado, o gerador
+# para e nao escreve nada. Deliberadamente sem excecao.
+PROIBIDO = ('Rogerio', 'Rogério', 'Gilson', 'Thiago', 'rogeriof86',
+            'por casal para', 'aba Detalhado', 'aba Hospedagem')
+
+
+def _travar(html, quem):
+    achados = [t for t in PROIBIDO if t in html]
+    if achados:
+        raise SystemExit(
+            'ABORTADO em %s: o texto contem %s.'
+            ' Isto e bastidor ou o rateio individual, e nao pode ser publicado.'
+            ' A causa quase sempre e uma troca de limpeza removida de ajustes.json'
+            ' que ainda estava em uso.'
+            % (quem, ', '.join(repr(a) for a in achados)))
+    return html
+
+
 def montar(pagina, head_extra, body_classe=''):
     """Corta o template em <head> (title + style) e <body> e embrulha no documento."""
     corte = pagina.index('</style>') + len('</style>')
@@ -171,7 +191,8 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
         head = ('<meta name="description" content="Mapa do dia %d da viagem ao Japao: %s.">'
                 % (n, g['titulo']))
         alvo = os.path.join(BASE, 'dia-%02d.html' % n)
-        io.open(alvo, 'w', encoding='utf-8', newline='\n').write(montar(pag, head))
+        _html = _travar(montar(pag, head), 'dia-%02d.html' % n)
+        io.open(alvo, 'w', encoding='utf-8', newline='\n').write(_html)
         mapeados.append(n)
         print('OK  dia-%02d.html  %s bytes' % (n, os.path.getsize(alvo)))
 
@@ -330,5 +351,6 @@ for pag in PAGINAS:
 <link rel="apple-touch-icon" href="{ICON}">'''
     body_cls = 'has-hero' if pag['id'] == 'inicio' else ''
     alvo = os.path.join(BASE, pag['arquivo'])
-    io.open(alvo, 'w', encoding='utf-8', newline='\n').write(montar(pag_tpl, head, body_cls))
+    _html = _travar(montar(pag_tpl, head, body_cls), pag['arquivo'])
+    io.open(alvo, 'w', encoding='utf-8', newline='\n').write(_html)
     print('OK  %-15s %s bytes' % (pag['arquivo'], f'{os.path.getsize(alvo):,}'.replace(',', '.')))

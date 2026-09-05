@@ -78,6 +78,30 @@ for (const arq of paginas) {
     }
   }
 
+  // Um digito trocado numa coordenada nao quebra nada: o pino so aparece longe, e
+  // ninguem repara. Mas a distancia em linha reta entre duas paradas nunca pode
+  // passar o km declarado da perna, que segue rua e portanto e sempre maior.
+  const porId = Object.fromEntries(geo.paradas.map(p => [p.id, p]));
+  const reta = (a, b) => {
+    const R = 6371, r = Math.PI / 180;
+    const dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
+    const h = Math.sin(dLat / 2) ** 2
+      + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+  };
+  for (const g of geo.pernas) {
+    const a = porId[g.de], b = porId[g.para];
+    if (!a || !b || typeof g.km !== 'number') continue;
+    const d = reta(a, b);
+    if (d > g.km * 1.15 + 0.6) {
+      aviso(arq, 'perna ' + g.de + '->' + g.para + ' diz ' + g.km
+        + ' km mas as coordenadas estao a ' + d.toFixed(1) + ' km em linha reta');
+    }
+    if (a.lat < 24 || a.lat > 46 || a.lng < 122 || a.lng > 146) {
+      aviso(arq, 'parada ' + a.id + ' esta fora do Japao: ' + a.lat + ',' + a.lng);
+    }
+  }
+
   for (const a of geo.alternativas || []) {
     if (!a.refs && !a.ponto) aviso(arq, 'alternativa sem destino: ' + a.titulo);
     for (const r of a.refs || []) {
