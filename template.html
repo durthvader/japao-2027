@@ -642,6 +642,243 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 </main>
 <!-- /SECAO:mapa -->
 
+<!-- SECAO:atlas -->
+<main>
+<section class="sec wrap-wide" id="atlas" data-foto="tokyo">
+  <div class="sec-head">
+    <p class="eyebrow">Atlas</p>
+    <h2>Tudo o que vamos ver, num mapa só</h2>
+    <div class="rule"></div>
+    <p class="sub">As paradas dos 16 dias juntas. Filtre por cidade, por tipo de lugar ou pelo que o carrinho aguenta — e clique num ponto para abrir o dia dele.</p>
+  </div>
+
+  <style>
+  .atl-filtros{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+  .atl-linha{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .atl-rot{font:650 .64rem/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;
+    color:var(--ink-3);min-width:74px;padding-top:5px}
+  .atl-chip{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+    border-radius:999px;padding:5px 12px;font:600 .76rem/1.25 var(--f-ui);cursor:pointer;
+    display:inline-flex;align-items:center;gap:6px;transition:.14s}
+  .atl-chip:hover{border-color:var(--line-2);color:var(--ink)}
+  .atl-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  .atl-chip .pt{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+  .atl-chip .qt{font:600 .66rem var(--f-mono);opacity:.6}
+  .atl-mapa{height:clamp(380px,58vh,640px);border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--line);background:var(--sunken)}
+  .atl-barra{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+    gap:10px;margin:12px 0 8px}
+  .atl-conta{font:650 .8rem var(--f-ui);color:var(--ink-2)}
+  .atl-conta b{color:var(--ink);font-family:var(--f-mono)}
+  .atl-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(224px,1fr));gap:8px}
+  .atl-card{text-align:left;border:1px solid var(--line);background:var(--surface);
+    border-radius:var(--radius-sm);padding:9px 11px;cursor:pointer;transition:.14s;
+    display:flex;gap:9px;align-items:flex-start}
+  .atl-card:hover{border-color:var(--line-2);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .atl-card .bar{width:3px;align-self:stretch;border-radius:2px;flex:0 0 auto}
+  .atl-card .d{font:650 .62rem var(--f-mono);color:var(--ink-3);letter-spacing:.05em}
+  .atl-card .n{font:640 .82rem/1.3 var(--f-ui);color:var(--ink);margin:1px 0 2px}
+  .atl-card .m{font:.68rem/1.35 var(--f-ui);color:var(--ink-3)}
+  .atl-vazio{padding:26px;text-align:center;color:var(--ink-3);font-size:.86rem}
+  .atl-pino{border-radius:50%;border:2px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.35)}
+  .leaflet-container{font-family:var(--f-ui);background:var(--sunken)}
+  .leaflet-popup-content-wrapper{background:var(--surface);color:var(--ink);border-radius:12px}
+  .leaflet-popup-tip{background:var(--surface)}
+  .leaflet-popup-content{margin:11px 13px;font-size:.78rem;line-height:1.45}
+  .leaflet-popup-content b{display:block;font-size:.86rem;margin-bottom:3px;color:var(--ink)}
+  .leaflet-popup-content img{width:100%;border-radius:8px;margin:7px 0 2px;display:block}
+  .leaflet-control-attribution{background:var(--panel)!important;color:var(--ink-3)!important;
+    font-size:9px!important}
+  @media(max-width:640px){.atl-rot{min-width:0;width:100%;padding-top:2px}}
+  </style>
+
+  <div class="atl-filtros">
+    <div class="atl-linha"><span class="atl-rot">Cidade</span><span id="atlCidades"></span></div>
+    <div class="atl-linha"><span class="atl-rot">O que é</span><span id="atlTipos"></span></div>
+    <div class="atl-linha"><span class="atl-rot">Carrinho</span><span id="atlBebe"></span></div>
+  </div>
+
+  <div class="atl-mapa" id="atlMapa"></div>
+
+  <div class="atl-barra">
+    <span class="atl-conta" id="atlConta"></span>
+    <button class="atl-chip" id="atlTudo" type="button">Mostrar tudo de novo</button>
+  </div>
+  <div class="atl-lista" id="atlLista"></div>
+</section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var slot = document.getElementById('atlMapa');
+  if (!slot || typeof DADOS === 'undefined' || !DADOS.pontos || !window.L) return;
+  var PTS = DADOS.pontos;
+
+  var CIDADES = [
+    {id:'osaka', rot:'Osaka',       cor:'--c-osaka'},
+    {id:'kyoto', rot:'Kyoto',       cor:'--c-kyoto'},
+    {id:'fuji',  rot:'Kawaguchiko', cor:'--c-fuji'},
+    {id:'tokyo', rot:'Tokyo',       cor:'--c-tokyo'}
+  ];
+  // os tipos vindos da planilha sao muitos e finos demais para virar filtro;
+  // aqui viram cinco baldes que respondem a pergunta "o que e este lugar?"
+  var BALDES = [
+    {id:'ver',     rot:'Templo e marco', tipos:['templo','monumento','vista','mirante','passeio']},
+    {id:'comer',   rot:'Comer',          tipos:['comida']},
+    {id:'comprar', rot:'Comprar',        tipos:['compras']},
+    {id:'natureza',rot:'Parque',         tipos:['parque']},
+    {id:'museu',   rot:'Museu e parque temático', tipos:['museu']},
+    {id:'show',    rot:'Espetáculo',      tipos:['espetaculo']},
+    {id:'ir',      rot:'Trajeto',        tipos:['evento','hospedagem','apoio','estacao','outro']}
+  ];
+  var BEBE = [
+    {id:'ok',      rot:'Carrinho passa',    teste:function(b){return b.indexOf('OK')>=0}},
+    {id:'esforco', rot:'Passa com esforço', teste:function(b){return b.indexOf('ESFOR')>=0}},
+    {id:'nao',     rot:'Canguru ou não entra',
+      teste:function(b){return b.indexOf('CANGURU')>=0||b.indexOf('NÃO')>=0}}
+  ];
+
+  var css = getComputedStyle(document.documentElement);
+  function cor(c){ return (css.getPropertyValue(c)||'#888').trim(); }
+  function corDe(p){
+    var c = CIDADES.filter(function(x){return x.id===p.cidade})[0];
+    return cor(c ? c.cor : '--ink-3');
+  }
+  function baldeDe(p){
+    for (var i=0;i<BALDES.length;i++) if (BALDES[i].tipos.indexOf(p.tipo)>=0) return BALDES[i].id;
+    return 'ir';
+  }
+  function bebeDe(p){
+    var b = (p.bebe||'').toUpperCase();
+    for (var i=0;i<BEBE.length;i++) if (BEBE[i].teste(b)) return BEBE[i].id;
+    return '';
+  }
+  PTS.forEach(function(p){ p._b = baldeDe(p); p._c = bebeDe(p); });
+
+  var sel = {cidade:{}, balde:{}, bebe:{}};
+  function ativo(g){ return Object.keys(sel[g]).filter(function(k){return sel[g][k]}); }
+  function passa(p){
+    var a = ativo('cidade'), b = ativo('balde'), c = ativo('bebe');
+    if (a.length && a.indexOf(p.cidade)<0) return false;
+    if (b.length && b.indexOf(p._b)<0) return false;
+    if (c.length && c.indexOf(p._c)<0) return false;
+    return true;
+  }
+
+  function chip(rot, qtd, corPonto){
+    var b = document.createElement('button');
+    b.type='button'; b.className='atl-chip'; b.setAttribute('aria-pressed','false');
+    if (corPonto){ var s=document.createElement('span'); s.className='pt';
+      s.style.background=corPonto; b.appendChild(s); }
+    b.appendChild(document.createTextNode(rot));
+    var q=document.createElement('span'); q.className='qt'; q.textContent=qtd;
+    b.appendChild(q);
+    return b;
+  }
+  function monta(destino, itens, grupo, chave, corFn){
+    var alvo = document.getElementById(destino);
+    itens.forEach(function(it){
+      var n = PTS.filter(function(p){ return p[chave]===it.id }).length;
+      if (!n) return;
+      var b = chip(it.rot, n, corFn ? corFn(it) : null);
+      b.addEventListener('click', function(){
+        sel[grupo][it.id] = !sel[grupo][it.id];
+        b.setAttribute('aria-pressed', sel[grupo][it.id] ? 'true' : 'false');
+        desenhar();
+      });
+      alvo.appendChild(b);
+    });
+  }
+  monta('atlCidades', CIDADES, 'cidade', 'cidade', function(c){ return cor(c.cor) });
+  monta('atlTipos',   BALDES,  'balde',  '_b');
+  monta('atlBebe',    BEBE,    'bebe',   '_c');
+
+  var map = L.map(slot, {scrollWheelZoom:false, zoomControl:true})
+             .setView([35.2, 137.2], 6);
+  // mesmo fundo das paginas de dia: base clara/escura + a camada de rotulos por
+  // cima, que e o que faz o mapa ter nome de bairro e de estacao
+  var escuro = matchMedia('(prefers-color-scheme:dark)').matches
+            && document.documentElement.getAttribute('data-theme') !== 'light';
+  var ESRI = 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/'
+           + 'World_{t}_Gray_{c}/MapServer/tile/{z}/{y}/{x}';
+  var tom = escuro ? 'Dark' : 'Light';
+  L.tileLayer(ESRI.replace('{t}', tom).replace('{c}', 'Base'),
+    {maxNativeZoom:16, maxZoom:17, attribution:'Tiles &copy; Esri'}).addTo(map);
+  L.tileLayer(ESRI.replace('{t}', tom).replace('{c}', 'Reference'),
+    {maxNativeZoom:16, maxZoom:17, zIndex:5}).addTo(map);
+
+  var camada = L.layerGroup().addTo(map);
+  var marcas = {};
+
+  function popup(p){
+    var h = '<b>' + p.nome + '</b>';
+    h += 'Dia ' + p.dia + ' · ' + p.data.slice(8) + '/' + p.data.slice(5,7);
+    if (p.hora) h += ' · ' + p.hora;
+    if (p.area && p.area !== '—') h += '<br>' + p.area;
+    if (p.bebe && p.bebe !== '—') h += '<br>' + p.bebe;
+    if (p.foto) h += '<img src="' + p.foto + '" alt="" loading="lazy">';
+    h += '<a href="' + p.url + '">Abrir o dia ' + p.dia + ' →</a>';
+    return h;
+  }
+
+  function desenhar(){
+    camada.clearLayers(); marcas = {};
+    var vis = PTS.filter(passa), pts = [];
+    vis.forEach(function(p, i){
+      var m = L.marker([p.lat, p.lng], {icon: L.divIcon({
+        className:'', iconSize:[13,13], iconAnchor:[6,6],
+        html:'<div class="atl-pino" style="width:13px;height:13px;background:'
+             + corDe(p) + '"></div>'})});
+      m.bindPopup(popup(p));
+      m.bindTooltip('D' + (p.dia<10?'0':'') + p.dia + ' · ' + p.nome, {direction:'top'});
+      m.addTo(camada);
+      marcas[p.data + p.nome] = m;
+      pts.push([p.lat, p.lng]);
+    });
+    if (pts.length) map.fitBounds(pts, {padding:[34,34], maxZoom:14});
+
+    document.getElementById('atlConta').innerHTML =
+      '<b>' + vis.length + '</b> de ' + PTS.length + ' paradas' +
+      (vis.length === PTS.length ? ' — os 16 dias inteiros' : '');
+
+    var lista = document.getElementById('atlLista');
+    lista.innerHTML = '';
+    if (!vis.length){
+      lista.innerHTML = '<p class="atl-vazio">Nenhuma parada com esses filtros juntos.</p>';
+      return;
+    }
+    vis.slice().sort(function(a,b){ return a.dia - b.dia }).forEach(function(p){
+      var c = document.createElement('button');
+      c.type='button'; c.className='atl-card';
+      c.innerHTML = '<span class="bar" style="background:' + corDe(p) + '"></span><span>'
+        + '<span class="d">DIA ' + p.dia + ' · ' + p.data.slice(8) + '/' + p.data.slice(5,7)
+        + '</span>'
+        + '<span class="n">' + p.nome + '</span>'
+        + '<span class="m">' + (p.area && p.area !== '—' ? p.area + ' · ' : '')
+        + (p.bebe && p.bebe !== '—' ? p.bebe : '') + '</span></span>';
+      c.addEventListener('click', function(){
+        var m = marcas[p.data + p.nome];
+        if (!m) return;
+        map.setView([p.lat, p.lng], 15, {animate:true});
+        m.openPopup();
+        slot.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+      lista.appendChild(c);
+    });
+  }
+
+  document.getElementById('atlTudo').addEventListener('click', function(){
+    sel = {cidade:{}, balde:{}, bebe:{}};
+    document.querySelectorAll('#atlCidades .atl-chip, #atlTipos .atl-chip, #atlBebe .atl-chip')
+      .forEach(function(b){ b.setAttribute('aria-pressed','false') });
+    desenhar();
+  });
+
+  desenhar();
+});
+</script>
+<!-- /SECAO:atlas -->
+
 <!-- SECAO:timelapse -->
 <main>
 <section class="sec wrap-wide" id="timelapse" data-foto="osaka">

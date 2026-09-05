@@ -104,6 +104,7 @@ def montar(pagina, head_extra, body_classe=''):
 # Cada pagina sai autocontida, com os dados embutidos: funciona no GitHub Pages
 # e tambem aberta direto do disco, sem servidor.
 mapeados = []
+atlas = []      # todas as paradas dos 16 dias, para a pagina Atlas
 if os.path.exists(GEO_F) and os.path.exists(DTPL):
     geo = json.loads(io.open(GEO_F, encoding='utf-8').read())
     tokens = tpl[tpl.index('/* ============ TOKENS'):
@@ -126,7 +127,37 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
             if not achou:
                 raise SystemExit('mapa %s: nao achei a atividade "%s"'
                                  % (dia['data'], par['ativ']))
+            if len(achou) > 1:
+                # antes o gerador pegava o primeiro em silencio: foi assim que o
+                # pino do check-in em Osaka virou o do Shinkansen, porque
+                # "Shin-Osaka" tambem esta dentro de "SHINKANSEN ... Shin-Osaka".
+                raise SystemExit(
+                    'mapa %s: "%s" casa com mais de uma atividade (%s). Use um '
+                    'pedaco de nome que so sirva para uma.'
+                    % (dia['data'], par['ativ'],
+                       ' | '.join(dia['atividades'][k]['nome'] for k in achou)))
             par['ai'] = achou[0]
+
+        # O atlas junta as paradas dos 16 dias num mapa so. Aproveita este laco
+        # porque aqui o 'ativ' ja virou indice e a atividade esta em maos.
+        for par in g['paradas']:
+            if par.get('ai') is None or par.get('tipo') == 'base':
+                continue
+            a = dia['atividades'][par['ai']]
+            chave = '%s-%s' % (dia['data'], par['id'])
+            atlas.append({
+                'nome': a['nome'],
+                'lat': par['lat'], 'lng': par['lng'],
+                'tipo': par.get('tipo') or 'outro',
+                'cidade': dia.get('cidade') or '',
+                'area': a.get('area') or '',
+                'bebe': a.get('bebe') or '',
+                'hora': par.get('hora') or '',
+                'dia': n,
+                'data': dia['data'],
+                'url': 'dia-%02d.html' % n,
+                'foto': ('fotos/' + fpar[chave]['arq']) if chave in fpar else '',
+            })
 
         # Navegacao dia anterior / proximo dia
         prev_btn = ""
@@ -220,6 +251,13 @@ PAGINAS = [
         'desc': 'Trajeto de ponta a ponta de 1.425 km entre Osaka, Kyoto, Kawaguchiko e Tokyo com conexões e pernas.',
     },
     {
+        'id': 'atlas',
+        'arquivo': 'atlas.html',
+        'label': 'Atlas',
+        'titulo': 'Atlas · Tudo o que vamos ver · Japão 2027',
+        'desc': 'As paradas dos 16 dias num mapa só, com filtro por cidade, por tipo de lugar e pelo que o carrinho aguenta.',
+    },
+    {
         'id': 'timelapse',
         'arquivo': 'timelapse.html',
         'label': 'Timelapse',
@@ -295,6 +333,8 @@ def obter_dados_pagina(pid):
         return {}
     elif pid == 'numeros':
         return {'resumo': podar(djs.get('resumo', []))}
+    elif pid == 'atlas':
+        return {'pontos': atlas}
     elif pid == 'mapa':
         return {'dias': podar_dias_mapa(podar(djs.get('dias', [])))}
     elif pid == 'timelapse':
@@ -349,6 +389,11 @@ for pag in PAGINAS:
 <meta property="og:description" content="{pag['desc']}">
 <meta property="og:locale" content="pt_BR">
 <link rel="apple-touch-icon" href="{ICON}">'''
+    # so o Atlas precisa de Leaflet; as demais paginas nao carregam nada extra
+    if pag['id'] == 'atlas':
+        LF = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/'
+        head += ('<link rel="stylesheet" href="' + LF + 'leaflet.min.css">'
+                 '<script src="' + LF + 'leaflet.min.js"></script>')
     body_cls = 'has-hero' if pag['id'] == 'inicio' else ''
     alvo = os.path.join(BASE, pag['arquivo'])
     _html = _travar(montar(pag_tpl, head, body_cls), pag['arquivo'])

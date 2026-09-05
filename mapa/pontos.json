@@ -630,7 +630,7 @@
    {
     "id": "p4",
     "ativ": "SUMÔ",
-    "tipo": "evento",
+    "tipo": "espetaculo",
     "lat": 34.6623,
     "lng": 135.49923,
     "hora": "15:15",
@@ -5042,7 +5042,7 @@
    {
     "id": "p4",
     "ativ": "Kabukiza",
-    "tipo": "monumento",
+    "tipo": "espetaculo",
     "lat": 35.66966,
     "lng": 139.76811,
     "hora": "14:00",
@@ -5640,7 +5640,7 @@
    },
    {
     "id": "p3",
-    "ativ": "Shin-Osaka",
+    "ativ": "Shin-Osaka → hotel",
     "tipo": "evento",
     "lat": 34.66725,
     "lng": 135.49972,
