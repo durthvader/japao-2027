@@ -1283,12 +1283,13 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="prep-lista">
 
       <div class="prep-item obrig" data-icon="🎨">
-        <div class="prep-item-nome">teamLab Borderless — Azabudai Hills (dia 25/03)</div>
-        <div class="prep-item-desc">Horários específicos esgotam com semanas de antecedência. Adulto: ¥3.600–5.600. Crianças até 3 anos: grátis. Carrinhos de bebê são proibidos no interior — usar canguru. Escolher slot tarde (~13:30–14:00).</div>
+        <div class="prep-item-nome">teamLab Biovortex — Kyoto (dia 20/03)</div>
+        <div class="prep-item-desc">O MAIS DISPUTADO DOS DOIS: 20/03 é sábado E o primeiro dia do feriadão do Equinócio. A venda abre de 2 a 3 meses antes e o slot escolhido é o das 18:00 — comprar no dia em que a venda abrir. Adulto ¥3.600–5.600 conforme a data (contem com o teto), ¥2.800 do fundamental II ao médio, ¥1.800 de 4 a 12 anos, até 3 anos grátis. Na bilheteria custa ¥200 a mais. Carrinho não entra e não há reentrada — canguru do começo ao fim.</div>
         <div class="prep-item-meta">
           <span class="prep-tag crit">Obrigatório com horário</span>
           <span class="prep-tag neu">teamlab.art</span>
-          <span class="prep-tag neu">Dia 25/03 · tarde</span>
+          <span class="prep-tag neu">Dia 20/03 · slot 18:00</span>
+          <span class="prep-tag crit">Venda abre antes das outras — vigiar desde dez/2026</span>
         </div>
       </div>
 
@@ -1806,7 +1807,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         <div class="prep-item obrig" data-icon="👶">
           <div class="prep-item-nome">Canguru / Sling ergonômico — 1 por bebê</div>
-          <div class="prep-item-desc">INDISPENSÁVEL. Diversas paradas do roteiro têm escadarias íngremes de pedra onde o carrinho é impraticável (Kiyomizu-dera, Chureito Pagoda, Fushimi Inari). Além disso, em atrações como o teamLab Borderless/Planets e no rooftop aberto do Shibuya Sky, CARRINHOS SÃO PROIBIDOS por normas de segurança. O canguru é a única forma de entrar com os bebês.</div>
+          <div class="prep-item-desc">INDISPENSÁVEL. Diversas paradas do roteiro têm escadarias íngremes de pedra onde o carrinho é impraticável (Kiyomizu-dera, Chureito Pagoda, Fushimi Inari). Além disso, em atrações como o teamLab Biovortex/Planets e no rooftop aberto do Shibuya Sky, CARRINHOS SÃO PROIBIDOS por normas de segurança. O canguru é a única forma de entrar com os bebês.</div>
           <div class="prep-item-meta">
             <span class="prep-tag crit">Indispensável</span>
             <span class="prep-tag neu">teamLab e Shibuya Sky barram carrinho</span>
@@ -2230,7 +2231,7 @@ function montarNums(){
   const cards=[
     {b:"16",u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
     {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
-    {b:Math.round(r("caminhada total")/60)+"h",u:"a pé, no total",i:"Média de ~1h por dia empurrando carrinho"},
+    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/DADOS.dias.length,1)+" km por dia, só entre paradas"},
     {b:nf(DADOS.dias.reduce((n,d)=>n+d.atividades.length,0)),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},

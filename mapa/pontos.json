@@ -1,5 +1,5 @@
 {
- "_doc": "Camada geografica curada por dia. Cada parada com 'ai' aponta para dados.json -> dias[].atividades[ai]; as demais sao pontos de apoio (base, estacoes). Tracados sao aproximados: o botao de cada perna abre a rota exata no Google Maps.",
+ "_doc": "Camada geografica curada por dia. Cada parada com 'ai' aponta para dados.json -> dias[].atividades[ai]; as demais sao pontos de apoio (base, estacoes). Tracados sao aproximados: o botao de cada perna abre a rota exata no Google Maps. Uma perna com \"unico\": true nao oferece o segundo modo: e o caso de trecho em que a alternativa perde em tudo e so poluiria o card.",
  "2027-03-18": {
   "titulo": "Osaka de ponta a ponta",
   "resumo": "Mercado de manhã, baía à tarde, o bairro retrô antes das lojas fecharem e o pôr do sol do mirante. Dois trechos longos de metrô, o resto a pé.",
@@ -1629,8 +1629,8 @@
   }
  },
  "2027-03-20": {
-  "titulo": "O bambuzal ao amanhecer, o oeste inteiro",
-  "resumo": "Sábado invertido de propósito: o bambuzal de Arashiyama às 7h30, quando ainda dá para andar nele, e o Tenryū-ji do lado, a 300 m. Depois o dia atravessa o oeste devagar — Ryoan-ji, Kinkaku-ji, Castelo Nijō — e acaba antes das 18h. É o dia mais leve da viagem em tempo de pé, e sobra a noite inteira.",
+  "titulo": "O bambuzal ao amanhecer, o oeste inteiro, o teamLab à noite",
+  "resumo": "Sábado invertido de propósito: o bambuzal de Arashiyama às 7h30, quando ainda dá para andar nele, e o Tenryū-ji do lado, a 300 m. Depois o dia atravessa o oeste devagar — Ryoan-ji, Kinkaku-ji, Castelo Nijō — e o programa de rua acaba às 17:00. A volta passa por dentro da Estação de Kyoto, e é ali que a noite começa: o teamLab Biovortex fica a 10 min a pé da saída sul, com sessão marcada às 18:00.",
   "centro": [
    35.0155,
    135.713
@@ -1737,7 +1737,7 @@
     "lat": 35.01522,
     "lng": 135.6777,
     "hora": "12:20",
-    "gmaps": "Randen Arashiyama Station"
+    "gmaps": "Randen Arashiyama Station, Ukyo-ku, Kyoto"
    },
    {
     "id": "e5",
@@ -1846,13 +1846,41 @@
     "gmaps": "Kyoto Station"
    },
    {
+    "id": "p7",
+    "ativ": "teamLab Biovortex",
+    "tipo": "museu",
+    "lat": 34.98373,
+    "lng": 135.7649,
+    "hora": "18:00",
+    "fim": "20:15",
+    "gmaps": "teamLab Biovortex Kyoto",
+    "must": [
+     "O maior dos três museus permanentes do teamLab: 10.000 m² em quatro andares — Subsolo, Escultura e Pintura, Megaliths e Athletics Forest — e uns 50 trabalhos",
+     "Massless Amorphous Sculpture, a escultura de espuma que flutua no ar, se desfaz quando se entra nela e se refaz sozinha — é a sala que molha, e o poncho custa ¥300 na porta",
+     "Megaliths: blocos monumentais de luz que mudam de cor e de superfície, alguns cobertos de musgo vivo",
+     "Forest of Resonating Lamps, as centenas de lâmpadas que acendem em cadeia a partir de quem passa perto",
+     "Future Park, a parte interativa para criança: Sketch Ocean, em que o peixe que se desenha no papel entra nadando na parede, e o Athletics Forest de escalar e pular — este só de tênis"
+    ],
+    "comidas": [
+     "Café dentro do museu, no caminho entre os andares — bom para sentar no meio da volta",
+     "Máquinas de bebida lá dentro, água por volta de ¥150, moeda; leve trocado",
+     "Jantar depois, na Estação de Kyoto: o Ramen Koji, no 10º andar, e a praça de alimentação do Porta ficam no caminho de volta e servem até tarde"
+    ],
+    "compras": [
+     "Loja do museu na saída: as edições do teamLab não se repetem entre as três casas, então o que há aqui não há em Toyosu"
+    ],
+    "alerta": "⚠ INGRESSO COM DATA E HORA MARCADAS, comprado antes, e ESGOTA. 20 de março de 2027 é sábado E o primeiro dia do feriadão do Equinócio — a pior combinação possível de procura. A venda abre de 2 a 3 meses antes no site oficial; comprem no dia em que abrir. O preço é dinâmico e vai de ¥3.600 a ¥5.600 por adulto conforme a data, e o feriadão cai no teto; na bilheteria custa ¥200 a mais, se ainda houver. Do fundamental II ao médio ¥2.800, de 4 a 12 anos ¥1.800, até 3 anos não paga — os três bebês entram de graça. ⚠ NÃO EXISTE REENTRADA: quem sair, saiu. Em compensação não há limite de permanência até as 21:00 (última entrada 19:30), então a sessão das 18:00 pode esticar — 2h dão uma boa volta, 3h veem tudo. ⚠ CARRINHO NÃO ENTRA: fica preso a uma barra no guarda-volumes gratuito da entrada, e lá dentro é canguru do começo ao fim. São horas andando no escuro, com luz forte e som alto de repente em algumas salas — parte das crianças pequenas acha demais, e as projeções em movimento chegam a enjoar adulto. Com 13 pessoas o grupo se separa nos primeiros dez minutos e o celular não ajuda no escuro: combinem o ponto de reencontro ANTES de entrar. ⚠ ROUPA E CALÇADO: o Athletics Forest só aceita tênis, nada de sandália ou salto — há par emprestado para quem chegar errado. E a sala das bolhas molha de verdade: quem não quiser poncho, entre sabendo. Armário gratuito para casaco e bolsa, banheiro na entrada e no andar do meio. ⚠ Fecha na 1ª e na 3ª terça do mês; 20/03 é sábado, então está aberto — mas confiram o calendário oficial umas semanas antes, porque eles mexem nos dias fechados.",
+    "foto": "File:TOKIO INKARAMI in Tadasu Forest Shimogamo Shrine 01.jpg",
+    "fotonota": "Foto ilustrativa — outra obra do teamLab em Kyoto, no Santuário Shimogamo"
+   },
+   {
     "id": "fim",
     "nome": "Hotel K-style (Higashi Honganji)",
     "tipo": "base",
     "lat": 34.9897,
     "lng": 135.7567,
     "aprox": true,
-    "hora": "17:35",
+    "hora": "20:40",
     "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
    }
   ],
@@ -2008,19 +2036,36 @@
    },
    {
     "de": "e9",
-    "para": "fim",
+    "para": "p7",
     "modo": "pe",
     "min": 12,
-    "km": 0.9,
+    "km": 0.8,
     "custo": 0,
-    "desc": "Volta plana pela Karasuma, com o Higashi Honganji do lado."
+    "desc": "Atravessa-se a estação por dentro até a saída Hachijō, no lado sul, e segue-se uns 600 m a leste. Plano, todo em calçada, com elevador na passagem sob a linha. Chegando 17:35 sobra a meia hora que eles pedem de antecedência."
+   },
+   {
+    "de": "p7",
+    "para": "fim",
+    "modo": "pe",
+    "min": 22,
+    "km": 1.5,
+    "custo": 0,
+    "desc": "Volta a pé contornando a estação e subindo pela Karasuma, com o Higashi Honganji no fim. Plano o caminho inteiro. Quem estiver acabado pega o metrô Karasuma de Kyoto até Gojo, ¥220, e anda 500 m."
    }
   ],
   "alternativas": [
    {
+    "tipo": "corte",
+    "titulo": "Se a sessão do teamLab só sair antes das 18:00, o que cede é o Nijō",
+    "texto": "O ingresso é de horário marcado num sábado de feriadão, então pode ser que a faixa das 18:00 já tenha ido embora quando vocês forem comprar. Nesse caso não mexam na manhã: o bambuzal às 7h30 é o que sustenta o dia. Quem sai é o Castelo Nijō, que é a parada mais dispensável — do Kinkaku-ji vocês pegam o ônibus 205 direto para a estação e entram no teamLab às 16:00, com o dia terminando no mesmo horário de sempre. Perde-se o Ninomaru e os pisos rouxinol, e economizam-se ¥1.300 por adulto. Se, ao contrário, só sobrar sessão depois das 19:00, aí é melhor manter o Nijō e jantar na estação no meio.",
+    "refs": [
+     "p6"
+    ]
+   },
+   {
     "tipo": "extra",
-    "titulo": "Trem Romântico de Sagano — o lugar óbvio para gastar a folga",
-    "texto": "Este é o dia mais leve da viagem, e o jeito mais bonito de gastar a sobra sai da porta ao lado: a estação Torokko Saga fica colada na Saga-Arashiyama. São uns 25 min de trem aberto pela garganta do rio Hozu até Kameoka, na faixa de ¥880 por trecho e por pessoa; ida e volta pela mesma linha fecha em cerca de 2h. Roda de 1º de março a 29 de dezembro e não roda às quartas — sábado está de pé. ⚠ Assento é marcado e esgota: reservem antes, ainda mais em fim de semana de feriado. Encaixa entre o Tenryū-ji e o almoço se abrirem mão do Monkey Park.",
+    "titulo": "Trem Romântico de Sagano — só trocando pelo Monkey Park",
+    "texto": "Com a noite ocupada, a folga do dia acabou: o trem de Sagano deixou de caber de graça e passou a ser troca. A estação Torokko Saga fica colada na Saga-Arashiyama, e são uns 25 min de trem aberto pela garganta do rio Hozu até Kameoka, na faixa de ¥880 por trecho e por pessoa; ida e volta pela mesma linha fecha em cerca de 2h — exatamente o que o Monkey Park ocupa. Roda de 1º de março a 29 de dezembro e não roda às quartas; sábado está de pé. ⚠ Assento é marcado e esgota: reservem antes, ainda mais em fim de semana de feriado. Trocar macaco por trem também tira a única subida de trilha do dia, o que ajuda quem for entrar no teamLab à noite.",
     "ponto": {
      "nome": "Torokko Saga — Trem Romântico de Sagano",
      "lat": 35.01856,
@@ -2053,7 +2098,7 @@
    {
     "tipo": "corte",
     "titulo": "Pular o Monkey Park",
-    "texto": "É a única coisa dura do dia: 20 min de trilha de terra em subida, 160 m de desnível, canguru obrigatório e ¥800 por adulto. Cortando, sobram 1h30 e a manhã inteira fica plana — dá para almoçar sem pressa em Arashiyama e ainda chegar ao Ryoan-ji uma hora antes, ou usar o tempo no trem de Sagano. O que se perde é a vista do alto e os macacos soltos, que não se repetem em nenhum outro dia da viagem.",
+    "texto": "É a única coisa dura do dia: 20 min de trilha de terra em subida, 160 m de desnível, canguru obrigatório e ¥800 por adulto. Cortando, sobram 1h30 e a manhã inteira fica plana — dá para almoçar sem pressa em Arashiyama e ainda chegar ao Ryoan-ji uma hora antes, ou usar o tempo no trem de Sagano. Com o teamLab às 18:00, esta 1h30 também vira colchão: dá para voltar ao hotel entre o Nijō e a sessão, largar as compras e trocar de roupa antes de entrar. O que se perde é a vista do alto e os macacos soltos, que não se repetem em nenhum outro dia da viagem.",
     "refs": [
      "p3"
     ]
@@ -2061,7 +2106,7 @@
    {
     "tipo": "planob",
     "titulo": "Se chover",
-    "texto": "A trilha do Monkey Park vira barro escorregadio com criança no colo: cortem sem pena. O bambuzal continua bonito na chuva e o Tenryū-ji tem varandas cobertas de onde se vê o jardim inteiro sem se molhar; o Ninomaru, no Nijō, são 800 m de corredor coberto. Para tapar o buraco da manhã, o Museu Internacional do Mangá fica em Karasuma Oike, exatamente na baldeação da volta: 50.000 gibis nas prateleiras para pegar e ler, ingresso na faixa de ¥1.000–1.200, aberto 10:30–17:30 e FECHADO às quartas.",
+    "texto": "A trilha do Monkey Park vira barro escorregadio com criança no colo: cortem sem pena. O bambuzal continua bonito na chuva e o Tenryū-ji tem varandas cobertas de onde se vê o jardim inteiro sem se molhar; o Ninomaru, no Nijō, são 800 m de corredor coberto. A noite não muda: o Biovortex é fechado do começo ao fim e fica até melhor em dia ruim — e se chover muito, adiantar a sessão resolve o dia inteiro. Para tapar o buraco da manhã, o Museu Internacional do Mangá fica em Karasuma Oike, exatamente na baldeação da volta: 50.000 gibis nas prateleiras para pegar e ler, ingresso na faixa de ¥1.000–1.200, aberto 10:30–17:30 e FECHADO às quartas.",
     "ponto": {
      "nome": "Museu Internacional do Mangá de Kyoto",
      "lat": 35.0117,
@@ -2072,7 +2117,7 @@
   ],
   "passe": {
    "nome": "Nenhum passe compensa hoje — paguem por viagem",
-   "texto": "O candidato seria o Subway & Bus 1-Day (¥1.100 adulto, ¥550 criança), mas ele NÃO cobre o JR nem o Randen, que são justamente os dois trechos longos do dia. Do que vocês gastam, ele cobriria só o ônibus 59 (¥230), o ônibus 12 (¥230) e o metrô da volta (¥260) = ¥720. Perde ¥380 por adulto. O dia inteiro sai por ¥1.210 por adulto: JR ¥240 + Randen ¥250 + ¥230 + ¥230 + metrô ¥260. O passe do Randen (¥800 o dia) também não fecha — vocês usam ¥250 dele. Carreguem ICOCA/Suica e não pensem mais nisso; menores de 6 anos não pagam trem nem ônibus, então os 3 bebês viajam de graça."
+   "texto": "O candidato seria o Subway & Bus 1-Day (¥1.100 adulto, ¥550 criança), mas ele NÃO cobre o JR nem o Randen, que são justamente os dois trechos longos do dia. Do que vocês gastam, ele cobriria só o ônibus 59 (¥230), o ônibus 12 (¥230) e o metrô da volta (¥260) = ¥720. Perde ¥380 por adulto. O dia inteiro sai por ¥1.210 por adulto: JR ¥240 + Randen ¥250 + ¥230 + ¥230 + metrô ¥260. O passe do Randen (¥800 o dia) também não fecha — vocês usam ¥250 dele. Carreguem ICOCA/Suica e não pensem mais nisso; menores de 6 anos não pagam trem nem ônibus, então os 3 bebês viajam de graça. A volta do teamLab para o hotel é a pé e não custa nada, então o metrô da noite continua sendo um só."
   }
  },
  "_bases": {
@@ -3260,8 +3305,8 @@
   }
  },
  "2027-03-25": {
-  "titulo": "Sakura na abertura, escuro no meio, pôr do sol de graça no fim",
-  "resumo": "O dia é uma corrida contra o relógio armada em três tempos, e a única forma de ela caber é começar cedo. Uma linha de metrô só liga o hotel ao Shinjuku Gyoen, onde vocês entram às 09:00 na abertura e ficam a manhã inteira — piquenique de sakura, carrinho no gramado, bebê dormindo. Depois o grupo atravessa a cidade pela Oedo até Azabudai para o teamLab Borderless, que tem hora marcada. E a volta a Shinjuku é o que decide se o dia termina bonito ou no escuro: se vocês saírem do Borderless até as 16:30, dá tempo de subir de graça ao 45º andar do Governo Metropolitano e ver o sol se pôr às 17:57. Depois disso é Omoide Yokocho, Godzilla e uma linha reta de volta para Ojima.",
+  "titulo": "Sakura na abertura e o resto do dia sem relógio",
+  "resumo": "O dia de recuperação depois das 12h de DisneySea, e agora sem nenhuma hora marcada. Uma linha de metrô só liga o hotel ao Shinjuku Gyoen, onde vocês entram às 09:00 na abertura — piquenique de sakura, carrinho no gramado, bebê dormindo — e ficam o tempo que quiserem: o parque vai até as 18:00, com última entrada às 17:30. Depois é tudo a pé dentro de Shinjuku: 1,3 km até o 45º andar do Governo Metropolitano, que é de graça e pega o pôr do sol das 17:57, e mais 900 m até o Omoide Yokocho para jantar. A volta é uma linha reta para Ojima.",
   "centro": [
    35.6795,
    139.7655
@@ -3304,7 +3349,7 @@
     "lat": 35.688334,
     "lng": 139.707524,
     "hora": "09:00",
-    "fim": "12:15",
+    "fim": "16:15",
     "gmaps": "Shinjuku Gate, Shinjuku Gyoen National Garden",
     "foto": "Shinjuku Gyoen cherry blossom",
     "must": [
@@ -3319,67 +3364,7 @@
      "Casa de chá Rakuu-tei, no jardim japonês: matcha com doce japonês, cerca de ¥800",
      "Cafés e quiosques dentro do parque, com sanduíche, sorvete e café, ¥300–900"
     ],
-    "alerta": "⚠ ÁLCOOL É PROIBIDO DENTRO DO PARQUE, e isso não é regra de fachada: há inspeção de bolsa no portão e a lata é barrada ali mesmo. Também não entram bola, brinquedo grande, barraca nem animal — é hanami de piquenique quieto, não de festa. É exatamente por isso que este parque é o melhor da cidade com bebê: não tem bêbado. ⚠ Horário: de 15 de março a 30 de junho o parque abre 09:00–18:00, com ÚLTIMA ENTRADA às 17:30 — o roteiro traz 16:00, que é o horário de inverno e já não vale nesta data. ⚠ Fecha às segundas o ano todo, MAS na temporada da sakura (por volta de 25 de março a 24 de abril) abre todos os dias — e 25 de março de 2027 é quinta-feira, então não há risco. Entrada ¥500 por adulto, ¥250 para estudante do ensino médio em diante e para quem tem 65 anos ou mais, GRÁTIS até o ginásio: os três bebês não pagam. Grupo a partir de 30 pessoas paga ¥400; vocês são 13, então não vale. Armários de moeda na entrada, ¥300–500. ⚠ Nos últimos anos o parque passou a exigir RESERVA ANTECIPADA em sábados, domingos e feriados escolhidos de março e abril, com as datas anunciadas só algumas semanas antes. Quinta-feira costuma ficar de fora, mas confiram o site oficial umas três semanas antes da viagem — se a data entrar na lista, o ingresso tem que sair online e não há venda no portão."
-   },
-   {
-    "id": "e3",
-    "nome": "Estação Kokuritsu-Kyogijo (Toei Oedo)",
-    "tipo": "estacao",
-    "lat": 35.680533,
-    "lng": 139.711977,
-    "hora": "12:30",
-    "gmaps": "Kokuritsu-kyogijo Station Toei Oedo Line"
-   },
-   {
-    "id": "e4",
-    "nome": "Estação Azabu-juban (saída 6)",
-    "tipo": "estacao",
-    "lat": 35.65557,
-    "lng": 139.737382,
-    "hora": "12:45",
-    "gmaps": "Azabu-juban Station Exit 6"
-   },
-   {
-    "id": "p2",
-    "ativ": "teamLab Borderless",
-    "tipo": "museu",
-    "lat": 35.662002,
-    "lng": 139.743418,
-    "hora": "13:10",
-    "fim": "16:10",
-    "gmaps": "teamLab Borderless, Azabudai Hills",
-    "foto": "File:TeamLab Borderless Azabudai Hills.jpg",
-    "must": [
-     "É o teamLab sem mapa: as obras atravessam as paredes, saem de uma sala e entram na outra, e não existe percurso certo — anda-se até achar",
-     "Universe of Water Particles, a cachoeira que desce pela parede e desvia de quem encosta nela",
-     "Microcosmoses, as esferas de luz que rolam sozinhas pelo chão e mudam de cor ao serem tocadas",
-     "A EN TEA HOUSE, onde a flor nasce dentro da xícara enquanto se bebe o chá",
-     "Athletics Forest, a parte que os adolescentes vão querer: trampolim, rede suspensa e blocos para escalar"
-    ],
-    "comidas": [
-     "EN TEA HOUSE, dentro do museu: chá com a flor projetada na xícara, ¥500–800",
-     "Praça de alimentação do Azabudai Hills, na mesma quadra, com mesa e cadeirão — bom lugar para almoçar antes de entrar, ¥1.000–2.500",
-     "Áreas de descanso iluminadas dentro do museu, com bebedouro e máquina de bebida — usem, são o único respiro do escuro"
-    ],
-    "alerta": "⚠ INGRESSO COM DATA E HORA MARCADAS, comprado antes. O preço é dinâmico e vai de ¥3.600 a ¥5.600 por adulto de 18 anos ou mais conforme a data; 25 de março junta sakura com férias escolares japonesas, então contem com o teto, ¥5.600. Criança de 4 a 12 anos paga cerca de ¥1.500 e até 3 anos não paga — os três bebês entram de graça. ⚠ NÃO EXISTE REENTRADA: quem sair, saiu. Em compensação não há limite de permanência; a casa sugere 2h, e com 13 pessoas o realista é 2h30 a 3h. ⚠ CARRINHO NÃO ENTRA — fica no guarda-volumes gratuito da entrada, e lá dentro é canguru obrigatório. São 2 a 3 horas andando no escuro, com luz forte e som alto de repente em algumas salas, piso irregular e passagens estreitas; parte das crianças pequenas acha demais, e as projeções em movimento chegam a dar enjoo em adulto. Combinem o ponto de reencontro ANTES de entrar, porque com 13 pessoas o grupo se separa nos primeiros dez minutos e o celular não ajuda no escuro. Levem casaco leve, o ar-condicionado é frio. Há banheiro e fraldário dentro, mas usem o do saguão antes. ⚠ ESTA É A TRAVA DO DIA: se vocês não estiverem na rua às 16:15, o pôr do sol no observatório não acontece. Marquem o ingresso para 13:00 ou 13:30, nunca depois."
-   },
-   {
-    "id": "e5",
-    "nome": "Estação Azabu-juban (volta)",
-    "tipo": "estacao",
-    "lat": 35.65557,
-    "lng": 139.737382,
-    "hora": "16:30",
-    "gmaps": "Azabu-juban Station"
-   },
-   {
-    "id": "e6",
-    "nome": "Estação Tochomae",
-    "tipo": "estacao",
-    "lat": 35.690607,
-    "lng": 139.692814,
-    "hora": "16:50",
-    "gmaps": "Tochomae Station, Shinjuku"
+    "alerta": "⚠ ÁLCOOL É PROIBIDO DENTRO DO PARQUE, e isso não é regra de fachada: há inspeção de bolsa no portão e a lata é barrada ali mesmo. Também não entram bola, brinquedo grande, barraca nem animal — é hanami de piquenique quieto, não de festa. É exatamente por isso que este parque é o melhor da cidade com bebê: não tem bêbado. ⚠ Horário: de 15 de março a 30 de junho o parque abre 09:00–18:00, com ÚLTIMA ENTRADA às 17:30 — o roteiro traz 16:00, que é o horário de inverno e já não vale nesta data. ⚠ Fecha às segundas o ano todo, MAS na temporada da sakura (por volta de 25 de março a 24 de abril) abre todos os dias — e 25 de março de 2027 é quinta-feira, então não há risco. Entrada ¥500 por adulto, ¥250 para estudante do ensino médio em diante e para quem tem 65 anos ou mais, GRÁTIS até o ginásio: os três bebês não pagam. Grupo a partir de 30 pessoas paga ¥400; vocês são 13, então não vale. Armários de moeda na entrada, ¥300–500. ⚠ Nos últimos anos o parque passou a exigir RESERVA ANTECIPADA em sábados, domingos e feriados escolhidos de março e abril, com as datas anunciadas só algumas semanas antes. Quinta-feira costuma ficar de fora, mas confiram o site oficial umas três semanas antes da viagem — se a data entrar na lista, o ingresso tem que sair online e não há venda no portão. ⚠ As 16:15 do roteiro são o TETO, não uma obrigação: o parque é o programa do dia e o grupo sai quando quiser. Se três ou quatro horas bastarem, a saída natural é a 500 m dali, em Shinjuku-sanchome — depachika da Isetan, Takashimaya e as lojas da Shinjuku-dori, tudo coberto —, ou o Palácio Imperial e o Koishikawa Korakuen, que ficam a 20 min de Ojima pela mesma Toei."
    },
    {
     "id": "p3",
@@ -3500,61 +3485,12 @@
    },
    {
     "de": "p1",
-    "para": "e3",
-    "modo": "pe",
-    "min": 15,
-    "km": 0.9,
-    "custo": 0,
-    "desc": "Atravessem o parque rumo sul e saiam pelo Portão Sendagaya, do outro lado; de lá são 300 m até a estação Kokuritsu-Kyogijo, ao pé do Estádio Nacional. Tudo plano e com calçada larga."
-   },
-   {
-    "de": "e3",
-    "para": "e4",
-    "modo": "metro",
-    "linha": "Toei Oedo",
-    "cor": "#B6007A",
-    "min": 9,
-    "km": 4.6,
-    "custo": 220,
-    "desc": "Três estações no sentido Daimon, passando por Aoyama-itchome e Roppongi. Linha funda, mas há elevador nas duas pontas."
-   },
-   {
-    "de": "e4",
-    "para": "p2",
-    "modo": "pe",
-    "min": 13,
-    "km": 0.8,
-    "custo": 0,
-    "desc": "Saída 6 e uns 800 m em subida constante até o Azabudai Hills. ⚠ É ladeira de verdade com carrinho. Quem quiser evitar a subida troca a Oedo pela Hibiya e desce em Kamiyacho, cuja saída 5 liga por passagem subterrânea direto ao complexo, sem degrau e sem rua."
-   },
-   {
-    "de": "p2",
-    "para": "e5",
-    "modo": "pe",
-    "min": 12,
-    "km": 0.8,
-    "custo": 0,
-    "desc": "O mesmo caminho de volta, agora em descida — bem mais rápido. Peguem o carrinho no guarda-volumes antes de sair do saguão."
-   },
-   {
-    "de": "e5",
-    "para": "e6",
-    "modo": "metro",
-    "linha": "Toei Oedo",
-    "cor": "#B6007A",
-    "min": 17,
-    "km": 8.5,
-    "custo": 220,
-    "desc": "Seis estações no sentido Hikarigaoka, direto até Tochomae, sem baldeação. Em Tochomae a passagem subterrânea sai dentro do prédio do Governo — não é preciso subir à rua."
-   },
-   {
-    "de": "e6",
     "para": "p3",
     "modo": "pe",
-    "min": 6,
-    "km": 0.3,
+    "min": 20,
+    "km": 1.3,
     "custo": 0,
-    "desc": "Passagem coberta até o saguão do prédio nº 1 e depois a fila do elevador expresso do 45º andar. Sigam a placa 展望室 / Observatory."
+    "desc": "Sai pelo Portão Shinjuku e segue a oeste, por baixo dos trilhos, até a torre da prefeitura. Plano e em calçada larga o caminho inteiro. Quem preferir não andar sai pelo Portão Sendagaya e pega a Oedo em Kokuritsu-Kyogijo até Tochomae, ¥180, duas estações — a passagem subterrânea desemboca dentro do saguão do prédio nº 1."
    },
    {
     "de": "p3",
@@ -3597,17 +3533,9 @@
   ],
   "alternativas": [
    {
-    "tipo": "corte",
-    "titulo": "Cortar o Borderless e recuperar o dia de descanso",
-    "texto": "É o corte mais rentável, e vale pensar nele com honestidade na manhã seguinte ao DisneySea. O Borderless é o segundo teamLab da viagem e sozinho custa até ¥5.600 por adulto — perto de ¥45.000 pelo grupo pagante — mais 3h no escuro, 1,6 km de ladeira com bebê no canguru e 40 min de travessia em cada sentido. Cortando ele, a tarde inteira sobra: o Gyoen pode virar programa de manhã E tarde, o observatório fica sem hora marcada e o dia devolve o respiro que era para ter. O que se perde é real e não se repete — este é o único teamLab sem mapa, e o outro da viagem é uma experiência diferente. Mas se o grupo acordar quebrado, cortar aqui salva o resto da semana.",
-    "refs": [
-     "p2"
-    ]
-   },
-   {
-    "tipo": "troca",
-    "titulo": "Palácio Imperial + Koishikawa Korakuen no lugar da travessia até Azabudai",
-    "texto": "Se o Borderless cair, a troca natural é a que fica a 20 min de Ojima pela mesma Toei Shinjuku, em vez dos 40 min até Azabudai. Os jardins leste do Palácio Imperial são gratuitos, planos e enormes, com cerejeiras e as muralhas do castelo de Edo; a 1,5 km dali, o Koishikawa Korakuen cobra ¥300, é de 1629 e tem uma das melhores sakura de Tóquio num jardim pequeno o bastante para dar a volta em 40 min com carrinho. Os dois juntos custam menos de ¥400 por adulto contra ¥5.600, e o grupo dorme uma hora a mais. ⚠ Os jardins do Palácio fecham às segundas e sextas — quinta está livre.",
+    "tipo": "extra",
+    "titulo": "Palácio Imperial + Koishikawa Korakuen, se a tarde no parque ficar longa demais",
+    "texto": "Esta é a opção para quem não quiser passar sete horas dentro do Gyoen, e ela é barata e curta. Os jardins leste do Palácio Imperial são gratuitos, planos e enormes, com cerejeiras e as muralhas do castelo de Edo; a 1,5 km dali, o Koishikawa Korakuen cobra ¥300, é de 1629 e tem uma das melhores sakura de Tóquio num jardim pequeno o bastante para dar a volta em 40 min com carrinho. Os dois juntos custam menos de ¥400 por adulto e ficam a 20 min de Ojima pela mesma Toei Shinjuku, o que também facilita para quem quiser voltar antes com os bebês. ⚠ Os jardins do Palácio fecham às segundas e sextas — quinta está livre. Decidam no dia: nada aqui tem hora marcada.",
     "ponto": {
      "nome": "Koishikawa Korakuen",
      "lat": 35.705617,
@@ -3627,20 +3555,9 @@
     }
    },
    {
-    "tipo": "extra",
-    "titulo": "Se o Borderless acabar antes das 16:00, cabe o Zojoji com o Tokyo Tower atrás",
-    "texto": "Sobrando meia hora entre Azabudai e o metrô, o templo Zojoji fica a 900 m do Azabudai Hills, no caminho, e é o enquadramento clássico de Tóquio: o portão de madeira de 1622 em primeiro plano e o Tokyo Tower vermelho logo atrás. O pátio é grátis, plano e aberto o dia todo, e as cerejeiras do terreno florescem no fim de março. Trinta minutos resolvem, o carrinho entra e o grupo segue para Tochomae pela mesma Oedo, embarcando em Akabanebashi em vez de Azabu-juban. ⚠ Só façam isso se ainda for antes das 16:30 — o pôr do sol no observatório não espera.",
-    "ponto": {
-     "nome": "Templo Zojoji",
-     "lat": 35.657469,
-     "lng": 139.748428,
-     "gmaps": "Zojoji Temple, Minato"
-    }
-   },
-   {
     "tipo": "planob",
     "titulo": "Se chover",
-    "texto": "Chuva quebra a manhã, não o dia. O piquenique de sakura embaixo d'água não existe, então o Gyoen encolhe para 1h de estufa tropical e do pavilhão do jardim japonês, que são cobertos, e o grupo sai mais cedo. O que a chuva NÃO atrapalha é o resto: o Borderless é fechado do começo ao fim e fica até melhor em dia ruim, e a travessia é subterrânea de ponta a ponta. Adiantem o horário do ingresso e passem a manhã em Azabudai, que é um complexo coberto inteiro, com praça de alimentação, lojas e jardim sob marquise. ⚠ O que se perde de verdade é o observatório: com nuvem baixa o 45º andar fica dentro do nevoeiro e não se enxerga nada. Nesse caso troquem pela projeção mapeada na fachada do prédio, que roda à noite, é de graça e se vê da praça — vale a pena mesmo molhado. Refúgio coberto e barato para a manhã, a 20 min de Ojima: o Museu Edo-Tokyo, em Ryogoku.",
+    "texto": "Chuva pega este dia inteiro, porque ele é quase todo ao ar livre. O piquenique de sakura embaixo d'água não existe: o Gyoen encolhe para 1h de estufa tropical e do pavilhão do jardim japonês, que são as duas coberturas, e o grupo sai cedo. O observatório também se perde — com nuvem baixa o 45º andar fica dentro do nevoeiro e não se enxerga nada; em compensação a fachada do prédio recebe projeção mapeada à noite, que é de graça, se vê da praça e vale a pena mesmo molhado. Para tapar a tarde, o refúgio coberto e barato fica a 20 min de Ojima pela mesma Toei: o Museu Edo-Tokyo, em Ryogoku. E o Omoide Yokocho à noite não muda — os becos têm toldo e os balcões são fechados.",
     "refs": [
      "p1",
      "p3"
@@ -3648,8 +3565,8 @@
    }
   ],
   "passe": {
-   "nome": "Toei Marugoto Kippu (passe diário Toei) — ¥700 adulto, ¥350 criança",
-   "texto": "COMPENSA, e este é um dos poucos dias em que compensa com folga. Os quatro deslocamentos de hoje são TODOS da Toei: ¥280 de Ojima a Shinjuku-sanchome, ¥220 de Kokuritsu-Kyogijo a Azabu-juban, ¥220 de Azabu-juban a Tochomae e ¥280 de volta a Ojima — ¥1.000 por adulto no avulso, contra ¥700 do passe. São ¥300 de economia por pessoa, cerca de ¥3.000 pelo grupo pagante, e ainda solta vocês para pegar mais um trecho sem pensar em tarifa. O passe cobre metrô Toei, ônibus Toei, o bonde Toden Arakawa e o Nippori-Toneri, e sai nas máquinas das próprias estações Toei no mesmo dia. ⚠ Ele NÃO cobre o Tokyo Metro: se vocês optarem pela rota da Hibiya até Kamiyacho para fugir da ladeira de Azabudai, esse trecho sai à parte e o passe rende bem menos. Existe também um passe Toei de ¥500, mas ele só vale em sábados, domingos e feriados — 25 de março de 2027 é quinta-feira, então não serve."
+   "nome": "Nenhum passe compensa hoje — carreguem Suica",
+   "texto": "O candidato era o Toei Marugoto Kippu (¥700 adulto, ¥350 criança), e ele fazia sentido quando o dia atravessava a cidade até Azabudai. Agora sobraram dois trechos: ¥280 de Ojima a Shinjuku-sanchome e ¥280 na volta, ¥560 por adulto contra ¥700 do passe. Mesmo somando os ¥180 de Oedo, para quem não quiser fazer a pé os 1,3 km do Gyoen até o observatório, dá ¥740 — ¥40 de economia, que não paga o trabalho de comprar. Existe também um passe Toei de ¥500, mas ele só vale em sábados, domingos e feriados, e 25 de março de 2027 é quinta-feira. Paguem por viagem no Suica e não pensem mais nisso; menores de 6 anos não pagam, então os três bebês viajam de graça."
   }
  },
  "2027-03-24": {
@@ -4661,14 +4578,6 @@
     "alerta": "A maioria das lojas abre por volta das 10:00 e fecha entre 19:00 e 20:00; algumas bancas de peixe abrem antes e fecham cedo. O corredor é estreito e no domingo à tarde vira aperto — dois carrinhos lado a lado não passam. Andem em fila, um adulto por carrinho, e deixem a compra pesada para o fim para não empurrar peso."
    },
    {
-    "id": "e5",
-    "nome": "Estação Okachimachi (JR)",
-    "tipo": "estacao",
-    "lat": 35.70695,
-    "lng": 139.77463,
-    "gmaps": "Okachimachi Station"
-   },
-   {
     "id": "p4",
     "ativ": "AKIHABARA",
     "tipo": "compras",
@@ -4676,7 +4585,7 @@
     "lng": 139.7725,
     "hora": "14:20",
     "fim": "18:20",
-    "gmaps": "Akihabara Electric Town, Chuo-dori",
+    "gmaps": "Akihabara Electric Town",
     "foto": "Akihabara Chuo dori street",
     "must": [
      "Domingo é o melhor dia: a Chuo-dori vira calçadão entre o cruzamento de Sotokanda 5-chome e o de Manseibashi, cerca de 570 m sem carro.",
@@ -4785,36 +4694,17 @@
     "min": 18,
     "km": 1.2,
     "custo": 0,
-    "desc": "Desce o parque inteiro de volta para o sul e sai na entrada norte da Ameyoko."
+    "desc": "Desce o parque inteiro de volta para o sul e sai na entrada norte da Ameyoko.",
+    "unico": true
    },
    {
     "de": "p3",
-    "para": "e5",
-    "modo": "pe",
-    "min": 3,
-    "km": 0.2,
-    "custo": 0,
-    "desc": "A Ameyoko termina na porta de Okachimachi."
-   },
-   {
-    "de": "e5",
-    "para": "e3",
-    "modo": "metro",
-    "linha": "JR Yamanote",
-    "cor": "#008C46",
-    "min": 3,
-    "km": 1.0,
-    "custo": 160,
-    "desc": "1 estação só. Quem preferir desce a Chuo-dori a pé: 1,1 km plano, uns 15 min, e já entra no calçadão."
-   },
-   {
-    "de": "e3",
     "para": "p4",
     "modo": "pe",
-    "min": 3,
-    "km": 0.2,
+    "min": 15,
+    "km": 1.1,
     "custo": 0,
-    "desc": "Saída Electric Town e a Chuo-dori começa ali."
+    "desc": "A Ameyoko termina na porta de Okachimachi, e dali a Chuo-dori desce reta até Akihabara: 1,1 km planos, calçada larga, e a rua já é o próprio calçadão — a caminhada é o começo do programa. Quem estiver acabado pega 1 estação de Yamanote por ¥160, mas com 10 pagantes são ¥1.600 para poupar 12 min."
    },
    {
     "de": "p4",

@@ -161,6 +161,11 @@ body{padding-bottom:0}
   background:linear-gradient(90deg,transparent,rgba(0,0,0,.62) 34%);padding:5px 8px 4px 22px}
 .fig figcaption a{font-size:.56rem;color:rgba(255,255,255,.82);text-decoration:none}
 .fig figcaption a:hover{color:#fff;text-decoration:underline}
+/* aviso de foto ilustrativa: usado quando nao existe foto livre do lugar em si */
+.fig .fig-nota{position:absolute;left:0;top:0;max-width:80%;line-height:1.35;
+  font-size:.55rem;font-weight:700;color:rgba(255,255,255,.92);
+  background:linear-gradient(135deg,rgba(0,0,0,.66),rgba(0,0,0,.3));
+  padding:4px 9px 5px 8px;border-bottom-right-radius:10px}
 .pop-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;margin-bottom:7px}
 
 /* ============ RESUMO ============ */
@@ -251,8 +256,18 @@ body{padding-bottom:0}
 .alt-pe{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:9px}
 .alt-go{font-size:.7rem;font-weight:800;color:var(--t)}
 .alt-pe .plink{margin-top:0}
+/* Os pinos de alternativa ficam SEMPRE no mapa, apagados, para o dia mostrar de relance
+   onde ha opcional. O selecionado acende e cresce. */
 .pin.alt-pin{background:var(--surface);color:var(--t);border:2.5px dashed var(--c);
-  width:26px;height:26px;font-size:.66rem;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+  width:26px;height:26px;font-size:.66rem;box-shadow:0 2px 8px rgba(0,0,0,.28);
+  opacity:.68;cursor:pointer;transition:opacity .15s,transform .15s,box-shadow .15s}
+.pin.alt-pin:hover{opacity:1;transform:scale(1.12)}
+.pin.alt-pin.on{opacity:1;transform:scale(1.2);
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 24%,transparent),0 2px 8px rgba(0,0,0,.28)}
+.altleg{font-size:.68rem;line-height:1.55;color:var(--ink-3);margin:-2px 0 10px}
+.altleg b{display:inline-block;min-width:15px;height:15px;line-height:12px;text-align:center;
+  border:1.5px dashed var(--c);border-radius:50%;color:var(--t);font-size:.56rem;
+  margin-right:2px;vertical-align:.5px}
 @keyframes pisca{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 40%,transparent)}
   50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 22%,transparent)}}
 .parada.pisca{border-color:var(--c);animation:pisca 1.1s ease-in-out 3}
@@ -304,6 +319,7 @@ body{padding-bottom:0}
     <div class="trilha" id="trilha"></div>
 
     <p class="eyebrow">Alternativas e plano B</p>
+    <p class="altleg" id="altleg"></p>
     <div id="alts"></div>
 
     <div class="passe" id="passe"></div>
@@ -319,13 +335,25 @@ body{padding-bottom:0}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-const DIA = {"data": "2027-03-31", "semana": "quarta", "base": "Osaka → voo", "cidade": "osaka", "transicao": true, "atividades": [{"periodo": "Manhã", "nome": "Check-out + guardar as malas", "area": "Osaka", "de": "Hotel", "como": "Coin locker da estação ou guarda-volumes do hotel", "km": 0.5, "min": 0.0, "pe": 10.0, "transp": 700.0, "ingresso": 0.0, "horario": "—", "duracao": "30 min", "bebe": "—", "terreno": "⚠ Coin locker grande costuma não caber carrinho. Se forem levar os 3 até o fim, o guarda-volumes do hotel é a única saída — critério de desempate na escolha da diária de 30→31.", "obs": "⚠ Armário grande custa ¥700 por dia. Namba e Shin-Osaka têm centenas, mas em alta temporada LOTAM antes das 10:00 — o guarda-volumes do hotel é o plano A, e por isso ele deve ser pedido na hora de fechar a reserva.\n⚠ E há um passo que some de toda conta: ALGUÉM TEM DE VOLTAR PARA BUSCAR AS MALAS. São uns 10 min de caminhada mais o tempo de resgatar e redistribuir 13 bagagens entre 13 pessoas. Com saída de Namba às 17:20, isso significa encerrar a Den Den Town às 16:30 sem discussão. Guardem tudo no mesmo lugar de onde vão embarcar — não adianta deixar mala em Shin-Osaka e sair pela Nankai."}, {"periodo": "Manhã", "nome": "Tenjin-bashi-suji — a galeria coberta mais longa do Japão", "area": "Kita", "de": "Namba", "como": "Metrô Sakaisuji de Nipponbashi até Minami-morimachi — 8 min, direto", "km": 2.0, "min": 8, "pe": 25, "transp": 240, "ingresso": 0, "horario": "lojas 10:00–19:00", "duracao": "1h30", "bebe": "CARRINHO OK", "terreno": "Galeria coberta, plana e reta do começo ao fim, larga o bastante para carrinho. Tem toldo nos 2,6 km inteiros — é o melhor plano de chuva de Osaka.", "obs": "2,6 km de arcada contínua, do Minami-morimachi até o Tenjinbashisuji 6-chome: a mais longa do Japão. É bairro de gente da cidade, não de turista — comida barata, brechó, papelaria, doceria e cafés antigos. Dá para entrar por uma ponta e sair de metrô na outra, sem andar tudo. Fica a 550 m do Nakazakicho, que está no dia 18."}, {"periodo": "Manhã", "nome": "Compras finais em Shinsaibashi-suji", "area": "Shinsaibashi", "de": "Tenjin-bashi-suji", "como": "Metro Sakaisuji de Tenjinbashisuji 6-chome até Nagahoribashi + 450 m a pé", "km": 4.6, "min": 11, "pe": 12, "transp": 240, "ingresso": 0.0, "horario": "11:00–21:00", "duracao": "2h30", "bebe": "CARRINHO OK", "terreno": "Galeria coberta e plana.", "obs": "🛒 Segunda passada no Shinsaibashi, para o que ficou faltando na véspera: skincare, farmácia, UNIQLO e GU.\n⚠ ÚLTIMO DIA, E O TAX-FREE MUDOU DE MECÂNICA: desde novembro de 2026 paga-se o preço cheio na loja. No aeroporto vocês NÃO recebem dinheiro — o que se faz lá é a CONFIRMAÇÃO NA ALFÂNDEGA, no quiosque, com passaporte e COM A MERCADORIA EM MÃOS, antes de despachar. Quem devolve o valor é a própria loja, depois, pelo meio que ela definir. Guardem as notas juntas e separadas, e não enfiem nada no fundo da mala.\n💴 Gastem o troco: iene em espécie rende pouco na volta e moeda não se troca. A arcada tem 100-yen shop para zerar o bolso comprando coisa que presta — no KIX os preços são de aeroporto."}, {"periodo": "Tarde", "nome": "Almoço de despedida + Den Den Town", "area": "Nipponbashi", "de": "Shinsaibashi", "como": "A pé", "km": 1.2, "min": 0.0, "pe": 16.0, "transp": 0.0, "ingresso": 0.0, "horario": "lojas 11:00–20:00", "duracao": "2h", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Den Den Town de novo: lojas apertadas, revezem na porta.", "obs": "Última passada na Den Den Town para o que ficou faltando, e almoço de despedida no Dotonbori. Gaste o troco em iene: moeda japonesa não vale nada para trocar de volta no Brasil."}, {"periodo": "Tarde", "nome": "TRANSFER: Namba → Aeroporto KIX", "area": "KIX", "de": "Namba", "como": "Nankai — Rapi:t (¥1.300 no bilhete digital) ou Airport Express (¥970)", "km": 50.0, "min": 45.0, "pe": 15.0, "transp": 970.0, "ingresso": 0.0, "horario": "SAIR DE NAMBA 17:20", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Nankai com elevador nas duas pontas. No KIX, o carrinho vai até o portão de embarque.", "obs": "⚠ O VOO JQ 14 DECOLA ÀS 21:25. Meta: estar no KIX às 18:25, três horas antes — voo internacional, 13 pessoas com bagagem e a fila da alfândega pelo caminho. Contando 45 min de Nankai e o resgate das malas, o último trem aceitável sai de Namba às 17:20.\n💴 QUAL TREM PEGAR, AGORA COM OS NÚMEROS CERTOS: o Airport Express custa ¥970 e é trem comum — sem assento marcado, sem espaço de bagagem, e às 17:20 já pega o começo da volta do trabalho. O RAPI:T custa ¥1.490 no guichê, mas ¥1.300 no BILHETE DIGITAL pelo celular, e a Super Seat sai por ¥1.490 no digital: a poltrona melhor pelo preço da comum na bilheteria. São ¥330 a mais que o trem comum, uns ¥3.300 no grupo, por assento garantido e lugar para mala no último trajeto de 16 dias com três bebês. Comprem digital, e comprem antes.\n⚠ E considerem sair às 16:50 em vez de 17:20. A confirmação da alfândega com 13 passaportes e compras espalhadas por várias malas não é um carimbo, é uma operação — meia hora de Den Den Town paga a tranquilidade."}, {"periodo": "Noite", "nome": "VOO DE VOLTA — JQ 14, KIX 21:25 → Sydney", "area": "—", "de": "KIX", "como": "Jetstar JQ 14", "km": 0.0, "min": 0.0, "pe": 0.0, "transp": 0.0, "ingresso": 0.0, "horario": "decolagem 21:25", "duracao": "—", "bebe": "—", "terreno": "Carrinho é despachado no portão e devolvido em Sydney ou em Guarulhos — confirmem com a LATAM qual dos dois.", "obs": "Fim da viagem: 16 dias e 15 noites no Japão. Conexão em Sydney (LA 810 às 11:10 de 01/04) e depois Santiago → Guarulhos, pousando 16:30 de 01/04."}], "total": {"km": 58.3, "min": 64.0, "pe": 78.0, "transp": 2150.0, "ingresso": 0, "nota": "≈ R$ 71 por pessoa neste dia (transporte + ingressos)"}};
+const DIA = {"data": "2027-03-31", "semana": "quarta", "base": "Osaka → voo", "cidade": "osaka", "transicao": true, "atividades": [{"periodo": "Manhã", "nome": "Check-out + guardar as malas", "area": "Osaka", "de": "Hotel", "como": "Coin locker da estação ou guarda-volumes do hotel", "km": 0.5, "min": 0.0, "pe": 10.0, "transp": 700.0, "ingresso": 0.0, "horario": "—", "duracao": "30 min", "bebe": "—", "terreno": "⚠ Coin locker grande costuma não caber carrinho. Se forem levar os 3 até o fim, o guarda-volumes do hotel é a única saída — critério de desempate na escolha da diária de 30→31.", "obs": "⚠ Armário grande custa ¥700 por dia. Namba e Shin-Osaka têm centenas, mas em alta temporada LOTAM antes das 10:00 — o guarda-volumes do hotel é o plano A, e por isso ele deve ser pedido na hora de fechar a reserva.\n⚠ E há um passo que some de toda conta: ALGUÉM TEM DE VOLTAR PARA BUSCAR AS MALAS. São uns 10 min de caminhada mais o tempo de resgatar e redistribuir 13 bagagens entre 13 pessoas. Com saída de Namba às 17:20, isso significa encerrar a Den Den Town às 16:30 sem discussão. Guardem tudo no mesmo lugar de onde vão embarcar — não adianta deixar mala em Shin-Osaka e sair pela Nankai."}, {"periodo": "Manhã", "nome": "Tenjin-bashi-suji — a galeria coberta mais longa do Japão", "area": "Kita", "de": "Namba", "como": "Metrô Sakaisuji de Nipponbashi até Minami-morimachi — 8 min, direto", "km": 2.0, "min": 8, "pe": 25, "transp": 240, "ingresso": 0, "horario": "lojas 10:00–19:00", "duracao": "1h30", "bebe": "CARRINHO OK", "terreno": "Galeria coberta, plana e reta do começo ao fim, larga o bastante para carrinho. Tem toldo nos 2,6 km inteiros — é o melhor plano de chuva de Osaka.", "obs": "2,6 km de arcada contínua, do Minami-morimachi até o Tenjinbashisuji 6-chome: a mais longa do Japão. É bairro de gente da cidade, não de turista — comida barata, brechó, papelaria, doceria e cafés antigos. Dá para entrar por uma ponta e sair de metrô na outra, sem andar tudo. Fica a 550 m do Nakazakicho, que está no dia 18."}, {"periodo": "Manhã", "nome": "Compras finais em Shinsaibashi-suji", "area": "Shinsaibashi", "de": "Tenjin-bashi-suji", "como": "Metro Sakaisuji de Tenjinbashisuji 6-chome até Nagahoribashi + 450 m a pé", "km": 4.6, "min": 11, "pe": 12, "transp": 240, "ingresso": 0.0, "horario": "11:00–21:00", "duracao": "2h30", "bebe": "CARRINHO OK", "terreno": "Galeria coberta e plana.", "obs": "🛒 Segunda passada no Shinsaibashi, para o que ficou faltando na véspera: skincare, farmácia, UNIQLO e GU.\n⚠ ÚLTIMO DIA, E O TAX-FREE MUDOU DE MECÂNICA: desde novembro de 2026 paga-se o preço cheio na loja. No aeroporto vocês NÃO recebem dinheiro — o que se faz lá é a CONFIRMAÇÃO NA ALFÂNDEGA, no quiosque, com passaporte e COM A MERCADORIA EM MÃOS, antes de despachar. Quem devolve o valor é a própria loja, depois, pelo meio que ela definir. Guardem as notas juntas e separadas, e não enfiem nada no fundo da mala.\n💴 Gastem o troco: iene em espécie rende pouco na volta e moeda não se troca. A arcada tem 100-yen shop para zerar o bolso comprando coisa que presta — no KIX os preços são de aeroporto."}, {"periodo": "Tarde", "nome": "Almoço de despedida + Den Den Town", "area": "Nipponbashi", "de": "Shinsaibashi", "como": "A pé", "km": 1.2, "min": 0.0, "pe": 16.0, "transp": 0.0, "ingresso": 0.0, "horario": "lojas 11:00–20:00", "duracao": "2h", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Den Den Town de novo: lojas apertadas, revezem na porta.", "obs": "Última passada na Den Den Town para o que ficou faltando, e almoço de despedida no Dotonbori. Gaste o troco em iene: moeda japonesa não vale nada para trocar de volta no Brasil."}, {"periodo": "Tarde", "nome": "TRANSFER: Namba → Aeroporto KIX", "area": "KIX", "de": "Namba", "como": "Nankai — Rapi:t (¥1.300 no bilhete digital) ou Airport Express (¥970)", "km": 50.0, "min": 45.0, "pe": 15.0, "transp": 970.0, "ingresso": 0.0, "horario": "SAIR DE NAMBA 17:20", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Nankai com elevador nas duas pontas. No KIX, o carrinho vai até o portão de embarque.", "obs": "⚠ O VOO JQ 14 DECOLA ÀS 21:25. Meta: estar no KIX às 18:25, três horas antes — voo internacional, 13 pessoas com bagagem e a fila da alfândega pelo caminho. Contando 45 min de Nankai e o resgate das malas, o último trem aceitável sai de Namba às 17:20.\n💴 QUAL TREM PEGAR, AGORA COM OS NÚMEROS CERTOS: o Airport Express custa ¥970 e é trem comum — sem assento marcado, sem espaço de bagagem, e às 17:20 já pega o começo da volta do trabalho. O RAPI:T custa ¥1.490 no guichê, mas ¥1.300 no BILHETE DIGITAL pelo celular, e a Super Seat sai por ¥1.490 no digital: a poltrona melhor pelo preço da comum na bilheteria. São ¥330 a mais que o trem comum, uns ¥3.300 no grupo, por assento garantido e lugar para mala no último trajeto de 16 dias com três bebês. Comprem digital, e comprem antes.\n⚠ E considerem sair às 16:50 em vez de 17:20. A confirmação da alfândega com 13 passaportes e compras espalhadas por várias malas não é um carimbo, é uma operação — meia hora de Den Den Town paga a tranquilidade."}, {"periodo": "Noite", "nome": "VOO DE VOLTA — JQ 14, KIX 21:25 → Sydney", "area": "—", "de": "KIX", "como": "Jetstar JQ 14", "km": 0.0, "min": 0.0, "pe": 0.0, "transp": 0.0, "ingresso": 0.0, "horario": "decolagem 21:25", "duracao": "—", "bebe": "—", "terreno": "Carrinho é despachado no portão e devolvido em Sydney ou em Guarulhos — confirmem com a LATAM qual dos dois.", "obs": "Fim da viagem: 16 dias e 15 noites no Japão. Conexão em Sydney (LA 810 às 11:10 de 01/04) e depois Santiago → Guarulhos, pousando 16:30 de 01/04."}], "total": {"km": 58.3, "min": 64.0, "pe": 78.0, "transp": 2150.0, "ingresso": 0, "nota": "≈ R$ 71 por pessoa neste dia (transporte + ingressos)", "km_pe": 5.7}};
 const GEO = {"titulo": "O último dia: duas arcadas, o troco em iene e o trem para o KIX", "resumo": "Dia sem mala na mão e com hora marcada no fim: o voo JQ 14 decola às 21:25 e o último trem aceitável sai de Namba às 17:20. Entre uma coisa e outra cabem a arcada mais longa do Japão, a última passada em Shinsaibashi e a despedida na Den Den Town. O que pode estragar o fim não é o trânsito: é a fila do reembolso de imposto no aeroporto, que desde novembro de 2026 é feita ANTES do despacho, com a mercadoria em mãos e 13 passaportes.", "centro": [34.6, 135.38], "zoom": 10, "paradas": [{"id": "base", "tipo": "base", "hora": "09:00", "nome": "Hotel em Osaka — AINDA NÃO DEFINIDO (âncora em Namba)", "lat": 34.66725, "lng": 135.49972, "aprox": true, "gmaps": "Namba Station, Osaka"}, {"id": "p1", "ativ": "Check-out", "tipo": "evento", "lat": 34.6639, "lng": 135.50151, "aprox": true, "hora": "09:15", "fim": "09:45", "gmaps": "Namba CITY, Osaka", "foto": null, "ai": 0}, {"id": "e1", "nome": "Estação Nipponbashi (Metro Sakaisuji)", "tipo": "estacao", "lat": 34.66679, "lng": 135.50739, "aprox": true, "gmaps": "Nipponbashi Station Osaka"}, {"id": "e2", "nome": "Estação Minami-morimachi — a ponta sul da arcada", "tipo": "estacao", "lat": 34.69751, "lng": 135.51116, "gmaps": "Minami-morimachi Station Osaka"}, {"id": "p2", "ativ": "Tenjin-bashi-suji", "tipo": "compras", "lat": 34.70955, "lng": 135.51125, "hora": "10:15", "fim": "11:45", "gmaps": "Tenjinbashisuji Shopping Street", "foto": "Tenjinbashisuji shopping street Osaka", "must": ["2,6 km de arcada contínua, a mais longa do Japão, ligando duas estações da MESMA linha: entra-se em Minami-morimachi e sai-se em Tenjinbashisuji 6-chome, sem refazer o caminho e sem precisar andar tudo.", "Não é rua de turista: é bairro de gente da cidade. Comida barata, brechó, papelaria, doceria e kissaten antigos — é aqui que o troco em iene rende mais.", "Toldo do começo ao fim: é o melhor plano de chuva de Osaka, e o carrinho anda plano os 2,6 km inteiros."], "comidas": ["Kissaten antigos com café e torrada grossa, o café da manhã de Osaka.", "Doceria e takoyaki de bairro, a metade do preço de Dotonbori."], "ai": 1}, {"id": "e3", "nome": "Estação Tenjinbashisuji 6-chome — a ponta norte", "tipo": "estacao", "lat": 34.71029, "lng": 135.51085, "aprox": true, "gmaps": "Tenjinbashisuji 6-chome Station"}, {"id": "e4", "nome": "Estação Nagahoribashi", "tipo": "estacao", "lat": 34.67532, "lng": 135.5063, "gmaps": "Nagahoribashi Station Osaka"}, {"id": "p3", "ativ": "Compras finais", "tipo": "compras", "lat": 34.67335, "lng": 135.50137, "hora": "12:15", "fim": "14:15", "gmaps": "Shinsaibashi-suji Shopping Street", "foto": "Shinsaibashi Suji arcade", "must": ["Segunda passada, para o que ficou faltando na véspera: farmácia, skincare, UNIQLO e GU.", "⚠ ÚLTIMO DIA: tudo o que for comprado aqui precisa passar pelo quiosque da alfândega no KIX ANTES do despacho, com a mercadoria em mãos. Guardem as notas separadas e não enfiem nada no fundo da mala.", "Gastem o troco: iene em espécie não vale quase nada para trocar de volta no Brasil, e a arcada tem 100-yen shop para zerar moeda."], "comidas": [], "ai": 2}, {"id": "p4", "ativ": "Almoço de despedida", "tipo": "comida", "lat": 34.65922, "lng": 135.50582, "hora": "14:30", "fim": "16:30", "gmaps": "Den Den Town, Nipponbashi, Osaka", "foto": "Nipponbashi Den Den Town Osaka", "must": ["A Den Den Town é a Akihabara de Osaka, mas menor e mais barata: última passada para o que ficou faltando em eletrônico, anime e game.", "⚠ As lojas são verticais e apertadas, com escada estreita — revezem na porta em vez de tentar subir com os três carrinhos.", "O almoço de despedida se faz voltando 600 m para Dotonbori, onde há mesa para 13."], "comidas": ["Última chance de okonomiyaki e kushikatsu.", "Doce de despedida: taiyaki ou melonpan da arcada de Sennichimae."], "ai": 3}, {"id": "p5", "ativ": "TRANSFER", "tipo": "evento", "lat": 34.4358, "lng": 135.24354, "hora": "18:10", "gmaps": "Kansai Airport Station", "foto": null, "ai": 4}, {"id": "fim", "tipo": "base", "nome": "KIX — Terminal 1, voo JQ 14", "lat": 34.4358, "lng": 135.24354, "aprox": true, "hora": "21:25", "gmaps": "Kansai International Airport"}], "pernas": [{"de": "base", "para": "p1", "modo": "pe", "km": 0.45, "min": 6, "nota": "check-out e as malas para o guarda-volumes"}, {"de": "p1", "para": "e1", "modo": "pe", "km": 0.6, "min": 8}, {"de": "e1", "para": "e2", "modo": "metro", "km": 3.6, "min": 8, "nota": "Metro Sakaisuji DIRETO até Minami-morimachi — ¥240"}, {"de": "e2", "para": "p2", "modo": "pe", "km": 1.3, "min": 18, "nota": "subindo a arcada, sempre coberta"}, {"de": "p2", "para": "e3", "modo": "pe", "km": 0.15, "min": 2, "nota": "a arcada termina na própria estação"}, {"de": "e3", "para": "e4", "modo": "metro", "km": 4.6, "min": 11, "nota": "Sakaisuji de volta até Nagahoribashi — ¥240"}, {"de": "e4", "para": "p3", "modo": "pe", "km": 0.45, "min": 6}, {"de": "p3", "para": "p4", "modo": "pe", "km": 1.6, "min": 22, "nota": "descendo a arcada até Dotonbori e seguindo para leste"}, {"de": "p4", "para": "p1", "modo": "pe", "km": 0.75, "min": 10, "nota": "⚠ DE VOLTA para resgatar as malas — este passo é o que costuma faltar na conta"}, {"de": "p1", "para": "p5", "modo": "trem", "km": 50, "min": 45, "nota": "Nankai da estação de Namba até o KIX — sair 17:20, no mais tardar"}, {"de": "p5", "para": "fim", "modo": "pe", "km": 0.4, "min": 8, "nota": "da plataforma ao balcão de check-in, tudo coberto e plano"}], "alternativas": [{"titulo": "O passo que some da conta: voltar para buscar as malas", "refs": ["p1", "p4"], "texto": "O dia inteiro é feito sem mala na mão, e é por isso que ele funciona — mas alguém tem de voltar aos armários antes de embarcar, e isso são 10 min de caminhada mais o tempo de resgatar e redistribuir 13 bagagens. Com saída de Namba às 17:20, significa encerrar a Den Den Town às 16:30 sem discussão. Armário grande custa ¥700 por dia e em alta temporada LOTA antes das 10:00 — por isso o guarda-volumes do hotel é o plano A, e por isso ele deve ser pedido ao fechar a reserva."}, {"titulo": "Rapi:t ou Airport Express? A conta mudou", "refs": ["p5"], "texto": "O Airport Express custa ¥970 e é trem comum: sem assento marcado, sem espaço de bagagem, e às 17:20 ele pega o começo do movimento da volta do trabalho. O RAPI:T custa ¥1.490 na bilheteria — mas ¥1.300 no bilhete DIGITAL pelo celular, e a Super Seat sai por ¥1.490 no digital, ou seja, a poltrona melhor pelo preço da comum no guichê. São ¥330 a mais que o trem comum, uns ¥3.300 no grupo, por assento garantido e lugar para mala no último trajeto de uma viagem de 16 dias com três bebês. Comprem digital, e comprem antes."}, {"titulo": "A fila que pode custar o voo", "refs": ["p5"], "texto": "⚠ Desde novembro de 2026 o tax-free é por REEMBOLSO: paga-se cheio na loja e, no aeroporto, faz-se a confirmação da alfândega no quiosque — com passaporte E COM A MERCADORIA EM MÃOS, antes de despachar. Com 13 passaportes e compras espalhadas por várias malas, isso não é um carimbo, é uma operação. Cheguem com as compras separadas e as notas juntas, e considerem sair de Namba às 16:50 em vez de 17:20: a folga de 30 min custa meia hora de Den Den Town e compra tranquilidade num aeroporto que vocês não conhecem."}, {"titulo": "Se preferirem cortar o Tenjin-bashi-suji", "refs": ["p2", "p3"], "texto": "A arcada do norte é ótima e é a mais longa do Japão, mas custa 40 min de metrô ida e volta num dia com hora marcada, e é a única coisa do dia que não é despedida nem compra final. Largando-a, o dia começa às 11:00 em Shinsaibashi com quatro horas inteiras de arcada e almoço sem relógio — e sobra folga real para a fila do aeroporto. É a decisão a tomar na noite do dia 30, olhando o que ainda falta comprar."}, {"titulo": "Gastem o troco antes do aeroporto", "refs": ["p3", "p4"], "texto": "Iene em espécie não vale quase nada para trocar de volta no Brasil, e moeda não se troca de jeito nenhum. As duas arcadas do dia estão cheias de 100-yen shop, que é onde se zera o bolso comprando coisa que presta. No KIX os preços são de aeroporto e a escolha é pior — o que sobrar ali, sobrou."}], "passe": {"nome": "Nenhum passe — mas o bilhete do Rapi:t vale ser digital", "texto": "O dia gasta ¥480 de metrô (dois trechos de ¥240 na Sakaisuji) mais o trem do aeroporto. Nenhum passe diário de Osaka se paga em duas viagens. O que rende de verdade é comprar o Rapi:t pelo aplicativo: ¥1.300 contra ¥1.490 no guichê, ou a Super Seat por ¥1.490."}};
 const FOTOS = {"p2": {"termo": "Tenjinbashisuji shopping street Osaka", "arq": "paradas/2027-03-31-p2.webp", "titulo": "Tenjinbashisuji Shopping Street 2024 Dec 31 various.jpeg", "autor": "Nesnad", "lic": "CC BY 4.0", "licurl": "https://creativecommons.org/licenses/by/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ATenjinbashisuji_Shopping_Street_2024_Dec_31_various.jpeg", "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQBACdASoWABEAPuliqU2pJaQiMAgBIB0JZwDHMCG5uWCDn8zaFLu4HRPVcNGMgAD+V1bdxRnCbNBWNgoCFiQTMBlckOcgyHneHiKTldEgiZ389PFwmIAA"}, "p3": {"termo": "Shinsaibashi Suji arcade", "arq": "paradas/2027-03-31-p3.webp", "titulo": "UNIQLO Shinsaibashisuji Shopping Street shop and GU Shinsaibashi shop.jpg", "autor": "Tokumeigakarinoaoshima", "lic": "CC BY-SA 4.0", "licurl": "https://creativecommons.org/licenses/by-sa/4.0", "pagina": "https://commons.wikimedia.org/wiki/File%3AUNIQLO_Shinsaibashisuji_Shopping_Street_shop_and_GU_Shinsaibashi_shop.jpg", "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoWABEAPtVcok0oJaMiN/qoAQAaiWUAxNgJ4StJRndR7NMAAK6LXs3BkDcJys3RgspGvgxUXnTj/s3PaR/QPNk7qSn8XZYfaAfjvRprUVhPBaUjXp94YRH46wAAAA=="}, "p4": {"termo": "Nipponbashi Den Den Town Osaka", "arq": "paradas/2027-03-31-p4.webp", "titulo": "Den-Den Town, Nipponbashi, Osaka - Jul 12, 2023.jpg", "autor": "Clemens Vasters", "lic": "CC BY 2.0", "licurl": "https://creativecommons.org/licenses/by/2.0", "pagina": "https://commons.wikimedia.org/wiki/File%3ADen-Den_Town%2C_Nipponbashi%2C_Osaka_-_Jul_12%2C_2023.jpg", "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAwCdASoWAA8APulep00pJSOiMAgBIB0JZwAAO4oq6+4E8eUoAAD+3WpRK8lz2HVMuC/ObGDm8uqGoLN0XM3rd0fBewKFyTQOiTVqDgA="}};   // por id de parada: arquivo, credito e placeholder
 const el = (id)=>document.getElementById(id);
 const esc = (s)=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const nf  = (n,d=0)=>Number(n).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
-const gm  = (q)=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+// Nome solto e ambiguo: "Chuo-dori Ave" tem 6 km de extensao e o Google escolhia a ponta
+// de Ginza quando o que se queria era o trecho de Akihabara. Toda busca sai ancorada na
+// coordenada da parada (/@lat,lng,17z): o resultado cai no trecho certo e continua sendo a
+// ficha do lugar, com horario, fotos e avaliacoes. Sem coordenada, cai na busca simples.
+const co  = (p)=> p && p.lat!=null ? p.lat+","+p.lng : "";
+// Alguns "gmaps" ja sao um link curto do proprio Google (o caso dos Airbnb, que nao tem
+// nome pesquisavel). Esses passam direto: encodar viraria uma busca pelo texto da URL.
+const gm  = (q,p)=> /^https?:\/\//i.test(String(q)) ? String(q)
+  : co(p)
+  ? "https://www.google.com/maps/search/"+encodeURIComponent(q)+"/@"+co(p)+",17z"
+  : "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+// Rota vai em coordenada pura nas duas pontas — e o unico jeito de o Google nao reinterpretar
+// o nome e tracar o trecho errado. Quem esta lendo ja tem o nome no card logo acima.
 const gdir= (a,b,modo)=>"https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+
             "&destination="+encodeURIComponent(b)+"&travelmode="+(modo==="pe"?"walking":"transit");
 
@@ -408,7 +436,7 @@ if(map) GEO.paradas.forEach(p=>{
   m.bindPopup(`${fp?`<img class="pop-img" src="fotos/${fp.arq}" alt="" loading="lazy">`:""
     }<b>${esc(nomeDe(p))}</b><u>${esc(p.hora||"")}${p.fim?" – "+esc(p.fim):""}${
       a&&a.area?" · "+esc(a.area):""}</u>${
-      p.aprox?'<i style="color:var(--ink-3);font-size:.72rem">ponto aproximado</i>':""}<a href="${gm(p.gmaps||nomeDe(p))}" target="_blank" rel="noopener">ver no Google Maps ↗</a>`);
+      p.aprox?'<i style="color:var(--ink-3);font-size:.72rem">ponto aproximado</i>':""}<a href="${gm(p.gmaps||nomeDe(p), p)}" target="_blank" rel="noopener">ver no Google Maps ↗</a>`);
   if(!apoio) m.on("click",()=>abrir(p.id,false));
   marcas[p.id]=m;
 });
@@ -442,7 +470,7 @@ el("kpis").innerHTML =
 // origem→destino. Com waypoints ele aceita apenas carro/a pe/bicicleta. Entao o botao do
 // dia abre a volta inteira em modo carro, so para ver o desenho e a ordem; o transporte
 // de verdade (metro, linha, tarifa) esta no "ir ↗" de cada trecho.
-const seq = reais.map(p=>p.gmaps||nomeDe(p));
+const seq = reais.map(p=>co(p)||p.gmaps||nomeDe(p));
 el("gdia").href = "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(seq[0])+
   "&destination="+encodeURIComponent(seq[seq.length-1])+
   "&waypoints="+seq.slice(1,-1).map(encodeURIComponent).join("%7C")+"&travelmode=driving";
@@ -457,6 +485,7 @@ function foto(p){
   return `<figure class="fig" style="background-image:url(${f.lqip})">
     <img src="fotos/${f.arq}" alt="${esc(nomeDe(p))}" loading="lazy" decoding="async"
       width="620" height="349"${p.foco?` style="object-position:${esc(p.foco)}"`:""}>
+    ${p.fotonota?`<b class="fig-nota">${esc(p.fotonota)}</b>`:""}
     <figcaption><a href="${esc(f.pagina)}" target="_blank" rel="noopener">${esc(cred||"Wikimedia Commons")} ↗</a></figcaption>
   </figure>`;
 }
@@ -474,11 +503,14 @@ const html = GEO.paradas.map((p,idx)=>{
   if(perna){
     const de=P[perna.de], ate=p;
     const metro = perna.modo!=="pe";
-    const dd = de.gmaps||nomeDe(de), aa = p.gmaps||nomeDe(p);
+    const dd = co(de)||de.gmaps||nomeDe(de), aa = co(p)||p.gmaps||nomeDe(p);
     // Cada trecho tem um modo sugerido, mas onde a outra opcao for plausivel (metro
     // curto que da para andar, ou caminhada que da para encurtar de metro) aparece um
     // segundo link, para comparar tempo e preco no Google.
-    const alt = metro ? (perna.km && perna.km <= 2.5) : (perna.km && perna.km >= 0.8);
+    // "unico" desliga a segunda opcao onde ela perde em tudo: descer o Ueno de metro,
+    // por exemplo, seriam duas baldeacoes e uma tarifa para 1,2 km de parque plano.
+    const alt = perna.unico ? false
+              : metro ? (perna.km && perna.km <= 2.5) : (perna.km && perna.km >= 0.8);
     const tit = metro
       ? `<b>${esc(perna.linha||"Metrô")}</b> · ${perna.min} min${perna.custo?" · ¥"+nf(perna.custo):""}${
           perna.km?" · "+nf(perna.km,1)+" km":""}`
@@ -525,8 +557,8 @@ const html = GEO.paradas.map((p,idx)=>{
       ${p.alerta?`<div class="alerta"><s>⚠</s><span>${esc(p.alerta)}</span></div>`:""}
       <div class="plinks">
         ${ant?`<a class="plink" target="_blank" rel="noopener"
-           href="${gdir(ant.gmaps||nomeDe(ant), p.gmaps||a.nome, "transit")}">Como chegar de ${esc(nomeDe(ant))} ↗</a>`:""}
-        <a class="plink" target="_blank" rel="noopener" href="${gm(p.gmaps||a.nome)}">Abrir no Google Maps ↗</a>
+           href="${gdir(co(ant)||ant.gmaps||nomeDe(ant), co(p)||p.gmaps||a.nome, "transit")}">Como chegar de ${esc(nomeDe(ant))} ↗</a>`:""}
+        <a class="plink" target="_blank" rel="noopener" href="${gm(p.gmaps||a.nome, p)}">Abrir no Google Maps ↗</a>
       </div>
     </div>
   </div>`;
@@ -543,30 +575,48 @@ el("alts").innerHTML = GEO.alternativas.map((x,i)=>{
     <span class="tag">${LBL[x.tipo]||x.tipo}</span>
     <b>${esc(x.titulo)}</b><p>${esc(x.texto)}</p>
     ${acao?`<span class="alt-pe"><span class="alt-go">${acao} \u2192</span>${
-      x.ponto?`<a class="plink" target="_blank" rel="noopener" href="${gm(x.ponto.gmaps||x.ponto.nome)}"
+      x.ponto?`<a class="plink" target="_blank" rel="noopener" href="${gm(x.ponto.gmaps||x.ponto.nome, x.ponto)}"
         >${esc(x.ponto.nome)} no Google Maps \u2197</a>`:""}</span>`:""}
   </div>`;
 }).join("");
 
-// os pinos das alternativas nascem escondidos e so aparecem quando o card e acionado
-if(map) GEO.alternativas.forEach(x=>{
+// Os pinos das alternativas ficam SEMPRE no mapa, apagados, para dar de relance onde ha
+// opcional; acender e so o destaque de quem esta selecionado. Clicar no pino abre o card.
+if(map) GEO.alternativas.forEach((x,i)=>{
   if(!x.ponto) return;
-  x._m = L.marker([x.ponto.lat,x.ponto.lng],{opacity:0,interactive:false,
+  x._m = L.marker([x.ponto.lat,x.ponto.lng],{interactive:true,zIndexOffset:200,
     icon:L.divIcon({className:"",html:`<div class="pin alt-pin">${(LBL[x.tipo]||"?")[0]}</div>`,
       iconSize:[26,26],iconAnchor:[13,13]})}).addTo(map);
   x._m.bindPopup(`<b>${esc(x.ponto.nome)}</b><u>alternativa \u00b7 ${esc(LBL[x.tipo]||x.tipo)}</u>`);
+  x._m.on("click",()=>mostrarAlt(i,true));
 });
 
-function mostrarAlt(i){
+// legenda das letras, montada so com os tipos que realmente tem pino neste dia
+{
+  const tipos = [...new Set(GEO.alternativas.filter(x=>x.ponto).map(x=>LBL[x.tipo]||x.tipo))];
+  el("altleg").innerHTML = tipos.length
+    ? "No mapa, os pinos tracejados s\u00e3o estas alternativas \u2014 "
+      + tipos.map(l=>`<b>${esc(l[0])}</b>${esc(l.toLowerCase())}`).join(" \u00b7 ")
+      + ". Clique num pino ou num card para destacar."
+    : "";
+}
+
+function altPin(x){
+  const n = x && x._m && x._m.getElement();
+  return n ? n.querySelector(".alt-pin") : null;
+}
+
+function mostrarAlt(i, doPino){
   const x = GEO.alternativas[i];
   document.querySelectorAll(".alt.on").forEach(n=>n.classList.remove("on"));
   el("trilha").querySelectorAll(".parada.pisca").forEach(n=>n.classList.remove("pisca"));
-  GEO.alternativas.forEach(y=>{ if(y._m) y._m.setOpacity(0); });
+  GEO.alternativas.forEach(y=>{ const d=altPin(y); if(d) d.classList.remove("on"); });
   const card = el("alts").querySelector(`.alt[data-alt="${i}"]`);
   if(card) card.classList.add("on");
   if(x.ponto){
-    if(x._m) x._m.setOpacity(1);
+    const d = altPin(x); if(d) d.classList.add("on");
     if(map){ map.flyTo([x.ponto.lat,x.ponto.lng], 15, {duration:.6}); if(x._m) x._m.openPopup(); }
+    if(doPino && card) card.scrollIntoView({behavior:"smooth",block:"center"});
   }else if(x.refs && x.refs.length){
     const pts = x.refs.map(id=>P[id]).filter(Boolean);
     if(map && pts.length) map.flyToBounds(L.latLngBounds(pts.map(q=>[q.lat,q.lng])),

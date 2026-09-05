@@ -30,6 +30,7 @@ import io, json, os, re
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 ARQ = os.path.join(BASE, 'ajustes.json')
+ARQ_GEO = os.path.join(BASE, 'mapa', 'pontos.json')
 
 
 def _acha(dia, pedaco):
@@ -60,6 +61,79 @@ def _recalcular(dia):
     t = dia.setdefault('total', {})
     for campo in ('km', 'min', 'pe', 'transp', 'ingresso'):
         t[campo] = round(sum(a.get(campo, 0) or 0 for a in dia['atividades']), 2)
+
+
+# O resumo da planilha e um retrato de antes das operacoes deste arquivo: cada parada que
+# entra, sai ou muda de dia afasta um pouco mais os totais da viagem da soma real dos dias.
+# Aqui ele volta a ser derivado — mesma conta que _recalcular faz por dia, agora somando os
+# 16. A ordem importa: isto roda DEPOIS de todas as operacoes.
+_RESUMO = [
+    ('Distância total percorrida', 'km', None),
+    ('Tempo total dentro do transporte', 'min', None),
+    ('Caminhada total estimada', 'km_pe', 'km'),
+    ('Transporte no Japão', 'transp', None),
+    ('Ingressos e atrações', 'ingresso', None),
+]
+
+
+# Caminhada se mede em quilometro, nao em minuto: minuto depende do passo de quem anda, e
+# com tres bebes o passo nao e o da planilha. O km real esta nas pernas a pe da camada
+# geografica, medidas uma a uma; o 'pe' em minutos da planilha continua no dado, para o
+# dia que por acaso nao tiver mapa, mas nao e mais o que o site mostra.
+def _km_a_pe(dados):
+    if not os.path.exists(ARQ_GEO):
+        return
+    geo = json.loads(io.open(ARQ_GEO, encoding='utf-8').read())
+    for d in dados['dias']:
+        g = geo.get(d['data'])
+        if not isinstance(g, dict) or 'pernas' not in g:
+            continue
+        d.setdefault('total', {})['km_pe'] = round(
+            sum(p.get('km') or 0 for p in g['pernas'] if p.get('modo') == 'pe'), 1)
+
+
+def _refazer_resumo(dados, verboso=True):
+    linhas = dados.get('resumo') or []
+    if not linhas:
+        return
+    soma = {c: round(sum(d.get('total', {}).get(c, 0) or 0 for d in dados['dias']), 2)
+            for _, c, _u in _RESUMO}
+    iene = soma['transp'] + soma['ingresso']
+    achados = set()
+
+    for r in linhas:
+        rot = r.get('label', '')
+        for prefixo, campo, unid in _RESUMO:
+            if rot.startswith(prefixo):
+                r['valor'] = soma[campo]
+                if unid:
+                    r['unidade'] = unid
+                achados.add(prefixo)
+                if campo == 'km_pe' and dados['dias']:
+                    # a nota da planilha falava em horas e trazia a media congelada. E
+                    # precisa dizer o que este numero NAO conta: e a soma das pernas a pe
+                    # entre paradas, nao os passos dados dentro de cada parque ou galeria —
+                    # por isso e bem menor que os 10 a 15 km/dia que a Preparacao estima.
+                    media = soma['km_pe'] / float(len(dados['dias']))
+                    r['nota'] = ('Média de ~%s km por dia, empurrando carrinho boa parte do '
+                                 'tempo. Só os trechos ENTRE paradas: não conta o que se anda '
+                                 'dentro de cada parque, templo ou galeria.'
+                                 % ('%.1f' % media).replace('.', ','))
+                break
+        else:
+            if rot.startswith('TOTAL EM IENES'):
+                r['valor'] = iene
+                achados.add('TOTAL EM IENES')
+            elif rot.startswith('TOTAL EM REAIS'):
+                r['valor'] = round(iene * TAXA_IENE, 2)
+                achados.add('TOTAL EM REAIS')
+
+    faltando = {p for p, _c, _u in _RESUMO} | {'TOTAL EM IENES', 'TOTAL EM REAIS'}
+    faltando -= achados
+    if faltando and verboso:
+        print('ajustes: resumo com rotulo que a planilha renomeou, ficou com o valor antigo:')
+        for f in sorted(faltando):
+            print('   %s' % f)
 
 
 def aplicar(dados, verboso=True):
@@ -229,6 +303,9 @@ def aplicar(dados, verboso=True):
               % ', '.join(repr(x) for x in sorted(desconhecidos, key=str)))
     for d in dados['dias']:
         d['atividades'].sort(key=lambda a: ORDEM.get(a.get('periodo'), 9))
+
+    _km_a_pe(dados)
+    _refazer_resumo(dados, verboso)
 
     if verboso:
         print('ajustes: %d operacoes' % len(ops))

@@ -924,7 +924,7 @@ function montarNums(){
   const cards=[
     {b:"16",u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
     {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
-    {b:Math.round(r("caminhada total")/60)+"h",u:"a pé, no total",i:"Média de ~1h por dia empurrando carrinho"},
+    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/DADOS.dias.length,1)+" km por dia, só entre paradas"},
     {b:nf(DADOS.dias.reduce((n,d)=>n+d.atividades.length,0)),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
