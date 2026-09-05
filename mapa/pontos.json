@@ -4948,21 +4948,39 @@
     "gmaps": "Toyosu Station Tokyo"
    },
    {
-    "id": "e3",
-    "nome": "Estação Shijo-mae",
+    "id": "e4",
+    "nome": "Estação Shin-Toyosu",
     "tipo": "estacao",
-    "lat": 35.64576,
-    "lng": 139.78578,
-    "gmaps": "Shijo-mae Station Tokyo"
+    "lat": 35.6484,
+    "lng": 139.7897,
+    "aprox": true,
+    "gmaps": "Shin-Toyosu Station Tokyo"
    },
    {
     "id": "p1",
+    "ativ": "teamLab PLANETS",
+    "tipo": "museu",
+    "lat": 35.64938,
+    "lng": 139.78973,
+    "hora": "09:00",
+    "fim": "10:45",
+    "gmaps": "teamLab Planets TOKYO, Toyosu",
+    "foto": "teamLab Planets Tokyo",
+    "must": [
+     "A sala de água com as carpas luminosas — é ali que a água sobe até o joelho do adulto.",
+     "O jardim de orquídeas suspensas e a esfera de espelhos infinitos.",
+     "O jardim de musgo ao ar livre, com os ovoides que mudam de cor quando encostam neles."
+    ],
+    "alerta": "Anda-se descalço do começo ao fim, e meia e meia-calça saem no vestiário. A água chega ao joelho do adulto: usem bermuda ou calça que enrole acima do joelho — e há bermuda emprestada de graça, do XS ao 6L, é só pedir a um funcionário. Carrinho NÃO entra: fica preso com cabo de aço num estacionamento de carrinhos do lado de fora do prédio, então os três bebês vão no canguru o tempo todo (canguru é permitido lá dentro). Os armários de dentro são pequenos, 23 x 34 x 37 cm; mochila grande fica na área dos carrinhos. Levem toalha. O ingresso é por horário marcado, esgota semanas antes e o preço é dinâmico — sábado sai acima do piso de ¥3.600. Reservem os 13 lugares no mesmo horário assim que o mês abrir."
+   },
+   {
+    "id": "p2",
     "ativ": "Toyosu Market",
     "tipo": "comida",
     "lat": 35.64413,
     "lng": 139.78128,
-    "hora": "07:55",
-    "fim": "09:45",
+    "hora": "11:00",
+    "fim": "11:45",
     "gmaps": "Toyosu Market, Koto-ku, Tokyo",
     "foto": "File:Toyosu Market Tokyo 2.jpg",
     "must": [
@@ -4983,30 +5001,12 @@
     "alerta": "O leilão de atum é às 05:30 e, para vê-lo, é preciso já estar lá: o primeiro trem sai de Ojima às 05:00 e a viagem leva de 35 a 50 minutos, ou seja, só de táxi dá. E o deck de vidro do térreo, o bom, é por sorteio pedido no mês anterior. Contem em ver o mercado funcionando pela passarela, não o leilão. Os restaurantes fecham entre 14:00 e 15:00 e a fila das casas famosas passa de uma hora — com 13 pessoas, dividam-se em mesas de quatro ou comam nos balcões do Yokocho. O mercado não abre domingo, feriado nem algumas quartas; sábado abre. O piso do salão é molhado e tem empilhadeira circulando: os carrinhos ficam na passarela de cima."
    },
    {
-    "id": "e4",
-    "nome": "Estação Shin-Toyosu",
+    "id": "e3",
+    "nome": "Estação Shijo-mae",
     "tipo": "estacao",
-    "lat": 35.6484,
-    "lng": 139.7897,
-    "aprox": true,
-    "gmaps": "Shin-Toyosu Station Tokyo"
-   },
-   {
-    "id": "p2",
-    "ativ": "teamLab PLANETS",
-    "tipo": "museu",
-    "lat": 35.64938,
-    "lng": 139.78973,
-    "hora": "10:00",
-    "fim": "11:45",
-    "gmaps": "teamLab Planets TOKYO, Toyosu",
-    "foto": "teamLab Planets Tokyo",
-    "must": [
-     "A sala de água com as carpas luminosas — é ali que a água sobe até o joelho do adulto.",
-     "O jardim de orquídeas suspensas e a esfera de espelhos infinitos.",
-     "O jardim de musgo ao ar livre, com os ovoides que mudam de cor quando encostam neles."
-    ],
-    "alerta": "Anda-se descalço do começo ao fim, e meia e meia-calça saem no vestiário. A água chega ao joelho do adulto: usem bermuda ou calça que enrole acima do joelho — e há bermuda emprestada de graça, do XS ao 6L, é só pedir a um funcionário. Carrinho NÃO entra: fica preso com cabo de aço num estacionamento de carrinhos do lado de fora do prédio, então os três bebês vão no canguru o tempo todo (canguru é permitido lá dentro). Os armários de dentro são pequenos, 23 x 34 x 37 cm; mochila grande fica na área dos carrinhos. Levem toalha. O ingresso é por horário marcado, esgota semanas antes e o preço é dinâmico — sábado sai acima do piso de ¥3.600. Reservem os 13 lugares no mesmo horário assim que o mês abrir."
+    "lat": 35.64576,
+    "lng": 139.78578,
+    "gmaps": "Shijo-mae Station Tokyo"
    },
    {
     "id": "e5",
@@ -5023,8 +5023,8 @@
     "tipo": "comida",
     "lat": 35.66539,
     "lng": 139.77047,
-    "hora": "12:35",
-    "fim": "14:05",
+    "hora": "12:15",
+    "fim": "13:45",
     "gmaps": "Tsukiji Outer Market, Chuo-ku, Tokyo",
     "foto": "Tsukiji Outer Market street food",
     "aprox": false,
@@ -5045,8 +5045,8 @@
     "tipo": "monumento",
     "lat": 35.66966,
     "lng": 139.76811,
-    "hora": "14:20",
-    "fim": "15:20",
+    "hora": "14:00",
+    "fim": "15:00",
     "gmaps": "Kabukiza Theatre, Ginza, Tokyo",
     "foto": "Kabuki-za Theatre Ginza",
     "must": [
@@ -5067,7 +5067,7 @@
     "tipo": "compras",
     "lat": 35.67122,
     "lng": 139.76503,
-    "hora": "15:25",
+    "hora": "15:10",
     "fim": "18:00",
     "gmaps": "Ginza 4-chome Crossing, Tokyo",
     "foto": "File:銀座 歩行者天国実施中 築地警察署 (3493768357).jpg",
@@ -5122,41 +5122,41 @@
    },
    {
     "de": "e2",
-    "para": "e3",
-    "modo": "metro",
-    "km": 1.5,
-    "min": 5,
-    "nota": "Yurikamome até Shijo-mae — ¥190"
-   },
-   {
-    "de": "e3",
-    "para": "p1",
-    "modo": "pe",
-    "km": 0.3,
-    "min": 4
-   },
-   {
-    "de": "p1",
     "para": "e4",
-    "modo": "pe",
-    "km": 1.1,
-    "min": 15,
-    "nota": "a pé pela beira do canal, do mercado até Shin-Toyosu"
+    "modo": "metro",
+    "km": 1.2,
+    "min": 3,
+    "nota": "Yurikamome até Shin-Toyosu, 1 estação — ¥190"
    },
    {
     "de": "e4",
-    "para": "p2",
+    "para": "p1",
     "modo": "pe",
     "km": 0.15,
     "min": 2
    },
    {
+    "de": "p1",
+    "para": "p2",
+    "modo": "pe",
+    "km": 1.1,
+    "min": 15,
+    "nota": "OPCIONAL — a pé pela beira do canal até o mercado"
+   },
+   {
     "de": "p2",
+    "para": "e3",
+    "modo": "pe",
+    "km": 0.3,
+    "min": 4
+   },
+   {
+    "de": "e3",
     "para": "e2",
     "modo": "metro",
-    "km": 1.2,
-    "min": 3,
-    "nota": "Yurikamome de volta a Toyosu, 1 estação — ¥190 (ou 1 km a pé, de graça)"
+    "km": 1.5,
+    "min": 5,
+    "nota": "Yurikamome de volta a Toyosu — ¥190 (quem pular o mercado sai de Shin-Toyosu, mesma tarifa)"
    },
    {
     "de": "e2",
@@ -5179,7 +5179,8 @@
     "para": "p4",
     "modo": "pe",
     "km": 0.53,
-    "min": 7
+    "min": 7,
+    "nota": "OPCIONAL — 530 m pela Harumi-dori"
    },
    {
     "de": "p4",
@@ -5206,12 +5207,13 @@
   ],
   "alternativas": [
    {
-    "titulo": "Se o Tsukiji for a prioridade, inverta a manhã",
+    "titulo": "O dia enxuto — largando as duas opcionais",
     "refs": [
      "p2",
-     "p3"
+     "p4",
+     "p5"
     ],
-    "texto": "O Tsukiji é rua de comida e ESVAZIA A PARTIR DAS 14:00 — chegando 12:35 pega-se a última hora e meia, com parte das bancas já recolhendo. O teamLab Planets, ao contrário, fica aberto até as 22:00. Quem quiser o Tsukiji cheio inverte: mercado de Toyosu 08:00, Tsukiji 10:15 no auge, e o teamLab às 16:00 na volta. Custa um zigue-zague a mais e encurta Ginza, mas é a única forma de ver o Tsukiji funcionando."
+    "texto": "As duas paradas com (opcional) no nome existem para ser largadas sem culpa. Saindo do teamLab às 10:45 e indo DIRETO ao Tsukiji, chega-se lá às 11:25, em pleno funcionamento, e em Ginza às 13:15 — com o calçadão inteiro pela frente, 3h45 até as 17:00. Fazendo as duas, Ginza começa 15:10 e sobram 1h50 de avenida sem carro. É a mesma rota; muda só quanto tempo sobra para comprar. Decidam na saída do teamLab, olhando para o relógio."
    },
    {
     "titulo": "Kabukiza: como se compra um ato só",
