@@ -502,8 +502,8 @@
    }
   ],
   "passe": {
-   "nome": "Osaka Amazing Pass — 1 dia, ¥3.300",
-   "texto": "Cobre metrô ilimitado + roda-gigante Tempozan (¥900) + Umeda Sky (¥2.000) + cruzeiro Tombori (¥1.200). Só o metrô do dia já dá ¥820. NÃO cobre o Kaiyukan."
+   "nome": "Osaka Amazing Pass — só o de 2 dias se paga, e por pouco",
+   "texto": "⚠ O KAIYUKAN NÃO ENTRA NO PASSE, e é ele que decide tudo: dá ¥100 de desconto, não entrada franca. Sozinho, o dia 18 rende ¥3.160 (Umeda Sky ¥2.000 + ¥100 do aquário + ¥1.060 de metrô) contra ¥3.500 do passe de 1 dia — perde ¥340.\nA versão de 2 DIAS custa ¥5.000 e vale para dois dias seguidos: 17 e 18 servem. Somando os dois, ela cobre ¥5.530 — castelo ¥1.200, Shitennoji ¥500, Umeda Sky ¥2.000, ¥100 do aquário e ¥1.730 de metrô nos dois dias. Sobra ¥530 por adulto, uns ¥4.200 no grupo.\nÉ lucro de verdade, mas fino: basta alguém desistir de subir ao castelo OU ao Umeda Sky e o passe passa a dar prejuízo. Comprem se estiverem certos dos dois; se houver dúvida, paguem avulso.\n⚠ Desde a edição 2026 o passe é 100% DIGITAL, em QR pelo site Surutto QRtto — não há mais cartão para comprar no balcão. Comprem antes de viajar, e cada pessoa precisa do QR no próprio celular."
   }
  },
  "2027-03-17": {
@@ -910,8 +910,8 @@
    }
   ],
   "passe": {
-   "nome": "Osaka Amazing Pass — 1 dia, ¥3.300",
-   "texto": "Neste dia ele NÃO compensa: o uso real é o metrô (¥670) mais o castelo (¥1.200) = ¥1.870, contra ¥3.300 de custo. Só viraria negócio somando a Tsūtenkaku (¥1.200) e mais um mirante. O Shitennoji (¥500) não entra no passe."
+   "nome": "Osaka Amazing Pass — o de 1 dia não paga",
+   "texto": "O de 1 dia custa ¥3.500 e neste dia rende ¥2.370: o castelo (¥1.200), o Shitennoji (¥500, que ENTRA no passe) e o metrô do dia (¥670). Perde ¥1.130. O ingresso do sumô, que é o gasto grande de hoje, não é coberto por passe nenhum. O que muda a conta é a versão de 2 DIAS, usada hoje e amanhã — veja o dia 18."
   }
  },
  "2027-03-16": {
@@ -5768,11 +5768,11 @@
   ],
   "alternativas": [
    {
-    "titulo": "O hotel de Osaka ainda não está fechado",
+    "titulo": "Onde reservar a última noite: Nipponbashi",
     "refs": [
      "p3"
     ],
-    "texto": "Esta é a única reserva da viagem que continua em aberto, e ela decide três coisas: quanto custa o metrô desde Shin-Osaka, quanto se anda até Shinsaibashi e Dotonbori, e — o que mais importa no dia seguinte — se há guarda-volumes no hotel para os três carrinhos enquanto vocês passam o último dia na rua. O mapa assume Namba, que é o que o roteiro pressupõe. Ao fechar, peçam explicitamente guarda-volumes até o fim da tarde do dia 31."
+    "texto": "Esta é a única reserva ainda aberta, e a escolha do BAIRRO importa mais que a do hotel, porque ela decide o dia 31 inteiro.\nA recomendação é NIPPONBASHI (日本橋). Três razões concretas. Primeira: os quatro lugares que vocês usam nestes dois dias ficam todos dentro de 900 m — Dotonbori a 610 m, a Nankai (o trem do aeroporto) a 630 m, a Den Den Town a 850 m e o Shinsaibashi a 910 m. Nenhum outro bairro distribui tão parelho. Segunda: a estação está na LINHA SAKAISUJI, que é a mesma de Tengachaya, onde vocês dormem nos dias 16 a 19, e é exatamente a linha que o dia 31 pega de manhã para o Tenjin-bashi-suji — vocês saem do hotel já na plataforma certa. Terceira, e é a que economiza tempo de verdade: a DEN DEN TOWN, última parada da viagem, fica ao lado do hotel. O retorno para buscar as malas, que hoje obriga a encerrar a tarde às 16:30, deixa de ser um desvio.\nE é mais barato que Namba e Shinsaibashi pelo motivo certo: é bairro de loja de eletrônico, não de vida noturna. À noite é silencioso — com três bebês, dormir a 200 m do Dotonbori seria o erro caro."
    },
    {
     "titulo": "A mala grande precisa de reserva, e ela é de graça",
@@ -5802,6 +5802,13 @@
      "p5"
     ],
     "texto": "O molho de cada mesa fica numa cuba comunitária, e É PROIBIDO MERGULHAR O ESPETO DUAS VEZES — mordeu, acabou. Quem quiser mais molho usa o repolho cru que vem de graça, como concha. Não é frescura de turista: está escrito na parede de todas as casas, em japonês e em inglês, e é a única etiqueta de Osaka que realmente importa saber antes."
+   },
+   {
+    "titulo": "Se o orçamento não fechar: Tennoji",
+    "refs": [
+     "p3"
+    ],
+    "texto": "Os guias apontam Tennoji/Abeno como o melhor custo-benefício de Osaka para família, e é verdade: hotéis grandes, quarto para quatro, e preço abaixo de Minami. Tem ainda um trunfo que quase ninguém usa — de Tennoji sai o JR Kansai Airport Rapid DIRETO para o KIX, ¥1.080 em 50 min, sem baldeação e mais barato que a Nankai desde Namba. O preço disso é distância: são 2,5 km até Dotonbori, então a última noite passa a ter trem de ida e de volta, e a manhã do dia 31 fica mais longa. Vale se a diária apertar; não vale por conveniência.\nEvitem Umeda e Shin-Osaka: a primeira fica longe do programa da noite E da linha do aeroporto; a segunda só é boa para a chegada, que dura vinte minutos."
    }
   ],
   "passe": {
