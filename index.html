@@ -155,6 +155,8 @@ img,canvas,svg{max-width:100%;display:block}
   letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
 .num u{display:block;text-decoration:none;font-size:.62rem;font-weight:800;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+.num em{display:block;font-style:normal;font-family:var(--f-mono);font-size:.82rem;font-weight:700;letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums;color:var(--ink-3);margin-top:5px}
 .num i{display:block;font-style:normal;font-size:.74rem;color:var(--ink-2);margin-top:5px;line-height:1.42}
 
 /* ============ MAPA ============ */
@@ -914,18 +916,23 @@ function montarMapa(){
 function montarNums(){
   const r=(lbl)=>{const o=DADOS.resumo.find(x=>x.label.toLowerCase().indexOf(lbl)===0);return o?o.valor:0;};
   const yen=r("total em ienes"), reais=r("total em reais");
+  // a mesma taxa que a planilha declara (Y1 = R$ 0,033), tirada dela e nao fixada aqui,
+  // para os cards nunca discordarem do resto do site quando a planilha for atualizada
+  const taxa=yen?reais/yen:0;
+  const brl=(y)=>"≈ R$ "+nf(Math.round(y*taxa));
+  const COMIDA=96000;   // Y6.000/dia x 16 dias, o cenario medio da propria planilha
   const cards=[
     {b:"16",u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
     {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
     {b:Math.round(r("caminhada total")/60)+"h",u:"a pé, no total",i:"Média de ~1h por dia empurrando carrinho"},
-    {b:"82",u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
-    {b:"¥"+nf(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
-    {b:"¥"+nf(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
-    {b:"¥"+nf(yen),u:"total por adulto",i:"Transporte + ingressos, sem comida"},
-    {b:"R$ "+nf(reais),u:"o mesmo em reais",i:"Some ~R$ 3.168 de comida no cenário médio"}
+    {b:nf(DADOS.dias.reduce((n,d)=>n+d.atividades.length,0)),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
+    {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
+    {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
+    {b:"¥"+nf(yen),c:brl(yen),u:"total por adulto",i:"Transporte + ingressos, sem comida"},
+    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"com comida, por adulto",i:"Mais ¥6.000 por dia no cenário médio"}
   ];
   el("nums").innerHTML=cards.map(c=>
-    `<div class="num"><b>${esc(c.b)}</b><u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
+    `<div class="num"><b>${esc(c.b)}</b>${c.c?`<em>${esc(c.c)}</em>`:""}<u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
 }
 
 /* ================================================================
