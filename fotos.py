@@ -131,7 +131,18 @@ def paradas():
     for data, dia in geo.items():
         if not isinstance(dia, dict) or 'paradas' not in dia:
             continue
-        for par in dia['paradas']:
+        # As alternativas entram na mesma rodada. A que aponta para um lugar novo ('ponto')
+        # ganha foto propria, com chave '<data>-alt<n>'; o termo pode vir de um 'foto' na
+        # mao ou, na falta dele, do proprio 'gmaps', que ja e um nome de lugar. A que so
+        # mexe em paradas existentes ('refs') nao baixa nada: a pagina reaproveita a foto
+        # da parada referida.
+        alts = []
+        for n, a in enumerate(dia.get('alternativas', [])):
+            pt = a.get('ponto') or {}
+            t = pt.get('foto') or pt.get('gmaps')
+            if t:
+                alts.append({'id': 'alt%d' % n, 'foto': t})
+        for par in list(dia['paradas']) + alts:
             termo = par.get('foto')
             if not termo:
                 continue

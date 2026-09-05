@@ -332,7 +332,13 @@ def obter_dados_pagina(pid):
     if pid == 'inicio':
         return {}
     elif pid == 'numeros':
-        return {'resumo': podar(djs.get('resumo', []))}
+        # Os cards precisam de duas contagens alem do resumo. Elas vao como escalar de
+        # proposito: mandar 'dias' inteiro so para contar parada dobraria a pagina — e
+        # foi justamente um DADOS.dias.reduce() aqui, sem 'dias' no payload, que derrubava
+        # o bloco de cards inteiro, porque a lista e montada numa expressao so.
+        return {'resumo': podar(djs.get('resumo', [])),
+                'nDias': len(djs.get('dias', [])),
+                'nParadas': sum(len(d.get('atividades', [])) for d in djs.get('dias', []))}
     elif pid == 'atlas':
         return {'pontos': atlas}
     elif pid == 'mapa':

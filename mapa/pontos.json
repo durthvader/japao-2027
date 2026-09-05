@@ -477,7 +477,8 @@
      "nome": "Embarque do Tombori River Cruise",
      "lat": 34.6693,
      "lng": 135.5019,
-     "gmaps": "Tombori River Cruise, Dotonbori"
+     "gmaps": "Tombori River Cruise, Dotonbori",
+     "foto": "File:Dotonbori river cruise.JPG"
     }
    },
    {
@@ -2614,7 +2615,8 @@
      "nome": "Ichinomine — o cume, 233 m",
      "lat": 34.967,
      "lng": 135.78556,
-     "gmaps": "Ichinomine Fushimi Inari"
+     "gmaps": "Ichinomine Fushimi Inari",
+     "foto": "File:Summit of Mount Inariyama @ Fushimi Inari Shrine @ Kyoto (13406173185).jpg"
     }
    },
    {
@@ -4754,7 +4756,8 @@
      "nome": "Yodobashi-Akiba",
      "lat": 35.69878,
      "lng": 139.77473,
-     "gmaps": "Yodobashi Camera Multimedia Akiba"
+     "gmaps": "Yodobashi Camera Multimedia Akiba",
+     "foto": "File:Yodobashi-Akiba 2015.JPG"
     }
    },
    {
@@ -5103,14 +5106,16 @@
      "p4",
      "p5"
     ],
-    "texto": "As duas paradas com (opcional) no nome existem para ser largadas sem culpa. Saindo do teamLab às 10:45 e indo DIRETO ao Tsukiji, chega-se lá às 11:25, em pleno funcionamento, e em Ginza às 13:15 — com o calçadão inteiro pela frente, 3h45 até as 17:00. Fazendo as duas, Ginza começa 15:10 e sobram 1h50 de avenida sem carro. É a mesma rota; muda só quanto tempo sobra para comprar. Decidam na saída do teamLab, olhando para o relógio."
+    "texto": "As duas paradas com (opcional) no nome existem para ser largadas sem culpa. Saindo do teamLab às 10:45 e indo DIRETO ao Tsukiji, chega-se lá às 11:25, em pleno funcionamento, e em Ginza às 13:15 — com o calçadão inteiro pela frente, 3h45 até as 17:00. Fazendo as duas, Ginza começa 15:10 e sobram 1h50 de avenida sem carro. É a mesma rota; muda só quanto tempo sobra para comprar. Decidam na saída do teamLab, olhando para o relógio.",
+    "tipo": "corte"
    },
    {
     "titulo": "Kabukiza: como se compra um ato só",
     "refs": [
      "p4"
     ],
-    "texto": "O ingresso de um ato custa ¥1.000 a ¥2.500 mais ¥110 de taxa, e há dois jeitos: uns 70 lugares marcados no antecipado, que abre ao MEIO-DIA DA VÉSPERA pela internet, e uns 20 livres vendidos no dia. São no máximo 4 por pessoa, então para o grupo é preciso mais de um comprador. A entrada é separada, à esquerda da fachada, e a plateia fica no 4º andar. Um ato dura de 30 a 90 min, com legenda em inglês alugada à parte — dá para dois ou três irem enquanto o resto fica em Ginza."
+    "texto": "O ingresso de um ato custa ¥1.000 a ¥2.500 mais ¥110 de taxa, e há dois jeitos: uns 70 lugares marcados no antecipado, que abre ao MEIO-DIA DA VÉSPERA pela internet, e uns 20 livres vendidos no dia. São no máximo 4 por pessoa, então para o grupo é preciso mais de um comprador. A entrada é separada, à esquerda da fachada, e a plateia fica no 4º andar. Um ato dura de 30 a 90 min, com legenda em inglês alugada à parte — dá para dois ou três irem enquanto o resto fica em Ginza.",
+    "tipo": "aviso"
    },
    {
     "titulo": "Se chover o dia inteiro",
@@ -5118,16 +5123,19 @@
      "p2",
      "p5"
     ],
-    "texto": "O dia aguenta chuva melhor que a maioria: o teamLab é coberto, o mercado de Toyosu é todo interno e Ginza se faz por dentro — Itoya, Uniqlo, Muji e Ginza Six ligam-se por calçada com marquise, e há passagem subterrânea entre as estações Ginza e Higashi-ginza. O que se perde é o calçadão, que é CANCELADO em chuva: a avenida continua com carro."
+    "texto": "O dia aguenta chuva melhor que a maioria: o teamLab é coberto, o mercado de Toyosu é todo interno e Ginza se faz por dentro — Itoya, Uniqlo, Muji e Ginza Six ligam-se por calçada com marquise, e há passagem subterrânea entre as estações Ginza e Higashi-ginza. O que se perde é o calçadão, que é CANCELADO em chuva: a avenida continua com carro.",
+    "tipo": "planob"
    },
    {
     "titulo": "Se sobrar tempo antes do jantar",
     "ponto": {
      "nome": "Hamarikyu Onshi Teien",
      "lat": 35.65972,
-     "lng": 139.76333
+     "lng": 139.76333,
+     "foto": "File:Tokio Hamarikyu-Garten-20091017-RM-142118.jpg"
     },
-    "texto": "A 1,2 km de Ginza fica o Hamarikyu, jardim de daimyo de 1654 com lago de água salgada que sobe e desce com a maré e uma casa de chá numa ilha, onde se senta no tatame com matcha. ¥300 o adulto, grátis até o ginásio, fecha às 17:00 com última entrada 16:30. As cerejeiras dele florescem justamente no fim de março. É plano e largo — o lugar mais fácil da região para carrinho."
+    "texto": "A 1,2 km de Ginza fica o Hamarikyu, jardim de daimyo de 1654 com lago de água salgada que sobe e desce com a maré e uma casa de chá numa ilha, onde se senta no tatame com matcha. ¥300 o adulto, grátis até o ginásio, fecha às 17:00 com última entrada 16:30. As cerejeiras dele florescem justamente no fim de março. É plano e largo — o lugar mais fácil da região para carrinho.",
+    "tipo": "extra"
    },
    {
     "titulo": "O passe da Yurikamome NÃO compensa neste dia",
@@ -5135,7 +5143,8 @@
      "p1",
      "p2"
     ],
-    "texto": "Com Odaiba fora do roteiro sobram dois trechos de Yurikamome, Toyosu→Shijo-mae e Shin-Toyosu→Toyosu, ¥190 cada: ¥380 contra ¥820 do passe diário. Paguem avulso no IC. O segundo trecho ainda pode ser trocado por 1 km de caminhada plana pela beira do canal, se as pernas aguentarem depois do teamLab."
+    "texto": "Com Odaiba fora do roteiro sobram dois trechos de Yurikamome, Toyosu→Shijo-mae e Shin-Toyosu→Toyosu, ¥190 cada: ¥380 contra ¥820 do passe diário. Paguem avulso no IC. O segundo trecho ainda pode ser trocado por 1 km de caminhada plana pela beira do canal, se as pernas aguentarem depois do teamLab.",
+    "tipo": "aviso"
    }
   ],
   "passe": {
@@ -5420,37 +5429,43 @@
     "refs": [
      "p6"
     ],
-    "texto": "⚠ Isto parte o grupo na porta se ninguém souber. O ingresso ADULTO se compra online — ¥2.700 para entrar antes das 15:00 e ¥3.400 das 15:00 em diante (na bilheteria, ¥3.000 e ¥3.700). Mas o ingresso de CRIANÇA é vendido SÓ NA BILHETERIA DO 14º ANDAR, no próprio dia. Menores de 5 anos não pagam, então os três bebês entram de graça; o problema são os dois adolescentes, se tiverem menos de 18. Comprem os adultos online para o horário do pôr do sol, cheguem com folga e resolvam os dois no balcão antes de subir — o horário do poente é o primeiro a esgotar."
+    "texto": "⚠ Isto parte o grupo na porta se ninguém souber. O ingresso ADULTO se compra online — ¥2.700 para entrar antes das 15:00 e ¥3.400 das 15:00 em diante (na bilheteria, ¥3.000 e ¥3.700). Mas o ingresso de CRIANÇA é vendido SÓ NA BILHETERIA DO 14º ANDAR, no próprio dia. Menores de 5 anos não pagam, então os três bebês entram de graça; o problema são os dois adolescentes, se tiverem menos de 18. Comprem os adultos online para o horário do pôr do sol, cheguem com folga e resolvam os dois no balcão antes de subir — o horário do poente é o primeiro a esgotar.",
+    "tipo": "aviso"
    },
    {
     "titulo": "O que não sobe ao rooftop",
     "refs": [
      "p6"
     ],
-    "texto": "O terraço é aberto a 229 m, e por causa do vento NADA SOLTO passa: bolsa, mochila, pochete, tripé, pau de selfie, GUARDA-CHUVA e até CHAPÉU ficam nos armários do 46º andar (¥100, devolvidos no fim). CARRINHO TAMBÉM NÃO SOBE — e o seu próprio nem entra no prédio: eles emprestam um lá dentro, e no terraço o bebê vai no colo ou no canguru. O andar envidraçado de baixo aceita carrinho. Se der vento forte ou chuva, o rooftop fecha e só o mirante interno funciona."
+    "texto": "O terraço é aberto a 229 m, e por causa do vento NADA SOLTO passa: bolsa, mochila, pochete, tripé, pau de selfie, GUARDA-CHUVA e até CHAPÉU ficam nos armários do 46º andar (¥100, devolvidos no fim). CARRINHO TAMBÉM NÃO SOBE — e o seu próprio nem entra no prédio: eles emprestam um lá dentro, e no terraço o bebê vai no colo ou no canguru. O andar envidraçado de baixo aceita carrinho. Se der vento forte ou chuva, o rooftop fecha e só o mirante interno funciona.",
+    "tipo": "aviso"
    },
    {
     "titulo": "A senha do 6º andar do Parco",
     "refs": [
      "p4"
     ],
-    "texto": "Nintendo TOKYO, Pokémon Center e Capcom Store dividem o mesmo andar, e o transbordo de um enche o outro: em 2026 o Pokémon Center Shibuya virou o mais congestionado do país, com espera de até duas horas e fila de caixa saindo pela escada. Segunda-feira é o melhor dia possível — o pico é fim de semana e SEXTA, quando saem os lançamentos. Ainda assim: peguem a senha ASSIM QUE CHEGAREM em Shibuya, antes de qualquer outra coisa, porque o papel marca a hora de entrar na fila e não a de entrar na loja. Com a senha na mão, façam a Tower Records e o cruzamento enquanto a hora não chega."
+    "texto": "Nintendo TOKYO, Pokémon Center e Capcom Store dividem o mesmo andar, e o transbordo de um enche o outro: em 2026 o Pokémon Center Shibuya virou o mais congestionado do país, com espera de até duas horas e fila de caixa saindo pela escada. Segunda-feira é o melhor dia possível — o pico é fim de semana e SEXTA, quando saem os lançamentos. Ainda assim: peguem a senha ASSIM QUE CHEGAREM em Shibuya, antes de qualquer outra coisa, porque o papel marca a hora de entrar na fila e não a de entrar na loja. Com a senha na mão, façam a Tower Records e o cruzamento enquanto a hora não chega.",
+    "tipo": "aviso"
    },
    {
     "titulo": "Yoyogi Park, se quiserem sakura sem multidão",
     "ponto": {
      "nome": "Yoyogi Park",
      "lat": 35.67141,
-     "lng": 139.69517
+     "lng": 139.69517,
+     "foto": "File:Yoyogi Park exit.jpg"
     },
-    "texto": "Colado ao Meiji Jingu, do outro lado da ponte, e de graça. Não tem as 1.200 cerejeiras do Ueno, mas tem gramado largo, caminho plano e espaço para as crianças correrem — e em segunda-feira de manhã está quase vazio, que é o oposto do que vocês encontraram no domingo. Vale meia hora entre o santuário e a Takeshita, e é o único lugar do dia onde dá para sentar na grama."
+    "texto": "Colado ao Meiji Jingu, do outro lado da ponte, e de graça. Não tem as 1.200 cerejeiras do Ueno, mas tem gramado largo, caminho plano e espaço para as crianças correrem — e em segunda-feira de manhã está quase vazio, que é o oposto do que vocês encontraram no domingo. Vale meia hora entre o santuário e a Takeshita, e é o único lugar do dia onde dá para sentar na grama.",
+    "tipo": "extra"
    },
    {
     "titulo": "O jardim interno do Meiji Jingu vale os ¥500?",
     "refs": [
      "p1"
     ],
-    "texto": "O Gyoen é um jardim cercado dentro da floresta, com entrada à parte de ¥500. Em junho ele é imperdível, com 1.500 íris floridas — em fim de março, não: as íris não estão, e o que resta é bosque silencioso e o Kiyomasa no Ido, o poço do século XVI que os japoneses tratam como ponto de energia e onde costuma haver fila. Para 10 pagantes são ¥5.000. A recomendação honesta é pular e gastar o tempo no parque, que é de graça e mais útil com criança."
+    "texto": "O Gyoen é um jardim cercado dentro da floresta, com entrada à parte de ¥500. Em junho ele é imperdível, com 1.500 íris floridas — em fim de março, não: as íris não estão, e o que resta é bosque silencioso e o Kiyomasa no Ido, o poço do século XVI que os japoneses tratam como ponto de energia e onde costuma haver fila. Para 10 pagantes são ¥5.000. A recomendação honesta é pular e gastar o tempo no parque, que é de graça e mais útil com criança.",
+    "tipo": "extra"
    }
   ],
   "passe": {
@@ -5662,14 +5677,16 @@
     "refs": [
      "p3"
     ],
-    "texto": "Esta é a única reserva ainda aberta, e a escolha do BAIRRO importa mais que a do hotel, porque ela decide o dia 31 inteiro.\nA recomendação é NIPPONBASHI (日本橋). Três razões concretas. Primeira: os quatro lugares que vocês usam nestes dois dias ficam todos dentro de 900 m — Dotonbori a 610 m, a Nankai (o trem do aeroporto) a 630 m, a Den Den Town a 850 m e o Shinsaibashi a 910 m. Nenhum outro bairro distribui tão parelho. Segunda: a estação está na LINHA SAKAISUJI, que é a mesma de Tengachaya, onde vocês dormem nos dias 16 a 19, e é exatamente a linha que o dia 31 pega de manhã para o Tenjin-bashi-suji — vocês saem do hotel já na plataforma certa. Terceira, e é a que economiza tempo de verdade: a DEN DEN TOWN, última parada da viagem, fica ao lado do hotel. O retorno para buscar as malas, que hoje obriga a encerrar a tarde às 16:30, deixa de ser um desvio.\nE é mais barato que Namba e Shinsaibashi pelo motivo certo: é bairro de loja de eletrônico, não de vida noturna. À noite é silencioso — com três bebês, dormir a 200 m do Dotonbori seria o erro caro."
+    "texto": "Esta é a única reserva ainda aberta, e a escolha do BAIRRO importa mais que a do hotel, porque ela decide o dia 31 inteiro.\nA recomendação é NIPPONBASHI (日本橋). Três razões concretas. Primeira: os quatro lugares que vocês usam nestes dois dias ficam todos dentro de 900 m — Dotonbori a 610 m, a Nankai (o trem do aeroporto) a 630 m, a Den Den Town a 850 m e o Shinsaibashi a 910 m. Nenhum outro bairro distribui tão parelho. Segunda: a estação está na LINHA SAKAISUJI, que é a mesma de Tengachaya, onde vocês dormem nos dias 16 a 19, e é exatamente a linha que o dia 31 pega de manhã para o Tenjin-bashi-suji — vocês saem do hotel já na plataforma certa. Terceira, e é a que economiza tempo de verdade: a DEN DEN TOWN, última parada da viagem, fica ao lado do hotel. O retorno para buscar as malas, que hoje obriga a encerrar a tarde às 16:30, deixa de ser um desvio.\nE é mais barato que Namba e Shinsaibashi pelo motivo certo: é bairro de loja de eletrônico, não de vida noturna. À noite é silencioso — com três bebês, dormir a 200 m do Dotonbori seria o erro caro.",
+    "tipo": "aviso"
    },
    {
     "titulo": "A mala grande precisa de reserva, e ela é de graça",
     "refs": [
      "p2"
     ],
-    "texto": "⚠ No Tokaido Shinkansen, bagagem que passe de 160 cm somando altura, largura e profundidade só entra com o ASSENTO COM ESPAÇO DE BAGAGEM, na última fileira do vagão. Ele não custa nada, mas tem de ser escolhido na hora da reserva e são poucos por vagão — quem aparecer sem ele paga ¥1.000 por mala e ainda fica sem onde pôr. Mala de porão de 28 polegadas costuma passar dos 160 cm; a de 24, não. Meçam antes de reservar."
+    "texto": "⚠ No Tokaido Shinkansen, bagagem que passe de 160 cm somando altura, largura e profundidade só entra com o ASSENTO COM ESPAÇO DE BAGAGEM, na última fileira do vagão. Ele não custa nada, mas tem de ser escolhido na hora da reserva e são poucos por vagão — quem aparecer sem ele paga ¥1.000 por mala e ainda fica sem onde pôr. Mala de porão de 28 polegadas costuma passar dos 160 cm; a de 24, não. Meçam antes de reservar.",
+    "tipo": "aviso"
    },
    {
     "titulo": "Takkyubin: a saída que resolve o dia inteiro",
@@ -5677,28 +5694,32 @@
      "p1",
      "p2"
     ],
-    "texto": "Mandar as malas de Tóquio para o hotel de Osaka custa cerca de ¥2.000 por volume e elas chegam no dia seguinte — ou seja, DESPACHEM NA VÉSPERA, no dia 29. Aí o dia 30 vira só gente e carrinho: some a reserva de bagagem grande, some a multa, some o aperto na plataforma e some a caminhada dentro da Estação de Tóquio com mala na mão. Para 13 pessoas é a diferença entre um dia de logística e um dia de viagem. ⚠ Só vale para dentro do Japão: mandar mercadoria isenta de imposto para fora do país anula a isenção da compra inteira."
+    "texto": "Mandar as malas de Tóquio para o hotel de Osaka custa cerca de ¥2.000 por volume e elas chegam no dia seguinte — ou seja, DESPACHEM NA VÉSPERA, no dia 29. Aí o dia 30 vira só gente e carrinho: some a reserva de bagagem grande, some a multa, some o aperto na plataforma e some a caminhada dentro da Estação de Tóquio com mala na mão. Para 13 pessoas é a diferença entre um dia de logística e um dia de viagem. ⚠ Só vale para dentro do Japão: mandar mercadoria isenta de imposto para fora do país anula a isenção da compra inteira.",
+    "tipo": "aviso"
    },
    {
     "titulo": "Por que embarcar em Tóquio e não em Shinagawa",
     "refs": [
      "p2"
     ],
-    "texto": "Shinagawa fica no caminho e é mais perto de muita gente, mas o trem PARTE de Tóquio: ali ele já está parado na plataforma, vazio, e dá para subir 13 pessoas com calma, acomodar mala e carrinho e sentar antes de andar. Em Shinagawa a parada dura cerca de um minuto, com o corredor já ocupado. Com três bebês, esse minuto é o que decide."
+    "texto": "Shinagawa fica no caminho e é mais perto de muita gente, mas o trem PARTE de Tóquio: ali ele já está parado na plataforma, vazio, e dá para subir 13 pessoas com calma, acomodar mala e carrinho e sentar antes de andar. Em Shinagawa a parada dura cerca de um minuto, com o corredor já ocupado. Com três bebês, esse minuto é o que decide.",
+    "tipo": "aviso"
    },
    {
     "titulo": "Kushikatsu: a regra que todo mundo quebra uma vez",
     "refs": [
      "p5"
     ],
-    "texto": "O molho de cada mesa fica numa cuba comunitária, e É PROIBIDO MERGULHAR O ESPETO DUAS VEZES — mordeu, acabou. Quem quiser mais molho usa o repolho cru que vem de graça, como concha. Não é frescura de turista: está escrito na parede de todas as casas, em japonês e em inglês, e é a única etiqueta de Osaka que realmente importa saber antes."
+    "texto": "O molho de cada mesa fica numa cuba comunitária, e É PROIBIDO MERGULHAR O ESPETO DUAS VEZES — mordeu, acabou. Quem quiser mais molho usa o repolho cru que vem de graça, como concha. Não é frescura de turista: está escrito na parede de todas as casas, em japonês e em inglês, e é a única etiqueta de Osaka que realmente importa saber antes.",
+    "tipo": "aviso"
    },
    {
     "titulo": "Se o orçamento não fechar: Tennoji",
     "refs": [
      "p3"
     ],
-    "texto": "Os guias apontam Tennoji/Abeno como o melhor custo-benefício de Osaka para família, e é verdade: hotéis grandes, quarto para quatro, e preço abaixo de Minami. Tem ainda um trunfo que quase ninguém usa — de Tennoji sai o JR Kansai Airport Rapid DIRETO para o KIX, ¥1.080 em 50 min, sem baldeação e mais barato que a Nankai desde Namba. O preço disso é distância: são 2,5 km até Dotonbori, então a última noite passa a ter trem de ida e de volta, e a manhã do dia 31 fica mais longa. Vale se a diária apertar; não vale por conveniência.\nEvitem Umeda e Shin-Osaka: a primeira fica longe do programa da noite E da linha do aeroporto; a segunda só é boa para a chegada, que dura vinte minutos."
+    "texto": "Os guias apontam Tennoji/Abeno como o melhor custo-benefício de Osaka para família, e é verdade: hotéis grandes, quarto para quatro, e preço abaixo de Minami. Tem ainda um trunfo que quase ninguém usa — de Tennoji sai o JR Kansai Airport Rapid DIRETO para o KIX, ¥1.080 em 50 min, sem baldeação e mais barato que a Nankai desde Namba. O preço disso é distância: são 2,5 km até Dotonbori, então a última noite passa a ter trem de ida e de volta, e a manhã do dia 31 fica mais longa. Vale se a diária apertar; não vale por conveniência.\nEvitem Umeda e Shin-Osaka: a primeira fica longe do programa da noite E da linha do aeroporto; a segunda só é boa para a chegada, que dura vinte minutos.",
+    "tipo": "troca"
    }
   ],
   "passe": {
@@ -5944,21 +5965,24 @@
      "p1",
      "p4"
     ],
-    "texto": "O dia inteiro é feito sem mala na mão, e é por isso que ele funciona — mas alguém tem de voltar aos armários antes de embarcar, e isso são 10 min de caminhada mais o tempo de resgatar e redistribuir 13 bagagens. Com saída de Namba às 17:20, significa encerrar a Den Den Town às 16:30 sem discussão. Armário grande custa ¥700 por dia e em alta temporada LOTA antes das 10:00 — por isso o guarda-volumes do hotel é o plano A, e por isso ele deve ser pedido ao fechar a reserva."
+    "texto": "O dia inteiro é feito sem mala na mão, e é por isso que ele funciona — mas alguém tem de voltar aos armários antes de embarcar, e isso são 10 min de caminhada mais o tempo de resgatar e redistribuir 13 bagagens. Com saída de Namba às 17:20, significa encerrar a Den Den Town às 16:30 sem discussão. Armário grande custa ¥700 por dia e em alta temporada LOTA antes das 10:00 — por isso o guarda-volumes do hotel é o plano A, e por isso ele deve ser pedido ao fechar a reserva.",
+    "tipo": "aviso"
    },
    {
     "titulo": "Rapi:t ou Airport Express? A conta mudou",
     "refs": [
      "p5"
     ],
-    "texto": "O Airport Express custa ¥970 e é trem comum: sem assento marcado, sem espaço de bagagem, e às 17:20 ele pega o começo do movimento da volta do trabalho. O RAPI:T custa ¥1.490 na bilheteria — mas ¥1.300 no bilhete DIGITAL pelo celular, e a Super Seat sai por ¥1.490 no digital, ou seja, a poltrona melhor pelo preço da comum no guichê. São ¥330 a mais que o trem comum, uns ¥3.300 no grupo, por assento garantido e lugar para mala no último trajeto de uma viagem de 16 dias com três bebês. Comprem digital, e comprem antes."
+    "texto": "O Airport Express custa ¥970 e é trem comum: sem assento marcado, sem espaço de bagagem, e às 17:20 ele pega o começo do movimento da volta do trabalho. O RAPI:T custa ¥1.490 na bilheteria — mas ¥1.300 no bilhete DIGITAL pelo celular, e a Super Seat sai por ¥1.490 no digital, ou seja, a poltrona melhor pelo preço da comum no guichê. São ¥330 a mais que o trem comum, uns ¥3.300 no grupo, por assento garantido e lugar para mala no último trajeto de uma viagem de 16 dias com três bebês. Comprem digital, e comprem antes.",
+    "tipo": "troca"
    },
    {
     "titulo": "A fila que pode custar o voo",
     "refs": [
      "p5"
     ],
-    "texto": "⚠ Desde novembro de 2026 o tax-free é por REEMBOLSO: paga-se cheio na loja e, no aeroporto, faz-se a confirmação da alfândega no quiosque — com passaporte E COM A MERCADORIA EM MÃOS, antes de despachar. Com 13 passaportes e compras espalhadas por várias malas, isso não é um carimbo, é uma operação. Cheguem com as compras separadas e as notas juntas, e considerem sair de Namba às 16:50 em vez de 17:20: a folga de 30 min custa meia hora de Den Den Town e compra tranquilidade num aeroporto que vocês não conhecem."
+    "texto": "⚠ Desde novembro de 2026 o tax-free é por REEMBOLSO: paga-se cheio na loja e, no aeroporto, faz-se a confirmação da alfândega no quiosque — com passaporte E COM A MERCADORIA EM MÃOS, antes de despachar. Com 13 passaportes e compras espalhadas por várias malas, isso não é um carimbo, é uma operação. Cheguem com as compras separadas e as notas juntas, e considerem sair de Namba às 16:50 em vez de 17:20: a folga de 30 min custa meia hora de Den Den Town e compra tranquilidade num aeroporto que vocês não conhecem.",
+    "tipo": "aviso"
    },
    {
     "titulo": "Se preferirem cortar o Tenjin-bashi-suji",
@@ -5966,7 +5990,8 @@
      "p2",
      "p3"
     ],
-    "texto": "A arcada do norte é ótima e é a mais longa do Japão, mas custa 40 min de metrô ida e volta num dia com hora marcada, e é a única coisa do dia que não é despedida nem compra final. Largando-a, o dia começa às 11:00 em Shinsaibashi com quatro horas inteiras de arcada e almoço sem relógio — e sobra folga real para a fila do aeroporto. É a decisão a tomar na noite do dia 30, olhando o que ainda falta comprar."
+    "texto": "A arcada do norte é ótima e é a mais longa do Japão, mas custa 40 min de metrô ida e volta num dia com hora marcada, e é a única coisa do dia que não é despedida nem compra final. Largando-a, o dia começa às 11:00 em Shinsaibashi com quatro horas inteiras de arcada e almoço sem relógio — e sobra folga real para a fila do aeroporto. É a decisão a tomar na noite do dia 30, olhando o que ainda falta comprar.",
+    "tipo": "corte"
    },
    {
     "titulo": "Gastem o troco antes do aeroporto",
@@ -5974,7 +5999,8 @@
      "p3",
      "p4"
     ],
-    "texto": "Iene em espécie não vale quase nada para trocar de volta no Brasil, e moeda não se troca de jeito nenhum. As duas arcadas do dia estão cheias de 100-yen shop, que é onde se zera o bolso comprando coisa que presta. No KIX os preços são de aeroporto e a escolha é pior — o que sobrar ali, sobrou."
+    "texto": "Iene em espécie não vale quase nada para trocar de volta no Brasil, e moeda não se troca de jeito nenhum. As duas arcadas do dia estão cheias de 100-yen shop, que é onde se zera o bolso comprando coisa que presta. No KIX os preços são de aeroporto e a escolha é pior — o que sobrar ali, sobrou.",
+    "tipo": "aviso"
    }
   ],
   "passe": {

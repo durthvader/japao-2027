@@ -795,7 +795,9 @@ document.addEventListener('DOMContentLoaded', function () {
   monta('atlTipos',   BALDES,  'balde',  '_b');
   monta('atlBebe',    BEBE,    'bebe',   '_c');
 
-  var map = L.map(slot, {scrollWheelZoom:false, zoomControl:true})
+  // roda do mouse dando zoom, igual aos mapas de cada dia. wheelPxPerZoomLevel alto deixa
+  // o passo mais macio: sem ele um giro do trackpad atravessa tres niveis de uma vez.
+  var map = L.map(slot, {scrollWheelZoom:true, wheelPxPerZoomLevel:90, zoomControl:true})
              .setView([35.2, 137.2], 6);
   // mesmo fundo das paginas de dia: base clara/escura + a camada de rotulos por
   // cima, que e o que faz o mapa ter nome de bairro e de estacao
@@ -2229,10 +2231,10 @@ function montarNums(){
   const brl=(y)=>"≈ R$ "+nf(Math.round(y*taxa));
   const COMIDA=96000;   // Y6.000/dia x 16 dias, o cenario medio da propria planilha
   const cards=[
-    {b:"16",u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
+    {b:nf(DADOS.nDias||16),u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
     {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
-    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/DADOS.dias.length,1)+" km por dia, só entre paradas"},
-    {b:nf(DADOS.dias.reduce((n,d)=>n+d.atividades.length,0)),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
+    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias||16),1)+" km por dia, só entre paradas"},
+    {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
     {b:"¥"+nf(yen),c:brl(yen),u:"total por adulto",i:"Transporte + ingressos, sem comida"},

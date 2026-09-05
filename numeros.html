@@ -561,7 +561,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <script>
 "use strict";
-const DADOS = {"resumo": [{"label": "Distância total percorrida", "valor": 1400.6, "unidade": "km", "nota": "Shinkansen, ônibus rodoviário, metrô e trens urbanos somados."}, {"label": "Tempo total dentro do transporte", "valor": 1419.0, "unidade": "min", "nota": "Só o tempo em movimento — não conta espera de plataforma nem baldeação."}, {"label": "Caminhada total estimada", "valor": 78.5, "unidade": "km", "nota": "Média de ~4,9 km por dia, empurrando carrinho boa parte do tempo. Só os trechos ENTRE paradas: não conta o que se anda dentro de cada parque, templo ou galeria."}, {"label": "Transporte no Japão", "valor": 47909.0, "unidade": "¥", "nota": "Aeroporto + trechos entre cidades + urbano. NÃO inclui as passagens aéreas."}, {"label": "Ingressos e atrações", "valor": 44000.0, "unidade": "¥", "nota": "Valor adulto. Adolescente paga menos e bebê quase sempre não paga."}, {"label": "TOTAL EM IENES (transporte + ingressos)", "valor": 91909.0, "unidade": "¥", "nota": ""}, {"label": "TOTAL EM REAIS (¥1 = R$ 0,033)", "valor": 3033.0, "unidade": "", "nota": "NÃO inclui alimentação. Comida no cenário médio: ¥6.000/dia x 16 dias = ¥96.000 ≈ R$ 3.168 por adulto."}]};
+const DADOS = {"resumo": [{"label": "Distância total percorrida", "valor": 1400.6, "unidade": "km", "nota": "Shinkansen, ônibus rodoviário, metrô e trens urbanos somados."}, {"label": "Tempo total dentro do transporte", "valor": 1419.0, "unidade": "min", "nota": "Só o tempo em movimento — não conta espera de plataforma nem baldeação."}, {"label": "Caminhada total estimada", "valor": 78.5, "unidade": "km", "nota": "Média de ~4,9 km por dia, empurrando carrinho boa parte do tempo. Só os trechos ENTRE paradas: não conta o que se anda dentro de cada parque, templo ou galeria."}, {"label": "Transporte no Japão", "valor": 47909.0, "unidade": "¥", "nota": "Aeroporto + trechos entre cidades + urbano. NÃO inclui as passagens aéreas."}, {"label": "Ingressos e atrações", "valor": 44000.0, "unidade": "¥", "nota": "Valor adulto. Adolescente paga menos e bebê quase sempre não paga."}, {"label": "TOTAL EM IENES (transporte + ingressos)", "valor": 91909.0, "unidade": "¥", "nota": ""}, {"label": "TOTAL EM REAIS (¥1 = R$ 0,033)", "valor": 3033.0, "unidade": "", "nota": "NÃO inclui alimentação. Comida no cenário médio: ¥6.000/dia x 16 dias = ¥96.000 ≈ R$ 3.168 por adulto."}], "nDias": 16, "nParadas": 90};
 const MAPAS = [];   // dias com mapa proprio (dia-NN.html)
 const FOTOS = {
  "hero": {
@@ -849,10 +849,10 @@ function montarNums(){
   const brl=(y)=>"≈ R$ "+nf(Math.round(y*taxa));
   const COMIDA=96000;   // Y6.000/dia x 16 dias, o cenario medio da propria planilha
   const cards=[
-    {b:"16",u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
+    {b:nf(DADOS.nDias||16),u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
     {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
-    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/DADOS.dias.length,1)+" km por dia, só entre paradas"},
-    {b:nf(DADOS.dias.reduce((n,d)=>n+d.atividades.length,0)),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
+    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias||16),1)+" km por dia, só entre paradas"},
+    {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
     {b:"¥"+nf(yen),c:brl(yen),u:"total por adulto",i:"Transporte + ingressos, sem comida"},

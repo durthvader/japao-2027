@@ -38,6 +38,73 @@ const paginas = fs.readdirSync(BASE)
   .filter(f => /^dia-\d\d\.html$/.test(f) || PAGINAS_SITE.includes(f))
   .sort();
 
+/* Todas as paginas do site levam o MESMO javascript, mas cada uma recebe so o pedaco de
+ * DADOS de que precisa. Quem decide o que roda e o despachante no fim do arquivo:
+ * if(el("nums")) montarNums() so dispara na pagina que tem esse elemento. Entao um
+ * DADOS.dias.reduce() dentro do montarNums e inofensivo em todas as paginas menos naquela
+ * onde ele de fato roda — e la ele nao aparece como erro: derruba a expressao inteira e o
+ * bloco some da tela sem dizer nada. Foi assim que os cards de Numeros sumiram. Aqui a
+ * gente refaz esse caminho: que funcoes esta pagina dispara, e que campos elas leem.
+ * Compilar o script, que era a unica checagem, nunca ia pegar isso. */
+function campoDeDadosQueNaoVeio(html) {
+  const mD = constante(html, 'DADOS');
+  if (!mD || mD.__erro) return [];
+  const payload = new Set(Object.keys(mD));
+
+  // corpo de cada funcao nomeada, delimitado por contagem de chaves
+  const corpo = {};
+  for (const m of html.matchAll(/function\s+([A-Za-z_$][\w$]*)\s*\([^)]*\)\s*\{/g)) {
+    let i = m.index + m[0].length - 1, n = 0;
+    do {
+      if (html[i] === '{') n++;
+      else if (html[i] === '}') n--;
+      i++;
+    } while (n > 0 && i < html.length);
+    corpo[m[1]] = html.slice(m.index, i);
+  }
+
+  // o despachante: so entra na fila o que tem o elemento correspondente nesta pagina.
+  // O corpo do if pode ser uma chamada solta ate o fim da linha ou um bloco entre chaves,
+  // e ai so contar chave resolve — regex de bloco engolia os ifs seguintes.
+  const fila = [];
+  for (const m of html.matchAll(/if\s*\(el\("([\w-]+)"\)\)/g)) {
+    if (!html.includes('id="' + m[1] + '"')) continue;
+    let i = m.index + m[0].length;
+    while (html[i] === ' ' || html[i] === '\t') i++;
+    let fim;
+    if (html[i] === '{') {
+      let n = 0, j = i;
+      do {
+        if (html[j] === '{') n++;
+        else if (html[j] === '}') n--;
+        j++;
+      } while (n > 0 && j < html.length);
+      fim = j;
+    } else {
+      fim = html.indexOf('\n', i);
+      if (fim < 0) fim = html.length;
+    }
+    for (const c of html.slice(i, fim).matchAll(/([A-Za-z_$][\w$]*)\s*\(/g)) {
+      if (corpo[c[1]]) fila.push(c[1]);
+    }
+  }
+
+  const visto = new Set(), achados = [];
+  while (fila.length) {
+    const nome = fila.shift();
+    if (visto.has(nome)) continue;
+    visto.add(nome);
+    // so o acesso encadeado quebra: DADOS.x.y estoura se x nao veio, DADOS.x sozinho nao
+    for (const g of corpo[nome].matchAll(/DADOS\.([A-Za-z_$][\w$]*)\s*\./g)) {
+      if (!payload.has(g[1]) && !achados.some(a => a.campo === g[1] && a.onde === nome)) {
+        achados.push({ campo: g[1], onde: nome });
+      }
+    }
+    for (const c of corpo[nome].matchAll(/([A-Za-z_$][\w$]*)\s*\(/g)) if (corpo[c[1]]) fila.push(c[1]);
+  }
+  return achados;
+}
+
 for (const arq of paginas) {
   const html = fs.readFileSync(path.join(BASE, arq), 'utf8');
 
@@ -58,6 +125,10 @@ for (const arq of paginas) {
   }
 
   if (PAGINAS_SITE.includes(arq)) {
+    for (const f of campoDeDadosQueNaoVeio(html)) {
+      aviso(arq, 'o codigo que roda aqui le DADOS.' + f.campo + ', que nao esta no payload '
+        + 'desta pagina — ' + f.onde + '() quebra e leva o bloco inteiro junto');
+    }
     console.log(arq.padEnd(16) + ' ' + scripts.length + ' script(s), '
       + (html.length / 1024).toFixed(0) + ' KB');
     continue;
