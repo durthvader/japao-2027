@@ -26,7 +26,7 @@ a descrever um trajeto que nao existe mais, e precisam ser reescritos junto.
 
 Toda atividade tocada ganha um campo 'ajuste' com o motivo, que o site mostra.
 """
-import io, json, os
+import io, json, os, re
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 ARQ = os.path.join(BASE, 'ajustes.json')
@@ -44,6 +44,10 @@ def _por_data(dados, data):
         if d['data'] == data:
             return d
     raise SystemExit('ajustes.json aponta para um dia que nao existe: ' + str(data))
+
+
+# a planilha converte a Y1 = R$ 0,033; a nota em reais tem que usar a mesma taxa
+TAXA_IENE = 0.033
 
 
 def _recalcular(dia):
@@ -170,6 +174,19 @@ def aplicar(dados, verboso=True):
             continue
 
         raise SystemExit('ajustes.json: tipo desconhecido "%s"' % tipo)
+
+    # A nota em reais da planilha e uma frase congelada: quando uma correcao muda a
+    # tarifa de um trecho, o total e refeito mas o "R$ ..." continua o antigo. Aqui
+    # o valor volta a seguir o total, na mesma taxa declarada na planilha
+    # (Y1 = R$ 0,033), e de quebra some o zero a esquerda do "R$ 064".
+    for d in dados['dias']:
+        nota = d.get('total', {}).get('nota')
+        if not nota or 'R$' not in nota:
+            continue
+        iene = (d['total'].get('transp') or 0) + (d['total'].get('ingresso') or 0)
+        reais = int(round(iene * TAXA_IENE))
+        texto = '{:,}'.format(reais).replace(',', '.')
+        d['total']['nota'] = re.sub(r'R\$ ?[\d.]+', 'R$ ' + texto, nota, count=1)
 
     # limpeza de texto: vale para atividade, nota e observacao de voo
     trocas = bruto.get('limpeza') or []

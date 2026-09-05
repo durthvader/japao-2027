@@ -486,6 +486,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 .prep-item.obrig{border-left:3px solid var(--crit)}
 .prep-item.recom{border-left:3px solid var(--warn)}
 .prep-item.info{border-left:3px solid var(--ok)}
+.prep-item.veto{border-left:3px solid var(--ink-3);opacity:.92}
 .prep-item-nome{font-size:.88rem;font-weight:750;color:var(--ink);line-height:1.3}
 .prep-item-desc{font-size:.78rem;color:var(--ink-2);line-height:1.48}
 .prep-item-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
@@ -495,6 +496,8 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 .prep-tag.warn{background:color-mix(in srgb,var(--warn) 12%,transparent);color:var(--warn)}
 .prep-tag.ok{background:color-mix(in srgb,var(--ok) 12%,transparent);color:var(--ok)}
 .prep-tag.neu{background:var(--sunken);color:var(--ink-3)}
+.prep-tag.veto{background:color-mix(in srgb,var(--ink) 12%,transparent);color:var(--ink-2)}
+.prep-tag.alerta{background:color-mix(in srgb,var(--crit) 14%,transparent);color:var(--crit)}
 .prep-legenda{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
 .prep-legenda span{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;color:var(--ink-2)}
 .prep-legenda s{flex:none;width:10px;height:10px;border-radius:2px;text-decoration:none}
@@ -1186,6 +1189,20 @@ if(el("trilho")) {
     }
   }
 }
+function montarPrep(){
+  const t=el("prepToggle");
+  if(!t) return;
+  t.addEventListener("click",(ev)=>{
+    const b=ev.target.closest("button");
+    if(!b) return;
+    t.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+    const tab=b.dataset.tab;
+    const cCompras=el("prepSecCompras");
+    const cMala=el("prepSecMala");
+    if(cCompras) cCompras.hidden = (tab !== "compras");
+    if(cMala) cMala.hidden = (tab !== "mala");
+  });
+}
 if(el("comerCarro")) montarCarro("comerCarro",COMER);
 if(el("comprasCarro")) montarCarro("comprasCarro",COMPRAS);
 if(el("planobCarro")) montarCarro("planobCarro",PLANOB);
@@ -1193,6 +1210,7 @@ if(document.querySelector(".carro-ctrl")) ativarControlesCarrossel();
 if(el("notas")) montarNotas();
 if(el("voosBody")) montarVoos();
 if(el("hospLista")) montarHosp();
+if(el("prepToggle")) montarPrep();
 montarParede();
 montarNav();
 montarTema();

@@ -486,6 +486,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 .prep-item.obrig{border-left:3px solid var(--crit)}
 .prep-item.recom{border-left:3px solid var(--warn)}
 .prep-item.info{border-left:3px solid var(--ok)}
+.prep-item.veto{border-left:3px solid var(--ink-3);opacity:.92}
 .prep-item-nome{font-size:.88rem;font-weight:750;color:var(--ink);line-height:1.3}
 .prep-item-desc{font-size:.78rem;color:var(--ink-2);line-height:1.48}
 .prep-item-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
@@ -495,6 +496,8 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 .prep-tag.warn{background:color-mix(in srgb,var(--warn) 12%,transparent);color:var(--warn)}
 .prep-tag.ok{background:color-mix(in srgb,var(--ok) 12%,transparent);color:var(--ok)}
 .prep-tag.neu{background:var(--sunken);color:var(--ink-3)}
+.prep-tag.veto{background:color-mix(in srgb,var(--ink) 12%,transparent);color:var(--ink-2)}
+.prep-tag.alerta{background:color-mix(in srgb,var(--crit) 14%,transparent);color:var(--crit)}
 .prep-legenda{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
 .prep-legenda span{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;color:var(--ink-2)}
 .prep-legenda s{flex:none;width:10px;height:10px;border-radius:2px;text-decoration:none}
@@ -531,9 +534,15 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     <p class="eyebrow">O que fazer antes da viagem</p>
     <h2>Preparação &amp; Checklist</h2>
     <div class="rule"></div>
-    <p class="sub">Cronograma de reservas, compras e providências organizadas por data-limite. Itens em vermelho precisam ser feitos imediatamente — alguns abrem vendas com apenas 30 dias de antecedência e esgotam em minutos.</p>
+    <p class="sub">Cronograma de compras e reservas com datas-limite, além do checklist completo do que levar na mala (e o que deixar em casa) para a viagem.</p>
   </div>
 
+  <div class="toggle2" id="prepToggle" style="margin-bottom:20px">
+    <button type="button" data-tab="compras" aria-pressed="true">🎟️ Reservas &amp; Compras</button>
+    <button type="button" data-tab="mala" aria-pressed="false">🧳 O que Levar na Mala</button>
+  </div>
+
+  <div id="prepSecCompras">
   <div class="prep-legenda">
     <span><s class="crit"></s>Obrigatório — risco real de perder</span>
     <span><s class="warn"></s>Recomendado — melhora muito a experiência</span>
@@ -906,8 +915,509 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
     </div>
   </div>
+  </div><!-- /#prepSecCompras -->
 
-</section>
+  <!-- SEÇÃO DA MALA -->
+  <div id="prepSecMala" hidden>
+    <div class="prep-aviso" style="background:color-mix(in srgb,var(--c-tokyo) 10%,transparent);border-color:color-mix(in srgb,var(--c-tokyo) 28%,transparent)">
+      <strong style="color:var(--t-tokyo)">🧳 Regra de ouro da bagagem no Japão:</strong> Caminha-se entre 10 e 15 km por dia e as trocas de cidades são feitas de Shinkansen e trens urbanos. Além disso, os hotéis japoneses já fornecem praticamente todos os itens de higiene (shampoo, condicionador, sabonete, escova de dentes com pasta, secador de cabelo, pijama/yukata e chinelo). Menos peso na mala significa muito mais conforto e agilidade para o grupo de 13 pessoas com os 3 carrinhos de bebê.
+    </div>
+
+    <div class="prep-legenda">
+      <span><s class="crit"></s>Indispensável / Obrigatório</span>
+      <span><s class="warn"></s>Altamente Recomendado</span>
+      <span><s class="ok"></s>Específico do Japão</span>
+      <span><s style="background:var(--ink-3)"></s>Não levar / Economize peso</span>
+    </div>
+
+    <!-- MALA 1: DOCUMENTOS, DINHEIRO & PAGAMENTOS -->
+    <div class="prep-fase">
+      <div class="prep-fase-titulo">
+        <span class="prep-data-badge crit">Bolso / Mochila</span>
+        <h3>1. Documentos, Dinheiro &amp; Segurança</h3>
+      </div>
+      <div class="prep-lista">
+
+        <div class="prep-item obrig" data-icon="🛂">
+          <div class="prep-item-nome">Passaporte físico original — 13 pessoas</div>
+          <div class="prep-item-desc">Validade mínima de 6 meses. No Japão, a lei exige que todo turista estrangeiro porte o passaporte original na rua o tempo todo (a polícia aborda e solicita conferência). Também é obrigatório para compras Tax-Free nas lojas e para o totem de reembolso fiscal no aeroporto KIX. Deixe cópias digitais salvas no celular.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Obrigatório</span>
+            <span class="prep-tag neu">Portar sempre consigo no Japão</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="✈️">
+          <div class="prep-item-nome">Visto de Trânsito Australiano — 13 concessões impressas</div>
+          <div class="prep-item-desc">Documento de concessão (grant notice) do visto subclasse 771/600 emitido pelo governo australiano para a conexão em Sydney (ida e volta). Levar cópia impressa junto com o passaporte para apresentar no check-in da LATAM em Guarulhos.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Obrigatório</span>
+            <span class="prep-tag neu">Impresso + digital</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="💴">
+          <div class="prep-item-nome">Dinheiro em espécie: ¥30.000 a ¥50.000 ienes por adulto</div>
+          <div class="prep-item-desc">No Japão, o dinheiro em cédulas e moedas ainda é imperativo. Templos históricos em Kyoto (Kinkaku-ji, Kiyomizu-dera, Ryoan-ji), máquinas automáticas de bilhete, coin lockers de estações e barraquinhas de comida de rua NÃO aceitam cartão. Leve já em ienes ou saque em caixas eletrônicos do 7-Eleven (Seven Bank) com cartão Wise/Nomad. Dólares americanos não circulam no comércio.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Obrigatório</span>
+            <span class="prep-tag neu">Espécie em ienes (¥)</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="👛">
+          <div class="prep-item-nome">Porta-moedas ou carteira com zíper dedicado</div>
+          <div class="prep-item-desc">Item indispensável no cotidiano japonês. Quase todo troco gera moedas pesadas (¥1, ¥5, ¥10, ¥50, ¥100 e ¥500 — a moeda de ¥500 vale cerca de R$ 17!). Sem uma carteira específica para moedas, os bolsos ficam pesados e os pagamentos em caixas tornam-se lentos.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Indispensável</span>
+            <span class="prep-tag neu">Moedeiro com zíper</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="💳">
+          <div class="prep-item-nome">Cartões internacionais desbloqueados e aviso viagem</div>
+          <div class="prep-item-desc">Cartões de débito global (Wise, Nomad, C6 Global) e cartões de crédito de emergência. Avisar os bancos sobre o uso no exterior (Austrália e Japão) para evitar bloqueios preventivos no momento das compras.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Wise · Nomad · Cartão de crédito</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="🛡️">
+          <div class="prep-item-nome">Apólice de seguro viagem impressa (com contato em inglês)</div>
+          <div class="prep-item-desc">Levar pelo menos uma cópia impressa com a lista dos 13 segurados, número da apólice e telefone 24h de acionamento em caso de emergência médica ou odontológica.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Cópia impressa na mochila</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="🔒">
+          <div class="prep-item-nome">Cadeados padrão TSA e etiquetas de identificação nas malas</div>
+          <div class="prep-item-desc">Obrigatório para segurança das malas despachadas em conexões internacionais. Identificar cada mala com nome, telefone (com +55) e e-mail em etiqueta plastificada visível.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Bagagem</span>
+            <span class="prep-tag neu">Padrão TSA</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="🖊️">
+          <div class="prep-item-nome">Caneta esferográfica azul ou preta</div>
+          <div class="prep-item-desc">Leve 1 ou 2 canetas na bagagem de mão. Muito útil para preencher formulários físicos de alfândega ou imigração caso o sistema digital do Visit Japan Web apresente lentidão nos totens.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Bagagem de mão</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MALA 2: ROUPAS & CALÇADOS -->
+    <div class="prep-fase">
+      <div class="prep-fase-titulo">
+        <span class="prep-data-badge crit">Clima 5°C a 16°C</span>
+        <h3>2. Roupas &amp; Calçados (Estratégia de Camadas)</h3>
+      </div>
+      <div class="prep-lista">
+
+        <div class="prep-item obrig" data-icon="🧅">
+          <div class="prep-item-nome">Estratégia em 3 camadas ("efeito cebola")</div>
+          <div class="prep-item-desc">Março no Japão tem manhãs e noites frias (5°C a 7°C) e tardes amenas (14°C a 17°C). Dentro de trens, metrôs e lojas, o aquecimento é forte. A melhor estratégia é vestir camadas fáceis de tirar:<br>• <strong>Camada 1 (base):</strong> 2 a 3 camisetas e calças térmicas (Heattech da Uniqlo).<br>• <strong>Camada 2 (aquecimento):</strong> 3 a 4 blusas manga longa, malhas leves ou fleece.<br>• <strong>Camada 3 (proteção):</strong> 1 corta-vento impermeável e 1 jaqueta quente acolchoada (puffer/down).</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Indispensável</span>
+            <span class="prep-tag neu">Vestir em camadas</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="👟">
+          <div class="prep-item-nome">Tênis ultraconfortável de caminhada JÁ AMACIADO</div>
+          <div class="prep-item-desc">O grupo andará entre 10 e 15 km por dia (15.000 a 25.000 passos diários). NUNCA leve tênis novo para estrear na viagem. O calçado deve ter excelente amortecimento. Leve 1 par principal super amaciado e 1 par reserva confortável caso chova e molhe.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Mais crítico da viagem</span>
+            <span class="prep-tag neu">10 a 15 km/dia a pé</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="👞">
+          <div class="prep-item-nome">Tênis FÁCIL de tirar e calçar (slip-on ou cadarço elástico)</div>
+          <div class="prep-item-desc">No Japão é costume sagrado tirar os sapatos ao entrar em templos (Castelo Nijo, Sanjusangendo), castelos, ryokan em Kawaguchiko, restaurantes tradicionais de tatami e provadores de roupas. Desamarrar cadarços complexos 6 vezes ao dia com 13 pessoas cansa e atrasa a programação. Calçados slip-on ou com cadarço elástico facilitam enormemente.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Regra cultural</span>
+            <span class="prep-tag neu">Tira-se o sapato todo dia</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="🧦">
+          <div class="prep-item-nome">Meias limpas, confortáveis e SEM NENHUM FURO</div>
+          <div class="prep-item-desc">Como você tirará o sapato frequentemente em locais públicos, históricos e restaurantes, você andará apenas de meias sobre assoalhos e tatamis diante de dezenas de pessoas. Meias furadas, desbotadas ou puídas causam constrangimento real. Leve também 2 a 3 pares de meias térmicas para os dias mais frios.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Cuidado social</span>
+            <span class="prep-tag neu">Meias térmicas + sem furos</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="🧣">
+          <div class="prep-item-nome">Gorro, cachecol/buff e luvas finas touchscreen</div>
+          <div class="prep-item-desc">Essenciais para os dias 22 e 23/03 em Kawaguchiko (aos pés do Monte Fuji, onde a temperatura ao amanhecer e à noite fica perto de 0°C) e para passeios noturnos em Tóquio. As luvas com ponta condutiva permitem mexer no celular e tirar fotos sem tirar a luva.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Monte Fuji 0°C a 5°C</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="🧺">
+          <div class="prep-item-nome">Roupas de secagem rápida (use as lavanderias dos hotéis)</div>
+          <div class="prep-item-desc">Não é necessário levar 16 mudas completas de roupa. Todos os hotéis e o Airbnb do roteiro dispõem de lavadoras e secadoras por moeda (coin laundry). Lavar as roupas a cada 4 ou 5 dias reduz a bagagem pela metade e deixa espaço livre na mala para compras.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Economia de espaço</span>
+            <span class="prep-tag neu">Coin laundry nos hotéis</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MALA 3: ELETRÔNICOS -->
+    <div class="prep-fase">
+      <div class="prep-fase-titulo">
+        <span class="prep-data-badge crit">Essencial</span>
+        <h3>3. Eletrônicos &amp; Energia (Padrão 100V)</h3>
+      </div>
+      <div class="prep-lista">
+
+        <div class="prep-item obrig" data-icon="🔌">
+          <div class="prep-item-nome">Adaptador de tomada Tipo A (dois pinos chatos paralelos)</div>
+          <div class="prep-item-desc">As tomadas no Japão são de 100V e possuem 2 furos chatos paralelos (Tipo A norte-americano/japonês sem pino terra). O plugue brasileiro de 3 pinos redondos NÃO entra em nenhuma tomada japonesa. Leve 1 ou 2 adaptadores por pessoa ou réguas compartilhadas.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Obrigatório</span>
+            <span class="prep-tag neu">Dois pinos chatos paralelos</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="🔋">
+          <div class="prep-item-nome">Power Bank (bateria externa portátil) — NA MOCHILA</div>
+          <div class="prep-item-desc">O uso contínuo de mapas, tradutor por foto, câmera e o frio de março descarregam a bateria dos celulares muito antes do final da tarde. Leve pelo menos 1 power bank de 10.000 a 20.000 mAh por adulto.<br>⚠️ <strong>REGRA AÉREA OBRIGATÓRIA:</strong> Baterias de lítio DEVEM ir na bagagem de mão/mochila. É proibido despachar power banks na mala de porão (risco de fogo).</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Obrigatório</span>
+            <span class="prep-tag alerta">Apenas na bagagem de mão</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="🔌">
+          <div class="prep-item-nome">Régua de tomadas / multiplicador para o quarto</div>
+          <div class="prep-item-desc">Nos quartos de hotel e no Airbnb de Tóquio, o número de tomadas de parede é restrito. Com 13 pessoas carregando simultaneamente celulares, relógios e baterias, uma régua brasileira com um único adaptador japonês resolve o quarto inteiro. (Verifique se os carregadores são bivolt 100-240V).</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Resolve múltiplos aparelhos</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="🎧">
+          <div class="prep-item-nome">Fones de ouvido (preferência com cancelamento de ruído)</div>
+          <div class="prep-item-desc">Indispensáveis para descansar nas 45 horas de voo e conexões. Além disso, no transporte público japonês (metrôs, trens e Shinkansen), o silêncio é rigoroso: escutar áudio de celular sem fone de ouvido é considerada uma falta de respeito grave.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Silêncio obrigatório no metrô/trem</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="⚡">
+          <div class="prep-item-nome">Cabos longos (2 metros) para recarga</div>
+          <div class="prep-item-desc">Em vários hotéis e no Shinkansen Nozomi (onde as tomadas ficam nas extremidades da fileira ou na janela), um cabo de 2 metros permite carregar o celular confortavelmente enquanto você usa no assento ou na cama.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Conforto</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MALA 4: FARMÁCIA & SAÚDE -->
+    <div class="prep-fase">
+      <div class="prep-fase-titulo">
+        <span class="prep-data-badge crit">⚠️ Leis Alfandegárias</span>
+        <h3>4. Farmácia, Saúde &amp; Cuidados Pessoais</h3>
+      </div>
+      <div class="prep-lista">
+
+        <div class="prep-item obrig" data-icon="🩹">
+          <div class="prep-item-nome">Curativos específicos para bolhas nos pés (tipo Compeed)</div>
+          <div class="prep-item-desc">O desgaste físico de caminhar até 15 km diários por 16 dias consecutivos costuma provocar bolhas e atrito nos pés mesmo com calçados confortáveis. Curativos hidrocolóides de cicatrização rápida são o item médico mais utilizado em viagens ao Japão.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Salva a viagem</span>
+            <span class="prep-tag neu">Band-Aid anti-bolhas</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="🌿">
+          <div class="prep-item-nome">Adesivos para dor muscular e panturrilhas (Salompas)</div>
+          <div class="prep-item-desc">Colar adesivos analgésicos nas panturrilhas e solas dos pés antes de dormir relaxa a musculatura para aguentar o dia seguinte. No Japão também vende o famoso adesivo "Kyusoku Jikan" em qualquer farmácia Matsumoto Kiyoshi.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Indispensável</span>
+            <span class="prep-tag neu">Alívio muscular noturno</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="🚨">
+          <div class="prep-item-nome">⚠️ ALERTA: Remédios PROIBIDOS no Japão (Crime de Narcóticos)</div>
+          <div class="prep-item-desc">A legislação sanitária japonesa é extremamente rígida. Medicamentos muito comuns no Brasil para gripe, coriza e tosse que contenham <strong>pseudoefedrina, efedrina ou codeína</strong> são ESTRITAMENTE ILEGAIS no Japão (ex.: Tylenol Sinus, Actifed, Benadrex, Advil Cold &amp; Sinus, Claritin-D). Entrar com eles pode resultar em apreensão e detenção no aeroporto.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Proibição legal</span>
+            <span class="prep-tag alerta">NUNCA leve pseudoefedrina/codeína</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="💊">
+          <div class="prep-item-nome">Farmácia básica pessoal permitida (em embalagem original)</div>
+          <div class="prep-item-desc">Leve medicamentos habituais para dor, febre e digestão com a bula e embalagem original:<br>• Paracetamol e Ibuprofeno (analgésicos permitidos)<br>• Antialérgico comum (Loratadina, Cetirizina)<br>• Antiácido / remédio para estômago (Omeprazol, Simeticona)<br>• Remédio para enjoo (Dramin para as horas de voo)<br>• Medicamentos de uso contínuo acompanhados da receita médica em inglês.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Levar nas caixas originais</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="🧴">
+          <div class="prep-item-nome">Hidratante labial (lip balm) e hidratante corporal/facial</div>
+          <div class="prep-item-desc">A umidade do ar no Japão no mês de março é muito baixa e os ambientes fechados contam com aquecedores que ressecam ainda mais o ar. Lábios rachados e pele ressecada ocorrem já no segundo dia. Um bom protetor labial de bolso é essencial.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Ar seco de março</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="🧴">
+          <div class="prep-item-nome">Desodorante ocidental habitual (leve do Brasil)</div>
+          <div class="prep-item-desc">Grande parte da população do Leste Asiático possui menor quantidade de glândulas apócrinas e quase não utiliza desodorante antitranspirante forte. Por isso, os desodorantes vendidos nas farmácias japonesas são extremamente suaves e costumam decepcionar brasileiros. Leve o seu em quantidade suficiente.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Levar do Brasil</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="☀️">
+          <div class="prep-item-nome">Protetor solar e óculos de sol</div>
+          <div class="prep-item-desc">Mesmo em dias frios, a incidência solar durante caminhadas a céu aberto (Ueno Park, templos de Kyoto, Monte Fuji) é alta. Óculos de sol protegem os olhos do vento gelado e da luminosidade.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Proteção</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MALA 5: ITENS ESPECIAIS DO JAPÃO -->
+    <div class="prep-fase">
+      <div class="prep-fase-titulo">
+        <span class="prep-data-badge ok">Cultura &amp; Prática</span>
+        <h3>5. Itens Essenciais Específicos do Japão</h3>
+      </div>
+      <div class="prep-lista">
+
+        <div class="prep-item obrig" data-icon="🧺">
+          <div class="prep-item-nome">Toalhinha de mão pequena de bolso (Tenugui ou felpuda)</div>
+          <div class="prep-item-desc">A grande maioria dos banheiros públicos no Japão (em estações de metrô, parques e templos) NÃO possui papel toalha nem secador elétrico de mãos, por razões ecológicas e sanitárias. Todo cidadão japonês carrega sua própria toalhinha de mão no bolso ou bolsa. Leve uma pequena para cada pessoa.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Hábito japonês</span>
+            <span class="prep-tag neu">Não há papel nos banheiros</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="🗑️">
+          <div class="prep-item-nome">Sacolinhas plásticas para carregar o próprio lixo</div>
+          <div class="prep-item-desc">Nas ruas do Japão praticamente NÃO EXISTEM LIXEIRAS PÚBLICAS (política mantida desde os anos 90). É dever de cada pessoa guardar o lixo que produz na própria mochila e levá-lo de volta para a lixeira do hotel ou descartá-lo nas lixeiras seletivas de lojas de conveniência (7-Eleven, Lawson). Ter 2 ou 3 sacolinhas na mochila é indispensável.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Regra social</span>
+            <span class="prep-tag neu">Sem lixeiras nas ruas</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="🛍️">
+          <div class="prep-item-nome">Sacola dobrável compacta (Ecobag de nylon)</div>
+          <div class="prep-item-desc">Desde 2020, todas as lojas de conveniência, supermercados e farmácias cobram pelas sacolas plásticas (¥3 a ¥5). Uma sacola dobrável que cabe no bolso facilita carregar compras de farmácia, lanches e lembrancinhas durante os passeios diários.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Lojas cobram sacola</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="🗂️">
+          <div class="prep-item-nome">Saquinhos plásticos com fecho zip lock</div>
+          <div class="prep-item-desc">Extremamente versáteis para a viagem: transportar líquidos e frascos de até 100ml na bagagem de mão no avião, guardar notas fiscais para reembolso do Tax-Free, proteger passaportes contra chuva e separar lanches dos bebês.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Organização</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="☔">
+          <div class="prep-item-nome">Guarda-chuva ou capa (dica: compre lá se chover)</div>
+          <div class="prep-item-desc">Se chover em março, você não precisa ocupar espaço na mala trazendo guarda-chuva pesado: qualquer konbini (7-Eleven, FamilyMart, Lawson) vende os clássicos guarda-chuvas transparentes japoneses por cerca de ¥500 a ¥700, que são resistentes, leves e funcionam perfeitamente.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Comprar lá se precisar</span>
+            <span class="prep-tag neu">¥500 no konbini</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MALA 6: OS 3 BEBÊS -->
+    <div class="prep-fase">
+      <div class="prep-fase-titulo">
+        <span class="prep-data-badge crit">3 Bebês no Grupo</span>
+        <h3>6. Logística para os 3 Bebês</h3>
+      </div>
+      <div class="prep-lista">
+
+        <div class="prep-item obrig" data-icon="👶">
+          <div class="prep-item-nome">Canguru / Sling ergonômico — 1 por bebê</div>
+          <div class="prep-item-desc">INDISPENSÁVEL. Diversas paradas do roteiro têm escadarias íngremes de pedra onde o carrinho é impraticável (Kiyomizu-dera, Chureito Pagoda, Fushimi Inari). Além disso, em atrações como o teamLab Borderless/Planets e no rooftop aberto do Shibuya Sky, CARRINHOS SÃO PROIBIDOS por normas de segurança. O canguru é a única forma de entrar com os bebês.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Indispensável</span>
+            <span class="prep-tag neu">teamLab e Shibuya Sky barram carrinho</span>
+          </div>
+        </div>
+
+        <div class="prep-item obrig" data-icon="🚼">
+          <div class="prep-item-nome">Carrinho de bebê compacto dobrável (estilo guarda-chuva)</div>
+          <div class="prep-item-desc">Carrinhos grandes trambolhosos causam problemas sérios no transporte japonês: não cabem nos coin lockers das estações, ocupam os estreitos elevadores do metrô e bloqueiam a passagem no Shinkansen. Modelos dobráveis ultracompactos (tipo "cabin size" / guarda-chuva) são ideais para o dia a dia.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag crit">Mobilidade</span>
+            <span class="prep-tag neu">Modelo dobrável leve</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="🍼">
+          <div class="prep-item-nome">Medicamentos pediátricos habituais com receita médica</div>
+          <div class="prep-item-desc">Traga do Brasil os remédios aos quais as crianças já estão habituadas (antitérmico pediátrico, soro nasal, pomada para assaduras), acompanhados da receita do pediatra. Farmácias japonesas têm remédios de excelente qualidade, mas todas as dosagens e bulas estão escritas exclusivamente em ideogramas japoneses (kanji).</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Recomendado</span>
+            <span class="prep-tag neu">Receita do pediatra</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="🧷">
+          <div class="prep-item-nome">Fraldas e lencinhos para a viagem inicial (resto compra lá)</div>
+          <div class="prep-item-desc">Traga na mala fraldas e lenços descartáveis suficientes para os dias de voo e as primeiras 48h em Osaka. No Japão, as fraldas infantis são consideradas as melhores do mundo (marcas como Merries, Moony e Pampers Premium) e são vendidas facilmente em farmácias Matsumoto Kiyoshi e lojas de conveniência.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Comprar lá o restante</span>
+            <span class="prep-tag neu">Fraldas japonesas excelentes</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MALA 7: CONFORTO NO VOO LONGO -->
+    <div class="prep-fase">
+      <div class="prep-fase-titulo">
+        <span class="prep-data-badge inf">Voo de 45 Horas</span>
+        <h3>7. Conforto para a Longa Viagem Aérea</h3>
+      </div>
+      <div class="prep-lista">
+
+        <div class="prep-item recom" data-icon="💤">
+          <div class="prep-item-nome">Almofada de pescoço ergonômica e máscara de dormir</div>
+          <div class="prep-item-desc">A rota GRU → SYD dura mais de 15 horas contínuas de voo sobre o Pacífico, seguida de conexão de 2 horas e mais 9 horas até Osaka (KIX). Uma boa almofada de pescoço com fecho e máscara de dormir facilitam o descanso durante os ciclos de luz na aeronave.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Conforto em voo</span>
+          </div>
+        </div>
+
+        <div class="prep-item recom" data-icon="🧦">
+          <div class="prep-item-nome">Meias de compressão elástica para voo longo</div>
+          <div class="prep-item-desc">Altamente recomendadas por médicos para voos de longa duração. Ajudam no retorno venoso, previnem inchaço nas pernas e reduzem sensivelmente o risco de trombose em trajetos de mais de 10 horas sentado.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag warn">Saúde circulatória</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="💧">
+          <div class="prep-item-nome">Colírio lubrificante (lágrimas artificiais) e soro nasal</div>
+          <div class="prep-item-desc">O ar pressurizado dentro do avião possui umidade inferior a 15% (mais seco que um deserto). Ter colírio lubrificante e soro fisiológico em spray para as narinas evita irritações, dor de cabeça e sangramentos no nariz após tantas horas no ar.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Bagagem de mão</span>
+          </div>
+        </div>
+
+        <div class="prep-item info" data-icon="🧥">
+          <div class="prep-item-nome">Agasalho confortável tipo moletom para o avião</div>
+          <div class="prep-item-desc">O sistema de refrigeração das aeronaves internacionais costuma ser muito frio durante os períodos de descanso noturno. Viaje com roupa macia e confortável e um casaco de fácil acesso na cabine.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag ok">Bagagem de mão</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MALA 8: O QUE NÃO LEVAR -->
+    <div class="prep-fase">
+      <div class="prep-fase-titulo">
+        <span class="prep-data-badge inf">Deixe no Brasil</span>
+        <h3>8. O que NÃO Vale a Pena Levar (Economize Peso e Espaço)</h3>
+      </div>
+      <div class="prep-lista">
+
+        <div class="prep-item veto" data-icon="🚫">
+          <div class="prep-item-nome">Shampoo, condicionador, sabonete líquido e esponja</div>
+          <div class="prep-item-desc">Todos os hotéis japoneses oferecem nos quartos frascos grandes com shampoo, condicionador e sabonete líquido de excelente qualidade (geralmente Shiseido, POLA ou DHC), além de esponjas de banho descartáveis na recepção. Trazer esses itens do Brasil é desperdício de peso e espaço.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag veto">O hotel fornece</span>
+          </div>
+        </div>
+
+        <div class="prep-item veto" data-icon="🚫">
+          <div class="prep-item-nome">Escovas de dentes grandes e tubos pesados de pasta</div>
+          <div class="prep-item-desc">Todo hotel no Japão repõe diariamente kits lacrados com escova de dentes e pasta no quarto ou no saguão. Não é necessário carregar tubos grandes na mala.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag veto">O hotel fornece</span>
+          </div>
+        </div>
+
+        <div class="prep-item veto" data-icon="🚫">
+          <div class="prep-item-nome">Pijamas volumosos e chinelos de quarto</div>
+          <div class="prep-item-desc">A hotelaria japonesa disponibiliza yukatas (roupões de algodão) ou conjuntos confortáveis de pijama de duas peças limpos todos os dias, além de chinelos/pantufas higienizados para circular pelo quarto e pelas dependências.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag veto">O hotel fornece</span>
+          </div>
+        </div>
+
+        <div class="prep-item veto" data-icon="🚫">
+          <div class="prep-item-nome">Secador de cabelo</div>
+          <div class="prep-item-desc">Secadores de cabelo com plugue brasileiro de 3 pinos e voltagem 127V/220V queimam ou funcionam fracos na rede de 100V japonesa. Todos os hotéis e o Airbnb do roteiro possuem secadores disponíveis nos banheiros.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag veto">O hotel fornece</span>
+          </div>
+        </div>
+
+        <div class="prep-item veto" data-icon="🚫">
+          <div class="prep-item-nome">Roupa de banho para Onsen (biquíni, maiô ou sunga)</div>
+          <div class="prep-item-desc">Na cultura tradicional japonesa, os banhos termais (onsen e sento) são usufruídos totalmente sem roupas e com separação estrita por gênero. Entrar de roupa de banho na água é terminantemente proibido. Se você for usar banho privativo (kashikiri) no ryokan de Kawaguchiko, também é privativo e dispensa trajes.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag veto">Regra cultural</span>
+          </div>
+        </div>
+
+        <div class="prep-item veto" data-icon="🚫">
+          <div class="prep-item-nome">Vistos dos EUA (ESTA), MetroCard NY e CNH Internacional</div>
+          <div class="prep-item-desc">A rota dos voos da LATAM é via Sydney (Austrália) e Santiago (Chile), não passando por território norte-americano. Brasileiros com passaporte comum estão isentos de visto de turismo no Japão desde 2023. O roteiro não prevê aluguel de carro (100% trens e metrô), tornando a PID desnecessária.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag veto">Não se aplica</span>
+          </div>
+        </div>
+
+        <div class="prep-item veto" data-icon="🚫">
+          <div class="prep-item-nome">Grande volume de dólares americanos em espécie</div>
+          <div class="prep-item-desc">O comércio, metrô e restaurantes no Japão só aceitam Ienes (¥). Não é possível pagar em dólares no dia a dia e as taxas de câmbio de dólar em papel-moeda nas casas de câmbio locais têm spread alto. Priorize sacar ienes com cartão de débito global nos caixas do 7-Eleven.</div>
+          <div class="prep-item-meta">
+            <span class="prep-tag veto">Economize no câmbio</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /#prepSecMala -->
 </main>
 
 <nav class="nav" aria-label="Seções do site">
@@ -1552,6 +2062,20 @@ if(el("trilho")) {
     }
   }
 }
+function montarPrep(){
+  const t=el("prepToggle");
+  if(!t) return;
+  t.addEventListener("click",(ev)=>{
+    const b=ev.target.closest("button");
+    if(!b) return;
+    t.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+    const tab=b.dataset.tab;
+    const cCompras=el("prepSecCompras");
+    const cMala=el("prepSecMala");
+    if(cCompras) cCompras.hidden = (tab !== "compras");
+    if(cMala) cMala.hidden = (tab !== "mala");
+  });
+}
 if(el("comerCarro")) montarCarro("comerCarro",COMER);
 if(el("comprasCarro")) montarCarro("comprasCarro",COMPRAS);
 if(el("planobCarro")) montarCarro("planobCarro",PLANOB);
@@ -1559,6 +2083,7 @@ if(document.querySelector(".carro-ctrl")) ativarControlesCarrossel();
 if(el("notas")) montarNotas();
 if(el("voosBody")) montarVoos();
 if(el("hospLista")) montarHosp();
+if(el("prepToggle")) montarPrep();
 montarParede();
 montarNav();
 montarTema();

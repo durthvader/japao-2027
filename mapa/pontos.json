@@ -4910,5 +4910,372 @@
    "nome": "Nenhum passe compensa — usem o IC (Suica/Pasmo)",
    "texto": "O dia gasta ¥760 por pessoa em trem: ¥220 Ojima→Iwamotocho, ¥160 Akihabara→Ueno, ¥160 Okachimachi→Akihabara e ¥220 na volta. O Tokyo Subway Ticket de 24h custa ¥800 e nem cobre a JR; o passe diário do Toei custa ¥700 e cobriria só os ¥440 de metrô. Os dois perdem. Passem o IC e pronto — e as três crianças abaixo de 6 anos não pagam trem."
   }
+ },
+ "2027-03-27": {
+  "titulo": "Peixe ao amanhecer, água até o joelho e a baía acendendo",
+  "resumo": "Um dia só na orla: começa cedo no Toyosu para pegar o mercado antes de ele fechar, atravessa a pé até o teamLab Planets no horário marcado e passa a tarde inteira em Odaiba, terminando com a Ponte Arco-Íris acesa vista da praia. Quase tudo em cima da Yurikamome, que é elevada, tem elevador em toda estação e não tem condutor — a primeira fila é vidro puro.",
+  "centro": [
+   35.652,
+   139.79
+  ],
+  "zoom": 12,
+  "paradas": [
+   {
+    "id": "base",
+    "nome": "Hotel Oojima",
+    "tipo": "base",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "hora": "07:00",
+    "gmaps": "5-37-5 Oshima, Koto-ku, Tokyo"
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Ojima (Toei Shinjuku)",
+    "tipo": "estacao",
+    "lat": 35.68977,
+    "lng": 139.83508,
+    "gmaps": "Ojima Station Tokyo"
+   },
+   {
+    "id": "e2",
+    "nome": "Estação Toyosu (baldeação para a Yurikamome)",
+    "tipo": "estacao",
+    "lat": 35.65468,
+    "lng": 139.79698,
+    "aprox": true,
+    "gmaps": "Toyosu Station Tokyo"
+   },
+   {
+    "id": "e3",
+    "nome": "Estação Shijo-mae",
+    "tipo": "estacao",
+    "lat": 35.64576,
+    "lng": 139.78578,
+    "gmaps": "Shijo-mae Station Tokyo"
+   },
+   {
+    "id": "p1",
+    "ativ": "Toyosu Market",
+    "tipo": "comida",
+    "lat": 35.64413,
+    "lng": 139.78128,
+    "hora": "07:55",
+    "fim": "09:45",
+    "gmaps": "Toyosu Market, Koto-ku, Tokyo",
+    "foto": "Toyosu Market fish auction",
+    "must": [
+     "Passarela de visitação do prédio do pescado: corredor envidraçado e elevado sobre o mercado inteiro, aberto das 05:00 às 17:00. É a parte que dá para ver a qualquer hora do dia.",
+     "Uo-gashi Yokocho, o corredor de lojas e restaurantes: sushi, tamagoyaki, facas, chá e utensílio de cozinha.",
+     "Praça verde no telhado, aberta das 05:00 às 23:00 — vista aberta da baía e espaço para as crianças correrem longe de trânsito."
+    ],
+    "comidas": [
+     "Café da manhã de sushi ¥3.000–5.000 por pessoa nas casas mais famosas",
+     "Balcões simples do Yokocho ¥1.200–2.000",
+     "Tamagoyaki no palito ¥150–200",
+     "Marisco grelhado na hora ¥500–1.500"
+    ],
+    "compras": [
+     "🛒 AQUI SE COMPRA: faca japonesa de cozinha — é o melhor lugar da viagem para isso, e as lojas afiam e gravam o nome na hora.",
+     "Chá, katsuobushi, alga e tempero seco: leve, barato e passa na mala."
+    ],
+    "alerta": "O leilão de atum é às 05:30 e, para vê-lo, é preciso já estar lá: o primeiro trem sai de Ojima às 05:00 e a viagem leva de 35 a 50 minutos, ou seja, só de táxi dá. E o deck de vidro do térreo, o bom, é por sorteio pedido no mês anterior. Contem em ver o mercado funcionando pela passarela, não o leilão. Os restaurantes fecham entre 14:00 e 15:00 e a fila das casas famosas passa de uma hora — com 13 pessoas, dividam-se em mesas de quatro ou comam nos balcões do Yokocho. O mercado não abre domingo, feriado nem algumas quartas; sábado abre. O piso do salão é molhado e tem empilhadeira circulando: os carrinhos ficam na passarela de cima."
+   },
+   {
+    "id": "e4",
+    "nome": "Estação Shin-Toyosu",
+    "tipo": "estacao",
+    "lat": 35.6484,
+    "lng": 139.7897,
+    "aprox": true,
+    "gmaps": "Shin-Toyosu Station Tokyo"
+   },
+   {
+    "id": "p2",
+    "ativ": "teamLab PLANETS",
+    "tipo": "museu",
+    "lat": 35.64938,
+    "lng": 139.78973,
+    "hora": "10:00",
+    "fim": "11:45",
+    "gmaps": "teamLab Planets TOKYO, Toyosu",
+    "foto": "teamLab Planets Tokyo",
+    "must": [
+     "A sala de água com as carpas luminosas — é ali que a água sobe até o joelho do adulto.",
+     "O jardim de orquídeas suspensas e a esfera de espelhos infinitos.",
+     "O jardim de musgo ao ar livre, com os ovoides que mudam de cor quando encostam neles."
+    ],
+    "alerta": "Anda-se descalço do começo ao fim, e meia e meia-calça saem no vestiário. A água chega ao joelho do adulto: usem bermuda ou calça que enrole acima do joelho — e há bermuda emprestada de graça, do XS ao 6L, é só pedir a um funcionário. Carrinho NÃO entra: fica preso com cabo de aço num estacionamento de carrinhos do lado de fora do prédio, então os três bebês vão no canguru o tempo todo (canguru é permitido lá dentro). Os armários de dentro são pequenos, 23 x 34 x 37 cm; mochila grande fica na área dos carrinhos. Levem toalha. O ingresso é por horário marcado, esgota semanas antes e o preço é dinâmico — sábado sai acima do piso de ¥3.600. Reservem os 13 lugares no mesmo horário assim que o mês abrir."
+   },
+   {
+    "id": "e5",
+    "nome": "Estação Ariake-Tennis-no-Mori (Yurikamome)",
+    "tipo": "estacao",
+    "lat": 35.64011,
+    "lng": 139.78878,
+    "aprox": false,
+    "gmaps": "Ariake-Tennis-no-Mori Station Tokyo"
+   },
+   {
+    "id": "p3",
+    "ativ": "SMALL WORLDS",
+    "tipo": "museu",
+    "lat": 35.63783,
+    "lng": 139.78825,
+    "hora": "12:40",
+    "fim": "14:40",
+    "gmaps": "Small Worlds Tokyo, Ariake",
+    "foto": "Small Worlds Tokyo miniature museum",
+    "aprox": false,
+    "must": [
+     "A área do Aeroporto de Kansai em 1/80, com avião decolando de verdade — é o mesmo aeroporto por onde vocês entraram e vão sair do país.",
+     "O Centro Espacial, com lançamento de foguete a cada poucos minutos.",
+     "As áreas de Evangelion e Sailor Moon, construídas em escala junto com as cidades reais — é o que prende os adolescentes.",
+     "O ciclo de dia e noite: a cada 15 min o salão inteiro escurece e as centenas de milhares de luzinhas acendem."
+    ],
+    "comidas": []
+   },
+   {
+    "id": "p4",
+    "ativ": "DiverCity",
+    "tipo": "compras",
+    "lat": 35.62532,
+    "lng": 139.77588,
+    "hora": "15:00",
+    "fim": "17:00",
+    "gmaps": "DiverCity Tokyo Plaza, Odaiba",
+    "foto": "DiverCity Tokyo Plaza",
+    "must": [
+     "The Gundam Base Tokyo, no 7º andar: a maior loja de Gunpla do mundo, com linha de montagem à vista e kits que só existem ali.",
+     "Praça de alimentação do 2º andar, grande e com mesas compridas — é o lugar mais fácil do dia para sentar 13 pessoas juntas.",
+     "Fraldário e sala de amamentação em vários andares, elevadores largos e piso plano: carrinho circula em tudo."
+    ],
+    "comidas": [
+     "Praça de alimentação, prato de ¥800–1.500",
+     "Crepe e sorvete nos quiosques ¥500–800"
+    ],
+    "compras": [
+     "🛒 AQUI SE COMPRA: Gunpla e brinquedo japonês — é a parada de compras do dia e a que mais interessa aos adolescentes.",
+     "Uniqlo, GU e papelaria no mesmo prédio, com preço de loja japonesa."
+    ],
+    "alerta": "⚠ A estátua do Unicorn Gundam de 20 metros NÃO existe mais: o show de transformação acabou e o boneco foi retirado em 31/08/2026, depois de quase nove anos. Nada foi anunciado para o lugar dele na Praça do Festival, no 2º andar — não prometam o robô às crianças antes de chegar e ver. A loja Gundam Base continua funcionando no 7º andar e, em dia cheio, controla a entrada por sorteio feito na hora: se for o caso, tirem a senha assim que chegarem ao shopping. O prédio abre das 10:00 às 21:00."
+   },
+   {
+    "id": "p5",
+    "ativ": "Pôr do sol na orla",
+    "tipo": "monumento",
+    "lat": 35.6274,
+    "lng": 139.77224,
+    "hora": "17:15",
+    "fim": "18:45",
+    "gmaps": "Odaiba Statue of Liberty, Tokyo",
+    "foto": "Rainbow Bridge Tokyo illuminated night",
+    "must": [
+     "Mirante da réplica da Estátua da Liberdade, com a ponte e a Torre de Tóquio ao fundo — é a foto do dia.",
+     "A areia da praia de Odaiba logo abaixo: calçadão plano até a beira, o carrinho vai até a água.",
+     "A iluminação da ponte acendendo ao anoitecer, com os cabos e as torres mudando de cor."
+    ],
+    "alerta": "O sol se põe às 17:58 no dia 27/03: cheguem por volta das 17:15 e fiquem até a ponte acender. ⚠ Atravessar a ponte a pé não cabe neste horário — até 31 de março o calçadão funciona das 10:00 às 18:00, com última entrada às 17:30, e a travessia leva uns 30 minutos; vocês seriam mandados sair no meio do caminho. Vejam da praia, que é de graça, plana e sem fila. Venta forte na beira quando escurece: agasalho e manta para os bebês."
+   },
+   {
+    "id": "e6",
+    "nome": "Estação Daiba (Yurikamome)",
+    "tipo": "estacao",
+    "lat": 35.62639,
+    "lng": 139.77245,
+    "aprox": true,
+    "gmaps": "Daiba Station Yurikamome"
+   },
+   {
+    "id": "fim",
+    "nome": "Volta ao Hotel Oojima",
+    "tipo": "base",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "hora": "19:45",
+    "gmaps": "5-37-5 Oshima, Koto-ku, Tokyo"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "e1",
+    "modo": "pe",
+    "min": 4,
+    "km": 0.25,
+    "custo": 0,
+    "desc": "Dois quarteirões pela Shin-Ohashi-dori até a boca da estação. Tudo plano."
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "linha": "Toei Shinjuku → Oedo → Yurakucho",
+    "cor": "#B0BF2B",
+    "min": 33,
+    "km": 8.0,
+    "custo": 317,
+    "desc": "Duas baldeações: Morishita, da Shinjuku para a Oedo, e Tsukishima, da Oedo para a Yurakucho. ¥317 no cartão IC, as três estações têm elevador até a plataforma."
+   },
+   {
+    "de": "e2",
+    "para": "e3",
+    "modo": "metro",
+    "linha": "Yurikamome",
+    "cor": "#0075C2",
+    "min": 5,
+    "km": 1.5,
+    "custo": 190,
+    "desc": "Duas estações no monotrilho automático. Não tem condutor: ponham as crianças na primeira fila, que é toda de vidro."
+   },
+   {
+    "de": "e3",
+    "para": "p1",
+    "modo": "pe",
+    "min": 4,
+    "km": 0.3,
+    "custo": 0,
+    "desc": "Passarela coberta da estação direto para dentro do mercado, sem atravessar rua."
+   },
+   {
+    "de": "p1",
+    "para": "e4",
+    "modo": "pe",
+    "min": 15,
+    "km": 1.1,
+    "custo": 0,
+    "desc": "Calçada larga e plana beirando o canal até Shin-Toyosu. Quem não quiser andar pega a Yurikamome em Shijo-mae, uma estação, ¥190."
+   },
+   {
+    "de": "e4",
+    "para": "p2",
+    "modo": "pe",
+    "min": 2,
+    "km": 0.15,
+    "custo": 0,
+    "desc": "A entrada do museu é colada na estação."
+   },
+   {
+    "de": "p2",
+    "para": "e5",
+    "modo": "metro",
+    "linha": "Yurikamome",
+    "cor": "#0075C2",
+    "min": 6,
+    "km": 2.6,
+    "custo": 251,
+    "desc": "Seis estações no sentido Shimbashi, contornando Ariake e a Big Sight. ¥251 no IC.",
+    "nota": "Yurikamome de Shin-Toyosu, 2 estações — ¥190"
+   },
+   {
+    "de": "e5",
+    "para": "p3",
+    "modo": "pe",
+    "min": 4,
+    "km": 0.25,
+    "custo": 0,
+    "desc": "Rampa e passarela da estação até a praça do museu.",
+    "nota": "250 m planos da estação até a porta"
+   },
+   {
+    "de": "p3",
+    "para": "e6",
+    "modo": "metro",
+    "km": 3.4,
+    "min": 11,
+    "nota": "Yurikamome até Daiba, 5 estações — ¥330"
+   },
+   {
+    "de": "e6",
+    "para": "p4",
+    "modo": "pe",
+    "km": 0.5,
+    "min": 7,
+    "nota": "passarela coberta da estação Daiba até o DiverCity"
+   },
+   {
+    "de": "p4",
+    "para": "p5",
+    "modo": "pe",
+    "min": 13,
+    "km": 1.0,
+    "custo": 0,
+    "desc": "Passarela até a Aqua City e daí ao mirante da Estátua da Liberdade, de frente para a ponte."
+   },
+   {
+    "de": "p5",
+    "para": "e6",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "A estação Daiba fica logo atrás do mirante e tem elevador."
+   },
+   {
+    "de": "e6",
+    "para": "fim",
+    "modo": "metro",
+    "linha": "Yurikamome → Toei Asakusa → Toei Shinjuku",
+    "cor": "#E85298",
+    "min": 54,
+    "km": 16.6,
+    "custo": 545,
+    "desc": "Yurikamome até Shimbashi, Asakusa até Higashi-nihombashi, uns 5 minutos de passagem subterrânea até Bakuro-yokoyama e a Shinjuku até Ojima. ¥545 no IC."
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "troca",
+    "titulo": "Se a tarde tiver que sair de graça",
+    "texto": "O Small Worlds custa ¥2.700 por adulto e ¥1.900 por adolescente — bem mais que os ¥630 do Miraikan que ele substitui. Se a conta apertar, a tarde de Odaiba se sustenta sozinha e sem ingresso: DiverCity, Aqua City, a orla e o mirante da Estátua da Liberdade dão as mesmas duas horas por zero. O que se perde é o abrigo — num dia de chuva, essa versão não tem para onde correr.",
+    "ponto": {
+     "nome": "Small Worlds Tokyo",
+     "lat": 35.63783,
+     "lng": 139.78825,
+     "gmaps": "Small Worlds Tokyo, Ariake"
+    }
+   },
+   {
+    "tipo": "corte",
+    "titulo": "Não atravessem a ponte a pé",
+    "texto": "Até 31 de março o calçadão da Ponte Arco-Íris só funciona das 10:00 às 18:00, com última entrada às 17:30, e fecha na terceira segunda-feira de cada mês. São 1,7 km de travessia, uns 30 minutos, sem banheiro nem loja no meio, e não dá para trocar de lado lá em cima: quem entra pelo norte sai pelo norte. Há elevador nas duas cabeceiras, a de Shibaura e a de Odaiba, então o carrinho até sobe — mas dentro há trechos em rampa e o horário simplesmente não fecha com o pôr do sol das 17:58. Se ainda assim quiserem andar na ponte, façam no meio da tarde e pelo lado norte, que é o que olha para a cidade, a Torre de Tóquio e a Skytree; o lado sul olha para a praia de Odaiba e a baía.",
+    "refs": [
+     "p5"
+    ]
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Uma hora a mais no Gundam Base",
+    "texto": "Sem a estátua e sem o Miraikan, sobra tarde. O Gundam Base, no 7º andar do DiverCity, é loja e museu ao mesmo tempo: linha de montagem à vista, kits exclusivos e uma área para montar ali mesmo. É o programa que segura os adolescentes, é coberto, tem elevador e banheiro com trocador no próprio andar.",
+    "refs": [
+     "p4"
+    ]
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Se chover o dia inteiro",
+    "texto": "O dia aguenta chuva quase todo sem trocar de lugar. O mercado de Toyosu é fechado e ligado por passarela coberta desde a estação; no teamLab Planets molhar-se é o programa; e em Odaiba o DiverCity, a Aqua City e o DECKS são ligados entre si por passarelas com teto, então dá para passar a tarde inteira sem sair da cobertura. O que se perde é a praia e a foto: nesse caso vejam a Ponte Arco-Íris acesa pelo vidro dos andares altos da Aqua City, secos e sentados.",
+    "refs": [
+     "p1",
+     "p2",
+     "p4",
+     "p5"
+    ]
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Se o horário do teamLab não sair",
+    "texto": "O ingresso do Planets é por horário marcado, esgota semanas antes e não há venda garantida na porta — treze lugares no mesmo horário é o gargalo do dia. Se não conseguirem, invertam: vão para Odaiba de manhã e joguem o mercado de Toyosu para depois, que a passarela de visitação vai até as 17:00 (só lembrem que os restaurantes fecham entre 14:00 e 15:00). Sobra tempo para o Small Worlds e o pôr do sol sai sem correria.",
+    "refs": [
+     "p2"
+    ]
+   }
+  ],
+  "passe": {
+   "nome": "Yurikamome — passe de 1 dia (¥820 adulto, ¥410 criança)",
+   "texto": "Nesta rota o passe NÃO compensa. Os trechos de Yurikamome do dia somam ¥189 de Toyosu a Shijo-mae, ¥251 de Shin-Toyosu a Telecom Center e cerca de ¥330 de Daiba a Shimbashi: uns ¥770, contra ¥820 do passe. Paguem no cartão IC. Ele só passa a valer se entrar uma quarta parada na linha, como o Small Worlds em Ariake. Criança de 1 a 6 anos anda de graça, duas por adulto pagante, então os três bebês não pagam trem nenhum no dia."
+  }
  }
 }
