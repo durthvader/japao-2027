@@ -13,6 +13,10 @@ Operacoes:
   reatribuir  troca — permuta o programa inteiro entre dias, mantendo a data e a base
   reordenar   dia, ordem (lista de pedacos de nome), periodos, campos
   nota        dia, texto — so registra a analise, nao mexe no roteiro
+  voo         voo, posicao — trecho novo, que a aba Voo da planilha nao traz;
+              ou numero, campos — conserta um trecho que veio da planilha
+  voonota     nota (titulo, texto) e posicao para um bloco novo, ou acha
+              (pedaco do titulo) para reescrever um bloco que ja existe
 
 Alem das operacoes, ajustes.json traz uma lista "limpeza": pares de troca aplicados a
 todo texto que o site mostra. Serve para tirar as marcas de edicao que sobraram na
@@ -150,6 +154,42 @@ def aplicar(dados, verboso=True):
             dia = _por_data(dados, op['dia'])
             dia.setdefault('ajustes', []).append({'texto': op['texto'], 'tipo': 'nota'})
             notas.append((op['dia'], 'nota'))
+            continue
+
+        if tipo == 'voo':
+            # A aba Voo da planilha tem um bloco fixo de linhas com os trechos
+            # internacionais. Os domesticos Fortaleza <-> Guarulhos foram comprados
+            # depois e entram por aqui, sem mexer na planilha.
+            voos = dados.setdefault('voos', [])
+            if op.get('numero'):
+                for v in voos:
+                    if v['numero'] == op['numero']:
+                        v.update(op['campos'])
+                        break
+                else:
+                    raise SystemExit('nao achei o voo ' + op['numero'])
+                notas.append((op['numero'], 'corrigir voo'))
+            else:
+                v = dict(op['voo'])
+                pos = op.get('posicao')
+                voos.insert(len(voos) if pos is None else pos, v)
+                notas.append((v['numero'], 'voo novo'))
+            continue
+
+        if tipo == 'voonota':
+            blocos = dados.setdefault('voosNotas', [])
+            if op.get('acha'):
+                for b in blocos:
+                    if op['acha'].lower() in b['titulo'].lower():
+                        b.update(op['nota'])
+                        break
+                else:
+                    raise SystemExit('nao achei a nota de voo "%s"' % op['acha'])
+                notas.append((op['acha'], 'corrigir nota de voo'))
+            else:
+                pos = op.get('posicao')
+                blocos.insert(len(blocos) if pos is None else pos, dict(op['nota']))
+                notas.append((op['nota']['titulo'], 'nota de voo nova'))
             continue
 
         if tipo == 'acrescentar':
