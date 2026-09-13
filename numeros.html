@@ -400,6 +400,9 @@ td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;colo
 tr:last-child td{border-bottom:none}
 td.n{font-family:var(--f-mono);font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
 td.h{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink)}
+.iata{font-family:var(--f-mono);font-weight:800;font-size:.72rem;letter-spacing:.04em;color:var(--ink);
+  background:var(--sunken);border:1px solid var(--line);border-radius:5px;padding:1px 5px;white-space:nowrap}
+.apto{display:block;margin-top:4px;font-size:.68rem;color:var(--ink-3)}
 
 /* ============ HOSPEDAGEM ============ */
 .hosp{display:flex;flex-direction:column;gap:10px}
@@ -1106,10 +1109,30 @@ function montarNotas(){
   });
 }
 function curto(s){ return s.replace(/\s*\([^)]*\)/g,"").trim(); }
+// O nome do aeroporto vem inteiro da planilha ("Aeropuerto Internacional Comodoro Arturo
+// Merino Benitez"). Na tabela o que serve e a sigla, que e como o bilhete e o painel do
+// aeroporto chamam o trecho; o nome curto fica embaixo.
+const AEROPORTOS=[
+  [/pinto martins|fortaleza/i,"FOR","Pinto Martins"],
+  [/guarulhos/i,"GRU","Guarulhos"],
+  [/merino|santiago/i,"SCL","Arturo Merino Benítez"],
+  [/kingsford|sydney/i,"SYD","Kingsford Smith"],
+  [/kansai|osaka/i,"KIX","Kansai"]
+];
+function aero(s){
+  for(const a of AEROPORTOS) if(a[0].test(s)) return {cod:a[1],nome:a[2],cidade:curto(s)};
+  return {cod:"",nome:"",cidade:curto(s)};
+}
+function trecho(v){
+  const o=aero(v.origem), d=aero(v.destino), seta=`<span style="color:var(--ink-3)">→</span>`;
+  const lado=(a)=>`${a.cod?`<span class="iata">${esc(a.cod)}</span> `:""}${esc(a.cidade)}`;
+  const pe=[o.nome,d.nome].every(Boolean) ? `<small class="apto">${esc(o.nome)} ${seta} ${esc(d.nome)}</small>` : "";
+  return `${lado(o)} ${seta} ${lado(d)}${pe}`;
+}
 function montarVoos(){
   el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr>
     <td class="n">${esc(v.numero)}</td>
-    <td>${esc(curto(v.origem))} <span style="color:var(--ink-3)">→</span> ${esc(curto(v.destino))}</td>
+    <td>${trecho(v)}</td>
     <td class="h">${dm(v.saidaData)}<br>${esc(v.saidaHora)}</td>
     <td class="h">${dm(v.chegadaData)}<br>${esc(v.chegadaHora)}</td>
     <td class="h">${esc(v.duracao)}</td>
