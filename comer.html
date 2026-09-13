@@ -403,6 +403,10 @@ td.h{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-n
 .iata{font-family:var(--f-mono);font-weight:800;font-size:.72rem;letter-spacing:.04em;color:var(--ink);
   background:var(--sunken);border:1px solid var(--line);border-radius:5px;padding:1px 5px;white-space:nowrap}
 .apto{display:block;margin-top:4px;font-size:.68rem;color:var(--ink-3)}
+/* horario que a companhia mudou: o antigo fica a vista, riscado, para quem ja tinha */
+/* anotado o outro reconhecer a linha e saber que a mudanca e de la, nao erro daqui */
+.era{display:block;font-size:.68rem;color:var(--ink-3);text-decoration:line-through;
+  text-decoration-color:var(--sakura);font-weight:500}
 
 /* ============ HOSPEDAGEM ============ */
 .hosp{display:flex;flex-direction:column;gap:10px}
@@ -1131,14 +1135,25 @@ function trecho(v){
   const pe=[o.nome,d.nome].every(Boolean) ? `<small class="apto">${esc(o.nome)} ${seta} ${esc(d.nome)}</small>` : "";
   return `${lado(o)} ${seta} ${lado(d)}${pe}`;
 }
+// Quando a companhia remarca um trecho, o valor antigo nao some: fica riscado em cima
+// do novo. Quem ja imprimiu o bilhete ou anotou o horario reconhece a linha e ve que a
+// mudanca veio da LATAM. O que era esta em 'antes', campo a campo, no ajustes.json.
+function era(v,campo){
+  const a=v.antes&&v.antes[campo];
+  return (a&&a!==v[campo]) ? `<span class="era">${esc(a)}</span>` : "";
+}
+function cel(v,campo){ return era(v,campo)+esc(v[campo]||""); }
 function montarVoos(){
-  el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr>
+  el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr${v.antes?' class="remarcado"':''}>
     <td class="n">${esc(v.numero)}</td>
     <td>${trecho(v)}</td>
-    <td class="h">${dm(v.saidaData)}<br>${esc(v.saidaHora)}</td>
-    <td class="h">${dm(v.chegadaData)}<br>${esc(v.chegadaHora)}</td>
-    <td class="h">${esc(v.duracao)}</td>
-    <td>${esc(v.conexao)}</td></tr>`).join("");
+    <td class="h">${dm(v.saidaData)}<br>${cel(v,"saidaHora")}</td>
+    <td class="h">${dm(v.chegadaData)}<br>${cel(v,"chegadaHora")}</td>
+    <td class="h">${cel(v,"duracao")}</td>
+    <td>${cel(v,"conexao")}</td></tr>`).join("");
+  const leg=el("voosLegenda");
+  if(leg) leg.innerHTML=DADOS.voos.some(v=>v.antes)
+    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "";
   el("voosNotas").innerHTML=DADOS.voosNotas.filter(n=>n.texto).map(n=>{
     const crit=/⚠|pendente/i.test(n.titulo);
     return `<div class="callout ${crit?"crit":"c-fuji"}" style="margin-bottom:9px">
