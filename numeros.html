@@ -862,8 +862,8 @@ function montarNums(){
     {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
-    {b:"¥"+nf(yen),c:brl(yen),u:"total por adulto",i:"Transporte + ingressos, sem comida"},
-    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"com comida, por adulto",i:"Mais ¥6.000 por dia no cenário médio"}
+    {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias||16)+" dias, cenário médio"},
+    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"total por adulto",i:"Sem a comida, fecha em ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
   ];
   el("nums").innerHTML=cards.map(c=>
     `<div class="num"><b>${esc(c.b)}</b>${c.c?`<em>${esc(c.c)}</em>`:""}<u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
