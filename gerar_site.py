@@ -49,8 +49,8 @@ def podar(o):
 # verdade por uma operacao em ajustes.json, escrita para quem le o roteiro.
 dados = json.dumps(podar(djs), ensure_ascii=False, indent=1)
 
-DESC = ('Roteiro completo da viagem ao Japao em marco de 2027: 16 dias entre Osaka, Kyoto, '
-        'Kawaguchiko e Tokyo, com 82 paradas, distancias, custos, mapa, restaurantes, '
+DESC = ('Roteiro completo da viagem ao Japao em marco de 2027: 18 dias entre Osaka, Kyoto, '
+        'Kawaguchiko e Tokyo, com roteiro diário, distancias, custos, mapa, restaurantes, '
         'compras e plano B.')
 ICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'"
         "%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E")
@@ -104,7 +104,7 @@ def montar(pagina, head_extra, body_classe=''):
 # Cada pagina sai autocontida, com os dados embutidos: funciona no GitHub Pages
 # e tambem aberta direto do disco, sem servidor.
 mapeados = []
-atlas = []      # todas as paradas dos 16 dias, para a pagina Atlas
+atlas = []      # todas as paradas dos 18 dias, para a pagina Atlas
 if os.path.exists(GEO_F) and os.path.exists(DTPL):
     geo = json.loads(io.open(GEO_F, encoding='utf-8').read())
     tokens = tpl[tpl.index('/* ============ TOKENS'):
@@ -138,7 +138,7 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
                        ' | '.join(dia['atividades'][k]['nome'] for k in achou)))
             par['ai'] = achou[0]
 
-        # O atlas junta as paradas dos 16 dias num mapa so. Aproveita este laco
+        # O atlas junta as paradas dos 18 dias num mapa so. Aproveita este laco
         # porque aqui o 'ativ' ja virou indice e a atividade esta em maos.
         for par in g['paradas']:
             if par.get('ai') is None or par.get('tipo') == 'base':
@@ -212,6 +212,7 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
                    .replace('__TITULO__', g['titulo'])
                    .replace('__CIDADE__', dia['cidade'])
                    .replace('__NDIA__', str(n))
+                      .replace('__TOTAL_DIAS__', str(len(dias_list)))
                    .replace('__TOPO_NAV__', topo_nav)
                    .replace('__FIM_DIA_NAV__', fim_dia_nav)
                    .replace('__DIA__', json.dumps(podar(dia), ensure_ascii=False))
@@ -229,40 +230,41 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
 
 # ------------------------------------------------------------------- paginas do site
 PAGINAS = [
+    {'id': 'remarcacao', 'arquivo': 'remarcacao.html', 'label': 'Remarcação', 'titulo': 'Remarcação e Dias Adicionais · Japão 2027', 'desc': 'Novos voos via Doha, comparação das opções com mais Kyoto, custos e pendências após a remarcação.'},
     {
         'id': 'inicio',
         'arquivo': 'index.html',
         'label': 'Início',
-        'titulo': 'Japão 2027 — 16 dias de Osaka a Tokyo',
-        'desc': 'Roteiro completo da viagem ao Japão em março de 2027: 16 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com 82 paradas, distâncias, custos, mapa, restaurantes, compras e plano B.',
+        'titulo': 'Japão 2027 — 18 dias de Osaka a Tokyo',
+        'desc': 'Roteiro completo da viagem ao Japão em março de 2027: 18 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com roteiro diário, distâncias, custos, mapa, restaurantes, compras e plano B.',
     },
     {
         'id': 'roteiro',
         'arquivo': 'roteiro.html',
         'label': 'Roteiro',
-        'titulo': 'Roteiro dos 16 Dias · Japão 2027',
-        'desc': 'Cronograma detalhado dos 16 dias, horários, ritmo, transportes, custos e filtros de atividade.',
+        'titulo': 'Roteiro dos 18 Dias · Japão 2027',
+        'desc': 'Cronograma detalhado dos 18 dias, horários, ritmo, transportes, custos e filtros de atividade.',
     },
     {
         'id': 'mapa',
         'arquivo': 'mapa.html',
         'label': 'Mapa',
         'titulo': 'Mapa da Rota · Japão 2027',
-        'desc': 'Trajeto de ponta a ponta de 1.425 km entre Osaka, Kyoto, Kawaguchiko e Tokyo com conexões e pernas.',
+        'desc': 'Trajeto de ponta a ponta de percursos entre as bases entre Osaka, Kyoto, Kawaguchiko e Tokyo com conexões e pernas.',
     },
     {
         'id': 'atlas',
         'arquivo': 'atlas.html',
         'label': 'Atlas',
         'titulo': 'Atlas · Tudo o que vamos ver · Japão 2027',
-        'desc': 'As paradas dos 16 dias num mapa só, com filtro por cidade, por tipo de lugar e pelo que o carrinho aguenta.',
+        'desc': 'As paradas dos 18 dias num mapa só, com filtro por cidade, por tipo de lugar e pelo que o carrinho aguenta.',
     },
     {
         'id': 'timelapse',
         'arquivo': 'timelapse.html',
         'label': 'Timelapse',
         'titulo': 'Timelapse · Japão 2027',
-        'desc': 'Player dinâmico dia a dia em 16 quadros com mapa animado e métricas de cada etapa.',
+        'desc': 'Player dinâmico dia a dia em 18 quadros com mapa animado e métricas de cada etapa.',
     },
     {
         'id': 'numeros',
@@ -356,6 +358,8 @@ def obter_dados_pagina(pid):
                 'voosNotas': podar(djs.get('voosNotas', [])),
                 'hospedagem': podar(djs.get('hospedagem', {}))}
     return {}
+
+PAGINAS.sort(key=lambda p: 0 if p['id'] == 'inicio' else 1)
 
 for marca in ('__DADOS__', '__FOTOS__', '__MAPAS__'):
     assert marca in tpl, 'template.html perdeu o marcador ' + marca

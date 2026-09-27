@@ -234,6 +234,7 @@ body{padding-bottom:0}
   <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
 </div>
 
+<p style="padding:12px 20px;text-align:center"><a href="remarcacao.html">Programação anterior restaurada; 18/03 livre em Kyoto e 01/04 livre em Osaka até o aeroporto. Hospedagens pendentes.</a></p>
 <div class="palco c-__CIDADE__">
   <div id="map"></div>
   <div class="painel">
@@ -381,7 +382,7 @@ if(map) map.fitBounds(L.latLngBounds(GEO.paradas.map(p=>[p.lat,p.lng])),{padding
 /* ---- cabecalho e numeros ---- */
 const DIAS_SEM = DIA.semana;
 el("subt").textContent = DIA.data.slice(8,10)+"/"+DIA.data.slice(5,7)+"/"+DIA.data.slice(0,4)
-  +" · "+DIAS_SEM+" · dia __NDIA__ de 16";
+  +" · "+DIAS_SEM+" · dia __NDIA__ de __TOTAL_DIAS__";
 el("resumo").textContent = GEO.resumo;
 const t = DIA.total||{};
 const kmPe = GEO.pernas

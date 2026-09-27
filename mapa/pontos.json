@@ -1,8 +1,163 @@
 {
- "_doc": "Camada geografica curada por dia. Cada parada com 'ai' aponta para dados.json -> dias[].atividades[ai]; as demais sao pontos de apoio (base, estacoes). Tracados sao aproximados: o botao de cada perna abre a rota exata no Google Maps. Uma perna com \"unico\": true nao oferece o segundo modo: e o caso de trecho em que a alternativa perde em tudo e so poluiria o card.",
- "2027-03-18": {
+ "2027-03-15": {
+  "titulo": "Chegada a Osaka às 16:25",
+  "resumo": "Chegada via Doha em 15/03. Transfer e jantar simples, com margem para imigração e descanso. O endereço do primeiro pernoite ainda precisa ser confirmado.",
+  "centro": [
+   34.55,
+   135.37
+  ],
+  "zoom": 11,
+  "paradas": [
+   {
+    "id": "base",
+    "ativ": "CHEGADA",
+    "tipo": "base",
+    "lat": 34.43433,
+    "lng": 135.2442,
+    "hora": "16:25",
+    "fim": "18:15",
+    "gmaps": "Kansai International Airport Terminal 1",
+    "foto": "File:関西国際空港全体写真20220811 (cropped).jpg",
+    "must": [
+     "Passaportes e Visit Japan Web preparados antes do embarque",
+     "Retirar bagagens e confirmar entrega dos carrinhos",
+     "Internet e transporte conforme a hospedagem confirmada"
+    ],
+    "alerta": "18:15 é apenas referência para planejamento, não garantia de liberação. Não comprometer a chegada com ingresso ou trem sem flexibilidade."
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Kansai Airport",
+    "tipo": "estacao",
+    "lat": 34.4358,
+    "lng": 135.24354,
+    "gmaps": "Kansai Airport Station"
+   },
+   {
+    "id": "e2",
+    "nome": "Tengachaya (Nankai)",
+    "tipo": "estacao",
+    "lat": 34.63768,
+    "lng": 135.49713,
+    "gmaps": "Tengachaya Station, Osaka"
+   },
+   {
+    "id": "p1",
+    "ativ": "KIX → Tengachaya",
+    "tipo": "hospedagem",
+    "lat": 34.63808,
+    "lng": 135.4989,
+    "aprox": true,
+    "hora": "19:15",
+    "gmaps": "Tengachaya Station, Osaka",
+    "alerta": "Tengachaya é a localização de referência da hospedagem antiga. Confirmar cobertura da noite de 15/03 e atualizar o percurso se o endereço mudar."
+   },
+   {
+    "id": "p2",
+    "ativ": "Jantar",
+    "tipo": "comida",
+    "lat": 34.6378,
+    "lng": 135.4975,
+    "hora": "19:45",
+    "fim": "20:45",
+    "gmaps": "Tengachaya Station shopping street, Osaka",
+    "foto": "File:Tengachaya - panoramio (3).jpg",
+    "must": [
+     "A galeria coberta na saída da estação, que é o comércio do bairro"
+    ],
+    "comidas": [
+     "Konbini: onigiri ¥150, karaage, e o leite e a água dos bebês",
+     "As casas de ramen e izakaya da galeria viram a noite",
+     "Rede de gyudon aberta 24h a 300 m da estação"
+    ],
+    "compras": [
+     "Supermercado e drogaria na galeria — o básico para o primeiro dia"
+    ],
+    "alerta": "Jantar perto da hospedagem. O programa completo do antigo 18/03 fica em 16/03."
+   },
+   {
+    "id": "fim",
+    "nome": "Hospedagem de 15/03 — a confirmar",
+    "tipo": "base",
+    "lat": 34.63808,
+    "lng": 135.4989,
+    "aprox": true,
+    "hora": "21:00",
+    "gmaps": "Tengachaya Station, Osaka"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "e1",
+    "modo": "pe",
+    "min": 6,
+    "km": 0.4,
+    "custo": 0,
+    "desc": "Passarela coberta do Terminal 1 até a estação, no 2º andar — tem elevador."
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "linha": "Nankai Airport Express",
+    "cor": "#0060A9",
+    "min": 40,
+    "km": 46.0,
+    "custo": 970,
+    "desc": "Trajeto de referência até Tengachaya. Confirmar horário e tarifa em 2027 e recalcular se a hospedagem mudar."
+   },
+   {
+    "de": "e2",
+    "para": "p1",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Saída da estação, 200 m pela galeria."
+   },
+   {
+    "de": "p1",
+    "para": "p2",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Volta à galeria da estação, onde está o comércio."
+   },
+   {
+    "de": "p2",
+    "para": "fim",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Os mesmos 200 m, agora devagar."
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "troca",
+    "titulo": "Trem com assento reservado",
+    "texto": "Comparar Rapi:t e Airport Express depois de definir endereço e horário provável de saída do aeroporto. Não há reserva de trem assumida.",
+    "refs": [
+     "p1"
+    ]
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Atraso na chegada",
+    "texto": "Avisar a hospedagem e conferir o próximo transporte disponível. Se for necessário transfer privativo, cotar capacidade para 13 pessoas, três bebês, malas e carrinhos; não presumir que três táxis bastam.",
+    "refs": [
+     "base",
+     "p1"
+    ]
+   }
+  ]
+ },
+ "2027-03-16": {
   "titulo": "Osaka de ponta a ponta",
-  "resumo": "Mercado de manhã, baía à tarde, o bairro retrô antes das lojas fecharem e o pôr do sol do mirante. Dois trechos longos de metrô, o resto a pé.",
+  "resumo": "Programa completo que antes estava em 18/03, antecipado para 16/03: mercados, aquário, Tempozan, Nakazakicho, Umeda e jantar. Mesmas atrações do roteiro anterior.",
   "centro": [
    34.664,
    135.472
@@ -108,7 +263,7 @@
     "compras": [
      "Loja do aquário: pelúcia de tubarão-baleia"
     ],
-    "alerta": "NÃO entra no Osaka Amazing Pass. Preço dinâmico: adulto ¥2.400–2.700, 7–15 anos ¥1.200–1.400, 4–6 anos ¥500–700. Empresta carrinho na entrada.",
+    "alerta": "O aquário não empresta carrinhos. Recomenda estacioná-los na entrada, mas admite modelos compatíveis: largura até 85 cm, empurrado por trás, trava e cinto. Há elevadores com orientação da equipe; levar canguru conforme a família. Reconfirmar regras antes da visita. Visita do roteiro original, agora em 16/03. ¥2.700 é referência anterior; conferir preço e horário no calendário oficial de março/2027. Não incluído no Osaka Amazing Pass.",
     "ativ": "Kaiyukan"
    },
    {
@@ -503,8 +658,8 @@
    }
   ],
   "passe": {
-   "nome": "Osaka Amazing Pass — só o de 2 dias se paga, e por pouco",
-   "texto": "⚠ O KAIYUKAN NÃO ENTRA NO PASSE, e é ele que decide tudo: dá ¥100 de desconto, não entrada franca. Sozinho, o dia 18 rende ¥3.160 (Umeda Sky ¥2.000 + ¥100 do aquário + ¥1.060 de metrô) contra ¥3.500 do passe de 1 dia — perde ¥340.\nA versão de 2 DIAS custa ¥5.000 e vale para dois dias seguidos: 17 e 18 servem. Somando os dois, ela cobre ¥5.530 — castelo ¥1.200, Shitennoji ¥500, Umeda Sky ¥2.000, ¥100 do aquário e ¥1.730 de metrô nos dois dias. Sobra ¥530 por adulto, uns ¥4.200 no grupo.\nÉ lucro de verdade, mas fino: basta alguém desistir de subir ao castelo OU ao Umeda Sky e o passe passa a dar prejuízo. Comprem se estiverem certos dos dois; se houver dúvida, paguem avulso.\n⚠ Desde a edição 2026 o passe é 100% DIGITAL, em QR pelo site Surutto QRtto — não há mais cartão para comprar no balcão. Comprem antes de viajar, e cada pessoa precisa do QR no próprio celular."
+   "nome": "Osaka Amazing Pass — comparar para 16 e 17/03",
+   "texto": "O programa restaurado coloca Umeda Sky em 16/03 e castelo/Shitennoji em 17/03. Comparar as versões de um e dois dias com entradas avulsas e transporte nas regras de março/2027. Kaiyukan e sumô não têm entrada incluída. A economia calculada anteriormente para 17–18/03 não é uma cotação válida; confirmar tarifas, atrações participantes e condições antes de comprar."
   }
  },
  "2027-03-17": {
@@ -650,7 +805,7 @@
     "compras": [
      "Banzuke, o cartaz com o ranking do torneio, ¥100 — a melhor lembrança barata"
     ],
-    "alerta": "Chegar 15:15 pega a arena enchendo e o dohyō-iri inteiro; antes disso são as divisões de baixo, com a arquibancada vazia. Entrar e sair é livre. Cadeira ocidental é mais confortável que o box de tatame, que é para quatro pessoas sentadas no chão. É barulhento mas curto — cada luta dura segundos."
+    "alerta": "Haru Basho previsto em Osaka de 14 a 28/03/2027. Manter 17/03 e mirar a divisão principal no fim da tarde; confirmar programação, tarifas, lugares e condições infantis antes da compra. A venda anunciada pela associação abre em 06/02/2027. ¥5.000 é provisão anterior, não ingresso comprado. Conferir acessibilidade, guarda dos carrinhos, lugares, ingresso infantil e regras de reentrada da edição de 2027 antes da compra. Não presumir empréstimo de carrinho ou acesso de entrada e saída ilimitado."
    },
    {
     "id": "p5",
@@ -865,7 +1020,7 @@
    {
     "tipo": "extra",
     "titulo": "Subir a Tsūtenkaku, se quiserem mesmo",
-    "texto": "Cortada do roteiro: são 103 m, o mais baixo dos mirantes da viagem, e a vista não acrescenta nada depois do Umeda Sky amanhã e do Skytree em Tokyo. ¥1.200, ou de graça com o Osaka Amazing Pass — o que é justamente o que faria o passe compensar. A graça do Shinsekai é a rua, não a torre.",
+    "texto": "Cortada do roteiro: são 103 m, o mais baixo dos mirantes da viagem, e a vista não acrescenta nada depois do Umeda Sky em 16/03 e do Skytree em Tokyo. ¥1.200, ou de graça com o Osaka Amazing Pass — o que é justamente o que faria o passe compensar. A graça do Shinsekai é a rua, não a torre.",
     "refs": [
      "p3"
     ]
@@ -911,272 +1066,126 @@
    }
   ],
   "passe": {
-   "nome": "Osaka Amazing Pass — o de 1 dia não paga",
-   "texto": "O de 1 dia custa ¥3.500 e neste dia rende ¥2.370: o castelo (¥1.200), o Shitennoji (¥500, que ENTRA no passe) e o metrô do dia (¥670). Perde ¥1.130. O ingresso do sumô, que é o gasto grande de hoje, não é coberto por passe nenhum. O que muda a conta é a versão de 2 DIAS, usada hoje e amanhã — veja o dia 18."
+   "nome": "Osaka Amazing Pass — comparar para 16 e 17/03",
+   "texto": "O programa restaurado coloca Umeda Sky em 16/03 e castelo/Shitennoji em 17/03. Comparar as versões de um e dois dias com entradas avulsas e transporte nas regras de março/2027. Kaiyukan e sumô não têm entrada incluída. A economia calculada anteriormente para 17–18/03 não é uma cotação válida; confirmar tarifas, atrações participantes e condições antes de comprar."
   }
  },
- "2027-03-16": {
-  "titulo": "Pousar e chegar inteiro em Namba",
-  "resumo": "Um trajeto só, mas com 13 pessoas, mala e três bebês depois de um voo longo: o aeroporto, o trem de 45 min e a última caminhada até a cama. O jantar é o que sobrar de fôlego.",
+ "2027-03-18": {
+  "titulo": "Kyoto — dia adicional livre",
+  "resumo": "Transfer e instalação na hospedagem. Nenhuma atração definida para os períodos livres, antes ou depois do check-in. Hospedagem ainda precisa ser alterada.",
   "centro": [
-   34.55,
-   135.37
+   34.9897,
+   135.7567
   ],
-  "zoom": 11,
+  "zoom": 12,
   "paradas": [
    {
-    "id": "base",
-    "ativ": "CHEGADA",
-    "tipo": "base",
-    "lat": 34.43433,
-    "lng": 135.2442,
-    "hora": "19:45",
-    "fim": "21:15",
-    "gmaps": "Kansai International Airport Terminal 1",
-    "foto": "File:関西国際空港全体写真20220811 (cropped).jpg",
-    "must": [
-     "Preencher o Visit Japan Web ANTES de embarcar — o QR pronto troca duas filas por uma leitura de código",
-     "Caixa eletrônico 7-Bank no saguão, que aceita cartão estrangeiro",
-     "Chip ou wi-fi portátil retirado no balcão do desembarque"
-    ],
-    "alerta": "1h30 entre o pouso e o trem é realista para o KIX, mas só com o Visit Japan Web feito em casa: sem ele, imigração para 13 pessoas passa fácil de 1h. Quem tiver bebê pode usar a fila prioritária — pergunte ao agente na entrada do saguão. Já saiam com uns ienes em espécie ou saquem aqui: muita casa pequena de Namba ainda é só dinheiro."
-   },
-   {
-    "id": "e1",
-    "nome": "Estação Kansai Airport",
-    "tipo": "estacao",
-    "lat": 34.4358,
-    "lng": 135.24354,
-    "gmaps": "Kansai Airport Station"
-   },
-   {
-    "id": "e2",
-    "nome": "Tengachaya (Nankai)",
-    "tipo": "estacao",
-    "lat": 34.63768,
-    "lng": 135.49713,
-    "gmaps": "Tengachaya Station, Osaka"
-   },
-   {
-    "id": "p1",
-    "ativ": "KIX → Tengachaya",
-    "tipo": "hospedagem",
+    "nome": "Airbnb Tengachaya",
     "lat": 34.63808,
     "lng": 135.4989,
     "aprox": true,
-    "hora": "22:15",
     "gmaps": "Tengachaya Station, Osaka",
-    "alerta": "O Airport Express PARA EM TENGACHAYA, uma estação antes de Namba: não sigam até o fim da linha. São 40 min em vez de 45, mesma tarifa, e desembarcar aqui evita a Namba lotada com 13 pessoas e mala. Da estação até a hospedagem são 200 m. A hospedagem fica em Nishinari, o bairro mais barato de Osaka. A parte de fama pesada é Kamagasaki, entre Shin-Imamiya e Dobutsuen-mae; Tengachaya 2-chome fica ao sul disso, é residencial e tranquilo, e a estação tem galeria coberta com comércio. À noite, voltem pela avenida e pela estação em vez de cortar caminho pelas ruas internas — é o mesmo conselho que se dá em qualquer cidade grande."
+    "endereco": "2-6-25 Tengachaya, Nishinari-ku, Osaka 557-0014",
+    "confere": "Tengachaya 2-chome; a estação Tengachaya (Nankai + metrô Sakaisuji) fica a 170 m",
+    "id": "base",
+    "tipo": "base",
+    "hora": "08:30"
+   },
+   {
+    "lat": 34.63808,
+    "lng": 135.4989,
+    "aprox": true,
+    "gmaps": "Tengachaya Station, Osaka",
+    "endereco": "2-6-25 Tengachaya, Nishinari-ku, Osaka 557-0014",
+    "confere": "Tengachaya 2-chome; a estação Tengachaya (Nankai + metrô Sakaisuji) fica a 170 m",
+    "id": "p1",
+    "tipo": "base",
+    "hora": "08:30",
+    "ativ": "Check-out + despachar malas"
    },
    {
     "id": "p2",
-    "ativ": "Jantar",
-    "tipo": "comida",
-    "lat": 34.6378,
-    "lng": 135.4975,
-    "hora": "22:30",
-    "fim": "23:30",
-    "gmaps": "Tengachaya Station shopping street, Osaka",
-    "foto": "File:Tengachaya - panoramio (3).jpg",
-    "must": [
-     "A galeria coberta na saída da estação, que é o comércio do bairro"
-    ],
-    "comidas": [
-     "Konbini: onigiri ¥150, karaage, e o leite e a água dos bebês",
-     "As casas de ramen e izakaya da galeria viram a noite",
-     "Rede de gyudon aberta 24h a 300 m da estação"
-    ],
-    "compras": [
-     "Supermercado e drogaria na galeria — o básico para o primeiro dia"
-    ],
-    "alerta": "Dotonbori fica a 3,4 km daqui, não a 800 m: são 3 estações de metrô Sakaisuji e a mesma volta à meia-noite. Chegando 22:30 depois de um voo longo, com três bebês, o realista é resolver o jantar no próprio bairro. Dotonbori é o programa de amanhã à noite, com calma."
+    "ativ": "TRANSFER OSAKA",
+    "tipo": "estacao",
+    "lat": 34.98577,
+    "lng": 135.75857,
+    "hora": "10:40",
+    "gmaps": "Kyoto Station"
    },
    {
-    "id": "fim",
-    "nome": "Airbnb Namba",
-    "tipo": "base",
-    "lat": 34.63808,
-    "lng": 135.4989,
+    "lat": 34.9897,
+    "lng": 135.7567,
     "aprox": true,
-    "hora": "00:00",
-    "gmaps": "Tengachaya Station, Osaka"
+    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
+    "endereco": "749-5 Tatsumi-cho, Shinmachi-dori Shichijo-agaru, Shimogyo-ku, Kyoto",
+    "confere": "cruzamento Shinmachi × Shichijo, um pouco ao norte; dá 469 m até a Estação de Kyoto, e o anúncio diz 500 m",
+    "id": "p3",
+    "tipo": "hospedagem",
+    "ativ": "Check-in K-style",
+    "hora": "15:00"
+   },
+   {
+    "id": "p4",
+    "ativ": "DIA LIVRE",
+    "tipo": "apoio",
+    "lat": 34.9897,
+    "lng": 135.7567,
+    "aprox": true,
+    "hora": "Livre",
+    "alerta": "Dia adicional sem atrações definidas. Usar livremente o tempo após a chegada e os procedimentos de hospedagem. A programação original de Kyoto permanece em 19, 20 e 21/03."
    }
   ],
   "pernas": [
    {
     "de": "base",
-    "para": "e1",
-    "modo": "pe",
-    "min": 6,
-    "km": 0.4,
-    "custo": 0,
-    "desc": "Passarela coberta do Terminal 1 até a estação, no 2º andar — tem elevador."
-   },
-   {
-    "de": "e1",
-    "para": "e2",
-    "modo": "metro",
-    "linha": "Nankai Airport Express",
-    "cor": "#0060A9",
-    "min": 40,
-    "km": 46.0,
-    "custo": 970,
-    "desc": "Direto até Tengachaya, sem baldeação. Último do dia sai por volta de 23:55."
-   },
-   {
-    "de": "e2",
     "para": "p1",
     "modo": "pe",
-    "min": 3,
-    "km": 0.2,
+    "km": 0,
+    "min": 0,
     "custo": 0,
-    "desc": "Saída da estação, 200 m pela galeria."
+    "desc": "Saída da hospedagem, endereço a confirmar."
    },
    {
     "de": "p1",
     "para": "p2",
-    "modo": "pe",
-    "min": 3,
-    "km": 0.2,
-    "custo": 0,
-    "desc": "Volta à galeria da estação, onde está o comércio."
+    "modo": "trem",
+    "km": 48,
+    "min": 95,
+    "custo": 870,
+    "desc": "Metrô Sakaisuji até Dobutsuen-mae + Midosuji até Umeda + JR Special Rapid. Tempo e tarifa de referência."
    },
    {
     "de": "p2",
-    "para": "fim",
+    "para": "p3",
     "modo": "pe",
-    "min": 3,
-    "km": 0.2,
+    "km": 0.9,
+    "min": 15,
     "custo": 0,
-    "desc": "Os mesmos 200 m, agora devagar."
+    "desc": "Acesso à hospedagem de referência; confirmar endereço e guarda de malas."
    }
   ],
-  "alternativas": [
-   {
-    "tipo": "troca",
-    "titulo": "Rapi:t em vez do Airport Express",
-    "texto": "¥1.520 contra ¥970, e economiza uns 10 min. O que se compra de verdade não é o tempo: é o assento marcado. Para 13 pessoas com mala às 21:15, entrar num trem com lugar garantido e bagageiro de verdade muda a chegada. São ¥550 a mais por pessoa, uns R$ 18. Reserve antes pelo site da Nankai.",
-    "refs": [
-     "p1"
-    ]
-   },
-   {
-    "tipo": "extra",
-    "titulo": "Dotonbori ainda hoje, para quem tiver fôlego",
-    "texto": "Metrô Sakaisuji de Tengachaya até Nipponbashi, 3 estações, ¥240, e 400 m a pé até o canal. São uns 20 min por trecho. Faz sentido para quem estiver inteiro e quiser ver o Glico aceso na primeira noite — mas a cozinha da maioria das casas fecha por volta das 23:00, e o grupo com bebê tem 09:00 no castelo amanhã.",
-    "ponto": {
-     "nome": "Dotonbori",
-     "lat": 34.66893,
-     "lng": 135.50105,
-     "gmaps": "Dotonbori, Osaka"
-    }
-   },
-   {
-    "tipo": "extra",
-    "titulo": "Despachar as malas grandes direto para o hotel",
-    "texto": "O balcão de takkyubin do KIX entrega em Osaka no dia seguinte por ¥2.000–2.500 a mala. Vale se o grupo chegar destruído: o trem de 45 min e a caminhada final ficam sem bagagem. O porém é que o balcão fecha por volta das 21:00 — com pouso às 19:45 é apertado, e só dá certo se a imigração andar.",
-    "refs": [
-     "base"
-    ]
-   },
-   {
-    "tipo": "planob",
-    "titulo": "Se o voo atrasar",
-    "texto": "O Airport Express roda até por volta de 23:55, então há folga de umas 2h30 sobre o horário previsto. Passando disso, é táxi — 50 km, uns ¥18.000, que para 13 pessoas viram três carros. Nesse cenário o jantar simplesmente não acontece: konbini e dormir.",
-    "refs": [
-     "p1"
-    ]
-   },
-   {
-    "tipo": "planob",
-    "titulo": "Se chover",
-    "texto": "Quase todo o dia é coberto: passarela do terminal, trem, e a saída da Nankai cai dentro da galeria da Sennichimae. Os 600 m até Dotonbori são o único trecho aberto, e dá para fazer quase inteiro por dentro da galeria coberta.",
-    "refs": [
-     "p2"
-    ]
-   }
-  ]
+  "alternativas": []
  },
  "2027-03-19": {
-  "titulo": "Osaka fica para trás, Kyoto começa pelos templos da estação",
-  "resumo": "A manhã é a mudança: metrô até Umeda, JR até Kyoto e as malas fora das mãos antes das 11:00. O resto do dia gira em volta da estação — dois templos gigantes e grátis, o salão das 1.001 Kannon, e à noite o mercado e Gion.",
+  "titulo": "Kyoto — templos, Nishiki e Gion",
+  "resumo": "Circuito turístico original de 19/03. O grupo já estará hospedado em Kyoto desde 18/03; não repetir transfer nem check-in.",
   "centro": [
-   34.835,
-   135.63
+   34.999,
+   135.763
   ],
-  "zoom": 10,
+  "zoom": 13,
   "paradas": [
    {
-    "id": "base",
-    "nome": "Airbnb Tengachaya",
-    "tipo": "base",
-    "lat": 34.63808,
-    "lng": 135.4989,
-    "aprox": true,
-    "hora": "08:15",
-    "gmaps": "Tengachaya Station, Osaka",
-    "alerta": "A hospedagem fica em Nishinari, o bairro mais barato de Osaka. A parte de fama pesada é Kamagasaki, entre Shin-Imamiya e Dobutsuen-mae; Tengachaya 2-chome fica ao sul disso, é residencial e tranquilo, e a estação tem galeria coberta com comércio. À noite, voltem pela avenida e pela estação em vez de cortar caminho pelas ruas internas — é o mesmo conselho que se dá em qualquer cidade grande."
-   },
-   {
-    "id": "p1",
-    "ativ": "Check-out + despachar malas",
-    "tipo": "evento",
-    "lat": 34.63808,
-    "lng": 135.4989,
-    "aprox": true,
-    "hora": "08:15",
-    "fim": "08:45",
-    "gmaps": "Tengachaya Station, Osaka",
-    "foto": "Yamato Transport delivery truck",
-    "must": [
-     "Despachar as malas grandes por takkyubin direto para o hotel de Kyoto",
-     "Ficar só com uma mochila de um dia por adulto e a bolsa de fralda"
-    ],
-    "alerta": "É a decisão que define o dia. São 13 pessoas com mala e 3 carrinhos: com as malas despachadas, a baldeação de Umeda deixa de ser um problema. Takkyubin Osaka→Kyoto sai por volta de ¥1.500 por mala; postando até ~12:00 costuma chegar no mesmo dia à noite, mas confirmem no balcão — com prazo apertado vira entrega na manhã seguinte, então separem pijama e fralda na mochila. Plano B: coin locker grande na Estação de Kyoto, ¥400–700 por dia, mas às 10:00 os grandes já costumam estar ocupados."
-   },
-   {
-    "id": "e1",
-    "nome": "Tengachaya (Sakaisuji)",
-    "tipo": "estacao",
-    "lat": 34.63768,
-    "lng": 135.49713,
-    "hora": "08:55",
-    "gmaps": "Tengachaya Station, Osaka"
-   },
-   {
-    "id": "p2",
-    "ativ": "TRANSFER OSAKA",
-    "tipo": "evento",
-    "lat": 34.70341,
-    "lng": 135.49759,
-    "hora": "09:12",
-    "fim": "09:37",
-    "gmaps": "Umeda Station Midosuji Line",
-    "foto": "Umeda Station Osaka concourse",
-    "must": [
-     "Descer do Midosuji e seguir as placas de JR / Osaka Station, nunca as de Hankyu ou Hanshin",
-     "Pegar o JR Special Rapid sentido Kyoto — 29 min, quase sem parar"
-    ],
-    "alerta": "É o ponto de atenção do dia. Umeda/Osaka é uma das estações mais confusas do Japão e a baldeação Midosuji→JR é uma caminhada de uns 900 m por corredores subterrâneos. Procurem o elevador desde a própria plataforma do Midosuji — existe, mas é um só por plataforma e forma fila. Reservem 20 min só para atravessar e combinem um ponto de reencontro ANTES de entrar no corredor, porque o grupo se parte. O Special Rapid não tem lugar marcado e vai cheio: com 3 carrinhos, entrem pela porta mais próxima da ponta do trem e fiquem na área de bagagem em vez de tentar sentar todo mundo junto."
-   },
-   {
-    "id": "e2",
-    "nome": "Estação de Kyoto",
-    "tipo": "estacao",
-    "lat": 34.98577,
-    "lng": 135.75857,
-    "hora": "10:06",
-    "gmaps": "Kyoto Station"
-   },
-   {
-    "id": "e3",
-    "nome": "Hotel — guarda-volumes",
-    "tipo": "base",
+    "nome": "K-style 東本願寺",
     "lat": 34.9897,
     "lng": 135.7567,
     "aprox": true,
-    "hora": "10:20",
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
+    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
+    "endereco": "749-5 Tatsumi-cho, Shinmachi-dori Shichijo-agaru, Shimogyo-ku, Kyoto",
+    "confere": "cruzamento Shinmachi × Shichijo, um pouco ao norte; dá 469 m até a Estação de Kyoto, e o anúncio diz 500 m",
+    "id": "base",
+    "tipo": "base",
+    "hora": "10:20"
    },
    {
     "id": "p3",
@@ -1237,7 +1246,7 @@
      "Os 28 guardiões esculpidos no século XIII, na frente da fila",
      "O corredor de 120 m — o salão de madeira mais comprido do Japão"
     ],
-    "alerta": "⚠ Em 19 de março ainda vale o horário de inverno: 09:00–16:00, ÚLTIMA ENTRADA 15:30 — o horário 08:30–17:00 só começa em 1º de abril. Cheguem até 15:00 com folga. Ingresso ¥600 adulto, ¥400 adolescente, ¥300 criança de fundamental; bebê não paga. O percurso é todo descalço em piso de madeira liso, o carrinho fica na entrada — quem estiver com bebê vai precisar do canguru. Proibido fotografar dentro. Abre normalmente numa sexta."
+    "alerta": "1.001 estátuas de Kannon em fila dentro de um salão de 120 m, o prédio de madeira mais comprido do Japão. ⚠ ATENÇÃO AO HORÁRIO: de 16 de novembro a 31 de março o templo fecha às 16:00, com última entrada 15:30 — uma hora antes do horário de verão que aparece na maioria dos guias. Visitar antes da última entrada. O check-in já ocorreu em 18/03. Fotografar dentro do salão é proibido. Piso de madeira, sapato na mão, e o carrinho fica na entrada."
    },
    {
     "id": "e7",
@@ -1259,7 +1268,7 @@
    },
    {
     "id": "p5",
-    "ativ": "Check-in K-style",
+    "ativ": "Retorno à hospedagem",
     "tipo": "evento",
     "lat": 34.9897,
     "lng": 135.7567,
@@ -1271,7 +1280,7 @@
      "Conferir se as malas do takkyubin já chegaram antes de subir",
      "Trocar de sapato: a noite em Gion é toda em pedra irregular"
     ],
-    "alerta": "Check-in só a partir das 15:00. Se as malas foram por takkyubin e o pacote atrasar, não travem o dia esperando — o hotel recebe e guarda. Meia hora resolve: deixem as coisas, peguem casaco (março anoitece frio em Kyoto) e saiam logo, porque o Nishiki fecha cedo."
+    "alerta": "A entrada na hospedagem ocorreu no dia anterior; esta é uma passagem no circuito original, antes de Nishiki."
    },
    {
     "id": "p6",
@@ -1369,74 +1378,17 @@
     "aprox": true,
     "hora": "22:10",
     "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
-   },
-   {
-    "id": "e11",
-    "nome": "Dobutsuen-mae (baldeação)",
-    "tipo": "estacao",
-    "lat": 34.64869,
-    "lng": 135.50544,
-    "gmaps": "Dobutsuen-mae Station"
    }
   ],
   "pernas": [
    {
     "de": "base",
-    "para": "p1",
-    "modo": "pe",
-    "min": 0,
-    "km": 0.0,
-    "custo": 0,
-    "desc": "O despacho sai do próprio apartamento: a Yamato busca no endereço, ou se leva a pé até a loja de conveniência da esquina."
-   },
-   {
-    "de": "p1",
-    "para": "e1",
-    "modo": "pe",
-    "min": 3,
-    "km": 0.2,
-    "custo": 0,
-    "desc": "Duzentos metros até a boca do metrô."
-   },
-   {
-    "de": "e1",
-    "para": "e11",
-    "modo": "metro",
-    "linha": "Sakaisuji",
-    "cor": "#814721",
-    "min": 2,
-    "km": 1.3,
-    "custo": 290,
-    "desc": "1 estação. Tarifa até Umeda, com a baldeação incluída"
-   },
-   {
-    "de": "p2",
-    "para": "e2",
-    "modo": "metro",
-    "linha": "JR Special Rapid",
-    "cor": "#008C46",
-    "min": 29,
-    "km": 42.8,
-    "custo": 580,
-    "desc": "Osaka → Kyoto direto, sai a cada 15 min. Sem lugar marcado."
-   },
-   {
-    "de": "e2",
-    "para": "e3",
-    "modo": "pe",
-    "min": 14,
-    "km": 0.9,
-    "custo": 0,
-    "desc": "Saída Karasuma da estação e reto rumo norte. Plano o caminho todo, calçada larga."
-   },
-   {
-    "de": "e3",
     "para": "p3",
     "modo": "pe",
-    "min": 5,
     "km": 0.3,
+    "min": 5,
     "custo": 0,
-    "desc": "O Higashi Honganji é o muro branco do outro lado da rua."
+    "desc": "Saída da hospedagem para o circuito original dos templos."
    },
    {
     "de": "p3",
@@ -1502,7 +1454,7 @@
     "min": 14,
     "km": 0.9,
     "custo": 0,
-    "desc": "Mesmo caminho da manhã pela Karasuma."
+    "desc": "Retorno à hospedagem pela região da estação."
    },
    {
     "de": "p5",
@@ -1559,44 +1511,22 @@
     "km": 0.9,
     "custo": 0,
     "desc": "Karasuma acima, o mesmo caminho de sempre."
-   },
-   {
-    "de": "e11",
-    "para": "p2",
-    "modo": "metro",
-    "linha": "Midosuji",
-    "cor": "#E5171F",
-    "min": 16,
-    "km": 8.0,
-    "custo": 0,
-    "desc": "Direto até Umeda — a mesma passagem"
    }
   ],
   "alternativas": [
    {
     "tipo": "troca",
-    "titulo": "Nishiki antes do check-in, não depois",
-    "texto": "Nesta ordem vocês chegam ao mercado às 16:10, e as bancas boas do Nishiki começam a fechar entre 17:00 e 17:30 — sobra pouco mais de uma hora útil. Invertendo, dá para ir do Sanjūsangen-dō direto ao Nishiki (ônibus 206 até Shijo-Kawaramachi, ¥230, 15 min), ficar das 15:00 às 16:45 com o mercado ainda inteiro, e fazer o check-in às 17:15 antes de sair para o jantar. As malas já estão no hotel desde as 10:20, então nada se perde.",
+    "titulo": "Nishiki antes do retorno à hospedagem",
+    "texto": "Alternativa já prevista no roteiro: seguir do Sanjūsangen-dō direto ao Nishiki e voltar à hospedagem depois, para chegar ao mercado mais cedo. O grupo já estará hospedado em Kyoto desde 18/03; não há novo check-in neste dia.",
     "refs": [
      "p5",
      "p6"
     ]
    },
    {
-    "tipo": "troca",
-    "titulo": "Shinkansen de Shin-Osaka, se a bagagem não for despachada",
-    "texto": "Se o takkyubin não rolar e todo mundo viajar com mala na mão, o JR Special Rapid lotado é o pior cenário do dia. A saída é o Midosuji até Shin-Osaka (¥290, 17 min) e o Shinkansen Hikari ou Kodama até Kyoto: 14 min, ¥1.450 por adulto sem reserva, plataforma larga, elevador em tudo e espaço para carrinho no fim do vagão. São uns ¥900 a mais por adulto para trocar 45 min de sufoco por 30 min tranquilos.",
-    "ponto": {
-     "nome": "Estação Shin-Osaka",
-     "lat": 34.73349,
-     "lng": 135.49789,
-     "gmaps": "Shin-Osaka Station"
-    }
-   },
-   {
     "tipo": "corte",
     "titulo": "Ficar só no Higashi Honganji",
-    "texto": "O Nishi é mais bonito e é Patrimônio da Humanidade, mas custa 1,8 km a pé de desvio numa manhã que já teve estação, trem e baldeação. Cortando, a manhã encolhe para uns 50 min de templo, sobra tempo de almoçar sem pressa e o dia cai de 10,5 para 9,6 km a pé. Quem estiver com bebê no colo agradece.",
+    "texto": "Alternativa do roteiro anterior, sem alteração da programação principal: quem preferir reduzir a caminhada pode visitar apenas o Higashi Honganji. Os dois templos permanecem previstos no circuito.",
     "refs": [
      "e4"
     ]
@@ -1626,12 +1556,12 @@
   ],
   "passe": {
    "nome": "Passe de 1 dia de metrô + ônibus de Kyoto — ¥1.100",
-   "texto": "Não compensa neste dia. Depois de chegar, são quatro deslocamentos dentro de Kyoto: ônibus para o Sanjūsangen-dō (¥230), a volta (¥230), o metrô opcional de Gojo a Shijo (¥220) e o ônibus da noite de volta de Gion (¥230) — ¥910 no total, ¥190 abaixo do passe. Só passa a valer se acrescentarem mais um trajeto de ônibus. A viagem Osaka→Kyoto (¥820) não entra em passe nenhum de Kyoto."
+   "texto": "Referência anterior, a confirmar para 2027: ônibus para o Sanjūsangen-dō (¥230), volta (¥230), metrô opcional de Gojo a Shijo (¥220) e ônibus da noite de volta de Gion (¥230), total de ¥910. Comparar com o passe de ¥1.100. O transfer Osaka → Kyoto ocorre em 18/03 e não faz parte deste dia."
   }
  },
  "2027-03-20": {
   "titulo": "O bambuzal ao amanhecer, o oeste inteiro, o teamLab à noite",
-  "resumo": "Sábado invertido de propósito: o bambuzal de Arashiyama às 7h30, quando ainda dá para andar nele, e o Tenryū-ji do lado, a 300 m. Depois o dia atravessa o oeste devagar — Ryoan-ji, Kinkaku-ji, Castelo Nijō — e o programa de rua acaba às 17:00. A volta passa por dentro da Estação de Kyoto, e é ali que a noite começa: o teamLab Biovortex fica a 10 min a pé da saída sul, com sessão marcada às 18:00.",
+  "resumo": "Sábado invertido de propósito: o bambuzal de Arashiyama às 7h30, quando ainda dá para andar nele, e o Tenryū-ji do lado, a 300 m. Depois o dia atravessa o oeste devagar — Ryoan-ji, Kinkaku-ji, Castelo Nijō — e o programa de rua acaba às 17:00. A volta passa por dentro da Estação de Kyoto, e é ali que a noite começa: o teamLab Biovortex fica a 10 min a pé da saída sul, com sessão pretendida às 18:00, ainda a reservar.",
   "centro": [
    35.0155,
    135.713
@@ -2119,44 +2049,6 @@
   "passe": {
    "nome": "Nenhum passe compensa hoje — paguem por viagem",
    "texto": "O candidato seria o Subway & Bus 1-Day (¥1.100 adulto, ¥550 criança), mas ele NÃO cobre o JR nem o Randen, que são justamente os dois trechos longos do dia. Do que vocês gastam, ele cobriria só o ônibus 59 (¥230), o ônibus 12 (¥230) e o metrô da volta (¥260) = ¥720. Perde ¥380 por adulto. O dia inteiro sai por ¥1.210 por adulto: JR ¥240 + Randen ¥250 + ¥230 + ¥230 + metrô ¥260. O passe do Randen (¥800 o dia) também não fecha — vocês usam ¥250 dele. Carreguem ICOCA/Suica e não pensem mais nisso; menores de 6 anos não pagam trem nem ônibus, então os 3 bebês viajam de graça. A volta do teamLab para o hotel é a pé e não custa nada, então o metrô da noite continua sendo um só."
-  }
- },
- "_bases": {
-  "osaka": {
-   "nome": "Airbnb Tengachaya",
-   "lat": 34.63808,
-   "lng": 135.4989,
-   "aprox": true,
-   "gmaps": "Tengachaya Station, Osaka",
-   "endereco": "2-6-25 Tengachaya, Nishinari-ku, Osaka 557-0014",
-   "confere": "Tengachaya 2-chome; a estação Tengachaya (Nankai + metrô Sakaisuji) fica a 170 m"
-  },
-  "kyoto": {
-   "nome": "K-style 東本願寺",
-   "lat": 34.9897,
-   "lng": 135.7567,
-   "aprox": true,
-   "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
-   "endereco": "749-5 Tatsumi-cho, Shinmachi-dori Shichijo-agaru, Shimogyo-ku, Kyoto",
-   "confere": "cruzamento Shinmachi × Shichijo, um pouco ao norte; dá 469 m até a Estação de Kyoto, e o anúncio diz 500 m"
-  },
-  "fuji": {
-   "nome": "La Vista Fujikawaguchiko",
-   "lat": 35.5296567,
-   "lng": 138.7627726,
-   "aprox": false,
-   "gmaps": "La Vista Fujikawaguchiko",
-   "endereco": "Kawaguchi 2395, Fujikawaguchiko, Yamanashi",
-   "confere": "marcador do Google Maps enviado pelo grupo — ponto exato, na margem norte do lago Kawaguchi"
-  },
-  "tokyo": {
-   "nome": "Hotel Oojima",
-   "lat": 35.68799,
-   "lng": 139.83535,
-   "aprox": true,
-   "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A",
-   "endereco": "Edifício Hikariyama 2F-5F, 5-37-5 Oshima, Koto-ku, Tokyo 136-0072",
-   "confere": "Oshima 5-chome, o mesmo quarteirão da estação Ojima (Toei Shinjuku), a 199 m"
   }
  },
  "2027-03-21": {
@@ -2696,7 +2588,7 @@
     "fim": "10:10",
     "gmaps": "Kyoto Station Shinkansen",
     "must": [
-     "Reservar os assentos com um mês de antecedência — a venda abre às 10:00 do horário do Japão, 30 dias antes",
+     "Reservar os assentos com um mês de antecedência — a venda abre às 10:00 do horário do Japão, no mesmo dia do mês anterior (22/02 às 10:00 JST; 21/02 às 22:00 em Fortaleza), na regra padrão JR",
      "Reservar as últimas fileiras de cada vagão, que são os assentos com espaço de bagagem grande",
      "Conferir no painel o número do vagão antes de subir a escada rolante: a plataforma tem 400 m e o vagão certo pode ficar na outra ponta"
     ],
@@ -3306,271 +3198,6 @@
    "texto": "Não compensa neste dia. Do jeito que a rota está montada, vocês descem ao centro no traslado gratuito do ryokan e andam 900 m até o teleférico — nenhum trecho de Retro Bus. Mesmo usando o ônibus nas duas pontas, seriam dois embarques curtos que não chegam perto de ¥1.500. O passe só passa a valer se vocês cortarem o pagode e ficarem a manhã inteira rodando pela margem norte do lago. E ele não cobre nem o trem Fujikyu para Shimoyoshida (¥310 por trecho) nem o ônibus para Shinjuku. Do lado de Tokyo é a mesma conta: o passe diário do metrô Toei custa ¥700 e a viagem única até Ojima sai por ¥280 — não vale para um trajeto só."
   }
  },
- "2027-03-25": {
-  "titulo": "Sakura na abertura e o resto do dia sem relógio",
-  "resumo": "O dia de recuperação depois das 12h de DisneySea, e agora sem nenhuma hora marcada. Uma linha de metrô só liga o hotel ao Shinjuku Gyoen, onde vocês entram às 09:00 na abertura — piquenique de sakura, carrinho no gramado, bebê dormindo — e ficam o tempo que quiserem: o parque vai até as 18:00, com última entrada às 17:30. Depois é tudo a pé dentro de Shinjuku: 1,3 km até o 45º andar do Governo Metropolitano, que é de graça e pega o pôr do sol das 17:57, e mais 900 m até o Omoide Yokocho para jantar. A volta é uma linha reta para Ojima.",
-  "centro": [
-   35.6795,
-   139.7655
-  ],
-  "zoom": 12,
-  "paradas": [
-   {
-    "id": "base",
-    "nome": "Hotel Oojima",
-    "tipo": "base",
-    "lat": 35.68799,
-    "lng": 139.83535,
-    "aprox": true,
-    "hora": "07:45",
-    "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A",
-    "alerta": "Este é o dia seguinte às 12 horas de DisneySea, e ainda assim é o dia que menos aceita atraso da viagem inteira. Deixem tudo pronto na noite anterior: o bentô do piquenique, as garrafas de água, os cangurus. Saindo do hotel às 07:45 vocês entram no Gyoen na abertura; saindo às 08:30 vocês entram numa fila que já dobrou o quarteirão."
-   },
-   {
-    "id": "e1",
-    "nome": "Estação Ojima (Toei Shinjuku)",
-    "tipo": "estacao",
-    "lat": 35.689769,
-    "lng": 139.835076,
-    "hora": "07:52",
-    "gmaps": "Ojima Station, Koto"
-   },
-   {
-    "id": "e2",
-    "nome": "Estação Shinjuku-sanchome",
-    "tipo": "estacao",
-    "lat": 35.691425,
-    "lng": 139.707165,
-    "hora": "08:25",
-    "gmaps": "Shinjuku-sanchome Station"
-   },
-   {
-    "id": "p1",
-    "ativ": "Shinjuku Gyoen",
-    "tipo": "parque",
-    "lat": 35.688334,
-    "lng": 139.707524,
-    "hora": "09:00",
-    "fim": "16:15",
-    "gmaps": "Shinjuku Gate, Shinjuku Gyoen National Garden",
-    "foto": "Shinjuku Gyoen cherry blossom",
-    "must": [
-     "Chegar às 09:00 na abertura, pelo Portão Shinjuku (新宿門) — é o portão mais próximo da estação e o que tem o guichê maior",
-     "O gramado inglês, no meio do parque: é ali que se estende a canga, e é plano o suficiente para o carrinho ficar parado com o bebê dormindo",
-     "Cerca de mil cerejeiras de 65 espécies, o que muda tudo: as tardias florescem depois das precoces, então há flor em algum canto do parque numa faixa de semanas, não de dias",
-     "O jardim japonês com a ponte e a casa de chá Rakuu-tei, e a estufa tropical grande — as duas coberturas se chover",
-     "Banheiro com fraldário, e cadeira de rodas emprestada de graça na entrada"
-    ],
-    "comidas": [
-     "Bentô comprado antes, na estação Shinjuku-sanchome ou no depachika da Isetan — é o jeito certo e o mais barato de almoçar aqui, ¥600–1.200 por pessoa",
-     "Casa de chá Rakuu-tei, no jardim japonês: matcha com doce japonês, cerca de ¥800",
-     "Cafés e quiosques dentro do parque, com sanduíche, sorvete e café, ¥300–900"
-    ],
-    "alerta": "⚠ ÁLCOOL É PROIBIDO DENTRO DO PARQUE, e isso não é regra de fachada: há inspeção de bolsa no portão e a lata é barrada ali mesmo. Também não entram bola, brinquedo grande, barraca nem animal — é hanami de piquenique quieto, não de festa. É exatamente por isso que este parque é o melhor da cidade com bebê: não tem bêbado. ⚠ Horário: de 15 de março a 30 de junho o parque abre 09:00–18:00, com ÚLTIMA ENTRADA às 17:30 — o roteiro traz 16:00, que é o horário de inverno e já não vale nesta data. ⚠ Fecha às segundas o ano todo, MAS na temporada da sakura (por volta de 25 de março a 24 de abril) abre todos os dias — e 25 de março de 2027 é quinta-feira, então não há risco. Entrada ¥500 por adulto, ¥250 para estudante do ensino médio em diante e para quem tem 65 anos ou mais, GRÁTIS até o ginásio: os três bebês não pagam. Grupo a partir de 30 pessoas paga ¥400; vocês são 13, então não vale. Armários de moeda na entrada, ¥300–500. ⚠ Nos últimos anos o parque passou a exigir RESERVA ANTECIPADA em sábados, domingos e feriados escolhidos de março e abril, com as datas anunciadas só algumas semanas antes. Quinta-feira costuma ficar de fora, mas confiram o site oficial umas três semanas antes da viagem — se a data entrar na lista, o ingresso tem que sair online e não há venda no portão. ⚠ As 16:15 do roteiro são o TETO, não uma obrigação: o parque é o programa do dia e o grupo sai quando quiser. Se três ou quatro horas bastarem, a saída natural é a 500 m dali, em Shinjuku-sanchome — depachika da Isetan, Takashimaya e as lojas da Shinjuku-dori, tudo coberto —, ou o Palácio Imperial e o Koishikawa Korakuen, que ficam a 20 min de Ojima pela mesma Toei."
-   },
-   {
-    "id": "p3",
-    "ativ": "Observatório do Governo",
-    "tipo": "monumento",
-    "lat": 35.689501,
-    "lng": 139.69171,
-    "hora": "17:05",
-    "fim": "18:10",
-    "gmaps": "Tokyo Metropolitan Government Building No.1 Observatory",
-    "foto": "Tokyo Metropolitan Government Building Shinjuku",
-    "must": [
-     "45º andar, 202 m, elevador expresso de menos de um minuto, e não se paga nada",
-     "O pôr do sol de 25 de março em Tóquio é às 17:57 — subindo por volta das 17:05 vocês pegam a cidade com luz, o sol descendo e os prédios acendendo, tudo na mesma hora",
-     "Em tarde limpa de março o Monte Fuji aparece no horizonte a sudoeste, e é a melhor chance da viagem de vê-lo de graça",
-     "A sala dá a volta inteira no núcleo do prédio: são 360 graus, com o Skytree a leste",
-     "Do lado de fora, à noite, a fachada do prédio recebe projeção mapeada gigante — também de graça, e a praça é plana para o carrinho"
-    ],
-    "comidas": [
-     "Café no próprio 45º andar, com mesa junto da janela: café e bolo, ¥500–1.200",
-     "Loja de souvenir no mesmo andar, boa para lembrancinha barata de Tóquio"
-    ],
-    "alerta": "Este é o terceiro mirante da viagem, depois do Skytree (634 m, a cidade vista de longe) e do Shibuya Sky (229 m, ao ar livre). Este fica no meio — 202 m, fechado, envidraçado — e a graça dele é ser GRÁTIS e ficar aberto até tarde. ⚠ Atenção a qual torre vocês sobem: o Observatório SUL abre 09:30–22:00, com última entrada às 21:30, e é o que interessa. O Observatório NORTE hoje fecha às 17:30 e não serve para o pôr do sol. O Sul fecha na 1ª e na 3ª terça do mês, o Norte na 2ª e na 4ª segunda; 25 de março de 2027 é quinta, então o Sul está aberto. ⚠ A fila do elevador engrossa muito entre 17:00 e 18:00, justamente por causa do pôr do sol, e há revista de bolsa na entrada: contem 20 a 30 min de fila num fim de tarde de sakura. Elevador amplo, carrinho entra montado, banheiro acessível no 45º. A estação Tochomae liga por passagem subterrânea direto ao saguão do prédio nº 1 — não é preciso subir à rua."
-   },
-   {
-    "id": "p4",
-    "ativ": "Omoide Yokocho",
-    "tipo": "comida",
-    "lat": 35.693069,
-    "lng": 139.699502,
-    "hora": "18:30",
-    "fim": "20:15",
-    "gmaps": "Omoide Yokocho, Nishi-Shinjuku",
-    "foto": "File:Shinjuku-West Omoide-Yokocho.jpg",
-    "must": [
-     "Omoide Yokocho: dois becos de 1,5 m de largura com cerca de 60 casinhas de yakitori e motsuyaki, do jeito que Tóquio era nos anos 1950",
-     "Kabukicho: as fachadas de neon, os arcades de fliperama e a torre nova — é plano, largo e fácil de empurrar carrinho",
-     "A cabeça do Godzilla, 12 m de altura, no terraço do 8º andar do Shinjuku Toho Building, sobre o Hotel Gracery — vê-se de graça, da rua, e vocês NÃO precisam consumir nada",
-     "A cabeça ruge, solta fumaça e acende os olhos DE HORA EM HORA, das 12:00 às 20:00: parem na Godzilla Road um pouco antes das 19:00 ou das 20:00 e esperem"
-    ],
-    "comidas": [
-     "Espetinho de yakitori no beco, ¥150–300 cada; jantar com bebida sai por ¥1.500–3.000 por pessoa",
-     "Motsuyaki, o espetinho de miúdos que é a especialidade da casa aqui, e o motsu-nikomi, o ensopado",
-     "Bebida ¥500–1.000; parte das casas cobra otoshi, o petisquinho que chega sem ser pedido e é a taxa de mesa"
-    ],
-    "alerta": "⚠ SEJAM HONESTOS COM O TAMANHO DO GRUPO: o Omoide Yokocho NÃO comporta 13 pessoas, e muito menos três carrinhos. Os becos têm 1,5 m de largura, as casas têm de 5 a 6 lugares no balcão, muitas ainda permitem cigarro e a fumaça de carvão fica parada no ar — não é lugar para bebê de menos de 3 anos, e várias casas simplesmente não aceitam criança pequena. O que funciona é dividir o grupo: dois ou três adultos entram no beco e comem de pé no balcão por 45 min, enquanto o resto fica com as crianças na calçada larga da avenida ou num restaurante de família ali ao lado. E ninguém precisa jantar em beco para ter visto o beco — atravessar os dois corredores tirando foto leva 15 min e já entrega a imagem. As casas abrem por volta das 16:00 e vão até tarde. ⚠ Kabukicho é seguro para caminhar, mas é área de vida noturna: depois das 20:00 aparece gente puxando cliente para bar na calçada, e com criança é melhor não entrar nas travessas laterais nem parar para conversa. ⚠ O terraço do Hotel Gracery, de onde sai a foto colada na cabeça do Godzilla, é só para hóspedes desde 2023 — da rua a vista é excelente, e é a que vocês vão ter."
-   },
-   {
-    "id": "e7",
-    "nome": "Estação Shinjuku (catraca Keio New Line)",
-    "tipo": "estacao",
-    "lat": 35.6899,
-    "lng": 139.6996,
-    "hora": "20:30",
-    "gmaps": "Toei Shinjuku Line Shinjuku Station"
-   },
-   {
-    "id": "p5",
-    "ativ": "Jantar + volta",
-    "tipo": "comida",
-    "lat": 35.689769,
-    "lng": 139.835076,
-    "hora": "21:00",
-    "fim": "21:50",
-    "gmaps": "Ojima Station, Koto",
-    "must": [
-     "Toei Shinjuku Line, sentido Motoyawata ou Sakura — 12 estações, nenhuma baldeação",
-     "Em Ojima, saiam pela A4, que é a saída com elevador",
-     "O hotel fica a 199 m da estação, no mesmo quarteirão"
-    ],
-    "comidas": [
-     "Se o grupo ficar com fome depois do beco, Ojima tem izakaya de bairro e rede de gyudon aberta até tarde, ¥600–1.200 por pessoa",
-     "Ramen de bairro, ¥800–1.100 — e aqui cabe carrinho, o que no beco não cabia",
-     "Konbini na saída da estação para leite, fralda e água: resolve a madrugada e é bem mais barato"
-    ],
-    "alerta": "O trecho fácil do dia, mas com a mesma armadilha da chegada: a plataforma da Toei Shinjuku fica do lado oeste, embaixo da Koshu-kaido, e a catraca é a 京王新線口 (Keio New Line Gate) — não é a catraca óbvia da JR. Contem 15 min do beco até a plataforma com carrinho. Tarifa ¥280 por adulto, metade dos 6 aos 11 anos, grátis abaixo de 6. O último trem sai por volta de 00:20, então não há aperto — mas depois de um dia de 14 horas o corpo pede o das 20:30. ⚠ Se alguém ainda quiser esticar, o observatório fica aberto até as 22:00 e a 800 m do beco: dá para o grupo dos bebês voltar antes e os adolescentes subirem depois do jantar."
-   },
-   {
-    "id": "fim",
-    "nome": "Hotel Oojima",
-    "tipo": "base",
-    "lat": 35.68799,
-    "lng": 139.83535,
-    "aprox": true,
-    "hora": "21:55",
-    "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A"
-   }
-  ],
-  "pernas": [
-   {
-    "de": "base",
-    "para": "e1",
-    "modo": "pe",
-    "min": 5,
-    "km": 0.2,
-    "custo": 0,
-    "desc": "Menos de 200 m pelo próprio quarteirão até a boca da estação. Entrem pela A4, que é a do elevador."
-   },
-   {
-    "de": "e1",
-    "para": "e2",
-    "modo": "metro",
-    "linha": "Toei Shinjuku",
-    "cor": "#6CBB5A",
-    "min": 26,
-    "km": 11.5,
-    "custo": 280,
-    "desc": "11 estações rumo oeste, sentido Shinjuku, sem nenhuma baldeação. Desçam em Shinjuku-sanchome, uma estação ANTES do fim da linha — é ela que fica perto do Gyoen."
-   },
-   {
-    "de": "e2",
-    "para": "p1",
-    "modo": "pe",
-    "min": 8,
-    "km": 0.5,
-    "custo": 0,
-    "desc": "Saída E5 e 500 m planos rumo sul até o Portão Shinjuku. Comprem o bentô do piquenique aqui, antes de entrar: dentro do parque a oferta é pequena e cara."
-   },
-   {
-    "de": "p1",
-    "para": "p3",
-    "modo": "pe",
-    "min": 20,
-    "km": 1.3,
-    "custo": 0,
-    "desc": "Sai pelo Portão Shinjuku e segue a oeste, por baixo dos trilhos, até a torre da prefeitura. Plano e em calçada larga o caminho inteiro. Quem preferir não andar sai pelo Portão Sendagaya e pega a Oedo em Kokuritsu-Kyogijo até Tochomae, ¥180, duas estações — a passagem subterrânea desemboca dentro do saguão do prédio nº 1."
-   },
-   {
-    "de": "p3",
-    "para": "p4",
-    "modo": "pe",
-    "min": 14,
-    "km": 0.9,
-    "custo": 0,
-    "desc": "900 m rumo nordeste por Nishi-Shinjuku, calçada larga e plana entre os arranha-céus, até a entrada do Omoide Yokocho, colada na saída oeste da estação Shinjuku. De lá até a cabeça do Godzilla, em Kabukicho, são mais 500 m."
-   },
-   {
-    "de": "p4",
-    "para": "e7",
-    "modo": "pe",
-    "min": 8,
-    "km": 0.4,
-    "custo": 0,
-    "desc": "De volta à estação. A catraca que vocês querem é a 京王新線口 (Keio New Line Gate), do lado oeste, embaixo da Koshu-kaido."
-   },
-   {
-    "de": "e7",
-    "para": "p5",
-    "modo": "metro",
-    "linha": "Toei Shinjuku",
-    "cor": "#6CBB5A",
-    "min": 27,
-    "km": 12.0,
-    "custo": 280,
-    "desc": "12 estações, sentido Motoyawata. A mesma linha da manhã, ao contrário, e depois das 20:00 já sem rush."
-   },
-   {
-    "de": "p5",
-    "para": "fim",
-    "modo": "pe",
-    "min": 5,
-    "km": 0.2,
-    "custo": 0,
-    "desc": "Saída A4 e menos de 200 m até a porta do hotel."
-   }
-  ],
-  "alternativas": [
-   {
-    "tipo": "extra",
-    "titulo": "Palácio Imperial + Koishikawa Korakuen, se a tarde no parque ficar longa demais",
-    "texto": "Esta é a opção para quem não quiser passar sete horas dentro do Gyoen, e ela é barata e curta. Os jardins leste do Palácio Imperial são gratuitos, planos e enormes, com cerejeiras e as muralhas do castelo de Edo; a 1,5 km dali, o Koishikawa Korakuen cobra ¥300, é de 1629 e tem uma das melhores sakura de Tóquio num jardim pequeno o bastante para dar a volta em 40 min com carrinho. Os dois juntos custam menos de ¥400 por adulto e ficam a 20 min de Ojima pela mesma Toei Shinjuku, o que também facilita para quem quiser voltar antes com os bebês. ⚠ Os jardins do Palácio fecham às segundas e sextas — quinta está livre. Decidam no dia: nada aqui tem hora marcada.",
-    "ponto": {
-     "nome": "Koishikawa Korakuen",
-     "lat": 35.705617,
-     "lng": 139.749403,
-     "gmaps": "Koishikawa Korakuen Garden, Bunkyo"
-    }
-   },
-   {
-    "tipo": "extra",
-    "titulo": "Golden Gai, a duas quadras do Omoide Yokocho",
-    "texto": "Para quem quiser esticar depois do jantar, sem os bebês: seis becos com mais de 200 bares minúsculos, cada um com tema próprio, a 500 m do Omoide Yokocho e ainda dentro de Shinjuku. É ainda menor e mais fechado que o Omoide — a maioria dos bares tem de 4 a 8 lugares, muitos cobram taxa de entrada de ¥500 a ¥1.500 e alguns só atendem freguês de casa. Procurem as portas com aviso em inglês, que são as que recebem turista sem constrangimento. ⚠ Não é lugar para criança em nenhuma hipótese, e só enche de verdade depois das 21:00: combinem antes quem volta com os bebês e quem fica.",
-    "ponto": {
-     "nome": "Shinjuku Golden Gai",
-     "lat": 35.694222,
-     "lng": 139.704639,
-     "gmaps": "Shinjuku Golden Gai"
-    }
-   },
-   {
-    "tipo": "planob",
-    "titulo": "Se chover",
-    "texto": "Chuva pega este dia inteiro, porque ele é quase todo ao ar livre. O piquenique de sakura embaixo d'água não existe: o Gyoen encolhe para 1h de estufa tropical e do pavilhão do jardim japonês, que são as duas coberturas, e o grupo sai cedo. O observatório também se perde — com nuvem baixa o 45º andar fica dentro do nevoeiro e não se enxerga nada; em compensação a fachada do prédio recebe projeção mapeada à noite, que é de graça, se vê da praça e vale a pena mesmo molhado. Para tapar a tarde, o refúgio coberto e barato fica a 20 min de Ojima pela mesma Toei: o Museu Edo-Tokyo, em Ryogoku. E o Omoide Yokocho à noite não muda — os becos têm toldo e os balcões são fechados.",
-    "refs": [
-     "p1",
-     "p3"
-    ]
-   }
-  ],
-  "passe": {
-   "nome": "Nenhum passe compensa hoje — carreguem Suica",
-   "texto": "O candidato era o Toei Marugoto Kippu (¥700 adulto, ¥350 criança), e ele fazia sentido quando o dia atravessava a cidade até Azabudai. Agora sobraram dois trechos: ¥280 de Ojima a Shinjuku-sanchome e ¥280 na volta, ¥560 por adulto contra ¥700 do passe. Mesmo somando os ¥180 de Oedo, para quem não quiser fazer a pé os 1,3 km do Gyoen até o observatório, dá ¥740 — ¥40 de economia, que não paga o trabalho de comprar. Existe também um passe Toei de ¥500, mas ele só vale em sábados, domingos e feriados, e 25 de março de 2027 é quinta-feira. Paguem por viagem no Suica e não pensem mais nisso; menores de 6 anos não pagam, então os três bebês viajam de graça."
-  }
- },
  "2027-03-24": {
   "titulo": "Doze horas de DisneySea, e a rota que evita a Estação de Tokyo",
   "resumo": "O dia inteiro cabe num parque só, então o que decide se ele funciona é a ida e a volta. O roteiro mandava passar pela Estação de Tokyo, onde a plataforma da Keiyo fica a 600 m de corredor do resto da estação — 10 a 20 min de caminhada subterrânea, com três carrinhos, às 7h da manhã e de novo às 22h. Dá para não passar por lá: descendo por Morishita, Tsukishima e Shin-Kiba, o grupo chega a Maihama em 49 min por ¥516, sempre debaixo do chão, sem nenhum corredor comprido e sem pegar a Sobu no auge do rush.",
@@ -3994,6 +3621,271 @@
   "passe": {
    "nome": "Passe livre do monotrilho — ¥700 (1 dia)",
    "texto": "Não compensa. Vocês fazem dois trechos de monotrilho, um na ida e um na volta: ¥300 + ¥300 = ¥600 por adulto, contra ¥700 do passe livre. O passe só vira negócio a partir do terceiro embarque — o que acontece se vocês resolverem sair do parque no meio do dia para almoçar no Ikspiari ou passar num hotel do resort. Como o plano é entrar às 09:00 e só sair no fim, fiquem no cartão IC. O mesmo raciocínio vale do lado de Tokyo: o passe diário do metrô Toei custa ¥700, e este dia só usa a Toei em dois trechos curtos; e o Tokyo Subway Ticket de 24h, de ¥800, cobre Toei e Tokyo Metro mas NÃO cobre a JR Keiyo, que é justamente o trecho que leva a Maihama. Nenhum passe ganha do cartão IC neste dia."
+  }
+ },
+ "2027-03-25": {
+  "titulo": "Sakura na abertura e o resto do dia sem relógio",
+  "resumo": "O dia de recuperação depois das 12h de DisneySea, e agora sem nenhuma hora marcada. Uma linha de metrô só liga o hotel ao Shinjuku Gyoen, onde vocês entram às 09:00 na abertura — piquenique de sakura, carrinho no gramado, bebê dormindo — e ficam o tempo que quiserem: o parque vai até as 18:00, com última entrada às 17:30. Depois é tudo a pé dentro de Shinjuku: 1,3 km até o 45º andar do Governo Metropolitano, que é de graça e pega o pôr do sol das 17:57, e mais 900 m até o Omoide Yokocho para jantar. A volta é uma linha reta para Ojima.",
+  "centro": [
+   35.6795,
+   139.7655
+  ],
+  "zoom": 12,
+  "paradas": [
+   {
+    "id": "base",
+    "nome": "Hotel Oojima",
+    "tipo": "base",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "hora": "07:45",
+    "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A",
+    "alerta": "Este é o dia seguinte às 12 horas de DisneySea, e ainda assim é o dia que menos aceita atraso da viagem inteira. Deixem tudo pronto na noite anterior: o bentô do piquenique, as garrafas de água, os cangurus. Saindo do hotel às 07:45 vocês entram no Gyoen na abertura; saindo às 08:30 vocês entram numa fila que já dobrou o quarteirão."
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Ojima (Toei Shinjuku)",
+    "tipo": "estacao",
+    "lat": 35.689769,
+    "lng": 139.835076,
+    "hora": "07:52",
+    "gmaps": "Ojima Station, Koto"
+   },
+   {
+    "id": "e2",
+    "nome": "Estação Shinjuku-sanchome",
+    "tipo": "estacao",
+    "lat": 35.691425,
+    "lng": 139.707165,
+    "hora": "08:25",
+    "gmaps": "Shinjuku-sanchome Station"
+   },
+   {
+    "id": "p1",
+    "ativ": "Shinjuku Gyoen",
+    "tipo": "parque",
+    "lat": 35.688334,
+    "lng": 139.707524,
+    "hora": "09:00",
+    "fim": "16:15",
+    "gmaps": "Shinjuku Gate, Shinjuku Gyoen National Garden",
+    "foto": "Shinjuku Gyoen cherry blossom",
+    "must": [
+     "Chegar às 09:00 na abertura, pelo Portão Shinjuku (新宿門) — é o portão mais próximo da estação e o que tem o guichê maior",
+     "O gramado inglês, no meio do parque: é ali que se estende a canga, e é plano o suficiente para o carrinho ficar parado com o bebê dormindo",
+     "Cerca de mil cerejeiras de 65 espécies, o que muda tudo: as tardias florescem depois das precoces, então há flor em algum canto do parque numa faixa de semanas, não de dias",
+     "O jardim japonês com a ponte e a casa de chá Rakuu-tei, e a estufa tropical grande — as duas coberturas se chover",
+     "Banheiro com fraldário, e cadeira de rodas emprestada de graça na entrada"
+    ],
+    "comidas": [
+     "Bentô comprado antes, na estação Shinjuku-sanchome ou no depachika da Isetan — é o jeito certo e o mais barato de almoçar aqui, ¥600–1.200 por pessoa",
+     "Casa de chá Rakuu-tei, no jardim japonês: matcha com doce japonês, cerca de ¥800",
+     "Cafés e quiosques dentro do parque, com sanduíche, sorvete e café, ¥300–900"
+    ],
+    "alerta": "⚠ ÁLCOOL É PROIBIDO DENTRO DO PARQUE, e isso não é regra de fachada: há inspeção de bolsa no portão e a lata é barrada ali mesmo. Também não entram bola, brinquedo grande, barraca nem animal — é hanami de piquenique quieto, não de festa. É exatamente por isso que este parque é o melhor da cidade com bebê: não tem bêbado. ⚠ Horário: de 15 de março a 30 de junho o parque abre 09:00–18:00, com ÚLTIMA ENTRADA às 17:30 — o roteiro traz 16:00, que é o horário de inverno e já não vale nesta data. ⚠ Fecha às segundas o ano todo, MAS na temporada da sakura (por volta de 25 de março a 24 de abril) abre todos os dias — e 25 de março de 2027 é quinta-feira, então não há risco. Entrada ¥500 por adulto, ¥250 para estudante do ensino médio em diante e para quem tem 65 anos ou mais, GRÁTIS até o ginásio: os três bebês não pagam. Grupo a partir de 30 pessoas paga ¥400; vocês são 13, então não vale. Armários de moeda na entrada, ¥300–500. ⚠ Nos últimos anos o parque passou a exigir RESERVA ANTECIPADA em sábados, domingos e feriados escolhidos de março e abril, com as datas anunciadas só algumas semanas antes. Quinta-feira costuma ficar de fora, mas confiram o site oficial umas três semanas antes da viagem — se a data entrar na lista, o ingresso tem que sair online e não há venda no portão. ⚠ As 16:15 do roteiro são o TETO, não uma obrigação: o parque é o programa do dia e o grupo sai quando quiser. Se três ou quatro horas bastarem, a saída natural é a 500 m dali, em Shinjuku-sanchome — depachika da Isetan, Takashimaya e as lojas da Shinjuku-dori, tudo coberto —, ou o Palácio Imperial e o Koishikawa Korakuen, que ficam a 20 min de Ojima pela mesma Toei."
+   },
+   {
+    "id": "p3",
+    "ativ": "Observatório do Governo",
+    "tipo": "monumento",
+    "lat": 35.689501,
+    "lng": 139.69171,
+    "hora": "17:05",
+    "fim": "18:10",
+    "gmaps": "Tokyo Metropolitan Government Building No.1 Observatory",
+    "foto": "Tokyo Metropolitan Government Building Shinjuku",
+    "must": [
+     "45º andar, 202 m, elevador expresso de menos de um minuto, e não se paga nada",
+     "O pôr do sol de 25 de março em Tóquio é às 17:57 — subindo por volta das 17:05 vocês pegam a cidade com luz, o sol descendo e os prédios acendendo, tudo na mesma hora",
+     "Em tarde limpa de março o Monte Fuji aparece no horizonte a sudoeste, e é a melhor chance da viagem de vê-lo de graça",
+     "A sala dá a volta inteira no núcleo do prédio: são 360 graus, com o Skytree a leste",
+     "Do lado de fora, à noite, a fachada do prédio recebe projeção mapeada gigante — também de graça, e a praça é plana para o carrinho"
+    ],
+    "comidas": [
+     "Café no próprio 45º andar, com mesa junto da janela: café e bolo, ¥500–1.200",
+     "Loja de souvenir no mesmo andar, boa para lembrancinha barata de Tóquio"
+    ],
+    "alerta": "Este é o terceiro mirante da viagem, depois do Skytree (634 m, a cidade vista de longe) e do Shibuya Sky (229 m, ao ar livre). Este fica no meio — 202 m, fechado, envidraçado — e a graça dele é ser GRÁTIS e ficar aberto até tarde. ⚠ Atenção a qual torre vocês sobem: o Observatório SUL abre 09:30–22:00, com última entrada às 21:30, e é o que interessa. O Observatório NORTE hoje fecha às 17:30 e não serve para o pôr do sol. O Sul fecha na 1ª e na 3ª terça do mês, o Norte na 2ª e na 4ª segunda; 25 de março de 2027 é quinta, então o Sul está aberto. ⚠ A fila do elevador engrossa muito entre 17:00 e 18:00, justamente por causa do pôr do sol, e há revista de bolsa na entrada: contem 20 a 30 min de fila num fim de tarde de sakura. Elevador amplo, carrinho entra montado, banheiro acessível no 45º. A estação Tochomae liga por passagem subterrânea direto ao saguão do prédio nº 1 — não é preciso subir à rua."
+   },
+   {
+    "id": "p4",
+    "ativ": "Omoide Yokocho",
+    "tipo": "comida",
+    "lat": 35.693069,
+    "lng": 139.699502,
+    "hora": "18:30",
+    "fim": "20:15",
+    "gmaps": "Omoide Yokocho, Nishi-Shinjuku",
+    "foto": "File:Shinjuku-West Omoide-Yokocho.jpg",
+    "must": [
+     "Omoide Yokocho: dois becos de 1,5 m de largura com cerca de 60 casinhas de yakitori e motsuyaki, do jeito que Tóquio era nos anos 1950",
+     "Kabukicho: as fachadas de neon, os arcades de fliperama e a torre nova — é plano, largo e fácil de empurrar carrinho",
+     "A cabeça do Godzilla, 12 m de altura, no terraço do 8º andar do Shinjuku Toho Building, sobre o Hotel Gracery — vê-se de graça, da rua, e vocês NÃO precisam consumir nada",
+     "A cabeça ruge, solta fumaça e acende os olhos DE HORA EM HORA, das 12:00 às 20:00: parem na Godzilla Road um pouco antes das 19:00 ou das 20:00 e esperem"
+    ],
+    "comidas": [
+     "Espetinho de yakitori no beco, ¥150–300 cada; jantar com bebida sai por ¥1.500–3.000 por pessoa",
+     "Motsuyaki, o espetinho de miúdos que é a especialidade da casa aqui, e o motsu-nikomi, o ensopado",
+     "Bebida ¥500–1.000; parte das casas cobra otoshi, o petisquinho que chega sem ser pedido e é a taxa de mesa"
+    ],
+    "alerta": "⚠ SEJAM HONESTOS COM O TAMANHO DO GRUPO: o Omoide Yokocho NÃO comporta 13 pessoas, e muito menos três carrinhos. Os becos têm 1,5 m de largura, as casas têm de 5 a 6 lugares no balcão, muitas ainda permitem cigarro e a fumaça de carvão fica parada no ar — não é lugar para bebê de menos de 3 anos, e várias casas simplesmente não aceitam criança pequena. O que funciona é dividir o grupo: dois ou três adultos entram no beco e comem de pé no balcão por 45 min, enquanto o resto fica com as crianças na calçada larga da avenida ou num restaurante de família ali ao lado. E ninguém precisa jantar em beco para ter visto o beco — atravessar os dois corredores tirando foto leva 15 min e já entrega a imagem. As casas abrem por volta das 16:00 e vão até tarde. ⚠ Kabukicho é seguro para caminhar, mas é área de vida noturna: depois das 20:00 aparece gente puxando cliente para bar na calçada, e com criança é melhor não entrar nas travessas laterais nem parar para conversa. ⚠ O terraço do Hotel Gracery, de onde sai a foto colada na cabeça do Godzilla, é só para hóspedes desde 2023 — da rua a vista é excelente, e é a que vocês vão ter."
+   },
+   {
+    "id": "e7",
+    "nome": "Estação Shinjuku (catraca Keio New Line)",
+    "tipo": "estacao",
+    "lat": 35.6899,
+    "lng": 139.6996,
+    "hora": "20:30",
+    "gmaps": "Toei Shinjuku Line Shinjuku Station"
+   },
+   {
+    "id": "p5",
+    "ativ": "Jantar + volta",
+    "tipo": "comida",
+    "lat": 35.689769,
+    "lng": 139.835076,
+    "hora": "21:00",
+    "fim": "21:50",
+    "gmaps": "Ojima Station, Koto",
+    "must": [
+     "Toei Shinjuku Line, sentido Motoyawata ou Sakura — 12 estações, nenhuma baldeação",
+     "Em Ojima, saiam pela A4, que é a saída com elevador",
+     "O hotel fica a 199 m da estação, no mesmo quarteirão"
+    ],
+    "comidas": [
+     "Se o grupo ficar com fome depois do beco, Ojima tem izakaya de bairro e rede de gyudon aberta até tarde, ¥600–1.200 por pessoa",
+     "Ramen de bairro, ¥800–1.100 — e aqui cabe carrinho, o que no beco não cabia",
+     "Konbini na saída da estação para leite, fralda e água: resolve a madrugada e é bem mais barato"
+    ],
+    "alerta": "O trecho fácil do dia, mas com a mesma armadilha da chegada: a plataforma da Toei Shinjuku fica do lado oeste, embaixo da Koshu-kaido, e a catraca é a 京王新線口 (Keio New Line Gate) — não é a catraca óbvia da JR. Contem 15 min do beco até a plataforma com carrinho. Tarifa ¥280 por adulto, metade dos 6 aos 11 anos, grátis abaixo de 6. O último trem sai por volta de 00:20, então não há aperto — mas depois de um dia de 14 horas o corpo pede o das 20:30. ⚠ Se alguém ainda quiser esticar, o observatório fica aberto até as 22:00 e a 800 m do beco: dá para o grupo dos bebês voltar antes e os adolescentes subirem depois do jantar."
+   },
+   {
+    "id": "fim",
+    "nome": "Hotel Oojima",
+    "tipo": "base",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "hora": "21:55",
+    "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "e1",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Menos de 200 m pelo próprio quarteirão até a boca da estação. Entrem pela A4, que é a do elevador."
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "linha": "Toei Shinjuku",
+    "cor": "#6CBB5A",
+    "min": 26,
+    "km": 11.5,
+    "custo": 280,
+    "desc": "11 estações rumo oeste, sentido Shinjuku, sem nenhuma baldeação. Desçam em Shinjuku-sanchome, uma estação ANTES do fim da linha — é ela que fica perto do Gyoen."
+   },
+   {
+    "de": "e2",
+    "para": "p1",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.5,
+    "custo": 0,
+    "desc": "Saída E5 e 500 m planos rumo sul até o Portão Shinjuku. Comprem o bentô do piquenique aqui, antes de entrar: dentro do parque a oferta é pequena e cara."
+   },
+   {
+    "de": "p1",
+    "para": "p3",
+    "modo": "pe",
+    "min": 20,
+    "km": 1.3,
+    "custo": 0,
+    "desc": "Sai pelo Portão Shinjuku e segue a oeste, por baixo dos trilhos, até a torre da prefeitura. Plano e em calçada larga o caminho inteiro. Quem preferir não andar sai pelo Portão Sendagaya e pega a Oedo em Kokuritsu-Kyogijo até Tochomae, ¥180, duas estações — a passagem subterrânea desemboca dentro do saguão do prédio nº 1."
+   },
+   {
+    "de": "p3",
+    "para": "p4",
+    "modo": "pe",
+    "min": 14,
+    "km": 0.9,
+    "custo": 0,
+    "desc": "900 m rumo nordeste por Nishi-Shinjuku, calçada larga e plana entre os arranha-céus, até a entrada do Omoide Yokocho, colada na saída oeste da estação Shinjuku. De lá até a cabeça do Godzilla, em Kabukicho, são mais 500 m."
+   },
+   {
+    "de": "p4",
+    "para": "e7",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.4,
+    "custo": 0,
+    "desc": "De volta à estação. A catraca que vocês querem é a 京王新線口 (Keio New Line Gate), do lado oeste, embaixo da Koshu-kaido."
+   },
+   {
+    "de": "e7",
+    "para": "p5",
+    "modo": "metro",
+    "linha": "Toei Shinjuku",
+    "cor": "#6CBB5A",
+    "min": 27,
+    "km": 12.0,
+    "custo": 280,
+    "desc": "12 estações, sentido Motoyawata. A mesma linha da manhã, ao contrário, e depois das 20:00 já sem rush."
+   },
+   {
+    "de": "p5",
+    "para": "fim",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Saída A4 e menos de 200 m até a porta do hotel."
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "extra",
+    "titulo": "Palácio Imperial + Koishikawa Korakuen, se a tarde no parque ficar longa demais",
+    "texto": "Esta é a opção para quem não quiser passar sete horas dentro do Gyoen, e ela é barata e curta. Os jardins leste do Palácio Imperial são gratuitos, planos e enormes, com cerejeiras e as muralhas do castelo de Edo; a 1,5 km dali, o Koishikawa Korakuen cobra ¥300, é de 1629 e tem uma das melhores sakura de Tóquio num jardim pequeno o bastante para dar a volta em 40 min com carrinho. Os dois juntos custam menos de ¥400 por adulto e ficam a 20 min de Ojima pela mesma Toei Shinjuku, o que também facilita para quem quiser voltar antes com os bebês. ⚠ Os jardins do Palácio fecham às segundas e sextas — quinta está livre. Decidam no dia: nada aqui tem hora marcada.",
+    "ponto": {
+     "nome": "Koishikawa Korakuen",
+     "lat": 35.705617,
+     "lng": 139.749403,
+     "gmaps": "Koishikawa Korakuen Garden, Bunkyo"
+    }
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Golden Gai, a duas quadras do Omoide Yokocho",
+    "texto": "Para quem quiser esticar depois do jantar, sem os bebês: seis becos com mais de 200 bares minúsculos, cada um com tema próprio, a 500 m do Omoide Yokocho e ainda dentro de Shinjuku. É ainda menor e mais fechado que o Omoide — a maioria dos bares tem de 4 a 8 lugares, muitos cobram taxa de entrada de ¥500 a ¥1.500 e alguns só atendem freguês de casa. Procurem as portas com aviso em inglês, que são as que recebem turista sem constrangimento. ⚠ Não é lugar para criança em nenhuma hipótese, e só enche de verdade depois das 21:00: combinem antes quem volta com os bebês e quem fica.",
+    "ponto": {
+     "nome": "Shinjuku Golden Gai",
+     "lat": 35.694222,
+     "lng": 139.704639,
+     "gmaps": "Shinjuku Golden Gai"
+    }
+   },
+   {
+    "tipo": "planob",
+    "titulo": "Se chover",
+    "texto": "Chuva pega este dia inteiro, porque ele é quase todo ao ar livre. O piquenique de sakura embaixo d'água não existe: o Gyoen encolhe para 1h de estufa tropical e do pavilhão do jardim japonês, que são as duas coberturas, e o grupo sai cedo. O observatório também se perde — com nuvem baixa o 45º andar fica dentro do nevoeiro e não se enxerga nada; em compensação a fachada do prédio recebe projeção mapeada à noite, que é de graça, se vê da praça e vale a pena mesmo molhado. Para tapar a tarde, o refúgio coberto e barato fica a 20 min de Ojima pela mesma Toei: o Museu Edo-Tokyo, em Ryogoku. E o Omoide Yokocho à noite não muda — os becos têm toldo e os balcões são fechados.",
+    "refs": [
+     "p1",
+     "p3"
+    ]
+   }
+  ],
+  "passe": {
+   "nome": "Nenhum passe compensa hoje — carreguem Suica",
+   "texto": "O candidato era o Toei Marugoto Kippu (¥700 adulto, ¥350 criança), e ele fazia sentido quando o dia atravessava a cidade até Azabudai. Agora sobraram dois trechos: ¥280 de Ojima a Shinjuku-sanchome e ¥280 na volta, ¥560 por adulto contra ¥700 do passe. Mesmo somando os ¥180 de Oedo, para quem não quiser fazer a pé os 1,3 km do Gyoen até o observatório, dá ¥740 — ¥40 de economia, que não paga o trabalho de comprar. Existe também um passe Toei de ¥500, mas ele só vale em sábados, domingos e feriados, e 25 de março de 2027 é quinta-feira. Paguem por viagem no Suica e não pensem mais nisso; menores de 6 anos não pagam, então os três bebês viajam de graça."
   }
  },
  "2027-03-26": {
@@ -4465,345 +4357,6 @@
    "texto": "NÃO COMPENSA hoje, e por uma margem larga. O dia inteiro usa duas passagens de metrô e mais nada: ¥220 de Ojima a Asakusa e ¥220 de Oshiage a Ojima, ¥440 por adulto. O passe custa ¥700 — vocês pagariam ¥260 a mais por pessoa, cerca de ¥2.600 jogados fora pelo grupo pagante. Comprem passagem avulsa, ou simplesmente encostem o Suica ou o Pasmo na catraca. ⚠ O passe Toei de ¥500 só vale sábado, domingo e feriado, e 26 de março de 2027 é sexta-feira, então também não serve. ⚠ E cuidado com o raciocínio inverso: o passe Toei não cobriria a Tobu Skytree Line do plano de chuva, que é de outra empresa. Criança de 6 a 11 anos paga metade da tarifa (¥110 por trecho) e abaixo de 6 anos não paga nada — os três bebês viajam de graça o dia inteiro."
   }
  },
- "2027-03-28": {
-  "titulo": "Domingo de sakura em Ueno e calçadão em Akihabara",
-  "resumo": "O dia sobe cedo para Ueno enquanto o parque ainda respira, resolve o museu na ponta norte, desce pela Ameyoko e termina em Akihabara dentro da janela em que a Chuo-dori fecha para carros. A ordem é norte para sul, sem voltar pelo próprio caminho, e a chegada é pela Saída do Parque de Ueno, o único acesso ao parque sem degrau nem ladeira para quem empurra carrinho.",
-  "centro": [
-   35.708,
-   139.7745
-  ],
-  "zoom": 14,
-  "paradas": [
-   {
-    "id": "base",
-    "nome": "Hotel em Ojima",
-    "tipo": "base",
-    "lat": 35.68799,
-    "lng": 139.83535,
-    "aprox": true,
-    "hora": "08:30",
-    "gmaps": "Ojima Station, Koto, Tokyo"
-   },
-   {
-    "id": "e1",
-    "nome": "Estação Ojima (Toei Shinjuku)",
-    "tipo": "estacao",
-    "lat": 35.68977,
-    "lng": 139.83508,
-    "gmaps": "Ojima Station Toei Shinjuku Line"
-   },
-   {
-    "id": "e2",
-    "nome": "Estação Iwamotocho (Toei Shinjuku)",
-    "tipo": "estacao",
-    "lat": 35.69561,
-    "lng": 139.77532,
-    "gmaps": "Iwamotocho Station Tokyo"
-   },
-   {
-    "id": "e3",
-    "nome": "Estação Akihabara (JR)",
-    "tipo": "estacao",
-    "lat": 35.69917,
-    "lng": 139.77263,
-    "gmaps": "Akihabara Station Electric Town Exit"
-   },
-   {
-    "id": "e4",
-    "nome": "Estação Ueno — Saída do Parque (Koen-guchi)",
-    "tipo": "estacao",
-    "lat": 35.7151,
-    "lng": 139.776,
-    "aprox": true,
-    "gmaps": "Ueno Station Park Exit"
-   },
-   {
-    "id": "p1",
-    "ativ": "Ueno Park (hanami)",
-    "tipo": "parque",
-    "lat": 35.71402,
-    "lng": 139.77393,
-    "hora": "09:15",
-    "fim": "10:45",
-    "gmaps": "Ueno Park, Taito, Tokyo",
-    "foto": "Ueno Park cherry blossom",
-    "must": [
-     "São cerca de 1.200 cerejeiras. A alameda central, a Sakura-dori, é o cartão-postal — e é onde a multidão anda em fila indiana depois das 10:00. Cheguem antes disso.",
-     "A Sakura-dori é passagem, não piquenique: estender lona ali é proibido. As lonas ficam no Green Park e no Suribachiyama, e é lá que o chão some sob o plástico azul.",
-     "Com três carrinhos, o caminho bom é o de baixo: pela beira do Shinobazu, o lago dos lótus, largo, plano e com uma fração da gente.",
-     "A festa da sakura segue à noite com lanternas e vai até por volta das 20:00 — mas o dia de vocês não volta aqui."
-    ],
-    "comidas": [
-     "Barraca de yakisoba, karaage ou dango ¥400–700",
-     "Café e onigiri do konbini da estação, se a fila das barracas estiver longa"
-    ],
-    "alerta": "Domingo de pico de florada é o hanami mais concorrido do Japão. Combinem um ponto de reencontro fixo antes de entrar — dentro da alameda ninguém acha ninguém. Fraldário e banheiro acessível existem no parque, mas são poucos para o volume de gente: usem o do museu ou o da estação, que são melhores. Evitem as escadarias do lado sul (Suribachiyama e a subida do Kiyomizu Kannon-do) com carrinho — contornem."
-   },
-   {
-    "id": "p2",
-    "ativ": "Museu Nacional de Tokyo",
-    "tipo": "museu",
-    "lat": 35.71904,
-    "lng": 139.77597,
-    "hora": "10:50",
-    "fim": "12:50",
-    "gmaps": "Tokyo National Museum",
-    "foto": "Tokyo National Museum Honkan",
-    "must": [
-     "Abre 09:30 e fecha 17:00, última entrada 16:30. A noite estendida até 20:00 é só sexta e sábado — no domingo de vocês vale o horário normal.",
-     "Fecha às segundas: este domingo é a única brecha da semana em Tóquio para ele.",
-     "Adulto ¥1.000, universitário ¥500, grátis até 18 anos e a partir de 70. No grupo isso dá 8 entradas pagas — os dois adolescentes e os três bebês não pagam.",
-     "Se o tempo apertar, façam só o Honkan: ele sozinho é a linha do tempo do Japão, de armadura e espada a ukiyo-e, e resolve em 1h30."
-    ],
-    "alerta": "O ingresso de ¥1.000 é da coleção permanente. Quando há exposição especial no Heiseikan, ela é ingresso à parte e costuma ter fila — confiram o cartaz na bilheteria e decidam ali; a permanente sozinha já dá as 2h. Elevador, rampa e fraldário existem no Honkan, e o carrinho circula em tudo."
-   },
-   {
-    "id": "p3",
-    "ativ": "Ameyoko",
-    "tipo": "compras",
-    "lat": 35.71002,
-    "lng": 139.77454,
-    "hora": "13:05",
-    "fim": "14:05",
-    "gmaps": "Ameyoko Shopping Street Ueno",
-    "foto": "Ameyoko market street Tokyo",
-    "compras": [
-     "🛒 AQUI SE COMPRA: são mais de 400 lojas em cerca de 500 m sob o viaduto do trem, entre Ueno e Okachimachi. É a rua de pechincha de Tóquio: tênis, mala, cosmético, doce a granel, frutos do mar.",
-     "Shimura Shoten faz o leilão de chocolate no grito — sacola cheia por preço fixo, e é espetáculo mesmo para quem não compra.",
-     "London Sports vende tênis e roupa outdoor com desconto agressivo.",
-     "Doce e castanha a granel se pesa e se paga na hora: separem dinheiro vivo, várias bancas pequenas não passam cartão."
-    ],
-    "comidas": [
-     "Espetinho e frutos do mar de banca ¥300–800",
-     "Kebab e gyoza de rua ¥500–900"
-    ],
-    "alerta": "A maioria das lojas abre por volta das 10:00 e fecha entre 19:00 e 20:00; algumas bancas de peixe abrem antes e fecham cedo. O corredor é estreito e no domingo à tarde vira aperto — dois carrinhos lado a lado não passam. Andem em fila, um adulto por carrinho, e deixem a compra pesada para o fim para não empurrar peso."
-   },
-   {
-    "id": "p4",
-    "ativ": "AKIHABARA",
-    "tipo": "compras",
-    "lat": 35.7,
-    "lng": 139.7725,
-    "hora": "14:20",
-    "fim": "18:20",
-    "gmaps": "Akihabara Electric Town",
-    "foto": "Akihabara Chuo dori street",
-    "must": [
-     "Domingo é o melhor dia: a Chuo-dori vira calçadão entre o cruzamento de Sotokanda 5-chome e o de Manseibashi, cerca de 570 m sem carro.",
-     "Nesta época do ano o calçadão é das 13:00 às 17:00 — o horário mais longo, até 18:00, só vale de abril a setembro. Quanto mais cedo vocês chegarem, mais rua sem carro sobra.",
-     "Chuva, vento forte ou só a previsão ruim cancelam o calçadão no próprio dia. Não montem o passeio inteiro em cima dele."
-    ],
-    "compras": [
-     "🛒 AQUI SE COMPRA: Yodobashi-Akiba (9 andares, 09:30–22:00), Bic Camera, Sofmap, Don Quijote, Kotobukiya, Iosys, Janpara e as lojas de game usado.",
-     "Super Potato (game retrô) abre 11:00 e fecha 20:00. Mandarake Complex abre bem depois da média da rua — não contem com ele de manhã."
-    ],
-    "comidas": [
-     "Curry ou ramen de balcão ¥900–1.300",
-     "Crepe e café no térreo das lojas ¥500–800"
-    ],
-    "alerta": "A rua é plana, mas as lojas são verticais e apertadas: Super Potato e Mandarake têm escada estreita e o carrinho não sobe. Combinem revezamento na porta antes de entrar na primeira. Quem quiser conforto com carrinho fica no Yodobashi, que tem elevador grande, corredor largo e fraldário."
-   },
-   {
-    "id": "p5",
-    "ativ": "Compras + despacho das caixas",
-    "tipo": "compras",
-    "lat": 35.69878,
-    "lng": 139.77473,
-    "hora": "18:20",
-    "fim": "19:00",
-    "gmaps": "Yodobashi Camera Multimedia Akiba",
-    "compras": [
-     "🛒 AQUI SE COMPRA: o eletrônico do grupo se resolve aqui. Yodobashi-Akiba tem balcão para estrangeiro; Bic Camera, Sofmap e Don Quijote ficam a menos de 300 m.",
-     "Guardem TODAS as notas juntas, num envelope só, e anotem em qual mala foi cada compra."
-    ],
-    "alerta": "Duas coisas mudaram e valem dinheiro. (1) Desde 1/11/2026 a loja cobra o preço com imposto e o reembolso vem depois: no aeroporto vocês passam no quiosque da alfândega com passaporte e com as mercadorias, e é a LOJA (ou a empresa que ela contratou) que devolve o valor, pelo meio que ela escolher — não é dinheiro na mão no balcão do aeroporto. O piso continua ¥5.000 por loja por dia. (2) Mandar a compra isenta pelo correio para fora do Japão deixou de valer: o que não estiver com vocês na hora da alfândega perde a isenção da compra inteira. Despachar caixa para casa e ter isenção não combinam. Para mandar caixa DENTRO do Japão (ao hotel de Osaka), domingo tem saída: a loja da Yamato em frente à estação de Akihabara (Sotokanda 1-15-8) abre domingo 09:00–19:00, e 7-Eleven e FamilyMart aceitam takkyubin a qualquer hora. Balcão comum de Correio não abre domingo — só o guichê Yu-Yu das agências grandes, como a de Ueno, aberta domingo das 07:00 às 18:00."
-   },
-   {
-    "id": "fim",
-    "nome": "Hotel em Ojima",
-    "tipo": "base",
-    "lat": 35.68799,
-    "lng": 139.83535,
-    "aprox": true,
-    "hora": "20:00",
-    "gmaps": "Ojima Station, Koto, Tokyo"
-   }
-  ],
-  "pernas": [
-   {
-    "de": "base",
-    "para": "e1",
-    "modo": "pe",
-    "min": 4,
-    "km": 0.2,
-    "custo": 0,
-    "desc": "Duas quadras até a boca da estação, calçada larga e plana."
-   },
-   {
-    "de": "e1",
-    "para": "e2",
-    "modo": "metro",
-    "linha": "Toei Shinjuku",
-    "cor": "#6CBB5A",
-    "min": 17,
-    "km": 7.0,
-    "custo": 220,
-    "desc": "Direto, sem baldeação, sentido Shinjuku. Elevador nas duas pontas."
-   },
-   {
-    "de": "e2",
-    "para": "e3",
-    "modo": "pe",
-    "min": 7,
-    "km": 0.5,
-    "custo": 0,
-    "desc": "Sobe a Chuo-dori a céu aberto até a Saída Electric Town de Akihabara. Tudo plano."
-   },
-   {
-    "de": "e3",
-    "para": "e4",
-    "modo": "metro",
-    "linha": "JR Yamanote",
-    "cor": "#008C46",
-    "min": 4,
-    "km": 2.2,
-    "custo": 160,
-    "desc": "2 estações (Okachimachi, Ueno). Desçam pela Saída do Parque, que tem elevador."
-   },
-   {
-    "de": "e4",
-    "para": "p1",
-    "modo": "pe",
-    "min": 3,
-    "km": 0.2,
-    "custo": 0,
-    "desc": "A Saída do Parque sai no nível do parque: nenhum degrau entre a catraca e as cerejeiras."
-   },
-   {
-    "de": "p1",
-    "para": "p2",
-    "modo": "pe",
-    "min": 8,
-    "km": 0.6,
-    "custo": 0,
-    "desc": "Até a ponta norte do parque, onde fica o museu."
-   },
-   {
-    "de": "p2",
-    "para": "p3",
-    "modo": "pe",
-    "min": 18,
-    "km": 1.2,
-    "custo": 0,
-    "desc": "Desce o parque inteiro de volta para o sul e sai na entrada norte da Ameyoko.",
-    "unico": true
-   },
-   {
-    "de": "p3",
-    "para": "p4",
-    "modo": "pe",
-    "min": 15,
-    "km": 1.1,
-    "custo": 0,
-    "desc": "A Ameyoko termina na porta de Okachimachi, e dali a Chuo-dori desce reta até Akihabara: 1,1 km planos, calçada larga, e a rua já é o próprio calçadão — a caminhada é o começo do programa. Quem estiver acabado pega 1 estação de Yamanote por ¥160, mas com 10 pagantes são ¥1.600 para poupar 12 min."
-   },
-   {
-    "de": "p4",
-    "para": "p5",
-    "modo": "pe",
-    "min": 5,
-    "km": 0.3,
-    "custo": 0,
-    "desc": "Entre as lojas, tudo dentro do quarteirão da estação."
-   },
-   {
-    "de": "p5",
-    "para": "e2",
-    "modo": "pe",
-    "min": 8,
-    "km": 0.6,
-    "custo": 0,
-    "desc": "Volta pela Chuo-dori até Iwamotocho, agora com as sacolas."
-   },
-   {
-    "de": "e2",
-    "para": "e1",
-    "modo": "metro",
-    "linha": "Toei Shinjuku",
-    "cor": "#6CBB5A",
-    "min": 17,
-    "km": 7.0,
-    "custo": 220,
-    "desc": "Direto para Ojima, sentido Motoyawata. Sem baldeação com sacola na mão."
-   },
-   {
-    "de": "e1",
-    "para": "fim",
-    "modo": "pe",
-    "min": 4,
-    "km": 0.2,
-    "custo": 0,
-    "desc": "Da estação ao hotel."
-   }
-  ],
-  "alternativas": [
-   {
-    "tipo": "planob",
-    "titulo": "Se chover, o calçadão some e o dia entra para dentro",
-    "texto": "Chuva, vento forte ou só previsão ruim cancelam o fechamento da Chuo-dori no mesmo dia — e o hanami vira lama com carrinho. Plano B: esticar o museu, que é seco, quente e liso e tem café, e passar a tarde no Yodobashi-Akiba, nove andares cobertos com elevador, banheiro e fraldário, colado na estação.",
-    "ponto": {
-     "nome": "Yodobashi-Akiba",
-     "lat": 35.69878,
-     "lng": 139.77473,
-     "gmaps": "Yodobashi Camera Multimedia Akiba",
-     "foto": "File:Yodobashi-Akiba 2015.JPG"
-    }
-   },
-   {
-    "tipo": "troca",
-    "titulo": "Contornar a multidão pelo Shinobazu",
-    "texto": "Se a alameda central estiver ombro a ombro — e num domingo de pico ela vai estar —, entrem pela beira do lago Shinobazu em vez da Sakura-dori. É plano, largo, tem cerejeira na margem e uma fração da gente, e dá para subir até o museu por dentro do parque sem nunca pegar a alameda.",
-    "ponto": {
-     "nome": "Lago Shinobazu",
-     "lat": 35.71187,
-     "lng": 139.77086,
-     "gmaps": "Shinobazu Pond, Ueno"
-    }
-   },
-   {
-    "tipo": "extra",
-    "titulo": "Museu de Ciências, se o dia render",
-    "texto": "Fica a 200 m do Museu Nacional, no mesmo parque: baleia azul em tamanho real na porta, esqueleto de dinossauro e uma ala inteira que prende adolescente. Tem elevador e fraldário. Só entra se cortarem tempo em outro lugar — o domingo já é longo de pé.",
-    "ponto": {
-     "nome": "Museu Nacional de Ciências",
-     "lat": 35.7159,
-     "lng": 139.77669,
-     "gmaps": "National Museum of Nature and Science Tokyo"
-    }
-   },
-   {
-    "tipo": "corte",
-    "titulo": "Pular a Ameyoko e ganhar uma hora de calçadão",
-    "texto": "A Ameyoko é o trecho mais apertado do dia e com três carrinhos rende pouco. Cortando-a, vocês chegam em Akihabara por volta das 13:10, no começo da janela sem carro, em vez de 14:20 — e a rua fechada com carrinho vale mais que o corredor estreito. As compras de rua dá para fazer na Don Quijote de Akihabara.",
-    "refs": [
-     "p3"
-    ]
-   },
-   {
-    "tipo": "extra",
-    "titulo": "Despachar caixa num domingo: onde dá certo",
-    "texto": "Domingo derruba o balcão comum dos Correios, mas não derruba o despacho. A loja da Yamato em frente à estação de Akihabara abre 09:00–19:00 no domingo; 7-Eleven e FamilyMart aceitam takkyubin a qualquer hora (Lawson não — lá só sai Yu-Pack dos Correios); e a agência dos Correios de Ueno tem guichê Yu-Yu aberto domingo, 07:00–18:00. Escolham uma antes de encher a sacola, e lembrem: o que for isento de imposto tem de estar com vocês na alfândega, esse não vai por caixa.",
-    "refs": [
-     "p5"
-    ]
-   }
-  ],
-  "passe": {
-   "nome": "Nenhum passe compensa — usem o IC (Suica/Pasmo)",
-   "texto": "O dia gasta ¥760 por pessoa em trem: ¥220 Ojima→Iwamotocho, ¥160 Akihabara→Ueno, ¥160 Okachimachi→Akihabara e ¥220 na volta. O Tokyo Subway Ticket de 24h custa ¥800 e nem cobre a JR; o passe diário do Toei custa ¥700 e cobriria só os ¥440 de metrô. Os dois perdem. Passem o IC e pronto — e as três crianças abaixo de 6 anos não pagam trem."
-  }
- },
  "2027-03-27": {
   "titulo": "Peixe ao amanhecer, água até o joelho e a baía acendendo",
   "resumo": "Um dia só na orla: começa cedo no Toyosu para pegar o mercado antes de ele fechar, atravessa a pé até o teamLab Planets no horário marcado e passa a tarde inteira em Odaiba, terminando com a Ponte Arco-Íris acesa vista da praia. Quase tudo em cima da Yurikamome, que é elevada, tem elevador em toda estação e não tem condutor — a primeira fila é vidro puro.",
@@ -5152,6 +4705,345 @@
    "texto": "Nesta rota o passe NÃO compensa. Os trechos de Yurikamome do dia somam ¥189 de Toyosu a Shijo-mae, ¥251 de Shin-Toyosu a Telecom Center e cerca de ¥330 de Daiba a Shimbashi: uns ¥770, contra ¥820 do passe. Paguem no cartão IC. Ele só passa a valer se entrar uma quarta parada na linha, como o Small Worlds em Ariake. Criança de 1 a 6 anos anda de graça, duas por adulto pagante, então os três bebês não pagam trem nenhum no dia."
   }
  },
+ "2027-03-28": {
+  "titulo": "Domingo de sakura em Ueno e calçadão em Akihabara",
+  "resumo": "O dia sobe cedo para Ueno enquanto o parque ainda respira, resolve o museu na ponta norte, desce pela Ameyoko e termina em Akihabara dentro da janela em que a Chuo-dori fecha para carros. A ordem é norte para sul, sem voltar pelo próprio caminho, e a chegada é pela Saída do Parque de Ueno, o único acesso ao parque sem degrau nem ladeira para quem empurra carrinho.",
+  "centro": [
+   35.708,
+   139.7745
+  ],
+  "zoom": 14,
+  "paradas": [
+   {
+    "id": "base",
+    "nome": "Hotel em Ojima",
+    "tipo": "base",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "hora": "08:30",
+    "gmaps": "Ojima Station, Koto, Tokyo"
+   },
+   {
+    "id": "e1",
+    "nome": "Estação Ojima (Toei Shinjuku)",
+    "tipo": "estacao",
+    "lat": 35.68977,
+    "lng": 139.83508,
+    "gmaps": "Ojima Station Toei Shinjuku Line"
+   },
+   {
+    "id": "e2",
+    "nome": "Estação Iwamotocho (Toei Shinjuku)",
+    "tipo": "estacao",
+    "lat": 35.69561,
+    "lng": 139.77532,
+    "gmaps": "Iwamotocho Station Tokyo"
+   },
+   {
+    "id": "e3",
+    "nome": "Estação Akihabara (JR)",
+    "tipo": "estacao",
+    "lat": 35.69917,
+    "lng": 139.77263,
+    "gmaps": "Akihabara Station Electric Town Exit"
+   },
+   {
+    "id": "e4",
+    "nome": "Estação Ueno — Saída do Parque (Koen-guchi)",
+    "tipo": "estacao",
+    "lat": 35.7151,
+    "lng": 139.776,
+    "aprox": true,
+    "gmaps": "Ueno Station Park Exit"
+   },
+   {
+    "id": "p1",
+    "ativ": "Ueno Park (hanami)",
+    "tipo": "parque",
+    "lat": 35.71402,
+    "lng": 139.77393,
+    "hora": "09:15",
+    "fim": "10:45",
+    "gmaps": "Ueno Park, Taito, Tokyo",
+    "foto": "Ueno Park cherry blossom",
+    "must": [
+     "São cerca de 1.200 cerejeiras. A alameda central, a Sakura-dori, é o cartão-postal — e é onde a multidão anda em fila indiana depois das 10:00. Cheguem antes disso.",
+     "A Sakura-dori é passagem, não piquenique: estender lona ali é proibido. As lonas ficam no Green Park e no Suribachiyama, e é lá que o chão some sob o plástico azul.",
+     "Com três carrinhos, o caminho bom é o de baixo: pela beira do Shinobazu, o lago dos lótus, largo, plano e com uma fração da gente.",
+     "A festa da sakura segue à noite com lanternas e vai até por volta das 20:00 — mas o dia de vocês não volta aqui."
+    ],
+    "comidas": [
+     "Barraca de yakisoba, karaage ou dango ¥400–700",
+     "Café e onigiri do konbini da estação, se a fila das barracas estiver longa"
+    ],
+    "alerta": "Domingo de pico de florada é o hanami mais concorrido do Japão. Combinem um ponto de reencontro fixo antes de entrar — dentro da alameda ninguém acha ninguém. Fraldário e banheiro acessível existem no parque, mas são poucos para o volume de gente: usem o do museu ou o da estação, que são melhores. Evitem as escadarias do lado sul (Suribachiyama e a subida do Kiyomizu Kannon-do) com carrinho — contornem."
+   },
+   {
+    "id": "p2",
+    "ativ": "Museu Nacional de Tokyo",
+    "tipo": "museu",
+    "lat": 35.71904,
+    "lng": 139.77597,
+    "hora": "10:50",
+    "fim": "12:50",
+    "gmaps": "Tokyo National Museum",
+    "foto": "Tokyo National Museum Honkan",
+    "must": [
+     "Abre 09:30 e fecha 17:00, última entrada 16:30. A noite estendida até 20:00 é só sexta e sábado — no domingo de vocês vale o horário normal.",
+     "Fecha às segundas: este domingo é a única brecha da semana em Tóquio para ele.",
+     "Adulto ¥1.000, universitário ¥500, grátis até 18 anos e a partir de 70. No grupo isso dá 8 entradas pagas — os dois adolescentes e os três bebês não pagam.",
+     "Se o tempo apertar, façam só o Honkan: ele sozinho é a linha do tempo do Japão, de armadura e espada a ukiyo-e, e resolve em 1h30."
+    ],
+    "alerta": "O ingresso de ¥1.000 é da coleção permanente. Quando há exposição especial no Heiseikan, ela é ingresso à parte e costuma ter fila — confiram o cartaz na bilheteria e decidam ali; a permanente sozinha já dá as 2h. Elevador, rampa e fraldário existem no Honkan, e o carrinho circula em tudo."
+   },
+   {
+    "id": "p3",
+    "ativ": "Ameyoko",
+    "tipo": "compras",
+    "lat": 35.71002,
+    "lng": 139.77454,
+    "hora": "13:05",
+    "fim": "14:05",
+    "gmaps": "Ameyoko Shopping Street Ueno",
+    "foto": "Ameyoko market street Tokyo",
+    "compras": [
+     "🛒 AQUI SE COMPRA: são mais de 400 lojas em cerca de 500 m sob o viaduto do trem, entre Ueno e Okachimachi. É a rua de pechincha de Tóquio: tênis, mala, cosmético, doce a granel, frutos do mar.",
+     "Shimura Shoten faz o leilão de chocolate no grito — sacola cheia por preço fixo, e é espetáculo mesmo para quem não compra.",
+     "London Sports vende tênis e roupa outdoor com desconto agressivo.",
+     "Doce e castanha a granel se pesa e se paga na hora: separem dinheiro vivo, várias bancas pequenas não passam cartão."
+    ],
+    "comidas": [
+     "Espetinho e frutos do mar de banca ¥300–800",
+     "Kebab e gyoza de rua ¥500–900"
+    ],
+    "alerta": "A maioria das lojas abre por volta das 10:00 e fecha entre 19:00 e 20:00; algumas bancas de peixe abrem antes e fecham cedo. O corredor é estreito e no domingo à tarde vira aperto — dois carrinhos lado a lado não passam. Andem em fila, um adulto por carrinho, e deixem a compra pesada para o fim para não empurrar peso."
+   },
+   {
+    "id": "p4",
+    "ativ": "AKIHABARA",
+    "tipo": "compras",
+    "lat": 35.7,
+    "lng": 139.7725,
+    "hora": "14:20",
+    "fim": "18:20",
+    "gmaps": "Akihabara Electric Town",
+    "foto": "Akihabara Chuo dori street",
+    "must": [
+     "Domingo é o melhor dia: a Chuo-dori vira calçadão entre o cruzamento de Sotokanda 5-chome e o de Manseibashi, cerca de 570 m sem carro.",
+     "Nesta época do ano o calçadão é das 13:00 às 17:00 — o horário mais longo, até 18:00, só vale de abril a setembro. Quanto mais cedo vocês chegarem, mais rua sem carro sobra.",
+     "Chuva, vento forte ou só a previsão ruim cancelam o calçadão no próprio dia. Não montem o passeio inteiro em cima dele."
+    ],
+    "compras": [
+     "🛒 AQUI SE COMPRA: Yodobashi-Akiba (9 andares, 09:30–22:00), Bic Camera, Sofmap, Don Quijote, Kotobukiya, Iosys, Janpara e as lojas de game usado.",
+     "Super Potato (game retrô) abre 11:00 e fecha 20:00. Mandarake Complex abre bem depois da média da rua — não contem com ele de manhã."
+    ],
+    "comidas": [
+     "Curry ou ramen de balcão ¥900–1.300",
+     "Crepe e café no térreo das lojas ¥500–800"
+    ],
+    "alerta": "A rua é plana, mas as lojas são verticais e apertadas: Super Potato e Mandarake têm escada estreita e o carrinho não sobe. Combinem revezamento na porta antes de entrar na primeira. Quem quiser conforto com carrinho fica no Yodobashi, que tem elevador grande, corredor largo e fraldário."
+   },
+   {
+    "id": "p5",
+    "ativ": "Compras + despacho das caixas",
+    "tipo": "compras",
+    "lat": 35.69878,
+    "lng": 139.77473,
+    "hora": "18:20",
+    "fim": "19:00",
+    "gmaps": "Yodobashi Camera Multimedia Akiba",
+    "compras": [
+     "🛒 AQUI SE COMPRA: o eletrônico do grupo se resolve aqui. Yodobashi-Akiba tem balcão para estrangeiro; Bic Camera, Sofmap e Don Quijote ficam a menos de 300 m.",
+     "Guardem TODAS as notas juntas, num envelope só, e anotem em qual mala foi cada compra."
+    ],
+    "alerta": "Duas coisas mudaram e valem dinheiro. (1) Desde 1/11/2026 a loja cobra o preço com imposto e o reembolso vem depois: no aeroporto vocês passam no quiosque da alfândega com passaporte e com as mercadorias, e é a LOJA (ou a empresa que ela contratou) que devolve o valor, pelo meio que ela escolher — não é dinheiro na mão no balcão do aeroporto. O piso continua ¥5.000 por loja por dia. (2) Mandar a compra isenta pelo correio para fora do Japão deixou de valer: o que não estiver com vocês na hora da alfândega perde a isenção da compra inteira. Despachar caixa para casa e ter isenção não combinam. Para mandar caixa DENTRO do Japão (ao hotel de Osaka), domingo tem saída: a loja da Yamato em frente à estação de Akihabara (Sotokanda 1-15-8) abre domingo 09:00–19:00, e 7-Eleven e FamilyMart aceitam takkyubin a qualquer hora. Balcão comum de Correio não abre domingo — só o guichê Yu-Yu das agências grandes, como a de Ueno, aberta domingo das 07:00 às 18:00."
+   },
+   {
+    "id": "fim",
+    "nome": "Hotel em Ojima",
+    "tipo": "base",
+    "lat": 35.68799,
+    "lng": 139.83535,
+    "aprox": true,
+    "hora": "20:00",
+    "gmaps": "Ojima Station, Koto, Tokyo"
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
+    "para": "e1",
+    "modo": "pe",
+    "min": 4,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Duas quadras até a boca da estação, calçada larga e plana."
+   },
+   {
+    "de": "e1",
+    "para": "e2",
+    "modo": "metro",
+    "linha": "Toei Shinjuku",
+    "cor": "#6CBB5A",
+    "min": 17,
+    "km": 7.0,
+    "custo": 220,
+    "desc": "Direto, sem baldeação, sentido Shinjuku. Elevador nas duas pontas."
+   },
+   {
+    "de": "e2",
+    "para": "e3",
+    "modo": "pe",
+    "min": 7,
+    "km": 0.5,
+    "custo": 0,
+    "desc": "Sobe a Chuo-dori a céu aberto até a Saída Electric Town de Akihabara. Tudo plano."
+   },
+   {
+    "de": "e3",
+    "para": "e4",
+    "modo": "metro",
+    "linha": "JR Yamanote",
+    "cor": "#008C46",
+    "min": 4,
+    "km": 2.2,
+    "custo": 160,
+    "desc": "2 estações (Okachimachi, Ueno). Desçam pela Saída do Parque, que tem elevador."
+   },
+   {
+    "de": "e4",
+    "para": "p1",
+    "modo": "pe",
+    "min": 3,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "A Saída do Parque sai no nível do parque: nenhum degrau entre a catraca e as cerejeiras."
+   },
+   {
+    "de": "p1",
+    "para": "p2",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Até a ponta norte do parque, onde fica o museu."
+   },
+   {
+    "de": "p2",
+    "para": "p3",
+    "modo": "pe",
+    "min": 18,
+    "km": 1.2,
+    "custo": 0,
+    "desc": "Desce o parque inteiro de volta para o sul e sai na entrada norte da Ameyoko.",
+    "unico": true
+   },
+   {
+    "de": "p3",
+    "para": "p4",
+    "modo": "pe",
+    "min": 15,
+    "km": 1.1,
+    "custo": 0,
+    "desc": "A Ameyoko termina na porta de Okachimachi, e dali a Chuo-dori desce reta até Akihabara: 1,1 km planos, calçada larga, e a rua já é o próprio calçadão — a caminhada é o começo do programa. Quem estiver acabado pega 1 estação de Yamanote por ¥160, mas com 10 pagantes são ¥1.600 para poupar 12 min."
+   },
+   {
+    "de": "p4",
+    "para": "p5",
+    "modo": "pe",
+    "min": 5,
+    "km": 0.3,
+    "custo": 0,
+    "desc": "Entre as lojas, tudo dentro do quarteirão da estação."
+   },
+   {
+    "de": "p5",
+    "para": "e2",
+    "modo": "pe",
+    "min": 8,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Volta pela Chuo-dori até Iwamotocho, agora com as sacolas."
+   },
+   {
+    "de": "e2",
+    "para": "e1",
+    "modo": "metro",
+    "linha": "Toei Shinjuku",
+    "cor": "#6CBB5A",
+    "min": 17,
+    "km": 7.0,
+    "custo": 220,
+    "desc": "Direto para Ojima, sentido Motoyawata. Sem baldeação com sacola na mão."
+   },
+   {
+    "de": "e1",
+    "para": "fim",
+    "modo": "pe",
+    "min": 4,
+    "km": 0.2,
+    "custo": 0,
+    "desc": "Da estação ao hotel."
+   }
+  ],
+  "alternativas": [
+   {
+    "tipo": "planob",
+    "titulo": "Se chover, o calçadão some e o dia entra para dentro",
+    "texto": "Chuva, vento forte ou só previsão ruim cancelam o fechamento da Chuo-dori no mesmo dia — e o hanami vira lama com carrinho. Plano B: esticar o museu, que é seco, quente e liso e tem café, e passar a tarde no Yodobashi-Akiba, nove andares cobertos com elevador, banheiro e fraldário, colado na estação.",
+    "ponto": {
+     "nome": "Yodobashi-Akiba",
+     "lat": 35.69878,
+     "lng": 139.77473,
+     "gmaps": "Yodobashi Camera Multimedia Akiba",
+     "foto": "File:Yodobashi-Akiba 2015.JPG"
+    }
+   },
+   {
+    "tipo": "troca",
+    "titulo": "Contornar a multidão pelo Shinobazu",
+    "texto": "Se a alameda central estiver ombro a ombro — e num domingo de pico ela vai estar —, entrem pela beira do lago Shinobazu em vez da Sakura-dori. É plano, largo, tem cerejeira na margem e uma fração da gente, e dá para subir até o museu por dentro do parque sem nunca pegar a alameda.",
+    "ponto": {
+     "nome": "Lago Shinobazu",
+     "lat": 35.71187,
+     "lng": 139.77086,
+     "gmaps": "Shinobazu Pond, Ueno"
+    }
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Museu de Ciências, se o dia render",
+    "texto": "Fica a 200 m do Museu Nacional, no mesmo parque: baleia azul em tamanho real na porta, esqueleto de dinossauro e uma ala inteira que prende adolescente. Tem elevador e fraldário. Só entra se cortarem tempo em outro lugar — o domingo já é longo de pé.",
+    "ponto": {
+     "nome": "Museu Nacional de Ciências",
+     "lat": 35.7159,
+     "lng": 139.77669,
+     "gmaps": "National Museum of Nature and Science Tokyo"
+    }
+   },
+   {
+    "tipo": "corte",
+    "titulo": "Pular a Ameyoko e ganhar uma hora de calçadão",
+    "texto": "A Ameyoko é o trecho mais apertado do dia e com três carrinhos rende pouco. Cortando-a, vocês chegam em Akihabara por volta das 13:10, no começo da janela sem carro, em vez de 14:20 — e a rua fechada com carrinho vale mais que o corredor estreito. As compras de rua dá para fazer na Don Quijote de Akihabara.",
+    "refs": [
+     "p3"
+    ]
+   },
+   {
+    "tipo": "extra",
+    "titulo": "Despachar caixa num domingo: onde dá certo",
+    "texto": "Domingo derruba o balcão comum dos Correios, mas não derruba o despacho. A loja da Yamato em frente à estação de Akihabara abre 09:00–19:00 no domingo; 7-Eleven e FamilyMart aceitam takkyubin a qualquer hora (Lawson não — lá só sai Yu-Pack dos Correios); e a agência dos Correios de Ueno tem guichê Yu-Yu aberto domingo, 07:00–18:00. Escolham uma antes de encher a sacola, e lembrem: o que for isento de imposto tem de estar com vocês na alfândega, esse não vai por caixa.",
+    "refs": [
+     "p5"
+    ]
+   }
+  ],
+  "passe": {
+   "nome": "Nenhum passe compensa — usem o IC (Suica/Pasmo)",
+   "texto": "O dia gasta ¥760 por pessoa em trem: ¥220 Ojima→Iwamotocho, ¥160 Akihabara→Ueno, ¥160 Okachimachi→Akihabara e ¥220 na volta. O Tokyo Subway Ticket de 24h custa ¥800 e nem cobre a JR; o passe diário do Toei custa ¥700 e cobriria só os ¥440 de metrô. Os dois perdem. Passem o IC e pronto — e as três crianças abaixo de 6 anos não pagam trem."
+  }
+ },
  "2027-03-29": {
   "titulo": "Segunda de rua: a descida de Meiji Jingu até o alto de Shibuya",
   "resumo": "Segunda-feira fecha quase todo museu de Tóquio, e o último dia inteiro é de rua de propósito. Depois do trem da manhã não se pega mais nada: são 3,5 km de descida contínua, do silêncio da floresta do Meiji Jingu ao aperto da Takeshita, à avenida larga de Omotesando, ao 6º andar do Parco e ao terraço aberto a 229 m, com o pôr do sol às 18:00 no fim. Duas coisas precisam estar resolvidas antes de sair: o horário do Shibuya Sky, comprado online — e a consciência de que o ingresso de criança dele não é vendido pela internet.",
@@ -5474,8 +5366,8 @@
   }
  },
  "2027-03-30": {
-  "titulo": "515 km de trem e a volta a Osaka para a última noite",
-  "resumo": "O dia é quase todo trem: check-out em Ojima, Shinkansen até Shin-Osaka e Midosuji até Namba, com a tarde e a noite livres em Shinsaibashi e Dotonbori. É o dia mais caro da viagem e o único que depende de reserva feita com antecedência — assento marcado e, para quem levar mala grande, o espaço de bagagem que só existe reservado. E é o dia em que o hotel de Osaka precisa estar fechado: ele ainda não está.",
+  "titulo": "De Tóquio a Osaka — data de referência 30/03",
+  "resumo": "Shinkansen em 30/03 na proposta A. Se o dia adicional ficar em Tóquio (proposta B), esse deslocamento passa para 31/03. A reserva do hotel final e a compra do trem dependem dessa decisão.",
   "centro": [
    35.05,
    137.6
@@ -5586,7 +5478,7 @@
     "gmaps": "Ebisubashi, Dotonbori, Osaka",
     "foto": "Dotonbori Glico sign night",
     "must": [
-     "O letreiro do Glico, aceso desde 1935 na ponte Ebisubashi — a foto obrigatória da última noite, e a ponte é o ponto de encontro do grupo.",
+     "O letreiro do Glico, aceso desde 1935 na ponte Ebisubashi — a foto obrigatória da noite em Osaka, e a ponte é o ponto de encontro do grupo.",
      "O caranguejo mecânico do Kani Doraku e o baiacu do Zuboraya: as fachadas gigantes de Dotonbori são o que Osaka chama de kuidaore, comer até falir.",
      "A Tonbori River Walk, na beira do canal, é plana, larga e muito menos cheia que a rua de cima — é por ela que se anda com carrinho."
     ],
@@ -5673,11 +5565,11 @@
   ],
   "alternativas": [
    {
-    "titulo": "Onde reservar a última noite: Nipponbashi",
+    "titulo": "Onde reservar noite em Osaka: Nipponbashi",
     "refs": [
      "p3"
     ],
-    "texto": "Esta é a única reserva ainda aberta, e a escolha do BAIRRO importa mais que a do hotel, porque ela decide o dia 31 inteiro.\nA recomendação é NIPPONBASHI (日本橋). Três razões concretas. Primeira: os quatro lugares que vocês usam nestes dois dias ficam todos dentro de 900 m — Dotonbori a 610 m, a Nankai (o trem do aeroporto) a 630 m, a Den Den Town a 850 m e o Shinsaibashi a 910 m. Nenhum outro bairro distribui tão parelho. Segunda: a estação está na LINHA SAKAISUJI, que é a mesma de Tengachaya, onde vocês dormem nos dias 16 a 19, e é exatamente a linha que o dia 31 pega de manhã para o Tenjin-bashi-suji — vocês saem do hotel já na plataforma certa. Terceira, e é a que economiza tempo de verdade: a DEN DEN TOWN, última parada da viagem, fica ao lado do hotel. O retorno para buscar as malas, que hoje obriga a encerrar a tarde às 16:30, deixa de ser um desvio.\nE é mais barato que Namba e Shinsaibashi pelo motivo certo: é bairro de loja de eletrônico, não de vida noturna. À noite é silencioso — com três bebês, dormir a 200 m do Dotonbori seria o erro caro.",
+    "texto": "A hospedagem final ainda precisa ser definida: proposta A em 30/03 a 01/04; proposta B em 31/03 a 01/04. Conferir check-in, acesso desde Shin-Osaka, valores e guarda-volumes em 01/04. Passeios de compras ficam para 31/03 na A; na B, reduzir o programa após a chegada. Em 01/04, recuperar as malas até 14:00 e sair de Namba por volta de 14:30, conforme o hotel final.",
     "tipo": "aviso"
    },
    {
@@ -5718,7 +5610,7 @@
     "refs": [
      "p3"
     ],
-    "texto": "Os guias apontam Tennoji/Abeno como o melhor custo-benefício de Osaka para família, e é verdade: hotéis grandes, quarto para quatro, e preço abaixo de Minami. Tem ainda um trunfo que quase ninguém usa — de Tennoji sai o JR Kansai Airport Rapid DIRETO para o KIX, ¥1.080 em 50 min, sem baldeação e mais barato que a Nankai desde Namba. O preço disso é distância: são 2,5 km até Dotonbori, então a última noite passa a ter trem de ida e de volta, e a manhã do dia 31 fica mais longa. Vale se a diária apertar; não vale por conveniência.\nEvitem Umeda e Shin-Osaka: a primeira fica longe do programa da noite E da linha do aeroporto; a segunda só é boa para a chegada, que dura vinte minutos.",
+    "texto": "Os guias apontam Tennoji/Abeno como o melhor custo-benefício de Osaka para família, e é verdade: hotéis grandes, quarto para quatro, e preço abaixo de Minami. Tem ainda um trunfo que quase ninguém usa — de Tennoji sai o JR Kansai Airport Rapid DIRETO para o KIX, ¥1.080 em 50 min, sem baldeação e mais barato que a Nankai desde Namba. O preço disso é distância: são 2,5 km até Dotonbori, então noite em Osaka passa a ter trem de ida e de volta, e a manhã do dia 01/04 fica mais longa. Vale se a diária apertar; não vale por conveniência.\nEvitem Umeda e Shin-Osaka: a primeira fica longe do programa da noite E da linha do aeroporto; a segunda só é boa para a chegada, que dura vinte minutos.",
     "tipo": "troca"
    }
   ],
@@ -5728,8 +5620,8 @@
   }
  },
  "2027-03-31": {
-  "titulo": "O último dia: duas arcadas, o troco em iene e o trem para o KIX",
-  "resumo": "Dia sem mala na mão e com hora marcada no fim: o voo JQ 14 decola às 21:25 e o último trem aceitável sai de Namba às 17:20. Entre uma coisa e outra cabem a arcada mais longa do Japão, a última passada em Shinsaibashi e a despedida na Den Den Town. O que pode estragar o fim não é o trânsito: é a fila do reembolso de imposto no aeroporto, que desde novembro de 2026 é feita ANTES do despacho, com a mercadoria em mãos e 13 passaportes.",
+  "titulo": "Osaka — compras do roteiro original",
+  "resumo": "Tenjin-bashi, Shinsaibashi e Den Den Town preservados. Sem checkout nem aeroporto neste dia: o período adicional livre e o voo ficam em 01/04.",
   "centro": [
    34.6,
    135.38
@@ -5745,18 +5637,6 @@
     "lng": 135.49972,
     "aprox": true,
     "gmaps": "Namba Station, Osaka"
-   },
-   {
-    "id": "p1",
-    "ativ": "Check-out",
-    "tipo": "evento",
-    "lat": 34.6639,
-    "lng": 135.50151,
-    "aprox": true,
-    "hora": "09:15",
-    "fim": "09:45",
-    "gmaps": "Namba CITY, Osaka",
-    "foto": null
    },
    {
     "id": "e1",
@@ -5850,41 +5730,25 @@
     ]
    },
    {
-    "id": "p5",
-    "ativ": "TRANSFER",
-    "tipo": "evento",
-    "lat": 34.4358,
-    "lng": 135.24354,
-    "hora": "18:10",
-    "gmaps": "Kansai Airport Station",
-    "foto": null
-   },
-   {
     "id": "fim",
     "tipo": "base",
-    "nome": "KIX — Terminal 1, voo JQ 14",
-    "lat": 34.4358,
-    "lng": 135.24354,
+    "hora": "Após os passeios",
+    "nome": "Retorno ao hotel em Osaka — endereço a definir",
+    "lat": 34.66725,
+    "lng": 135.49972,
     "aprox": true,
-    "hora": "21:25",
-    "gmaps": "Kansai International Airport"
+    "gmaps": "Namba Station, Osaka"
    }
   ],
   "pernas": [
    {
     "de": "base",
-    "para": "p1",
-    "modo": "pe",
-    "km": 0.45,
-    "min": 6,
-    "nota": "check-out e as malas para o guarda-volumes"
-   },
-   {
-    "de": "p1",
     "para": "e1",
     "modo": "pe",
-    "km": 0.6,
-    "min": 8
+    "km": 1.05,
+    "min": 14,
+    "custo": 0,
+    "desc": "Saída do hotel de referência para a estação, sem checkout."
    },
    {
     "de": "e1",
@@ -5935,77 +5799,171 @@
    },
    {
     "de": "p4",
+    "para": "fim",
+    "modo": "pe",
+    "km": 1.2,
+    "min": 20,
+    "custo": 0,
+    "desc": "Retorno à hospedagem de referência. Recalcular ao definir o endereço."
+   }
+  ],
+  "alternativas": [],
+  "passe": {
+   "nome": "Transporte urbano em Osaka — aeroporto no dia seguinte",
+   "texto": "Este dia mantém apenas os deslocamentos das compras originais. O trem para KIX pertence a 01/04 e não deve entrar na comparação de passe de 31/03. Conferir tarifas de 2027 antes de comprar."
+  }
+ },
+ "2027-04-01": {
+  "titulo": "Osaka — livre até o aeroporto",
+  "resumo": "Dia adicional sem atrações definidas até a saída para o aeroporto. Fazer checkout conforme a hospedagem e retirar malas até aproximadamente 14:00; saída de referência de Namba às 14:30, KIX até 15:30 e voo às 18:55. Recalcular com hotel e transporte confirmados.",
+  "centro": [
+   34.55,
+   135.37
+  ],
+  "zoom": 10,
+  "paradas": [
+   {
+    "id": "base",
+    "tipo": "base",
+    "nome": "Hotel final — a definir",
+    "lat": 34.66725,
+    "lng": 135.49972,
+    "aprox": true,
+    "hora": "Manhã"
+   },
+   {
+    "id": "p1",
+    "ativ": "Check-out",
+    "tipo": "evento",
+    "lat": 34.66725,
+    "lng": 135.49972,
+    "aprox": true,
+    "hora": "Até 14:00",
+    "alerta": "Confirmar guarda-volumes e retirada de todas as malas e carrinhos."
+   },
+   {
+    "id": "e1",
+    "nome": "Nankai Namba — referência de embarque",
+    "tipo": "estacao",
+    "lat": 34.6639,
+    "lng": 135.50151,
+    "hora": "14:30"
+   },
+   {
+    "id": "p2",
+    "ativ": "TRANSFER",
+    "tipo": "estacao",
+    "lat": 34.4358,
+    "lng": 135.24354,
+    "hora": "15:30",
+    "alerta": "Confirmar terminal e balcão Qatar no cartão de embarque. Meta inclui margem para tax-free e despacho."
+   },
+   {
+    "id": "fim",
+    "ativ": "VOO DE VOLTA",
+    "tipo": "evento",
+    "lat": 34.43433,
+    "lng": 135.2442,
+    "hora": "18:55",
+    "must": [
+     "Doha 00:05 de 02/04; conexão de 1h20",
+     "GRU 10:35; conexão doméstica de 2h55",
+     "Fortaleza 16:55 de 02/04"
+    ]
+   }
+  ],
+  "pernas": [
+   {
+    "de": "base",
     "para": "p1",
     "modo": "pe",
-    "km": 0.75,
-    "min": 10,
-    "nota": "⚠ DE VOLTA para resgatar as malas — este passo é o que costuma faltar na conta"
+    "km": 0,
+    "min": 0
    },
    {
     "de": "p1",
-    "para": "p5",
-    "modo": "trem",
-    "km": 50,
-    "min": 45,
-    "nota": "Nankai da estação de Namba até o KIX — sair 17:20, no mais tardar"
+    "para": "e1",
+    "modo": "pe",
+    "km": 0.5,
+    "min": 10,
+    "desc": "Depende da localização final do hotel."
    },
    {
-    "de": "p5",
+    "de": "e1",
+    "para": "p2",
+    "modo": "metro",
+    "km": 50,
+    "min": 45,
+    "custo": 970,
+    "desc": "Estimativa antiga para Nankai; confirmar tarifa e horário para 01/04.",
+    "linha": "Nankai - serviço a confirmar"
+   },
+   {
+    "de": "p2",
     "para": "fim",
     "modo": "pe",
     "km": 0.4,
     "min": 8,
-    "nota": "da plataforma ao balcão de check-in, tudo coberto e plano"
+    "desc": "Acesso ao terminal e balcão, conforme a operação confirmada."
    }
   ],
   "alternativas": [
    {
-    "titulo": "O passo que some da conta: voltar para buscar as malas",
+    "tipo": "aviso",
+    "titulo": "Mercadorias tax-free acessíveis",
+    "texto": "Preparar passaportes, notas e mercadorias antes do despacho. A confirmação aduaneira e o eventual reembolso seguem as regras oficiais e o meio da loja; não presumir pagamento em dinheiro no aeroporto.",
     "refs": [
-     "p1",
-     "p4"
-    ],
-    "texto": "O dia inteiro é feito sem mala na mão, e é por isso que ele funciona — mas alguém tem de voltar aos armários antes de embarcar, e isso são 10 min de caminhada mais o tempo de resgatar e redistribuir 13 bagagens. Com saída de Namba às 17:20, significa encerrar a Den Den Town às 16:30 sem discussão. Armário grande custa ¥700 por dia e em alta temporada LOTA antes das 10:00 — por isso o guarda-volumes do hotel é o plano A, e por isso ele deve ser pedido ao fechar a reserva.",
-    "tipo": "aviso"
+     "p2"
+    ]
    },
    {
-    "titulo": "Rapi:t ou Airport Express? A conta mudou",
+    "tipo": "planob",
+    "titulo": "Se o transporte tiver problema",
+    "texto": "Reavaliar a saída ainda no hotel e contatar a companhia se houver risco. Não usar o horário limite de check-in como meta de chegada.",
     "refs": [
-     "p5"
-    ],
-    "texto": "O Airport Express custa ¥970 e é trem comum: sem assento marcado, sem espaço de bagagem, e às 17:20 ele pega o começo do movimento da volta do trabalho. O RAPI:T custa ¥1.490 na bilheteria — mas ¥1.300 no bilhete DIGITAL pelo celular, e a Super Seat sai por ¥1.490 no digital, ou seja, a poltrona melhor pelo preço da comum no guichê. São ¥330 a mais que o trem comum, uns ¥3.300 no grupo, por assento garantido e lugar para mala no último trajeto de uma viagem de 16 dias com três bebês. Comprem digital, e comprem antes.",
-    "tipo": "troca"
-   },
-   {
-    "titulo": "A fila que pode custar o voo",
-    "refs": [
-     "p5"
-    ],
-    "texto": "⚠ Desde novembro de 2026 o tax-free é por REEMBOLSO: paga-se cheio na loja e, no aeroporto, faz-se a confirmação da alfândega no quiosque — com passaporte E COM A MERCADORIA EM MÃOS, antes de despachar. Com 13 passaportes e compras espalhadas por várias malas, isso não é um carimbo, é uma operação. Cheguem com as compras separadas e as notas juntas, e considerem sair de Namba às 16:50 em vez de 17:20: a folga de 30 min custa meia hora de Den Den Town e compra tranquilidade num aeroporto que vocês não conhecem.",
-    "tipo": "aviso"
-   },
-   {
-    "titulo": "Se preferirem cortar o Tenjin-bashi-suji",
-    "refs": [
-     "p2",
-     "p3"
-    ],
-    "texto": "A arcada do norte é ótima e é a mais longa do Japão, mas custa 40 min de metrô ida e volta num dia com hora marcada, e é a única coisa do dia que não é despedida nem compra final. Largando-a, o dia começa às 11:00 em Shinsaibashi com quatro horas inteiras de arcada e almoço sem relógio — e sobra folga real para a fila do aeroporto. É a decisão a tomar na noite do dia 30, olhando o que ainda falta comprar.",
-    "tipo": "corte"
-   },
-   {
-    "titulo": "Gastem o troco antes do aeroporto",
-    "refs": [
-     "p3",
-     "p4"
-    ],
-    "texto": "Iene em espécie não vale quase nada para trocar de volta no Brasil, e moeda não se troca de jeito nenhum. As duas arcadas do dia estão cheias de 100-yen shop, que é onde se zera o bolso comprando coisa que presta. No KIX os preços são de aeroporto e a escolha é pior — o que sobrar ali, sobrou.",
-    "tipo": "aviso"
+     "e1",
+     "p2"
+    ]
    }
-  ],
-  "passe": {
-   "nome": "Nenhum passe — mas o bilhete do Rapi:t vale ser digital",
-   "texto": "O dia gasta ¥480 de metrô (dois trechos de ¥240 na Sakaisuji) mais o trem do aeroporto. Nenhum passe diário de Osaka se paga em duas viagens. O que rende de verdade é comprar o Rapi:t pelo aplicativo: ¥1.300 contra ¥1.490 no guichê, ou a Super Seat por ¥1.490."
+  ]
+ },
+ "_bases": {
+  "osaka": {
+   "nome": "Airbnb Tengachaya",
+   "lat": 34.63808,
+   "lng": 135.4989,
+   "aprox": true,
+   "gmaps": "Tengachaya Station, Osaka",
+   "endereco": "2-6-25 Tengachaya, Nishinari-ku, Osaka 557-0014",
+   "confere": "Tengachaya 2-chome; a estação Tengachaya (Nankai + metrô Sakaisuji) fica a 170 m"
+  },
+  "kyoto": {
+   "nome": "K-style 東本願寺",
+   "lat": 34.9897,
+   "lng": 135.7567,
+   "aprox": true,
+   "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
+   "endereco": "749-5 Tatsumi-cho, Shinmachi-dori Shichijo-agaru, Shimogyo-ku, Kyoto",
+   "confere": "cruzamento Shinmachi × Shichijo, um pouco ao norte; dá 469 m até a Estação de Kyoto, e o anúncio diz 500 m"
+  },
+  "fuji": {
+   "nome": "La Vista Fujikawaguchiko",
+   "lat": 35.5296567,
+   "lng": 138.7627726,
+   "aprox": false,
+   "gmaps": "La Vista Fujikawaguchiko",
+   "endereco": "Kawaguchi 2395, Fujikawaguchiko, Yamanashi",
+   "confere": "marcador do Google Maps enviado pelo grupo — ponto exato, na margem norte do lago Kawaguchi"
+  },
+  "tokyo": {
+   "nome": "Hotel Oojima",
+   "lat": 35.68799,
+   "lng": 139.83535,
+   "aprox": true,
+   "gmaps": "https://maps.app.goo.gl/3ZTGQBHgL7KTL246A",
+   "endereco": "Edifício Hikariyama 2F-5F, 5-37-5 Oshima, Koto-ku, Tokyo 136-0072",
+   "confere": "Oshima 5-chome, o mesmo quarteirão da estação Ojima (Toei Shinjuku), a 199 m"
   }
- }
+ },
+ "_doc": "Camada geografica curada por dia. Cada parada com 'ai' aponta para dados.json -> dias[].atividades[ai]; as demais sao pontos de apoio (base, estacoes). Tracados sao aproximados: o botao de cada perna abre a rota exata no Google Maps. Uma perna com \"unico\": true nao oferece o segundo modo: e o caso de trecho em que a alternativa perde em tudo e so poluiria o card."
 }

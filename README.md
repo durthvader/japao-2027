@@ -1,11 +1,33 @@
 # Japão 2027
 
-Site do roteiro da viagem ao Japão em março de 2027 — 16 dias entre Osaka, Kyoto,
-Kawaguchiko e Tokyo, para 13 pessoas.
+Site do roteiro da viagem ao Japão de 15/03 a 01/04/2027 — 18 dias e 17 noites
+entre Osaka, Kyoto, Kawaguchiko e Tokyo, para 13 pessoas.
 
-O `index.html` é uma **página única, sem dependências externas**: todo o conteúdo, os dados
-e as ilustrações são gerados dentro do próprio arquivo. Não carrega fonte, imagem, mapa
-nem script de fora — abre offline e funciona no avião.
+O site tem 12 páginas temáticas e 18 páginas diárias, geradas pelo mesmo template
+e dados consolidados. `index.html` é o portal. O conteúdo principal é embutido no
+HTML; fotos são arquivos locais. Mapas Leaflet/tiles precisam de internet.
+
+## Remarcação de 26/09/2026
+
+Decisão de 27/09/2026: roteiro turístico anterior restaurado, com os novos voos
+confirmados para os 13. Programa completo de Osaka de 18/03 antecipado para 16/03;
+sumô mantido em 17/03. Kyoto em 18/03 livre após a mudança de base, passeios
+originais em 19–21/03. Compras originais mantidas em 31/03; Osaka em 01/04 livre
+até o aeroporto. Nenhuma atração nova foi acrescentada aos períodos livres.
+A redistribuição anterior de passeios foi revogada. Seul não foi incluída.
+
+Bases: Osaka 15–18/03, Kyoto 18–22/03, Kawaguchiko 22–23/03, Tóquio 23–30/03,
+Osaka 30/03–01/04. Hospedagens ainda não alteradas; três blocos a cotar/ajustar.
+A lista B de hospedagem é histórico de acomodações, não roteiro ativo.
+
+O gerador aplica `ajustes.json` e depois `remarcacao.json` por `remarcacao.py`.
+A nova camada substitui voos, notas e dias afetados sem editar o extrato bruto ou
+a planilha original. Uma reextração não restaura os voos antigos. Não remover essa
+camada ao fazer novas alterações. Não incluir localizadores ou compras pessoais.
+
+Custos sem cotação ficam explícitos. O subtotal de hotéis reúne referências
+antigas e não representa 17 noites cotadas. A alimentação usa 18 dias. O histórico
+do radar de agosto foi identificado separadamente e não orienta os voos atuais.
 
 As páginas `dia-NN.html` (o mapa de cada dia) são a única exceção: elas puxam o Leaflet e
 os tiles do mapa da internet. Sem conexão o mapa some e o resto da página — hora a hora,
@@ -17,8 +39,9 @@ custos, alternativas — continua funcionando.
 |---|---|
 | Números | Distância, tempo, custo total por adulto |
 | Mapa | Rota Osaka → Kyoto → Kawaguchiko → Tokyo → Osaka, com as pernas detalhadas |
-| Timelapse | Os 16 dias num scrubber: arraste ou dê play |
-| Roteiro | 82 paradas com distância, tempo, ingresso, horário e acesso com carrinho |
+| Timelapse | Os 18 dias num scrubber: arraste ou dê play |
+| Roteiro | Atividades com distância, tempo, ingresso, horário e acesso com carrinho |
+| Remarcação | Voos confirmados, opções de 17 noites e pendências após a mudança |
 | Comer / Compras | Curadoria por bairro, com os horários que importam |
 | Plano B | Alternativas cobertas, trocas mapeadas e as 14 decisões da planilha |
 | Logística | Voos e os dois conjuntos de hospedagem |

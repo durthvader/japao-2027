@@ -159,6 +159,12 @@ img,canvas,svg{max-width:100%;display:block}
   font-variant-numeric:tabular-nums;color:var(--ink-3);margin-top:5px}
 .num i{display:block;font-style:normal;font-size:.74rem;color:var(--ink-2);margin-top:5px;line-height:1.42}
 
+#remarcacao p{margin-bottom:1rem;font-size:1rem;line-height:1.65}
+#remarcacao h3{font-size:1.2rem}
+#remarcacao ol,#remarcacao ul{padding-left:1.4rem;line-height:1.7}
+#remarcacao li{margin-bottom:.7rem}
+#remarcacao table{min-width:680px}
+@media(min-width:680px){.rem-metricas{grid-template-columns:repeat(3,1fr)}}
 /* ============ MAPA ============ */
 .mapa-grid{display:flex;flex-direction:column;gap:16px}
 @media(min-width:1024px){
@@ -530,13 +536,14 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="top-nav-in">
     <a class="nav-brand" href="index.html"><b>日本</b> 2027 <small>Roteiro</small></a>
     <nav class="top-links" aria-label="Seções do site">
-      <a href="index.html">Início</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html" aria-current="page">Preparação</a>
+      <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html" aria-current="page">Preparação</a>
     </nav>
     <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
+<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Hospedagens ainda precisam ser ajustadas. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
 <main>
 <section class="sec wrap" id="preparacao" data-foto="hero">
   <div class="sec-head">
@@ -558,9 +565,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     <span><s class="ok"></s>Informação / preparação sem prazo fixo</span>
   </div>
 
-  <div class="prep-aviso">
-    <strong>🚨 Atenção máxima:</strong> O visto australiano de trânsito é o item de maior risco de toda a viagem. Sem ele, o check-in em Guarulhos é negado na hora do embarque. São 13 pedidos individuais (incluindo os 3 bebês) e o processo pode levar semanas.
-  </div>
+  <div class="prep-aviso"><strong>Prioridades após a remarcação:</strong> ajustar três blocos de hospedagem da opção A, confirmar serviços dos bebês e proteção das conexões, especialmente Doha (1h20) e GRU (2h55). Nenhuma hospedagem foi alterada. Dias adicionais livres: Kyoto em 18/03 e Osaka em 01/04 até o aeroporto. <a href="remarcacao.html">Ver datas e pendências</a>.</div>
 
   <!-- FASE 1: IMEDIATO / AGORA -->
   <div class="prep-fase">
@@ -571,52 +576,19 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     <div class="prep-lista">
 
       <div class="prep-item obrig" data-icon="🛂">
-        <div class="prep-item-nome">Visto australiano de trânsito — 13 pessoas</div>
-        <div class="prep-item-desc">Brasileiros precisam do Visitor Visa (subclasse 600) para transitar por Sydney, nos dois sentidos. Isso inclui os 3 bebês com passaporte próprio. O processo é online mas pode demorar semanas. Sem o visto, o embarque em GRU é negado.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag crit">Obrigatório</span>
-          <span class="prep-tag neu">immi.homeaffairs.gov.au</span>
-          <span class="prep-tag neu">13 pedidos individuais</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Conferir e-tickets reemitidos e conexão via Doha</div><div class="prep-item-desc">A remarcação vale para as 13 pessoas. Conferir os trechos, nomes, bebês, assentos e franquias com LATAM e Qatar. Em Doha, trânsito sem sair do aeroporto não exige visto segundo Hamad. A pendência australiana deixa de se aplicar à nova rota. Confirmar o vínculo e a proteção do doméstico; isso ainda não foi demonstrado pelos comprovantes disponíveis.</div><div class="prep-item-meta"><span class="prep-tag neu">Prioridade atual</span><span class="prep-tag neu">Doha 1h20 na volta</span><span class="prep-tag neu">GRU 2h55 na volta</span></div></div>
 
       <div class="prep-item obrig" data-icon="🏨">
-        <div class="prep-item-nome">Reservar hotel da última noite em Osaka (30–31/mar)</div>
-        <div class="prep-item-desc">Única hospedagem ainda não definida. Requisito crítico: o hotel deve oferecer guarda-volumes gratuito no dia 31/03 (o voo só parte às 21:25 e os lockers das estações não acomodam carrinhos de bebê).</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag crit">Obrigatório</span>
-          <span class="prep-tag neu">1 noite · orçamento R$ 1.804</span>
-          <span class="prep-tag neu">Namba / perto do KIX</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Ajustar hospedagens e manter os dias adicionais livres</div><div class="prep-item-desc">Solicitar Osaka inicial de <strong>15 a 18/03</strong>, Kyoto de <strong>18 a 22/03</strong> e fechar Osaka final de <strong>30/03 a 01/04</strong>. Fuji 22–23/03 e Tóquio 23–30/03 mantêm as datas. Não houve alteração de reserva. Conferir disponibilidade para os 13, ocupação, valores e cancelamento antes de substituir reservas.</div><div class="prep-item-meta"><span class="prep-tag neu">17 noites no Japão</span><span class="prep-tag neu">Não há nova reserva confirmada</span></div></div>
 
       <div class="prep-item obrig" data-icon="👶">
-        <div class="prep-item-nome">Solicitar berços (Bassinet) nos voos LATAM</div>
-        <div class="prep-item-desc">Há 3 bebês. Berços fixados na parede só existem nas primeiras fileiras da aeronave e o número é limitado. Solicitar junto à LATAM o quanto antes para os voos LA 809 (GRU→SYD) e LA 810 (SYD→SCL). Confirmar também a política de carrinhos na conexão de 2h em Sydney.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag crit">Obrigatório</span>
-          <span class="prep-tag neu">Ligar ou acessar "Manage Booking" na LATAM</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Reconfirmar bebês, berços e assentos com Qatar e LATAM</div><div class="prep-item-desc">Após a reemissão, confirmar bebê vinculado ao adulto, solicitações recebidas pela operadora e assentos nos quatro trechos Qatar e dois LATAM. Berços dependem de disponibilidade e limites de peso/medida; não presumir três berços nem transferência automática dos pedidos antigos. Verificar se algum bebê completa dois anos até a volta. Confirmar onde os três carrinhos serão devolvidos em Doha e GRU; não depender de carrinhos de empréstimo.</div><div class="prep-item-meta"><span class="prep-tag neu">Por bebê e por trecho</span><span class="prep-tag neu">Pedido não significa confirmação</span></div></div>
 
       <div class="prep-item recom" data-icon="🛡️">
-        <div class="prep-item-nome">Contratar seguro viagem — 13 pessoas</div>
-        <div class="prep-item-desc">Não está no orçamento original. Contratar antes do embarque com cobertura hospitalar ampla e repatriação, especialmente para os 3 bebês. Considerar apólice de grupo ou familiar para reduzir custo.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag warn">Recomendado</span>
-          <span class="prep-tag neu">Quanto antes do embarque</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Revisar ou contratar seguro para as novas datas e rota</div><div class="prep-item-desc">Verificar cobertura desde a saída de casa em 13/03 até o retorno após 16:55 de 02/04, com margem para atraso. Informar a nova rota via Qatar e permanência japonesa de 15/03 a 01/04. Se houver apólice emitida, conferir alteração de itinerário, limites infantis, conexões e vigência com a seguradora. Não incluir preço sem cotação.</div><div class="prep-item-meta"><span class="prep-tag neu">13 pessoas</span><span class="prep-tag neu">Conferir apólice e vigência</span></div></div>
 
       <div class="prep-item recom" data-icon="🚃">
-        <div class="prep-item-nome">Reservar Nankai Rapi:t — KIX → Namba (dia 16/03)</div>
-        <div class="prep-item-desc">O Rapi:t é 100% assento reservado. Com 13 pessoas chegando esgotadas após 45h de viagem, vale garantir lugares juntos antes de sair do Brasil. Saída do KIX ~21:30 até Namba. ¥1.430/adulto (¥720 criança). Alternativa: comprar nas máquinas do aeroporto na chegada, mas no horário de pico pode não ter assentos juntos.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag warn">Recomendado</span>
-          <span class="prep-tag neu">Nankai Railway (nankai.co.jp)</span>
-          <span class="prep-tag neu">Dia 16/03 · noite</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Planejar KIX → hospedagem em 15/03</div><div class="prep-item-desc">Pouso às 16:25. Horário de liberação depende de imigração, bagagens e carrinhos. Só escolher o trem após confirmar o endereço da primeira noite. Rapi:t e Airport Express são alternativas; conferir tarifa, política de mudança e horário em 2027. Não comprar uma partida apertada com base apenas no horário do pouso.</div><div class="prep-item-meta"><span class="prep-tag neu">15/03 · fim de tarde</span><span class="prep-tag neu">Hospedagem a confirmar</span></div></div>
 
       <div class="prep-item recom" data-icon="💳">
         <div class="prep-item-nome">Configurar Suica digital (Apple Wallet) antes de embarcar</div>
@@ -674,20 +646,13 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <!-- FASE 3: FEV 2027 primeira metade -->
   <div class="prep-fase">
     <div class="prep-fase-titulo">
-      <span class="prep-data-badge crit">~6 Fev 2027</span>
+      <span class="prep-data-badge crit">6 Fev 2027</span>
       <h3>Início de fevereiro — ingressos do Sumô</h3>
     </div>
     <div class="prep-lista">
 
       <div class="prep-item obrig" data-icon="🏟️">
-        <div class="prep-item-nome">Ingressos Sumô — Haru Basho EDION Arena (dia 17/03)</div>
-        <div class="prep-item-desc">Único torneio oficial do ano em Osaka. A venda antecipada geral abre aproximadamente em <strong>6 de fevereiro de 2027</strong>. Ingressos de quarta-feira esgotam rápido mas são menos críticos que fins de semana e últimos dias. Cadeira B: ¥5.000/adulto. Camarote de tatami (4 pessoas): ¥34.000–40.000.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag crit">Obrigatório</span>
-          <span class="prep-tag neu">sumo.or.jp / Ticket Oosumo</span>
-          <span class="prep-tag neu">Dia 17/03 · 15:45–18:00</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Ingressos Sumô — manter 17/03 como referência</div><div class="prep-item-desc">O torneio oficial está previsto de 14 a 28/03/2027. A associação e a página japonesa do vendedor publicam abertura em <strong>06/02/2027</strong>. Confirmar hora de venda, preços e regras infantis da edição de 2027 quando publicados. A página inglesa consultada tem divergência de data; usar a fonte da associação e reconferir. Nenhum ingresso está marcado como comprado.</div><div class="prep-item-meta"><span class="prep-tag neu">Venda 06/02/2027</span><span class="prep-tag neu">17/03 preservado na opção A</span></div></div>
 
     </div>
   </div>
@@ -695,20 +660,13 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <!-- FASE 4: 20 FEV 2027 -->
   <div class="prep-fase">
     <div class="prep-fase-titulo">
-      <span class="prep-data-badge crit">20 Fev 2027 às 10h JST</span>
-      <h3>20 de fevereiro — Shinkansen Kyoto → Mishima</h3>
+      <span class="prep-data-badge crit">22 Fev 2027 às 10h JST</span>
+      <h3>21/02 às 22h em Fortaleza — abertura padrão JR</h3>
     </div>
     <div class="prep-lista">
 
       <div class="prep-item obrig" data-icon="🚄">
-        <div class="prep-item-nome">Shinkansen Tokaido: Kyoto → Mishima (dia 22/03 — feriado)</div>
-        <div class="prep-item-desc">A reserva abre exatamente <strong>30 dias antes às 10:00 JST (06:00 BRT)</strong>. Obrigatório reservar os assentos com espaço especial para bagagem volumosa (últimas fileiras). Sem essa reserva, cobra-se ¥1.000/mala no trem. Hikari ou Kodama (o Nozomi não para em Mishima). ¥11.110/adulto.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag crit">Obrigatório</span>
-          <span class="prep-tag neu">SmartEX / JR West online</span>
-          <span class="prep-tag neu">¥11.110/adulto · reservar PRIMEIRO</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Shinkansen Kyoto → Mishima — 22/03, preservado na opção A</div><div class="prep-item-desc">Venda padrão JR: <strong>22/02 às 10:00 do Japão = 21/02 às 22:00 de Fortaleza</strong>. A regra é um mês de calendário, não 30 dias. Alguns produtos SmartEX permitem compra antes, sob condições próprias. Coordenar primeiro a conexão do ônibus de Mishima e deixar margem. Conferir trem que pare em Mishima, assentos, medidas das malas e assentos dos bebês; SmartEX limita a quantidade de pessoas por compra.</div><div class="prep-item-meta"><span class="prep-tag neu">22/03 · feriado</span><span class="prep-tag neu">Ônibus e trem coordenados</span><span class="prep-tag neu">Tarifa a confirmar</span></div></div>
 
     </div>
   </div>
@@ -722,24 +680,10 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     <div class="prep-lista">
 
       <div class="prep-item obrig" data-icon="🚌">
-        <div class="prep-item-nome">Ônibus Mishima → Kawaguchiko (dia 22/03 — feriado)</div>
-        <div class="prep-item-desc">Abre <strong>1 mês antes: 22 de fevereiro</strong>. Dia de feriado prolongado — sem reserva, o grupo de 13 não embarca. Assentos numerados. Apenas 1 bagagem no bagageiro por passageiro. As malas grandes devem ser despachadas por Takkyubin de Kyoto direto para Tokyo. Fujikyu Bus: ¥2.500/adulto online.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag crit">Obrigatório</span>
-          <span class="prep-tag neu">Fujikyu / Japan Bus Online</span>
-          <span class="prep-tag neu">Confirmar horário após Shinkansen</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Ônibus Mishima → Kawaguchiko — 22/03</div><div class="prep-item-desc">Confirmar na operadora abertura de vendas, horários de 2027, condições de bagagem, carrinhos e assentos infantis. Esse trecho orienta a escolha do trem até Mishima. Planejar margem de conexão e alternativa se houver atraso. Não usar automaticamente a janela de vendas JR para ônibus. Avaliar envio de malas grandes de Kyoto para Tóquio com antecedência de entrega confirmada.</div><div class="prep-item-meta"><span class="prep-tag neu">Horário do ônibus orienta o trem</span><span class="prep-tag neu">Operadora e bagagens a confirmar</span></div></div>
 
       <div class="prep-item obrig" data-icon="🚌">
-        <div class="prep-item-nome">Ônibus Kawaguchiko → Tokyo Shinjuku (dia 23/03)</div>
-        <div class="prep-item-desc">Abre <strong>1 mês antes: 23 de fevereiro</strong>. Assentos 100% marcados — 13 lugares juntos só garantindo no dia da abertura. Informar 3 carrinhos de bebê para o bagageiro. Keijo/Fujikyu até Busta Shinjuku: ¥2.000/adulto online.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag crit">Obrigatório</span>
-          <span class="prep-tag neu">highway-buses.jp / Keio</span>
-          <span class="prep-tag neu">Mencionar carrinhos no bagageiro</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Ônibus Kawaguchiko → Tóquio — 23/03</div><div class="prep-item-desc">A opção A mantém este dia. Conferir a janela real de vendas da operadora, horário, assentos dos bebês, três carrinhos e malas. A data de 23/02 é lembrete de consulta, não garantia de abertura. Confirmar o destino do ônibus e o acesso ao hotel ou Airbnb em Tóquio.</div><div class="prep-item-meta"><span class="prep-tag neu">Data preservada</span><span class="prep-tag neu">Rever a operadora antes da compra</span></div></div>
 
     </div>
   </div>
@@ -747,20 +691,13 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <!-- FASE 6: 28 FEV 2027 -->
   <div class="prep-fase">
     <div class="prep-fase-titulo">
-      <span class="prep-data-badge crit">28 Fev 2027 às 10h JST</span>
-      <h3>28 de fevereiro — Shinkansen Tokyo → Osaka</h3>
+      <span class="prep-data-badge crit">01 Mar 2027 às 10h JST</span>
+      <h3>28/02 às 22h em Fortaleza — abertura padrão JR</h3>
     </div>
     <div class="prep-lista">
 
       <div class="prep-item obrig" data-icon="🚄">
-        <div class="prep-item-nome">Shinkansen Nozomi: Tokyo → Shin-Osaka (dia 30/03)</div>
-        <div class="prep-item-desc">Abre <strong>30 dias antes às 10:00 JST</strong>. Reservar última fileira de cada vagão com espaço para bagagem volumosa. Dica: assentos lado E (janela direita) para avistar o Monte Fuji ~40 min após Tokyo. Vagão 11 do N700S tem trocador de fraldas. Nozomi direto: 2h30 de viagem. ¥14.720/adulto.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag crit">Obrigatório</span>
-          <span class="prep-tag neu">SmartEX online</span>
-          <span class="prep-tag neu">¥14.720/adulto · lado E para o Fuji</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Shinkansen Tóquio → Osaka — 30/03</div><div class="prep-item-desc">A opção A mantém a saída em 30/03 e duas noites finais em Osaka. Venda padrão JR: <strong>01/03 às 10:00 do Japão = 28/02 às 22:00 de Fortaleza</strong>, pois fevereiro não tem dia 30. Conferir produto SmartEX, assentos dos bebês e bagagens. Horário do trem ainda não reservado.</div><div class="prep-item-meta"><span class="prep-tag neu">30/03 mantido</span><span class="prep-tag neu">Noite em Osaka antes do voo</span></div></div>
 
     </div>
   </div>
@@ -775,7 +712,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
       <div class="prep-item obrig" data-icon="🎨">
         <div class="prep-item-nome">teamLab Biovortex — Kyoto (dia 20/03)</div>
-        <div class="prep-item-desc">O MAIS DISPUTADO DOS DOIS: 20/03 é sábado E o primeiro dia do feriadão do Equinócio. A venda abre de 2 a 3 meses antes e o slot escolhido é o das 18:00 — comprar no dia em que a venda abrir. Adulto ¥3.600–5.600 conforme a data (contem com o teto), ¥2.800 do fundamental II ao médio, ¥1.800 de 4 a 12 anos, até 3 anos grátis. Na bilheteria custa ¥200 a mais. Carrinho não entra e não há reentrada — canguru do começo ao fim.</div>
+        <div class="prep-item-desc">Mantido no sábado de início do fim de semana prolongado. Sessão pretendida às 18:00, sem ingresso presumido. Conferir calendário, abertura de vendas e tarifa oficial para março/2027. O programa anterior foi restaurado, com a visita depois de Nijō. Carrinho não entra e não há reentrada. ¥5.600 por adulto permanece apenas provisão anterior.</div>
         <div class="prep-item-meta">
           <span class="prep-tag crit">Obrigatório com horário</span>
           <span class="prep-tag neu">teamlab.art</span>
@@ -806,7 +743,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
       <div class="prep-item recom" data-icon="🌸">
         <div class="prep-item-nome">Reservar mesa em Pontocho — Kyoto (dia 21/03)</div>
-        <div class="prep-item-desc">Domingo de florada + feriado do Equinócio: impossível encontrar mesa para 13 pessoas em Pontocho sem reserva prévia. Reservar izakaya com espaço privativo ou planejar divisão em 2 grupos. Alternativamente, optar pelas praças de alimentação dos deptos da Shijo.</div>
+        <div class="prep-item-desc">Domingo do feriado do Equinócio: reservar se a intenção for jantar com as 13 pessoas juntas em Pontocho. A floração e a disponibilidade não estão garantidas. Reservar izakaya com espaço privativo ou planejar divisão em 2 grupos. Alternativamente, optar pelas praças de alimentação dos deptos da Shijo.</div>
         <div class="prep-item-meta">
           <span class="prep-tag warn">Muito recomendado</span>
           <span class="prep-tag neu">Dia 21/03 · Domingo de feriado</span>
@@ -824,55 +761,40 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
       </div>
 
       <div class="prep-item recom" data-icon="🐬">
-        <div class="prep-item-nome">Ingressos Aquário Kaiyukan online (dia 18/03)</div>
-        <div class="prep-item-desc">Compra antecipada online evita filas. Adulto: ¥2.400–2.700. 7–15 anos: ¥1.200–1.400. 4–6 anos: ¥500–700. Menores de 4 anos: grátis.</div>
+        <div class="prep-item-nome">Ingressos Aquário Kaiyukan online (dia 16/03)</div>
+        <div class="prep-item-desc">Transferido para 16/03. Ingresso com data e horário; preço a conferir no <a href="https://www.kaiyukan.com/info/ticket/kaiyukan/">calendário oficial</a>. O aquário <strong>não empresta carrinhos</strong> e recomenda estacioná-los na entrada. Modelos aceitos têm largura até 85 cm, são empurrados por trás e possuem trava e cinto. A equipe orienta o uso dos elevadores. <a href="https://www.kaiyukan.com/info/area/nursing/">Orientações para famílias</a>.</div>
         <div class="prep-item-meta">
           <span class="prep-tag warn">Recomendado</span>
           <span class="prep-tag neu">kaiyukan.com</span>
-          <span class="prep-tag neu">Dia 18/03 · manhã</span>
+          <span class="prep-tag neu">Dia 16/03 · horário a escolher</span>
         </div>
       </div>
 
 
       <div class="prep-item recom" data-icon="📲">
-        <div class="prep-item-nome">eSIM para o Japão — comprar no Brasil antes de embarcar</div>
-        <div class="prep-item-desc">eSIM é digital: compra online, instala no celular e já chega no Japão com internet ativa — sem fila, sem balcão no aeroporto. Para 13 pessoas, cada adulto com smartphone compatível compra o próprio. Provedores com boa cobertura no Japão: <strong>Airalo</strong> (app, paga em USD), <strong>Holafly</strong> (dados ilimitados), <strong>Maya</strong> ou <strong>Ubigi</strong>. Planos de 10–30 dias com dados ilimitados custam entre US$ 8–25. Instalar antes de embarcar em GRU; ativar ao pousar em KIX.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag warn">Recomendado</span>
-          <span class="prep-tag neu">airalo.com · holafly.com</span>
-          <span class="prep-tag neu">Instalar antes de sair do Brasil</span>
-          <span class="prep-tag neu">~US$ 8–25 / pessoa · 10–30 dias</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">eSIM para o Japão — cobertura de 15/03 a 01/04</div><div class="prep-item-desc">Conferir compatibilidade dos celulares, validade em dias ou horas e momento de ativação. Um plano de 15 dias já não cobre a permanência completa; comparar um plano que cubra os 18 dias ou recargas. O plano do Japão não necessariamente funciona em Doha: prever acesso à internet e contatos de emergência durante a conexão.</div><div class="prep-item-meta"><span class="prep-tag neu">18 dias no Japão</span><span class="prep-tag neu">Ativação conforme o fornecedor</span></div></div>
 
       <div class="prep-item recom" data-icon="📶">
-        <div class="prep-item-nome">Pocket WiFi — reservar online para retirada no KIX (alternativa para quem não tem eSIM)</div>
-        <div class="prep-item-desc">Para quem usa Android sem suporte a eSIM, ou para os bebês/crianças sem smartphone. Pedir online antes da viagem para retirada no balcão do Aeroporto de Kansai (KIX) em 16/03. Provedores: <strong>IIJmio</strong>, <strong>Sakura Mobile</strong> ou <strong>Japan Wireless</strong>. 1 aparelho compartilha sinal com até 5 dispositivos — 2 a 3 aparelhos bastam para o grupo. Devolver no aeroporto na volta (31/03).</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag warn">Alternativa ao eSIM</span>
-          <span class="prep-tag neu">Retirada no KIX · devolução em 31/03</span>
-          <span class="prep-tag neu">~¥500–800/dia por aparelho</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Pocket WiFi — retirada em 15/03 e devolução em 01/04</div><div class="prep-item-desc">Se escolherem Wi-Fi portátil, alterar as datas para retirada no KIX após o pouso às 16:25 de 15/03 e devolução no KIX antes do voo às 18:55 de 01/04. Conferir horário do balcão, caixa de devolução e plano suficiente para 18 dias. Escolher quantidade de aparelhos conforme quem precisa se separar em subgrupos.</div><div class="prep-item-meta"><span class="prep-tag neu">15/03–01/04</span><span class="prep-tag neu">Plano e balcão a confirmar</span></div></div>
 
 
       <div class="prep-item obrig" data-icon="🚆">
-        <div class="prep-item-nome">Kintetsu Aoniyoshi — trem panorâmico Osaka↔Kyoto (opcional)</div>
-        <div class="prep-item-desc">O Aoniyoshi é um dos trens mais bonitos do Japão: interior de madeira lacada azul-marfim, janelas largas e serviço de café a bordo. Faz o trajeto Osaka Namba ↔ Kyoto em ~75 min. Não roda todo dia e tem assentos muito limitados. A reserva abre <strong>1 mês antes às 10:30 JST</strong> pelo site ou aplicativo da Kintetsu. ¥1.760/adulto (incluso suplemento de trem especial). Se quiser usá-lo no transfer Osaka→Kyoto (dia 19/03), reservar em 19/02.</div>
+        <div class="prep-item-nome">Osaka → Kyoto em 18/03 — transporte regular</div>
+        <div class="prep-item-desc">18/03/2027 é quinta-feira. O Aoniyoshi <strong>normalmente não opera às quintas</strong>; não contar com ele neste transfer. Usar transporte regular via Osaka/Umeda. Só reavaliar se a Kintetsu publicar operação excepcional. <a href="https://www.kintetsu.co.jp/foreign/english/aoniyoshi/">Fonte: Kintetsu</a>.</div>
         <div class="prep-item-meta">
-          <span class="prep-tag crit">Obrigatório com reserva</span>
-          <span class="prep-tag neu">kintetsu.co.jp</span>
-          <span class="prep-tag neu">Reservar 19/02 · abre 10:30 JST (06:30 BRT)</span>
+          <span class="prep-tag crit">Conferir transporte regular</span>
+          <span class="prep-tag neu">18/03 · quinta-feira</span>
+          <span class="prep-tag neu">Aoniyoshi fora do transfer previsto</span>
         </div>
       </div>
 
       <div class="prep-item recom" data-icon="🍱">
-        <div class="prep-item-nome">Restaurante Shigetsu — almoço zen em Tenryū-ji (dia 20/03)</div>
+        <div class="prep-item-nome">Restaurante Shigetsu — alternativa em Arashiyama (dia 20/03)</div>
         <div class="prep-item-desc">Único restaurante dentro dos jardins históricos de Tenryū-ji, em Arashiyama. Serve shojin ryori — culinária vegetariana zen tradicional, usada pelos monges budistas. Atende apenas com reserva prévia. A partir de ¥3.300 por pessoa. Experiência de 45–60 min sentado no assoalho com vista para o jardim Sogenchi. Ideal para uma refeição marcante em Kyoto.</div>
         <div class="prep-item-meta">
           <span class="prep-tag warn">Recomendado</span>
           <span class="prep-tag neu">tenryuji.com/en/shigetsu</span>
-          <span class="prep-tag neu">Dia 20/03 · almoço · a partir de ¥3.300/pessoa</span>
+          <span class="prep-tag neu">Dia 20/03 · preço e reserva a confirmar</span>
         </div>
       </div>
 
@@ -888,41 +810,16 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     <div class="prep-lista">
 
       <div class="prep-item info" data-icon="🛫">
-        <div class="prep-item-nome">Trecho Fortaleza → São Paulo e a noite de 13/03</div>
-        <div class="prep-item-desc">A viagem começa em 13/03: LA 3683 sai de Fortaleza às 11:15 e pousa em Guarulhos às 14:45. O voo longo (LA 8154 para Santiago) só parte às 10:40 do dia 14, então a noite de 13/03 é em São Paulo — hotel perto do aeroporto ainda a definir, com 13 pessoas e 3 bebês. ⚠ Confirmar com a LATAM se o doméstico está no mesmo bilhete do internacional: se estiver, a bagagem segue direto até Kansai; se for reserva separada, as malas têm que ser retiradas em Guarulhos e redespachadas no dia seguinte. Na volta, o LA 3324 sai de Guarulhos às 23:20 de 01/04 e chega a Fortaleza às 02:50 — combinar antes quem busca de madrugada.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag warn">Confirmar bagagem</span>
-          <span class="prep-tag neu">LA 3683 · 13/03 11:15 → 14:45</span>
-          <span class="prep-tag neu">LA 3324 · 01/04 23:20 → 02:50</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Fortaleza → GRU e embarque internacional na noite de 13/03</div><div class="prep-item-desc">LA 3683 mantido: 13/03, 11:15–14:45. LA 5262 sai às 02:10 de 14/03. Planejar apresentação internacional até <strong>23:10 de 13/03</strong>, ou antes conforme a companhia. São 11h25 em GRU: comparar sala de descanso/day use sem presumir uma noite completa de hotel ou cancelamento de reserva. Confirmar retirada e redespacho das malas na ida. Volta: LA 3320 em 02/04, 13:30–16:55.</div><div class="prep-item-meta"><span class="prep-tag neu">Ida confirmada para 13</span><span class="prep-tag neu">Busca em Fortaleza à tarde</span></div></div>
 
       <div class="prep-item info" data-icon="📋">
-        <div class="prep-item-nome">Preencher Visit Japan Web — 13 passaportes</div>
-        <div class="prep-item-desc">Formulário digital de imigração e alfândega do Japão. Gera QR codes individuais para passagem expressa nos totens eletrônicos de Kansai. Preencher antes do embarque em Sydney (voo LA 809 → JQ 13).</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag ok">Informação</span>
-          <span class="prep-tag neu">vjw-lp.digital.go.jp</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Preencher Visit Japan Web com a nova chegada</div><div class="prep-item-desc">Usar chegada em <strong>15/03/2027, voo QR 802, aeroporto KIX</strong>, e o endereço efetivamente confirmado da primeira hospedagem. Conferir os registros dos 13 passageiros e preencher antes de sair do Brasil. O QR facilita o processo, mas não elimina filas nem assegura prioridade.</div><div class="prep-item-meta"><span class="prep-tag neu">QR 802 · 15/03</span><span class="prep-tag neu">Endereço depende da hospedagem</span></div></div>
 
       <div class="prep-item info" data-icon="💳">
-        <div class="prep-item-nome">Carregar ICOCA — retirada no KIX na chegada</div>
-        <div class="prep-item-desc">Comprar e carregar nos terminais do Aeroporto de Kansai (KIX) logo após o desembarque em 16/03. Funciona em todos os metrôs, JR, ônibus e lojas de conveniência no Japão. Necessário para os 10 pagantes (crianças &lt;6 anos não pagam transporte).</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag ok">No desembarque</span>
-          <span class="prep-tag neu">10 cartões · KIX Saguão Internacional</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Cartão de transporte na chegada de 15/03</div><div class="prep-item-desc">Planejar ICOCA/Suica conforme o aparelho e as necessidades do grupo. Confirmar cartões, tarifas infantis e quando será necessário assento próprio para os bebês; não presumir gratuidade irrestrita em todo transporte. Separar esse custo de cartões com depósito, que não é igual a gasto em viagem.</div><div class="prep-item-meta"><span class="prep-tag neu">Chegada em 15/03</span><span class="prep-tag neu">10 adultos/adolescentes; regras infantis a conferir</span></div></div>
 
       <div class="prep-item info" data-icon="🧾">
-        <div class="prep-item-nome">Regra do Tax-Free (nova lei desde nov/2026)</div>
-        <div class="prep-item-desc">O desconto não é mais dado diretamente na loja. O viajante paga o valor cheio com imposto e solicita reembolso nos terminais do Aeroporto de Kansai antes de despachar as malas. Apresentar passaporte físico em compras acima de ¥5.000 por loja e guardar todas as notas fiscais.</div>
-        <div class="prep-item-meta">
-          <span class="prep-tag ok">Informação</span>
-          <span class="prep-tag neu">Reembolso no KIX no dia 31/03</span>
-        </div>
-      </div>
+        <div class="prep-item-nome">Tax-free em 2027 — confirmação em KIX em 01/04</div><div class="prep-item-desc">A reforma para compras desde 01/11/2026 prevê pagamento com imposto e reembolso após confirmação de saída dos bens. Organizar passaportes, comprovantes e mercadorias acessíveis <strong>antes de despachar as malas em KIX</strong>. A loja ou seu prestador faz o reembolso; não presumir dinheiro imediato no aeroporto. Prever caixa para o valor bruto e reconferir o procedimento oficial antes da viagem.</div><div class="prep-item-meta"><span class="prep-tag neu">Saída 01/04</span><span class="prep-tag neu">Antes do despacho de bagagem</span></div></div>
 
       <div class="prep-item info" data-icon="📦">
         <div class="prep-item-nome">Planejar envios por Takkyubin (Yamato Transport)</div>
@@ -940,8 +837,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <!-- SEÇÃO DA MALA -->
   <div id="prepSecMala" hidden>
     <div class="prep-aviso" style="background:color-mix(in srgb,var(--c-tokyo) 10%,transparent);border-color:color-mix(in srgb,var(--c-tokyo) 28%,transparent)">
-      <strong style="color:var(--t-tokyo)">🧳 Estratégia de bagagem (Escalas longas &amp; Airbnb):</strong> A viagem tem um pernoite em São Paulo antes do embarque longo, uma conexão de 10 horas em Santiago (Chile) na volta, além de dias de hospedagem em Airbnb em Tóquio (onde não há reposição diária de hotel). Ter um <strong>kit de higiene compacto (frascos até 100ml) e uma muda de roupa na mala de mão</strong> é essencial para tomar banho nas conexões (em salas VIP ou hotéis de trânsito) e garantir o início no Airbnb. Na mala despachada, evite apenas potes pesados de 300–500ml: use miniaturas e compre reposição no konbini se faltar.
-    </div>
+      <strong style="color:var(--t-tokyo)">Bagagem para a nova rota:</strong> preparar itens essenciais para a espera em GRU, quatro voos Qatar e dois domésticos LATAM. Reconfirmar franquias, carrinhos e berços nos bilhetes reemitidos. Na volta, haverá retirada e redespacho de malas em Guarulhos.</div>
 
     <div class="prep-legenda">
       <span><s class="crit"></s>Indispensável / Obrigatório</span>
@@ -960,7 +856,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
         <div class="prep-item obrig" data-icon="🛂">
           <div class="prep-item-nome">Passaporte físico original — 13 pessoas</div>
-          <div class="prep-item-desc">Validade mínima de 6 meses. No Japão, a lei exige que todo turista estrangeiro porte o passaporte original na rua o tempo todo (a polícia aborda e solicita conferência). Também é obrigatório para compras Tax-Free nas lojas e para o totem de reembolso fiscal no aeroporto KIX. Deixe cópias digitais salvas no celular.</div>
+          <div class="prep-item-desc">Para o Japão, validade durante toda a estada, até depois da saída; não há mínimo geral de seis meses. Conferir documento de cada viajante, inclusive bebês. Para eventual entrada no Qatar, conferir requisitos separados. <a href="https://www.milano.it.emb-japan.go.jp/itpr_it/japanvisa_faq.html">Fonte consular japonesa</a>. No Japão, a lei exige que todo turista estrangeiro porte o passaporte original na rua o tempo todo (a polícia aborda e solicita conferência). Também é obrigatório para compras Tax-Free nas lojas e para o totem de reembolso fiscal no aeroporto KIX. Deixe cópias digitais salvas no celular.</div>
           <div class="prep-item-meta">
             <span class="prep-tag crit">Obrigatório</span>
             <span class="prep-tag neu">Portar sempre consigo no Japão</span>
@@ -968,22 +864,10 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
         </div>
 
         <div class="prep-item obrig" data-icon="✈️">
-          <div class="prep-item-nome">Visto de Trânsito Australiano — 13 concessões impressas</div>
-          <div class="prep-item-desc">Documento de concessão (grant notice) do visto subclasse 771/600 emitido pelo governo australiano para a conexão em Sydney (ida e volta). Levar cópia impressa junto com o passaporte para apresentar no check-in da LATAM em Guarulhos.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag crit">Obrigatório</span>
-            <span class="prep-tag neu">Impresso + digital</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Documentos: Doha em trânsito, Japão e menores</div><div class="prep-item-desc">Austrália saiu da rota: visto australiano não aplicável. <a href="https://dohahamadairport.com/airport-guide/at-the-airport/transfers">Hamad dispensa visto de trânsito</a> para quem permanece na área internacional. Brasileiros com passaporte comum com chip têm isenção de turismo no Japão até 90 dias. Conferir autorização dos menores conforme genitores acompanhantes e passaporte. Levar e-tickets atualizados e contatos LATAM/Qatar. Hotel externo ou imigração no Qatar exige conferência separada de passaporte e condições sanitárias. <a href="remarcacao.html">Ver documentos, CIVP e fontes oficiais</a>.</div><div class="prep-item-meta"><span class="prep-tag neu">GRU–DOH–KIX</span><span class="prep-tag neu">Sem identificadores no site público</span></div></div>
 
         <div class="prep-item obrig" data-icon="💴">
-          <div class="prep-item-nome">Dinheiro físico no Japão: Saque no 7-Eleven ou Dólar/Euro em espécie</div>
-          <div class="prep-item-desc"><strong>NÃO compre ienes em espécie no Brasil</strong> (o spread e as taxas são altíssimos). Embora o dinheiro físico seja necessário para templos históricos de Kyoto (Kinkaku-ji, Kiyomizu-dera), máquinas de metrô e coin lockers, as duas melhores estratégias são:<br>• <strong>1. Saque em caixas eletrônicos (ATMs) do 7-Eleven (Seven Bank):</strong> Use seu cartão de débito global (Nomad, Wise, C6) para sacar ienes diretamente nos ATMs com cotação comercial interbancária e IOF reduzido de 1,1%. Há caixas no saguão do aeroporto KIX e em cada esquina do Japão.<br>• <strong>2. Dólar ou Euro em espécie para trocar nas máquinas de rua:</strong> Leve notas de dólar ou euro do Brasil. No Japão existem totens de câmbio automático nas ruas e estações (máquinas <em>Smart Exchange</em>) onde você insere as cédulas de dólar/euro e a máquina devolve ienes na hora sem burocracia nem fila.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag crit">Estratégia correta</span>
-            <span class="prep-tag neu">Saque no ATM ou máquina de câmbio</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Dinheiro e cartões — comparar custos efetivos</div><div class="prep-item-desc">Comparar câmbio, tarifa de saque, spread, tributos e limites nos provedores efetivamente usados. Levar uma alternativa de pagamento e reservar numerário para despesas que não aceitem cartão. Não pressupor uma alíquota fixa ou que um meio será sempre mais barato.</div><div class="prep-item-meta"><span class="prep-tag neu">Valores e taxas a consultar</span></div></div>
 
         <div class="prep-item obrig" data-icon="👛">
           <div class="prep-item-nome">Porta-moedas ou carteira com zíper dedicado</div>
@@ -995,13 +879,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
         </div>
 
         <div class="prep-item recom" data-icon="💳">
-          <div class="prep-item-nome">Cartões internacionais desbloqueados e aviso viagem</div>
-          <div class="prep-item-desc">Cartões de débito global (Wise, Nomad, C6 Global) e cartões de crédito de emergência. Avisar os bancos sobre o uso no exterior (Austrália e Japão) para evitar bloqueios preventivos no momento das compras.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag warn">Recomendado</span>
-            <span class="prep-tag neu">Wise · Nomad · Cartão de crédito</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Cartões internacionais e meios de pagamento</div><div class="prep-item-desc">Conferir habilitação internacional, limites e meios de emergência para Japão e conexão no Qatar. Consultar os bancos sobre avisos de viagem quando aplicáveis. Atualizar as datas nos serviços que usem esse registro.</div><div class="prep-item-meta"><span class="prep-tag neu">Japão e Qatar</span><span class="prep-tag neu">13/03–02/04</span></div></div>
 
         <div class="prep-item recom" data-icon="🛡️">
           <div class="prep-item-nome">Apólice de seguro viagem impressa (com contato em inglês)</div>
@@ -1087,7 +965,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
         <div class="prep-item info" data-icon="🧺">
           <div class="prep-item-nome">Roupas de secagem rápida (use as lavanderias dos hotéis)</div>
-          <div class="prep-item-desc">Não é necessário levar 16 mudas completas de roupa. Todos os hotéis e o Airbnb do roteiro dispõem de lavadoras e secadoras por moeda (coin laundry). Lavar as roupas a cada 4 ou 5 dias reduz a bagagem pela metade e deixa espaço livre na mala para compras.</div>
+          <div class="prep-item-desc">Não é necessário levar 18 mudas completas de roupa. Todos os hotéis e o Airbnb do roteiro dispõem de lavadoras e secadoras por moeda (coin laundry). Lavar as roupas a cada 4 ou 5 dias reduz a bagagem pela metade e deixa espaço livre na mala para compras.</div>
           <div class="prep-item-meta">
             <span class="prep-tag ok">Economia de espaço</span>
             <span class="prep-tag neu">Coin laundry nos hotéis</span>
@@ -1133,13 +1011,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
         </div>
 
         <div class="prep-item recom" data-icon="🎧">
-          <div class="prep-item-nome">Fones de ouvido (preferência com cancelamento de ruído)</div>
-          <div class="prep-item-desc">Indispensáveis para descansar nas quase 69 horas entre voos e conexões da ida. Além disso, no transporte público japonês (metrôs, trens e Shinkansen), o silêncio é rigoroso: escutar áudio de celular sem fone de ouvido é considerada uma falta de respeito grave.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag warn">Recomendado</span>
-            <span class="prep-tag neu">Silêncio obrigatório no metrô/trem</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Fones de ouvido para os voos e conexões</div><div class="prep-item-desc">A ida soma 41h10 entre aeroportos e a volta 34h. Fones podem ajudar no descanso. Levar carregadores e alternativas de entretenimento; durante a conexão curta em Doha, priorizar a orientação da equipe e o portão.</div><div class="prep-item-meta"><span class="prep-tag neu">Conforto durante a viagem</span></div></div>
 
         <div class="prep-item info" data-icon="⚡">
           <div class="prep-item-nome">Cabos longos (2 metros) para recarga</div>
@@ -1162,7 +1034,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
         <div class="prep-item obrig" data-icon="🩹">
           <div class="prep-item-nome">Curativos específicos para bolhas nos pés (tipo Compeed)</div>
-          <div class="prep-item-desc">O desgaste físico de caminhar até 15 km diários por 16 dias consecutivos costuma provocar bolhas e atrito nos pés mesmo com calçados confortáveis. Curativos hidrocolóides de cicatrização rápida são o item médico mais utilizado em viagens ao Japão.</div>
+          <div class="prep-item-desc">O desgaste físico de caminhar até 15 km diários por 18 dias consecutivos costuma provocar bolhas e atrito nos pés mesmo com calçados confortáveis. Curativos hidrocolóides de cicatrização rápida são o item médico mais utilizado em viagens ao Japão.</div>
           <div class="prep-item-meta">
             <span class="prep-tag crit">Salva a viagem</span>
             <span class="prep-tag neu">Band-Aid anti-bolhas</span>
@@ -1170,31 +1042,13 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
         </div>
 
         <div class="prep-item obrig" data-icon="🌿">
-          <div class="prep-item-nome">Adesivos para dor muscular e panturrilhas (Salompas)</div>
-          <div class="prep-item-desc">Colar adesivos analgésicos nas panturrilhas e solas dos pés antes de dormir relaxa a musculatura para aguentar o dia seguinte. No Japão também vende o famoso adesivo "Kyusoku Jikan" em qualquer farmácia Matsumoto Kiyoshi.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag crit">Indispensável</span>
-            <span class="prep-tag neu">Alívio muscular noturno</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Itens pessoais para conforto após caminhadas</div><div class="prep-item-desc">Planejar pausas e calçados confortáveis. Sobre adesivos, analgésicos ou outros produtos, consultar orientação profissional e verificar a composição e as instruções; não presumir indicação para todos.</div><div class="prep-item-meta"><span class="prep-tag neu">Uso individual conforme orientação</span></div></div>
 
         <div class="prep-item obrig" data-icon="🚨">
-          <div class="prep-item-nome">⚠️ ALERTA: Remédios PROIBIDOS no Japão (Crime de Narcóticos)</div>
-          <div class="prep-item-desc">A legislação sanitária japonesa é extremamente rígida. Medicamentos muito comuns no Brasil para gripe, coriza e tosse que contenham <strong>pseudoefedrina, efedrina ou codeína</strong> são ESTRITAMENTE ILEGAIS no Japão (ex.: Tylenol Sinus, Actifed, Benadrex, Advil Cold &amp; Sinus, Claritin-D). Entrar com eles pode resultar em apreensão e detenção no aeroporto.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag crit">Proibição legal</span>
-            <span class="prep-tag alerta">NUNCA leve pseudoefedrina/codeína</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Medicamentos — conferir regras por substância e quantidade</div><div class="prep-item-desc">Não usar uma lista genérica de marcas como autorização ou proibição. Verificar princípio ativo, concentração, quantidade e eventual permissão nas orientações oficiais do Ministério da Saúde do Japão. Medicamentos controlados podem exigir documentos prévios. Consultar o médico sobre necessidades pessoais e pediátricas e levar a documentação pertinente. <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/kojinyunyu/topics/tp010401-1_00001.html" target="_blank" rel="noopener">Orientação oficial</a>.</div><div class="prep-item-meta"><span class="prep-tag neu">Conferência individual</span><span class="prep-tag neu">Sem lista genérica de permitidos/proibidos</span></div></div>
 
         <div class="prep-item recom" data-icon="💊">
-          <div class="prep-item-nome">Farmácia básica pessoal permitida (em embalagem original)</div>
-          <div class="prep-item-desc">Leve medicamentos habituais para dor, febre e digestão com a bula e embalagem original:<br>• Paracetamol e Ibuprofeno (analgésicos permitidos)<br>• Antialérgico comum (Loratadina, Cetirizina)<br>• Antiácido / remédio para estômago (Omeprazol, Simeticona)<br>• Remédio para enjoo (Dramin para as horas de voo)<br>• Medicamentos de uso contínuo acompanhados da receita médica em inglês.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag warn">Recomendado</span>
-            <span class="prep-tag neu">Levar nas caixas originais</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Medicamentos pessoais e documentação</div><div class="prep-item-desc">Preparar os medicamentos habituais com orientação profissional, embalagens identificadas e receitas quando necessárias. Conferir as regras japonesas de importação antes de montar o kit. Não considerar um medicamento autorizado apenas por ser vendido sem receita no Brasil.</div><div class="prep-item-meta"><span class="prep-tag neu">Necessidades de cada família</span></div></div>
 
         <div class="prep-item recom" data-icon="🧴">
           <div class="prep-item-nome">Hidratante labial (lip balm) e hidratante corporal/facial</div>
@@ -1206,13 +1060,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
         </div>
 
         <div class="prep-item recom" data-icon="🧴">
-          <div class="prep-item-nome">Desodorante ocidental habitual (leve do Brasil)</div>
-          <div class="prep-item-desc">Grande parte da população do Leste Asiático possui menor quantidade de glândulas apócrinas e quase não utiliza desodorante antitranspirante forte. Por isso, os desodorantes vendidos nas farmácias japonesas são extremamente suaves e costumam decepcionar brasileiros. Leve o seu em quantidade suficiente.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag warn">Recomendado</span>
-            <span class="prep-tag neu">Levar do Brasil</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Itens de higiene de uso habitual</div><div class="prep-item-desc">Levar os produtos aos quais a família está habituada, em quantidade compatível com os 18 dias e com possibilidade de reposição. Conferir restrições de embalagem para cabine e despacho.</div><div class="prep-item-meta"><span class="prep-tag neu">Preferência pessoal</span></div></div>
 
         <div class="prep-item info" data-icon="☀️">
           <div class="prep-item-nome">Protetor solar e óculos de sol</div>
@@ -1223,13 +1071,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
         </div>
 
         <div class="prep-item obrig" data-icon="🧴">
-          <div class="prep-item-nome">Kit de banho e higiene para escalas &amp; Airbnb (frascos até 100ml)</div>
-          <div class="prep-item-desc">Item obrigatório na bagagem de mão: o grupo sai de Fortaleza um dia antes e dorme em São Paulo, enfrenta quase 69h de porta a porta até o Japão, e na volta tem 10 horas de conexão em Santiago (Chile). Para tomar banho nas salas VIP ou hotéis de trânsito e para os dias de Airbnb em Tóquio, leve:<br>• Escova de dente pessoal e tubos compactos de pasta<br>• Sabonete, shampoo e condicionador em frascos de viagem (máx. 100ml cada)<br>• Lâmina de barbear com cabeça plástica protegida ou barbeador elétrico<br>⚠️ <strong>Regra da aviação:</strong> Todos os líquidos na mala de mão devem ter até 100ml por frasco e caber dentro de 1 saquinho plástico transparente vedado (tipo ziplock) de até 1 litro.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag crit">Indispensável</span>
-            <span class="prep-tag neu">Mala de mão · máx. 100ml</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Kit de higiene compacto para conexões e hospedagens</div><div class="prep-item-desc">Levar itens essenciais e muda de roupa acessíveis para a espera em Guarulhos e os voos. Não há escala em Santiago nem Sydney. Conferir as regras de líquidos aplicáveis em cada aeroporto, incluindo alimentos e medicamentos infantis, antes de organizar a bagagem de mão.</div><div class="prep-item-meta"><span class="prep-tag neu">GRU e Doha</span><span class="prep-tag neu">Sem acesso garantido às malas despachadas</span></div></div>
 
         <div class="prep-item recom" data-icon="🏠">
           <div class="prep-item-nome">Higiene nos dias de Airbnb em Tóquio (reposição)</div>
@@ -1348,26 +1190,16 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     <!-- MALA 7: CONFORTO NO VOO LONGO -->
     <div class="prep-fase">
       <div class="prep-fase-titulo">
-        <span class="prep-data-badge inf">Ida de 68h30</span>
+        <span class="prep-data-badge inf">Ida de 41h10</span>
         <h3>7. Conforto para a Longa Viagem Aérea</h3>
       </div>
       <div class="prep-lista">
 
         <div class="prep-item recom" data-icon="💤">
-          <div class="prep-item-nome">Almofada de pescoço ergonômica e máscara de dormir</div>
-          <div class="prep-item-desc">A rota GRU → SYD dura mais de 15 horas contínuas de voo sobre o Pacífico, seguida de conexão de 2 horas e mais 9 horas até Osaka (KIX). Uma boa almofada de pescoço com fecho e máscara de dormir facilitam o descanso durante os ciclos de luz na aeronave.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag warn">Conforto em voo</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Almofada, máscara e conforto nos voos longos</div><div class="prep-item-desc">Os trechos internacionais duram 13h45 e 9h na ida, e 11h10 e 15h10 na volta. Organizar itens de conforto acessíveis sem depender de retirar a bagagem de mão durante a conexão curta de Doha.</div><div class="prep-item-meta"><span class="prep-tag neu">Operação Qatar Airways</span></div></div>
 
         <div class="prep-item recom" data-icon="🧦">
-          <div class="prep-item-nome">Meias de compressão elástica para voo longo</div>
-          <div class="prep-item-desc">Altamente recomendadas por médicos para voos de longa duração. Ajudam no retorno venoso, previnem inchaço nas pernas e reduzem sensivelmente o risco de trombose em trajetos de mais de 10 horas sentado.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag warn">Saúde circulatória</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Conforto e cuidados pessoais em voos longos</div><div class="prep-item-desc">Conversar com o profissional de saúde sobre cuidados adequados a cada viajante e sobre eventual uso de meias de compressão. O site não define indicação ou grau de compressão.</div><div class="prep-item-meta"><span class="prep-tag neu">Orientação individual</span></div></div>
 
         <div class="prep-item info" data-icon="💧">
           <div class="prep-item-nome">Colírio lubrificante (lágrimas artificiais) e soro nasal</div>
@@ -1386,13 +1218,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
         </div>
 
         <div class="prep-item obrig" data-icon="🚿">
-          <div class="prep-item-nome">Muda de roupa extra e toalha compacta na mala de mão</div>
-          <div class="prep-item-desc">Na ida há um pernoite em São Paulo antes do voo longo até a Oceania; na volta são 10 horas de escala em Santiago (Chile). Ter 1 muda limpa completa (roupa íntima, camiseta e meias) e uma toalha pequena de microfibra na mochila de cada pessoa permite tomar banho e trocar de roupa revigorado nas salas VIP ou hotéis de trânsito sem mexer nas malas despachadas.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag crit">Indispensável</span>
-            <span class="prep-tag neu">1 muda na mala de mão</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Muda de roupa e kit dos bebês na bagagem de mão</div><div class="prep-item-desc">Manter uma muda completa por pessoa e suprimentos dos bebês suficientes para os voos e possíveis atrasos. A ida tem 11h25 em GRU e 3h30 em Doha; a volta tem 1h20 em Doha e 2h55 em GRU. Não planejar banho ou compras durante as conexões curtas.</div><div class="prep-item-meta"><span class="prep-tag neu">Conexões de volta com prioridade ao embarque</span></div></div>
 
       </div>
     </div>
@@ -1406,12 +1232,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
       <div class="prep-lista">
 
         <div class="prep-item veto" data-icon="🚫">
-          <div class="prep-item-nome">Potes pesados e grandes de shampoo/sabonete (300ml a 500ml)</div>
-          <div class="prep-item-desc">Não ocupe quilos preciosos na mala despachada com frascos grandes familiares. Leve apenas miniaturas de viagem (até 100ml) na bagagem de mão para o pernoite em São Paulo e a escala em Santiago, além dos primeiros dias no Airbnb. Nos hotéis de Osaka e Kyoto tudo é fornecido (marcas como Shiseido e POLA); se faltar no Airbnb de Tóquio, qualquer konbini vende refis e frascos econômicos por ¥200 a ¥400.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag veto">Use miniaturas</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Higiene em frascos compactos</div><div class="prep-item-desc">Levar o necessário para voos, espera em GRU e início nas hospedagens. Confirmar o que cada hotel/Airbnb fornece antes de retirar itens da mala. Comprar reposição no destino pode reduzir o peso, conforme as necessidades da família.</div><div class="prep-item-meta"><span class="prep-tag neu">Conferir itens oferecidos nas hospedagens</span></div></div>
 
         <div class="prep-item veto" data-icon="🚫">
           <div class="prep-item-nome">Tubos gigantes de pasta de dente e excesso de escovas</div>
@@ -1446,20 +1267,10 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
         </div>
 
         <div class="prep-item veto" data-icon="🚫">
-          <div class="prep-item-nome">Vistos dos EUA (ESTA), MetroCard NY e CNH Internacional</div>
-          <div class="prep-item-desc">A rota dos voos da LATAM é via Sydney (Austrália) e Santiago (Chile), não passando por território norte-americano. Brasileiros com passaporte comum estão isentos de visto de turismo no Japão desde 2023. O roteiro não prevê aluguel de carro (100% trens e metrô), tornando a PID desnecessária.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag veto">Não se aplica</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Documentos que dependem da rota e das atividades</div><div class="prep-item-desc">O itinerário confirmado passa por Brasil, Qatar e Japão. Documentos de trânsito australiano e vistos dos EUA não são tarefas desta rota. Verificar a entrada no Japão conforme nacionalidade e passaporte de cada pessoa. O comunicado japonês de agosto/2026 prevê isenção para brasileiros com passaporte comum com chip em turismo de até 90 dias; reconsultar antes do embarque.</div><div class="prep-item-meta"><span class="prep-tag neu">Regra consultada em 26/09/2026</span></div></div>
 
         <div class="prep-item veto" data-icon="🚫">
-          <div class="prep-item-nome">Comprar ienes em espécie em casas de câmbio no Brasil</div>
-          <div class="prep-item-desc">Comprar papel-moeda de iene no Brasil é a maneira mais cara de obter moeda japonesa (spread bancário elevado e taxas desfavoráveis). É muito mais econômico e prático sacar ienes diretamente nos caixas do 7-Eleven (Seven Bank) com cartão Nomad ou Wise, ou levar notas de dólar/euro para converter nas máquinas de câmbio automático (<em>Smart Exchange</em>) espalhadas pelas ruas e estações do Japão.</div>
-          <div class="prep-item-meta">
-            <span class="prep-tag veto">Evite spread alto</span>
-          </div>
-        </div>
+          <div class="prep-item-nome">Evitar câmbio sem comparar o custo total</div><div class="prep-item-desc">Comparar o valor final de ienes recebidos por real gasto, incluindo tarifas e tributos, entre as opções disponíveis. A melhor combinação depende dos cartões, limites e necessidade de dinheiro do grupo.</div><div class="prep-item-meta"><span class="prep-tag neu">Cotação a confirmar</span></div></div>
 
       </div>
     </div>
@@ -1469,7 +1280,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <nav class="nav" aria-label="Seções do site">
   <div class="nav-in">
-    <a href="index.html">Início</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html" aria-current="page">Preparação</a>
+    <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html" aria-current="page">Preparação</a>
   </div>
 </nav>
 
@@ -1668,9 +1479,9 @@ const COSTA=[[134.60,34.78],[135.00,34.66],[135.20,34.69],[135.42,34.73],[135.33
  [139.46,35.32],[139.66,35.16],[139.80,35.44],[139.88,35.64],[139.94,35.36],[139.92,34.94],
  [140.38,35.44],[140.62,35.80],[140.78,36.40],[140.78,37.60],[134.60,37.60]];
 const PARADAS=[
- {n:"KIX",        s:"pouso 16/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
- {n:"Osaka",      s:"4 noites",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
- {n:"Kyoto",      s:"3 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
+ {n:"KIX",        s:"pouso 15/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
+ {n:"Osaka",      s:"5 noites · 3 + 2",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
+ {n:"Kyoto",      s:"4 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
  {n:"Kawaguchiko",s:"1 noite",     lon:138.76,lat:35.51, c:"fuji",  dx:0,  dy:-20,an:"middle"},
  {n:"Tokyo",      s:"7 noites",    lon:139.77,lat:35.68, c:"tokyo", dx:10, dy:2,  an:"start"}];
 const MISHIMA=[138.91,35.13];
@@ -1713,7 +1524,6 @@ function svgMapa(mini){
 
 function montarMapa(){
   el("mapaSlot").innerHTML=svgMapa(false);
-  el("tlMap").innerHTML=svgMapa(true);
   el("mapaLeg").innerHTML=Object.keys(CID).map(k=>
     `<span class="leg c-${k}"><s></s>${CID[k].nome} <span style="color:var(--ink-3);font-weight:600">${CID[k].kanji}</span></span>`).join("");
 
@@ -1767,16 +1577,16 @@ function montarNums(){
   // para os cards nunca discordarem do resto do site quando a planilha for atualizada
   const taxa=yen?reais/yen:0;
   const brl=(y)=>"≈ R$ "+nf(Math.round(y*taxa));
-  const COMIDA=96000;   // Y6.000/dia x 16 dias, o cenario medio da propria planilha
+  const COMIDA=6000*DADOS.nDias;   // Y6.000/dia x 18 dias, o cenario medio da propria planilha
   const cards=[
-    {b:nf(DADOS.nDias||16),u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
+    {b:nf(DADOS.nDias),u:"dias no Japão",i:"17 noites, de 15/03 a 01/04"},
     {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
-    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias||16),1)+" km por dia, só entre paradas"},
+    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias),1)+" km por dia, só entre paradas"},
     {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
-    {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias||16)+" dias, cenário médio"},
-    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"total por adulto",i:"Sem a comida, fecha em ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
+    {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias)+" dias, cenário médio"},
+    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"subtotal estimado por adulto",i:"Transporte e ingressos: ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
   ];
   el("nums").innerHTML=cards.map(c=>
     `<div class="num"><b>${esc(c.b)}</b>${c.c?`<em>${esc(c.c)}</em>`:""}<u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
@@ -1786,7 +1596,9 @@ function montarNums(){
    5. TIMELAPSE
    ================================================================ */
 function montarTimelapse(){
+  el("tlMap").innerHTML=svgMapa(true);
   const dias=DADOS.dias, art=el("tlArt"), range=el("tlRange"), play=el("tlPlay"), tl=el("tl");
+  const ultimo=dias.length-1; range.max=ultimo;
   let i=0, rodando=null;
   const pinPos={};
   PARADAS.forEach(o=>{ pinPos[o.c]=proj(o.lon,o.lat); });
@@ -1810,16 +1622,16 @@ function montarTimelapse(){
       pin.style.transition=REDUZIR?"none":"cx .5s cubic-bezier(.4,0,.2,1),cy .5s cubic-bezier(.4,0,.2,1)"; }
     el("tlList").innerHTML=d.atividades.slice(0,5).map((a,n)=>
       `<li style="animation-delay:${n*55}ms"><s>${esc(a.periodo)}</s><span>${esc(a.nome)}</span></li>`).join("");
-    range.value=k; range.style.setProperty("--pct",(k/15*100)+"%");
+    range.value=k; range.style.setProperty("--pct",(k/Math.max(1,ultimo)*100)+"%");
   }
   range.addEventListener("input",()=>{ parar(); ir(+range.value); });
   function parar(){ if(rodando){clearInterval(rodando);rodando=null;play.textContent="▶";
     play.setAttribute("aria-label","Reproduzir o timelapse");} }
   play.addEventListener("click",()=>{
     if(rodando) return parar();
-    if(i>=15) ir(0);
+    if(i>=ultimo) ir(0);
     play.textContent="❚❚"; play.setAttribute("aria-label","Pausar o timelapse");
-    rodando=setInterval(()=>{ if(i>=15) return parar(); ir(i+1); },1500);
+    rodando=setInterval(()=>{ if(i>=ultimo) return parar(); ir(i+1); },1500);
   });
   ir(0);
 }
@@ -1884,7 +1696,7 @@ function montarTrilho(){
       <div class="dia-card">
         <div class="dia-art" data-cid="${d.cidade}"><b>${m.kanji}</b><i>${dm(d.data)} · ${esc(d.semana)}</i></div>
         <div class="dia-head">
-          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de 16 · dorme em ${esc(m.nome)}</p></div>
+          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de ${DADOS.dias.length} · ${k===DADOS.dias.length-1?'retorno via Doha':'pernoite planejado em '+esc(m.nome)}</p></div>
           ${d.transicao?`<span class="badge-tr">troca de base</span>`:""}
         </div>
         <div class="dia-stats">${stats.join("")}</div>
@@ -1943,23 +1755,23 @@ function montarTrilho(){
    7. CARROSSÉIS CURADOS
    ================================================================ */
 const COMER=[
- {c:"osaka",d:"18/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
+ {c:"osaka",d:"16/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
  {c:"osaka",d:"17 e 30/03",n:"Dotonbori",b:"Namba",t:"Takoyaki, okonomiyaki e kushikatsu à beira do canal, sob o letreiro do Glico. A multidão pesa das 19h às 21h.",g:"24h · cruzeiro ¥1.200"},
  {c:"osaka",d:"17/03",n:"Shinsekai",b:"Naniwa",t:"Bairro retrô dos anos 1950 aos pés da Tsūtenkaku, e a capital do kushikatsu.",g:"10:00–20:00"},
- {c:"osaka",d:"18/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Barata e senta os 13 sem reserva.",g:"11:00–20:00 · fraldário no piso 2"},
+ {c:"osaka",d:"16/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Opção prática de almoço; talvez seja necessário dividir o grupo para encontrar lugares.",g:"11:00–20:00 · fraldário no piso 2"},
  {c:"osaka",d:"17/03",n:"Hozenji Yokocho",b:"Namba",t:"Beco de pedra ao lado do Dotonbori, com o templo coberto de musgo. O contraponto silencioso ao neon.",g:"24h"},
  {c:"kyoto",d:"19 e 21/03",n:"Pontocho",b:"Gion",t:"Beco de 2 m de largura à beira do rio Kamo, com restaurantes dos dois lados. Carrinho não entra.",g:"noite · leve o canguru"},
- {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. O único dia em que a comida já está paga.",g:"La Vista Fujikawaguchiko"},
- {c:"tokyo",d:"25/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
- {c:"tokyo",d:"24/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
- {c:"tokyo",d:"24/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
- {c:"tokyo",d:"27/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
+ {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. Confirmar no comprovante se o jantar está incluído e reservar o horário do grupo.",g:"La Vista Fujikawaguchiko"},
+ {c:"tokyo",d:"27/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
+ {c:"tokyo",d:"26/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
+ {c:"tokyo",d:"26/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
+ {c:"tokyo",d:"25/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
 ];
 const COMPRAS=[
- {c:"osaka",d:"17/03",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
- {c:"osaka",d:"19 e 31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
+ {c:"osaka",d:"alternativa",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
+ {c:"osaka",d:"31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
  {c:"osaka",d:"30 e 31/03",n:"Shinsaibashi-suji",b:"Shinsaibashi",t:"Galeria coberta de 600 m que emenda direto no Dotonbori. Funciona com chuva e concentra quase tudo.",g:"11:00–21:00 · última chance de tax-free"},
- {c:"tokyo",d:"24/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
+ {c:"tokyo",d:"26/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
  {c:"tokyo",d:"28/03",n:"Akihabara",b:"Akihabara",t:"Eletrônicos, anime, games e lojas de vários andares. O dia inteiro cabe aqui, se deixarem.",g:"domingo · Chuo-dori vira calçadão à tarde"},
  {c:"tokyo",d:"28/03",n:"Ameyoko",b:"Ueno",t:"Feira de rua sob a linha do trem: comida, tênis, cosmético e barulho. O preço mais baixo de Tokyo.",g:"colado no Ueno Park"},
  {c:"tokyo",d:"29/03",n:"Takeshita-dori",b:"Harajuku",t:"350 m por 3 m de largura de puro kawaii: crepes, purikura e lojas alternativas. Segurem as crianças pela mão.",g:"11:00–20:00 · carrinho não entra"},
@@ -1967,13 +1779,13 @@ const COMPRAS=[
 ];
 const PLANOB=[
  {c:"osaka",d:"qualquer dia",n:"Chuva em Osaka",b:"tudo coberto",t:"Kaiyukan em espiral por 8 andares, Umeda Sky pelo elevador interno, Senba Center no subsolo, Kuromon coberto e 600 m de galeria em Shinsaibashi. Dá para passar o dia sem tomar chuva.",g:"nenhum deles depende do tempo"},
- {c:"osaka",d:"18/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
- {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Kyoto é a única base onde o transporte principal é ônibus urbano, com entrada pela porta traseira e carrinho dobrado em pé. Com 3 bebês em fim de semana de feriado, considerem táxi nos trechos curtos ou dividir o grupo.",g:"feriadão de 20 a 22/03"},
+ {c:"osaka",d:"16/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
+ {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Conferir lotação, acesso dos carrinhos e alternativas por trem/metrô. Se cotar táxi ou van, informar 13 pessoas, crianças, carrinhos e malas; o número de veículos depende da capacidade real.",g:"feriadão de 20 a 22/03"},
  {c:"fuji", d:"22 e 23/03",n:"Fuji na nuvem",b:"Kawaguchiko",t:"Oishi Park vale pela margem do lago mesmo sem o topo à vista. O onsen e o jantar do ryokan seguram o dia, e o teleférico Kachi-Kachi vira saída antecipada para Tokyo.",g:"o topo aparece em poucos dias do mês"},
  {c:"tokyo",d:"qualquer dia",n:"Chuva em Tokyo",b:"tudo coberto",t:"teamLab PLANETS, Miraikan, Solamachi, o observatório gratuito do Governo Metropolitano e os andares de Akihabara. Só o Skytree perde a graça com o céu fechado.",g:"o observatório abre até 22:00"},
  {c:"tokyo",d:"27/03",n:"Troca do dia de Shinjuku",b:"alternativa mapeada",t:"Se Shinjuku não empolgar, a troca já prevista é Palácio Imperial + Koishikawa Korakuen, colados um no outro e a 20 min de Ojima.",g:"¥300 · da lista original"},
  {c:"tokyo",d:"29/03",n:"Shibuya Sky esgotado",b:"Shibuya",t:"O horário do pôr do sol some primeiro, e em 29/03 o sol se põe ~17:55. Sem ele, o observatório do Governo Metropolitano é grátis e tem elevador direto ao 45º andar.",g:"grátis · Shinjuku"},
- {c:"osaka",d:"31/03",n:"A conexão de 2h em Sydney",b:"o risco da volta",t:"É a mais apertada da viagem. Como o bilhete é único, a LATAM reacomoda em caso de atraso — mas para não depender disso, estejam no KIX às 18:25, saindo de Namba às 17:20.",g:"crítico"}
+ {c:"osaka",d:"02/04",b:"voos via Doha",n:"Conexões na volta",t:"Doha: 1h20, seguir direto ao portão. GRU: 2h55 para entrada no Brasil e redespacho. Confirmar assistência e proteção dos bilhetes.",g:"Doha e Guarulhos"}
 ];
 function montarCarro(alvo,itens){
   el(alvo).innerHTML=itens.map(o=>`
@@ -2032,8 +1844,7 @@ function curto(s){ return s.replace(/\s*\([^)]*\)/g,"").trim(); }
 const AEROPORTOS=[
   [/pinto martins|fortaleza/i,"FOR","Pinto Martins"],
   [/guarulhos/i,"GRU","Guarulhos"],
-  [/merino|santiago/i,"SCL","Arturo Merino Benítez"],
-  [/kingsford|sydney/i,"SYD","Kingsford Smith"],
+  [/hamad|doha/i,"DOH","Hamad"],
   [/kansai|osaka/i,"KIX","Kansai"]
 ];
 function aero(s){
@@ -2056,7 +1867,7 @@ function era(v,campo){
 function cel(v,campo){ return era(v,campo)+esc(v[campo]||""); }
 function montarVoos(){
   el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr${v.antes?' class="remarcado"':''}>
-    <td class="n">${esc(v.numero)}</td>
+    <td class="n">${esc(v.numero)}<small class="apto">${esc(v.operadora||"")}</small></td>
     <td>${trecho(v)}</td>
     <td class="h">${dm(v.saidaData)}<br>${cel(v,"saidaHora")}</td>
     <td class="h">${dm(v.chegadaData)}<br>${cel(v,"chegadaHora")}</td>
@@ -2064,7 +1875,7 @@ function montarVoos(){
     <td>${cel(v,"conexao")}</td></tr>`).join("");
   const leg=el("voosLegenda");
   if(leg) leg.innerHTML=DADOS.voos.some(v=>v.antes)
-    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "";
+    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "Horários locais. Conferir o cartão de embarque e as notificações da companhia antes de viajar.";
   el("voosNotas").innerHTML=DADOS.voosNotas.filter(n=>n.texto).map(n=>{
     const crit=/⚠|pendente/i.test(n.titulo);
     return `<div class="callout ${crit?"crit":"c-fuji"}" style="margin-bottom:9px">
@@ -2080,13 +1891,13 @@ function montarHosp(){
         <s></s>
         <div class="tx">
           <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
-          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p>
+          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>
         </div>
-        <div class="vl">${h.total?"R$ "+nf(h.total):"—"}<u>grupo</u></div>
+        <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):"A cotar"}<u>grupo</u></div>
       </div>`).join("")
       + `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
-         <div class="tx"><h4>Total do conjunto ${set.toUpperCase()}</h4>
-         <p class="mt">${lista.length} reservas lançadas</p></div>
+         <div class="tx"><h4>Subtotal dos valores históricos ${set.toUpperCase()}</h4>
+         <p class="mt">${lista.filter(h=>Number.isFinite(h.total)).length} valores antigos · ${lista.filter(h=>!Number.isFinite(h.total)).length} entradas sem cotação · conjunto ${set==="b"?"histórico parcial":"A com três blocos a cotar"}</p></div>
          <div class="vl">R$ ${nf(lista.reduce((a,b)=>a+(b.total||0),0))}<u>grupo</u></div></div>`;
   }
   el("hospToggle").addEventListener("click",(ev)=>{
@@ -2125,7 +1936,7 @@ function montarTema(){
 function montarContagem(){
   const cd=el("cd");
   if(!cd) return;
-  const alvo=new Date("2027-03-14T10:40:00-03:00");
+  const alvo=new Date("2027-03-13T11:15:00-03:00");
   const dias=Math.max(0,Math.ceil((alvo-new Date())/864e5));
   cd.textContent=nf(dias);
 }

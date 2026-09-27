@@ -159,6 +159,12 @@ img,canvas,svg{max-width:100%;display:block}
   font-variant-numeric:tabular-nums;color:var(--ink-3);margin-top:5px}
 .num i{display:block;font-style:normal;font-size:.74rem;color:var(--ink-2);margin-top:5px;line-height:1.42}
 
+#remarcacao p{margin-bottom:1rem;font-size:1rem;line-height:1.65}
+#remarcacao h3{font-size:1.2rem}
+#remarcacao ol,#remarcacao ul{padding-left:1.4rem;line-height:1.7}
+#remarcacao li{margin-bottom:.7rem}
+#remarcacao table{min-width:680px}
+@media(min-width:680px){.rem-metricas{grid-template-columns:repeat(3,1fr)}}
 /* ============ MAPA ============ */
 .mapa-grid{display:flex;flex-direction:column;gap:16px}
 @media(min-width:1024px){
@@ -530,13 +536,14 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="top-nav-in">
     <a class="nav-brand" href="index.html"><b>日本</b> 2027 <small>Roteiro</small></a>
     <nav class="top-links" aria-label="Seções do site">
-      <a href="index.html">Início</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html" aria-current="page">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+      <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html" aria-current="page">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
     </nav>
     <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
+<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Hospedagens ainda precisam ser ajustadas. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
 <main>
 <section class="sec wrap" id="planob" data-foto="fuji">
   <div class="sec-head">
@@ -566,7 +573,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <nav class="nav" aria-label="Seções do site">
   <div class="nav-in">
-    <a href="index.html">Início</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html" aria-current="page">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+    <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html" aria-current="page">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
   </div>
 </nav>
 
@@ -578,7 +585,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <script>
 "use strict";
-const DADOS = {"notas": [{"n": 1, "titulo": "FERIADÃO DE 20 A 22/03: o que fazer", "texto": "O Equinócio de Primavera cai no domingo 21/03 e a segunda 22/03 vira feriado compensatório — o único do ano. Como as datas estão travadas pelas reservas de hotel, a saída é atacar o horário, não a data. FICA ASSIM: (a) reservar o Shinkansen Kyoto–Mishima e o ônibus Mishima–Kawaguchiko no primeiro dia possível — a venda do Shinkansen abre às 10:00 do Japão, 30 dias antes, ou seja 20/02/2027; (b) escolher o Shinkansen DEPOIS de fixar o horário do ônibus de Mishima, que tem poucas saídas e é o gargalo do dia; (c) no sábado 20/03, estar no Kinkaku-ji na abertura (09:00) e deixar Arashiyama para depois das 15h; (d) no domingo 21/03, sair do hotel às 06:15 para o Fushimi Inari. Cumprindo isso, o feriado deixa de ser problema."}, {"n": 2, "titulo": "KYOTO EM DOIS DIAS E MEIO", "texto": "Kyoto tem dois dias e meio. No domingo 21/03 eles vêm todos em sequência, a pé: GINKAKU-JI (¥500) → CAMINHO DOS FILÓSOFOS (grátis, 2 km, 400 cerejeiras sobre o canal) → NANZEN-JI e seu aqueduto (terreno grátis; Sanmon ¥600) → Kiyomizu-dera → Ninenzaka → Gion. O dia começa no Fushimi Inari ao amanhecer e termina em Pontocho. FORA DO ROTEIRO: Castelo de Nijō e Palácio Imperial de Kyoto — não cabem sem sacrificar coisa melhor. O Kodaiji (¥600) fica no meio da Ninenzaka e é opcional, se sobrar fôlego. ATENÇÃO: 21/03 fica com ~10 km de caminhada, o dia mais puxado da viagem."}, {"n": 3, "titulo": "18/03 É UM DIA CHEIO DE OSAKA", "texto": "Sem o bate-volta a Nara — que custaria 65 km de trem e 2h40 dentro do vagão —, o 18/03 é um dia inteiro em Osaka, montado em dois blocos geográficos. MANHÃ NA BAÍA: Kuromon Ichiba (café da manhã de frutos do mar), Namba Yasaka Jinja — a cabeça de leão de 12 m — e o Aquário Kaiyukan. TARDE NO NORTE: Umeda Sky Building com o pôr do sol no jardim flutuante, e o bairro retrô de Nakazakicho. O dia 31/03 fica para as compras de tax-free e o almoço de despedida. Se quiserem um dia MAIS pesado no lugar, a alternativa óbvia é o Universal Studios Japan com o Super Nintendo World (~¥9.000 a ¥11.000 por adulto) — mas seria o segundo parque da viagem, depois do DisneySea."}, {"n": 4, "titulo": "OSAKA AMAZING PASS — o de 2 dias compensa, e o de 1 dia não", "texto": "O passe de 2 dias custa ¥5.000 e COMPENSA, mas por pouco. Do que o roteiro realmente usa em 17 e 18/03 ele cobre: metrô ilimitado nos dois dias (¥670 + ¥1.060), Castelo de Osaka (¥1.200), Shitennoji (¥500) e o Umeda Sky Building (¥2.000), mais ¥100 de desconto no Kaiyukan. São ¥5.530 de uso real contra ¥5.000 — ECONOMIA DE ¥530 POR ADULTO, uns ¥4.200 no grupo.\n⚠ MAS A MARGEM É FINA, e ela depende de duas paradas: basta alguém desistir de subir ao Castelo OU ao Umeda Sky e o passe passa a dar prejuízo. Comprem se estiverem certos dos dois; havendo dúvida, bilhete avulso.\n⚠ O KAIYUKAN NÃO ENTRA no passe — dá só ¥100 de desconto, e é o ingresso mais caro dos dois dias (¥2.700). É ele que torna a conta apertada. O Shitennoji, ao contrário, ENTRA (pátio central e jardim).\nSe quiserem folga na conta, o que a alarga são os mirantes que ficaram fora por repetição: a Tsūtenkaku (¥1.200) sai de graça com o passe e fica em Shinsekai, que já está no dia 17.\nO passe de 1 dia (¥3.500) não compensa em nenhum dos dois dias isoladamente: perde ¥1.130 no dia 17 e ¥340 no dia 18. E o ingresso do sumô não é coberto por passe nenhum.\n⚠ Desde a edição 2026 ele é 100% DIGITAL, em QR pelo site Surutto QRtto — não existe mais cartão de balcão, cada pessoa precisa do QR no próprio celular, e a compra é antes de viajar. O preço vale até 31/03/2027, que é justamente o último dia de vocês."}, {"n": 5, "titulo": "teamLab: são DOIS na viagem", "texto": "A viagem tem DOIS teamLab, e é bom saber disso antes de comprar: o BIOVORTEX, em Kyoto, na noite do dia 20/03, e o PLANETS, em Toyosu, no dia 27/03. Juntos custam cerca de ¥9.200 por adulto. São da mesma casa e da mesma linguagem — se o orçamento apertar, é aqui que há gordura.\nA diferença prática é grande. No PLANETS anda-se DESCALÇO e a água bate no joelho: o carrinho não entra (fica em estacionamento próprio na entrada), o bebê vai no canguru, e eles emprestam bermuda de graça e toalha depois de cada sala molhada — mas roupa molhada não passa para a obra seguinte. É o mais divertido com criança e o mais trabalhoso. O BIOVORTEX é o maior dos três museus permanentes do teamLab: 10.000 m² em quatro andares, quase tudo no escuro, com uma área de escalar e pular (Athletics Forest, só de tênis) e uma sala de bolhas que molha (poncho ¥300). Lá o carrinho também não entra, e NÃO HÁ REENTRADA: sair é acabar.\n💴 Planets a partir de ¥3.600 o adulto (preço dinâmico, sábado sai mais caro), ¥2.800 de 12 a 18, ¥1.500 de 4 a 12, grátis até 3 anos. Biovortex de ¥3.600 a ¥5.600 conforme a data, ¥2.800 do fundamental II ao médio, ¥1.800 de 4 a 12, grátis até 3 anos. Os dois têm HORÁRIO MARCADO e esgotam semanas antes — e o do Biovortex é sábado de feriadão, o mais disputado dos dois."}, {"n": 6, "titulo": "24/03 é DISNEYSEA", "texto": "Confirmado o DisneySea (não a Disneyland), na quarta-feira 24/03 — dia de semana escolhido de propósito, porque é quando o parque está menos cheio. Três pontos práticos. (a) O DisneySea NÃO é caminhável a partir de Maihama, ao contrário da Disneyland: precisa do monotrilho Disney Resort Line, ¥300 por trecho, e o passe livre do dia (¥700) só compensa para quem for usar mais de duas vezes. (b) O FANTASY SPRINGS MUDOU DE REGRA: até 31 de março de 2025 as 4 atrações exigiam Standby Pass ou Premier Access, mas desde 1º de abril de 2025 o Standby Pass acabou e todas passaram a ter fila comum. Não há mais nada para garantir no aplicativo, e não vale gastar os primeiros minutos do dia no celular — o que funciona é entrar na abertura e ir direto para lá. O Disney Premier Access continua existindo, pago e opcional, a cerca de ¥2.000 por pessoa por atração, e só para Frozen, Rapunzel e Peter Pan; para 10 pessoas em 3 atrações isso daria ¥60.000, quase 60% do que o grupo gasta em ingressos, então vale no máximo como carta na manga para uma fila que passe de 90 min. (c) Ingresso é preço dinâmico: adulto ¥7.900–10.900, júnior 12–17 ¥6.600–9.000, criança 4–11 ¥4.700–5.600, até 3 anos grátis. Fim de março cai em férias escolares japonesas e começo de sakura, ou seja, no topo da faixa — os ¥10.500 lançados estão dentro, mas sem folga. A venda abre 2 meses antes."}, {"n": 7, "titulo": "COMO USAR A COLUNA \"COM BEBÊ\"", "texto": "Cada parada foi classificada pelo terreno real, não pela fama: CARRINHO OK (plano, pavimentado, com elevador), CARRINHO C/ ESFORÇO (passa, mas tem corredor estreito, cascalho, multidão ou degrau) e CANGURU (o carrinho não vai). Dá para filtrar a coluna e planejar o que levar em cada dia. SÃO 11 AS PARADAS QUE EXIGEM CANGURU OU NÃO ACEITAM CARRINHO: Monkey Park de Arashiyama (trilha de 20 min em subida), Nishiki Market (galeria de 3,5 m lotada), Kiyomizu-dera (ladeira Gojo-zaka — ou subam de táxi por ~¥1.200), Ninenzaka e Sannenzaka (escadaria de pedra, o pior terreno da viagem), pagode Chureito (398 degraus), teamLab Planets (anda-se descalço na água, carrinho fica no guarda-volumes), Omoide Yokocho (becos de 1,5 m), Takeshita-dori (rua de 3 m com multidão) o rooftop do Shibuya Sky (nada solto sobe lá em cima por causa do vento — nem bolsa, nem chapéu, nem carrinho), o teamLab Biovortex (o carrinho fica preso no guarda-volumes) e o Kabukiza, cuja plateia de um ato fica no 4º andar. Fora essas onze, o carrinho resolve a viagem inteira. ⚠ O DisneySea é o lugar mais bem equipado de todos — carrinho de aluguel, Baby Center com micro-ondas, Rider Switch —, mas NÃO é todo plano: o Mysterious Island é uma cratera e o Mediterranean Harbor tem ladeira e escada. Existe rota acessível para tudo, só que mais longa; peguem o mapa de acessibilidade na entrada."}, {"n": 8, "titulo": "ATENÇÃO — ÔNIBUS DE KYOTO É O PIOR CENÁRIO COM CARRINHO", "texto": "Kyoto é a única cidade do roteiro onde o transporte principal é ÔNIBUS URBANO, e não metrô. Os ônibus de Kyoto entram pela porta traseira, são estreitos, ficam lotados em temporada de sakura e na prática exigem dobrar o carrinho em pé — com 3 carrinhos e 13 pessoas, isso não funciona. As linhas críticas do roteiro são a 205 (para o Kinkaku-ji) e a 59. RECOMENDAÇÃO: nesses trechos, peguem TÁXI. Táxi japonês leva 4 pessoas, então são 3 ou 4 carros; Estação de Kyoto até o Kinkaku-ji sai por volta de ¥2.500 a ¥3.000 por carro, algo como ¥900 por pessoa contra ¥230 do ônibus. A diferença é de R$ 22 por pessoa e compra o dia inteiro de paz. Onde houver trem, prefiram sempre: JR para Fushimi Inari, Keihan para Gion, Randen para Arashiyama."}, {"n": 9, "titulo": "GRUPO DE 13 — combinem ponto de reencontro, não andem em fila", "texto": "Com 13 pessoas é inevitável que alguém queira parar numa loja enquanto outro quer seguir, e tentar manter todo mundo em bloco cansa mais do que o próprio passeio. Em vez de forçar a fila indiana, adotem o hábito de CHEGAR NUM LUGAR E JÁ COMBINAR ONDE E QUE HORAS SE ENCONTRAM. Os pontos onde o grupo naturalmente se espalha são previsíveis: Akihabara (28/03), Den Den Town (31/03), Nishiki Market (19/03), Shinsaibashi (30 e 31/03) e a Nakamise de Asakusa (26/03) — nesses cinco, marquem o reencontro antes de entrar. Duas coisas ajudam muito: um grupo de mensagens com localização compartilhada ligada, e escolher como ponto de encontro sempre a MESMA REFERÊNCIA ÓBVIA (a estação, ou a loja da esquina), nunca \"ali na frente\"."}, {"n": 10, "titulo": "HOSPEDAGEM — a última noite, e o dia inteiro sem quarto", "texto": "DUAS COISAS DIFERENTES. (a) A DIÁRIA DE 30 PARA 31/03 continua sem reserva fechada. A recomendação de bairro é NIPPONBASHI: de lá o Dotonbori fica a 610 m, a Nankai do aeroporto a 630 m, a Den Den Town a 850 m e o Shinsaibashi a 910 m, tudo a pé — e a estação está na linha Sakaisuji, a mesma de Tengachaya e exatamente a que o dia 31 usa de manhã. É mais barata que Namba porque é bairro de eletrônico e não de vida noturna, o que com três bebês também significa dormir. Se a diária apertar, Tennoji é a alternativa: preço menor e JR direto ao KIX por ¥1.080, ao custo de 2,5 km até Dotonbori. (b) O DIA 31/03 é um dia inteiro em Osaka SEM QUARTO, porque o voo JQ 14 só decola às 21:25. A programação assume coin locker (¥700 por mala grande, e eles lotam antes das 10h em alta temporada), então PEÇAM GUARDA-VOLUMES POR ESCRITO ao fechar a reserva — para as malas e para os três carrinhos. E lembrem que alguém precisa voltar para buscar tudo antes de embarcar: com saída de Namba às 17:20, isso encerra a tarde às 16:30."}, {"n": 11, "titulo": "PENDENTE — VISTO DE TRÂNSITO NA AUSTRÁLIA", "texto": "A viagem passa por Sydney NOS DOIS SENTIDOS: 5h55 de conexão na ida (16/03) e 2h00 na volta (01/04). O visto australiano ainda precisa ser solicitado, e vale para as 13 pessoas — bebê também precisa de passaporte próprio e de visto — brasileiro não está na lista do eVisitor, então o caminho é o Transit (subclass 771) ou o Visitor (subclass 600), pelo site immi.homeaffairs.gov.au. É o item de MAIOR RISCO da viagem: sem ele ninguém embarca, e não adianta ter tudo o mais reservado. Peça com meses de antecedência. Ponto positivo: como as passagens foram compradas juntas no site da LATAM, em BILHETE ÚNICO, a bagagem segue despachada até Guarulhos e as conexões são protegidas — se um trecho atrasar, a reacomodação é por conta da companhia."}, {"n": 12, "titulo": "FECHAMENTOS — cada parada no dia em que ela abre", "texto": "No Japão, museu fecha segunda e mercado fecha domingo. Cada parada está no dia em que ela abre: Kuromon Ichiba (bancas fecham às 17h e várias não abrem às quartas) ficou logo cedo na quinta 18/03; Nishiki Market (fecha às 18h) ficou na sexta 19/03; Shinjuku Gyoen (fecha segunda) ficou na quinta 25/03; Kappabashi (boa parte fecha domingo) ficou na sexta 26/03; Toyosu Market e Tsukiji Outer Market — os DOIS fecham aos domingos — ficaram juntos no sábado 27/03, que é o único encaixe possível (o Miraikan, que ocupava esse dia, entrou em obra geral e só reabre em 23/04/2027); Akihabara ficou no domingo 28/03, quando a Chuo-dori vira calçadão das 13h às 17h (de outubro a março; de abril a setembro vai até as 18h). A segunda-feira 29/03 ficou 100% de rua — Meiji Jingu, Harajuku, Shibuya e Shibuya Sky, todos abertos. E o sumô só existe porque o Haru Basho, único torneio do ano em Osaka, corre de 14 a 28/03. NÃO TROQUEM DIAS ENTRE SI sem refazer essa conferência — ela já foi refeita uma vez, quando o DisneySea passou para a quarta 24/03 e arrastou a semana inteira."}, {"n": 13, "titulo": "SAKURA — a sorte está do lado de vocês", "texto": "Historicamente Tokyo floresce por volta de 24/03 e atinge o pico ~31/03; Kyoto floresce ~26/03 com pico no início de abril. Os dias de Tokyo (24 a 29/03) tendem a pegar o PICO da florada, e o Caminho dos Filósofos em 21/03 pode pegar o começo em Kyoto. O outro lado da moeda: recordes de multidão em Ueno, Shinjuku Gyoen e Arashiyama. A previsão oficial da florada sai em janeiro/2027 — vale reconferir a ordem dos dias quando ela for publicada."}, {"n": 14, "titulo": "O QUE AINDA NÃO ESTÁ ORÇADO EM LUGAR NENHUM", "texto": "O orçamento cobre transporte e ingressos. Continuam de fora dele: alimentação (≈ R$ 3.168 por adulto no cenário médio de ¥6.000/dia; adolescente igual, bebê quase nada), compras, seguro viagem, eSIM ou Wi-Fi portátil, o takkyubin (envio de malas entre cidades, ¥1.500 a ¥2.500 por mala) e o Disney Premier Access do dia 24/03 (¥3.000 a ¥6.000 por pessoa, se optarem por ele)."}]};
+const DADOS = {"notas": [{"n": 1, "titulo": "20–22/03: fim de semana prolongado", "texto": "O equinócio é domingo 21/03 e o feriado compensatório é segunda 22/03. O roteiro anterior de Kyoto em 19–21/03 foi restaurado; o dia extra de 18/03 permanece livre após o transfer. Transfer para Kawaguchiko em 22/03 preservado. Escolher ônibus de Mishima antes do trem; venda padrão JR em 22/02 às 10h do Japão = 21/02 às 22h de Fortaleza, sujeita às regras do produto."}, {"n": 2, "titulo": "KYOTO: programação anterior e um dia livre", "texto": "18/03 fica sem atrações definidas após transfer e instalação. Restaurados os passeios anteriores: templos, Nishiki e Gion em 19/03; Arashiyama, Tenryū-ji, Monkey Park, Ryōan-ji, Kinkaku-ji, Nijō e Biovortex em 20/03; Fushimi e circuito leste em 21/03. A redistribuição sugerida anteriormente foi desfeita."}, {"n": 3, "titulo": "OSAKA: programa anterior preservado", "texto": "O programa completo do antigo dia 18 passa para 16/03 para permitir chegada a Kyoto em 18/03. O sumô e os demais passeios de 17/03 permanecem. Compras de 31/03 mantidas. O dia 01/04 fica livre até os procedimentos e o transfer para o aeroporto. Sem atrações novas ou novas marcações de opcional."}, {"n": 4, "titulo": "OSAKA AMAZING PASS: conferir 16–17/03", "texto": "Com o programa original restaurado, Umeda fica em 16/03 e castelo/Shitennoji em 17/03. A comparação do passe deve usar essas datas consecutivas e as regras vigentes de 2027. Não reusar automaticamente preços ou economia da antiga conta de 17–18/03."}, {"n": 5, "titulo": "teamLab: são DOIS na viagem", "texto": "A viagem tem DOIS teamLab, e é bom saber disso antes de comprar: o BIOVORTEX, em Kyoto, na noite do dia 20/03, e o PLANETS, em Toyosu, no dia 27/03. Juntos custam cerca de ¥9.200 por adulto. São da mesma casa e da mesma linguagem — se o orçamento apertar, é aqui que há gordura.\nA diferença prática é grande. No PLANETS anda-se DESCALÇO e a água bate no joelho: o carrinho não entra (fica em estacionamento próprio na entrada), o bebê vai no canguru, e eles emprestam bermuda de graça e toalha depois de cada sala molhada — mas roupa molhada não passa para a obra seguinte. É o mais divertido com criança e o mais trabalhoso. O BIOVORTEX é o maior dos três museus permanentes do teamLab: 10.000 m² em quatro andares, quase tudo no escuro, com uma área de escalar e pular (Athletics Forest, só de tênis) e uma sala de bolhas que molha (poncho ¥300). Lá o carrinho também não entra, e NÃO HÁ REENTRADA: sair é acabar.\n💴 Planets a partir de ¥3.600 o adulto (preço dinâmico, sábado sai mais caro), ¥2.800 de 12 a 18, ¥1.500 de 4 a 12, grátis até 3 anos. Biovortex de ¥3.600 a ¥5.600 conforme a data, ¥2.800 do fundamental II ao médio, ¥1.800 de 4 a 12, grátis até 3 anos. Os dois têm HORÁRIO MARCADO e esgotam semanas antes — e o do Biovortex é sábado de feriadão, o mais disputado dos dois."}, {"n": 6, "titulo": "24/03 é DISNEYSEA", "texto": "Confirmado o DisneySea (não a Disneyland), na quarta-feira 24/03 — dia de semana escolhido de propósito, porque é quando o parque está menos cheio. Três pontos práticos. (a) O DisneySea NÃO é caminhável a partir de Maihama, ao contrário da Disneyland: precisa do monotrilho Disney Resort Line, ¥300 por trecho, e o passe livre do dia (¥700) só compensa para quem for usar mais de duas vezes. (b) O FANTASY SPRINGS MUDOU DE REGRA: até 31 de março de 2025 as 4 atrações exigiam Standby Pass ou Premier Access, mas desde 1º de abril de 2025 o Standby Pass acabou e todas passaram a ter fila comum. Não há mais nada para garantir no aplicativo, e não vale gastar os primeiros minutos do dia no celular — o que funciona é entrar na abertura e ir direto para lá. O Disney Premier Access continua existindo, pago e opcional, a cerca de ¥2.000 por pessoa por atração, e só para Frozen, Rapunzel e Peter Pan; para 10 pessoas em 3 atrações isso daria ¥60.000, quase 60% do que o grupo gasta em ingressos, então vale no máximo como carta na manga para uma fila que passe de 90 min. (c) Ingresso é preço dinâmico: adulto ¥7.900–10.900, júnior 12–17 ¥6.600–9.000, criança 4–11 ¥4.700–5.600, até 3 anos grátis. Fim de março cai em férias escolares japonesas e começo de sakura, ou seja, no topo da faixa — os ¥10.500 lançados estão dentro, mas sem folga. A venda abre 2 meses antes."}, {"n": 7, "titulo": "COM BEBÊ: informações de acesso preservadas", "texto": "A programação anterior foi restaurada, sem novas exclusões ou opcionais. Conferir acessibilidade e regras de carrinhos em cada local; manter canguru para as visitas que o exigem. O Kaiyukan não empresta carrinhos. Os dias adicionais de 18/03 e 01/04 permanecem sem atrações definidas."}, {"n": 8, "titulo": "KYOTO: transporte com três carrinhos", "texto": "Usar trem/metrô quando a rota permitir e conferir os trechos de ônibus depois de confirmar a hospedagem. Lotação, trânsito e elevadores podem ampliar o tempo estimado, especialmente no fim de semana de 20–22/03. Se cotar táxis ou van, informar 13 pessoas, idades das crianças, três carrinhos e volume das malas; não presumir que uma quantidade fixa de carros acomode tudo. Preços por carro ou volume não estão automaticamente incluídos no custo por adulto."}, {"n": 9, "titulo": "GRUPO DE 13: combinar reencontros", "texto": "Combinar ponto, horário e responsáveis pelas crianças antes de se separar. Datas atuais: Nishiki em 19/03, Nakamise em 26/03, Akihabara em 28/03, Shinsaibashi em 30 e 31/03 e Den Den Town em 31/03. Manter contatos e endereços offline."}, {"n": 10, "titulo": "HOSPEDAGENS: opção A escolhida, alterações pendentes", "texto": "Planejamento: Osaka 15–18/03 (3 noites), Kyoto 18–22/03 (4), Kawaguchiko 22–23/03 (1), Tóquio 23–30/03 (7), Osaka 30/03–01/04 (2). Total 17. Obter novas cotações de Osaka inicial, Kyoto e Osaka final antes de alterar/cancelar. Mesmo três noites em Osaka inicial podem ter novo preço. Fuji/Tóquio preservam datas. Guarda-volumes em 01/04."}, {"n": 11, "titulo": "DOHA E GRU: novas prioridades de conexão", "texto": "A rota confirmada para as 13 pessoas passa por Doha. A pendência de visto australiano deixa de se aplicar a esse itinerário. Em Doha, permanecer na área de trânsito: Hamad informa que não exige visto para conexão sem sair do aeroporto. Na volta são 1h20, com portão normalmente fechando 20 min antes: seguir diretamente ao embarque e solicitar orientação com os três bebês. Em GRU são 2h55 para imigração, bagagem, alfândega, redespacho e segurança. Confirmar o vínculo e a proteção dos bilhetes, sem pressupor bagagem direta até Fortaleza. Japão: brasileiros com passaporte comum com chip têm isenção turística até 90 dias; validade do passaporte durante toda a estada, sem mínimo geral de seis meses. O Japão não exige certificado de vacinação. Eventual entrada no Qatar exige conferir passaporte, condições sanitárias/CIVP e seguro separadamente; não é a conexão airside prevista. Conferir documentos e autorização de viagem dos menores conforme acompanhantes."}, {"n": 12, "titulo": "ATRAÇÕES: datas preservadas e dois períodos livres", "texto": "Sumô 17/03, Biovortex 20/03, DisneySea 24/03, Planets 27/03 e Shibuya Sky 29/03 preservados. Programa do antigo 18/03 de Osaka antecipado integralmente para 16/03. Transfer a Kyoto em 18/03, com tempo livre; roteiro turístico original de Kyoto em 19–21/03. Shinkansen Tóquio → Osaka em 30/03, compras originais em 31/03 e 01/04 livre até o aeroporto. Nenhuma atração considerada comprada apenas por estar no roteiro."}, {"n": 13, "titulo": "SAKURA: expectativa de temporada, sem garantia de pico", "texto": "A viagem atravessa o fim de março e o início de abril, mas datas de floração e condições do tempo de 2027 ainda não são conhecidas. Não escolher hotel ou mover Fuji com base em um pico de sakura garantido. Usar previsões atualizadas perto da viagem para ajustes flexíveis de parques. O dia adicional em Kyoto, 18/03, permanece livre; os passeios de 19–21/03 estão preservados, sem redistribuição por expectativa de floração."}, {"n": 14, "titulo": "ORÇAMENTO: 18 dias, custos adicionais ainda abertos", "texto": "Alimentação no cenário médio: ¥6.000 × 18 dias = ¥108.000, cerca de R$ 3.564 por adulto ao câmbio de planejamento ¥1 = R$ 0,033. São R$ 396 a mais por adulto; para 8 adultos e 2 adolescentes à mesma diária, R$ 3.960 adicionais, sem estimar a alimentação dos bebês. Faltam cotações das noites extras, alterações de hotel, bagagem, guarda-volumes, seguro, internet, compras e extras opcionais. Transporte e ingressos acompanham a programação anterior restaurada. Os dias livres não têm novos ingressos ou passeios pagos lançados; alimentação e deslocamentos obrigatórios continuam no orçamento. Extras e serviços por mala permanecem à parte. Confirmar tarifas de 2027 e endereços antes de fechar o orçamento."}]};
 const MAPAS = [];   // dias com mapa proprio (dia-NN.html)
 const FOTOS = {
  "hero": {
@@ -765,9 +772,9 @@ const COSTA=[[134.60,34.78],[135.00,34.66],[135.20,34.69],[135.42,34.73],[135.33
  [139.46,35.32],[139.66,35.16],[139.80,35.44],[139.88,35.64],[139.94,35.36],[139.92,34.94],
  [140.38,35.44],[140.62,35.80],[140.78,36.40],[140.78,37.60],[134.60,37.60]];
 const PARADAS=[
- {n:"KIX",        s:"pouso 16/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
- {n:"Osaka",      s:"4 noites",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
- {n:"Kyoto",      s:"3 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
+ {n:"KIX",        s:"pouso 15/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
+ {n:"Osaka",      s:"5 noites · 3 + 2",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
+ {n:"Kyoto",      s:"4 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
  {n:"Kawaguchiko",s:"1 noite",     lon:138.76,lat:35.51, c:"fuji",  dx:0,  dy:-20,an:"middle"},
  {n:"Tokyo",      s:"7 noites",    lon:139.77,lat:35.68, c:"tokyo", dx:10, dy:2,  an:"start"}];
 const MISHIMA=[138.91,35.13];
@@ -810,7 +817,6 @@ function svgMapa(mini){
 
 function montarMapa(){
   el("mapaSlot").innerHTML=svgMapa(false);
-  el("tlMap").innerHTML=svgMapa(true);
   el("mapaLeg").innerHTML=Object.keys(CID).map(k=>
     `<span class="leg c-${k}"><s></s>${CID[k].nome} <span style="color:var(--ink-3);font-weight:600">${CID[k].kanji}</span></span>`).join("");
 
@@ -864,16 +870,16 @@ function montarNums(){
   // para os cards nunca discordarem do resto do site quando a planilha for atualizada
   const taxa=yen?reais/yen:0;
   const brl=(y)=>"≈ R$ "+nf(Math.round(y*taxa));
-  const COMIDA=96000;   // Y6.000/dia x 16 dias, o cenario medio da propria planilha
+  const COMIDA=6000*DADOS.nDias;   // Y6.000/dia x 18 dias, o cenario medio da propria planilha
   const cards=[
-    {b:nf(DADOS.nDias||16),u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
+    {b:nf(DADOS.nDias),u:"dias no Japão",i:"17 noites, de 15/03 a 01/04"},
     {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
-    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias||16),1)+" km por dia, só entre paradas"},
+    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias),1)+" km por dia, só entre paradas"},
     {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
-    {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias||16)+" dias, cenário médio"},
-    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"total por adulto",i:"Sem a comida, fecha em ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
+    {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias)+" dias, cenário médio"},
+    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"subtotal estimado por adulto",i:"Transporte e ingressos: ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
   ];
   el("nums").innerHTML=cards.map(c=>
     `<div class="num"><b>${esc(c.b)}</b>${c.c?`<em>${esc(c.c)}</em>`:""}<u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
@@ -883,7 +889,9 @@ function montarNums(){
    5. TIMELAPSE
    ================================================================ */
 function montarTimelapse(){
+  el("tlMap").innerHTML=svgMapa(true);
   const dias=DADOS.dias, art=el("tlArt"), range=el("tlRange"), play=el("tlPlay"), tl=el("tl");
+  const ultimo=dias.length-1; range.max=ultimo;
   let i=0, rodando=null;
   const pinPos={};
   PARADAS.forEach(o=>{ pinPos[o.c]=proj(o.lon,o.lat); });
@@ -907,16 +915,16 @@ function montarTimelapse(){
       pin.style.transition=REDUZIR?"none":"cx .5s cubic-bezier(.4,0,.2,1),cy .5s cubic-bezier(.4,0,.2,1)"; }
     el("tlList").innerHTML=d.atividades.slice(0,5).map((a,n)=>
       `<li style="animation-delay:${n*55}ms"><s>${esc(a.periodo)}</s><span>${esc(a.nome)}</span></li>`).join("");
-    range.value=k; range.style.setProperty("--pct",(k/15*100)+"%");
+    range.value=k; range.style.setProperty("--pct",(k/Math.max(1,ultimo)*100)+"%");
   }
   range.addEventListener("input",()=>{ parar(); ir(+range.value); });
   function parar(){ if(rodando){clearInterval(rodando);rodando=null;play.textContent="▶";
     play.setAttribute("aria-label","Reproduzir o timelapse");} }
   play.addEventListener("click",()=>{
     if(rodando) return parar();
-    if(i>=15) ir(0);
+    if(i>=ultimo) ir(0);
     play.textContent="❚❚"; play.setAttribute("aria-label","Pausar o timelapse");
-    rodando=setInterval(()=>{ if(i>=15) return parar(); ir(i+1); },1500);
+    rodando=setInterval(()=>{ if(i>=ultimo) return parar(); ir(i+1); },1500);
   });
   ir(0);
 }
@@ -981,7 +989,7 @@ function montarTrilho(){
       <div class="dia-card">
         <div class="dia-art" data-cid="${d.cidade}"><b>${m.kanji}</b><i>${dm(d.data)} · ${esc(d.semana)}</i></div>
         <div class="dia-head">
-          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de 16 · dorme em ${esc(m.nome)}</p></div>
+          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de ${DADOS.dias.length} · ${k===DADOS.dias.length-1?'retorno via Doha':'pernoite planejado em '+esc(m.nome)}</p></div>
           ${d.transicao?`<span class="badge-tr">troca de base</span>`:""}
         </div>
         <div class="dia-stats">${stats.join("")}</div>
@@ -1040,23 +1048,23 @@ function montarTrilho(){
    7. CARROSSÉIS CURADOS
    ================================================================ */
 const COMER=[
- {c:"osaka",d:"18/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
+ {c:"osaka",d:"16/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
  {c:"osaka",d:"17 e 30/03",n:"Dotonbori",b:"Namba",t:"Takoyaki, okonomiyaki e kushikatsu à beira do canal, sob o letreiro do Glico. A multidão pesa das 19h às 21h.",g:"24h · cruzeiro ¥1.200"},
  {c:"osaka",d:"17/03",n:"Shinsekai",b:"Naniwa",t:"Bairro retrô dos anos 1950 aos pés da Tsūtenkaku, e a capital do kushikatsu.",g:"10:00–20:00"},
- {c:"osaka",d:"18/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Barata e senta os 13 sem reserva.",g:"11:00–20:00 · fraldário no piso 2"},
+ {c:"osaka",d:"16/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Opção prática de almoço; talvez seja necessário dividir o grupo para encontrar lugares.",g:"11:00–20:00 · fraldário no piso 2"},
  {c:"osaka",d:"17/03",n:"Hozenji Yokocho",b:"Namba",t:"Beco de pedra ao lado do Dotonbori, com o templo coberto de musgo. O contraponto silencioso ao neon.",g:"24h"},
  {c:"kyoto",d:"19 e 21/03",n:"Pontocho",b:"Gion",t:"Beco de 2 m de largura à beira do rio Kamo, com restaurantes dos dois lados. Carrinho não entra.",g:"noite · leve o canguru"},
- {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. O único dia em que a comida já está paga.",g:"La Vista Fujikawaguchiko"},
- {c:"tokyo",d:"25/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
- {c:"tokyo",d:"24/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
- {c:"tokyo",d:"24/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
- {c:"tokyo",d:"27/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
+ {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. Confirmar no comprovante se o jantar está incluído e reservar o horário do grupo.",g:"La Vista Fujikawaguchiko"},
+ {c:"tokyo",d:"27/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
+ {c:"tokyo",d:"26/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
+ {c:"tokyo",d:"26/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
+ {c:"tokyo",d:"25/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
 ];
 const COMPRAS=[
- {c:"osaka",d:"17/03",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
- {c:"osaka",d:"19 e 31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
+ {c:"osaka",d:"alternativa",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
+ {c:"osaka",d:"31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
  {c:"osaka",d:"30 e 31/03",n:"Shinsaibashi-suji",b:"Shinsaibashi",t:"Galeria coberta de 600 m que emenda direto no Dotonbori. Funciona com chuva e concentra quase tudo.",g:"11:00–21:00 · última chance de tax-free"},
- {c:"tokyo",d:"24/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
+ {c:"tokyo",d:"26/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
  {c:"tokyo",d:"28/03",n:"Akihabara",b:"Akihabara",t:"Eletrônicos, anime, games e lojas de vários andares. O dia inteiro cabe aqui, se deixarem.",g:"domingo · Chuo-dori vira calçadão à tarde"},
  {c:"tokyo",d:"28/03",n:"Ameyoko",b:"Ueno",t:"Feira de rua sob a linha do trem: comida, tênis, cosmético e barulho. O preço mais baixo de Tokyo.",g:"colado no Ueno Park"},
  {c:"tokyo",d:"29/03",n:"Takeshita-dori",b:"Harajuku",t:"350 m por 3 m de largura de puro kawaii: crepes, purikura e lojas alternativas. Segurem as crianças pela mão.",g:"11:00–20:00 · carrinho não entra"},
@@ -1064,13 +1072,13 @@ const COMPRAS=[
 ];
 const PLANOB=[
  {c:"osaka",d:"qualquer dia",n:"Chuva em Osaka",b:"tudo coberto",t:"Kaiyukan em espiral por 8 andares, Umeda Sky pelo elevador interno, Senba Center no subsolo, Kuromon coberto e 600 m de galeria em Shinsaibashi. Dá para passar o dia sem tomar chuva.",g:"nenhum deles depende do tempo"},
- {c:"osaka",d:"18/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
- {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Kyoto é a única base onde o transporte principal é ônibus urbano, com entrada pela porta traseira e carrinho dobrado em pé. Com 3 bebês em fim de semana de feriado, considerem táxi nos trechos curtos ou dividir o grupo.",g:"feriadão de 20 a 22/03"},
+ {c:"osaka",d:"16/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
+ {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Conferir lotação, acesso dos carrinhos e alternativas por trem/metrô. Se cotar táxi ou van, informar 13 pessoas, crianças, carrinhos e malas; o número de veículos depende da capacidade real.",g:"feriadão de 20 a 22/03"},
  {c:"fuji", d:"22 e 23/03",n:"Fuji na nuvem",b:"Kawaguchiko",t:"Oishi Park vale pela margem do lago mesmo sem o topo à vista. O onsen e o jantar do ryokan seguram o dia, e o teleférico Kachi-Kachi vira saída antecipada para Tokyo.",g:"o topo aparece em poucos dias do mês"},
  {c:"tokyo",d:"qualquer dia",n:"Chuva em Tokyo",b:"tudo coberto",t:"teamLab PLANETS, Miraikan, Solamachi, o observatório gratuito do Governo Metropolitano e os andares de Akihabara. Só o Skytree perde a graça com o céu fechado.",g:"o observatório abre até 22:00"},
  {c:"tokyo",d:"27/03",n:"Troca do dia de Shinjuku",b:"alternativa mapeada",t:"Se Shinjuku não empolgar, a troca já prevista é Palácio Imperial + Koishikawa Korakuen, colados um no outro e a 20 min de Ojima.",g:"¥300 · da lista original"},
  {c:"tokyo",d:"29/03",n:"Shibuya Sky esgotado",b:"Shibuya",t:"O horário do pôr do sol some primeiro, e em 29/03 o sol se põe ~17:55. Sem ele, o observatório do Governo Metropolitano é grátis e tem elevador direto ao 45º andar.",g:"grátis · Shinjuku"},
- {c:"osaka",d:"31/03",n:"A conexão de 2h em Sydney",b:"o risco da volta",t:"É a mais apertada da viagem. Como o bilhete é único, a LATAM reacomoda em caso de atraso — mas para não depender disso, estejam no KIX às 18:25, saindo de Namba às 17:20.",g:"crítico"}
+ {c:"osaka",d:"02/04",b:"voos via Doha",n:"Conexões na volta",t:"Doha: 1h20, seguir direto ao portão. GRU: 2h55 para entrada no Brasil e redespacho. Confirmar assistência e proteção dos bilhetes.",g:"Doha e Guarulhos"}
 ];
 function montarCarro(alvo,itens){
   el(alvo).innerHTML=itens.map(o=>`
@@ -1129,8 +1137,7 @@ function curto(s){ return s.replace(/\s*\([^)]*\)/g,"").trim(); }
 const AEROPORTOS=[
   [/pinto martins|fortaleza/i,"FOR","Pinto Martins"],
   [/guarulhos/i,"GRU","Guarulhos"],
-  [/merino|santiago/i,"SCL","Arturo Merino Benítez"],
-  [/kingsford|sydney/i,"SYD","Kingsford Smith"],
+  [/hamad|doha/i,"DOH","Hamad"],
   [/kansai|osaka/i,"KIX","Kansai"]
 ];
 function aero(s){
@@ -1153,7 +1160,7 @@ function era(v,campo){
 function cel(v,campo){ return era(v,campo)+esc(v[campo]||""); }
 function montarVoos(){
   el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr${v.antes?' class="remarcado"':''}>
-    <td class="n">${esc(v.numero)}</td>
+    <td class="n">${esc(v.numero)}<small class="apto">${esc(v.operadora||"")}</small></td>
     <td>${trecho(v)}</td>
     <td class="h">${dm(v.saidaData)}<br>${cel(v,"saidaHora")}</td>
     <td class="h">${dm(v.chegadaData)}<br>${cel(v,"chegadaHora")}</td>
@@ -1161,7 +1168,7 @@ function montarVoos(){
     <td>${cel(v,"conexao")}</td></tr>`).join("");
   const leg=el("voosLegenda");
   if(leg) leg.innerHTML=DADOS.voos.some(v=>v.antes)
-    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "";
+    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "Horários locais. Conferir o cartão de embarque e as notificações da companhia antes de viajar.";
   el("voosNotas").innerHTML=DADOS.voosNotas.filter(n=>n.texto).map(n=>{
     const crit=/⚠|pendente/i.test(n.titulo);
     return `<div class="callout ${crit?"crit":"c-fuji"}" style="margin-bottom:9px">
@@ -1177,13 +1184,13 @@ function montarHosp(){
         <s></s>
         <div class="tx">
           <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
-          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p>
+          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>
         </div>
-        <div class="vl">${h.total?"R$ "+nf(h.total):"—"}<u>grupo</u></div>
+        <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):"A cotar"}<u>grupo</u></div>
       </div>`).join("")
       + `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
-         <div class="tx"><h4>Total do conjunto ${set.toUpperCase()}</h4>
-         <p class="mt">${lista.length} reservas lançadas</p></div>
+         <div class="tx"><h4>Subtotal dos valores históricos ${set.toUpperCase()}</h4>
+         <p class="mt">${lista.filter(h=>Number.isFinite(h.total)).length} valores antigos · ${lista.filter(h=>!Number.isFinite(h.total)).length} entradas sem cotação · conjunto ${set==="b"?"histórico parcial":"A com três blocos a cotar"}</p></div>
          <div class="vl">R$ ${nf(lista.reduce((a,b)=>a+(b.total||0),0))}<u>grupo</u></div></div>`;
   }
   el("hospToggle").addEventListener("click",(ev)=>{
@@ -1222,7 +1229,7 @@ function montarTema(){
 function montarContagem(){
   const cd=el("cd");
   if(!cd) return;
-  const alvo=new Date("2027-03-14T10:40:00-03:00");
+  const alvo=new Date("2027-03-13T11:15:00-03:00");
   const dias=Math.max(0,Math.ceil((alvo-new Date())/864e5));
   cd.textContent=nf(dias);
 }

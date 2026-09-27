@@ -143,19 +143,23 @@ def main():
     capa.column_dimensions['A'].width = 118
     hoje = datetime.date.today().strftime('%d/%m/%Y')
     for linha, estilo in [
-        ('Japão 2027 — roteiro final', 'titulo'),
-        ('16 a 31 de março de 2027 · Osaka, Kyoto, Kawaguchiko e Tokyo · 13 pessoas', 'sub'),
+        ('Japão 2027 — roteiro de referência', 'titulo'),
+        ('15 de março a 1 de abril de 2027 · 18 dias / 17 noites · 13 pessoas', 'sub'),
+        ('Voos via Doha confirmados. Programação anterior restaurada; 18/03 Kyoto livre, 01/04 Osaka livre até o aeroporto.', 'nota'),
+        ('Opção A adotada: Osaka 15–18/03, Kyoto 18–22/03, Fuji 22–23/03, Tóquio 23–30/03 e Osaka 30/03–01/04.', 'nota'),
+        ('Tóquio até 30/03; compras originais em 31/03; 01/04 livre até o aeroporto. Reservas ainda não alteradas.', 'nota'),
         ('', ''),
         ('Gerado em %s a partir da planilha original mais as decisões tomadas depois dela.' % hoje, ''),
         ('Esta é uma fotografia do resultado: a aba Roteiro já vem com tudo aplicado.', ''),
         ('', ''),
-        ('Roteiro — os 16 dias, atividade por atividade, com total por dia.', ''),
+        ('Roteiro — os %d dias de referência, com total estimado por dia.' % len(djs['dias']), ''),
         ('Mudanças — o que foi trocado em relação à planilha original, e por quê.', ''),
         ('Alertas — horários de fechamento, conflitos e o que precisa ser reservado.', ''),
         ('Voos e Hospedagem — como estão lançados.', ''),
         ('', ''),
         ('Não edite este arquivo esperando que o site mude: ele é a saída, não a entrada.', 'nota'),
-        ('O site continua saindo de "Roteiro Japão.xlsx" + ajustes.json, na pasta site/.', 'nota'),
+        ('O site aplica a planilha original, ajustes.json e a remarcação confirmada em remarcacao.json.', 'nota'),
+        ('Custos desconhecidos não são zero. Hospedagens são registros anteriores e necessidades pendentes.', 'nota'),
     ]:
         capa.append([linha])
         c = capa.cell(row=capa.max_row, column=1)
@@ -189,9 +193,9 @@ def main():
 
     hosp = djs.get('hospedagem', {})
     aba_simples(wb, 'Hospedagem', ['Grupo', 'Hotel', 'Cidade', 'Check-in', 'Check-out',
-                                   'Noites', 'Total R$'], [8, 40, 18, 12, 12, 8, 12],
+                                   'Noites', 'Total R$', 'Situação'], [8, 40, 18, 12, 12, 8, 12, 60],
                 [[g.upper(), h.get('hotel'), h.get('cidade'), h.get('checkin'),
-                  h.get('checkout'), h.get('noites'), h.get('total')]
+                  h.get('checkout'), h.get('noites'), h.get('total'), h.get('status')]
                  for g in ('a', 'b') for h in hosp.get(g, [])])
 
     wb.save(DESTINO)

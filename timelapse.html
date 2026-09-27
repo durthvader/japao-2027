@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Player dinâmico dia a dia em 16 quadros com mapa animado e métricas de cada etapa.">
+<meta name="description" content="Player dinâmico dia a dia em 18 quadros com mapa animado e métricas de cada etapa.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Timelapse · Japão 2027">
-<meta property="og:description" content="Player dinâmico dia a dia em 16 quadros com mapa animado e métricas de cada etapa.">
+<meta property="og:description" content="Player dinâmico dia a dia em 18 quadros com mapa animado e métricas de cada etapa.">
 <meta property="og:locale" content="pt_BR">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
@@ -159,6 +159,12 @@ img,canvas,svg{max-width:100%;display:block}
   font-variant-numeric:tabular-nums;color:var(--ink-3);margin-top:5px}
 .num i{display:block;font-style:normal;font-size:.74rem;color:var(--ink-2);margin-top:5px;line-height:1.42}
 
+#remarcacao p{margin-bottom:1rem;font-size:1rem;line-height:1.65}
+#remarcacao h3{font-size:1.2rem}
+#remarcacao ol,#remarcacao ul{padding-left:1.4rem;line-height:1.7}
+#remarcacao li{margin-bottom:.7rem}
+#remarcacao table{min-width:680px}
+@media(min-width:680px){.rem-metricas{grid-template-columns:repeat(3,1fr)}}
 /* ============ MAPA ============ */
 .mapa-grid{display:flex;flex-direction:column;gap:16px}
 @media(min-width:1024px){
@@ -530,18 +536,19 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="top-nav-in">
     <a class="nav-brand" href="index.html"><b>日本</b> 2027 <small>Roteiro</small></a>
     <nav class="top-links" aria-label="Seções do site">
-      <a href="index.html">Início</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html" aria-current="page">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+      <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html" aria-current="page">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
     </nav>
     <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
+<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Hospedagens ainda precisam ser ajustadas. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
 <main>
 <section class="sec wrap-wide" id="timelapse" data-foto="osaka">
   <div class="sec-head">
     <p class="eyebrow">Timelapse</p>
-    <h2>Dia a dia, em 16 quadros</h2>
+    <h2>Dia a dia, em 18 quadros</h2>
     <div class="rule"></div>
     <p class="sub">Arraste a barra ou toque em play para atravessar a viagem inteira. O ponto anda no mapa, a cidade troca e os números do dia acompanham.</p>
   </div>
@@ -550,7 +557,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
       <div class="tl-map" id="tlMap"></div>
       <div class="tl-over">
         <div class="tl-city" id="tlCity">大阪<small id="tlBase">Osaka</small></div>
-        <div class="tl-daynum"><b id="tlNum">01</b><u id="tlDate">16/03</u></div>
+        <div class="tl-daynum"><b id="tlNum">01</b><u id="tlDate">15/03</u></div>
       </div>
     </div>
     <div class="tl-body">
@@ -565,7 +572,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
       </div>
       <div class="tl-ctrl">
         <button class="tl-play" id="tlPlay" aria-label="Reproduzir o timelapse">▶</button>
-        <input class="tl-range" id="tlRange" type="range" min="0" max="15" value="0" step="1" aria-label="Escolher o dia da viagem">
+        <input class="tl-range" id="tlRange" type="range" min="0" max="17" value="0" step="1" aria-label="Escolher o dia da viagem">
       </div>
     </div>
   </div>
@@ -574,7 +581,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <nav class="nav" aria-label="Seções do site">
   <div class="nav-in">
-    <a href="index.html">Início</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html" aria-current="page">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+    <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html" aria-current="page">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
   </div>
 </nav>
 
@@ -586,7 +593,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <script>
 "use strict";
-const DADOS = {"dias": [{"cidade": "osaka", "base": "Osaka / Namba", "data": "2027-03-16", "semana": "terça", "total": {"km": 46.4, "min": 40, "pe": 18.0, "transp": 970.0, "ingresso": 0, "nota": "≈ R$ 32 por pessoa neste dia (transporte + ingressos)", "km_pe": 1.0}, "atividades": [{"periodo": "Noite", "nome": "CHEGADA — voo JQ 13, pouso no KIX às 19:45"}, {"periodo": "Noite", "nome": "KIX → Tengachaya (check-in na hospedagem)"}, {"periodo": "Noite", "nome": "Jantar rápido no bairro"}]}, {"cidade": "osaka", "base": "Osaka / Namba", "data": "2027-03-17", "semana": "quarta", "total": {"km": 14.2, "min": 38, "pe": 53.0, "transp": 670, "ingresso": 6700.0, "nota": "≈ R$ 243 por pessoa neste dia (transporte + ingressos)", "km_pe": 6.4}, "atividades": [{"periodo": "Manhã", "nome": "Castelo de Osaka (torre/museu) + parque"}, {"periodo": "Tarde", "nome": "Shitennoji (o templo mais antigo do Japão)"}, {"periodo": "Tarde", "nome": "Shinsekai — o bairro que parou em 1912"}, {"periodo": "Tarde", "nome": "SUMÔ — Haru Basho na EDION Arena"}, {"periodo": "Noite", "nome": "Dotonbori / Glico / Hozenji Yokocho"}]}, {"cidade": "osaka", "base": "Osaka / Namba", "data": "2027-03-18", "semana": "quinta", "total": {"km": 28.7, "min": 66.0, "pe": 68.0, "transp": 1060.0, "ingresso": 4700.0, "nota": "≈ R$ 190 por pessoa neste dia (transporte + ingressos)", "km_pe": 6.2}, "atividades": [{"periodo": "Manhã", "nome": "Kuromon Ichiba — café da manhã de frutos do mar"}, {"periodo": "Manhã", "nome": "Namba Yasaka Jinja — a cabeça de leão de 12 m"}, {"periodo": "Manhã", "nome": "Aquário Kaiyukan — tubarão-baleia"}, {"periodo": "Tarde", "nome": "Almoço no Tempozan Marketplace"}, {"periodo": "Tarde", "nome": "Umeda Sky Building — Jardim Flutuante (173 m)"}]}, {"cidade": "kyoto", "base": "Osaka → Kyoto", "data": "2027-03-19", "semana": "sexta", "total": {"km": 57.1, "min": 75.0, "pe": 87.0, "transp": 1330, "ingresso": 600, "nota": "≈ R$ 64 por pessoa neste dia (transporte + ingressos)", "km_pe": 10.1}, "atividades": [{"periodo": "Manhã", "nome": "Check-out + despachar malas (opcional)"}, {"periodo": "Manhã", "nome": "TRANSFER OSAKA → KYOTO"}, {"periodo": "Tarde", "nome": "Higashi e Nishi Honganji — os dois templos gigantes"}, {"periodo": "Tarde", "nome": "Sanjūsangen-dō — as 1.001 estátuas de Kannon"}, {"periodo": "Tarde", "nome": "Check-in K-style Higashi-Honganji"}]}, {"cidade": "kyoto", "base": "Kyoto", "data": "2027-03-20", "semana": "sábado", "total": {"km": 30.1, "min": 83, "pe": 82.0, "transp": 1210, "ingresso": 9300.0, "nota": "≈ R$ 347 por pessoa neste dia (transporte + ingressos)", "km_pe": 7.8}, "atividades": [{"periodo": "Manhã", "nome": "Arashiyama — Floresta de Bambu"}, {"periodo": "Manhã", "nome": "Tenryū-ji — o jardim de 1339 ao lado do bambuzal"}, {"periodo": "Manhã", "nome": "Monkey Park Iwatayama"}, {"periodo": "Tarde", "nome": "Ryoan-ji (jardim seco de pedras)"}, {"periodo": "Tarde", "nome": "Kinkaku-ji (Pavilhão Dourado)"}]}, {"cidade": "kyoto", "base": "Kyoto", "data": "2027-03-21", "semana": "domingo", "total": {"km": 19.7, "min": 62.0, "pe": 114.0, "transp": 1340.0, "ingresso": 1600.0, "nota": "≈ R$ 97 por pessoa neste dia (transporte + ingressos)", "km_pe": 8.8}, "atividades": [{"periodo": "Manhã", "nome": "Fushimi Inari Taisha (os 10.000 torii) — AO AMANHECER"}, {"periodo": "Manhã", "nome": "Ginkaku-ji (Pavilhão de Prata)"}, {"periodo": "Tarde", "nome": "CAMINHO DOS FILÓSOFOS (2 km à beira do canal)"}, {"periodo": "Tarde", "nome": "Nanzen-ji + aqueduto romano (Suirokaku)"}, {"periodo": "Tarde", "nome": "Kiyomizu-dera (a varanda de madeira)"}]}, {"cidade": "fuji", "base": "Kyoto → Kawaguchiko", "data": "2027-03-22", "semana": "segunda", "total": {"km": 334.5, "min": 252.0, "pe": 30.0, "transp": 14610.0, "ingresso": 0, "nota": "≈ R$ 482 por pessoa neste dia (transporte + ingressos)", "km_pe": 1.4}, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER: Kyoto → Mishima (Shinkansen)"}, {"periodo": "Manhã", "nome": "TRANSFER: Mishima → Kawaguchiko (ônibus)"}, {"periodo": "Tarde", "nome": "Oishi Park — Fuji refletido no Lago Kawaguchi"}, {"periodo": "Tarde", "nome": "Check-in ryokan La Vista Fujikawaguchiko"}, {"periodo": "Noite", "nome": "Onsen + jantar no ryokan"}]}, {"cidade": "tokyo", "base": "Kawaguchiko → Tokyo", "data": "2027-03-23", "semana": "terça", "total": {"km": 134.4, "min": 176.0, "pe": 50.0, "transp": 3900.0, "ingresso": 0, "nota": "≈ R$ 129 por pessoa neste dia (transporte + ingressos)", "km_pe": 4.6}, "atividades": [{"periodo": "Manhã", "nome": "Teleférico Kachi-Kachi (Monte Tenjo, 1.075 m)"}, {"periodo": "Manhã", "nome": "Pagode Chureito (opcional — a foto clássica)"}, {"periodo": "Tarde", "nome": "TRANSFER: Kawaguchiko → Tokyo (Shinjuku)"}, {"periodo": "Noite", "nome": "Shinjuku → Ojima (check-in no Airbnb)"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-24", "semana": "quarta", "total": {"km": 35.5, "min": 103.0, "pe": 50.0, "transp": 1632, "ingresso": 10500.0, "nota": "≈ R$ 400 por pessoa neste dia (transporte + ingressos)", "km_pe": 2.8}, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER para o parque (Maihama)"}, {"periodo": "Dia todo", "nome": "TOKYO DISNEYSEA"}, {"periodo": "Dia todo", "nome": "FANTASY SPRINGS — a área nova"}, {"periodo": "Noite", "nome": "Volta do parque"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-25", "semana": "quinta", "total": {"km": 27.5, "min": 66.0, "pe": 58.0, "transp": 560.0, "ingresso": 500.0, "nota": "≈ R$ 35 por pessoa neste dia (transporte + ingressos)", "km_pe": 3.5}, "atividades": [{"periodo": "Manhã", "nome": "Shinjuku Gyoen (o melhor hanami de Tokyo)"}, {"periodo": "Tarde", "nome": "Observatório do Governo (GRÁTIS — opcional)"}, {"periodo": "Tarde", "nome": "Omoide Yokocho + Kabukicho + Godzilla"}, {"periodo": "Noite", "nome": "Jantar + volta"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-26", "semana": "sexta", "total": {"km": 15.4, "min": 40.0, "pe": 59.0, "transp": 440.0, "ingresso": 2100.0, "nota": "≈ R$ 84 por pessoa neste dia (transporte + ingressos)", "km_pe": 4.9}, "atividades": [{"periodo": "Manhã", "nome": "Sensoji + Kaminarimon + Nakamise-dori"}, {"periodo": "Manhã", "nome": "Asakusa Shrine + rua Hoppy-dori"}, {"periodo": "Tarde", "nome": "Kappabashi — a rua das facas e da comida de plástico"}, {"periodo": "Tarde", "nome": "Sumida Park — sakura na beira do rio"}, {"periodo": "Tarde", "nome": "Tokyo Skytree (634 m) + Solamachi"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-27", "semana": "sábado", "total": {"km": 16.35, "min": 51, "pe": 54, "transp": 1097, "ingresso": 3600, "nota": "≈ R$ 155 por pessoa neste dia (transporte + ingressos)", "km_pe": 3.6}, "atividades": [{"periodo": "Manhã", "nome": "teamLab PLANETS"}, {"periodo": "Manhã", "nome": "Toyosu Market (opcional — o mercado de peixes)"}, {"periodo": "Tarde", "nome": "Tsukiji Outer Market — a rua de comida"}, {"periodo": "Tarde", "nome": "Kabukiza — um ato só (opcional)"}, {"periodo": "Tarde", "nome": "Ginza — Chuo-dori, Itoya, Uniqlo, Muji e Ginza Six"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-28", "semana": "domingo", "total": {"km": 20.2, "min": 41, "pe": 90.0, "transp": 600, "ingresso": 1000, "nota": "≈ R$ 53 por pessoa neste dia (transporte + ingressos)", "km_pe": 4.9}, "atividades": [{"periodo": "Manhã", "nome": "Ueno Park (hanami) — 1.200 cerejeiras"}, {"periodo": "Manhã", "nome": "Museu Nacional de Tokyo — a coleção do Japão"}, {"periodo": "Tarde", "nome": "Ameyoko — a galeria sob os trilhos"}, {"periodo": "Tarde", "nome": "AKIHABARA — eletrônicos, anime e games"}, {"periodo": "Tarde", "nome": "Compras + despacho das caixas"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-29", "semana": "segunda", "total": {"km": 31.85, "min": 70.0, "pe": 76.0, "transp": 840.0, "ingresso": 3400.0, "nota": "≈ R$ 140 por pessoa neste dia (transporte + ingressos)", "km_pe": 4.9}, "atividades": [{"periodo": "Manhã", "nome": "Meiji Jingu + Yoyogi Park"}, {"periodo": "Manhã", "nome": "Takeshita-dori (o coração kawaii)"}, {"periodo": "Tarde", "nome": "Omotesando + Kiddy Land"}, {"periodo": "Tarde", "nome": "Shibuya Parco + Tower Records"}, {"periodo": "Tarde", "nome": "Shibuya Crossing + estátua do Hachiko"}]}, {"cidade": "osaka", "base": "Tokyo → Osaka", "data": "2027-03-30", "semana": "terça", "total": {"km": 530.4, "min": 192.0, "pe": 55.0, "transp": 15500, "ingresso": 0, "nota": "≈ R$ 512 por pessoa neste dia (transporte + ingressos)", "km_pe": 1.9}, "atividades": [{"periodo": "Manhã", "nome": "Check-out + Ojima → Estação de Tokyo"}, {"periodo": "Manhã", "nome": "SHINKANSEN Tokyo → Shin-Osaka (Nozomi)"}, {"periodo": "Tarde", "nome": "Shin-Osaka → hotel + check-in"}, {"periodo": "Tarde", "nome": "Shinsaibashi-suji (galeria de 600 m)"}, {"periodo": "Noite", "nome": "Dotonbori — a última noite"}]}, {"cidade": "osaka", "base": "Osaka → voo", "data": "2027-03-31", "semana": "quarta", "total": {"km": 58.3, "min": 64.0, "pe": 78.0, "transp": 2150.0, "ingresso": 0, "nota": "≈ R$ 71 por pessoa neste dia (transporte + ingressos)", "km_pe": 5.7}, "atividades": [{"periodo": "Manhã", "nome": "Check-out + guardar as malas"}, {"periodo": "Manhã", "nome": "Tenjin-bashi-suji — a galeria coberta mais longa do Japão"}, {"periodo": "Manhã", "nome": "Compras finais em Shinsaibashi-suji"}, {"periodo": "Tarde", "nome": "Almoço de despedida + Den Den Town"}, {"periodo": "Tarde", "nome": "TRANSFER: Namba → Aeroporto KIX"}]}]};
+const DADOS = {"dias": [{"cidade": "osaka", "base": "Osaka / Namba", "data": "2027-03-15", "semana": "segunda", "total": {"km": 46.4, "min": 40, "pe": 18.0, "transp": 970.0, "ingresso": 0, "nota": "≈ R$ 32 por pessoa neste dia (transporte + ingressos)", "km_pe": 1.0}, "atividades": [{"periodo": "Tarde", "nome": "CHEGADA — QR 802, KIX às 16:25 de 15/03"}, {"periodo": "Noite", "nome": "KIX → Tengachaya (check-in na hospedagem)"}, {"periodo": "Noite", "nome": "Jantar rápido no bairro"}]}, {"cidade": "osaka", "base": "Osaka / Namba", "data": "2027-03-16", "semana": "terça", "total": {"km": 20.5, "min": 66.0, "pe": 81.0, "transp": 1060.0, "ingresso": 4700.0, "nota": "≈ R$ 190 por pessoa neste dia (transporte + ingressos)", "km_pe": 6.2}, "atividades": [{"periodo": "Manhã", "nome": "Kuromon Ichiba — café da manhã de frutos do mar"}, {"periodo": "Manhã", "nome": "Namba Yasaka Jinja — a cabeça de leão de 12 m"}, {"periodo": "Manhã", "nome": "Aquário Kaiyukan — tubarão-baleia"}, {"periodo": "Tarde", "nome": "Almoço no Tempozan Marketplace"}, {"periodo": "Tarde", "nome": "Nakazakicho — bairro retrô de cafés"}]}, {"cidade": "osaka", "base": "Osaka / Namba", "data": "2027-03-17", "semana": "quarta", "total": {"km": 14.2, "min": 38, "pe": 53.0, "transp": 910, "ingresso": 6700.0, "nota": "≈ R$ 251 por pessoa neste dia (transporte + ingressos)", "km_pe": 6.4}, "atividades": [{"periodo": "Manhã", "nome": "Castelo de Osaka (torre/museu) + parque"}, {"periodo": "Tarde", "nome": "Shitennoji (o templo mais antigo do Japão)"}, {"periodo": "Tarde", "nome": "Shinsekai — o bairro que parou em 1912"}, {"periodo": "Tarde", "nome": "SUMÔ — Haru Basho na EDION Arena"}, {"periodo": "Noite", "nome": "Dotonbori / Glico / Hozenji Yokocho"}]}, {"cidade": "kyoto", "base": "Osaka → Kyoto / dia livre", "data": "2027-03-18", "semana": "quinta", "total": {"km": 48.9, "min": 75, "pe": 35, "transp": 870, "ingresso": 0, "km_pe": 0.9}, "atividades": [{"periodo": "Manhã", "nome": "Check-out + despachar malas (opcional)"}, {"periodo": "Manhã", "nome": "TRANSFER OSAKA → KYOTO"}, {"periodo": "Manhã", "nome": "DIA LIVRE EM KYOTO"}, {"periodo": "Tarde", "nome": "Check-in K-style Higashi-Honganji"}]}, {"cidade": "kyoto", "base": "Kyoto", "data": "2027-03-19", "semana": "sexta", "total": {"km": 9.1, "min": 30, "pe": 72.0, "transp": 460, "ingresso": 600, "nota": "≈ R$ 35 por pessoa neste dia (transporte + ingressos)", "km_pe": 9.0}, "atividades": [{"periodo": "Manhã", "nome": "Higashi e Nishi Honganji — os dois templos gigantes"}, {"periodo": "Tarde", "nome": "Sanjūsangen-dō — as 1.001 estátuas de Kannon"}, {"periodo": "Tarde", "nome": "Retorno à hospedagem em Kyoto"}, {"periodo": "Tarde", "nome": "Nishiki Market (\"a cozinha de Kyoto\")"}, {"periodo": "Noite", "nome": "Gion: Hanami-koji + Shirakawa Canal"}]}, {"cidade": "kyoto", "base": "Kyoto", "data": "2027-03-20", "semana": "sábado", "total": {"km": 30.1, "min": 83, "pe": 82.0, "transp": 1210, "ingresso": 9300.0, "nota": "≈ R$ 347 por pessoa neste dia (transporte + ingressos)", "km_pe": 7.8}, "atividades": [{"periodo": "Manhã", "nome": "Arashiyama — Floresta de Bambu"}, {"periodo": "Manhã", "nome": "Tenryū-ji — o jardim de 1339 ao lado do bambuzal"}, {"periodo": "Manhã", "nome": "Monkey Park Iwatayama"}, {"periodo": "Tarde", "nome": "Ryoan-ji (jardim seco de pedras)"}, {"periodo": "Tarde", "nome": "Kinkaku-ji (Pavilhão Dourado)"}]}, {"cidade": "kyoto", "base": "Kyoto", "data": "2027-03-21", "semana": "domingo", "total": {"km": 19.7, "min": 62.0, "pe": 114.0, "transp": 1340.0, "ingresso": 1600.0, "nota": "≈ R$ 97 por pessoa neste dia (transporte + ingressos)", "km_pe": 8.8}, "atividades": [{"periodo": "Manhã", "nome": "Fushimi Inari Taisha (os 10.000 torii) — AO AMANHECER"}, {"periodo": "Manhã", "nome": "Ginkaku-ji (Pavilhão de Prata)"}, {"periodo": "Tarde", "nome": "CAMINHO DOS FILÓSOFOS (2 km à beira do canal)"}, {"periodo": "Tarde", "nome": "Nanzen-ji + aqueduto romano (Suirokaku)"}, {"periodo": "Tarde", "nome": "Kiyomizu-dera (a varanda de madeira)"}]}, {"cidade": "fuji", "base": "Kyoto → Kawaguchiko", "data": "2027-03-22", "semana": "segunda", "total": {"km": 334.5, "min": 252.0, "pe": 30.0, "transp": 14610.0, "ingresso": 0, "nota": "≈ R$ 482 por pessoa neste dia (transporte + ingressos)", "km_pe": 1.4}, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER: Kyoto → Mishima (Shinkansen)"}, {"periodo": "Manhã", "nome": "TRANSFER: Mishima → Kawaguchiko (ônibus)"}, {"periodo": "Tarde", "nome": "Oishi Park — Fuji refletido no Lago Kawaguchi"}, {"periodo": "Tarde", "nome": "Check-in ryokan La Vista Fujikawaguchiko"}, {"periodo": "Noite", "nome": "Onsen + jantar no ryokan"}]}, {"cidade": "tokyo", "base": "Kawaguchiko → Tokyo", "data": "2027-03-23", "semana": "terça", "total": {"km": 134.4, "min": 176.0, "pe": 50.0, "transp": 3900.0, "ingresso": 0, "nota": "≈ R$ 129 por pessoa neste dia (transporte + ingressos)", "km_pe": 4.6}, "atividades": [{"periodo": "Manhã", "nome": "Teleférico Kachi-Kachi (Monte Tenjo, 1.075 m)"}, {"periodo": "Manhã", "nome": "Pagode Chureito (opcional — a foto clássica)"}, {"periodo": "Tarde", "nome": "TRANSFER: Kawaguchiko → Tokyo (Shinjuku)"}, {"periodo": "Noite", "nome": "Shinjuku → Ojima (check-in no Airbnb)"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-24", "semana": "quarta", "total": {"km": 35.5, "min": 103.0, "pe": 50.0, "transp": 1632, "ingresso": 10500.0, "nota": "≈ R$ 400 por pessoa neste dia (transporte + ingressos)", "km_pe": 2.8}, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER para o parque (Maihama)"}, {"periodo": "Dia todo", "nome": "TOKYO DISNEYSEA"}, {"periodo": "Dia todo", "nome": "FANTASY SPRINGS — a área nova"}, {"periodo": "Noite", "nome": "Volta do parque"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-25", "semana": "quinta", "total": {"km": 27.5, "min": 66.0, "pe": 58.0, "transp": 560.0, "ingresso": 500.0, "nota": "≈ R$ 35 por pessoa neste dia (transporte + ingressos)", "km_pe": 3.5}, "atividades": [{"periodo": "Manhã", "nome": "Shinjuku Gyoen (o melhor hanami de Tokyo)"}, {"periodo": "Tarde", "nome": "Observatório do Governo (GRÁTIS — opcional)"}, {"periodo": "Tarde", "nome": "Omoide Yokocho + Kabukicho + Godzilla"}, {"periodo": "Noite", "nome": "Jantar + volta"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-26", "semana": "sexta", "total": {"km": 15.4, "min": 40.0, "pe": 59.0, "transp": 440.0, "ingresso": 2100.0, "nota": "≈ R$ 84 por pessoa neste dia (transporte + ingressos)", "km_pe": 4.9}, "atividades": [{"periodo": "Manhã", "nome": "Sensoji + Kaminarimon + Nakamise-dori"}, {"periodo": "Manhã", "nome": "Asakusa Shrine + rua Hoppy-dori"}, {"periodo": "Tarde", "nome": "Kappabashi — a rua das facas e da comida de plástico"}, {"periodo": "Tarde", "nome": "Sumida Park — sakura na beira do rio"}, {"periodo": "Tarde", "nome": "Tokyo Skytree (634 m) + Solamachi"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-27", "semana": "sábado", "total": {"km": 16.35, "min": 51, "pe": 54, "transp": 1097, "ingresso": 3600, "nota": "≈ R$ 155 por pessoa neste dia (transporte + ingressos)", "km_pe": 3.6}, "atividades": [{"periodo": "Manhã", "nome": "teamLab PLANETS"}, {"periodo": "Manhã", "nome": "Toyosu Market (opcional — o mercado de peixes)"}, {"periodo": "Tarde", "nome": "Tsukiji Outer Market — a rua de comida"}, {"periodo": "Tarde", "nome": "Kabukiza — um ato só (opcional)"}, {"periodo": "Tarde", "nome": "Ginza — Chuo-dori, Itoya, Uniqlo, Muji e Ginza Six"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-28", "semana": "domingo", "total": {"km": 20.2, "min": 41, "pe": 90.0, "transp": 600, "ingresso": 1000, "nota": "≈ R$ 53 por pessoa neste dia (transporte + ingressos)", "km_pe": 4.9}, "atividades": [{"periodo": "Manhã", "nome": "Ueno Park (hanami) — 1.200 cerejeiras"}, {"periodo": "Manhã", "nome": "Museu Nacional de Tokyo — a coleção do Japão"}, {"periodo": "Tarde", "nome": "Ameyoko — a galeria sob os trilhos"}, {"periodo": "Tarde", "nome": "AKIHABARA — eletrônicos, anime e games"}, {"periodo": "Tarde", "nome": "Compras + despacho das caixas"}]}, {"cidade": "tokyo", "base": "Tokyo / Ojima", "data": "2027-03-29", "semana": "segunda", "total": {"km": 31.85, "min": 70.0, "pe": 76.0, "transp": 840.0, "ingresso": 3400.0, "nota": "≈ R$ 140 por pessoa neste dia (transporte + ingressos)", "km_pe": 4.9}, "atividades": [{"periodo": "Manhã", "nome": "Meiji Jingu + Yoyogi Park"}, {"periodo": "Manhã", "nome": "Takeshita-dori (o coração kawaii)"}, {"periodo": "Tarde", "nome": "Omotesando + Kiddy Land"}, {"periodo": "Tarde", "nome": "Shibuya Parco + Tower Records"}, {"periodo": "Tarde", "nome": "Shibuya Crossing + estátua do Hachiko"}]}, {"cidade": "osaka", "base": "Tokyo → Osaka", "data": "2027-03-30", "semana": "terça", "total": {"km": 530.4, "min": 192.0, "pe": 55.0, "transp": 15500, "ingresso": 0, "nota": "≈ R$ 512 por pessoa neste dia (transporte + ingressos)", "km_pe": 1.9}, "atividades": [{"periodo": "Manhã", "nome": "Check-out + Ojima → Estação de Tokyo"}, {"periodo": "Manhã", "nome": "SHINKANSEN Tokyo → Shin-Osaka (Nozomi)"}, {"periodo": "Tarde", "nome": "Shin-Osaka → hotel + check-in"}, {"periodo": "Tarde", "nome": "Shinsaibashi-suji (galeria de 600 m)"}, {"periodo": "Noite", "nome": "Dotonbori — noite em Osaka"}]}, {"cidade": "osaka", "base": "Osaka", "data": "2027-03-31", "semana": "quarta", "total": {"km": 11.3, "min": 19, "pe": 53.0, "transp": 480, "ingresso": 0, "nota": "≈ R$ 16 por pessoa neste dia (transporte + ingressos)", "km_pe": 5.8}, "atividades": [{"periodo": "Manhã", "nome": "Tenjin-bashi-suji — a galeria coberta mais longa do Japão"}, {"periodo": "Manhã", "nome": "Compras finais em Shinsaibashi-suji"}, {"periodo": "Tarde", "nome": "Almoço de despedida + Den Den Town"}]}, {"cidade": "osaka", "base": "Osaka / dia livre e retorno", "data": "2027-04-01", "semana": "quinta", "total": {"nota": "Estimativa parcial de transporte e ingressos. Custos sem cotação não foram tratados como confirmados.", "km": 50, "min": 45, "pe": 15, "transp": 970, "ingresso": 0, "km_pe": 0.9}, "atividades": [{"periodo": "Manhã", "nome": "Check-out + guarda-volumes"}, {"periodo": "Manhã", "nome": "DIA LIVRE EM OSAKA"}, {"periodo": "Tarde", "nome": "TRANSFER: Namba → Aeroporto KIX"}, {"periodo": "Noite", "nome": "VOO DE VOLTA — LA 5306, KIX 18:55 → Doha"}]}]};
 const MAPAS = [];   // dias com mapa proprio (dia-NN.html)
 const FOTOS = {
  "hero": {
@@ -773,9 +780,9 @@ const COSTA=[[134.60,34.78],[135.00,34.66],[135.20,34.69],[135.42,34.73],[135.33
  [139.46,35.32],[139.66,35.16],[139.80,35.44],[139.88,35.64],[139.94,35.36],[139.92,34.94],
  [140.38,35.44],[140.62,35.80],[140.78,36.40],[140.78,37.60],[134.60,37.60]];
 const PARADAS=[
- {n:"KIX",        s:"pouso 16/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
- {n:"Osaka",      s:"4 noites",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
- {n:"Kyoto",      s:"3 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
+ {n:"KIX",        s:"pouso 15/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
+ {n:"Osaka",      s:"5 noites · 3 + 2",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
+ {n:"Kyoto",      s:"4 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
  {n:"Kawaguchiko",s:"1 noite",     lon:138.76,lat:35.51, c:"fuji",  dx:0,  dy:-20,an:"middle"},
  {n:"Tokyo",      s:"7 noites",    lon:139.77,lat:35.68, c:"tokyo", dx:10, dy:2,  an:"start"}];
 const MISHIMA=[138.91,35.13];
@@ -818,7 +825,6 @@ function svgMapa(mini){
 
 function montarMapa(){
   el("mapaSlot").innerHTML=svgMapa(false);
-  el("tlMap").innerHTML=svgMapa(true);
   el("mapaLeg").innerHTML=Object.keys(CID).map(k=>
     `<span class="leg c-${k}"><s></s>${CID[k].nome} <span style="color:var(--ink-3);font-weight:600">${CID[k].kanji}</span></span>`).join("");
 
@@ -872,16 +878,16 @@ function montarNums(){
   // para os cards nunca discordarem do resto do site quando a planilha for atualizada
   const taxa=yen?reais/yen:0;
   const brl=(y)=>"≈ R$ "+nf(Math.round(y*taxa));
-  const COMIDA=96000;   // Y6.000/dia x 16 dias, o cenario medio da propria planilha
+  const COMIDA=6000*DADOS.nDias;   // Y6.000/dia x 18 dias, o cenario medio da propria planilha
   const cards=[
-    {b:nf(DADOS.nDias||16),u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
+    {b:nf(DADOS.nDias),u:"dias no Japão",i:"17 noites, de 15/03 a 01/04"},
     {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
-    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias||16),1)+" km por dia, só entre paradas"},
+    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias),1)+" km por dia, só entre paradas"},
     {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
-    {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias||16)+" dias, cenário médio"},
-    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"total por adulto",i:"Sem a comida, fecha em ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
+    {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias)+" dias, cenário médio"},
+    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"subtotal estimado por adulto",i:"Transporte e ingressos: ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
   ];
   el("nums").innerHTML=cards.map(c=>
     `<div class="num"><b>${esc(c.b)}</b>${c.c?`<em>${esc(c.c)}</em>`:""}<u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
@@ -891,7 +897,9 @@ function montarNums(){
    5. TIMELAPSE
    ================================================================ */
 function montarTimelapse(){
+  el("tlMap").innerHTML=svgMapa(true);
   const dias=DADOS.dias, art=el("tlArt"), range=el("tlRange"), play=el("tlPlay"), tl=el("tl");
+  const ultimo=dias.length-1; range.max=ultimo;
   let i=0, rodando=null;
   const pinPos={};
   PARADAS.forEach(o=>{ pinPos[o.c]=proj(o.lon,o.lat); });
@@ -915,16 +923,16 @@ function montarTimelapse(){
       pin.style.transition=REDUZIR?"none":"cx .5s cubic-bezier(.4,0,.2,1),cy .5s cubic-bezier(.4,0,.2,1)"; }
     el("tlList").innerHTML=d.atividades.slice(0,5).map((a,n)=>
       `<li style="animation-delay:${n*55}ms"><s>${esc(a.periodo)}</s><span>${esc(a.nome)}</span></li>`).join("");
-    range.value=k; range.style.setProperty("--pct",(k/15*100)+"%");
+    range.value=k; range.style.setProperty("--pct",(k/Math.max(1,ultimo)*100)+"%");
   }
   range.addEventListener("input",()=>{ parar(); ir(+range.value); });
   function parar(){ if(rodando){clearInterval(rodando);rodando=null;play.textContent="▶";
     play.setAttribute("aria-label","Reproduzir o timelapse");} }
   play.addEventListener("click",()=>{
     if(rodando) return parar();
-    if(i>=15) ir(0);
+    if(i>=ultimo) ir(0);
     play.textContent="❚❚"; play.setAttribute("aria-label","Pausar o timelapse");
-    rodando=setInterval(()=>{ if(i>=15) return parar(); ir(i+1); },1500);
+    rodando=setInterval(()=>{ if(i>=ultimo) return parar(); ir(i+1); },1500);
   });
   ir(0);
 }
@@ -989,7 +997,7 @@ function montarTrilho(){
       <div class="dia-card">
         <div class="dia-art" data-cid="${d.cidade}"><b>${m.kanji}</b><i>${dm(d.data)} · ${esc(d.semana)}</i></div>
         <div class="dia-head">
-          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de 16 · dorme em ${esc(m.nome)}</p></div>
+          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de ${DADOS.dias.length} · ${k===DADOS.dias.length-1?'retorno via Doha':'pernoite planejado em '+esc(m.nome)}</p></div>
           ${d.transicao?`<span class="badge-tr">troca de base</span>`:""}
         </div>
         <div class="dia-stats">${stats.join("")}</div>
@@ -1048,23 +1056,23 @@ function montarTrilho(){
    7. CARROSSÉIS CURADOS
    ================================================================ */
 const COMER=[
- {c:"osaka",d:"18/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
+ {c:"osaka",d:"16/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
  {c:"osaka",d:"17 e 30/03",n:"Dotonbori",b:"Namba",t:"Takoyaki, okonomiyaki e kushikatsu à beira do canal, sob o letreiro do Glico. A multidão pesa das 19h às 21h.",g:"24h · cruzeiro ¥1.200"},
  {c:"osaka",d:"17/03",n:"Shinsekai",b:"Naniwa",t:"Bairro retrô dos anos 1950 aos pés da Tsūtenkaku, e a capital do kushikatsu.",g:"10:00–20:00"},
- {c:"osaka",d:"18/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Barata e senta os 13 sem reserva.",g:"11:00–20:00 · fraldário no piso 2"},
+ {c:"osaka",d:"16/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Opção prática de almoço; talvez seja necessário dividir o grupo para encontrar lugares.",g:"11:00–20:00 · fraldário no piso 2"},
  {c:"osaka",d:"17/03",n:"Hozenji Yokocho",b:"Namba",t:"Beco de pedra ao lado do Dotonbori, com o templo coberto de musgo. O contraponto silencioso ao neon.",g:"24h"},
  {c:"kyoto",d:"19 e 21/03",n:"Pontocho",b:"Gion",t:"Beco de 2 m de largura à beira do rio Kamo, com restaurantes dos dois lados. Carrinho não entra.",g:"noite · leve o canguru"},
- {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. O único dia em que a comida já está paga.",g:"La Vista Fujikawaguchiko"},
- {c:"tokyo",d:"25/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
- {c:"tokyo",d:"24/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
- {c:"tokyo",d:"24/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
- {c:"tokyo",d:"27/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
+ {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. Confirmar no comprovante se o jantar está incluído e reservar o horário do grupo.",g:"La Vista Fujikawaguchiko"},
+ {c:"tokyo",d:"27/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
+ {c:"tokyo",d:"26/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
+ {c:"tokyo",d:"26/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
+ {c:"tokyo",d:"25/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
 ];
 const COMPRAS=[
- {c:"osaka",d:"17/03",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
- {c:"osaka",d:"19 e 31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
+ {c:"osaka",d:"alternativa",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
+ {c:"osaka",d:"31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
  {c:"osaka",d:"30 e 31/03",n:"Shinsaibashi-suji",b:"Shinsaibashi",t:"Galeria coberta de 600 m que emenda direto no Dotonbori. Funciona com chuva e concentra quase tudo.",g:"11:00–21:00 · última chance de tax-free"},
- {c:"tokyo",d:"24/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
+ {c:"tokyo",d:"26/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
  {c:"tokyo",d:"28/03",n:"Akihabara",b:"Akihabara",t:"Eletrônicos, anime, games e lojas de vários andares. O dia inteiro cabe aqui, se deixarem.",g:"domingo · Chuo-dori vira calçadão à tarde"},
  {c:"tokyo",d:"28/03",n:"Ameyoko",b:"Ueno",t:"Feira de rua sob a linha do trem: comida, tênis, cosmético e barulho. O preço mais baixo de Tokyo.",g:"colado no Ueno Park"},
  {c:"tokyo",d:"29/03",n:"Takeshita-dori",b:"Harajuku",t:"350 m por 3 m de largura de puro kawaii: crepes, purikura e lojas alternativas. Segurem as crianças pela mão.",g:"11:00–20:00 · carrinho não entra"},
@@ -1072,13 +1080,13 @@ const COMPRAS=[
 ];
 const PLANOB=[
  {c:"osaka",d:"qualquer dia",n:"Chuva em Osaka",b:"tudo coberto",t:"Kaiyukan em espiral por 8 andares, Umeda Sky pelo elevador interno, Senba Center no subsolo, Kuromon coberto e 600 m de galeria em Shinsaibashi. Dá para passar o dia sem tomar chuva.",g:"nenhum deles depende do tempo"},
- {c:"osaka",d:"18/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
- {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Kyoto é a única base onde o transporte principal é ônibus urbano, com entrada pela porta traseira e carrinho dobrado em pé. Com 3 bebês em fim de semana de feriado, considerem táxi nos trechos curtos ou dividir o grupo.",g:"feriadão de 20 a 22/03"},
+ {c:"osaka",d:"16/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
+ {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Conferir lotação, acesso dos carrinhos e alternativas por trem/metrô. Se cotar táxi ou van, informar 13 pessoas, crianças, carrinhos e malas; o número de veículos depende da capacidade real.",g:"feriadão de 20 a 22/03"},
  {c:"fuji", d:"22 e 23/03",n:"Fuji na nuvem",b:"Kawaguchiko",t:"Oishi Park vale pela margem do lago mesmo sem o topo à vista. O onsen e o jantar do ryokan seguram o dia, e o teleférico Kachi-Kachi vira saída antecipada para Tokyo.",g:"o topo aparece em poucos dias do mês"},
  {c:"tokyo",d:"qualquer dia",n:"Chuva em Tokyo",b:"tudo coberto",t:"teamLab PLANETS, Miraikan, Solamachi, o observatório gratuito do Governo Metropolitano e os andares de Akihabara. Só o Skytree perde a graça com o céu fechado.",g:"o observatório abre até 22:00"},
  {c:"tokyo",d:"27/03",n:"Troca do dia de Shinjuku",b:"alternativa mapeada",t:"Se Shinjuku não empolgar, a troca já prevista é Palácio Imperial + Koishikawa Korakuen, colados um no outro e a 20 min de Ojima.",g:"¥300 · da lista original"},
  {c:"tokyo",d:"29/03",n:"Shibuya Sky esgotado",b:"Shibuya",t:"O horário do pôr do sol some primeiro, e em 29/03 o sol se põe ~17:55. Sem ele, o observatório do Governo Metropolitano é grátis e tem elevador direto ao 45º andar.",g:"grátis · Shinjuku"},
- {c:"osaka",d:"31/03",n:"A conexão de 2h em Sydney",b:"o risco da volta",t:"É a mais apertada da viagem. Como o bilhete é único, a LATAM reacomoda em caso de atraso — mas para não depender disso, estejam no KIX às 18:25, saindo de Namba às 17:20.",g:"crítico"}
+ {c:"osaka",d:"02/04",b:"voos via Doha",n:"Conexões na volta",t:"Doha: 1h20, seguir direto ao portão. GRU: 2h55 para entrada no Brasil e redespacho. Confirmar assistência e proteção dos bilhetes.",g:"Doha e Guarulhos"}
 ];
 function montarCarro(alvo,itens){
   el(alvo).innerHTML=itens.map(o=>`
@@ -1137,8 +1145,7 @@ function curto(s){ return s.replace(/\s*\([^)]*\)/g,"").trim(); }
 const AEROPORTOS=[
   [/pinto martins|fortaleza/i,"FOR","Pinto Martins"],
   [/guarulhos/i,"GRU","Guarulhos"],
-  [/merino|santiago/i,"SCL","Arturo Merino Benítez"],
-  [/kingsford|sydney/i,"SYD","Kingsford Smith"],
+  [/hamad|doha/i,"DOH","Hamad"],
   [/kansai|osaka/i,"KIX","Kansai"]
 ];
 function aero(s){
@@ -1161,7 +1168,7 @@ function era(v,campo){
 function cel(v,campo){ return era(v,campo)+esc(v[campo]||""); }
 function montarVoos(){
   el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr${v.antes?' class="remarcado"':''}>
-    <td class="n">${esc(v.numero)}</td>
+    <td class="n">${esc(v.numero)}<small class="apto">${esc(v.operadora||"")}</small></td>
     <td>${trecho(v)}</td>
     <td class="h">${dm(v.saidaData)}<br>${cel(v,"saidaHora")}</td>
     <td class="h">${dm(v.chegadaData)}<br>${cel(v,"chegadaHora")}</td>
@@ -1169,7 +1176,7 @@ function montarVoos(){
     <td>${cel(v,"conexao")}</td></tr>`).join("");
   const leg=el("voosLegenda");
   if(leg) leg.innerHTML=DADOS.voos.some(v=>v.antes)
-    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "";
+    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "Horários locais. Conferir o cartão de embarque e as notificações da companhia antes de viajar.";
   el("voosNotas").innerHTML=DADOS.voosNotas.filter(n=>n.texto).map(n=>{
     const crit=/⚠|pendente/i.test(n.titulo);
     return `<div class="callout ${crit?"crit":"c-fuji"}" style="margin-bottom:9px">
@@ -1185,13 +1192,13 @@ function montarHosp(){
         <s></s>
         <div class="tx">
           <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
-          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p>
+          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>
         </div>
-        <div class="vl">${h.total?"R$ "+nf(h.total):"—"}<u>grupo</u></div>
+        <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):"A cotar"}<u>grupo</u></div>
       </div>`).join("")
       + `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
-         <div class="tx"><h4>Total do conjunto ${set.toUpperCase()}</h4>
-         <p class="mt">${lista.length} reservas lançadas</p></div>
+         <div class="tx"><h4>Subtotal dos valores históricos ${set.toUpperCase()}</h4>
+         <p class="mt">${lista.filter(h=>Number.isFinite(h.total)).length} valores antigos · ${lista.filter(h=>!Number.isFinite(h.total)).length} entradas sem cotação · conjunto ${set==="b"?"histórico parcial":"A com três blocos a cotar"}</p></div>
          <div class="vl">R$ ${nf(lista.reduce((a,b)=>a+(b.total||0),0))}<u>grupo</u></div></div>`;
   }
   el("hospToggle").addEventListener("click",(ev)=>{
@@ -1230,7 +1237,7 @@ function montarTema(){
 function montarContagem(){
   const cd=el("cd");
   if(!cd) return;
-  const alvo=new Date("2027-03-14T10:40:00-03:00");
+  const alvo=new Date("2027-03-13T11:15:00-03:00");
   const dias=Math.max(0,Math.ceil((alvo-new Date())/864e5));
   cd.textContent=nf(dias);
 }

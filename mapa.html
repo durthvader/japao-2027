@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Trajeto de ponta a ponta de 1.425 km entre Osaka, Kyoto, Kawaguchiko e Tokyo com conexões e pernas.">
+<meta name="description" content="Trajeto de ponta a ponta de percursos entre as bases entre Osaka, Kyoto, Kawaguchiko e Tokyo com conexões e pernas.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mapa da Rota · Japão 2027">
-<meta property="og:description" content="Trajeto de ponta a ponta de 1.425 km entre Osaka, Kyoto, Kawaguchiko e Tokyo com conexões e pernas.">
+<meta property="og:description" content="Trajeto de ponta a ponta de percursos entre as bases entre Osaka, Kyoto, Kawaguchiko e Tokyo com conexões e pernas.">
 <meta property="og:locale" content="pt_BR">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
@@ -159,6 +159,12 @@ img,canvas,svg{max-width:100%;display:block}
   font-variant-numeric:tabular-nums;color:var(--ink-3);margin-top:5px}
 .num i{display:block;font-style:normal;font-size:.74rem;color:var(--ink-2);margin-top:5px;line-height:1.42}
 
+#remarcacao p{margin-bottom:1rem;font-size:1rem;line-height:1.65}
+#remarcacao h3{font-size:1.2rem}
+#remarcacao ol,#remarcacao ul{padding-left:1.4rem;line-height:1.7}
+#remarcacao li{margin-bottom:.7rem}
+#remarcacao table{min-width:680px}
+@media(min-width:680px){.rem-metricas{grid-template-columns:repeat(3,1fr)}}
 /* ============ MAPA ============ */
 .mapa-grid{display:flex;flex-direction:column;gap:16px}
 @media(min-width:1024px){
@@ -530,20 +536,21 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="top-nav-in">
     <a class="nav-brand" href="index.html"><b>日本</b> 2027 <small>Roteiro</small></a>
     <nav class="top-links" aria-label="Seções do site">
-      <a href="index.html">Início</a><a href="roteiro.html">Roteiro</a><a href="mapa.html" aria-current="page">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+      <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html" aria-current="page">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
     </nav>
     <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
+<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Hospedagens ainda precisam ser ajustadas. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
 <main>
 <section class="sec wrap-wide" id="mapa" data-foto="fuji">
   <div class="sec-head">
     <p class="eyebrow">Mapa</p>
     <h2>A rota, de ponta a ponta</h2>
     <div class="rule"></div>
-    <p class="sub">1.425 km somando shinkansen, ônibus rodoviário, metrô e trem urbano. A linha se desenha conforme você rola a página.</p>
+    <p class="sub">Percurso entre bases somando shinkansen, ônibus rodoviário, metrô e trem urbano. A linha se desenha conforme você rola a página.</p>
   </div>
   <div class="mapa-grid">
     <div>
@@ -557,7 +564,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <nav class="nav" aria-label="Seções do site">
   <div class="nav-in">
-    <a href="index.html">Início</a><a href="roteiro.html">Roteiro</a><a href="mapa.html" aria-current="page">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+    <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html" aria-current="page">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
   </div>
 </nav>
 
@@ -569,7 +576,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <script>
 "use strict";
-const DADOS = {"dias": [{"cidade": "osaka", "transicao": false, "atividades": [{"periodo": "Noite", "nome": "KIX → Tengachaya (check-in na hospedagem)", "area": "Tengachaya", "de": "Aeroporto KIX", "como": "Nankai Airport Express — descer em TENGACHAYA, uma parada antes de Namba", "km": 46.0, "min": 40, "pe": 10.0, "transp": 970.0, "ingresso": 0.0, "horario": "pegar ~21:15", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Estação do KIX e Namba com elevador. O Nankai tem espaço de bagagem — carrinho aberto cabe no vestíbulo do vagão.", "obs": "O Airport Express para em Tengachaya, que é a estação da hospedagem: 40 min em vez de 45, mesma tarifa de ¥970, e sem enfrentar a Namba lotada com 13 pessoas e mala. Da estação são 200 m a pé. O Rapi:t custa ¥1.490 no guichê, ou ¥1.300 no bilhete digital pelo celular, e também para aqui — o que ele compra não é tempo, é assento marcado."}]}, {"cidade": "kyoto", "transicao": true, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER OSAKA → KYOTO", "area": "Kyoto", "de": "Tengachaya", "como": "Metrô Sakaisuji até Dobutsuen-mae + Midosuji até Umeda + JR Special Rapid", "km": 48.0, "min": 45.0, "pe": 15.0, "transp": 870, "ingresso": 0.0, "horario": "a cada 15 min", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "⚠ PONTO DE ATENÇÃO DO DIA: Umeda é uma das estações mais confusas do Japão. Sigam as placas de elevador desde a plataforma do Midosuji e reservem 15 min a mais só para a baldeação.", "obs": "Sair de Osaka por volta das 09:00. Metrô Midosuji até Umeda + JR Special Rapid — sai a cada 15 min, 45 min de viagem. Em Kyoto por volta das 10:00, com as malas guardadas no hotel antes do check-in das 15:00, o que abre a manhã inteira para os templos ao lado da estação."}]}, {"cidade": "fuji", "transicao": true, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER: Kyoto → Mishima (Shinkansen)", "area": "Shizuoka", "de": "Est. Kyoto", "como": "Tokaido Shinkansen — só ALGUNS Hikari param em Mishima; o Kodama para sempre", "km": 250.0, "min": 117, "pe": 15.0, "transp": 11110.0, "ingresso": 0.0, "horario": "~1 por hora", "duracao": "1h57–2h20", "bebe": "CARRINHO OK", "terreno": "⚠ RESERVEM O ESPAÇO DE BAGAGEM GRANDE (últimas fileiras) — é gratuito, mas exige reserva prévia e com 3 carrinhos vocês vão precisar. Sem reserva, cobram ¥1.000 por peça.", "obs": "O Nozomi não para em Mishima, e o Hikari só às vezes: a maioria dos serviços do dia é Kodama, ou Hikari até Shizuoka com baldeação para o Kodama. Direto dá 1h57; com baldeação, perto de 2h20. Contem com o número maior ao escolher a saída, porque o ônibus do outro lado tem hora marcada.\n⚠ MALA GRANDE PRECISA DE RESERVA. No Tokaido, bagagem cuja soma de altura + largura + profundidade passa de 160 cm exige assento reservado com espaço de bagagem — a reserva é GRÁTIS, mas tem que ser feita antes. Sem ela são ¥1.000 por peça, cobrados a bordo. Acima de 250 cm não embarca. Uma mala de 28 polegadas já passa dos 160 cm, então isso vale para praticamente todas as malas grandes do grupo: reservem os assentos das últimas fileiras de uma vez."}, {"periodo": "Manhã", "nome": "TRANSFER: Mishima → Kawaguchiko (ônibus)", "area": "Yamanashi", "de": "Est. Mishima", "como": "Mishima–Kawaguchiko Liner (Fujikyu), ônibus direto", "km": 75.0, "min": 90.0, "pe": 5.0, "transp": 2700, "ingresso": 0.0, "horario": "poucas saídas por dia", "duracao": "1h30", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Ônibus rodoviário: carrinho vai dobrado no bagageiro. Avise na hora da reserva.", "obs": "Ônibus direto da Fujikyu, 1h30, saindo da praça SUL da estação de Mishima. São 11 saídas por dia, de hora em hora por volta dos :20, das 07:20 às 17:20, e TODOS os assentos são marcados: sem reserva não se embarca. A reserva abre um mês antes e vai até 10 min da partida, pela internet, pelo guichê da saída sul ou por telefone. ¥2.700 no guichê, ¥2.500 pela internet; criança ¥1.350 / ¥1.250; menor de 6 anos sem assento não paga. ⚠ FERIADÃO: 22/03 é feriado compensatório do Equinócio de Primavera, que caiu no domingo 21. Com o sábado 20, são três dias seguidos de folga no Japão inteiro, e este é o terceiro. Isso enche o ônibus, então reservem cedo e escolham uma saída com folga real depois do Shinkansen.\n⚠ O bagageiro aceita UM VOLUME POR PASSAGEIRO. Com 13 malas grandes mais três carrinhos, o grupo estoura a conta — vale despachar as malas maiores por takkyubin de Kyoto direto para Tokyo e atravessar o Fuji só com o de dois dias."}]}, {"cidade": "tokyo", "transicao": true, "atividades": [{"periodo": "Tarde", "nome": "TRANSFER: Kawaguchiko → Tokyo (Shinjuku)", "area": "Tokyo", "de": "Est. Kawaguchiko", "como": "Ônibus rodoviário Fujikyu/Keio — direto", "km": 110.0, "min": 120.0, "pe": 5.0, "transp": 2000.0, "ingresso": 0.0, "horario": "~49 saídas por dia — de 10 min a 1h de intervalo", "duracao": "1h45–2h", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Ônibus rodoviário: carrinho dobrado no bagageiro. Avise na reserva que são 3.", "obs": "Ônibus rodoviário direto até o terminal Busta Shinjuku. São cerca de 49 saídas por dia, muito mais do que parece, mas TODOS os assentos são marcados: a venda abre um mês antes e fecha 2h antes da partida. ¥2.000 pela internet, ¥2.200 no guichê. Treze lugares juntos num mesmo horário exigem reservar no dia em que a venda abrir. Avisem que são três carrinhos para o bagageiro.\nTerça-feira ajuda: o pico da volta do feriadão é a noite de segunda 22, e o meio da tarde de terça é o horário mais folgado da semana."}]}, {"cidade": "osaka", "transicao": true, "atividades": [{"periodo": "Manhã", "nome": "SHINKANSEN Tokyo → Shin-Osaka (Nozomi)", "area": "Osaka", "de": "Est. Tokyo", "como": "Tokaido Shinkansen NOZOMI, assento reservado", "km": 515.0, "min": 150.0, "pe": 10.0, "transp": 14920, "ingresso": 0.0, "horario": "a cada 10 min", "duracao": "2h30", "bebe": "CARRINHO OK", "terreno": "⚠ RESERVEM O ESPAÇO DE BAGAGEM GRANDE de novo (gratuito, mas com reserva). Trocador de fraldas fica no vagão 11 nos trens N700S.", "obs": "⚠ RESERVAR, e reservar cedo. Sentando do lado E (janela direita no sentido de Osaka) vê-se o Monte Fuji uns 40 min depois da partida — dura menos de um minuto. O ekiben, a marmita de estação de ¥1.000–1.500, é parte da viagem.\n💴 ATENÇÃO AO PREÇO: os ¥14.720 que se lê em toda parte são de temporada normal. O período de 21 de março a 5 de abril é ALTA TEMPORADA no Tokaido, e o assento reservado sobe ¥200 — 30/03 cai dentro. São ¥14.920 por adulto: ¥8.910 de passagem mais ¥6.010 de reservado em alta. Crianças de 6 a 11 pagam metade; até 5 anos não pagam se forem no colo.\nEMBARQUEM EM TOKYO, NÃO EM SHINAGAWA, mesmo que Shinagawa pareça mais perto. O trem PARTE de Tokyo: já está parado na plataforma, vazio, e dá para subir 13 pessoas com calma. Em Shinagawa a parada dura cerca de um minuto, com corredor já ocupado — com três carrinhos, esse minuto é o que decide."}]}, {"cidade": "osaka", "transicao": true, "atividades": [{"periodo": "Tarde", "nome": "TRANSFER: Namba → Aeroporto KIX", "area": "KIX", "de": "Namba", "como": "Nankai — Rapi:t (¥1.300 no bilhete digital) ou Airport Express (¥970)", "km": 50.0, "min": 45.0, "pe": 15.0, "transp": 970.0, "ingresso": 0.0, "horario": "SAIR DE NAMBA 17:20", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Nankai com elevador nas duas pontas. No KIX, o carrinho vai até o portão de embarque.", "obs": "⚠ O VOO JQ 14 DECOLA ÀS 21:25. Meta: estar no KIX às 18:25, três horas antes — voo internacional, 13 pessoas com bagagem e a fila da alfândega pelo caminho. Contando 45 min de Nankai e o resgate das malas, o último trem aceitável sai de Namba às 17:20.\n💴 QUAL TREM PEGAR, AGORA COM OS NÚMEROS CERTOS: o Airport Express custa ¥970 e é trem comum — sem assento marcado, sem espaço de bagagem, e às 17:20 já pega o começo da volta do trabalho. O RAPI:T custa ¥1.490 no guichê, mas ¥1.300 no BILHETE DIGITAL pelo celular, e a Super Seat sai por ¥1.490 no digital: a poltrona melhor pelo preço da comum na bilheteria. São ¥330 a mais que o trem comum, uns ¥3.300 no grupo, por assento garantido e lugar para mala no último trajeto de 16 dias com três bebês. Comprem digital, e comprem antes.\n⚠ E considerem sair às 16:50 em vez de 17:20. A confirmação da alfândega com 13 passaportes e compras espalhadas por várias malas não é um carimbo, é uma operação — meia hora de Den Den Town paga a tranquilidade."}]}]};
+const DADOS = {"dias": [{"cidade": "osaka", "transicao": false, "atividades": [{"periodo": "Noite", "nome": "KIX → Tengachaya (check-in na hospedagem)", "area": "Tengachaya", "de": "Aeroporto KIX", "como": "Nankai Airport Express — descer em TENGACHAYA, uma parada antes de Namba", "km": 46.0, "min": 40, "pe": 10.0, "transp": 970.0, "ingresso": 0.0, "horario": "Após liberação, referência 18:15–19:00", "duracao": "1h", "bebe": "CARRINHO OK", "terreno": "Usar elevadores e confirmar espaço para bagagens. Não contar com três carrinhos abertos em vagão cheio.", "obs": "Percurso de referência até Tengachaya, condicionado ao endereço da hospedagem de 15/03. Não há trem reservado. Confirmar horário, tarifa e assentos; se o hotel mudar, recalcular o trajeto. Orçamento mantém ¥970 como estimativa anterior."}]}, {"cidade": "kyoto", "transicao": true, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER OSAKA → KYOTO", "area": "Kyoto", "de": "Tengachaya", "como": "Metrô Sakaisuji até Dobutsuen-mae + Midosuji até Umeda + JR Special Rapid", "km": 48.0, "min": 75, "pe": 20, "transp": 870, "ingresso": 0.0, "horario": "Saída de referência 09:00", "duracao": "Reservar cerca de 1h40 com acessos", "bebe": "CARRINHO OK", "terreno": "⚠ PONTO DE ATENÇÃO DO DIA: Umeda é uma das estações mais confusas do Japão. Sigam as placas de elevador desde a plataforma do Midosuji e reservem 15 min a mais só para a baldeação.", "obs": "Transfer em 18/03, quinta-feira. Usar transporte regular via Osaka/Umeda; o horário de chegada é meta, não reserva. Confirmar guarda de malas antes do check-in em Kyoto e reservar margem para elevadores e o grupo de 13."}]}, {"cidade": "fuji", "transicao": true, "atividades": [{"periodo": "Manhã", "nome": "TRANSFER: Kyoto → Mishima (Shinkansen)", "area": "Shizuoka", "de": "Est. Kyoto", "como": "Tokaido Shinkansen — só ALGUNS Hikari param em Mishima; o Kodama para sempre", "km": 250.0, "min": 117, "pe": 15.0, "transp": 11110.0, "ingresso": 0.0, "horario": "~1 por hora", "duracao": "1h57–2h20", "bebe": "CARRINHO OK", "terreno": "⚠ RESERVEM O ESPAÇO DE BAGAGEM GRANDE (últimas fileiras) — é gratuito, mas exige reserva prévia e com 3 carrinhos vocês vão precisar. Sem reserva, cobram ¥1.000 por peça.", "obs": "O Nozomi não para em Mishima, e o Hikari só às vezes: a maioria dos serviços do dia é Kodama, ou Hikari até Shizuoka com baldeação para o Kodama. Direto dá 1h57; com baldeação, perto de 2h20. Contem com o número maior ao escolher a saída, porque o ônibus do outro lado tem hora marcada.\n⚠ MALA GRANDE PRECISA DE RESERVA. No Tokaido, bagagem cuja soma de altura + largura + profundidade passa de 160 cm exige assento reservado com espaço de bagagem — a reserva é GRÁTIS, mas tem que ser feita antes. Sem ela são ¥1.000 por peça, cobrados a bordo. Acima de 250 cm não embarca. Uma mala de 28 polegadas já passa dos 160 cm, então isso vale para praticamente todas as malas grandes do grupo: reservem os assentos das últimas fileiras de uma vez."}, {"periodo": "Manhã", "nome": "TRANSFER: Mishima → Kawaguchiko (ônibus)", "area": "Yamanashi", "de": "Est. Mishima", "como": "Mishima–Kawaguchiko Liner (Fujikyu), ônibus direto", "km": 75.0, "min": 90.0, "pe": 5.0, "transp": 2700, "ingresso": 0.0, "horario": "poucas saídas por dia", "duracao": "1h30", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Ônibus rodoviário: carrinho vai dobrado no bagageiro. Avise na hora da reserva.", "obs": "Ônibus direto da Fujikyu, 1h30, saindo da praça SUL da estação de Mishima. São 11 saídas por dia, de hora em hora por volta dos :20, das 07:20 às 17:20, e TODOS os assentos são marcados: sem reserva não se embarca. A reserva abre um mês antes e vai até 10 min da partida, pela internet, pelo guichê da saída sul ou por telefone. ¥2.700 no guichê, ¥2.500 pela internet; criança ¥1.350 / ¥1.250; menor de 6 anos sem assento não paga. ⚠ FERIADÃO: 22/03 é feriado compensatório do Equinócio de Primavera, que caiu no domingo 21. Com o sábado 20, são três dias seguidos de folga no Japão inteiro, e este é o terceiro. Isso enche o ônibus, então reservem cedo e escolham uma saída com folga real depois do Shinkansen.\n⚠ O bagageiro aceita UM VOLUME POR PASSAGEIRO. Com 13 malas grandes mais três carrinhos, o grupo estoura a conta — vale despachar as malas maiores por takkyubin de Kyoto direto para Tokyo e atravessar o Fuji só com o de dois dias."}]}, {"cidade": "tokyo", "transicao": true, "atividades": [{"periodo": "Tarde", "nome": "TRANSFER: Kawaguchiko → Tokyo (Shinjuku)", "area": "Tokyo", "de": "Est. Kawaguchiko", "como": "Ônibus rodoviário Fujikyu/Keio — direto", "km": 110.0, "min": 120.0, "pe": 5.0, "transp": 2000.0, "ingresso": 0.0, "horario": "~49 saídas por dia — de 10 min a 1h de intervalo", "duracao": "1h45–2h", "bebe": "CARRINHO C/ ESFORÇO", "terreno": "Ônibus rodoviário: carrinho dobrado no bagageiro. Avise na reserva que são 3.", "obs": "Ônibus rodoviário direto até o terminal Busta Shinjuku. São cerca de 49 saídas por dia, muito mais do que parece, mas TODOS os assentos são marcados: a venda abre um mês antes e fecha 2h antes da partida. ¥2.000 pela internet, ¥2.200 no guichê. Treze lugares juntos num mesmo horário exigem reservar no dia em que a venda abrir. Avisem que são três carrinhos para o bagageiro.\nTerça-feira ajuda: o pico da volta do feriadão é a noite de segunda 22, e o meio da tarde de terça é o horário mais folgado da semana."}]}, {"cidade": "osaka", "transicao": true, "atividades": [{"periodo": "Manhã", "nome": "SHINKANSEN Tokyo → Shin-Osaka (Nozomi)", "area": "Osaka", "de": "Est. Tokyo", "como": "Tokaido Shinkansen NOZOMI, assento reservado", "km": 515.0, "min": 150.0, "pe": 10.0, "transp": 14920, "ingresso": 0.0, "horario": "a cada 10 min", "duracao": "2h30", "bebe": "CARRINHO OK", "terreno": "⚠ RESERVEM O ESPAÇO DE BAGAGEM GRANDE de novo (gratuito, mas com reserva). Trocador de fraldas fica no vagão 11 nos trens N700S.", "obs": "⚠ RESERVAR, e reservar cedo. Sentando do lado E (janela direita no sentido de Osaka) vê-se o Monte Fuji uns 40 min depois da partida — dura menos de um minuto. O ekiben, a marmita de estação de ¥1.000–1.500, é parte da viagem.\n💴 ATENÇÃO AO PREÇO: os ¥14.720 que se lê em toda parte são de temporada normal. O período de 21 de março a 5 de abril é ALTA TEMPORADA no Tokaido, e o assento reservado sobe ¥200 — 30/03 cai dentro. São ¥14.920 por adulto: ¥8.910 de passagem mais ¥6.010 de reservado em alta. Crianças de 6 a 11 pagam metade; até 5 anos não pagam se forem no colo.\nEMBARQUEM EM TOKYO, NÃO EM SHINAGAWA, mesmo que Shinagawa pareça mais perto. O trem PARTE de Tokyo: já está parado na plataforma, vazio, e dá para subir 13 pessoas com calma. Em Shinagawa a parada dura cerca de um minuto, com corredor já ocupado — com três carrinhos, esse minuto é o que decide."}]}, {"cidade": "osaka", "transicao": true, "atividades": [{"nome": "TRANSFER: Namba → Aeroporto KIX", "periodo": "Tarde", "area": "KIX", "de": "Namba (âncora provisória)", "como": "Nankai, trem e horário a confirmar", "km": 50, "min": 45, "pe": 15, "transp": 970, "ingresso": 0, "horario": "Saída de referência 14:30; KIX até 15:30", "duracao": "Cerca de 1h com acessos", "bebe": "CARRINHO OK", "terreno": "Confirmar elevadores, terminal, entrega do carrinho e trajeto até o balcão.", "obs": "Voo LA 5306 às 18:55. Meta de aeroporto às 15:30 inclui margem para check-in, documentos e tax-free. Recalcular ao fechar o hotel. ¥970 é referência anterior, não tarifa confirmada para abril/2027."}]}]};
 const MAPAS = [];   // dias com mapa proprio (dia-NN.html)
 const FOTOS = {
  "hero": {
@@ -756,9 +763,9 @@ const COSTA=[[134.60,34.78],[135.00,34.66],[135.20,34.69],[135.42,34.73],[135.33
  [139.46,35.32],[139.66,35.16],[139.80,35.44],[139.88,35.64],[139.94,35.36],[139.92,34.94],
  [140.38,35.44],[140.62,35.80],[140.78,36.40],[140.78,37.60],[134.60,37.60]];
 const PARADAS=[
- {n:"KIX",        s:"pouso 16/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
- {n:"Osaka",      s:"4 noites",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
- {n:"Kyoto",      s:"3 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
+ {n:"KIX",        s:"pouso 15/03", lon:135.23,lat:34.43, c:"osaka", dx:0,  dy:15, an:"middle"},
+ {n:"Osaka",      s:"5 noites · 3 + 2",    lon:135.50,lat:34.69, c:"osaka", dx:-10,dy:1,  an:"end"},
+ {n:"Kyoto",      s:"4 noites",    lon:135.77,lat:35.01, c:"kyoto", dx:-2, dy:-19,an:"middle"},
  {n:"Kawaguchiko",s:"1 noite",     lon:138.76,lat:35.51, c:"fuji",  dx:0,  dy:-20,an:"middle"},
  {n:"Tokyo",      s:"7 noites",    lon:139.77,lat:35.68, c:"tokyo", dx:10, dy:2,  an:"start"}];
 const MISHIMA=[138.91,35.13];
@@ -801,7 +808,6 @@ function svgMapa(mini){
 
 function montarMapa(){
   el("mapaSlot").innerHTML=svgMapa(false);
-  el("tlMap").innerHTML=svgMapa(true);
   el("mapaLeg").innerHTML=Object.keys(CID).map(k=>
     `<span class="leg c-${k}"><s></s>${CID[k].nome} <span style="color:var(--ink-3);font-weight:600">${CID[k].kanji}</span></span>`).join("");
 
@@ -855,16 +861,16 @@ function montarNums(){
   // para os cards nunca discordarem do resto do site quando a planilha for atualizada
   const taxa=yen?reais/yen:0;
   const brl=(y)=>"≈ R$ "+nf(Math.round(y*taxa));
-  const COMIDA=96000;   // Y6.000/dia x 16 dias, o cenario medio da propria planilha
+  const COMIDA=6000*DADOS.nDias;   // Y6.000/dia x 18 dias, o cenario medio da propria planilha
   const cards=[
-    {b:nf(DADOS.nDias||16),u:"dias no Japão",i:"15 noites, de 16 a 31 de março"},
+    {b:nf(DADOS.nDias),u:"dias no Japão",i:"17 noites, de 15/03 a 01/04"},
     {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
-    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias||16),1)+" km por dia, só entre paradas"},
+    {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias),1)+" km por dia, só entre paradas"},
     {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
-    {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias||16)+" dias, cenário médio"},
-    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"total por adulto",i:"Sem a comida, fecha em ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
+    {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias)+" dias, cenário médio"},
+    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"subtotal estimado por adulto",i:"Transporte e ingressos: ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
   ];
   el("nums").innerHTML=cards.map(c=>
     `<div class="num"><b>${esc(c.b)}</b>${c.c?`<em>${esc(c.c)}</em>`:""}<u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
@@ -874,7 +880,9 @@ function montarNums(){
    5. TIMELAPSE
    ================================================================ */
 function montarTimelapse(){
+  el("tlMap").innerHTML=svgMapa(true);
   const dias=DADOS.dias, art=el("tlArt"), range=el("tlRange"), play=el("tlPlay"), tl=el("tl");
+  const ultimo=dias.length-1; range.max=ultimo;
   let i=0, rodando=null;
   const pinPos={};
   PARADAS.forEach(o=>{ pinPos[o.c]=proj(o.lon,o.lat); });
@@ -898,16 +906,16 @@ function montarTimelapse(){
       pin.style.transition=REDUZIR?"none":"cx .5s cubic-bezier(.4,0,.2,1),cy .5s cubic-bezier(.4,0,.2,1)"; }
     el("tlList").innerHTML=d.atividades.slice(0,5).map((a,n)=>
       `<li style="animation-delay:${n*55}ms"><s>${esc(a.periodo)}</s><span>${esc(a.nome)}</span></li>`).join("");
-    range.value=k; range.style.setProperty("--pct",(k/15*100)+"%");
+    range.value=k; range.style.setProperty("--pct",(k/Math.max(1,ultimo)*100)+"%");
   }
   range.addEventListener("input",()=>{ parar(); ir(+range.value); });
   function parar(){ if(rodando){clearInterval(rodando);rodando=null;play.textContent="▶";
     play.setAttribute("aria-label","Reproduzir o timelapse");} }
   play.addEventListener("click",()=>{
     if(rodando) return parar();
-    if(i>=15) ir(0);
+    if(i>=ultimo) ir(0);
     play.textContent="❚❚"; play.setAttribute("aria-label","Pausar o timelapse");
-    rodando=setInterval(()=>{ if(i>=15) return parar(); ir(i+1); },1500);
+    rodando=setInterval(()=>{ if(i>=ultimo) return parar(); ir(i+1); },1500);
   });
   ir(0);
 }
@@ -972,7 +980,7 @@ function montarTrilho(){
       <div class="dia-card">
         <div class="dia-art" data-cid="${d.cidade}"><b>${m.kanji}</b><i>${dm(d.data)} · ${esc(d.semana)}</i></div>
         <div class="dia-head">
-          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de 16 · dorme em ${esc(m.nome)}</p></div>
+          <div><h3>${esc(d.base)}</h3><p class="base">Dia ${k+1} de ${DADOS.dias.length} · ${k===DADOS.dias.length-1?'retorno via Doha':'pernoite planejado em '+esc(m.nome)}</p></div>
           ${d.transicao?`<span class="badge-tr">troca de base</span>`:""}
         </div>
         <div class="dia-stats">${stats.join("")}</div>
@@ -1031,23 +1039,23 @@ function montarTrilho(){
    7. CARROSSÉIS CURADOS
    ================================================================ */
 const COMER=[
- {c:"osaka",d:"18/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
+ {c:"osaka",d:"16/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
  {c:"osaka",d:"17 e 30/03",n:"Dotonbori",b:"Namba",t:"Takoyaki, okonomiyaki e kushikatsu à beira do canal, sob o letreiro do Glico. A multidão pesa das 19h às 21h.",g:"24h · cruzeiro ¥1.200"},
  {c:"osaka",d:"17/03",n:"Shinsekai",b:"Naniwa",t:"Bairro retrô dos anos 1950 aos pés da Tsūtenkaku, e a capital do kushikatsu.",g:"10:00–20:00"},
- {c:"osaka",d:"18/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Barata e senta os 13 sem reserva.",g:"11:00–20:00 · fraldário no piso 2"},
+ {c:"osaka",d:"16/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Opção prática de almoço; talvez seja necessário dividir o grupo para encontrar lugares.",g:"11:00–20:00 · fraldário no piso 2"},
  {c:"osaka",d:"17/03",n:"Hozenji Yokocho",b:"Namba",t:"Beco de pedra ao lado do Dotonbori, com o templo coberto de musgo. O contraponto silencioso ao neon.",g:"24h"},
  {c:"kyoto",d:"19 e 21/03",n:"Pontocho",b:"Gion",t:"Beco de 2 m de largura à beira do rio Kamo, com restaurantes dos dois lados. Carrinho não entra.",g:"noite · leve o canguru"},
- {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. O único dia em que a comida já está paga.",g:"La Vista Fujikawaguchiko"},
- {c:"tokyo",d:"25/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
- {c:"tokyo",d:"24/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
- {c:"tokyo",d:"24/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
- {c:"tokyo",d:"27/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
+ {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. Confirmar no comprovante se o jantar está incluído e reservar o horário do grupo.",g:"La Vista Fujikawaguchiko"},
+ {c:"tokyo",d:"27/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
+ {c:"tokyo",d:"26/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
+ {c:"tokyo",d:"26/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
+ {c:"tokyo",d:"25/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
 ];
 const COMPRAS=[
- {c:"osaka",d:"17/03",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
- {c:"osaka",d:"19 e 31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
+ {c:"osaka",d:"alternativa",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
+ {c:"osaka",d:"31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
  {c:"osaka",d:"30 e 31/03",n:"Shinsaibashi-suji",b:"Shinsaibashi",t:"Galeria coberta de 600 m que emenda direto no Dotonbori. Funciona com chuva e concentra quase tudo.",g:"11:00–21:00 · última chance de tax-free"},
- {c:"tokyo",d:"24/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
+ {c:"tokyo",d:"26/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
  {c:"tokyo",d:"28/03",n:"Akihabara",b:"Akihabara",t:"Eletrônicos, anime, games e lojas de vários andares. O dia inteiro cabe aqui, se deixarem.",g:"domingo · Chuo-dori vira calçadão à tarde"},
  {c:"tokyo",d:"28/03",n:"Ameyoko",b:"Ueno",t:"Feira de rua sob a linha do trem: comida, tênis, cosmético e barulho. O preço mais baixo de Tokyo.",g:"colado no Ueno Park"},
  {c:"tokyo",d:"29/03",n:"Takeshita-dori",b:"Harajuku",t:"350 m por 3 m de largura de puro kawaii: crepes, purikura e lojas alternativas. Segurem as crianças pela mão.",g:"11:00–20:00 · carrinho não entra"},
@@ -1055,13 +1063,13 @@ const COMPRAS=[
 ];
 const PLANOB=[
  {c:"osaka",d:"qualquer dia",n:"Chuva em Osaka",b:"tudo coberto",t:"Kaiyukan em espiral por 8 andares, Umeda Sky pelo elevador interno, Senba Center no subsolo, Kuromon coberto e 600 m de galeria em Shinsaibashi. Dá para passar o dia sem tomar chuva.",g:"nenhum deles depende do tempo"},
- {c:"osaka",d:"18/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
- {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Kyoto é a única base onde o transporte principal é ônibus urbano, com entrada pela porta traseira e carrinho dobrado em pé. Com 3 bebês em fim de semana de feriado, considerem táxi nos trechos curtos ou dividir o grupo.",g:"feriadão de 20 a 22/03"},
+ {c:"osaka",d:"16/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
+ {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Conferir lotação, acesso dos carrinhos e alternativas por trem/metrô. Se cotar táxi ou van, informar 13 pessoas, crianças, carrinhos e malas; o número de veículos depende da capacidade real.",g:"feriadão de 20 a 22/03"},
  {c:"fuji", d:"22 e 23/03",n:"Fuji na nuvem",b:"Kawaguchiko",t:"Oishi Park vale pela margem do lago mesmo sem o topo à vista. O onsen e o jantar do ryokan seguram o dia, e o teleférico Kachi-Kachi vira saída antecipada para Tokyo.",g:"o topo aparece em poucos dias do mês"},
  {c:"tokyo",d:"qualquer dia",n:"Chuva em Tokyo",b:"tudo coberto",t:"teamLab PLANETS, Miraikan, Solamachi, o observatório gratuito do Governo Metropolitano e os andares de Akihabara. Só o Skytree perde a graça com o céu fechado.",g:"o observatório abre até 22:00"},
  {c:"tokyo",d:"27/03",n:"Troca do dia de Shinjuku",b:"alternativa mapeada",t:"Se Shinjuku não empolgar, a troca já prevista é Palácio Imperial + Koishikawa Korakuen, colados um no outro e a 20 min de Ojima.",g:"¥300 · da lista original"},
  {c:"tokyo",d:"29/03",n:"Shibuya Sky esgotado",b:"Shibuya",t:"O horário do pôr do sol some primeiro, e em 29/03 o sol se põe ~17:55. Sem ele, o observatório do Governo Metropolitano é grátis e tem elevador direto ao 45º andar.",g:"grátis · Shinjuku"},
- {c:"osaka",d:"31/03",n:"A conexão de 2h em Sydney",b:"o risco da volta",t:"É a mais apertada da viagem. Como o bilhete é único, a LATAM reacomoda em caso de atraso — mas para não depender disso, estejam no KIX às 18:25, saindo de Namba às 17:20.",g:"crítico"}
+ {c:"osaka",d:"02/04",b:"voos via Doha",n:"Conexões na volta",t:"Doha: 1h20, seguir direto ao portão. GRU: 2h55 para entrada no Brasil e redespacho. Confirmar assistência e proteção dos bilhetes.",g:"Doha e Guarulhos"}
 ];
 function montarCarro(alvo,itens){
   el(alvo).innerHTML=itens.map(o=>`
@@ -1120,8 +1128,7 @@ function curto(s){ return s.replace(/\s*\([^)]*\)/g,"").trim(); }
 const AEROPORTOS=[
   [/pinto martins|fortaleza/i,"FOR","Pinto Martins"],
   [/guarulhos/i,"GRU","Guarulhos"],
-  [/merino|santiago/i,"SCL","Arturo Merino Benítez"],
-  [/kingsford|sydney/i,"SYD","Kingsford Smith"],
+  [/hamad|doha/i,"DOH","Hamad"],
   [/kansai|osaka/i,"KIX","Kansai"]
 ];
 function aero(s){
@@ -1144,7 +1151,7 @@ function era(v,campo){
 function cel(v,campo){ return era(v,campo)+esc(v[campo]||""); }
 function montarVoos(){
   el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr${v.antes?' class="remarcado"':''}>
-    <td class="n">${esc(v.numero)}</td>
+    <td class="n">${esc(v.numero)}<small class="apto">${esc(v.operadora||"")}</small></td>
     <td>${trecho(v)}</td>
     <td class="h">${dm(v.saidaData)}<br>${cel(v,"saidaHora")}</td>
     <td class="h">${dm(v.chegadaData)}<br>${cel(v,"chegadaHora")}</td>
@@ -1152,7 +1159,7 @@ function montarVoos(){
     <td>${cel(v,"conexao")}</td></tr>`).join("");
   const leg=el("voosLegenda");
   if(leg) leg.innerHTML=DADOS.voos.some(v=>v.antes)
-    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "";
+    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "Horários locais. Conferir o cartão de embarque e as notificações da companhia antes de viajar.";
   el("voosNotas").innerHTML=DADOS.voosNotas.filter(n=>n.texto).map(n=>{
     const crit=/⚠|pendente/i.test(n.titulo);
     return `<div class="callout ${crit?"crit":"c-fuji"}" style="margin-bottom:9px">
@@ -1168,13 +1175,13 @@ function montarHosp(){
         <s></s>
         <div class="tx">
           <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
-          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p>
+          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>
         </div>
-        <div class="vl">${h.total?"R$ "+nf(h.total):"—"}<u>grupo</u></div>
+        <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):"A cotar"}<u>grupo</u></div>
       </div>`).join("")
       + `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
-         <div class="tx"><h4>Total do conjunto ${set.toUpperCase()}</h4>
-         <p class="mt">${lista.length} reservas lançadas</p></div>
+         <div class="tx"><h4>Subtotal dos valores históricos ${set.toUpperCase()}</h4>
+         <p class="mt">${lista.filter(h=>Number.isFinite(h.total)).length} valores antigos · ${lista.filter(h=>!Number.isFinite(h.total)).length} entradas sem cotação · conjunto ${set==="b"?"histórico parcial":"A com três blocos a cotar"}</p></div>
          <div class="vl">R$ ${nf(lista.reduce((a,b)=>a+(b.total||0),0))}<u>grupo</u></div></div>`;
   }
   el("hospToggle").addEventListener("click",(ev)=>{
@@ -1213,7 +1220,7 @@ function montarTema(){
 function montarContagem(){
   const cd=el("cd");
   if(!cd) return;
-  const alvo=new Date("2027-03-14T10:40:00-03:00");
+  const alvo=new Date("2027-03-13T11:15:00-03:00");
   const dias=Math.max(0,Math.ceil((alvo-new Date())/864e5));
   cd.textContent=nf(dias);
 }

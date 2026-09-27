@@ -93,7 +93,8 @@ def _km_a_pe(dados):
         if not isinstance(g, dict) or 'pernas' not in g:
             continue
         d.setdefault('total', {})['km_pe'] = round(
-            sum(p.get('km') or 0 for p in g['pernas'] if p.get('modo') == 'pe'), 1)
+            sum((p.get('km') or 0) if p.get('modo') == 'pe' else
+                (p.get('kmPeEstimado') or 0) for p in g['pernas']), 1)
 
 
 def _refazer_resumo(dados, verboso=True):
@@ -121,7 +122,8 @@ def _refazer_resumo(dados, verboso=True):
                     media = soma['km_pe'] / float(len(dados['dias']))
                     r['nota'] = ('Média de ~%s km por dia, empurrando carrinho boa parte do '
                                  'tempo. Só os trechos ENTRE paradas: não conta o que se anda '
-                                 'dentro de cada parque, templo ou galeria.'
+                                 'dentro de cada parque, templo ou galeria. Nos trajetos '
+                                 'redistribuídos, os acessos a pé são aproximações de planejamento.'
                                  % ('%.1f' % media).replace('.', ','))
                 break
         else:
@@ -288,6 +290,10 @@ def aplicar(dados, verboso=True):
             continue
 
         raise SystemExit('ajustes.json: tipo desconhecido "%s"' % tipo)
+
+    # A remarcação sucede as operações antigas e sobrevive a uma reextração do XLSX.
+    import remarcacao
+    dados = remarcacao.aplicar(dados)
 
     # A nota em reais da planilha e uma frase congelada: quando uma correcao muda a
     # tarifa de um trecho, o total e refeito mas o "R$ ..." continua o antigo. Aqui
