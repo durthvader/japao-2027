@@ -1,6 +1,6 @@
 {
  "viagem": {
-  "revisao": "2026-09-27",
+  "revisao": "2026-10-06",
   "inicioJapao": "2027-03-15",
   "fimJapao": "2027-04-01",
   "nDias": 18,
@@ -55,7 +55,7 @@
    "duracao": "9h00",
    "conexao": "Chegada ao Japão em 15/03",
    "operadora": "Qatar Airways · A350-900",
-   "obs": "A conexão atravessa a meia-noite. A chegada ao Japão é SEGUNDA, 15/03. A hospedagem registrada começa em 16/03: obter cobertura para a noite adicional antes de viajar."
+   "obs": "A conexão atravessa a meia-noite. Chegada ao Japão na segunda, 15/03, às 16:25. Hospedagem de Osaka confirmada para 15–18/03; alteração aceita pelo anfitrião."
   },
   {
    "numero": "LA 5306",
@@ -100,7 +100,7 @@
  "voosNotas": [
   {
    "titulo": "REMARCAÇÃO CONFIRMADA PARA AS 13 PESSOAS",
-   "texto": "Ida doméstica mantida; quatro trechos internacionais operados pela Qatar via Doha; volta doméstica alterada para 02/04 às 13:30. Horários abaixo são locais e vêm dos comprovantes compartilhados em 26/09/2026. Hospedagens ainda não alteradas. Companhia e aeroportos podem atualizar horários até o embarque."
+   "texto": "Ida doméstica mantida; quatro trechos internacionais operados pela Qatar via Doha; volta doméstica alterada para 02/04 às 13:30. Horários abaixo são locais e vêm dos comprovantes compartilhados em 26/09/2026. Osaka inicial confirmada de 15 a 18/03/2027: o anfitrião aceitou a alteração. Kyoto e Osaka final continuam pendentes. Companhia e aeroportos podem atualizar horários até o embarque."
   },
   {
    "titulo": "IDA — FOR 13/03 11:15 → KIX 15/03 16:25",
@@ -128,7 +128,7 @@
   },
   {
    "titulo": "HOSPEDAGENS E SERVIÇOS: AINDA PRECISAM DE AJUSTE",
-   "texto": "Manter 17 noites: Osaka 15–18/03, Kyoto 18–22/03, Fuji 22–23/03, Tóquio 23–30/03 e Osaka 30/03–01/04. Dias adicionais livres: 18/03 após a chegada a Kyoto e 01/04 em Osaka até o aeroporto. Nenhuma hospedagem alterada. Atualizar seguro, internet e demais serviços conforme as datas confirmadas."
+   "texto": "Manter 17 noites: Osaka 15–18/03, Kyoto 18–22/03, Fuji 22–23/03, Tóquio 23–30/03 e Osaka 30/03–01/04. Dias adicionais livres: 18/03 após a chegada a Kyoto e 01/04 em Osaka até o aeroporto. Osaka inicial confirmada de 15 a 18/03/2027: o anfitrião aceitou a alteração. Kyoto e Osaka final continuam pendentes. Atualizar seguro, internet e demais serviços conforme as datas confirmadas."
   }
  ],
  "hospedagem": {
@@ -141,8 +141,12 @@
     "checkout": "2027-03-18",
     "noites": 3,
     "total": null,
-    "status": "Pendente — Solicitar troca de 16–19/03 para 15–18/03; mesma quantidade de noites, nova cotação necessária",
-    "referenciaAnterior": 4054.89
+    "status": "Confirmada: alteração para 15–18/03/2027 aceita pelo anfitrião em 06/10/2026. Três noites. Valor após a alteração a conferir; referência anterior de R$ 4.054,89.",
+    "referenciaAnterior": 4054.89,
+    "reservaCheckin": "2027-03-15",
+    "reservaCheckout": "2027-03-18",
+    "reservaNoites": 3,
+    "alteracaoConfirmadaEm": "2026-10-06"
    },
    {
     "hotel": "K-style 東本願寺",
@@ -243,7 +247,7 @@
      "duracao": "Reservar margem para desembarque",
      "bebe": "CARRINHO OK",
      "terreno": "Aeroporto com rotas acessíveis; confirmar onde os carrinhos serão entregues.",
-     "obs": "Qatar Airways. Imigração, bagagens, carrinhos e alfândega têm duração variável. Visit Japan Web deve estar preparado antes da saída do Brasil. A noite de 15/03 ainda precisa ser incluída na hospedagem. Não reservar atrações nesta tarde."
+     "obs": "Qatar Airways. Imigração, bagagens, carrinhos e alfândega têm duração variável. Visit Japan Web deve estar preparado antes da saída do Brasil. Hospedagem inicial de Osaka confirmada para 15–18/03. Não reservar atrações nesta tarde."
     },
     {
      "periodo": "Noite",
@@ -260,7 +264,7 @@
      "duracao": "1h",
      "bebe": "CARRINHO OK",
      "terreno": "Usar elevadores e confirmar espaço para bagagens. Não contar com três carrinhos abertos em vagão cheio.",
-     "obs": "Percurso de referência até Tengachaya, condicionado ao endereço da hospedagem de 15/03. Não há trem reservado. Confirmar horário, tarifa e assentos; se o hotel mudar, recalcular o trajeto. Orçamento mantém ¥970 como estimativa anterior."
+     "obs": "Percurso de referência até Tengachaya, onde fica a hospedagem confirmada de 15–18/03. Trem ainda sem reserva. Confirmar horário, tarifa, assentos e instruções de check-in. Orçamento mantém ¥970 como estimativa anterior."
     },
     {
      "periodo": "Noite",
@@ -2416,8 +2420,8 @@
    "texto": "O programa completo do antigo dia 18 passa para 16/03 para permitir chegada a Kyoto em 18/03. O sumô e os demais passeios de 17/03 permanecem. Compras de 31/03 mantidas. O dia 01/04 fica livre até os procedimentos e o transfer para o aeroporto. Sem atrações novas ou novas marcações de opcional."
   },
   "10": {
-   "titulo": "HOSPEDAGENS: opção A escolhida, alterações pendentes",
-   "texto": "Planejamento: Osaka 15–18/03 (3 noites), Kyoto 18–22/03 (4), Kawaguchiko 22–23/03 (1), Tóquio 23–30/03 (7), Osaka 30/03–01/04 (2). Total 17. Obter novas cotações de Osaka inicial, Kyoto e Osaka final antes de alterar/cancelar. Mesmo três noites em Osaka inicial podem ter novo preço. Fuji/Tóquio preservam datas. Guarda-volumes em 01/04."
+   "titulo": "HOSPEDAGENS: Osaka inicial confirmada; Kyoto e Osaka final pendentes",
+   "texto": "Osaka inicial confirmada de 15–18/03 (3 noites), com alteração aceita pelo anfitrião. Kyoto 18–22/03 (4 noites) e Osaka final 30/03–01/04 (2) continuam pendentes. Kawaguchiko 22–23/03 (1) e Tóquio 23–30/03 (7) mantêm as datas. Total: 17 noites. Conferir o valor final de Osaka inicial; cotar Kyoto e Osaka final. Guarda-volumes em 01/04 a confirmar."
   },
   "11": {
    "titulo": "DOHA E GRU: novas prioridades de conexão",

@@ -576,7 +576,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <script>
 "use strict";
-const DADOS = {"resumo": [{"label": "Distância total percorrida", "valor": 1396.3, "unidade": "km", "nota": "Shinkansen, ônibus rodoviário, metrô e trens urbanos somados."}, {"label": "Tempo total dentro do transporte", "valor": 1449.0, "unidade": "min", "nota": "Só o tempo em movimento — não conta espera de plataforma nem baldeação."}, {"label": "Caminhada total estimada", "valor": 79.3, "unidade": "km", "nota": "Média de ~4,4 km por dia, empurrando carrinho boa parte do tempo. Só os trechos ENTRE paradas: não conta o que se anda dentro de cada parque, templo ou galeria. Nos trajetos redistribuídos, os acessos a pé são aproximações de planejamento."}, {"label": "Transporte no Japão", "valor": 47449.0, "unidade": "¥", "nota": "Aeroporto + trechos entre cidades + urbano. NÃO inclui as passagens aéreas."}, {"label": "Ingressos e atrações", "valor": 44000.0, "unidade": "¥", "nota": "Valor adulto. Adolescente paga menos e bebê quase sempre não paga."}, {"label": "TOTAL EM IENES (transporte + ingressos)", "valor": 91449.0, "unidade": "¥", "nota": ""}, {"label": "TOTAL EM REAIS (¥1 = R$ 0,033)", "valor": 3017.82, "unidade": "", "nota": "Transporte e ingressos estimados. Alimentação separada: ¥6.000 × 18 dias = ¥108.000 ≈ R$ 3.564 por adulto. Hospedagem, passagens e extras não incluídos."}], "nDias": 18, "nParadas": 93};
+const DADOS = {"resumo": [{"label": "Distância total percorrida", "valor": 1396.3, "unidade": "km", "nota": "Shinkansen, ônibus rodoviário, metrô e trens urbanos somados."}, {"label": "Tempo total dentro do transporte", "valor": 1449.0, "unidade": "min", "nota": "Só o tempo em movimento — não conta espera de plataforma nem baldeação."}, {"label": "Caminhada total estimada", "valor": 79.3, "unidade": "km", "nota": "Média de ~4,4 km por dia, empurrando carrinho boa parte do tempo. Só os trechos ENTRE paradas: não conta o que se anda dentro de cada parque, templo ou galeria. Nos trajetos redistribuídos, os acessos a pé são aproximações de planejamento."}, {"label": "Transporte no Japão", "valor": 47449.0, "unidade": "¥", "nota": "Aeroporto + trechos entre cidades + urbano. NÃO inclui as passagens aéreas."}, {"label": "Ingressos e atrações", "valor": 44000.0, "unidade": "¥", "nota": "Valor adulto. Adolescente paga menos e bebê quase sempre não paga."}, {"label": "TOTAL EM IENES (transporte + ingressos)", "valor": 91449.0, "unidade": "¥", "nota": ""}, {"label": "TOTAL EM REAIS (¥1 = R$ 0,033)", "valor": 3017.82, "unidade": "", "nota": "Alimentação separada: ¥6.000 × 18 dias = ¥108.000 ≈ R$ 3.564 por adulto. Hotéis, passagens e extras ficam fora deste subtotal. Custos sem cotação permanecem pendentes."}], "nDias": 18, "nParadas": 93};
 const MAPAS = [];   // dias com mapa proprio (dia-NN.html)
 const FOTOS = {
  "hero": {
@@ -1177,11 +1177,11 @@ function montarHosp(){
           <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
           <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>
         </div>
-        <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):"A cotar"}<u>grupo</u></div>
+        <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):h.alteracaoConfirmadaEm?"A conferir":"A cotar"}<u>grupo</u></div>
       </div>`).join("")
       + `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
          <div class="tx"><h4>Subtotal dos valores históricos ${set.toUpperCase()}</h4>
-         <p class="mt">${lista.filter(h=>Number.isFinite(h.total)).length} valores antigos · ${lista.filter(h=>!Number.isFinite(h.total)).length} entradas sem cotação · conjunto ${set==="b"?"histórico parcial":"A com três blocos a cotar"}</p></div>
+         <p class="mt">${lista.filter(h=>Number.isFinite(h.total)).length} valores antigos · ${lista.filter(h=>!Number.isFinite(h.total)).length} valores a conferir ou cotar · conjunto ${set==="b"?"histórico parcial":"A: Osaka inicial confirmada; Kyoto e Osaka final pendentes"}</p></div>
          <div class="vl">R$ ${nf(lista.reduce((a,b)=>a+(b.total||0),0))}<u>grupo</u></div></div>`;
   }
   el("hospToggle").addEventListener("click",(ev)=>{

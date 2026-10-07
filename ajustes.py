@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 """Aplica ajustes.json sobre os dados extraidos da planilha.
 
-dados.json e o extrato cru do .xlsx e nunca e editado a mao. As decisoes tomadas
+dados.json e o extrato do .xlsx e nunca e editado a mao. A planilha consolidada
+traz o marcador _roteiroConsolidado: seus passeios ja incorporam as decisoes,
+e somente os dados complementares de logistica sao lidos de remarcacao.json.
+Para os extratos anteriores, as decisoes tomadas
 depois — mover uma parada de dia, cortar uma repeticao, inverter uma ordem — vivem
 em ajustes.json e sao aplicadas aqui, em memoria, na hora de gerar o site. Assim a
 planilha pode ser reextraida a vontade sem perder nada.
@@ -30,7 +33,7 @@ a descrever um trajeto que nao existe mais, e precisam ser reescritos junto.
 
 Toda atividade tocada ganha um campo 'ajuste' com o motivo, que o site mostra.
 """
-import io, json, os, re
+import copy, io, json, os, re
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 ARQ = os.path.join(BASE, 'ajustes.json')
@@ -142,7 +145,53 @@ def _refazer_resumo(dados, verboso=True):
             print('   %s' % f)
 
 
+def _complementar_consolidado(dados):
+    """Completa logística e situação das reservas, preservando os passeios da planilha."""
+    arquivo = os.path.join(BASE, 'remarcacao.json')
+    if not os.path.exists(arquivo):
+        return
+    novo = json.loads(io.open(arquivo, encoding='utf-8').read())
+    for campo in ('viagem', 'voos', 'voosNotas'):
+        if campo in novo:
+            dados[campo] = copy.deepcopy(novo[campo])
+
+    # E/F e os valores da planilha registram a reserva anterior. A informa o
+    # período planejado; os custos dos blocos pendentes continuam sem cotação.
+    hospedagem = dados.setdefault('hospedagem', {})
+    for grupo, referencias in novo.get('hospedagem', {}).items():
+        registros = hospedagem.get(grupo, [])
+        completos = []
+        for i, referencia in enumerate(referencias):
+            h = copy.deepcopy(referencia)
+            if i < len(registros):
+                registro = registros[i]
+                for campo in ('hotel', 'link', 'cidade', 'checkin', 'checkout', 'noites',
+                              'reservaCheckin', 'reservaCheckout', 'reservaNoites',
+                              'referenciaAnterior'):
+                    if campo in registro:
+                        h[campo] = copy.deepcopy(registro[campo])
+            completos.append(h)
+        completos.extend(copy.deepcopy(registros[len(referencias):]))
+        hospedagem[grupo] = completos
+
+    for nota in dados.get('notas', []):
+        complemento = novo.get('notas', {}).get(str(nota['n']))
+        if complemento:
+            nota.update(copy.deepcopy(complemento))
+
+
 def aplicar(dados, verboso=True):
+    if dados.get('_roteiroConsolidado'):
+        _complementar_consolidado(dados)
+        for dia in dados.get('dias', []):
+            _recalcular(dia)
+        _km_a_pe(dados)
+        _refazer_resumo(dados, verboso)
+        if verboso:
+            print('ajustes: roteiro consolidado em %s; passeios lidos da planilha'
+                  % dados['_roteiroConsolidado'])
+        return dados
+
     if not os.path.exists(ARQ):
         return dados
     bruto = json.loads(io.open(ARQ, encoding='utf-8').read())

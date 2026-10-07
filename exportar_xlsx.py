@@ -147,7 +147,7 @@ def main():
         ('15 de março a 1 de abril de 2027 · 18 dias / 17 noites · 13 pessoas', 'sub'),
         ('Voos via Doha confirmados. Programação anterior restaurada; 18/03 Kyoto livre, 01/04 Osaka livre até o aeroporto.', 'nota'),
         ('Opção A adotada: Osaka 15–18/03, Kyoto 18–22/03, Fuji 22–23/03, Tóquio 23–30/03 e Osaka 30/03–01/04.', 'nota'),
-        ('Tóquio até 30/03; compras originais em 31/03; 01/04 livre até o aeroporto. Reservas ainda não alteradas.', 'nota'),
+        ('Tóquio até 30/03; compras originais em 31/03; 01/04 livre até o aeroporto. Osaka inicial confirmada de 15–18/03; Kyoto e Osaka final pendentes.', 'nota'),
         ('', ''),
         ('Gerado em %s a partir da planilha original mais as decisões tomadas depois dela.' % hoje, ''),
         ('Esta é uma fotografia do resultado: a aba Roteiro já vem com tudo aplicado.', ''),

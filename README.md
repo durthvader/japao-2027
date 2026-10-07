@@ -17,13 +17,21 @@ até o aeroporto. Nenhuma atração nova foi acrescentada aos períodos livres.
 A redistribuição anterior de passeios foi revogada. Seul não foi incluída.
 
 Bases: Osaka 15–18/03, Kyoto 18–22/03, Kawaguchiko 22–23/03, Tóquio 23–30/03,
-Osaka 30/03–01/04. Hospedagens ainda não alteradas; três blocos a cotar/ajustar.
+Osaka 30/03–01/04. Atualização de 06/10/2026: o anfitrião aceitou Osaka inicial 15–18/03. Kyoto e Osaka final continuam pendentes; conferir o valor de Osaka após a alteração.
 A lista B de hospedagem é histórico de acomodações, não roteiro ativo.
 
-O gerador aplica `ajustes.json` e depois `remarcacao.json` por `remarcacao.py`.
-A nova camada substitui voos, notas e dias afetados sem editar o extrato bruto ou
-a planilha original. Uma reextração não restaura os voos antigos. Não remover essa
-camada ao fazer novas alterações. Não incluir localizadores ou compras pessoais.
+A planilha original foi atualizada em 06/10/2026 com a programação decidida em
+27/09. `Roteiro!A25` registra `Roteiro consolidado: 06/10/2026`, incluindo a
+confirmação de Osaka inicial. O extrator grava a data desse marcador em `_roteiroConsolidado`.
+`ajustes.py` preserva os passeios da planilha e recalcula seus totais. Nesse caso,
+as operações históricas de `ajustes.json` e os dias de `remarcacao.json` já estão
+incorporados. Voos, notas de logística e situação das hospedagens continuam
+complementados por `remarcacao.json`. Não incluir localizadores ou compras pessoais.
+
+Em `Hospedagem`, a coluna A mostra os períodos planejados. E/F e os valores
+preservam os registros de reserva anteriores. O extrato mantém esses registros
+em `reservaCheckin`, `reservaCheckout`, `reservaNoites` e `referenciaAnterior`.
+Os blocos com alteração pendente permanecem sem cotação no site.
 
 Custos sem cotação ficam explícitos. O subtotal de hotéis reúne referências
 antigas e não representa 17 noites cotadas. A alimentação usa 18 dias. O histórico
@@ -65,10 +73,11 @@ publica em seguida.
 
 ### Mudar o roteiro sem mexer na planilha
 
-`dados.json` é o extrato cru do `.xlsx` e **não se edita à mão**. As decisões tomadas
-depois — mover uma parada de dia, cortar uma repetição, inverter uma ordem — ficam em
-`ajustes.json` e são aplicadas por cima, em memória, na hora de gerar. A planilha pode ser
-reextraída à vontade sem perder nada.
+`dados.json` é o extrato do `.xlsx` e **não se edita à mão**. A planilha consolidada
+contém os passeios atuais; novas mudanças nas atividades devem ser feitas nela.
+O extrator identifica datas, `TOTAL DO DIA` e rótulos do resumo, acompanhando o
+crescimento da aba. `ajustes.json` preserva as decisões históricas para leitura e
+para extratos antigos que ainda não tenham o marcador de consolidação.
 
 Operações: `mover` (com `para: null` para cortar), `reordenar` e `nota` (só registra a
 análise). Cada uma leva um `motivo`, que o site mostra no card do dia, e um `campos`
@@ -85,10 +94,9 @@ dias"), referência a aba de planilha e rateio individual entre as famílias nã
 painel. Conselho em segunda pessoa para quem viaja — "vocês vão precisar de reserva",
 "considerem takkyubin" — é outra coisa e fica.
 
-Parte desse texto veio da própria planilha. Em vez de editar o `.xlsx`, `ajustes.json` tem
-uma lista `limpeza` de pares de troca, aplicada a todo texto que o site mostra: atividade,
-nota, voo e observação de voo. Se a planilha for reescrita e uma troca deixar de casar, o
-`gerar_site.py` avisa em vez de falhar em silêncio.
+Parte desse texto veio da própria planilha. `ajustes.json` preserva uma lista `limpeza`
+de pares de troca usada nos extratos antigos. A planilha consolidada já contém os
+textos revisados, e o gerador preserva esses textos ao extrair novamente.
 
 A análise em si não se perde: ela mora em `ajustes.json` e `mapa/lista.json`, que são
 documentos de trabalho e nunca chegam ao HTML.
@@ -151,8 +159,8 @@ botão "Ver o mapa deste dia" aparece sozinho no card daquele dia.
 - `ajustes.py` / `ajustes.json` — a camada de decisões por cima do extrato; o
   `.json` fica **fora do repositório** porque guarda o motivo de cada uma.
 - `exportar_xlsx.py` — grava o roteiro já ajustado em `Roteiro Japao - FINAL.xlsx`,
-  na pasta acima. É saída, não entrada: a fonte continua sendo a planilha original
-  mais o `ajustes.json`. Reescrever a fonte faria os ajustes se aplicarem duas vezes.
+  na pasta acima. A planilha original consolidada fornece os passeios; o arquivo
+  FINAL é uma exportação. O marcador de revisão evita repetir os ajustes históricos.
 - `fotos.py` — baixa as fotos do Commons e grava `fotos/` + `creditos.json`.
 - `fotos/` — as imagens em dois tamanhos, mais os créditos.
 
