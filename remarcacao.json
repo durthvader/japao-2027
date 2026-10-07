@@ -127,8 +127,8 @@
    "texto": "Austrália e Chile saíram deste itinerário. Trânsito em Doha sem saída do aeroporto não exige visto segundo Hamad. Qualquer saída para hotel ou passeio muda a análise. Conferir passaportes, regras do Japão e exigências do transportador novamente antes da viagem. Preencher Visit Japan Web com chegada em 15/03 pelo QR 802. Japão: passaporte comum brasileiro com chip, válido durante toda a estada, e isenção turística até 90 dias. Eventual imigração no Qatar demanda conferência individual de entrada e saúde; não tratar CIVP como exigência comprovada do trânsito internacional."
   },
   {
-   "titulo": "HOSPEDAGENS: OSAKA CONFIRMADA; KYOTO E SERVIÇOS PENDENTES",
-   "texto": "Osaka inicial 15–18/03 e GRAND PIA 2 em Bentencho 30/03–01/04 estão confirmados. Kyoto confirmado em 19–22/03 por R$7.313; antecipação para 18/03 pendente. La Vista confirmado em 22–23/03 por R$8.727; Tóquio mantém 23–30/03. Total: 17 noites. Conferir preços finais de Osaka e ajustar Kyoto. No GRAND PIA 2: check-in 15h, checkout 10h, bagagens após 12h na chegada. Solicitar guarda-volumes após o checkout; o guia informa $5 por volume, com moeda e condições a confirmar. Seguro e internet seguem as datas da viagem. Brighton, Hakonenomori e Petit Grande cancelados conforme os prints."
+   "titulo": "HOSPEDAGENS: LAON CONFIRMADO; SERVIÇOS A CONFERIR",
+   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelamento e eventual cobrança a conferir. Osaka inicial, La Vista e GRAND PIA 2 mantêm suas reservas. Os novos acessos de Gion têm tarifas e horários a conferir. Seguro e internet devem cobrir a viagem atual."
   }
  ],
  "hospedagem": {
@@ -149,19 +149,41 @@
     "alteracaoConfirmadaEm": "2026-10-06"
    },
    {
-    "hotel": "K-style 東本願寺",
-    "link": "https://www.booking.com/hotel/jp/k-style-higashihonganji.pt-br.html",
+    "hotel": "Laon Inn Gion Nawate",
+    "link": "https://www.laoninn.com/english/nawate/",
     "cidade": "Quioto",
     "checkin": "2027-03-18",
     "checkout": "2027-03-22",
     "noites": 4,
-    "total": 7313,
-    "status": "Confirmada em 19–22/03/2027: 4 quartos, R$7.313. Cancelamento grátis conforme o print; prazo não informado. Antecipação para 18/03 pendente; preço da quarta noite a conferir.",
+    "total": 10295,
+    "status": "Confirmada, 4 quartos. Política de cancelamento a conferir.",
     "referenciaAnterior": 7115.2,
-    "valorPeriodo": "reserva 19–22/03",
+    "valorPeriodo": "aprox., grupo",
     "valorConfirmadoEm": "2026-10-06",
     "quartos": 4,
-    "cancelamentoGratis": true
+    "cancelamentoGratis": null,
+    "reservaCheckin": "2027-03-18",
+    "reservaCheckout": "2027-03-22",
+    "reservaNoites": 4,
+    "totalAproximado": true,
+    "moedaPagamento": "JPY",
+    "totalOriginal": 282616,
+    "totalPagoOriginal": 282616,
+    "pagamento": "Pago conforme confirmação",
+    "reservaConfirmadaEm": "2026-10-06",
+    "cancelamento": "A conferir na confirmação da tarifa contratada",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802, Japão",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Laon+Inn+Gion+Nawate+16-1+Yamatocho+Kyoto",
+    "horariosPadrao": "Check-in 15h–23h; checkout 10h, conforme site oficial. Conferir na reserva.",
+    "bagagens": "O site oficial oferece guarda de malas antes do check-in e após o checkout. Conferir carrinhos e envio de malas.",
+    "reservaAnterior": {
+     "hotel": "K-style 東本願寺",
+     "checkin": "2027-03-19",
+     "checkout": "2027-03-22",
+     "total": 7313,
+     "quartos": 4,
+     "status": "Cancelamento e eventual cobrança a conferir"
+    }
    },
    {
     "hotel": "La Vista Fujikawaguchiko",
@@ -625,9 +647,9 @@
      "de": "Tengachaya",
      "como": "Metrô Sakaisuji até Dobutsuen-mae + Midosuji até Umeda + JR Special Rapid",
      "km": 48.0,
-     "min": 75,
-     "pe": 20,
-     "transp": 870,
+     "min": 75.0,
+     "pe": 20.0,
+     "transp": 870.0,
      "ingresso": 0.0,
      "horario": "Saída de referência 09:00",
      "duracao": "Reservar cerca de 1h40 com acessos",
@@ -636,16 +658,16 @@
      "obs": "Transfer em 18/03, quinta-feira. Usar transporte regular via Osaka/Umeda; o horário de chegada é meta, não reserva. Confirmar guarda de malas antes do check-in em Kyoto e reservar margem para elevadores e o grupo de 13."
     },
     {
-     "nome": "DIA LIVRE EM KYOTO",
      "periodo": "Manhã",
+     "nome": "DIA LIVRE EM KYOTO",
      "area": "Kyoto",
      "de": "Hospedagem",
      "como": "Sem deslocamento turístico definido",
-     "km": 0,
-     "min": 0,
-     "pe": 0,
-     "transp": 0,
-     "ingresso": 0,
+     "km": 0.0,
+     "min": 0.0,
+     "pe": 0.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
      "horario": "Livre",
      "duracao": "Sem programação",
      "bebe": "—",
@@ -654,23 +676,32 @@
     },
     {
      "periodo": "Tarde",
-     "nome": "Check-in K-style Higashi-Honganji",
-     "area": "Kyoto",
+     "nome": "Check-in Laon Inn Gion Nawate",
+     "area": "Gion / Higashiyama",
      "de": "Estação de Kyoto",
-     "como": "A pé até a hospedagem de referência",
-     "km": 0.9,
-     "min": 0,
-     "pe": 15,
-     "transp": 0,
+     "como": "JR Nara até Tofukuji → Keihan até Gion-Shijo → caminhada ao Laon",
+     "km": null,
+     "min": null,
+     "pe": null,
+     "transp": null,
      "ingresso": 0.0,
-     "horario": "a partir das 15:00",
+     "horario": "Check-in padrão 15h–23h; conferir reserva",
      "duracao": "1h",
      "bebe": "CARRINHO OK",
-     "terreno": "Hotel a 10 min plano da Estação de Kyoto.",
-     "obs": "Check-in antecipado para 18/03 ainda depende da alteração da hospedagem. Confirmar guarda das malas se a chegada ocorrer antes do horário de entrada. Nenhum passeio definido para o tempo livre."
+     "terreno": "Usar elevadores nas estações e conferir a entrada do hotel com malas e três carrinhos.",
+     "obs": "Reserva confirmada para 18–22/03, quatro quartos. Endereço: 16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802, Japão. O site oficial oferece guarda de malas antes das 15h. Conferir condições para carrinhos e recebimento de malas enviadas. Tarifa e duração do acesso Kyoto → Laon a conferir. Cancelamento do K-style anterior a conferir. O restante de 18/03 permanece livre."
     }
    ],
-   "total": {}
+   "total": {
+    "km": 48.9,
+    "min": 75.0,
+    "pe": 35.0,
+    "transp": 870.0,
+    "ingresso": 0,
+    "nota": "≈ R$ 28.71 por adulto neste dia (transporte + ingressos)",
+    "transportePendente": false,
+    "km_pe": 0.9
+   }
   },
   {
    "data": "2027-03-19",
@@ -683,23 +714,18 @@
      "periodo": "Manhã",
      "nome": "Higashi e Nishi Honganji — os dois templos gigantes",
      "area": "Shimogyo",
-     "de": "Hospedagem em Kyoto",
-     "como": "A pé até Higashi e Nishi Honganji",
-     "km": 0.9,
-     "min": 0,
-     "pe": 12,
-     "transp": 0,
-     "ingresso": 0,
+     "de": "Laon Inn Gion Nawate",
+     "como": "Keihan de Gion-Shijo a Shichijo → caminhada até Higashi e Nishi Honganji",
+     "km": null,
+     "min": null,
+     "pe": null,
+     "transp": null,
+     "ingresso": 0.0,
      "horario": "Higashi 05:50–17:30 · Nishi 05:30–17:00 — grátis",
      "duracao": "1h15",
      "bebe": "CARRINHO OK",
      "terreno": "Pátios de cascalho fino e planos, com rampa de madeira na entrada dos salões. Descalço dentro dos pavilhões — meia é boa ideia. Espaço de sobra para os três carrinhos.",
-     "obs": "O Goei-dō do Higashi Honganji é uma das maiores construções de madeira do mundo, e o Nishi Honganji é Patrimônio da Humanidade, com o palco de nō mais antigo que existe. Os dois são GRÁTIS, abrem cedo e quase não têm turista — ficam a 10 min a pé do hotel, que leva o nome do primeiro.",
-     "ajuste": {
-      "motivo": "Preenche a manha recuperada com o que esta mais perto: os dois Honganji ficam entre a estacao e o hotel, sao gratuitos e enormes. E o unico jeito de ganhar templo em Kyoto sem tirar nada de lugar nenhum.",
-      "de": null,
-      "para": "2027-03-19"
-     }
+     "obs": "Os dois Honganji permanecem no programa. A hospedagem agora fica em Gion; o acesso inicial usa a Keihan até Shichijo e caminhada até os templos. Conferir tarifa, duração e elevadores. O passeio é gratuito; os templos ficam afastados da nova base."
     },
     {
      "periodo": "Tarde",
@@ -708,59 +734,49 @@
      "de": "Nishi Honganji",
      "como": "Ônibus 206 ou 208 até Hakubutsukan-Sanjusangendo-mae — 10 min",
      "km": 1.9,
-     "min": 10,
-     "pe": 5,
-     "transp": 230,
-     "ingresso": 600,
+     "min": 10.0,
+     "pe": 5.0,
+     "transp": 230.0,
+     "ingresso": 600.0,
      "horario": "09:00–16:00 (últ. entrada 15:30) — horário de inverno",
      "duracao": "1h",
      "bebe": "CARRINHO OK",
      "terreno": "Corredor único de 120 m, plano e coberto, percorrido descalço. Carrinho fica na entrada; o piso de madeira é liso e as crianças andam bem. Não se fotografa dentro.",
-     "obs": "1.001 estátuas de Kannon em fila dentro de um salão de 120 m, o prédio de madeira mais comprido do Japão. ⚠ ATENÇÃO AO HORÁRIO: de 16 de novembro a 31 de março o templo fecha às 16:00, com última entrada 15:30 — uma hora antes do horário de verão que aparece na maioria dos guias. Visitar antes da última entrada. O check-in já ocorreu em 18/03. Fotografar dentro do salão é proibido. Piso de madeira, sapato na mão, e o carrinho fica na entrada.",
-     "ajuste": {
-      "motivo": "Um dos templos que tinham ficado de fora de Kyoto por falta de espaco, e o mais perto do hotel. Cabe na tarde recuperada, antes do check-in.",
-      "de": null,
-      "para": "2027-03-19"
-     }
+     "obs": "1.001 estátuas de Kannon em fila dentro de um salão de 120 m, o prédio de madeira mais comprido do Japão. ⚠ ATENÇÃO AO HORÁRIO: de 16 de novembro a 31 de março o templo fecha às 16:00, com última entrada 15:30 — uma hora antes do horário de verão que aparece na maioria dos guias. Visitar antes da última entrada. O check-in já ocorreu em 18/03. Fotografar dentro do salão é proibido. Piso de madeira, sapato na mão, e o carrinho fica na entrada."
     },
     {
      "periodo": "Tarde",
      "nome": "Retorno à hospedagem em Kyoto",
      "area": "Kyoto",
      "de": "Sanjūsangen-dō",
-     "como": "Ônibus 206 ou 208 de volta à Estação de Kyoto + 12 min a pé",
-     "km": 1.9,
-     "min": 10,
-     "pe": 12,
-     "transp": 230,
+     "como": "Caminhar a Shichijo → Keihan até Gion-Shijo → Laon",
+     "km": null,
+     "min": null,
+     "pe": null,
+     "transp": null,
      "ingresso": 0.0,
      "horario": "a partir das 15:00",
      "duracao": "1h",
      "bebe": "CARRINHO OK",
-     "terreno": "Hotel a 10 min plano da Estação de Kyoto.",
-     "obs": "Retorno já previsto no trajeto original, antes de Nishiki. Não há novo check-in: a entrada na hospedagem passa para 18/03."
+     "terreno": "Conferir saídas com elevador em Shichijo e Gion-Shijo e entrada do hotel com carrinhos.",
+     "obs": "Retorno ao Laon em Gion antes do Nishiki Market, preservando a parada já prevista. A entrada no hotel ocorre em 18/03. Tarifa e duração do novo retorno a conferir."
     },
     {
      "periodo": "Tarde",
      "nome": "Nishiki Market (\"a cozinha de Kyoto\")",
      "area": "Nakagyo",
-     "de": "Hotel K-style",
-     "como": "A pé pela Karasuma, ou metrô Karasuma até Shijo (1 parada)",
-     "km": 1.7,
-     "min": 10,
-     "pe": 8.0,
+     "de": "Laon Inn Gion Nawate",
+     "como": "A pé pela ponte Shijo-Ohashi e ruas de acesso ao Nishiki",
+     "km": 1.0,
+     "min": 0,
+     "pe": 15,
      "transp": 0,
      "ingresso": 0.0,
      "horario": "09:00–18:00",
      "duracao": "1h30",
      "bebe": "CANGURU",
      "terreno": "⚠ Galeria de 400 m com 3,5 m de largura e gente parada comendo dos dois lados. Com carrinho é sofrimento. Canguru, ou vá na abertura (09:00).",
-     "obs": "⚠ FECHA ÀS 18:00 — não é passeio noturno. Se não der tempo, troque por jantar em Pontocho.",
-     "ajuste": {
-      "motivo": "No dia 20 ele era uma volta de 8,3 km: o dia inteiro no oeste (Kinkaku-ji, Ryoan-ji, Arashiyama) e no fim atravessar Kyoto ate o centro, chegando 17:40 num mercado que fecha as 18:00. No dia 19 ele fica a 1,7 km do hotel, aberto, e o Pontocho para jantar fica a 500 m. Tira 2,1 km do dia 20 e resolve o horario.",
-      "de": "2027-03-20",
-      "para": "2027-03-19"
-     }
+     "obs": "Nishiki mantido antes das 18h. Caminhada desde o Laon estimada em cerca de 1 km; conferir o trajeto com carrinhos. Se não der tempo de visitar o mercado, preservar o jantar já previsto em Pontocho."
     },
     {
      "periodo": "Noite",
@@ -769,9 +785,9 @@
      "de": "Nishiki Market",
      "como": "A pé pela ponte Shijo-Ōhashi — 1,3 km, 17 min",
      "km": 1.3,
-     "min": 0,
-     "pe": 17,
-     "transp": 0,
+     "min": 0.0,
+     "pe": 17.0,
+     "transp": 0.0,
      "ingresso": 0.0,
      "horario": "24h — grátis",
      "duracao": "1h30",
@@ -794,17 +810,18 @@
      "duracao": "2h",
      "bebe": "CARRINHO OK",
      "terreno": "Yasaka Jinja tem rampa lateral pelo portão oeste. Pontocho é beco de 2 m de largura: ⚠ CANGURU ou deixem o carrinho na entrada do beco.",
-     "obs": "Yasaka iluminado à noite é de graça e imperdível. Pontocho: beco de 500 m à beira do rio. O L'Escamoteur Bar fica ali perto e abre às 18:00."
+     "obs": "Yasaka iluminado à noite é de graça e imperdível. Pontocho: beco de 500 m à beira do rio. O L'Escamoteur Bar fica ali perto e abre às 18:00. Após Pontocho, voltar a pé ao Laon pela ponte Shijo-Ohashi; caminhada aproximada de 0,5 km, com percurso a conferir."
     }
    ],
    "total": {
-    "km": 57.1,
-    "min": 75.0,
-    "pe": 87.0,
-    "transp": 1330,
-    "ingresso": 600,
-    "nota": "≈ R$ 64 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 10.1
+    "km": 9.1,
+    "min": 30.0,
+    "pe": 72.0,
+    "transp": 460.0,
+    "ingresso": 600.0,
+    "nota": "≈ R$ 34.98 por adulto neste dia (transporte + ingressos)",
+    "transportePendente": false,
+    "km_pe": 9.0
    },
    "ajustes": [
     {
@@ -840,23 +857,18 @@
      "periodo": "Manhã",
      "nome": "Arashiyama — Floresta de Bambu",
      "area": "Arashiyama",
-     "de": "Hotel / Est. Kyoto",
-     "como": "JR Sagano até Saga-Arashiyama — 15 min. Primeiro trem ~06:00",
-     "km": 11.0,
-     "min": 15,
-     "pe": 10.0,
-     "transp": 240,
+     "de": "Laon Inn Gion Nawate",
+     "como": "Caminhar a Kyoto-Kawaramachi → Hankyu até Katsura → linha Arashiyama → bambuzal",
+     "km": null,
+     "min": null,
+     "pe": null,
+     "transp": null,
      "ingresso": 0.0,
      "horario": "24h — grátis",
      "duracao": "1h",
      "bebe": "CARRINHO OK",
      "terreno": "Bambuzal é caminho plano e pavimentado. ⚠ Estreito e lotadíssimo entre 10h e 15h — vá antes das 9h ou depois das 16h e o carrinho passa tranquilo.",
-     "obs": "GRÁTIS. Vá cedo ou no fim da tarde: no feriado fica intransitável ao meio-dia. O templo Tenryu-ji, ao lado, custa ¥500.",
-     "ajuste": {
-      "motivo": "Invertido: o bambuzal ao amanhecer esta vazio, e as 14:00 e uma fila indiana de gente tirando foto. E tira o Monkey Park (fecha 16:00) da corrida contra o relogio — passa a ser 09:30, nao 15:30. Custa 0,8 km a mais que a ordem antiga; e troca de distancia por multidao e por horario.",
-      "de": "2027-03-20",
-      "para": "2027-03-20"
-     }
+     "obs": "Bambuzal mantido cedo. A partida agora ocorre em Gion, usando Hankyu Kyoto-Kawaramachi e troca em Katsura. Conferir a primeira combinação de 2027, tarifa e elevadores; 07h30 no bambuzal é meta de planejamento. Caminhada desde Hankyu Arashiyama por Togetsukyo estimada em 1,7 km."
     },
     {
      "periodo": "Manhã",
@@ -865,20 +877,15 @@
      "de": "Bambuzal",
      "como": "A pé — o bambuzal sai no portão norte do templo, 5 min",
      "km": 0.3,
-     "min": 0,
-     "pe": 5,
-     "transp": 0,
-     "ingresso": 500,
+     "min": 0.0,
+     "pe": 5.0,
+     "transp": 0.0,
+     "ingresso": 500.0,
      "horario": "08:30–17:00 (últ. entrada 16:50)",
      "duracao": "1h",
      "bebe": "CARRINHO OK",
      "terreno": "Jardim de passeio em volta de um lago, com caminho de terra batida e plano — o carrinho anda bem. Só os pavilhões exigem descalçar, e eles são opcionais.",
-     "obs": "Patrimônio da Humanidade e templo-mãe da escola Rinzai. O jardim Sōgenchi é de 1339, desenhado pelo fundador Musō Kokushi, e nunca foi refeito: é o mesmo traçado há quase 700 anos, com as montanhas de Arashiyama e Kameyama usadas como fundo emprestado. ¥500 só o jardim, +¥300 se quiser entrar nos pavilhões. O bambuzal sai pelo portão norte, então os dois se fazem na mesma parada.",
-     "ajuste": {
-      "motivo": "O dia 20 tem 6,1h de pe, o mais leve da viagem, e o dia 21 tem 10,2h. Mas o dia 21 nao pode ceder nada: a corrente dele (Ginkaku-ji, Caminho dos Filosofos, Nanzen-ji, Kiyomizu, Ninenzaka, Gion) e uma descida a pe continua, e partir isso ao meio transforma um dos pedacos numa viagem isolada atravessando a cidade. Entao o jeito de equilibrar e dar mais conteudo ao dia 20, e o Tenryu-ji e a melhor peca possivel: o portao norte dele DA no bambuzal, entao custa zero deslocamento.",
-      "de": null,
-      "para": "2027-03-20"
-     }
+     "obs": "Patrimônio da Humanidade e templo-mãe da escola Rinzai. O jardim Sōgenchi é de 1339, desenhado pelo fundador Musō Kokushi, e nunca foi refeito: é o mesmo traçado há quase 700 anos, com as montanhas de Arashiyama e Kameyama usadas como fundo emprestado. ¥500 só o jardim, +¥300 se quiser entrar nos pavilhões. O bambuzal sai pelo portão norte, então os dois se fazem na mesma parada."
     },
     {
      "periodo": "Manhã",
@@ -887,20 +894,15 @@
      "de": "Bambuzal",
      "como": "A pé pela ponte Togetsukyo + trilha de 20 min",
      "km": 1.0,
-     "min": 0,
+     "min": 0.0,
      "pe": 30.0,
-     "transp": 0,
+     "transp": 0.0,
      "ingresso": 800.0,
      "horario": "09:00–16:00",
      "duracao": "1h30",
      "bebe": "CANGURU",
      "terreno": "⚠ CANGURU OBRIGATÓRIO. São 20 min de trilha de terra em subida, ~160 m de desnível, sem alternativa. Carrinho NÃO sobe — há guarda-volumes na bilheteria da base.",
-     "obs": "⚠ ÚLTIMA ENTRADA ÀS 16:00. Subida puxada — pesado com criança pequena no colo. No topo: macacos soltos e vista panorâmica de Kyoto.",
-     "ajuste": {
-      "motivo": "Invertido: o bambuzal ao amanhecer esta vazio, e as 14:00 e uma fila indiana de gente tirando foto. E tira o Monkey Park (fecha 16:00) da corrida contra o relogio — passa a ser 09:30, nao 15:30. Custa 0,8 km a mais que a ordem antiga; e troca de distancia por multidao e por horario.",
-      "de": "2027-03-20",
-      "para": "2027-03-20"
-     }
+     "obs": "⚠ ÚLTIMA ENTRADA ÀS 16:00. Subida puxada — pesado com criança pequena no colo. No topo: macacos soltos e vista panorâmica de Kyoto."
     },
     {
      "periodo": "Tarde",
@@ -909,20 +911,15 @@
      "de": "Arashiyama",
      "como": "Randen até Ryoanji (baldeação em Katabiranotsuji) + 700 m a pé",
      "km": 9.0,
-     "min": 25,
-     "pe": 10,
-     "transp": 250,
+     "min": 25.0,
+     "pe": 10.0,
+     "transp": 250.0,
      "ingresso": 600.0,
      "horario": "08:00–17:00",
      "duracao": "45 min",
      "bebe": "CARRINHO C/ ESFORÇO",
      "terreno": "Cascalho e alguns degraus na entrada do jardim de pedras; o salão exige tirar sapato e subir. Carrinho fica na entrada.",
-     "obs": "São 15 pedras, mas de qualquer ângulo só se enxergam 14. O jardim de musgo está incluso no ingresso.",
-     "ajuste": {
-      "motivo": "Invertido: o bambuzal ao amanhecer esta vazio, e as 14:00 e uma fila indiana de gente tirando foto. E tira o Monkey Park (fecha 16:00) da corrida contra o relogio — passa a ser 09:30, nao 15:30. Custa 0,8 km a mais que a ordem antiga; e troca de distancia por multidao e por horario.",
-      "de": "2027-03-20",
-      "para": "2027-03-20"
-     }
+     "obs": "São 15 pedras, mas de qualquer ângulo só se enxergam 14. O jardim de musgo está incluso no ingresso."
     },
     {
      "periodo": "Tarde",
@@ -931,20 +928,15 @@
      "de": "Ryoan-ji",
      "como": "Ônibus 59 — 8 min",
      "km": 2.0,
-     "min": 8,
+     "min": 8.0,
      "pe": 5.0,
-     "transp": 230,
+     "transp": 230.0,
      "ingresso": 500.0,
      "horario": "09:00–17:00",
      "duracao": "1h",
      "bebe": "CARRINHO OK",
      "terreno": "Percurso de mão única em cascalho compactado, plano e largo. Carrinho de rodinha pequena sacode, mas vai. ⚠ O ÔNIBUS 205 é o problema real — ver observação sobre ônibus de Kyoto.",
-     "obs": "⚠ COMEÇA O FERIADÃO (20 a 22/03). Chegue na abertura ou encare fila. O percurso é de mão única, não dá para voltar.",
-     "ajuste": {
-      "motivo": "Invertido: o bambuzal ao amanhecer esta vazio, e as 14:00 e uma fila indiana de gente tirando foto. E tira o Monkey Park (fecha 16:00) da corrida contra o relogio — passa a ser 09:30, nao 15:30. Custa 0,8 km a mais que a ordem antiga; e troca de distancia por multidao e por horario.",
-      "de": "2027-03-20",
-      "para": "2027-03-20"
-     }
+     "obs": "⚠ COMEÇA O FERIADÃO (20 a 22/03). Chegue na abertura ou encare fila. O percurso é de mão única, não dá para voltar."
     },
     {
      "periodo": "Tarde",
@@ -953,20 +945,15 @@
      "de": "Kinkaku-ji",
      "como": "Ônibus 12 até Nijojo-mae — 25 min, direto",
      "km": 3.3,
-     "min": 25,
-     "pe": 10,
-     "transp": 230,
-     "ingresso": 1300,
+     "min": 25.0,
+     "pe": 10.0,
+     "transp": 230.0,
+     "ingresso": 1300.0,
      "horario": "08:45–17:00 (últ. entrada 16:00)",
      "duracao": "1h30",
      "bebe": "CARRINHO C/ ESFORÇO",
      "terreno": "O terreno é amplo, plano e de cascalho — o carrinho anda bem pelos jardins. Mas o Palácio Ninomaru se percorre DESCALÇO por corredores de madeira, com o carrinho parado na entrada: são uns 800 m de circuito interno de meia. Fraldário perto do portão leste.",
-     "obs": "Patrimônio da Humanidade e a casa dos Tokugawa em Kyoto — foi neste salão que o último xogum devolveu o poder ao imperador, em 1867. O Palácio Ninomaru tem os \"pisos rouxinol\": tábuas que rangem de propósito a cada passo, construídas para denunciar quem se aproximasse à noite. ¥1.300 com o palácio, ¥800 só o terreno e os jardins. Última entrada 16:00 — chegando do Kinkaku-ji por volta das 15:20, sobra tempo.",
-     "ajuste": {
-      "motivo": "Nao custa nada em deslocamento: o Nijo fica exatamente na reta entre o Kinkaku-ji e o hotel. Kinkaku-ji ate o hotel direto sao 6,0 km; passando pelo Nijo sao 3,3 + 2,7 = os mesmos 6,0 km. E o dia terminava as 14:45 com a noite livre, entao ele ocupa uma tarde que estava vazia — nenhuma parada sai do lugar.",
-      "de": null,
-      "para": "2027-03-20"
-     }
+     "obs": "Patrimônio da Humanidade e a casa dos Tokugawa em Kyoto — foi neste salão que o último xogum devolveu o poder ao imperador, em 1867. O Palácio Ninomaru tem os \"pisos rouxinol\": tábuas que rangem de propósito a cada passo, construídas para denunciar quem se aproximasse à noite. ¥1.300 com o palácio, ¥800 só o terreno e os jardins. Última entrada 16:00 — chegando do Kinkaku-ji por volta das 15:20, sobra tempo."
     },
     {
      "periodo": "Noite",
@@ -975,29 +962,25 @@
      "de": "Castelo Nijō",
      "como": "Metrô Tozai + Karasuma até a Estação de Kyoto — 10 min, uma baldeação — e 10 min a pé pela saída Hachijō (sul)",
      "km": 3.5,
-     "min": 10,
-     "pe": 12,
-     "transp": 260,
-     "ingresso": 5600,
+     "min": 10.0,
+     "pe": 12.0,
+     "transp": 260.0,
+     "ingresso": 5600.0,
      "horario": "09:00–21:00 (últ. entrada 19:30) · fecha na 1ª e na 3ª terça",
      "duracao": "2h15",
      "bebe": "CANGURU",
      "terreno": "Quatro andares e 10.000 m², quase tudo no escuro e sem percurso fixo. O CARRINHO NÃO ENTRA: fica preso a uma barra no guarda-volumes gratuito, logo depois da entrada — com bebê é canguru do começo ao fim. Duas salas têm regra própria: a das bolhas molha de verdade (poncho por ¥300 na porta) e o Athletics Forest só aceita tênis, nada de sandália ou salto, com par emprestado para quem chegar calçado errado. Armário gratuito para casaco e bolsa, banheiro na entrada e no andar do meio, café e loja dentro.",
-     "obs": "teamLab Biovortex mantido no roteiro original de 20/03, após Nijō, com sessão pretendida às 18:00. Conferir calendário, abertura de vendas, tarifa e regras de acesso para março/2027; nenhum ingresso considerado comprado. Carrinho não entra e não há reentrada. ¥5.600 é provisão anterior.",
-     "ajuste": {
-      "motivo": "Terceiro teamLab no lugar do segundo: entra o Biovortex de Kyoto e sai o Borderless de Tokyo. O Biovortex fica a 10 min a pe da saida Hachijo da Estacao de Kyoto, e o dia 20 ja passa por dentro dessa estacao as 17:22, voltando do Nijo — em vez de descer para o hotel, atravessa-se a estacao e chega-se na porta as 17:35. Custa zero deslocamento novo e ocupa a unica noite vazia da viagem, contra o Borderless, que custava 40 min de travessia em cada sentido justamente no dia que era para ser o descanso depois do DisneySea. Os dois sao o mesmo formato — salas escuras, obras que migram de parede —, entao nao se perde uma experiencia: muda de cidade. O Planets, que e o diferente por causa da agua, continua no dia 27. E o preco e praticamente igual, entao a troca sai de graca.",
-      "de": null,
-      "para": "2027-03-20"
-     }
+     "obs": "teamLab Biovortex mantido no roteiro original de 20/03, após Nijō, com sessão pretendida às 18:00. Conferir calendário, abertura de vendas, tarifa e regras de acesso para março/2027; nenhum ingresso considerado comprado. Carrinho não entra e não há reentrada. ¥5.600 é provisão anterior. Após o teamLab, retornar ao Laon via Estação de Kyoto, JR Nara até Tofukuji e Keihan até Gion-Shijo. Esse retorno tem tarifa e duração a conferir e fica fora do valor do trajeto Nijō → teamLab."
     }
    ],
    "total": {
     "km": 30.1,
-    "min": 83,
+    "min": 83.0,
     "pe": 82.0,
-    "transp": 1210,
+    "transp": 1210.0,
     "ingresso": 9300.0,
-    "nota": "≈ R$ 347 por pessoa neste dia (transporte + ingressos)",
+    "nota": "≈ R$ 346.83 por adulto neste dia (transporte + ingressos)",
+    "transportePendente": false,
     "km_pe": 7.8
    },
    "ajustes": [
@@ -1042,18 +1025,18 @@
      "periodo": "Manhã",
      "nome": "Fushimi Inari Taisha (os 10.000 torii) — AO AMANHECER",
      "area": "Fushimi",
-     "de": "Hotel / Est. Kyoto",
-     "como": "JR Nara Line até Inari (2ª parada). Sair do hotel 06:15",
-     "km": 3.0,
-     "min": 5.0,
-     "pe": 5.0,
-     "transp": 150.0,
+     "de": "Laon Inn Gion Nawate",
+     "como": "Keihan LOCAL de Gion-Shijo até Fushimi-Inari → caminhada ao santuário",
+     "km": null,
+     "min": null,
+     "pe": null,
+     "transp": null,
      "ingresso": 0.0,
      "horario": "24h — grátis",
      "duracao": "2h30",
      "bebe": "CARRINHO OK",
      "terreno": "A base e o Senbon Torii (o trecho famoso de torii lado a lado) são PLANOS e pavimentados — carrinho vai bem. ⚠ Depois do santuário Okusha começam os degraus: dali para o topo é canguru, e são 233 m de subida.",
-     "obs": "⚠ FERIADO NACIONAL (Equinócio). Sair 06:15 e estar no torii às 06:45 — depois das 09:00 vira fila indiana. Trilha ao topo: 2h ida e volta, 233 m de subida. Quem não subir tudo volta no meio-caminho (Yotsutsuji)."
+     "obs": "⚠ FERIADO NACIONAL (Equinócio). Sair 06:15 e estar no torii às 06:45 — depois das 09:00 vira fila indiana. Trilha ao topo: 2h ida e volta, 233 m de subida. Quem não subir tudo volta no meio-caminho (Yotsutsuji). Partida do Laon, referência 06h15. Acesso agora pela Keihan; escolher um serviço que pare em Fushimi-Inari. Conferir trem de 2027, tarifa e elevadores. A chegada cedo é meta de planejamento."
     },
     {
      "periodo": "Manhã",
@@ -1113,9 +1096,9 @@
      "de": "Nanzen-ji",
      "como": "A pé até Keage + metrô Tozai (1 estação) + ônibus 202/206/207 até Gojo-zaka",
      "km": 3.4,
-     "min": 12,
-     "pe": 23,
-     "transp": 450,
+     "min": 12.0,
+     "pe": 23.0,
+     "transp": 450.0,
      "ingresso": 500.0,
      "horario": "06:00–18:00",
      "duracao": "1h30",
@@ -1149,13 +1132,13 @@
      "km": 0.9,
      "min": 0.0,
      "pe": 14.0,
-     "transp": 230.0,
+     "transp": 0,
      "ingresso": 0.0,
      "horario": "24h",
      "duracao": "2h30",
      "bebe": "CARRINHO OK",
      "terreno": "Trecho plano até o Yasaka. Pontocho de novo é beco estreito — canguru na hora do jantar.",
-     "obs": "Fecha o circuito inteiro a pé, de norte a sul. Volta ao hotel: ônibus 206 por ¥230. ⚠ Dia longo: ~10 km de caminhada no total — o mais puxado da viagem."
+     "obs": "Fecha o circuito inteiro a pé, de norte a sul. Volta ao hotel: ônibus 206 por ¥230. ⚠ Dia longo: ~10 km de caminhada no total — o mais puxado da viagem. Após o jantar em Pontocho, voltar a pé ao Laon pela ponte Shijo-Ohashi. O antigo ônibus de retorno à Estação de Kyoto foi retirado; caminhada de referência de cerca de 0,5 km."
     }
    ],
    "total": {
@@ -1164,7 +1147,8 @@
     "pe": 114.0,
     "transp": 1340.0,
     "ingresso": 1600.0,
-    "nota": "≈ R$ 97 por pessoa neste dia (transporte + ingressos)",
+    "nota": "≈ R$ 97.02 por adulto neste dia (transporte + ingressos)",
+    "transportePendente": false,
     "km_pe": 8.8
    },
    "ajustes": [
@@ -1189,10 +1173,10 @@
      "periodo": "Manhã",
      "nome": "TRANSFER: Kyoto → Mishima (Shinkansen)",
      "area": "Shizuoka",
-     "de": "Est. Kyoto",
+     "de": "Laon / Estação de Kyoto",
      "como": "Tokaido Shinkansen — só ALGUNS Hikari param em Mishima; o Kodama para sempre",
      "km": 250.0,
-     "min": 117,
+     "min": 117.0,
      "pe": 15.0,
      "transp": 11110.0,
      "ingresso": 0.0,
@@ -1200,7 +1184,7 @@
      "duracao": "1h57–2h20",
      "bebe": "CARRINHO OK",
      "terreno": "⚠ RESERVEM O ESPAÇO DE BAGAGEM GRANDE (últimas fileiras) — é gratuito, mas exige reserva prévia e com 3 carrinhos vocês vão precisar. Sem reserva, cobram ¥1.000 por peça.",
-     "obs": "O Nozomi não para em Mishima, e o Hikari só às vezes: a maioria dos serviços do dia é Kodama, ou Hikari até Shizuoka com baldeação para o Kodama. Direto dá 1h57; com baldeação, perto de 2h20. Contem com o número maior ao escolher a saída, porque o ônibus do outro lado tem hora marcada.\n⚠ MALA GRANDE PRECISA DE RESERVA. No Tokaido, bagagem cuja soma de altura + largura + profundidade passa de 160 cm exige assento reservado com espaço de bagagem — a reserva é GRÁTIS, mas tem que ser feita antes. Sem ela são ¥1.000 por peça, cobrados a bordo. Acima de 250 cm não embarca. Uma mala de 28 polegadas já passa dos 160 cm, então isso vale para praticamente todas as malas grandes do grupo: reservem os assentos das últimas fileiras de uma vez."
+     "obs": "Checkout antecipado no Laon em 22/03. Referência: sair do hotel por volta de 06h45 e mirar a Estação de Kyoto até 07h30, se for mantido um Shinkansen em torno de 08h15. Usar Keihan Gion-Shijo → Tofukuji e JR Nara → Kyoto; confirmar horários, elevadores e tarifa do acesso. O valor desta atividade mantém apenas a referência do Shinkansen. O Nozomi não para em Mishima, e o Hikari só às vezes: a maioria dos serviços do dia é Kodama, ou Hikari até Shizuoka com baldeação para o Kodama. Direto dá 1h57; com baldeação, perto de 2h20. Contem com o número maior ao escolher a saída, porque o ônibus do outro lado tem hora marcada.\n⚠ MALA GRANDE PRECISA DE RESERVA. No Tokaido, bagagem cuja soma de altura + largura + profundidade passa de 160 cm exige assento reservado com espaço de bagagem — a reserva é GRÁTIS, mas tem que ser feita antes. Sem ela são ¥1.000 por peça, cobrados a bordo. Acima de 250 cm não embarca. Uma mala de 28 polegadas já passa dos 160 cm, então isso vale para praticamente todas as malas grandes do grupo: reservem os assentos das últimas fileiras de uma vez."
     },
     {
      "periodo": "Manhã",
@@ -1211,7 +1195,7 @@
      "km": 75.0,
      "min": 90.0,
      "pe": 5.0,
-     "transp": 2700,
+     "transp": 2700.0,
      "ingresso": 0.0,
      "horario": "poucas saídas por dia",
      "duracao": "1h30",
@@ -1226,7 +1210,7 @@
      "de": "Est. Kawaguchiko",
      "como": "Retro Bus linha VERMELHA — passando pelo ryokan para largar as malas",
      "km": 7.5,
-     "min": 35,
+     "min": 35.0,
      "pe": 5.0,
      "transp": 400.0,
      "ingresso": 0.0,
@@ -1243,7 +1227,7 @@
      "de": "Oishi Park",
      "como": "Retro Bus linha vermelha — 2 paradas de volta",
      "km": 2.0,
-     "min": 10,
+     "min": 10.0,
      "pe": 5.0,
      "transp": 400.0,
      "ingresso": 0.0,
@@ -1277,7 +1261,8 @@
     "pe": 30.0,
     "transp": 14610.0,
     "ingresso": 0,
-    "nota": "≈ R$ 482 por pessoa neste dia (transporte + ingressos)",
+    "nota": "≈ R$ 482.13 por adulto neste dia (transporte + ingressos)",
+    "transportePendente": false,
     "km_pe": 1.4
    }
   },
@@ -2459,8 +2444,8 @@
    "texto": "O programa completo do antigo dia 18 passa para 16/03 para permitir chegada a Kyoto em 18/03. O sumô e os demais passeios de 17/03 permanecem. Compras de 31/03 mantidas. O dia 01/04 fica livre até os procedimentos e o transfer para o aeroporto. Sem atrações novas ou novas marcações de opcional."
   },
   "10": {
-   "titulo": "HOSPEDAGENS: reservas confirmadas; antecipação de Kyoto para 18/03 pendente",
-   "texto": "Osaka inicial 15–18/03 e GRAND PIA 2 em Bentencho 30/03–01/04 estão confirmados. Kyoto confirmado em 19–22/03 por R$7.313; antecipação para 18/03 pendente. La Vista confirmado em 22–23/03 por R$8.727; Tóquio mantém 23–30/03. Total: 17 noites. Conferir preços finais de Osaka e ajustar Kyoto. No GRAND PIA 2: check-in 15h, checkout 10h, bagagens após 12h na chegada. Solicitar guarda-volumes após o checkout; o guia informa $5 por volume, com moeda e condições a confirmar. Brighton, Hakonenomori e Petit Grande cancelados conforme os prints."
+   "titulo": "HOSPEDAGENS: Laon confirmado; cancelamento do K-style a conferir",
+   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelamento e eventual cobrança a conferir. Osaka inicial, La Vista e GRAND PIA 2 mantêm suas reservas. Os novos acessos de Gion têm tarifas e horários a conferir."
   },
   "11": {
    "titulo": "DOHA E GRU: novas prioridades de conexão",

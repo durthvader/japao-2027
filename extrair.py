@@ -132,7 +132,9 @@ def extrair(xlsx=XLSX):
 
 
 def main():
-    dados = extrair()
+    # Permite gerar a partir de uma cópia verificada e idêntica ao original
+    # quando o Excel mantém um bloqueio de leitura do arquivo no Windows.
+    dados = extrair(os.environ.get('JAPAO_PLANILHA_ORIGINAL', XLSX))
     out = os.path.join(BASE, 'dados.json')
     with open(out, 'w', encoding='utf-8') as f:
         json.dump(dados, f, ensure_ascii=False, indent=1)

@@ -99,6 +99,10 @@ def _km_a_pe(dados):
         d.setdefault('total', {})['km_pe'] = round(
             sum((p.get('km') or 0) if p.get('modo') == 'pe' else
                 (p.get('kmPeEstimado') or 0) for p in g['pernas']), 1)
+        # Um acesso pode estar sem cotação mesmo quando a atividade mantém
+        # o preço conhecido do trecho principal, como o Shinkansen para Mishima.
+        d['total']['transportePendente'] = d['total'].get('transportePendente', False) or any(
+            'custo' in p and p['custo'] is None for p in g['pernas'])
 
 
 def _refazer_resumo(dados, verboso=True):

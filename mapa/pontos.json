@@ -1072,7 +1072,7 @@
  },
  "2027-03-18": {
   "titulo": "Kyoto — dia adicional livre",
-  "resumo": "Transfer e instalação na hospedagem. Nenhuma atração definida para os períodos livres, antes ou depois do check-in. Hospedagem ainda precisa ser alterada.",
+  "resumo": "Transfer e instalação na hospedagem. Nenhuma atração definida para os períodos livres, antes ou depois do check-in. Hospedagem ainda precisa ser alterada. Base confirmada: Laon Inn Gion Nawate, Gion, 18–22/03. Novos acessos a cotar.",
   "centro": [
    34.9897,
    135.7567
@@ -1113,26 +1113,30 @@
     "gmaps": "Kyoto Station"
    },
    {
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
-    "endereco": "749-5 Tatsumi-cho, Shinmachi-dori Shichijo-agaru, Shimogyo-ku, Kyoto",
-    "confere": "cruzamento Shinmachi × Shichijo, um pouco ao norte; dá 469 m até a Estação de Kyoto, e o anúncio diz 500 m",
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel.",
     "id": "p3",
     "tipo": "hospedagem",
-    "ativ": "Check-in K-style",
-    "hora": "15:00"
+    "ativ": "Check-in Laon",
+    "hora": "15:00",
+    "alerta": "Reserva confirmada para 18–22/03, quatro quartos. Endereço: 16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802, Japão. O site oficial oferece guarda de malas antes das 15h. Conferir condições para carrinhos e recebimento de malas enviadas. Tarifa e duração do acesso Kyoto → Laon a conferir. Cancelamento do K-style anterior a conferir. O restante de 18/03 permanece livre."
    },
    {
     "id": "p4",
     "ativ": "DIA LIVRE",
     "tipo": "apoio",
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
     "hora": "Livre",
-    "alerta": "Dia adicional sem atrações definidas. Usar livremente o tempo após a chegada e os procedimentos de hospedagem. A programação original de Kyoto permanece em 19, 20 e 21/03."
+    "alerta": "Dia adicional sem atrações definidas. Usar livremente o tempo após a chegada e os procedimentos de hospedagem. A programação original de Kyoto permanece em 19, 20 e 21/03.",
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel."
    }
   ],
   "pernas": [
@@ -1157,18 +1161,20 @@
    {
     "de": "p2",
     "para": "p3",
-    "modo": "pe",
-    "km": 0.9,
-    "min": 15,
-    "custo": 0,
-    "desc": "Acesso à hospedagem de referência; confirmar endereço e guarda de malas."
+    "modo": "metro",
+    "km": null,
+    "min": null,
+    "custo": null,
+    "desc": "Estação de Kyoto → Tofukuji → Gion-Shijo → Laon. Tarifa e duração a conferir; usar saídas com elevador.",
+    "linha": "JR Nara + Keihan via Tofukuji",
+    "kmPeEstimado": 0.3
    }
   ],
   "alternativas": []
  },
  "2027-03-19": {
   "titulo": "Kyoto — templos, Nishiki e Gion",
-  "resumo": "Circuito turístico original de 19/03. O grupo já estará hospedado em Kyoto desde 18/03; não repetir transfer nem check-in.",
+  "resumo": "Circuito turístico original de 19/03. O grupo já estará hospedado em Kyoto desde 18/03; não repetir transfer nem check-in. Base confirmada: Laon Inn Gion Nawate, Gion, 18–22/03. Novos acessos a cotar.",
   "centro": [
    34.999,
    135.763
@@ -1176,13 +1182,13 @@
   "zoom": 13,
   "paradas": [
    {
-    "nome": "K-style 東本願寺",
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "nome": "Laon Inn Gion Nawate",
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
-    "endereco": "749-5 Tatsumi-cho, Shinmachi-dori Shichijo-agaru, Shimogyo-ku, Kyoto",
-    "confere": "cruzamento Shinmachi × Shichijo, um pouco ao norte; dá 469 m até a Estação de Kyoto, e o anúncio diz 500 m",
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel.",
     "id": "base",
     "tipo": "base",
     "hora": "10:20"
@@ -1250,37 +1256,41 @@
    },
    {
     "id": "e7",
-    "nome": "Parada Sanjusangendo-mae (volta)",
+    "nome": "Shichijo — Keihan, retorno ao Laon",
     "tipo": "estacao",
-    "lat": 34.98908,
-    "lng": 135.77174,
+    "lat": 34.9891,
+    "lng": 135.7678,
     "hora": "14:45",
-    "gmaps": "Hakubutsukan Sanjusangendo-mae bus stop"
+    "gmaps": "Shichijo Station Kyoto",
+    "aprox": true
    },
    {
     "id": "e8",
-    "nome": "Estação de Kyoto",
+    "nome": "Gion-Shijo — saída para o Laon",
     "tipo": "estacao",
-    "lat": 34.98577,
-    "lng": 135.75857,
+    "lat": 35.003,
+    "lng": 135.7722,
     "hora": "15:00",
-    "gmaps": "Kyoto Station"
+    "gmaps": "Gion-Shijo Station Kyoto",
+    "aprox": true
    },
    {
     "id": "p5",
     "ativ": "Retorno à hospedagem",
     "tipo": "evento",
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
     "hora": "15:15",
     "fim": "15:45",
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
     "must": [
      "Conferir se as malas do takkyubin já chegaram antes de subir",
      "Trocar de sapato: a noite em Gion é toda em pedra irregular"
     ],
-    "alerta": "A entrada na hospedagem ocorreu no dia anterior; esta é uma passagem no circuito original, antes de Nishiki."
+    "alerta": "A entrada na hospedagem ocorreu no dia anterior; esta é uma passagem no circuito original, antes de Nishiki.",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel."
    },
    {
     "id": "p6",
@@ -1353,42 +1363,38 @@
    },
    {
     "id": "e9",
-    "nome": "Parada Shijo-Kawaramachi",
+    "nome": "Pontocho / ponte Shijo-Ohashi",
     "tipo": "estacao",
     "lat": 35.0037,
-    "lng": 135.7682,
+    "lng": 135.7709,
     "hora": "21:40",
-    "gmaps": "Shijo Kawaramachi bus stop, Kyoto"
-   },
-   {
-    "id": "e10",
-    "nome": "Estação de Kyoto",
-    "tipo": "estacao",
-    "lat": 34.98577,
-    "lng": 135.75857,
-    "hora": "21:58",
-    "gmaps": "Kyoto Station"
+    "gmaps": "Shijo Ohashi Bridge Kyoto",
+    "aprox": true
    },
    {
     "id": "fim",
-    "nome": "Hotel K-style Higashi-Honganji",
+    "nome": "Laon Inn Gion Nawate",
     "tipo": "base",
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
     "hora": "22:10",
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel."
    }
   ],
   "pernas": [
    {
     "de": "base",
     "para": "p3",
-    "modo": "pe",
-    "km": 0.3,
-    "min": 5,
-    "custo": 0,
-    "desc": "Saída da hospedagem para o circuito original dos templos."
+    "modo": "metro",
+    "km": null,
+    "min": null,
+    "custo": null,
+    "desc": "Laon → Gion-Shijo → Shichijo → Higashi Honganji; tarifa e duração a conferir.",
+    "linha": "Keihan até Shichijo + caminhada",
+    "kmPeEstimado": 1.0
    },
    {
     "de": "p3",
@@ -1432,38 +1438,39 @@
     "de": "p4",
     "para": "e7",
     "modo": "pe",
-    "min": 3,
-    "km": 0.2,
-    "custo": 0
+    "min": 10,
+    "km": 0.6,
+    "custo": 0,
+    "desc": "Caminhada de referência do Sanjūsangen-dō até Shichijo, conferindo elevador."
    },
    {
     "de": "e7",
     "para": "e8",
     "modo": "metro",
-    "linha": "Ônibus 206 / 208",
+    "linha": "Keihan: Shichijo → Gion-Shijo",
     "cor": "#3A7D3A",
-    "min": 15,
-    "km": 1.9,
-    "custo": 230,
-    "desc": "Volta pela Shichijo. No fim da tarde o 206 já vem cheio da Higashiyama."
+    "min": null,
+    "km": null,
+    "custo": null,
+    "desc": "Novo retorno ao hotel em Gion; tarifa e duração a conferir."
    },
    {
     "de": "e8",
     "para": "p5",
     "modo": "pe",
-    "min": 14,
-    "km": 0.9,
+    "min": 5,
+    "km": 0.3,
     "custo": 0,
-    "desc": "Retorno à hospedagem pela região da estação."
+    "desc": "Caminhada aproximada de Gion-Shijo ao Laon; a saída com elevador pode ampliar o percurso."
    },
    {
     "de": "p5",
     "para": "p6",
     "modo": "pe",
-    "min": 25,
-    "km": 1.7,
+    "min": 15,
+    "km": 1.0,
     "custo": 0,
-    "desc": "Reto pela Karasuma até a Nishikikoji. Quem estiver cansado pega o metrô Karasuma de Gojo a Shijo, 1 parada, ¥220, e anda só 500 m."
+    "desc": "Do Laon pela ponte Shijo-Ohashi até o Nishiki; distância e tempo aproximados."
    },
    {
     "de": "p6",
@@ -1487,30 +1494,19 @@
     "de": "p8",
     "para": "e9",
     "modo": "pe",
-    "min": 5,
-    "km": 0.3,
+    "min": 15,
+    "km": 1.0,
     "custo": 0,
-    "desc": "Saída norte de Pontocho, direto na esquina da Shijo com a Kawaramachi."
+    "desc": "Do Yasaka pela Shijo até Pontocho e a ponte; percurso aproximado."
    },
    {
     "de": "e9",
-    "para": "e10",
-    "modo": "metro",
-    "linha": "Ônibus 4 / 5 / 205",
-    "cor": "#3A7D3A",
-    "min": 18,
-    "km": 4.0,
-    "custo": 230,
-    "desc": "Desce a Kawaramachi até a estação. Passa até por volta das 23:00."
-   },
-   {
-    "de": "e10",
     "para": "fim",
     "modo": "pe",
-    "min": 14,
-    "km": 0.9,
+    "km": 0.5,
+    "min": 8,
     "custo": 0,
-    "desc": "Karasuma acima, o mesmo caminho de sempre."
+    "desc": "Volta aproximada a pé de Pontocho ao Laon pela ponte Shijo-Ohashi."
    }
   ],
   "alternativas": [
@@ -1555,13 +1551,13 @@
    }
   ],
   "passe": {
-   "nome": "Passe de 1 dia de metrô + ônibus de Kyoto — ¥1.100",
-   "texto": "Referência anterior, a confirmar para 2027: ônibus para o Sanjūsangen-dō (¥230), volta (¥230), metrô opcional de Gojo a Shijo (¥220) e ônibus da noite de volta de Gion (¥230), total de ¥910. Comparar com o passe de ¥1.100. O transfer Osaka → Kyoto ocorre em 18/03 e não faz parte deste dia."
+   "nome": "Comparar passes depois de cotar os acessos de Gion",
+   "texto": "A Keihan passa a integrar a saída e o retorno ao hotel. O passe municipal não cobre a Keihan. O antigo ônibus noturno para a Estação de Kyoto foi retirado; comparar as tarifas atuais antes de comprar um passe."
   }
  },
  "2027-03-20": {
   "titulo": "O bambuzal ao amanhecer, o oeste inteiro, o teamLab à noite",
-  "resumo": "Sábado invertido de propósito: o bambuzal de Arashiyama às 7h30, quando ainda dá para andar nele, e o Tenryū-ji do lado, a 300 m. Depois o dia atravessa o oeste devagar — Ryoan-ji, Kinkaku-ji, Castelo Nijō — e o programa de rua acaba às 17:00. A volta passa por dentro da Estação de Kyoto, e é ali que a noite começa: o teamLab Biovortex fica a 10 min a pé da saída sul, com sessão pretendida às 18:00, ainda a reservar.",
+  "resumo": "Sábado invertido de propósito: o bambuzal de Arashiyama às 7h30, quando ainda dá para andar nele, e o Tenryū-ji do lado, a 300 m. Depois o dia atravessa o oeste devagar — Ryoan-ji, Kinkaku-ji, Castelo Nijō — e o programa de rua acaba às 17:00. A volta passa por dentro da Estação de Kyoto, e é ali que a noite começa: o teamLab Biovortex fica a 10 min a pé da saída sul, com sessão pretendida às 18:00, ainda a reservar. Base confirmada: Laon Inn Gion Nawate, Gion, 18–22/03. Novos acessos a cotar.",
   "centro": [
    35.0155,
    135.713
@@ -1570,31 +1566,35 @@
   "paradas": [
    {
     "id": "base",
-    "nome": "Hotel K-style (Higashi Honganji)",
+    "nome": "Laon Inn Gion Nawate",
     "tipo": "base",
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
     "hora": "06:45",
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel."
    },
    {
     "id": "e1",
-    "nome": "Estação de Kyoto — plataformas 32/33 (Sagano)",
+    "nome": "Kyoto-Kawaramachi — Hankyu",
     "tipo": "estacao",
-    "lat": 34.98577,
-    "lng": 135.75857,
-    "hora": "06:57",
-    "gmaps": "Kyoto Station"
+    "lat": 35.0037,
+    "lng": 135.7685,
+    "hora": "Horário a conferir",
+    "gmaps": "Kyoto Kawaramachi Station Hankyu",
+    "aprox": true
    },
    {
     "id": "e2",
-    "nome": "Saga-Arashiyama (JR)",
+    "nome": "Arashiyama — Hankyu",
     "tipo": "estacao",
-    "lat": 35.01878,
-    "lng": 135.68141,
-    "hora": "07:18",
-    "gmaps": "Saga-Arashiyama Station"
+    "lat": 35.0109,
+    "lng": 135.6814,
+    "hora": "Horário a conferir",
+    "gmaps": "Hankyu Arashiyama Station",
+    "aprox": true
    },
    {
     "id": "p1",
@@ -1806,13 +1806,15 @@
    },
    {
     "id": "fim",
-    "nome": "Hotel K-style (Higashi Honganji)",
+    "nome": "Laon Inn Gion Nawate",
     "tipo": "base",
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
     "hora": "20:40",
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel."
    }
   ],
   "pernas": [
@@ -1820,30 +1822,30 @@
     "de": "base",
     "para": "e1",
     "modo": "pe",
-    "min": 12,
-    "km": 0.9,
+    "min": 10,
+    "km": 0.6,
     "custo": 0,
-    "desc": "Descida plana pela Karasuma até a estação, em calçada larga o tempo todo."
+    "desc": "Caminhada aproximada do Laon a Kyoto-Kawaramachi; conferir entrada com elevador."
    },
    {
     "de": "e1",
     "para": "e2",
     "modo": "metro",
-    "linha": "JR Sagano (San'in)",
+    "linha": "Hankyu Kyoto + Arashiyama, via Katsura",
     "cor": "#008C46",
-    "min": 15,
-    "km": 11.0,
-    "custo": 240,
-    "desc": "Direto, sem baldeação. Aqui o trem ganha do ônibus com folga: o ônibus 28 faz o mesmo caminho em uns 45 min e chega lotado."
+    "min": null,
+    "km": null,
+    "custo": null,
+    "desc": "Trocar de trem em Katsura. Horários e tarifa de 2027 a conferir; a meta é chegar cedo ao bambuzal."
    },
    {
     "de": "e2",
     "para": "p1",
     "modo": "pe",
-    "min": 12,
-    "km": 0.9,
+    "min": 25,
+    "km": 1.7,
     "custo": 0,
-    "desc": "Saída sul e rumo oeste pela rua do templo; o bambuzal começa logo depois do Nonomiya."
+    "desc": "Caminhada aproximada desde Hankyu Arashiyama pela ponte Togetsukyo até o bambuzal."
    },
    {
     "de": "p1",
@@ -1977,11 +1979,13 @@
    {
     "de": "p7",
     "para": "fim",
-    "modo": "pe",
-    "min": 22,
-    "km": 1.5,
-    "custo": 0,
-    "desc": "Volta a pé contornando a estação e subindo pela Karasuma, com o Higashi Honganji no fim. Plano o caminho inteiro. Quem estiver acabado pega o metrô Karasuma de Kyoto até Gojo, ¥220, e anda 500 m."
+    "modo": "metro",
+    "min": null,
+    "km": null,
+    "custo": null,
+    "desc": "teamLab → Estação de Kyoto → Tofukuji → Gion-Shijo → Laon. Retorno a cotar; caminhada de acesso aproximada.",
+    "linha": "JR Nara + Keihan via Tofukuji",
+    "kmPeEstimado": 1.1
    }
   ],
   "alternativas": [
@@ -2047,13 +2051,13 @@
    }
   ],
   "passe": {
-   "nome": "Nenhum passe compensa hoje — paguem por viagem",
-   "texto": "O candidato seria o Subway & Bus 1-Day (¥1.100 adulto, ¥550 criança), mas ele NÃO cobre o JR nem o Randen, que são justamente os dois trechos longos do dia. Do que vocês gastam, ele cobriria só o ônibus 59 (¥230), o ônibus 12 (¥230) e o metrô da volta (¥260) = ¥720. Perde ¥380 por adulto. O dia inteiro sai por ¥1.210 por adulto: JR ¥240 + Randen ¥250 + ¥230 + ¥230 + metrô ¥260. O passe do Randen (¥800 o dia) também não fecha — vocês usam ¥250 dele. Carreguem ICOCA/Suica e não pensem mais nisso; menores de 6 anos não pagam trem nem ônibus, então os 3 bebês viajam de graça. A volta do teamLab para o hotel é a pé e não custa nada, então o metrô da noite continua sendo um só."
+   "nome": "Comparar passes com a nova partida em Gion",
+   "texto": "A ida para Arashiyama passa a usar Hankyu via Katsura. Randen, ônibus e o trajeto Nijō → teamLab permanecem. O retorno ao Laon usa JR/Keihan e ainda não foi cotado; o antigo total precisa dessas tarifas para a comparação."
   }
  },
  "2027-03-21": {
   "titulo": "O dia mais longo: do amanhecer em Fushimi às lanternas de Gion",
-  "resumo": "Domingo de feriado e o dia mais pesado da viagem inteira: sai do hotel 06:15 no escuro, para pisar nos 10.000 torii antes das excursões, e só volta perto das 21h. Depois de Fushimi o dia é um único arco pelo leste, de norte para sul e quase todo em descida — Ginkaku-ji lá em cima, o Caminho dos Filósofos escorrendo 2 km à beira do canal, Nanzen-ji no fim dele, e então a parte dura: Kiyomizu-dera, as escadarias de Ninenzaka e Sannenzaka e Gion. Não há folga nenhuma para ceder aqui; se alguma coisa tiver de cair, que seja escolhida de manhã e não às 17h.",
+  "resumo": "Domingo de feriado e o dia mais pesado da viagem inteira: sai do hotel 06:15 no escuro, para pisar nos 10.000 torii antes das excursões, e só volta perto das 21h. Depois de Fushimi o dia é um único arco pelo leste, de norte para sul e quase todo em descida — Ginkaku-ji lá em cima, o Caminho dos Filósofos escorrendo 2 km à beira do canal, Nanzen-ji no fim dele, e então a parte dura: Kiyomizu-dera, as escadarias de Ninenzaka e Sannenzaka e Gion. Não há folga nenhuma para ceder aqui; se alguma coisa tiver de cair, que seja escolhida de manhã e não às 17h. Base confirmada: Laon Inn Gion Nawate, Gion, 18–22/03. Novos acessos a cotar.",
   "centro": [
    34.9975,
    135.7815
@@ -2062,31 +2066,35 @@
   "paradas": [
    {
     "id": "base",
-    "nome": "Hotel K-style (Higashi Honganji)",
+    "nome": "Laon Inn Gion Nawate",
     "tipo": "base",
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
     "hora": "06:15",
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel."
    },
    {
     "id": "e1",
-    "nome": "Estação de Kyoto — plataformas da JR Nara Line",
+    "nome": "Gion-Shijo — Keihan para Fushimi-Inari",
     "tipo": "estacao",
-    "lat": 34.98577,
-    "lng": 135.75857,
-    "hora": "06:27",
-    "gmaps": "Kyoto Station"
+    "lat": 35.003,
+    "lng": 135.7722,
+    "hora": "Horário a conferir",
+    "gmaps": "Gion-Shijo Station Kyoto",
+    "aprox": true
    },
    {
     "id": "e2",
-    "nome": "Inari (JR Nara Line)",
+    "nome": "Fushimi-Inari — Keihan",
     "tipo": "estacao",
-    "lat": 34.96674,
-    "lng": 135.77084,
-    "hora": "06:36",
-    "gmaps": "Inari Station, Kyoto"
+    "lat": 34.96846,
+    "lng": 135.76915,
+    "hora": "Horário a conferir",
+    "gmaps": "Fushimi-Inari Station Keihan",
+    "aprox": true
    },
    {
     "id": "p1",
@@ -2303,23 +2311,16 @@
     "gmaps": "Pontocho, Kyoto"
    },
    {
-    "id": "e10",
-    "nome": "Shijo-Kawaramachi (ônibus para a Estação de Kyoto)",
-    "tipo": "estacao",
-    "lat": 35.003,
-    "lng": 135.76943,
-    "hora": "20:35",
-    "gmaps": "Shijo Kawaramachi bus stop, Kyoto"
-   },
-   {
     "id": "fim",
-    "nome": "Hotel K-style (Higashi Honganji)",
+    "nome": "Laon Inn Gion Nawate",
     "tipo": "base",
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
     "hora": "20:55",
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto"
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel."
    }
   ],
   "pernas": [
@@ -2327,30 +2328,30 @@
     "de": "base",
     "para": "e1",
     "modo": "pe",
-    "min": 12,
-    "km": 0.9,
+    "min": 5,
+    "km": 0.3,
     "custo": 0,
-    "desc": "Ainda no escuro, descida plana até a estação. Passem no konbini: às 6h nada mais está aberto e o café da manhã é este."
+    "desc": "Caminhada aproximada do Laon até Gion-Shijo; conferir entrada com elevador."
    },
    {
     "de": "e1",
     "para": "e2",
     "modo": "metro",
-    "linha": "JR Nara Line",
+    "linha": "Keihan: serviço com parada em Fushimi-Inari",
     "cor": "#008C46",
-    "min": 5,
-    "km": 2.7,
-    "custo": 150,
-    "desc": "Segunda parada, sem baldeação. ⚠ Peguem o trem LOCAL: o rápido não para em Inari."
+    "min": null,
+    "km": null,
+    "custo": null,
+    "desc": "Partida de Gion-Shijo; o Limited Express não para em Fushimi-Inari. Tarifa e horário de 2027 a conferir."
    },
    {
     "de": "e2",
     "para": "p1",
     "modo": "pe",
-    "min": 5,
-    "km": 0.4,
+    "min": 10,
+    "km": 0.7,
     "custo": 0,
-    "desc": "A estação abre de frente para o portão do santuário, do outro lado da rua. Plano e pavimentado."
+    "desc": "Acesso a pé ao circuito do Fushimi Inari a partir da Keihan; percurso aproximado."
    },
    {
     "de": "p1",
@@ -2479,23 +2480,12 @@
    },
    {
     "de": "e9",
-    "para": "e10",
-    "modo": "pe",
-    "min": 5,
-    "km": 0.3,
-    "custo": 0,
-    "desc": "Saída sul do beco, na esquina da Shijo com a Kawaramachi."
-   },
-   {
-    "de": "e10",
     "para": "fim",
-    "modo": "metro",
-    "linha": "Ônibus 4 / 17 / 205 (Kawaramachi)",
-    "cor": "#3A7D3A",
-    "min": 20,
-    "km": 3.5,
-    "custo": 230,
-    "desc": "Descendo a Kawaramachi até a Estação de Kyoto e mais 8 min a pé até o hotel. À noite o ônibus anda; se o último já tiver passado, o metrô Karasuma de Shijo até Kyoto resolve por ¥220."
+    "modo": "pe",
+    "km": 0.5,
+    "min": 8,
+    "custo": 0,
+    "desc": "Volta aproximada de Pontocho ao Laon pela ponte Shijo-Ohashi."
    }
   ],
   "alternativas": [
@@ -2554,13 +2544,13 @@
    }
   ],
   "passe": {
-   "nome": "Nenhum passe compensa — carreguem ICOCA e não pensem nisso",
-   "texto": "O candidato é o Subway & Bus 1-Day de Kyoto, ¥1.100 adulto e ¥550 criança. Ele NÃO cobre a JR nem a Keihan, que são justamente os dois trechos da manhã. Do que vocês gastam hoje ele cobriria o ônibus 17 (¥230), o metrô Tozai (¥220), o ônibus da Higashioji (¥230) e o ônibus da volta (¥230) = ¥910. Perde ¥190 por adulto. O dia inteiro sai por ¥1.340 por adulto em transporte: JR ¥150 + Keihan ¥280 + ¥230 + ¥220 + ¥230 + ¥230. Some ¥1.000 de ingressos obrigatórios (Ginkaku-ji ¥500 + Kiyomizu ¥500) e o dia fecha em torno de ¥2.340 por adulto — mais ¥600 só se quiserem subir no Sanmon do Nanzen-ji, que dá para pular. Menores de 6 anos não pagam trem nem ônibus: os 3 bebês viajam de graça, e nas bilheterias de templo só se paga meia a partir da idade escolar."
+   "nome": "Comparar passes com as tarifas da Keihan",
+   "texto": "A ida ao Fushimi Inari agora parte de Gion-Shijo pela Keihan. Os acessos à hospedagem mudaram, e o ônibus noturno para Kyoto foi retirado. Conferir a nova tarifa e recalcular a comparação com passes; o subtotal atual é parcial."
   }
  },
  "2027-03-22": {
   "titulo": "349 km num feriadão: Kyoto, Shinkansen, ônibus e o Fuji no fim da tarde",
-  "resumo": "O dia inteiro é deslocamento e o mapa serve para não perder conexão. Shinkansen de Kyoto a Mishima, ônibus rodoviário de Mishima ao lago — e esse ônibus, com onze saídas por dia e assento marcado, é o gargalo da viagem toda. Como 22/03 é feriado nacional (o compensatório do Equinócio, terceiro dia do feriadão), tudo tem que estar reservado com antecedência. Chegando, as malas ficam no ryokan antes do Oishi Park, e a noite é onsen e jantar servido em horário fixo.",
+  "resumo": "O dia inteiro é deslocamento e o mapa serve para não perder conexão. Shinkansen de Kyoto a Mishima, ônibus rodoviário de Mishima ao lago — e esse ônibus, com onze saídas por dia e assento marcado, é o gargalo da viagem toda. Como 22/03 é feriado nacional (o compensatório do Equinócio, terceiro dia do feriadão), tudo tem que estar reservado com antecedência. Chegando, as malas ficam no ryokan antes do Oishi Park, e a noite é onsen e jantar servido em horário fixo. Base confirmada: Laon Inn Gion Nawate, Gion, 18–22/03. Novos acessos a cotar.",
   "centro": [
    35.3,
    137.3
@@ -2569,14 +2559,16 @@
   "paradas": [
    {
     "id": "base",
-    "nome": "K-style Higashi-Honganji",
+    "nome": "Laon Inn Gion Nawate",
     "tipo": "base",
-    "lat": 34.9897,
-    "lng": 135.7567,
+    "lat": 35.0026,
+    "lng": 135.7731,
     "aprox": true,
-    "hora": "07:30",
-    "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
-    "alerta": "Saiam com folga real: hoje não existe 'pego o próximo'. O ônibus de Mishima tem hora marcada e assento numerado, e num feriadão não há segunda chance no mesmo horário. Deixem o check-out pronto na véspera e desçam já com os casacos separados — no lago, à tarde, faz muito mais frio que em Kyoto."
+    "hora": "06:45 (referência)",
+    "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+    "alerta": "Checkout antecipado no Laon em 22/03. Referência: sair do hotel por volta de 06h45 e mirar a Estação de Kyoto até 07h30, se for mantido um Shinkansen em torno de 08h15. Usar Keihan Gion-Shijo → Tofukuji e JR Nara → Kyoto; confirmar horários, elevadores e tarifa do acesso. O valor desta atividade mantém apenas a referência do Shinkansen. ",
+    "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802",
+    "confere": "Endereço do site oficial; marcador aproximado, conferir mapa do hotel."
    },
    {
     "id": "p1",
@@ -2708,11 +2700,13 @@
    {
     "de": "base",
     "para": "p1",
-    "modo": "pe",
-    "min": 14,
-    "km": 0.9,
-    "custo": 0,
-    "desc": "Karasuma abaixo até a Estação de Kyoto, o mesmo caminho dos outros dias. Com mala, contem 20 min, e entrem pela saída Karasuma direto para os torniquetes do Shinkansen, no lado leste."
+    "modo": "metro",
+    "min": null,
+    "km": null,
+    "custo": null,
+    "desc": "Laon → Gion-Shijo → Tofukuji → Estação de Kyoto. Acesso com malas e carrinhos a cotar; reservar margem para elevadores e embarque no Shinkansen.",
+    "linha": "Keihan + JR Nara, via Tofukuji",
+    "kmPeEstimado": 0.3
    },
    {
     "de": "p1",
@@ -5945,13 +5939,13 @@
    "confere": "Tengachaya 2-chome; a estação Tengachaya (Nankai + metrô Sakaisuji) fica a 170 m"
   },
   "kyoto": {
-   "nome": "K-style 東本願寺",
-   "lat": 34.9897,
-   "lng": 135.7567,
+   "nome": "Laon Inn Gion Nawate",
+   "lat": 35.0026,
+   "lng": 135.7731,
    "aprox": true,
-   "gmaps": "Shinmachi-dori Shichijo, Shimogyo-ku, Kyoto",
-   "endereco": "749-5 Tatsumi-cho, Shinmachi-dori Shichijo-agaru, Shimogyo-ku, Kyoto",
-   "confere": "cruzamento Shinmachi × Shichijo, um pouco ao norte; dá 469 m até a Estação de Kyoto, e o anúncio diz 500 m"
+   "gmaps": "Laon Inn Gion Nawate, 16-1 Yamatocho, Kyoto",
+   "endereco": "16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802, Japão",
+   "confere": "Endereço confirmado no site oficial. Marcador aproximado; conferir posição no mapa do hotel."
   },
   "fuji": {
    "nome": "La Vista Fujikawaguchiko",

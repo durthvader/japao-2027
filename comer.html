@@ -543,7 +543,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
-<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Hospedagens ainda precisam ser ajustadas. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
+<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Laon confirmado para as quatro noites de Kyoto; conferir o cancelamento do K-style anterior e os valores finais de Osaka. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
 <main>
 <section class="sec wrap" id="comer" data-foto="osaka">
   <div class="sec-head">
@@ -1176,14 +1176,14 @@ function montarHosp(){
         <s></s>
         <div class="tx">
           <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
-          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>${h.endereco?`<p class="mt">${esc(h.endereco)}</p>`:""}${h.guia?`<p class="mt"><a href="${esc(h.guia)}" target="_blank" rel="noopener">Guia do anfitrião</a> · código previsto em 28/03 · malas após 12h na chegada · atendimento 9h–0h</p><p class="mt">Guarda-volumes após checkout: $5 por volume, mediante solicitação; conferir moeda e carrinhos. Checkout tardio: US$35/h, sujeito a acordo.</p>`:""}
+          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>${h.endereco?`<p class="mt">${esc(h.endereco)}</p>`:""}${h.totalOriginal?`<p class="mt">Pagamento: ¥${nf(h.totalOriginal)} · ${esc(h.pagamento||"")}. ${esc(h.horariosPadrao||"")}</p>`:""}${h.bagagens?`<p class="mt">${esc(h.bagagens)}</p>`:""}${h.reservaAnterior?`<p class="mt">Reserva anterior: ${esc(h.reservaAnterior.hotel)}, ${dm(h.reservaAnterior.checkin)} → ${dm(h.reservaAnterior.checkout)}, R$ ${nf(h.reservaAnterior.total)}. ${esc(h.reservaAnterior.status)}.</p>`:""}${h.guia?`<p class="mt"><a href="${esc(h.guia)}" target="_blank" rel="noopener">Guia do anfitrião</a> · código previsto em 28/03 · malas após 12h na chegada · atendimento 9h–0h</p><p class="mt">Guarda-volumes após checkout: $5 por volume, mediante solicitação; conferir moeda e carrinhos. Checkout tardio: US$35/h, sujeito a acordo.</p>`:""}
         </div>
         <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):(h.alteracaoConfirmadaEm||h.reservaConfirmadaEm)?"A conferir":"A cotar"}<u>${esc(h.valorPeriodo||"grupo")}</u></div>
       </div>`).join("")
       + (set==='b'?`<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s><div class="tx"><h4>Reservas canceladas</h4><p class="mt">${lista.filter(h=>h.cancelada).length} cancelamentos confirmados pelos prints. Valores fora do orçamento ativo. Conferir cobranças e reembolsos nos comprovantes.</p></div></div>`:
         `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
          <div class="tx"><h4>Subtotal dos valores registrados</h4>
-         <p class="mt">Valores atualizados pelos prints: ${lista.filter(h=>h.valorConfirmadoEm).length}. Referências anteriores: ${lista.filter(h=>Number.isFinite(h.total)&&!h.valorConfirmadoEm).length}. Valores a conferir: ${lista.filter(h=>!Number.isFinite(h.total)).length}. Kyoto inclui apenas a reserva de 19–22/03; a noite de 18/03 aguarda alteração.</p></div>
+         <p class="mt">Valores atualizados pelos prints: ${lista.filter(h=>h.valorConfirmadoEm).length}. Referências anteriores: ${lista.filter(h=>Number.isFinite(h.total)&&!h.valorConfirmadoEm).length}. Valores a conferir: ${lista.filter(h=>!Number.isFinite(h.total)).length}. Laon inclui as quatro noites de Kyoto, de 18–22/03. O total em reais do Laon é aproximado; os preços finais de Osaka ainda faltam.</p></div>
          <div class="vl">R$ ${nf(lista.filter(h=>!h.cancelada).reduce((a,b)=>a+(b.total||0),0))}<u>subtotal parcial</u></div></div>`);
   }
   el("hospToggle").addEventListener("click",(ev)=>{
