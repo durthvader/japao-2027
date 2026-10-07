@@ -543,7 +543,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
-<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Laon confirmado para as quatro noites de Kyoto; K-style anterior cancelado; conferir o valor final de Osaka 15–18/03. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
+<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Laon confirmado para as quatro noites de Kyoto; K-style anterior cancelado; Osaka 15–18/03 com preço mantido em R$4.054,89. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
 <main>
 <section class="sec wrap" id="roteiro">
   <div class="sec-head">
@@ -1189,7 +1189,7 @@ function montarHosp(){
       + (set==='b'?`<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s><div class="tx"><h4>Reservas canceladas</h4><p class="mt">${lista.filter(h=>h.cancelada).length} cancelamentos confirmados pelos prints. Valores fora do orçamento ativo. Conferir cobranças e reembolsos nos comprovantes.</p></div></div>`:
         `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
          <div class="tx"><h4>Subtotal dos valores registrados</h4>
-         <p class="mt">Valores atualizados pelos comprovantes: ${lista.filter(h=>h.valorConfirmadoEm).length}. Referências anteriores: ${lista.filter(h=>Number.isFinite(h.total)&&!h.valorConfirmadoEm).length}. Preços a conferir: ${lista.filter(h=>!Number.isFinite(h.total)).length}. Laon inclui as quatro noites de Kyoto, de 18–22/03. O total em reais do Laon é aproximado. GRAND PIA 2 pago integralmente: R$2.043,22. O preço final de Osaka 15–18/03 ainda falta.</p></div>
+         <p class="mt">Valores conferidos pelos comprovantes ou pelo viajante: ${lista.filter(h=>h.valorConfirmadoEm).length}. Referências anteriores: ${lista.filter(h=>Number.isFinite(h.total)&&!h.valorConfirmadoEm).length}. Preços a conferir: ${lista.filter(h=>!Number.isFinite(h.total)).length}. Laon inclui as quatro noites de Kyoto, de 18–22/03. O total em reais do Laon é aproximado. GRAND PIA 2 pago integralmente: R$2.043,22. Osaka 15–18/03 mantém R$4.054,89, confirmado pelo viajante.</p></div>
          <div class="vl">R$ ${valorBRL(lista.filter(h=>!h.cancelada).reduce((a,b)=>a+(b.total||0),0))}<u>subtotal parcial</u></div></div>`);
   }
   el("hospToggle").addEventListener("click",(ev)=>{

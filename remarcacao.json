@@ -128,7 +128,7 @@
   },
   {
    "titulo": "HOSPEDAGENS: LAON CONFIRMADO; SERVIÇOS A CONFERIR",
-   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial e La Vista mantêm suas reservas. GRAND PIA 2: total integral pago R$2.043,22, confirmado pelo viajante em 07/10/2026. Comprovante: HOSPE.pdf (Airbnb). 10 hóspedes e 3 bebês. Cancelamento gratuito antes das 15h de 29/03/2027; após esse prazo e antes do check-in de 30/03 às 15h, reembolso parcial conforme Airbnb. Os novos acessos de Gion têm tarifas e horários a conferir. Seguro e internet devem cobrir a viagem atual."
+   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial 15–18/03: preço mantido em R$4.054,89, confirmado pelo viajante em 07/10/2026. La Vista mantém sua reserva. GRAND PIA 2: total integral pago R$2.043,22, confirmado pelo viajante em 07/10/2026. Comprovante: HOSPE.pdf (Airbnb). 10 hóspedes e 3 bebês. Cancelamento gratuito antes das 15h de 29/03/2027; após esse prazo e antes do check-in de 30/03 às 15h, reembolso parcial conforme Airbnb. Os novos acessos de Gion têm tarifas e horários a conferir. Seguro e internet devem cobrir a viagem atual."
   }
  ],
  "hospedagem": {
@@ -140,13 +140,17 @@
     "checkin": "2027-03-15",
     "checkout": "2027-03-18",
     "noites": 3,
-    "total": null,
-    "status": "Confirmada: alteração para 15–18/03/2027 aceita pelo anfitrião em 06/10/2026. Três noites. Valor após a alteração a conferir; referência anterior de R$ 4.054,89.",
+    "total": 4054.89,
+    "status": "Confirmada 15–18/03/2027, três noites. Preço mantido: R$4.054,89, conforme confirmação do viajante em 07/10/2026.",
     "referenciaAnterior": 4054.89,
     "reservaCheckin": "2027-03-15",
     "reservaCheckout": "2027-03-18",
     "reservaNoites": 3,
-    "alteracaoConfirmadaEm": "2026-10-06"
+    "alteracaoConfirmadaEm": "2026-10-06",
+    "valorConfirmadoEm": "2026-10-07",
+    "valorPeriodo": "grupo · preço mantido",
+    "precoMantido": true,
+    "fonteValor": "Confirmação do viajante em 07/10/2026: preço mantido após alteração das datas"
    },
    {
     "hotel": "Laon Inn Gion Nawate",
@@ -2479,7 +2483,7 @@
   },
   "10": {
    "titulo": "HOSPEDAGENS: Laon confirmado; K-style anterior cancelado",
-   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial e La Vista mantêm suas reservas. GRAND PIA 2: total integral pago R$2.043,22, confirmado pelo viajante em 07/10/2026. Comprovante: HOSPE.pdf (Airbnb). 10 hóspedes e 3 bebês. Cancelamento gratuito antes das 15h de 29/03/2027; após esse prazo e antes do check-in de 30/03 às 15h, reembolso parcial conforme Airbnb. Os novos acessos de Gion têm tarifas e horários a conferir."
+   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial 15–18/03: preço mantido em R$4.054,89, confirmado pelo viajante em 07/10/2026. La Vista mantém sua reserva. GRAND PIA 2: total integral pago R$2.043,22, confirmado pelo viajante em 07/10/2026. Comprovante: HOSPE.pdf (Airbnb). 10 hóspedes e 3 bebês. Cancelamento gratuito antes das 15h de 29/03/2027; após esse prazo e antes do check-in de 30/03 às 15h, reembolso parcial conforme Airbnb. Os novos acessos de Gion têm tarifas e horários a conferir."
   },
   "11": {
    "titulo": "DOHA E GRU: novas prioridades de conexão",
