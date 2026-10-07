@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Novos voos via Doha, comparação das opções com mais Kyoto, custos e pendências após a remarcação.">
+<meta name="description" content="Datas, hospedagens, documentos e providências da viagem ao Japão de 15/03 a 01/04/2027, via Doha.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Remarcação e Dias Adicionais · Japão 2027">
-<meta property="og:description" content="Novos voos via Doha, comparação das opções com mais Kyoto, custos e pendências após a remarcação.">
+<meta property="og:title" content="Viagem Atual · Japão 2027">
+<meta property="og:description" content="Datas, hospedagens, documentos e providências da viagem ao Japão de 15/03 a 01/04/2027, via Doha.">
 <meta property="og:locale" content="pt_BR">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#EDEEF1" media="(prefers-color-scheme: light)">
@@ -15,7 +15,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E">
 <script>try{var _th=localStorage.getItem("jp27_theme")||localStorage.getItem("jp27tema")||localStorage.getItem("tema-japao");if(_th)document.documentElement.setAttribute("data-theme",_th);}catch(e){}</script>
-<title>Remarcação e Dias Adicionais · Japão 2027</title>
+<title>Viagem Atual · Japão 2027</title>
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -165,6 +165,12 @@ img,canvas,svg{max-width:100%;display:block}
 #remarcacao li{margin-bottom:.7rem}
 #remarcacao table{min-width:680px}
 @media(min-width:680px){.rem-metricas{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:679px){.rem-metricas .num:last-child{grid-column:1/-1}}
+.historico{margin-top:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.historico summary{padding:16px;cursor:pointer;font-weight:700;min-height:48px}
+.historico[open] summary{border-bottom:1px solid var(--line)}
+.historico-conteudo{padding:16px}
+.historico-conteudo>p{margin-bottom:16px;color:var(--ink-2)}
 /* ============ MAPA ============ */
 .mapa-grid{display:flex;flex-direction:column;gap:16px}
 @media(min-width:1024px){
@@ -409,10 +415,6 @@ td.h{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-n
 .iata{font-family:var(--f-mono);font-weight:800;font-size:.72rem;letter-spacing:.04em;color:var(--ink);
   background:var(--sunken);border:1px solid var(--line);border-radius:5px;padding:1px 5px;white-space:nowrap}
 .apto{display:block;margin-top:4px;font-size:.68rem;color:var(--ink-3)}
-/* horario que a companhia mudou: o antigo fica a vista, riscado, para quem ja tinha */
-/* anotado o outro reconhecer a linha e saber que a mudanca e de la, nao erro daqui */
-.era{display:block;font-size:.68rem;color:var(--ink-3);text-decoration:line-through;
-  text-decoration-color:var(--sakura);font-weight:500}
 
 /* ============ HOSPEDAGEM ============ */
 .hosp{display:flex;flex-direction:column;gap:10px}
@@ -536,55 +538,53 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="top-nav-in">
     <a class="nav-brand" href="index.html"><b>日本</b> 2027 <small>Roteiro</small></a>
     <nav class="top-links" aria-label="Seções do site">
-      <a href="index.html">Início</a><a href="remarcacao.html" aria-current="page">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+      <a href="index.html">Início</a><a href="remarcacao.html" aria-current="page">Viagem</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
     </nav>
     <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
-<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Laon confirmado para as quatro noites de Kyoto; K-style anterior cancelado; Osaka 15–18/03 com preço mantido em R$4.054,89. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
+<aside class="wrap" style="margin:20px auto" aria-label="Datas da viagem"><div class="callout c-kyoto"><s>↗</s><div><h4>Japão de 15/03 a 01/04/2027</h4><p>18 dias e 17 noites. Voos via Doha para os 13 viajantes. Tempo livre em Kyoto em 18/03 e em Osaka em 01/04 até a saída ao aeroporto. <a href="remarcacao.html">Ver datas e pendências da viagem</a>.</p></div></div></aside>
 <main><section class="sec wrap" id="remarcacao" data-foto="kyoto">
-<div class="sec-head"><p class="eyebrow">Remarcação de 26/09/2026</p><h2>Mais tempo no Japão, menos tempo em viagem</h2><div class="rule"></div><p class="sub">Voos confirmados para as 13 pessoas. Osaka inicial confirmada de 15 a 18/03/2027: o anfitrião aceitou a alteração. Laon confirmado em Kyoto 18–22/03, quatro quartos, pago ¥282.616 (≈R$10.295). Osaka final confirmada no GRAND PIA 2, Bentencho, de 30/03 a 01/04. Decisão de 27/09: preservar a programação anterior e deixar os dois períodos adicionais livres. Seul não foi incluída.</p></div>
-<div class="nums rem-metricas"><div class="num"><b>18 dias</b><p>15/03 a 01/04 · 17 noites no Japão</p></div><div class="num"><b>34h45</b><p>Redução total no tempo entre aeroportos</p></div><div class="num"><b>+48h50</b><p>Tempo adicional entre chegada e partida do Japão</p></div></div>
-<div class="tbl-scroll"><table><thead><tr><th>Comparação</th><th>Plano anterior</th><th>Agora</th></tr></thead><tbody><tr><td>Fortaleza → Kansai</td><td>68h30</td><td>41h10 · menos 27h20</td></tr><tr><td>Kansai → Fortaleza</td><td>41h25</td><td>34h · menos 7h25</td></tr><tr><td>Trechos aéreos totais</td><td>8</td><td>6</td></tr><tr><td>Chegada ao Japão</td><td>16/03, 19:45</td><td>15/03, 16:25</td></tr><tr><td>Saída do Japão</td><td>31/03, 21:25</td><td>01/04, 18:55</td></tr><tr><td>Chegada a Fortaleza</td><td>02/04, 02:50</td><td>02/04, 16:55</td></tr></tbody></table></div>
-<p class="sub" style="margin-top:12px">Tempos calculados com fusos a partir dos bilhetes. Não incluem o percurso casa–aeroporto. Os períodos adicionais ficam sem atrações definidas: 18/03 em Kyoto após o deslocamento e 01/04 em Osaka até a ida ao aeroporto.</p>
-<div class="sec-head" style="margin-top:34px"><h2>Bases mantidas, dias adicionais livres</h2><p class="sub">Osaka inicial está confirmada de 15 a 18/03. Laon confirmado em Kyoto 18–22/03, quatro quartos, pago ¥282.616 (≈R$10.295). Osaka final confirmada no GRAND PIA 2, Bentencho, de 30/03 a 01/04. Intervalos são check-in → check-out.</p></div>
-<div class="tbl-scroll"><table><thead><tr><th>Base</th><th>Datas</th><th>Noites</th><th>Providência</th></tr></thead><tbody>
-<tr><td>Osaka inicial</td><td>15–18/03</td><td>3</td><td>Confirmada: alteração aceita pelo anfitrião. Conferir valor final.</td></tr>
-<tr><td>Kyoto</td><td>18–22/03</td><td>4</td><td>Laon confirmado, 4 quartos. Pago ¥282.616 (≈R$10.295). K-style anterior cancelado conforme confirmação de 06/10/2026.</td></tr>
-<tr><td>Kawaguchiko</td><td>22–23/03</td><td>1</td><td>La Vista confirmado, 4 quartos, R$8.727.</td></tr>
-<tr><td>Tóquio</td><td>23–30/03</td><td>7</td><td>Datas e trem de 30/03 preservados</td></tr>
-<tr><td>Osaka final</td><td>30/03–01/04</td><td>2</td><td>GRAND PIA 2 confirmado e pago: R$2.043,22. Check-in 15h; checkout 10h; guarda-volumes mediante solicitação.</td></tr>
-<tr><td>Total</td><td>15/03–01/04</td><td>17</td><td>As duas estadias de Osaka confirmadas; Laon em Kyoto confirmado; K-style anterior cancelado</td></tr></tbody></table></div>
-<p>O roteiro turístico anterior foi restaurado. O programa completo do antigo dia 18/03 em Osaka passa para 16/03, permitindo chegar a Kyoto em 18/03. As datas de Fuji e Tóquio permanecem. Laon confirmado para as quatro noites de Kyoto; K-style anterior cancelado; Osaka 15–18/03 com preço mantido em R$4.054,89.</p>
-<h3 style="margin-top:30px">O que fica em cada dia</h3><ul>
-<li><b>16/03:</b> programa completo do antigo 18/03: Kuromon, Namba Yasaka, Kaiyukan, Tempozan, Nakazakicho, Umeda e jantar.</li>
-<li><b>17/03:</b> programa original, com castelo, Shitennoji, Shinsekai, sumô e Dotonbori.</li>
-<li><b>18/03 — livre em Kyoto:</b> apenas transfer e procedimentos da hospedagem; nenhuma atração definida.</li>
-<li><b>19/03:</b> templos, Nishiki e Gion do roteiro original, sem repetir transfer ou check-in.</li>
-<li><b>20/03:</b> Arashiyama, Tenryū-ji, Monkey Park, Ryōan-ji, Kinkaku-ji, Nijō e Biovortex, como antes.</li>
-<li><b>21/03:</b> Fushimi Inari e circuito leste, como antes.</li>
-<li><b>22–30/03:</b> programação anterior preservada.</li>
-<li><b>31/03:</b> compras originais em Tenjin-bashi, Shinsaibashi e Den Den Town; sem checkout nem voo.</li>
-<li><b>01/04 — livre em Osaka até o aeroporto:</b> checkout do GRAND PIA 2 até 10h. Solicitar guarda-volumes e sair da hospedagem até cerca de 13h30; JR em Bentencho por volta de 14h e KIX até 15h30. Conferir o horário do trem.</li></ul>
-<p>As exclusões, novas marcações de opcionais e a redistribuição de passeios sugeridas em 26/09 foram desfeitas. A escapada a Seul não foi incorporada. Os dois períodos livres não receberam sugestões de atrações.</p>
-<p>O Aoniyoshi normalmente não opera às quintas: permanece previsto transporte regular em 18/03. A comparação do Amazing Pass deve considerar 16–17/03, pois Umeda voltou ao início da viagem. Tarifas e horários de 2027 precisam de confirmação.</p>
-<h3 style="margin-top:30px">Vistos e documentos</h3>
-<p><b>Austrália:</b> visto e preparação de trânsito australiano não se aplicam. <b>Doha:</b> não há visto de trânsito a solicitar para permanecer na área internacional nas conexões de 3h30 e 1h20. Seguir Transfers; na volta, ir diretamente ao portão, que Hamad informa fechar 20 minutos antes.</p>
+<div class="sec-head"><p class="eyebrow">Viagem atual · março e abril de 2027</p><h2>Datas e pendências da viagem</h2><div class="rule"></div><p class="sub">13 viajantes, com voos via Guarulhos e Doha. Japão de 15/03 a 01/04, entre Osaka, Kyoto, Kawaguchiko e Tóquio.</p></div>
+<div class="nums rem-metricas"><div class="num"><b>18 dias</b><p>15/03 a 01/04 no Japão</p></div><div class="num"><b>17 noites</b><p>Entre cinco estadias</p></div><div class="num"><b>13 pessoas</b><p>Incluindo três bebês</p></div></div>
+<h3 style="margin-top:30px">Chegada e retorno</h3>
+<p>Chegada ao KIX em <b>15/03 às 16h25</b>. Saída do KIX em <b>01/04 às 18h55</b>. Chegada a Fortaleza em <b>02/04 às 16h55</b>. Horários locais. <a href="logistica.html">Ver os seis voos e as conexões</a>.</p>
+<h3 style="margin-top:30px">Onde vamos ficar</h3>
+<div class="tbl-scroll"><table><thead><tr><th>Base</th><th>Datas</th><th>Noites</th><th>Hospedagem e valor do grupo</th></tr></thead><tbody>
+<tr><td>Osaka</td><td>15–18/03</td><td>3</td><td>Perto de Namba, Tengachaya. R$4.054,89.</td></tr>
+<tr><td>Kyoto</td><td>18–22/03</td><td>4</td><td>Laon Inn Gion Nawate, quatro quartos. Pago ¥282.616 (aproximadamente R$10.295).</td></tr>
+<tr><td>Kawaguchiko</td><td>22–23/03</td><td>1</td><td>La Vista Fujikawaguchiko, quatro quartos. R$8.727.</td></tr>
+<tr><td>Tóquio</td><td>23–30/03</td><td>7</td><td>Airbnb em Ojima. Referência de R$13.698,04; reconferir valor e ocupação no comprovante.</td></tr>
+<tr><td>Osaka</td><td>30/03–01/04</td><td>2</td><td>GRAND PIA 2, Bentencho. R$2.043,22 pagos integralmente. Check-in 15h; checkout 10h.</td></tr>
+</tbody></table></div>
+<p style="margin-top:12px"><a href="logistica.html#hospLista">Ver endereços, instruções e condições das estadias</a>.</p>
+<h3 style="margin-top:30px">Períodos livres</h3>
+<ul><li><b>18/03, Kyoto:</b> tempo livre após o deslocamento de Osaka e os procedimentos da hospedagem.</li><li><b>01/04, Osaka:</b> checkout até 10h e tempo livre até a ida ao aeroporto. Solicitar guarda-volumes. Referência: sair do GRAND PIA 2 até 13h30, embarcar no JR em Bentencho por volta de 14h e chegar ao KIX até 15h30. Conferir o horário do trem.</li></ul>
+<p><a href="roteiro.html">Abrir o roteiro completo dos 18 dias</a>.</p>
+<h3 style="margin-top:30px">O que ainda precisa de ação</h3>
+<ol class="rem-pendencias">
+<li><b>Bilhetes e conexões:</b> conferir os e-tickets dos 13, o vínculo e a proteção dos trechos domésticos, franquias, assentos, berços e entrega dos carrinhos. Na volta, Doha tem 1h20 e GRU tem 2h55 para os procedimentos da conexão.</li>
+<li><b>Hospedagens:</b> conferir a política da tarifa do Laon e o comprovante de Tóquio. Preparar códigos de acesso, recebimento de malas enviadas e guarda-volumes após o checkout do GRAND PIA 2.</li>
+<li><b>Serviços:</b> conferir seguro até o retorno em 02/04, internet no Japão de 15/03 a 01/04, Visit Japan Web e transfers.</li>
+<li><b>Descanso em GRU:</b> avaliar day use para a espera de 11h25 na ida. O embarque internacional de 14/03 às 02h10 exige preparação na noite de 13/03.</li>
+<li><b>Transportes e atrações:</b> conferir calendários e tarifas de 2027. Venda de sumô prevista em 06/02; venda padrão do trem de 22/03 em 22/02 às 10h do Japão; do trem de 30/03 em 01/03 às 10h. Coordenar o ônibus de Mishima com o trem e conferir as regras dos assentos infantis e das malas.</li>
+</ol>
+<p><a href="preparacao.html">Abrir o checklist com os prazos e as providências</a>.</p>
+<h3 style="margin-top:30px">Documentos da rota atual</h3>
+<p><b>Doha:</b> não há visto de trânsito a solicitar para permanecer na área internacional nas conexões de 3h30 e 1h20. Seguir Transfers; na volta, ir diretamente ao portão, que Hamad informa fechar 20 minutos antes.</p>
 <p><b>Japão:</b> brasileiros com passaporte comum com chip têm isenção de turismo até 90 dias. O passaporte deve cobrir toda a estada; a orientação consular não exige seis meses adicionais. O Japão não exige certificado de vacinação para entrada. Conferir documentos dos menores e autorização de saída do Brasil conforme os acompanhantes.</p>
-<p><b>Se houver imigração no Qatar:</b> hotel fora da área internacional ou reacomodação com entrada no país exige nova conferência. O acordo Brasil–Qatar prevê seis meses de validade para entrada com passaporte comum. Conferir condições sanitárias e CIVP para chegada procedente do Brasil; não foi comprovada obrigação de CIVP para a conexão airside planejada. Avaliar idade e registros dos bebês individualmente com o pediatra. Não há fundamento nas fontes consultadas para comprar seguro local obrigatório para essas conexões; conferir a cobertura do seguro de viagem para Qatar, Japão e 13/03 a 02/04.</p>
-<p>Fontes: <a href="https://dohahamadairport.com/airport-guide/at-the-airport/transfers">Hamad</a>, <a href="https://www.br.emb-japan.go.jp/itpr_pt/11_000001_00627.html">Embaixada do Japão</a>, <a href="https://www.milano.it.emb-japan.go.jp/itpr_it/japanvisa_faq.html">FAQ consular japonesa</a>, <a href="https://aplicacao.itamaraty.gov.br/ApiConcordia/Documento/download/30207">acordo Brasil–Qatar</a>, <a href="https://www.gov.uk/foreign-travel-advice/qatar/entry-requirements">entrada no Qatar</a>, <a href="https://visitqatar.com/intl-en/plan-your-trip/healthcare/health-insurance">seguro no Qatar</a> e <a href="https://www.gov.br/pf/pt-br/assuntos/passaporte/ajuda/duvidas_/documentacao/documentacao-autorizacao-para-menor-informacoes-e">Polícia Federal: menores</a>. Consulta em 26/09/2026; reconferir perto do embarque.</p>
-<h3 style="margin-top:30px">Custo que já dá para calcular</h3><p>Com a mesma referência de ¥6.000/dia, a alimentação passa de ¥96.000 para <b>¥108.000 por adulto</b>: aproximadamente <b>R$ 3.564</b> ao câmbio de planejamento de R$ 0,033/iene. Acréscimo de R$ 396 por adulto, ou R$ 3.960 para 8 adultos e 2 adolescentes usando a mesma diária. Alimentação infantil, hotéis, alterações de tarifa e transportes adicionais ainda não foram cotados.</p><p>Osaka 15–18/03 com preço mantido em R$4.054,89, conforme confirmação do viajante em 07/10/2026. Laon confirmado em Kyoto 18–22/03, pago ¥282.616 (≈R$10.295); conferir a política da tarifa do Laon. K-style anterior cancelado; eventual cobrança/reembolso a conferir. La Vista confirmado em 22–23/03 por R$8.727. GRAND PIA 2 30/03–01/04 pago integralmente: R$2.043,22, conforme comprovante Airbnb e confirmação do viajante em 07/10/2026. Trocar datas pode recalcular a reserva inteira mesmo mantendo o número de noites. Não multiplicar automaticamente o preço antigo de uma diária.</p>
-<h3 style="margin-top:30px">Pendências em ordem de decisão</h3>
-<ol class="rem-pendencias"><li><b>Agora:</b> conferir e-tickets dos 13, vínculo dos domésticos, proteção das conexões, franquias, bebês, assentos e berços com as operadoras.</li><li><b>Reserva anterior de Kyoto:</b> K-style 19–22/03 cancelado conforme confirmação de 06/10/2026; conferir eventual cobrança/reembolso. O Laon já está confirmado para 18–22/03; conferir a política da tarifa contratada. O GRAND PIA 2 em Bentencho já está confirmado para 30/03–01/04. A hospedagem inicial de Osaka 15–18/03 já está confirmada. Conferir prazos de cancelamento e exigências para as crianças.</li><li><b>Organizar estadias:</b> preparar o check-in do Laon e o checkout do GRAND PIA 2; manter trem em 30/03 e ajustar envio de malas e endereços. Não cancelar uma reserva válida antes de confirmar a substituta.</li><li><b>Atualizar serviços:</b> seguro até o retorno em 02/04, internet Japão 15/03–01/04, retirada/devolução de Wi-Fi, Visit Japan Web e transfers.</li><li><b>Ida em GRU:</b> descanso/day use a avaliar para a espera de 11h25. O internacional exige preparação na noite de 13/03 para decolar às 02:10 de 14/03.</li><li><b>Volta:</b> Doha 1h20 exige seguir direto ao portão; GRU 2h55 inclui imigração, malas, alfândega e redespacho. Confirmar assistência e limites de atendimento, sem prometer conexão garantida.</li><li><b>Reservas de atrações:</b> sumô com venda prevista em 06/02; trem de 22/03 com abertura padrão em 22/02 às 10h do Japão; trem de 30/03 em 01/03 às 10h. Conferir exceções do produto e calendários dos ônibus.</li><li><b>Saída do Japão em 01/04:</b> checkout do GRAND PIA 2 até 10h; solicitar guarda-volumes, preparar compras tax-free e sair da hospedagem até cerca de 13h30. Referência de JR em Bentencho às 14h, KIX até 15h30, voo 18h55.</li></ol>
-<h3 style="margin-top:30px">O que ainda falta saber</h3><p>Valores e condições reais das reservas, quais atrações já têm ingresso, composição dos bilhetes e proteção dos domésticos, franquias e serviços infantis confirmados, idades dos bebês em cada trecho e requisitos individuais para eventual entrada no Qatar. A nova rota, o alcance aos 13 passageiros e a ida doméstica já foram confirmados.</p>
-<h3 style="margin-top:30px">Fontes oficiais consultadas em 26/09/2026</h3><ul><li><a href="https://dohahamadairport.com/airport-guide/at-the-airport/transfers" target="_blank" rel="noopener">Hamad: trânsito, segurança e fechamento de portões</a></li><li><a href="https://www.latamairlines.com/br/pt/central-ajuda/perguntas/bagagem/voos-conexao-escala/retirada-conexao" target="_blank" rel="noopener">LATAM: retirada de bagagem na conexão internacional–doméstica</a></li><li><a href="https://www.qatarairways.com/tradeportal/en/specialservices/Children-and-Infants.html" target="_blank" rel="noopener">Qatar: bebês, berços e carrinhos</a></li><li><a href="https://www.br.emb-japan.go.jp/itpr_pt/11_000001_00627.html" target="_blank" rel="noopener">Embaixada do Japão: entrada de brasileiros</a></li><li><a href="https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html" target="_blank" rel="noopener">Calendário oficial de feriados japoneses</a></li><li><a href="https://railway.jr-central.co.jp/ticket-rule/rule02.html" target="_blank" rel="noopener">JR: abertura de vendas</a> e <a href="https://smart-ex.jp/en/product/plan/service/" target="_blank" rel="noopener">condições SmartEX</a></li><li><a href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html" target="_blank" rel="noopener">Agência de Turismo do Japão: tax-free por reembolso</a></li><li><a href="https://sumo.or.jp/EnTicket/year_schedule" target="_blank" rel="noopener">Associação de Sumô: calendário 2027</a></li></ul>
+<details class="historico"><summary>Se for preciso entrar no Qatar</summary><div class="historico-conteudo"><p><b>Se houver imigração no Qatar:</b> hotel fora da área internacional ou reacomodação com entrada no país exige nova conferência. O acordo Brasil–Qatar prevê seis meses de validade para entrada com passaporte comum. Conferir condições sanitárias e CIVP para chegada procedente do Brasil; não foi comprovada obrigação de CIVP para a conexão airside planejada. Avaliar idade e registros dos bebês individualmente com o pediatra. Não há fundamento nas fontes consultadas para comprar seguro local obrigatório para essas conexões; conferir a cobertura do seguro de viagem para Qatar, Japão e 13/03 a 02/04.</p></div></details>
+<details class="historico"><summary>Fontes sobre documentos e conexões</summary><div class="historico-conteudo"><p>Fontes: <a href="https://dohahamadairport.com/airport-guide/at-the-airport/transfers">Hamad</a>, <a href="https://www.br.emb-japan.go.jp/itpr_pt/11_000001_00627.html">Embaixada do Japão</a>, <a href="https://www.milano.it.emb-japan.go.jp/itpr_it/japanvisa_faq.html">FAQ consular japonesa</a>, <a href="https://aplicacao.itamaraty.gov.br/ApiConcordia/Documento/download/30207">acordo Brasil–Qatar</a>, <a href="https://www.gov.uk/foreign-travel-advice/qatar/entry-requirements">entrada no Qatar</a>, <a href="https://visitqatar.com/intl-en/plan-your-trip/healthcare/health-insurance">seguro no Qatar</a> e <a href="https://www.gov.br/pf/pt-br/assuntos/passaporte/ajuda/duvidas_/documentacao/documentacao-autorizacao-para-menor-informacoes-e">Polícia Federal: menores</a>. Consulta em 26/09/2026; reconferir perto do embarque.</p></div></details>
+<h3 style="margin-top:30px">Referências do orçamento</h3>
+<p><b>Alimentação por adulto:</b> ¥6.000 por dia × 18 dias = ¥108.000, aproximadamente R$3.564 ao câmbio de planejamento de R$0,033/iene. A alimentação dos bebês depende das necessidades de cada família.</p>
+<p><b>Valores registrados das hospedagens:</b> R$38.818,15 para o grupo. O total inclui a conversão aproximada do Laon e a referência de Tóquio. Alguns acessos de transporte, guarda-volumes, seguro, internet e compras ainda precisam de cotação. <a href="numeros.html">Ver transporte e ingressos</a>.</p>
 </section></main>
 
 <nav class="nav" aria-label="Seções do site">
   <div class="nav-in">
-    <a href="index.html">Início</a><a href="remarcacao.html" aria-current="page">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+    <a href="index.html">Início</a><a href="remarcacao.html" aria-current="page">Viagem</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
   </div>
 </nav>
 
@@ -1161,16 +1161,9 @@ function trecho(v){
   const pe=[o.nome,d.nome].every(Boolean) ? `<small class="apto">${esc(o.nome)} ${seta} ${esc(d.nome)}</small>` : "";
   return `${lado(o)} ${seta} ${lado(d)}${pe}`;
 }
-// Quando a companhia remarca um trecho, o valor antigo nao some: fica riscado em cima
-// do novo. Quem ja imprimiu o bilhete ou anotou o horario reconhece a linha e ve que a
-// mudanca veio da LATAM. O que era esta em 'antes', campo a campo, no ajustes.json.
-function era(v,campo){
-  const a=v.antes&&v.antes[campo];
-  return (a&&a!==v[campo]) ? `<span class="era">${esc(a)}</span>` : "";
-}
-function cel(v,campo){ return era(v,campo)+esc(v[campo]||""); }
+function cel(v,campo){ return esc(v[campo]||""); }
 function montarVoos(){
-  el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr${v.antes?' class="remarcado"':''}>
+  el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr>
     <td class="n">${esc(v.numero)}<small class="apto">${esc(v.operadora||"")}</small></td>
     <td>${trecho(v)}</td>
     <td class="h">${dm(v.saidaData)}<br>${cel(v,"saidaHora")}</td>
@@ -1178,8 +1171,7 @@ function montarVoos(){
     <td class="h">${cel(v,"duracao")}</td>
     <td>${cel(v,"conexao")}</td></tr>`).join("");
   const leg=el("voosLegenda");
-  if(leg) leg.innerHTML=DADOS.voos.some(v=>v.antes)
-    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "Horários locais. Conferir o cartão de embarque e as notificações da companhia antes de viajar.";
+  if(leg) leg.innerHTML="Horários locais. Conferir o cartão de embarque e as notificações da companhia antes de viajar.";
   el("voosNotas").innerHTML=DADOS.voosNotas.filter(n=>n.texto).map(n=>{
     const crit=/⚠|pendente/i.test(n.titulo);
     return `<div class="callout ${crit?"crit":"c-fuji"}" style="margin-bottom:9px">
@@ -1189,29 +1181,19 @@ function montarVoos(){
 function montarHosp(){
   const cidCor=(c)=>/quioto|kyoto/i.test(c)?"kyoto":/hakone|fuji|kawagu/i.test(c)?"fuji":/tokyo|tóquio/i.test(c)?"tokyo":"osaka";
   const valorBRL=(v)=>v.toLocaleString('pt-BR',{minimumFractionDigits:Number.isInteger(v)?0:2,maximumFractionDigits:2});
-  function pinta(set){
-    const lista=DADOS.hospedagem[set];
-    el("hospLista").innerHTML=lista.map(h=>`
-      <div class="hosp-item c-${cidCor(h.cidade)}">
-        <s></s>
-        <div class="tx">
-          <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
-          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>${h.endereco?`<p class="mt">${esc(h.endereco)}</p>`:""}${h.totalOriginal?`<p class="mt">Pagamento: ¥${nf(h.totalOriginal)} · ${esc(h.pagamento||"")}. ${esc(h.horariosPadrao||"")}</p>`:""}${h.bagagens?`<p class="mt">${esc(h.bagagens)}</p>`:""}${h.reservaAnterior?`<p class="mt">Reserva anterior: ${esc(h.reservaAnterior.hotel)}, ${dm(h.reservaAnterior.checkin)} → ${dm(h.reservaAnterior.checkout)}, R$ ${nf(h.reservaAnterior.total)}. ${esc(h.reservaAnterior.status)}.</p>`:""}${h.guia?`<p class="mt"><a href="${esc(h.guia)}" target="_blank" rel="noopener">Guia do anfitrião</a> · código previsto em 28/03 · malas após 12h na chegada · atendimento 9h–0h</p><p class="mt">Guarda-volumes após checkout: $5 por volume, mediante solicitação; conferir moeda e carrinhos. Checkout tardio: US$35/h, sujeito a acordo.</p>`:""}
-        </div>
-        <div class="vl">${Number.isFinite(h.total)?"R$ "+valorBRL(h.total):(h.alteracaoConfirmadaEm||h.reservaConfirmadaEm)?"Preço a conferir":"A cotar"}<u>${esc(h.valorPeriodo||"grupo")}</u></div>
-      </div>`).join("")
-      + (set==='b'?`<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s><div class="tx"><h4>Reservas canceladas</h4><p class="mt">${lista.filter(h=>h.cancelada).length} cancelamentos confirmados pelos prints. Valores fora do orçamento ativo. Conferir cobranças e reembolsos nos comprovantes.</p></div></div>`:
-        `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
-         <div class="tx"><h4>Subtotal dos valores registrados</h4>
-         <p class="mt">Valores conferidos pelos comprovantes ou pelo viajante: ${lista.filter(h=>h.valorConfirmadoEm).length}. Referências anteriores: ${lista.filter(h=>Number.isFinite(h.total)&&!h.valorConfirmadoEm).length}. Preços a conferir: ${lista.filter(h=>!Number.isFinite(h.total)).length}. Laon inclui as quatro noites de Kyoto, de 18–22/03. O total em reais do Laon é aproximado. GRAND PIA 2 pago integralmente: R$2.043,22. Osaka 15–18/03 mantém R$4.054,89, confirmado pelo viajante.</p></div>
-         <div class="vl">R$ ${valorBRL(lista.filter(h=>!h.cancelada).reduce((a,b)=>a+(b.total||0),0))}<u>subtotal parcial</u></div></div>`);
-  }
-  el("hospToggle").addEventListener("click",(ev)=>{
-    const b=ev.target.closest("button"); if(!b) return;
-    el("hospToggle").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
-    pinta(b.dataset.set);
-  });
-  pinta("a");
+  const cartao=(h)=>`<div class="hosp-item c-${cidCor(h.cidade)}"><s></s><div class="tx">
+    <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
+    <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p>
+    <p class="mt">${esc(h.status||"")}</p>
+    ${h.endereco?`<p class="mt">${esc(h.endereco)}</p>`:""}
+    ${h.totalOriginal?`<p class="mt">Pagamento: ¥${nf(h.totalOriginal)} · ${esc(h.pagamento||"")}. ${esc(h.horariosPadrao||"")}</p>`:""}
+    ${h.bagagens?`<p class="mt">${esc(h.bagagens)}</p>`:""}
+    ${h.guia?`<p class="mt"><a href="${esc(h.guia)}" target="_blank" rel="noopener">Guia do anfitrião</a> · código previsto em 28/03 · malas após 12h na chegada · atendimento 9h–0h</p><p class="mt">Guarda-volumes após checkout: $5 por volume, mediante solicitação; conferir moeda e carrinhos. Checkout tardio: US$35/h, sujeito a acordo.</p>`:""}
+    </div><div class="vl">${Number.isFinite(h.total)?"R$ "+valorBRL(h.total):"Preço a conferir"}<u>${esc(h.valorPeriodo||"grupo")}</u></div></div>`;
+  const lista=DADOS.hospedagem.a.filter(h=>!h.cancelada);
+  el("hospLista").innerHTML=lista.map(cartao).join("")+`<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s><div class="tx"><h4>Subtotal dos valores registrados</h4><p class="mt">Tóquio usa uma referência a reconferir no comprovante. O total em reais do Laon é aproximado. Guarda-volumes e demais serviços cobrados à parte dependem de cotação.</p></div><div class="vl">R$ ${valorBRL(lista.reduce((a,h)=>a+(h.total||0),0))}<u>subtotal parcial</u></div></div>`;
+  const historico=el("hospHistorico");
+  if(historico)historico.innerHTML=(DADOS.hospedagem.b||[]).filter(h=>h.cancelada).map(cartao).join("");
 }
 
 /* ================================================================

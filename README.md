@@ -7,6 +7,24 @@ O site tem 12 páginas temáticas e 18 páginas diárias, geradas pelo mesmo tem
 e dados consolidados. `index.html` é o portal. O conteúdo principal é embutido no
 HTML; fotos são arquivos locais. Mapas Leaflet/tiles precisam de internet.
 
+## Viagem atual
+
+13 viajantes, incluindo três bebês. Voos via Guarulhos e Doha. Japão de 15/03
+a 01/04/2027, com 18 dias e 17 noites. Retorno a Fortaleza em 02/04 às 16h55.
+
+Bases: Osaka 15–18/03, Kyoto 18–22/03, Kawaguchiko 22–23/03, Tóquio 23–30/03
+e Osaka 30/03–01/04. Tempo livre em Kyoto após o transfer de 18/03 e em Osaka
+em 01/04 até a saída ao aeroporto.
+
+A página `remarcacao.html` mostra “Viagem” no menu e reúne as datas e as
+pendências atuais. Na Logística, o “Histórico de reservas” fica recolhido;
+registros cancelados continuam disponíveis para conferência de cobranças ou
+reembolsos. `apresentacao.py` prepara os textos do site e preserva os dados e
+o histórico nos arquivos de origem. As planilhas mantêm sua formatação.
+
+<details>
+<summary>Histórico de edição do roteiro</summary>
+
 ## Remarcação de 26/09/2026
 
 Decisão de 27/09/2026: roteiro turístico anterior restaurado, com os novos voos
@@ -20,6 +38,9 @@ Bases: Osaka 15–18/03, Kyoto 18–22/03, Kawaguchiko 22–23/03, Tóquio 23–
 Osaka 30/03–01/04. Atualização de 06/10/2026: o anfitrião aceitou Osaka inicial 15–18/03. GRAND PIA 2 em Bentencho também confirmado para 30/03–01/04. Laon Inn Gion Nawate confirmado em 18–22/03, quatro quartos, pago ¥282.616 (≈R$10.295). K-style anterior cancelado conforme confirmação de 06/10/2026. La Vista confirmado em 22–23/03 por R$8.727. GRAND PIA 2 pago integralmente: R$2.043,22, conforme HOSPE.pdf e confirmação do viajante em 07/10/2026. Osaka 15–18/03 com preço mantido em R$4.054,89, confirmado pelo viajante em 07/10/2026.
 A lista B registra Brighton, Hakonenomori e Petit Grande como cancelados, conforme os prints. Seus valores ficam fora do orçamento ativo.
 
+
+</details>
+
 A planilha original foi atualizada em 06/10/2026 com a programação decidida em
 27/09. `Roteiro!A25` registra `Roteiro consolidado: 06/10/2026`, incluindo a
 confirmação de Osaka inicial. O extrator grava a data desse marcador em `_roteiroConsolidado`.
@@ -31,7 +52,7 @@ complementados por `remarcacao.json`. Não incluir localizadores ou compras pess
 Em `Hospedagem`, a coluna A mostra os períodos planejados. E/F e os valores
 preservam os registros de reserva anteriores. O extrato mantém esses registros
 em `reservaCheckin`, `reservaCheckout`, `reservaNoites` e `referenciaAnterior`.
-Kyoto está reservado no Laon Inn Gion Nawate em 18–22/03, quatro quartos. O total pago é ¥282.616; R$10.295 é a referência aproximada exibida pelo Booking. A política de cancelamento da tarifa contratada não aparece no print final. K-style 19–22/03, R$7.313, foi cancelado conforme confirmação de 06/10/2026; eventual cobrança/reembolso a conferir.
+Kyoto está reservado no Laon Inn Gion Nawate em 18–22/03, quatro quartos. O total pago é ¥282.616; R$10.295 é a referência aproximada exibida pelo Booking. A política de cancelamento da tarifa contratada não aparece no print final. Os registros cancelados ficam no histórico recolhido da Logística para conferência de cobranças ou reembolsos.
 
 Custos sem cotação ficam explícitos. O subtotal de hotéis reúne referências
 antigas e não representa 17 noites cotadas. A alimentação usa 18 dias. O histórico
@@ -49,10 +70,10 @@ custos, alternativas — continua funcionando.
 | Mapa | Rota Osaka → Kyoto → Kawaguchiko → Tokyo → Osaka, com as pernas detalhadas |
 | Timelapse | Os 18 dias num scrubber: arraste ou dê play |
 | Roteiro | Atividades com distância, tempo, ingresso, horário e acesso com carrinho |
-| Remarcação | Voos confirmados, opções de 17 noites e pendências após a mudança |
+| Viagem | Datas, hospedagens e providências atuais |
 | Comer / Compras | Curadoria por bairro, com os horários que importam |
 | Plano B | Alternativas cobertas, trocas mapeadas e as 14 decisões da planilha |
-| Logística | Voos e os dois conjuntos de hospedagem |
+| Logística | Voos, hospedagens atuais e histórico recolhido de reservas |
 | Mapa do dia | Uma página por dia: rota no mapa, hora a hora, transporte, custos, must-see, comidas, compras, alternativas e uma foto por parada |
 
 ## Regerar depois de mexer na planilha
@@ -198,6 +219,11 @@ forte o bastante para o pior caso e toda foto viraria cinza.
 
 30/03/2027 às 15h a 01/04/2027 às 10h. Malas após 12h na chegada; código previsto em 28/03. O guia informa guarda-volumes pós-checkout por $5 por volume, mediante solicitação; confirmar moeda e carrinhos. Os acessos de Bentencho ainda sem tarifa ficam vazios na planilha e aparecem como “A cotar” no site. O subtotal de transporte é parcial.
 
+<details>
+<summary>Comprovantes e registros de reservas anteriores</summary>
+
 Booking, prints de 06/10/2026: K-style (4 quartos, 19–22/03) R$7.313; La Vista (4 quartos, 22–23/03) R$8.727. Ambos exibem cancelamento grátis, sem prazo no print. Cancelados: Brighton R$5.595, Hakonenomori R$5.723, Petit Grande R$21.645 e K-style R$7.313 (19–22/03). Os totais são valores inteiros dos prints. Rateios individuais da planilha original foram mantidos como referências anteriores porque faltam preços por quarto. A coluna K contém os novos totais; a projeção automática de uma quarta noite em L7 foi retirada.
+
+</details>
 
 Laon confirmado em 06/10/2026. Acessos de Gion revisados sem acrescentar atrações; novas tarifas ficam a cotar. Endereço oficial: 16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802. O marcador geográfico é aproximado. Os arquivos publicados omitem localizadores, PIN, e-mail e endereços de confirmação privados. A lista de cálculo do XLSX é conferida para remover referências a células que deixaram de conter fórmulas.

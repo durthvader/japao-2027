@@ -31,6 +31,8 @@ tpl = io.open(TPL, encoding='utf-8').read()
 # ajustes.json e entram aqui, em memoria. dados.json nunca e reescrito.
 import ajustes
 djs = ajustes.aplicar(json.loads(dados))
+import apresentacao
+djs = apresentacao.preparar(djs)
 
 # O payload vai inteiro para dentro do HTML, entao o que nao e para o grupo ler nao
 # pode nem chegar la: 'motivo' e a justificativa de cada decisao e 'ajuste'/'ajustes'
@@ -106,7 +108,7 @@ def montar(pagina, head_extra, body_classe=''):
 mapeados = []
 atlas = []      # todas as paradas dos 18 dias, para a pagina Atlas
 if os.path.exists(GEO_F) and os.path.exists(DTPL):
-    geo = json.loads(io.open(GEO_F, encoding='utf-8').read())
+    geo = apresentacao.limpar_textos(json.loads(io.open(GEO_F, encoding='utf-8').read()))
     tokens = tpl[tpl.index('/* ============ TOKENS'):
                  tpl.index('/* ============ PAPEL DE PAREDE')].strip()
     dtpl = io.open(DTPL, encoding='utf-8').read()
@@ -230,7 +232,7 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
 
 # ------------------------------------------------------------------- paginas do site
 PAGINAS = [
-    {'id': 'remarcacao', 'arquivo': 'remarcacao.html', 'label': 'Remarcação', 'titulo': 'Remarcação e Dias Adicionais · Japão 2027', 'desc': 'Novos voos via Doha, comparação das opções com mais Kyoto, custos e pendências após a remarcação.'},
+    {'id': 'remarcacao', 'arquivo': 'remarcacao.html', 'label': 'Viagem', 'titulo': 'Viagem Atual · Japão 2027', 'desc': 'Datas, hospedagens, documentos e providências da viagem ao Japão de 15/03 a 01/04/2027, via Doha.'},
     {
         'id': 'inicio',
         'arquivo': 'index.html',
@@ -299,7 +301,7 @@ PAGINAS = [
         'arquivo': 'logistica.html',
         'label': 'Logística',
         'titulo': 'Logística & Hospedagem · Japão 2027',
-        'desc': 'Voos LATAM com conexões e comparação de valores entre os conjuntos A e B de hospedagens.',
+        'desc': 'Voos via Doha, hospedagens da viagem, valores e instruções de chegada e saída.',
     },
     {
         'id': 'preparacao',

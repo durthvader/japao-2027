@@ -165,6 +165,12 @@ img,canvas,svg{max-width:100%;display:block}
 #remarcacao li{margin-bottom:.7rem}
 #remarcacao table{min-width:680px}
 @media(min-width:680px){.rem-metricas{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:679px){.rem-metricas .num:last-child{grid-column:1/-1}}
+.historico{margin-top:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.historico summary{padding:16px;cursor:pointer;font-weight:700;min-height:48px}
+.historico[open] summary{border-bottom:1px solid var(--line)}
+.historico-conteudo{padding:16px}
+.historico-conteudo>p{margin-bottom:16px;color:var(--ink-2)}
 /* ============ MAPA ============ */
 .mapa-grid{display:flex;flex-direction:column;gap:16px}
 @media(min-width:1024px){
@@ -409,10 +415,6 @@ td.h{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-n
 .iata{font-family:var(--f-mono);font-weight:800;font-size:.72rem;letter-spacing:.04em;color:var(--ink);
   background:var(--sunken);border:1px solid var(--line);border-radius:5px;padding:1px 5px;white-space:nowrap}
 .apto{display:block;margin-top:4px;font-size:.68rem;color:var(--ink-3)}
-/* horario que a companhia mudou: o antigo fica a vista, riscado, para quem ja tinha */
-/* anotado o outro reconhecer a linha e saber que a mudanca e de la, nao erro daqui */
-.era{display:block;font-size:.68rem;color:var(--ink-3);text-decoration:line-through;
-  text-decoration-color:var(--sakura);font-weight:500}
 
 /* ============ HOSPEDAGEM ============ */
 .hosp{display:flex;flex-direction:column;gap:10px}
@@ -536,14 +538,14 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
   <div class="top-nav-in">
     <a class="nav-brand" href="index.html"><b>日本</b> 2027 <small>Roteiro</small></a>
     <nav class="top-links" aria-label="Seções do site">
-      <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html" aria-current="page">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+      <a href="index.html">Início</a><a href="remarcacao.html">Viagem</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html" aria-current="page">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
     </nav>
     <button class="themeBtn" id="themeBtn" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
-<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Laon confirmado para as quatro noites de Kyoto; K-style anterior cancelado; Osaka 15–18/03 com preço mantido em R$4.054,89. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
+<aside class="wrap" style="margin:20px auto" aria-label="Datas da viagem"><div class="callout c-kyoto"><s>↗</s><div><h4>Japão de 15/03 a 01/04/2027</h4><p>18 dias e 17 noites. Voos via Doha para os 13 viajantes. Tempo livre em Kyoto em 18/03 e em Osaka em 01/04 até a saída ao aeroporto. <a href="remarcacao.html">Ver datas e pendências da viagem</a>.</p></div></div></aside>
 <main>
 <section class="sec wrap" id="comer" data-foto="osaka">
   <div class="sec-head">
@@ -565,7 +567,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <nav class="nav" aria-label="Seções do site">
   <div class="nav-in">
-    <a href="index.html">Início</a><a href="remarcacao.html">Remarcação</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html" aria-current="page">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
+    <a href="index.html">Início</a><a href="remarcacao.html">Viagem</a><a href="roteiro.html">Roteiro</a><a href="mapa.html">Mapa</a><a href="atlas.html">Atlas</a><a href="timelapse.html">Timelapse</a><a href="numeros.html">Números</a><a href="comer.html" aria-current="page">Comer</a><a href="compras.html">Compras</a><a href="planob.html">Plano B</a><a href="logistica.html">Logística</a><a href="preparacao.html">Preparação</a>
   </div>
 </nav>
 
@@ -1142,16 +1144,9 @@ function trecho(v){
   const pe=[o.nome,d.nome].every(Boolean) ? `<small class="apto">${esc(o.nome)} ${seta} ${esc(d.nome)}</small>` : "";
   return `${lado(o)} ${seta} ${lado(d)}${pe}`;
 }
-// Quando a companhia remarca um trecho, o valor antigo nao some: fica riscado em cima
-// do novo. Quem ja imprimiu o bilhete ou anotou o horario reconhece a linha e ve que a
-// mudanca veio da LATAM. O que era esta em 'antes', campo a campo, no ajustes.json.
-function era(v,campo){
-  const a=v.antes&&v.antes[campo];
-  return (a&&a!==v[campo]) ? `<span class="era">${esc(a)}</span>` : "";
-}
-function cel(v,campo){ return era(v,campo)+esc(v[campo]||""); }
+function cel(v,campo){ return esc(v[campo]||""); }
 function montarVoos(){
-  el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr${v.antes?' class="remarcado"':''}>
+  el("voosBody").innerHTML=DADOS.voos.map(v=>`<tr>
     <td class="n">${esc(v.numero)}<small class="apto">${esc(v.operadora||"")}</small></td>
     <td>${trecho(v)}</td>
     <td class="h">${dm(v.saidaData)}<br>${cel(v,"saidaHora")}</td>
@@ -1159,8 +1154,7 @@ function montarVoos(){
     <td class="h">${cel(v,"duracao")}</td>
     <td>${cel(v,"conexao")}</td></tr>`).join("");
   const leg=el("voosLegenda");
-  if(leg) leg.innerHTML=DADOS.voos.some(v=>v.antes)
-    ? `<span class="era" style="display:inline">assim</span> = horário anterior, remarcado pela companhia. O bilhete vale pelo horário novo.` : "Horários locais. Conferir o cartão de embarque e as notificações da companhia antes de viajar.";
+  if(leg) leg.innerHTML="Horários locais. Conferir o cartão de embarque e as notificações da companhia antes de viajar.";
   el("voosNotas").innerHTML=DADOS.voosNotas.filter(n=>n.texto).map(n=>{
     const crit=/⚠|pendente/i.test(n.titulo);
     return `<div class="callout ${crit?"crit":"c-fuji"}" style="margin-bottom:9px">
@@ -1170,29 +1164,19 @@ function montarVoos(){
 function montarHosp(){
   const cidCor=(c)=>/quioto|kyoto/i.test(c)?"kyoto":/hakone|fuji|kawagu/i.test(c)?"fuji":/tokyo|tóquio/i.test(c)?"tokyo":"osaka";
   const valorBRL=(v)=>v.toLocaleString('pt-BR',{minimumFractionDigits:Number.isInteger(v)?0:2,maximumFractionDigits:2});
-  function pinta(set){
-    const lista=DADOS.hospedagem[set];
-    el("hospLista").innerHTML=lista.map(h=>`
-      <div class="hosp-item c-${cidCor(h.cidade)}">
-        <s></s>
-        <div class="tx">
-          <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
-          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>${h.endereco?`<p class="mt">${esc(h.endereco)}</p>`:""}${h.totalOriginal?`<p class="mt">Pagamento: ¥${nf(h.totalOriginal)} · ${esc(h.pagamento||"")}. ${esc(h.horariosPadrao||"")}</p>`:""}${h.bagagens?`<p class="mt">${esc(h.bagagens)}</p>`:""}${h.reservaAnterior?`<p class="mt">Reserva anterior: ${esc(h.reservaAnterior.hotel)}, ${dm(h.reservaAnterior.checkin)} → ${dm(h.reservaAnterior.checkout)}, R$ ${nf(h.reservaAnterior.total)}. ${esc(h.reservaAnterior.status)}.</p>`:""}${h.guia?`<p class="mt"><a href="${esc(h.guia)}" target="_blank" rel="noopener">Guia do anfitrião</a> · código previsto em 28/03 · malas após 12h na chegada · atendimento 9h–0h</p><p class="mt">Guarda-volumes após checkout: $5 por volume, mediante solicitação; conferir moeda e carrinhos. Checkout tardio: US$35/h, sujeito a acordo.</p>`:""}
-        </div>
-        <div class="vl">${Number.isFinite(h.total)?"R$ "+valorBRL(h.total):(h.alteracaoConfirmadaEm||h.reservaConfirmadaEm)?"Preço a conferir":"A cotar"}<u>${esc(h.valorPeriodo||"grupo")}</u></div>
-      </div>`).join("")
-      + (set==='b'?`<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s><div class="tx"><h4>Reservas canceladas</h4><p class="mt">${lista.filter(h=>h.cancelada).length} cancelamentos confirmados pelos prints. Valores fora do orçamento ativo. Conferir cobranças e reembolsos nos comprovantes.</p></div></div>`:
-        `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
-         <div class="tx"><h4>Subtotal dos valores registrados</h4>
-         <p class="mt">Valores conferidos pelos comprovantes ou pelo viajante: ${lista.filter(h=>h.valorConfirmadoEm).length}. Referências anteriores: ${lista.filter(h=>Number.isFinite(h.total)&&!h.valorConfirmadoEm).length}. Preços a conferir: ${lista.filter(h=>!Number.isFinite(h.total)).length}. Laon inclui as quatro noites de Kyoto, de 18–22/03. O total em reais do Laon é aproximado. GRAND PIA 2 pago integralmente: R$2.043,22. Osaka 15–18/03 mantém R$4.054,89, confirmado pelo viajante.</p></div>
-         <div class="vl">R$ ${valorBRL(lista.filter(h=>!h.cancelada).reduce((a,b)=>a+(b.total||0),0))}<u>subtotal parcial</u></div></div>`);
-  }
-  el("hospToggle").addEventListener("click",(ev)=>{
-    const b=ev.target.closest("button"); if(!b) return;
-    el("hospToggle").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
-    pinta(b.dataset.set);
-  });
-  pinta("a");
+  const cartao=(h)=>`<div class="hosp-item c-${cidCor(h.cidade)}"><s></s><div class="tx">
+    <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
+    <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p>
+    <p class="mt">${esc(h.status||"")}</p>
+    ${h.endereco?`<p class="mt">${esc(h.endereco)}</p>`:""}
+    ${h.totalOriginal?`<p class="mt">Pagamento: ¥${nf(h.totalOriginal)} · ${esc(h.pagamento||"")}. ${esc(h.horariosPadrao||"")}</p>`:""}
+    ${h.bagagens?`<p class="mt">${esc(h.bagagens)}</p>`:""}
+    ${h.guia?`<p class="mt"><a href="${esc(h.guia)}" target="_blank" rel="noopener">Guia do anfitrião</a> · código previsto em 28/03 · malas após 12h na chegada · atendimento 9h–0h</p><p class="mt">Guarda-volumes após checkout: $5 por volume, mediante solicitação; conferir moeda e carrinhos. Checkout tardio: US$35/h, sujeito a acordo.</p>`:""}
+    </div><div class="vl">${Number.isFinite(h.total)?"R$ "+valorBRL(h.total):"Preço a conferir"}<u>${esc(h.valorPeriodo||"grupo")}</u></div></div>`;
+  const lista=DADOS.hospedagem.a.filter(h=>!h.cancelada);
+  el("hospLista").innerHTML=lista.map(cartao).join("")+`<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s><div class="tx"><h4>Subtotal dos valores registrados</h4><p class="mt">Tóquio usa uma referência a reconferir no comprovante. O total em reais do Laon é aproximado. Guarda-volumes e demais serviços cobrados à parte dependem de cotação.</p></div><div class="vl">R$ ${valorBRL(lista.reduce((a,h)=>a+(h.total||0),0))}<u>subtotal parcial</u></div></div>`;
+  const historico=el("hospHistorico");
+  if(historico)historico.innerHTML=(DADOS.hospedagem.b||[]).filter(h=>h.cancelada).map(cartao).join("");
 }
 
 /* ================================================================
