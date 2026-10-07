@@ -865,13 +865,13 @@ function montarNums(){
   const COMIDA=6000*DADOS.nDias;   // Y6.000/dia x 18 dias, o cenario medio da propria planilha
   const cards=[
     {b:nf(DADOS.nDias),u:"dias no Japão",i:"17 noites, de 15/03 a 01/04"},
-    {b:nf(r("distância total")),u:"km medidos",i:"Faltam as distâncias dos novos acessos de Bentencho"},
+    {b:nf(r("distância total")),u:"km medidos",i:"Faltam as distâncias dos novos acessos de Gion e Bentencho"},
     {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias),1)+" km por dia, só entre paradas"},
     {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
-    {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte (parcial)",i:"Acessos de Bentencho e JR para KIX ainda a cotar"},
+    {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte (parcial)",i:"Acessos de Gion/Bentencho e JR para KIX ainda a cotar"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
     {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias)+" dias, cenário médio"},
-    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"subtotal parcial por adulto",i:"Transporte e ingressos registrados: ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+"). Faltam os novos acessos de Bentencho."}
+    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"subtotal parcial por adulto",i:"Transporte e ingressos registrados: ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+"). Faltam os novos acessos de Gion e Bentencho."}
   ];
   el("nums").innerHTML=cards.map(c=>
     `<div class="num"><b>${esc(c.b)}</b>${c.c?`<em>${esc(c.c)}</em>`:""}<u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
