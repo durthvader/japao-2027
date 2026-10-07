@@ -128,7 +128,7 @@
   },
   {
    "titulo": "HOSPEDAGENS: LAON CONFIRMADO; SERVIÇOS A CONFERIR",
-   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelamento e eventual cobrança a conferir. Osaka inicial, La Vista e GRAND PIA 2 mantêm suas reservas. Os novos acessos de Gion têm tarifas e horários a conferir. Seguro e internet devem cobrir a viagem atual."
+   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial, La Vista e GRAND PIA 2 mantêm suas reservas. Os novos acessos de Gion têm tarifas e horários a conferir. Seguro e internet devem cobrir a viagem atual."
   }
  ],
  "hospedagem": {
@@ -182,7 +182,9 @@
      "checkout": "2027-03-22",
      "total": 7313,
      "quartos": 4,
-     "status": "Cancelamento e eventual cobrança a conferir"
+     "status": "Cancelada conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir.",
+     "cancelada": true,
+     "cancelamentoConfirmadoEm": "2026-10-06"
     }
    },
    {
@@ -277,6 +279,22 @@
     "cancelada": true,
     "quartos": 4,
     "cancelamentoConfirmadoEm": "2026-10-06",
+    "valorPeriodo": "reserva cancelada"
+   },
+   {
+    "hotel": "K-style 東本願寺",
+    "checkin": "2027-03-19",
+    "checkout": "2027-03-22",
+    "total": 7313,
+    "quartos": 4,
+    "status": "Cancelada conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir.",
+    "cancelada": true,
+    "cancelamentoConfirmadoEm": "2026-10-06",
+    "cidade": "Quioto",
+    "noites": 3,
+    "reservaNoites": 3,
+    "reservaCheckin": "2027-03-19",
+    "reservaCheckout": "2027-03-22",
     "valorPeriodo": "reserva cancelada"
    }
   ]
@@ -689,7 +707,7 @@
      "duracao": "1h",
      "bebe": "CARRINHO OK",
      "terreno": "Usar elevadores nas estações e conferir a entrada do hotel com malas e três carrinhos.",
-     "obs": "Reserva confirmada para 18–22/03, quatro quartos. Endereço: 16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802, Japão. O site oficial oferece guarda de malas antes das 15h. Conferir condições para carrinhos e recebimento de malas enviadas. Tarifa e duração do acesso Kyoto → Laon a conferir. Cancelamento do K-style anterior a conferir. O restante de 18/03 permanece livre."
+     "obs": "Reserva confirmada para 18–22/03, quatro quartos. Endereço: 16-1 Yamatocho, Higashiyama-ku, Kyoto 605-0802, Japão. O site oficial oferece guarda de malas antes das 15h. Conferir condições para carrinhos e recebimento de malas enviadas. Tarifa e duração do acesso Kyoto → Laon a conferir. K-style anterior cancelado conforme confirmação de 06/10/2026. O restante de 18/03 permanece livre."
     }
    ],
    "total": {
@@ -2444,8 +2462,8 @@
    "texto": "O programa completo do antigo dia 18 passa para 16/03 para permitir chegada a Kyoto em 18/03. O sumô e os demais passeios de 17/03 permanecem. Compras de 31/03 mantidas. O dia 01/04 fica livre até os procedimentos e o transfer para o aeroporto. Sem atrações novas ou novas marcações de opcional."
   },
   "10": {
-   "titulo": "HOSPEDAGENS: Laon confirmado; cancelamento do K-style a conferir",
-   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelamento e eventual cobrança a conferir. Osaka inicial, La Vista e GRAND PIA 2 mantêm suas reservas. Os novos acessos de Gion têm tarifas e horários a conferir."
+   "titulo": "HOSPEDAGENS: Laon confirmado; K-style anterior cancelado",
+   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial, La Vista e GRAND PIA 2 mantêm suas reservas. Os novos acessos de Gion têm tarifas e horários a conferir."
   },
   "11": {
    "titulo": "DOHA E GRU: novas prioridades de conexão",
