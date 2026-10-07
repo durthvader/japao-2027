@@ -128,7 +128,7 @@
   },
   {
    "titulo": "HOSPEDAGENS: OSAKA CONFIRMADA; KYOTO E SERVIÇOS PENDENTES",
-   "texto": "Osaka inicial 15–18/03 e GRAND PIA 2 em Bentencho 30/03–01/04 estão confirmados. Kyoto 18–22/03 continua pendente. Fuji 22–23/03 e Tóquio 23–30/03 mantêm datas. Total: 17 noites. Conferir preços finais de Osaka e ajustar Kyoto. No GRAND PIA 2: check-in 15h, checkout 10h, bagagens após 12h na chegada. Solicitar guarda-volumes após o checkout; o guia informa $5 por volume, com moeda e condições a confirmar. Seguro e internet seguem as datas da viagem."
+   "texto": "Osaka inicial 15–18/03 e GRAND PIA 2 em Bentencho 30/03–01/04 estão confirmados. Kyoto confirmado em 19–22/03 por R$7.313; antecipação para 18/03 pendente. La Vista confirmado em 22–23/03 por R$8.727; Tóquio mantém 23–30/03. Total: 17 noites. Conferir preços finais de Osaka e ajustar Kyoto. No GRAND PIA 2: check-in 15h, checkout 10h, bagagens após 12h na chegada. Solicitar guarda-volumes após o checkout; o guia informa $5 por volume, com moeda e condições a confirmar. Seguro e internet seguem as datas da viagem. Brighton, Hakonenomori e Petit Grande cancelados conforme os prints."
   }
  ],
  "hospedagem": {
@@ -155,9 +155,13 @@
     "checkin": "2027-03-18",
     "checkout": "2027-03-22",
     "noites": 4,
-    "total": null,
-    "status": "Pendente — Solicitar check-in um dia antes; checkout em 22/03 preservado",
-    "referenciaAnterior": 7115.2
+    "total": 7313,
+    "status": "Confirmada em 19–22/03/2027: 4 quartos, R$7.313. Cancelamento grátis conforme o print; prazo não informado. Antecipação para 18/03 pendente; preço da quarta noite a conferir.",
+    "referenciaAnterior": 7115.2,
+    "valorPeriodo": "reserva 19–22/03",
+    "valorConfirmadoEm": "2026-10-06",
+    "quartos": 4,
+    "cancelamentoGratis": true
    },
    {
     "hotel": "La Vista Fujikawaguchiko",
@@ -166,8 +170,12 @@
     "checkin": "2027-03-22",
     "checkout": "2027-03-23",
     "noites": 1.0,
-    "total": 8639.0,
-    "status": "Datas mantidas na opção A; valor do registro anterior, reconferir comprovante e ocupação"
+    "total": 8727,
+    "status": "Confirmada em 22–23/03/2027: 4 quartos, R$8.727. Cancelamento grátis conforme o print; prazo não informado.",
+    "valorPeriodo": "reserva 22–23/03",
+    "valorConfirmadoEm": "2026-10-06",
+    "quartos": 4,
+    "cancelamentoGratis": true
    },
    {
     "hotel": "104㎡/3QUARTOS/22pax/4min a pé até a Estação Ojima",
@@ -214,8 +222,12 @@
     "checkin": "2027-03-16",
     "checkout": "2027-03-19",
     "noites": 3.0,
-    "total": 5410.0,
-    "status": "Alternativa histórica de acomodação; fora da opção A, não é cotação atual"
+    "total": 5595,
+    "status": "Cancelada conforme o print. 4 quartos. Valor registrado da reserva cancelada; cobrança e reembolso não informados.",
+    "cancelada": true,
+    "quartos": 4,
+    "cancelamentoConfirmadoEm": "2026-10-06",
+    "valorPeriodo": "reserva cancelada"
    },
    {
     "hotel": "Petit Grande Miyabi",
@@ -224,8 +236,12 @@
     "checkin": "2027-03-23",
     "checkout": "2027-03-30",
     "noites": 7.0,
-    "total": 20929.0,
-    "status": "Alternativa histórica de acomodação; fora da opção A, não é cotação atual"
+    "total": 21645,
+    "status": "Cancelada conforme o print. 4 quartos. Valor registrado da reserva cancelada; cobrança e reembolso não informados.",
+    "cancelada": true,
+    "quartos": 4,
+    "cancelamentoConfirmadoEm": "2026-10-06",
+    "valorPeriodo": "reserva cancelada"
    },
    {
     "hotel": "Hakonenomori Okada",
@@ -234,8 +250,12 @@
     "checkin": "2027-03-22",
     "checkout": "2027-03-23",
     "noites": 1.0,
-    "total": 5559.95,
-    "status": "Alternativa histórica de acomodação; fora da opção A, não é cotação atual"
+    "total": 5723,
+    "status": "Cancelada conforme o print. 4 quartos. Valor registrado da reserva cancelada; cobrança e reembolso não informados.",
+    "cancelada": true,
+    "quartos": 4,
+    "cancelamentoConfirmadoEm": "2026-10-06",
+    "valorPeriodo": "reserva cancelada"
    }
   ]
  },
@@ -2439,8 +2459,8 @@
    "texto": "O programa completo do antigo dia 18 passa para 16/03 para permitir chegada a Kyoto em 18/03. O sumô e os demais passeios de 17/03 permanecem. Compras de 31/03 mantidas. O dia 01/04 fica livre até os procedimentos e o transfer para o aeroporto. Sem atrações novas ou novas marcações de opcional."
   },
   "10": {
-   "titulo": "HOSPEDAGENS: Osaka inicial e final confirmadas; Kyoto pendente",
-   "texto": "Osaka inicial 15–18/03 e GRAND PIA 2 em Bentencho 30/03–01/04 estão confirmados. Kyoto 18–22/03 continua pendente. Fuji 22–23/03 e Tóquio 23–30/03 mantêm datas. Total: 17 noites. Conferir preços finais de Osaka e ajustar Kyoto. No GRAND PIA 2: check-in 15h, checkout 10h, bagagens após 12h na chegada. Solicitar guarda-volumes após o checkout; o guia informa $5 por volume, com moeda e condições a confirmar."
+   "titulo": "HOSPEDAGENS: reservas confirmadas; antecipação de Kyoto para 18/03 pendente",
+   "texto": "Osaka inicial 15–18/03 e GRAND PIA 2 em Bentencho 30/03–01/04 estão confirmados. Kyoto confirmado em 19–22/03 por R$7.313; antecipação para 18/03 pendente. La Vista confirmado em 22–23/03 por R$8.727; Tóquio mantém 23–30/03. Total: 17 noites. Conferir preços finais de Osaka e ajustar Kyoto. No GRAND PIA 2: check-in 15h, checkout 10h, bagagens após 12h na chegada. Solicitar guarda-volumes após o checkout; o guia informa $5 por volume, com moeda e condições a confirmar. Brighton, Hakonenomori e Petit Grande cancelados conforme os prints."
   },
   "11": {
    "titulo": "DOHA E GRU: novas prioridades de conexão",

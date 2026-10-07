@@ -17,8 +17,8 @@ até o aeroporto. Nenhuma atração nova foi acrescentada aos períodos livres.
 A redistribuição anterior de passeios foi revogada. Seul não foi incluída.
 
 Bases: Osaka 15–18/03, Kyoto 18–22/03, Kawaguchiko 22–23/03, Tóquio 23–30/03,
-Osaka 30/03–01/04. Atualização de 06/10/2026: o anfitrião aceitou Osaka inicial 15–18/03. GRAND PIA 2 em Bentencho também confirmado para 30/03–01/04. Kyoto permanece pendente; preços finais de Osaka a conferir.
-A lista B de hospedagem é histórico de acomodações, não roteiro ativo.
+Osaka 30/03–01/04. Atualização de 06/10/2026: o anfitrião aceitou Osaka inicial 15–18/03. GRAND PIA 2 em Bentencho também confirmado para 30/03–01/04. K-style confirmado em 19–22/03 por R$7.313; antecipação para 18/03 pendente. La Vista confirmado em 22–23/03 por R$8.727. Preços finais de Osaka a conferir.
+A lista B registra Brighton, Hakonenomori e Petit Grande como cancelados, conforme os prints. Seus valores ficam fora do orçamento ativo.
 
 A planilha original foi atualizada em 06/10/2026 com a programação decidida em
 27/09. `Roteiro!A25` registra `Roteiro consolidado: 06/10/2026`, incluindo a
@@ -31,7 +31,7 @@ complementados por `remarcacao.json`. Não incluir localizadores ou compras pess
 Em `Hospedagem`, a coluna A mostra os períodos planejados. E/F e os valores
 preservam os registros de reserva anteriores. O extrato mantém esses registros
 em `reservaCheckin`, `reservaCheckout`, `reservaNoites` e `referenciaAnterior`.
-Os blocos com alteração pendente permanecem sem cotação no site.
+Kyoto mostra R$7.313 apenas para a reserva confirmada de 19–22/03. A quarta noite, planejada para 18/03, aguarda alteração e cotação.
 
 Custos sem cotação ficam explícitos. O subtotal de hotéis reúne referências
 antigas e não representa 17 noites cotadas. A alimentação usa 18 dias. O histórico
@@ -197,3 +197,5 @@ forte o bastante para o pior caso e toda foto viraria cinza.
 ## GRAND PIA 2 confirmado
 
 30/03/2027 às 15h a 01/04/2027 às 10h. Malas após 12h na chegada; código previsto em 28/03. O guia informa guarda-volumes pós-checkout por $5 por volume, mediante solicitação; confirmar moeda e carrinhos. Os acessos de Bentencho ainda sem tarifa ficam vazios na planilha e aparecem como “A cotar” no site. O subtotal de transporte é parcial.
+
+Booking, prints de 06/10/2026: K-style (4 quartos, 19–22/03) R$7.313; La Vista (4 quartos, 22–23/03) R$8.727. Ambos exibem cancelamento grátis, sem prazo no print. Cancelados: Brighton R$5.595, Hakonenomori R$5.723, Petit Grande R$21.645. Os totais são valores inteiros dos prints. Rateios individuais da planilha original foram mantidos como referências anteriores porque faltam preços por quarto. A coluna K contém os novos totais; a projeção automática de uma quarta noite em L7 foi retirada.
