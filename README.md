@@ -17,7 +17,7 @@ até o aeroporto. Nenhuma atração nova foi acrescentada aos períodos livres.
 A redistribuição anterior de passeios foi revogada. Seul não foi incluída.
 
 Bases: Osaka 15–18/03, Kyoto 18–22/03, Kawaguchiko 22–23/03, Tóquio 23–30/03,
-Osaka 30/03–01/04. Atualização de 06/10/2026: o anfitrião aceitou Osaka inicial 15–18/03. GRAND PIA 2 em Bentencho também confirmado para 30/03–01/04. Laon Inn Gion Nawate confirmado em 18–22/03, quatro quartos, pago ¥282.616 (≈R$10.295). K-style anterior cancelado conforme confirmação de 06/10/2026. La Vista confirmado em 22–23/03 por R$8.727. Preços finais de Osaka a conferir.
+Osaka 30/03–01/04. Atualização de 06/10/2026: o anfitrião aceitou Osaka inicial 15–18/03. GRAND PIA 2 em Bentencho também confirmado para 30/03–01/04. Laon Inn Gion Nawate confirmado em 18–22/03, quatro quartos, pago ¥282.616 (≈R$10.295). K-style anterior cancelado conforme confirmação de 06/10/2026. La Vista confirmado em 22–23/03 por R$8.727. GRAND PIA 2 pago integralmente: R$2.043,22, conforme HOSPE.pdf e confirmação do viajante em 07/10/2026. Preço final de Osaka 15–18/03 a conferir.
 A lista B registra Brighton, Hakonenomori e Petit Grande como cancelados, conforme os prints. Seus valores ficam fora do orçamento ativo.
 
 A planilha original foi atualizada em 06/10/2026 com a programação decidida em

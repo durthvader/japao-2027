@@ -100,7 +100,7 @@
  "voosNotas": [
   {
    "titulo": "REMARCAÇÃO CONFIRMADA PARA AS 13 PESSOAS",
-   "texto": "Ida doméstica mantida; quatro trechos internacionais operados pela Qatar via Doha; volta doméstica alterada para 02/04 às 13:30. Horários abaixo são locais e vêm dos comprovantes compartilhados em 26/09/2026. Osaka inicial confirmada de 15 a 18/03/2027: o anfitrião aceitou a alteração. Kyoto continua pendente; Osaka final confirmada no GRAND PIA 2, Bentencho, de 30/03 a 01/04. Companhia e aeroportos podem atualizar horários até o embarque."
+   "texto": "Ida doméstica mantida; quatro trechos internacionais operados pela Qatar via Doha; volta doméstica alterada para 02/04 às 13:30. Horários abaixo são locais e vêm dos comprovantes compartilhados em 26/09/2026. Osaka inicial confirmada de 15 a 18/03/2027: o anfitrião aceitou a alteração. Kyoto confirmado no Laon de 18–22/03; Osaka final confirmada no GRAND PIA 2, Bentencho, de 30/03 a 01/04. Companhia e aeroportos podem atualizar horários até o embarque."
   },
   {
    "titulo": "IDA — FOR 13/03 11:15 → KIX 15/03 16:25",
@@ -128,7 +128,7 @@
   },
   {
    "titulo": "HOSPEDAGENS: LAON CONFIRMADO; SERVIÇOS A CONFERIR",
-   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial, La Vista e GRAND PIA 2 mantêm suas reservas. Os novos acessos de Gion têm tarifas e horários a conferir. Seguro e internet devem cobrir a viagem atual."
+   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial e La Vista mantêm suas reservas. GRAND PIA 2: total integral pago R$2.043,22, confirmado pelo viajante em 07/10/2026. Comprovante: HOSPE.pdf (Airbnb). 10 hóspedes e 3 bebês. Cancelamento gratuito antes das 15h de 29/03/2027; após esse prazo e antes do check-in de 30/03 às 15h, reembolso parcial conforme Airbnb. Os novos acessos de Gion têm tarifas e horários a conferir. Seguro e internet devem cobrir a viagem atual."
   }
  ],
  "hospedagem": {
@@ -218,9 +218,9 @@
     "checkin": "2027-03-30",
     "checkout": "2027-04-01",
     "noites": 2,
-    "status": "Confirmada: GRAND PIA 2, Bentencho, 30/03–01/04/2027 (2 noites). Check-in 15h; checkout até 10h. Valor da reserva a conferir.",
+    "status": "Confirmada 30/03–01/04/2027 (2 noites). Total integral pago: R$2.043,22. Check-in 15h; checkout até 10h. 10 hóspedes e 3 bebês. Cancelamento gratuito antes das 15h de 29/03/2027; após esse prazo e antes do check-in de 30/03 às 15h, reembolso parcial conforme Airbnb.",
     "referenciaAnterior": 1804.0,
-    "total": null,
+    "total": 2043.22,
     "endereco": "3-chōme-1-5 Ichioka Motomachi, Minato-ku, Osaka 552-0002",
     "enderecoJapones": "グラントピア２ — 552-0002 大阪府大阪市港区市岡元町3丁目1-5",
     "guia": "https://osaka.pleasure.jp/Pia%20Genc.pdf",
@@ -235,7 +235,23 @@
     "reservaCheckin": "2027-03-30",
     "reservaCheckout": "2027-04-01",
     "reservaNoites": 2,
-    "reservaConfirmadaEm": "2026-10-06"
+    "reservaConfirmadaEm": "2026-10-06",
+    "valorPago": 2043.22,
+    "moedaValorPago": "BRL",
+    "pagamento": "Pago integralmente; confirmado pelo viajante em 07/10/2026",
+    "valorConfirmadoEm": "2026-10-07",
+    "valorPagoConfirmadoEm": "2026-10-07",
+    "valorPeriodo": "grupo · pago integral",
+    "quartos": 4,
+    "hospedes": 10,
+    "bebes": 3,
+    "capacidade": 16,
+    "metodoCheckin": "Teclado numérico",
+    "cancelamentoGratis": true,
+    "cancelamentoGratisAntesDe": "2027-03-29",
+    "cancelamentoLimiteHora": "15:00",
+    "cancelamento": "10 hóspedes e 3 bebês. Cancelamento gratuito antes das 15h de 29/03/2027; após esse prazo e antes do check-in de 30/03 às 15h, reembolso parcial conforme Airbnb.",
+    "fonteValor": "Comprovante Airbnb de 07/10/2026 e confirmação do viajante sobre pagamento integral"
    }
   ],
   "b": [
@@ -2463,7 +2479,7 @@
   },
   "10": {
    "titulo": "HOSPEDAGENS: Laon confirmado; K-style anterior cancelado",
-   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial, La Vista e GRAND PIA 2 mantêm suas reservas. Os novos acessos de Gion têm tarifas e horários a conferir."
+   "texto": "Laon Inn Gion Nawate confirmado de 18–22/03/2027, quatro noites e quatro quartos. Total pago: ¥282.616; o Booking mostra aproximadamente R$10.295. Conferir a política de cancelamento da tarifa contratada. K-style anterior: 19–22/03, quatro quartos, R$7.313; cancelado conforme confirmação de 06/10/2026. Eventual cobrança/reembolso a conferir. Osaka inicial e La Vista mantêm suas reservas. GRAND PIA 2: total integral pago R$2.043,22, confirmado pelo viajante em 07/10/2026. Comprovante: HOSPE.pdf (Airbnb). 10 hóspedes e 3 bebês. Cancelamento gratuito antes das 15h de 29/03/2027; após esse prazo e antes do check-in de 30/03 às 15h, reembolso parcial conforme Airbnb. Os novos acessos de Gion têm tarifas e horários a conferir."
   },
   "11": {
    "titulo": "DOHA E GRU: novas prioridades de conexão",

@@ -52,7 +52,7 @@ function campoDeDadosQueNaoVeio(html) {
   const payload = new Set(Object.keys(mD));
 
   // corpo de cada funcao nomeada, delimitado por contagem de chaves
-  const corpo = {};
+  const corpo = Object.create(null);
   for (const m of html.matchAll(/function\s+([A-Za-z_$][\w$]*)\s*\([^)]*\)\s*\{/g)) {
     let i = m.index + m[0].length - 1, n = 0;
     do {

@@ -543,7 +543,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 </header>
 <button class="themeBtn themeBtn-mobile" id="themeBtnMobile" aria-label="Alternar tema claro e escuro">◐</button>
 
-<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Laon confirmado para as quatro noites de Kyoto; K-style anterior cancelado; conferir os valores finais de Osaka. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
+<aside class="wrap" style="margin:20px auto" aria-label="Situação do planejamento"><div class="callout c-kyoto"><s>↗</s><div><h4>Programação anterior restaurada · dois períodos livres</h4><p>Japão de 15/03 a 01/04: 18 dias e 17 noites. Kyoto de 18 a 22/03, Tóquio de 23 a 30/03 e duas noites finais em Osaka. Programação anterior preservada; 18/03 livre em Kyoto após o deslocamento e 01/04 livre em Osaka até o aeroporto. Laon confirmado para as quatro noites de Kyoto; K-style anterior cancelado; conferir o valor final de Osaka 15–18/03. <a href="remarcacao.html">Ver a decisão e as pendências</a>.</p></div></div></aside>
 <main>
 <section class="sec wrap" id="preparacao" data-foto="hero">
   <div class="sec-head">
@@ -565,9 +565,9 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
     <span><s class="ok"></s>Informação / preparação sem prazo fixo</span>
   </div>
 
-  <div class="prep-aviso"><strong>Osaka inicial confirmada de 15 a 18/03/2027:</strong> o anfitrião aceitou a alteração. Próximas ações: confirmar Kyoto e o guarda-volumes de Osaka final, serviços dos bebês e proteção das conexões em Doha (1h20) e GRU (2h55). Dias adicionais livres: Kyoto em 18/03 e Osaka em 01/04 até o aeroporto. <a href="remarcacao.html">Ver datas e pendências</a>.</div>
+  <div class="prep-aviso"><strong>Osaka inicial confirmada de 15 a 18/03/2027:</strong> o anfitrião aceitou a alteração. Próximas ações: conferir a política da tarifa do Laon e solicitar o guarda-volumes de Osaka final, serviços dos bebês e proteção das conexões em Doha (1h20) e GRU (2h55). Dias adicionais livres: Kyoto em 18/03 e Osaka em 01/04 até o aeroporto. <a href="remarcacao.html">Ver datas e pendências</a>.</div>
 
-  <div class="prep-item obrig" data-icon="🏠"><div class="prep-item-nome">Preparar o check-in e checkout do GRAND PIA 2</div><div class="prep-item-desc">Bentencho, Osaka: reserva confirmada de 30/03 a 01/04. Código de acesso previsto em 28/03; conferir recebimento no aplicativo. Em 30/03, bagagens após 12h e check-in às 15h. Em 01/04, checkout até 10h. Solicitar guarda-volumes após a saída: o guia informa $5 por volume; confirmar moeda, carrinhos e retirada. Combinar previamente o recebimento de malas enviadas por Yamato, pois o imóvel usa self check-in. Checkout tardio informado pelo anfitrião: US$35/h, sujeito a acordo. <a href="https://osaka.pleasure.jp/Pia%20Genc.pdf" target="_blank" rel="noopener">Abrir guia do anfitrião</a>.</div><div class="prep-item-meta"><span class="prep-tag neu">30/03–01/04 · 2 noites</span><span class="prep-tag neu">Checkout 10h</span></div></div>
+  <div class="prep-item obrig" data-icon="🏠"><div class="prep-item-nome">Preparar o check-in e checkout do GRAND PIA 2</div><div class="prep-item-desc">Bentencho, Osaka: reserva confirmada de 30/03 a 01/04, com R$2.043,22 pagos integralmente. 10 hóspedes e 3 bebês. Cancelamento gratuito antes das 15h de 29/03/2027, conforme comprovante Airbnb. Código de acesso previsto em 28/03; conferir recebimento no aplicativo. Em 30/03, bagagens após 12h e check-in às 15h. Em 01/04, checkout até 10h. Solicitar guarda-volumes após a saída: o guia informa $5 por volume; confirmar moeda, carrinhos e retirada. Combinar previamente o recebimento de malas enviadas por Yamato, pois o imóvel usa self check-in. Checkout tardio informado pelo anfitrião: US$35/h, sujeito a acordo. <a href="https://osaka.pleasure.jp/Pia%20Genc.pdf" target="_blank" rel="noopener">Abrir guia do anfitrião</a>.</div><div class="prep-item-meta"><span class="prep-tag neu">30/03–01/04 · 2 noites</span><span class="prep-tag neu">Checkout 10h</span></div></div>
   <!-- FASE 1: IMEDIATO / AGORA -->
   <div class="prep-fase">
     <div class="prep-fase-titulo">
@@ -1885,6 +1885,7 @@ function montarVoos(){
 }
 function montarHosp(){
   const cidCor=(c)=>/quioto|kyoto/i.test(c)?"kyoto":/hakone|fuji|kawagu/i.test(c)?"fuji":/tokyo|tóquio/i.test(c)?"tokyo":"osaka";
+  const valorBRL=(v)=>v.toLocaleString('pt-BR',{minimumFractionDigits:Number.isInteger(v)?0:2,maximumFractionDigits:2});
   function pinta(set){
     const lista=DADOS.hospedagem[set];
     el("hospLista").innerHTML=lista.map(h=>`
@@ -1894,13 +1895,13 @@ function montarHosp(){
           <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
           <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>${h.endereco?`<p class="mt">${esc(h.endereco)}</p>`:""}${h.totalOriginal?`<p class="mt">Pagamento: ¥${nf(h.totalOriginal)} · ${esc(h.pagamento||"")}. ${esc(h.horariosPadrao||"")}</p>`:""}${h.bagagens?`<p class="mt">${esc(h.bagagens)}</p>`:""}${h.reservaAnterior?`<p class="mt">Reserva anterior: ${esc(h.reservaAnterior.hotel)}, ${dm(h.reservaAnterior.checkin)} → ${dm(h.reservaAnterior.checkout)}, R$ ${nf(h.reservaAnterior.total)}. ${esc(h.reservaAnterior.status)}.</p>`:""}${h.guia?`<p class="mt"><a href="${esc(h.guia)}" target="_blank" rel="noopener">Guia do anfitrião</a> · código previsto em 28/03 · malas após 12h na chegada · atendimento 9h–0h</p><p class="mt">Guarda-volumes após checkout: $5 por volume, mediante solicitação; conferir moeda e carrinhos. Checkout tardio: US$35/h, sujeito a acordo.</p>`:""}
         </div>
-        <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):(h.alteracaoConfirmadaEm||h.reservaConfirmadaEm)?"A conferir":"A cotar"}<u>${esc(h.valorPeriodo||"grupo")}</u></div>
+        <div class="vl">${Number.isFinite(h.total)?"R$ "+valorBRL(h.total):(h.alteracaoConfirmadaEm||h.reservaConfirmadaEm)?"Preço a conferir":"A cotar"}<u>${esc(h.valorPeriodo||"grupo")}</u></div>
       </div>`).join("")
       + (set==='b'?`<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s><div class="tx"><h4>Reservas canceladas</h4><p class="mt">${lista.filter(h=>h.cancelada).length} cancelamentos confirmados pelos prints. Valores fora do orçamento ativo. Conferir cobranças e reembolsos nos comprovantes.</p></div></div>`:
         `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
          <div class="tx"><h4>Subtotal dos valores registrados</h4>
-         <p class="mt">Valores atualizados pelos prints: ${lista.filter(h=>h.valorConfirmadoEm).length}. Referências anteriores: ${lista.filter(h=>Number.isFinite(h.total)&&!h.valorConfirmadoEm).length}. Valores a conferir: ${lista.filter(h=>!Number.isFinite(h.total)).length}. Laon inclui as quatro noites de Kyoto, de 18–22/03. O total em reais do Laon é aproximado; os preços finais de Osaka ainda faltam.</p></div>
-         <div class="vl">R$ ${nf(lista.filter(h=>!h.cancelada).reduce((a,b)=>a+(b.total||0),0))}<u>subtotal parcial</u></div></div>`);
+         <p class="mt">Valores atualizados pelos comprovantes: ${lista.filter(h=>h.valorConfirmadoEm).length}. Referências anteriores: ${lista.filter(h=>Number.isFinite(h.total)&&!h.valorConfirmadoEm).length}. Preços a conferir: ${lista.filter(h=>!Number.isFinite(h.total)).length}. Laon inclui as quatro noites de Kyoto, de 18–22/03. O total em reais do Laon é aproximado. GRAND PIA 2 pago integralmente: R$2.043,22. O preço final de Osaka 15–18/03 ainda falta.</p></div>
+         <div class="vl">R$ ${valorBRL(lista.filter(h=>!h.cancelada).reduce((a,b)=>a+(b.total||0),0))}<u>subtotal parcial</u></div></div>`);
   }
   el("hospToggle").addEventListener("click",(ev)=>{
     const b=ev.target.closest("button"); if(!b) return;
