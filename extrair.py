@@ -15,6 +15,9 @@ def num(c):
     try: return round(float(c), 2)
     except (TypeError, ValueError): return 0
 
+def num_ou_pendente(c):
+    return None if c == '' else num(c)
+
 def extrair(xlsx=XLSX):
     """Lê a planilha sem escrever arquivos ou gerar páginas."""
     wb = openpyxl.load_workbook(xlsx, data_only=True)
@@ -47,8 +50,8 @@ def extrair(xlsx=XLSX):
             dias.append(atual)
         atual['atividades'].append({
             'periodo': periodo, 'nome': ativ, 'area': r[5], 'de': r[6], 'como': r[7],
-            'km': num(r[8]), 'min': num(r[9]), 'pe': num(r[10]),
-            'transp': num(r[11]), 'ingresso': num(r[12]),
+            'km': num_ou_pendente(r[8]), 'min': num_ou_pendente(r[9]), 'pe': num_ou_pendente(r[10]),
+            'transp': num_ou_pendente(r[11]), 'ingresso': num(r[12]),
             'horario': r[13], 'duracao': r[14], 'bebe': r[15], 'terreno': r[16], 'obs': r[17],
         })
         if ativ.startswith('DIA LIVRE EM '):

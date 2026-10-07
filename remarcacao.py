@@ -1,6 +1,6 @@
 """Aplica a remarcação confirmada após os ajustes históricos do roteiro.
 
-A planilha fonte permanece intacta. remarcacao.json contém somente dados de
+A planilha consolidada e remarcacao.json registram os dados atuais da
 viagem que podem ser compartilhados, sem localizadores ou rateios pessoais.
 """
 import copy
@@ -32,7 +32,7 @@ def aplicar(dados):
                 if a['nome'].startswith('Shinsaibashi'):
                     a['obs'] = 'Compras em 30/03, após chegada do Shinkansen e check-in. O programa original de compras de 31/03 foi preservado. O dia adicional livre é 01/04, até o horário de ir ao aeroporto.'
                 if a['nome'].startswith('Shin-Osaka → hotel'):
-                    a['obs'] = 'Opção A adotada: duas noites em Osaka, de 30/03 a 01/04. Hotel final ainda a definir. Confirmar endereço, acesso desde Shin-Osaka e guarda-volumes para 01/04 antes de fechar o transporte.'
+                    a['obs'] = 'GRAND PIA 2, Bentencho, confirmado de 30/03 a 01/04. Check-in 15h, malas após 12h; checkout até 10h. Solicitar guarda-volumes pós-checkout e conferir as tarifas dos novos acessos.'
                 if a['nome'].startswith('Dotonbori'):
                     a['obs'] = 'Programa da noite de chegada a Osaka em 30/03, conforme disposição. O Shinkansen permanece nesta data na opção A; o voo internacional parte em 01/04 às 18:55.'
     for linha in dados.get('resumo', []):

@@ -391,7 +391,7 @@ const kmPe = GEO.pernas
 el("kpis").innerHTML =
   `<div><b>${nf(t.km,1)}</b><u>km total</u></div>`+
   `<div><b>${nf(kmPe,1)}</b><u>km a pé</u></div>`+
-  `<div><b>¥${nf(t.transp)}</b><u>transporte</u></div>`+
+  `<div><b>${t.transportePendente&&t.transp===0?"A cotar":"¥"+nf(t.transp)}</b><u>${t.transportePendente?"transporte parcial":"transporte"}</u></div>`+
   `<div><b>¥${nf(t.ingresso)}</b><u>ingressos</u></div>`;
 
 // O Google Maps NAO calcula transporte publico com paradas intermediarias — so
@@ -440,9 +440,9 @@ const html = GEO.paradas.map((p,idx)=>{
     const alt = perna.unico ? false
               : metro ? (perna.km && perna.km <= 2.5) : (perna.km && perna.km >= 0.8);
     const tit = metro
-      ? `<b>${esc(perna.linha||"Metrô")}</b> · ${perna.min} min${perna.custo?" · ¥"+nf(perna.custo):""}${
+      ? `<b>${esc(perna.linha||"Metrô")}</b> · ${perna.min==null?"tempo a conferir":perna.min+" min"}${perna.custo===null?" · tarifa a cotar":perna.custo?" · ¥"+nf(perna.custo):""}${
           perna.km?" · "+nf(perna.km,1)+" km":""}`
-      : `<b>A pé</b> · ${perna.min} min${perna.km?" · "+nf(perna.km,1)+" km":""}`;
+      : `<b>A pé</b> · ${perna.min==null?"tempo a conferir":perna.min+" min"}${perna.km?" · "+nf(perna.km,1)+" km":""}`;
     out += `<div class="perna">
       <span class="ic ${metro?"metro":""}" ${metro&&perna.cor?`style="background:${perna.cor}"`:""}>${metro?"Ⓜ":"🚶"}</span>
       <span class="tx">${tit}${perna.desc?`<em>${esc(perna.desc)}</em>`:""}</span>

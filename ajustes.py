@@ -68,6 +68,7 @@ def _recalcular(dia):
     t = dia.setdefault('total', {})
     for campo in ('km', 'min', 'pe', 'transp', 'ingresso'):
         t[campo] = round(sum(a.get(campo, 0) or 0 for a in dia['atividades']), 2)
+    t['transportePendente'] = any(a.get('transp') is None for a in dia['atividades'])
 
 
 # O resumo da planilha e um retrato de antes das operacoes deste arquivo: cada parada que

@@ -100,7 +100,7 @@
  "voosNotas": [
   {
    "titulo": "REMARCAÇÃO CONFIRMADA PARA AS 13 PESSOAS",
-   "texto": "Ida doméstica mantida; quatro trechos internacionais operados pela Qatar via Doha; volta doméstica alterada para 02/04 às 13:30. Horários abaixo são locais e vêm dos comprovantes compartilhados em 26/09/2026. Osaka inicial confirmada de 15 a 18/03/2027: o anfitrião aceitou a alteração. Kyoto e Osaka final continuam pendentes. Companhia e aeroportos podem atualizar horários até o embarque."
+   "texto": "Ida doméstica mantida; quatro trechos internacionais operados pela Qatar via Doha; volta doméstica alterada para 02/04 às 13:30. Horários abaixo são locais e vêm dos comprovantes compartilhados em 26/09/2026. Osaka inicial confirmada de 15 a 18/03/2027: o anfitrião aceitou a alteração. Kyoto continua pendente; Osaka final confirmada no GRAND PIA 2, Bentencho, de 30/03 a 01/04. Companhia e aeroportos podem atualizar horários até o embarque."
   },
   {
    "titulo": "IDA — FOR 13/03 11:15 → KIX 15/03 16:25",
@@ -127,8 +127,8 @@
    "texto": "Austrália e Chile saíram deste itinerário. Trânsito em Doha sem saída do aeroporto não exige visto segundo Hamad. Qualquer saída para hotel ou passeio muda a análise. Conferir passaportes, regras do Japão e exigências do transportador novamente antes da viagem. Preencher Visit Japan Web com chegada em 15/03 pelo QR 802. Japão: passaporte comum brasileiro com chip, válido durante toda a estada, e isenção turística até 90 dias. Eventual imigração no Qatar demanda conferência individual de entrada e saúde; não tratar CIVP como exigência comprovada do trânsito internacional."
   },
   {
-   "titulo": "HOSPEDAGENS E SERVIÇOS: AINDA PRECISAM DE AJUSTE",
-   "texto": "Manter 17 noites: Osaka 15–18/03, Kyoto 18–22/03, Fuji 22–23/03, Tóquio 23–30/03 e Osaka 30/03–01/04. Dias adicionais livres: 18/03 após a chegada a Kyoto e 01/04 em Osaka até o aeroporto. Osaka inicial confirmada de 15 a 18/03/2027: o anfitrião aceitou a alteração. Kyoto e Osaka final continuam pendentes. Atualizar seguro, internet e demais serviços conforme as datas confirmadas."
+   "titulo": "HOSPEDAGENS: OSAKA CONFIRMADA; KYOTO E SERVIÇOS PENDENTES",
+   "texto": "Osaka inicial 15–18/03 e GRAND PIA 2 em Bentencho 30/03–01/04 estão confirmados. Kyoto 18–22/03 continua pendente. Fuji 22–23/03 e Tóquio 23–30/03 mantêm datas. Total: 17 noites. Conferir preços finais de Osaka e ajustar Kyoto. No GRAND PIA 2: check-in 15h, checkout 10h, bagagens após 12h na chegada. Solicitar guarda-volumes após o checkout; o guia informa $5 por volume, com moeda e condições a confirmar. Seguro e internet seguem as datas da viagem."
   }
  ],
  "hospedagem": {
@@ -180,15 +180,30 @@
     "status": "Datas mantidas na opção A; valor do registro anterior, reconferir comprovante e ocupação"
    },
    {
-    "hotel": "Osaka — hotel ainda a definir",
-    "link": "",
+    "hotel": "GRAND PIA 2 — Bentencho",
+    "link": "https://maps.app.goo.gl/ptD5pAzRdtgZUeTG6",
     "cidade": "Osaka",
     "checkin": "2027-03-30",
     "checkout": "2027-04-01",
     "noites": 2,
-    "status": "Pendente — Definir hospedagem para duas noites e guarda-volumes em 01/04",
+    "status": "Confirmada: GRAND PIA 2, Bentencho, 30/03–01/04/2027 (2 noites). Check-in 15h; checkout até 10h. Valor da reserva a conferir.",
     "referenciaAnterior": 1804.0,
-    "total": null
+    "total": null,
+    "endereco": "3-chōme-1-5 Ichioka Motomachi, Minato-ku, Osaka 552-0002",
+    "enderecoJapones": "グラントピア２ — 552-0002 大阪府大阪市港区市岡元町3丁目1-5",
+    "guia": "https://osaka.pleasure.jp/Pia%20Genc.pdf",
+    "mapa": "https://maps.app.goo.gl/ptD5pAzRdtgZUeTG6",
+    "checkinHora": "15:00",
+    "checkoutHora": "10:00",
+    "bagagensNaChegada": "Após 12:00",
+    "codigoAcessoPrevisto": "2027-03-28",
+    "atendimento": "09:00–00:00",
+    "checkoutTardio": "US$35 por hora, sujeito a acordo",
+    "guardaVolumesAposCheckout": "$5 por volume; solicitar e confirmar moeda, carrinhos e horário",
+    "reservaCheckin": "2027-03-30",
+    "reservaCheckout": "2027-04-01",
+    "reservaNoites": 2,
+    "reservaConfirmadaEm": "2026-10-06"
    }
   ],
   "b": [
@@ -2152,7 +2167,7 @@
      "km": 8.0,
      "min": 30.0,
      "pe": 15.0,
-     "transp": 290,
+     "transp": 290.0,
      "ingresso": 0.0,
      "horario": "—",
      "duracao": "45 min",
@@ -2169,7 +2184,7 @@
      "km": 515.0,
      "min": 150.0,
      "pe": 10.0,
-     "transp": 14920,
+     "transp": 14920.0,
      "ingresso": 0.0,
      "horario": "a cada 10 min",
      "duracao": "2h30",
@@ -2179,41 +2194,41 @@
     },
     {
      "periodo": "Tarde",
-     "nome": "Shin-Osaka → hotel + check-in",
-     "area": "Osaka",
+     "nome": "Shin-Osaka → GRAND PIA 2 + check-in",
+     "area": "Bentencho / Minato",
      "de": "Shin-Osaka",
-     "como": "Metrô Midosuji",
-     "km": 6.0,
-     "min": 12.0,
-     "pe": 10.0,
-     "transp": 290,
+     "como": "Midosuji até Hommachi → Chuo até Bentencho; caminhar ao GRAND PIA 2",
+     "km": null,
+     "min": null,
+     "pe": 10,
+     "transp": null,
      "ingresso": 0.0,
-     "horario": "15:00",
-     "duracao": "45 min",
-     "bebe": "CARRINHO OK",
-     "terreno": "Midosuji tem elevador.",
-     "obs": "Chegando por volta das 12:20 em Shin-Osaka, a Midosuji leva direto a Namba em 13 min. O check-in costuma abrir às 15:00, então a bagagem fica na recepção e a tarde começa antes disso.\n⚠ ESTA É A ÚNICA RESERVA DA VIAGEM QUE AINDA NÃO ESTÁ FECHADA. A recomendação é NIPPONBASHI: dali Dotonbori fica a 610 m, a Nankai do aeroporto a 630 m, a Den Den Town a 850 m e o Shinsaibashi a 910 m — tudo a pé. A estação está na linha SAKAISUJI, a mesma de Tengachaya e exatamente a que o dia 31 usa de manhã. E como a Den Den Town é a última parada da viagem e fica ao lado, o retorno para buscar as malas deixa de ser um desvio. É mais barato que Namba porque é bairro de eletrônico e não de vida noturna — e por isso se dorme.\n⚠ AO FECHAR, PEÇAM DUAS COISAS POR ESCRITO: guarda-volumes até o fim da tarde do dia 31, para as malas e os três carrinhos, e berço ou cama extra. Sem o guarda-volumes sobra armário de estação a ¥700, que em alta temporada lota antes das 10:00.\n💴 Fim de março é alta temporada em Osaka. Cinco quartos de casal em Namba não cabem no que está reservado; em Nipponbashi cabem com aperto, e um apartamento para o grupo inteiro costuma ser o que faz a conta fechar."
+     "horario": "Malas após 12h; check-in 15h",
+     "duracao": "Trajeto a conferir",
+     "bebe": "A CONFIRMAR",
+     "terreno": "Confirmar elevador do prédio e acesso com três carrinhos; conferir rotas acessíveis nas estações.",
+     "obs": "Reserva confirmada no GRAND PIA 2, Bentencho. Endereço: 3-chōme-1-5 Ichioka Motomachi, Minato-ku, Osaka 552-0002. Chegada via Midosuji de Shin-Osaka a Hommachi, depois Chuo a Bentencho. Caminhada de referência de 7–10 min desde a estação. Pode deixar malas após 12h; check-in a partir de 15h. Código de acesso previsto para 28/03, dois dias antes. Confirmar elevador e acesso com carrinhos. Tarifa e tempo do novo trajeto a conferir. Guia: https://osaka.pleasure.jp/Pia%20Genc.pdf"
     },
     {
      "periodo": "Tarde",
      "nome": "Shinsaibashi-suji (galeria de 600 m)",
      "area": "Shinsaibashi",
-     "de": "Hotel em Osaka",
-     "como": "A pé, se o hotel ficar em Namba — ou 1 parada de Midosuji",
-     "km": 0.7,
-     "min": 0,
-     "pe": 10,
-     "transp": 0,
+     "de": "GRAND PIA 2 — Bentencho",
+     "como": "Chuo de Bentencho a Hommachi → Midosuji até Shinsaibashi",
+     "km": null,
+     "min": null,
+     "pe": null,
+     "transp": null,
      "ingresso": 0.0,
      "horario": "11:00–21:00",
      "duracao": "2h30",
      "bebe": "CARRINHO OK",
      "terreno": "Galeria coberta de 600 m, plana — funciona até com chuva. Ótimo com carrinho.",
-     "obs": "🛒 AQUI SE COMPRA: é o melhor lugar da viagem para SKINCARE e FARMÁCIA — Matsumoto Kiyoshi, Kokumin e Daikoku ficam uma do lado da outra, competindo em preço na mesma quadra. Também tem UNIQLO e GU grandes, e a Daimaru de 1933, com fachada art déco.\nSão 600 m de arcada coberta e plana: chuva não atrapalha e o carrinho anda o tempo todo. Somando com o dia 31 são cinco horas aqui — é a hora de comprar cosmético, e não em Tóquio, onde os mesmos produtos custam igual e ocupam mala por mais dias.\nA distância depende do hotel: de Namba são 700 m a pé pela própria arcada."
+     "obs": "Compras mantidas após o check-in. A base agora é Bentencho; o acesso a Shinsaibashi exige transporte urbano. Tarifa e tempo a conferir. Ao fim da noite, voltar ao GRAND PIA 2 por metrô, com troca em Hommachi."
     },
     {
      "periodo": "Noite",
-     "nome": "Dotonbori — a última noite",
+     "nome": "Dotonbori — noite em Osaka",
      "area": "Namba",
      "de": "Shinsaibashi",
      "como": "A pé",
@@ -2225,18 +2240,19 @@
      "horario": "24h",
      "duracao": "3h",
      "bebe": "CARRINHO OK",
-     "terreno": "A rua de cima é plana mas fica ombro a ombro à noite. Com carrinho, desçam para a TONBORI RIVER WALK, o calçadão na beira do canal: é largo, plano, tem rampa nas pontes e muito menos gente — e passa exatamente sob o letreiro do Glico. Última noite: cheguem antes das 19:00 para escapar do pior.",
-     "obs": "Despedida com kushikatsu e okonomiyaki, e a foto obrigatória no letreiro do Glico, aceso na ponte Ebisubashi desde 1935.\n⚠ A REGRA DO KUSHIKATSU QUE TODO MUNDO QUEBRA UMA VEZ: o molho fica numa cuba COMUNITÁRIA da mesa, e é proibido mergulhar o espeto duas vezes — mordeu, acabou. Quem quiser mais molho usa o repolho cru que vem de graça, como concha. Está escrito na parede de todas as casas; é a única etiqueta de Osaka que vale saber antes de chegar.\nAs fachadas gigantes — o caranguejo mecânico do Kani Doraku, o baiacu do Zuboraya — são o que Osaka chama de kuidaore: comer até falir."
+     "terreno": "A rua de cima é plana mas fica ombro a ombro à noite. Com carrinho, desçam para a TONBORI RIVER WALK, o calçadão na beira do canal: é largo, plano, tem rampa nas pontes e muito menos gente — e passa exatamente sob o letreiro do Glico. Penpenúltima noite: cheguem antes das 19:00 para escapar do pior.",
+     "obs": "Noite em Dotonbori preservada. Retorno ao GRAND PIA 2 em Bentencho por Midosuji e Chuo via Hommachi. Conferir horário do último trem; esse retorno ainda não foi cotado."
     }
    ],
    "total": {
     "km": 530.4,
     "min": 192.0,
     "pe": 55.0,
-    "transp": 15500,
+    "transp": 15500.0,
     "ingresso": 0,
-    "nota": "≈ R$ 512 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 1.9
+    "nota": "≈ R$ 511.50 por adulto neste dia (transporte + ingressos)",
+    "transportePendente": false,
+    "km_pe": 2.5
    }
   },
   {
@@ -2250,23 +2266,18 @@
      "periodo": "Manhã",
      "nome": "Tenjin-bashi-suji — a galeria coberta mais longa do Japão",
      "area": "Kita",
-     "de": "Namba",
-     "como": "Metrô Sakaisuji de Nipponbashi até Minami-morimachi — 8 min, direto",
-     "km": 5.5,
-     "min": 8,
-     "pe": 25,
-     "transp": 240,
-     "ingresso": 0,
+     "de": "GRAND PIA 2 — Bentencho",
+     "como": "Chuo de Bentencho a Sakaisuji-Hommachi → Sakaisuji até Minami-morimachi",
+     "km": null,
+     "min": null,
+     "pe": null,
+     "transp": null,
+     "ingresso": 0.0,
      "horario": "lojas 10:00–19:00",
      "duracao": "1h30",
      "bebe": "CARRINHO OK",
      "terreno": "Galeria coberta, plana e reta do começo ao fim, larga o bastante para carrinho. Tem toldo nos 2,6 km inteiros — é o melhor plano de chuva de Osaka.",
-     "obs": "2,6 km de arcada contínua, do Minami-morimachi até o Tenjinbashisuji 6-chome: a mais longa do Japão. É bairro de gente da cidade, não de turista — comida barata, brechó, papelaria, doceria e cafés antigos. Dá para entrar por uma ponta e sair de metrô na outra, sem andar tudo. Fica a 550 m do Nakazakicho, que agora está no dia 16.",
-     "ajuste": {
-      "motivo": "Vai para a manha do dia 31, no lugar do Senba Center, porque a tarde do dia 17 passou a ser do sumo. Galeria coberta de 2,6 km, aberta 10:00-19:00, a 2 km de Namba pela Sakaisuji — resolve as ultimas compras e o almoco.",
-      "de": null,
-      "para": "2027-03-31"
-     }
+     "obs": "Compras originais preservadas. Partida do GRAND PIA 2 em Bentencho, com troca em Sakaisuji-Hommachi. Horário, tarifa e acessos com carrinhos a conferir."
     },
     {
      "periodo": "Manhã",
@@ -2275,9 +2286,9 @@
      "de": "Tenjin-bashi-suji",
      "como": "Metro Sakaisuji de Tenjinbashisuji 6-chome até Nagahoribashi + 450 m a pé",
      "km": 4.6,
-     "min": 11,
-     "pe": 12,
-     "transp": 240,
+     "min": 11.0,
+     "pe": 12.0,
+     "transp": 240.0,
      "ingresso": 0.0,
      "horario": "11:00–21:00",
      "duracao": "2h30",
@@ -2300,17 +2311,18 @@
      "duracao": "2h",
      "bebe": "CARRINHO C/ ESFORÇO",
      "terreno": "Den Den Town de novo: lojas apertadas, revezem na porta.",
-     "obs": "Almoço e Den Den Town mantidos no programa original de 31/03. Não há voo hoje; retorno à mesma hospedagem ao fim do passeio."
+     "obs": "Almoço e Den Den Town preservados em 31/03. Ao terminar, voltar a Bentencho e ao GRAND PIA 2, usando metrô com troca em Hommachi ou estação próxima à última loja. Retorno ainda sem cotação. Não há voo hoje."
     }
    ],
    "total": {
-    "km": 58.3,
-    "min": 64.0,
-    "pe": 78.0,
-    "transp": 2150.0,
+    "km": 11.3,
+    "min": 19.0,
+    "pe": 53.0,
+    "transp": 480.0,
     "ingresso": 0,
-    "nota": "≈ R$ 71 por pessoa neste dia (transporte + ingressos)",
-    "km_pe": 5.7
+    "nota": "≈ R$ 15.84 por adulto neste dia (transporte + ingressos)",
+    "transportePendente": false,
+    "km_pe": 4.7
    },
    "ajustes": [
     {
@@ -2329,70 +2341,70 @@
    "semana": "quinta",
    "base": "Osaka / dia livre e retorno",
    "cidade": "osaka",
-   "transicao": true,
+   "transicao": false,
    "atividades": [
     {
-     "nome": "Check-out + guarda-volumes",
      "periodo": "Manhã",
-     "area": "Osaka",
-     "de": "Hospedagem",
-     "como": "A definir conforme a hospedagem",
-     "km": 0,
-     "min": 0,
-     "pe": 0,
-     "transp": 0,
-     "ingresso": 0,
-     "horario": "Conforme o hotel",
+     "nome": "Check-out + guarda-volumes",
+     "area": "Bentencho / Minato",
+     "de": "GRAND PIA 2 — Bentencho",
+     "como": "Checkout no GRAND PIA 2; guarda-volumes mediante confirmação",
+     "km": 0.0,
+     "min": 0.0,
+     "pe": 0.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
+     "horario": "Checkout até 10:00",
      "duracao": "30–60 min",
      "bebe": "CARRINHO OK",
-     "terreno": "Hotel final ainda não definido.",
-     "obs": "Confirmar por escrito guarda-volumes para malas e três carrinhos. Serviço e custo a cotar; não pressupor gratuidade. Recuperar tudo até 14:00 na referência em Namba."
+     "terreno": "Confirmar local de guarda, elevador e acesso com malas e três carrinhos.",
+     "obs": "Checkout até 10h em 01/04. O PDF oferece guarda-volumes após a saída por $5 por volume, mediante solicitação e confirmação. Conferir moeda, horário de retirada e aceitação dos três carrinhos. Bagagens após 12h referem-se à chegada, em 30/03."
     },
     {
-     "nome": "DIA LIVRE EM OSAKA",
      "periodo": "Manhã",
+     "nome": "DIA LIVRE EM OSAKA",
      "area": "Osaka",
-     "de": "Hospedagem",
+     "de": "GRAND PIA 2 — Bentencho",
      "como": "Sem deslocamento turístico definido",
-     "km": 0,
-     "min": 0,
-     "pe": 0,
-     "transp": 0,
-     "ingresso": 0,
+     "km": 0.0,
+     "min": 0.0,
+     "pe": 0.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
      "horario": "Até a retirada das malas e o transfer",
      "duracao": "Sem programação",
      "bebe": "—",
      "terreno": "Sem passeio definido.",
-     "obs": "Dia adicional sem atrações definidas até a saída para o aeroporto. Fazer checkout conforme a hospedagem e retirar malas até aproximadamente 14:00; saída de referência de Namba às 14:30, KIX até 15:30 e voo às 18:55. Recalcular com hotel e transporte confirmados."
+     "obs": "Dia livre após checkout às 10h. Solicitar guarda-volumes, preparar malas e deixar a hospedagem até cerca de 13h30. Referência de embarque JR em Bentencho às 14h, KIX até 15h30. Horário final depende do trem confirmado; nenhuma atração acrescentada."
     },
     {
-     "nome": "TRANSFER: Namba → Aeroporto KIX",
      "periodo": "Tarde",
+     "nome": "TRANSFER: Bentencho → Aeroporto KIX",
      "area": "KIX",
-     "de": "Namba (âncora provisória)",
-     "como": "Nankai, trem e horário a confirmar",
-     "km": 50,
-     "min": 45,
-     "pe": 15,
-     "transp": 970,
-     "ingresso": 0,
-     "horario": "Saída de referência 14:30; KIX até 15:30",
-     "duracao": "Cerca de 1h com acessos",
+     "de": "GRAND PIA 2 / JR Bentencho",
+     "como": "JR Kansai Airport Rapid de Bentencho para Kansai-airport",
+     "km": null,
+     "min": 60,
+     "pe": 10,
+     "transp": null,
+     "ingresso": 0.0,
+     "horario": "Sair da hospedagem 13h30; JR ~14h; KIX até 15h30",
+     "duracao": "~1h de trem + acessos e espera",
      "bebe": "CARRINHO OK",
-     "terreno": "Confirmar elevadores, terminal, entrega do carrinho e trajeto até o balcão.",
-     "obs": "Voo LA 5306 às 18:55. Meta de aeroporto às 15:30 inclui margem para check-in, documentos e tax-free. Recalcular ao fechar o hotel. ¥970 é referência anterior, não tarifa confirmada para abril/2027."
+     "terreno": "Caminhar 7–10 min até Bentencho; conferir elevadores e carro com destino Kansai-airport.",
+     "obs": "Referência de planejamento: recolher as malas e sair do GRAND PIA 2 até 13h30; embarcar no JR em Bentencho por volta de 14h, mirando KIX até 15h30. O guia estima cerca de 1h de trem e 7–10 min a pé até a estação. Conferir horários e tarifa de 2027. No Kansai Airport Rapid, a JR orienta os quatro primeiros carros para KIX, pois o trem se divide em Hineno. Voo LA 5306 às 18h55."
     },
     {
-     "nome": "VOO DE VOLTA — LA 5306, KIX 18:55 → Doha",
      "periodo": "Noite",
+     "nome": "VOO DE VOLTA — LA 5306, KIX 18:55 → Doha",
      "area": "KIX",
      "de": "KIX",
      "como": "Qatar Airways · A350-900",
-     "km": 0,
-     "min": 0,
-     "pe": 0,
-     "transp": 0,
-     "ingresso": 0,
+     "km": 0.0,
+     "min": 0.0,
+     "pe": 0.0,
+     "transp": 0.0,
+     "ingresso": 0.0,
      "horario": "01/04, decolagem 18:55",
      "duracao": "11h10",
      "bebe": "CARRINHO OK",
@@ -2401,7 +2413,14 @@
     }
    ],
    "total": {
-    "nota": "Estimativa parcial de transporte e ingressos. Custos sem cotação não foram tratados como confirmados."
+    "km": 50.0,
+    "min": 45.0,
+    "pe": 15.0,
+    "transp": 970.0,
+    "ingresso": 0,
+    "nota": "≈ R$ 32.01 por adulto neste dia (transporte + ingressos)",
+    "transportePendente": false,
+    "km_pe": 1.0
    },
    "livre": true
   }
@@ -2420,8 +2439,8 @@
    "texto": "O programa completo do antigo dia 18 passa para 16/03 para permitir chegada a Kyoto em 18/03. O sumô e os demais passeios de 17/03 permanecem. Compras de 31/03 mantidas. O dia 01/04 fica livre até os procedimentos e o transfer para o aeroporto. Sem atrações novas ou novas marcações de opcional."
   },
   "10": {
-   "titulo": "HOSPEDAGENS: Osaka inicial confirmada; Kyoto e Osaka final pendentes",
-   "texto": "Osaka inicial confirmada de 15–18/03 (3 noites), com alteração aceita pelo anfitrião. Kyoto 18–22/03 (4 noites) e Osaka final 30/03–01/04 (2) continuam pendentes. Kawaguchiko 22–23/03 (1) e Tóquio 23–30/03 (7) mantêm as datas. Total: 17 noites. Conferir o valor final de Osaka inicial; cotar Kyoto e Osaka final. Guarda-volumes em 01/04 a confirmar."
+   "titulo": "HOSPEDAGENS: Osaka inicial e final confirmadas; Kyoto pendente",
+   "texto": "Osaka inicial 15–18/03 e GRAND PIA 2 em Bentencho 30/03–01/04 estão confirmados. Kyoto 18–22/03 continua pendente. Fuji 22–23/03 e Tóquio 23–30/03 mantêm datas. Total: 17 noites. Conferir preços finais de Osaka e ajustar Kyoto. No GRAND PIA 2: check-in 15h, checkout 10h, bagagens após 12h na chegada. Solicitar guarda-volumes após o checkout; o guia informa $5 por volume, com moeda e condições a confirmar."
   },
   "11": {
    "titulo": "DOHA E GRU: novas prioridades de conexão",

@@ -17,7 +17,7 @@ até o aeroporto. Nenhuma atração nova foi acrescentada aos períodos livres.
 A redistribuição anterior de passeios foi revogada. Seul não foi incluída.
 
 Bases: Osaka 15–18/03, Kyoto 18–22/03, Kawaguchiko 22–23/03, Tóquio 23–30/03,
-Osaka 30/03–01/04. Atualização de 06/10/2026: o anfitrião aceitou Osaka inicial 15–18/03. Kyoto e Osaka final continuam pendentes; conferir o valor de Osaka após a alteração.
+Osaka 30/03–01/04. Atualização de 06/10/2026: o anfitrião aceitou Osaka inicial 15–18/03. GRAND PIA 2 em Bentencho também confirmado para 30/03–01/04. Kyoto permanece pendente; preços finais de Osaka a conferir.
 A lista B de hospedagem é histórico de acomodações, não roteiro ativo.
 
 A planilha original foi atualizada em 06/10/2026 com a programação decidida em
@@ -193,3 +193,7 @@ miniaturas), com as chaves `hero`, `osaka`, `kyoto`, `fuji` e `tokyo`. O script
 Como a luminância das fotos varia muito (Fuji ao amanhecer contra Dotonbori à noite),
 a camada de fundo passa por um filtro de brilho por tema — sem ele, o véu teria de ser
 forte o bastante para o pior caso e toda foto viraria cinza.
+
+## GRAND PIA 2 confirmado
+
+30/03/2027 às 15h a 01/04/2027 às 10h. Malas após 12h na chegada; código previsto em 28/03. O guia informa guarda-volumes pós-checkout por $5 por volume, mediante solicitação; confirmar moeda e carrinhos. Os acessos de Bentencho ainda sem tarifa ficam vazios na planilha e aparecem como “A cotar” no site. O subtotal de transporte é parcial.

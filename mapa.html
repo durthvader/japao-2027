@@ -821,7 +821,7 @@ function montarMapa(){
     const dist=[a.km?nf(a.km,a.km%1?1:0)+" km":"", a.min?nf(a.min)+" min":""].filter(Boolean).join(" · ");
     return `<div class="perna c-${d.cidade}"><s></s>
       <span class="nm">${esc(a.nome.replace(/^TRANSFER:?\s*/i,""))}<u>${esc(a.como)}</u></span>
-      <span class="dd">${esc(dist)}<b>${a.transp?"¥"+nf(a.transp):"grátis"}</b></span></div>`;
+      <span class="dd">${esc(dist)}<b>${a.transp==null?"A cotar":a.transp?"¥"+nf(a.transp):"grátis"}</b></span></div>`;
   }).join("")+'</div>';
 
   const linhas=[...el("mapaSlot").querySelectorAll(".rota-anim")];
@@ -864,13 +864,13 @@ function montarNums(){
   const COMIDA=6000*DADOS.nDias;   // Y6.000/dia x 18 dias, o cenario medio da propria planilha
   const cards=[
     {b:nf(DADOS.nDias),u:"dias no Japão",i:"17 noites, de 15/03 a 01/04"},
-    {b:nf(r("distância total")),u:"km percorridos",i:"Shinkansen, ônibus, metrô e trem urbano"},
+    {b:nf(r("distância total")),u:"km medidos",i:"Faltam as distâncias dos novos acessos de Bentencho"},
     {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias),1)+" km por dia, só entre paradas"},
     {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
-    {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte",i:"Aeroporto, trechos entre cidades e urbano"},
+    {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte (parcial)",i:"Acessos de Bentencho e JR para KIX ainda a cotar"},
     {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
     {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias)+" dias, cenário médio"},
-    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"subtotal estimado por adulto",i:"Transporte e ingressos: ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+")"}
+    {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"subtotal parcial por adulto",i:"Transporte e ingressos registrados: ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+"). Faltam os novos acessos de Bentencho."}
   ];
   el("nums").innerHTML=cards.map(c=>
     `<div class="num"><b>${esc(c.b)}</b>${c.c?`<em>${esc(c.c)}</em>`:""}<u>${esc(c.u)}</u><i>${esc(c.i)}</i></div>`).join("");
@@ -898,7 +898,7 @@ function montarTimelapse(){
     el("tlKm").textContent=nf(t.km||0, (t.km||0)%1?1:0);
     el("tlMin").textContent=nf(t.min||0);
     el("tlPe").textContent=nf(t.km_pe || (t.pe ? t.pe/14 : 0), 1);
-    el("tlYen").textContent=nf((t.transp||0)+(t.ingresso||0));
+    el("tlYen").textContent=t.transportePendente?(((t.transp||0)+(t.ingresso||0))?nf((t.transp||0)+(t.ingresso||0))+" parcial":"A cotar"):nf((t.transp||0)+(t.ingresso||0));
     const pin=el("tlPin");
     if(pin){ const p=pinPos[d.cidade];
       pin.setAttribute("cx",p[0].toFixed(1)); pin.setAttribute("cy",p[1].toFixed(1));
@@ -952,7 +952,7 @@ function montarTrilho(){
         if(a.como)    det.push(["Como ir",esc(a.como)]);
         if(a.de)      det.push(["Saindo de",esc(a.de)]);
         if(a.horario && a.horario!=="—") det.push(["Horário",esc(a.horario)]);
-        if(a.transp)  det.push(["Transporte",`¥${nf(a.transp)}`]);
+        if(a.transp==null)det.push(["Transporte","A cotar"]); else if(a.transp) det.push(["Transporte",`¥${nf(a.transp)}`]);
         if(a.terreno && a.terreno!=="—") det.push(["Terreno",esc(a.terreno)]);
         if(a.obs && a.obs!=="—")         det.push(["Nota",esc(a.obs)]);
         return `<div class="ativ" data-ai="${ai}">
@@ -974,7 +974,7 @@ function montarTrilho(){
     if(t.min)     stats.push(`<span><b>${nf(t.min)}</b> min transp.</span>`);
     if(t.km_pe)   stats.push(`<span><b>${nf(t.km_pe,1)}</b> km a pé</span>`);
     else if(t.pe) stats.push(`<span><b>${nf(t.pe/14,1)}</b> km a pé</span>`);
-    stats.push(`<span><b>¥${nf((t.transp||0)+(t.ingresso||0))}</b> no dia</span>`);
+    stats.push(t.transportePendente?`<span><b>${((t.transp||0)+(t.ingresso||0))?"¥"+nf((t.transp||0)+(t.ingresso||0)):"A cotar"}</b> subtotal parcial</span>`:`<span><b>¥${nf((t.transp||0)+(t.ingresso||0))}</b> no dia</span>`);
     return `<article class="dia c-${d.cidade}" id="dia${k+1}" data-foto="${d.cidade}">
       <div class="dia-mark">${String(k+1).padStart(2,"0")}</div>
       <div class="dia-card">
@@ -1175,13 +1175,13 @@ function montarHosp(){
         <s></s>
         <div class="tx">
           <h4>${h.link?`<a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.hotel)}</a>`:esc(h.hotel)}</h4>
-          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>
+          <p class="mt">${esc(h.cidade)} · ${dm(h.checkin)} → ${dm(h.checkout)} · ${nf(h.noites)} ${h.noites==1?"noite":"noites"}</p><p class="mt">${esc(h.status||"Registro anterior")}</p>${h.endereco?`<p class="mt">${esc(h.endereco)}</p>`:""}${h.guia?`<p class="mt"><a href="${esc(h.guia)}" target="_blank" rel="noopener">Guia do anfitrião</a> · código previsto em 28/03 · malas após 12h na chegada · atendimento 9h–0h</p><p class="mt">Guarda-volumes após checkout: $5 por volume, mediante solicitação; conferir moeda e carrinhos. Checkout tardio: US$35/h, sujeito a acordo.</p>`:""}
         </div>
-        <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):h.alteracaoConfirmadaEm?"A conferir":"A cotar"}<u>grupo</u></div>
+        <div class="vl">${Number.isFinite(h.total)?"R$ "+nf(h.total):(h.alteracaoConfirmadaEm||h.reservaConfirmadaEm)?"A conferir":"A cotar"}<u>grupo</u></div>
       </div>`).join("")
       + `<div class="hosp-item c-osaka" style="background:var(--sunken)"><s style="background:var(--ink-3)"></s>
          <div class="tx"><h4>Subtotal dos valores históricos ${set.toUpperCase()}</h4>
-         <p class="mt">${lista.filter(h=>Number.isFinite(h.total)).length} valores antigos · ${lista.filter(h=>!Number.isFinite(h.total)).length} valores a conferir ou cotar · conjunto ${set==="b"?"histórico parcial":"A: Osaka inicial confirmada; Kyoto e Osaka final pendentes"}</p></div>
+         <p class="mt">${lista.filter(h=>Number.isFinite(h.total)).length} valores antigos · ${lista.filter(h=>!Number.isFinite(h.total)).length} valores a conferir ou cotar · conjunto ${set==="b"?"histórico parcial":"A: as duas estadias de Osaka confirmadas; Kyoto pendente"}</p></div>
          <div class="vl">R$ ${nf(lista.reduce((a,b)=>a+(b.total||0),0))}<u>grupo</u></div></div>`;
   }
   el("hospToggle").addEventListener("click",(ev)=>{
