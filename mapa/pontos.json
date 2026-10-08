@@ -1,7 +1,7 @@
 {
  "2027-03-15": {
   "titulo": "Chegada a Osaka às 16:25",
-  "resumo": "Chegada via Doha em 15/03. Transfer e jantar simples, com margem para imigração e descanso. O endereço do primeiro pernoite ainda precisa ser confirmado.",
+  "resumo": "Chegada via Doha em 15/03. Hospedagem em Tengachaya confirmada para 15 a 18/03. Transfer e jantar simples, com margem para imigração e descanso.",
   "centro": [
    34.55,
    135.37
@@ -49,8 +49,10 @@
     "lng": 135.4989,
     "aprox": true,
     "hora": "19:15",
-    "gmaps": "Tengachaya Station, Osaka",
-    "alerta": "Tengachaya é a localização de referência da hospedagem antiga. Confirmar cobertura da noite de 15/03 e atualizar o percurso se o endereço mudar."
+    "gmaps": "2-6-25 Tengachaya, Nishinari-ku, Osaka 557-0014",
+    "alerta": "Reserva confirmada para 15 a 18/03, três noites. Valor do grupo: R$4.054,89. Conferir horário de check-in e instruções de acesso com o anfitrião.",
+    "endereco": "2-6-25 Tengachaya, Nishinari-ku, Osaka 557-0014",
+    "confere": "Marcador aproximado; conferir a entrada nas instruções do anfitrião."
    },
    {
     "id": "p2",
@@ -77,13 +79,16 @@
    },
    {
     "id": "fim",
-    "nome": "Hospedagem de 15/03 — a confirmar",
+    "nome": "Airbnb Tengachaya: reserva confirmada",
     "tipo": "base",
     "lat": 34.63808,
     "lng": 135.4989,
     "aprox": true,
     "hora": "21:00",
-    "gmaps": "Tengachaya Station, Osaka"
+    "gmaps": "2-6-25 Tengachaya, Nishinari-ku, Osaka 557-0014",
+    "endereco": "2-6-25 Tengachaya, Nishinari-ku, Osaka 557-0014",
+    "confere": "Marcador aproximado; conferir a entrada nas instruções do anfitrião.",
+    "alerta": "Reserva confirmada para 15 a 18/03, três noites. Valor do grupo: R$4.054,89. Conferir horário de check-in e instruções de acesso com o anfitrião."
    }
   ],
   "pernas": [
@@ -105,7 +110,7 @@
     "min": 40,
     "km": 46.0,
     "custo": 970,
-    "desc": "Trajeto de referência até Tengachaya. Confirmar horário e tarifa em 2027 e recalcular se a hospedagem mudar."
+    "desc": "Nankai Airport Express até Tengachaya, perto da hospedagem confirmada. Horário e tarifa de referência; conferir para março de 2027."
    },
    {
     "de": "e2",
@@ -139,7 +144,7 @@
    {
     "tipo": "troca",
     "titulo": "Trem com assento reservado",
-    "texto": "Comparar Rapi:t e Airport Express depois de definir endereço e horário provável de saída do aeroporto. Não há reserva de trem assumida.",
+    "texto": "Comparar Rapi:t e Airport Express para Tengachaya conforme o horário de saída do aeroporto. Conferir tarifa, disponibilidade e reserva de assento antes da compra.",
     "refs": [
      "p1"
     ]
@@ -1147,7 +1152,7 @@
     "km": 0,
     "min": 0,
     "custo": 0,
-    "desc": "Saída da hospedagem, endereço a confirmar."
+    "desc": "Check-out no Airbnb em Tengachaya, confirmado para 15 a 18/03."
    },
    {
     "de": "p1",
