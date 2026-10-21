@@ -139,7 +139,7 @@
     const columns = families(), byFamily = new Map(rows.map(row => [String(row.family_id),row]));
     return `${pageHeading('CONTAS DAS FAMÍLIAS', 'Encontro de contas', 'Cada movimentação mostra como o saldo de cada família mudou.', newExpenseButton() + newTransferButton())}
       ${undatedCount ? `<div class="notice"><div class="notice-text">Há ${undatedCount} registros sem data fora do acerto mensal. Complete o vencimento em Compras ou a data em Pagamentos.</div></div>` : ''}
-      <p class="month-rail-caption">Vencimentos por mês</p><nav class="month-rail" aria-label="Escolher mês do acerto">${months.map(month => `<button class="month-chip ${month.month === selected.month ? 'selected' : ''}" data-action="select-reconciliation-month" data-month="${esc(month.month)}" ${month.month === selected.month ? 'aria-current="date"' : ''}><span>${esc(monthLabel(month.month))}</span><strong class="amount">${money(month.total_due_cents)}</strong><small>${month.month > currentMonth ? 'Previsão' : month.month < currentMonth ? Number(month.closing_debt_cents) > 0 ? 'Restava no fechamento' : 'Encerrado' : Number(month.as_of_closing_debt_cents ?? month.closing_debt_cents) > 0 ? 'A acertar' : 'Em dia'}</small></button>`).join('')}</nav>
+      <p class="month-rail-caption">Vencimentos por mês</p><nav class="month-rail" aria-label="Escolher mês do acerto">${months.map(month => reconciliationMonthChip(month,selected.month,currentMonth)).join('')}</nav>
       <div class="reconciliation-heading"><h2>${esc(monthLabel(selected.month))}</h2><p>${esc(caption)}</p></div>
       ${future ? '<p class="reconciliation-note">Cada mês já inclui o saldo anterior. Não some os saldos de meses diferentes.</p>' : ''}
       <section class="panel reconciliation-section ledger-panel"><div class="section-heading"><div><h2>Como o saldo se formou</h2><p class="ledger-summary"><span>${current ? 'Vence até hoje' : 'Vence no mês'}: <strong class="amount">${money(due)}</strong></span><span>${future ? 'Pagamentos futuros não são presumidos.' : 'Transferido entre famílias: <strong class="amount">' + money(transferred) + '</strong>'}</span></p></div></div>
@@ -148,6 +148,14 @@
         <div class="net-settlements"><h3>${!current && !future || settlements.length ? esc(settlementHeading) : future ? 'Nenhum pagamento previsto entre famílias' : 'Sem acerto pendente até ' + date(asOf)}</h3>${!settlements.length && advances.length ? '<p class="reconciliation-note">Nenhum pagamento necessário. Adiantamentos abatem as próximas compras.</p>' : ''}${settlements.slice(0,3).map(settlement => reconciliationSettlement(settlement,future,current)).join('')}${advances.map(row => reconciliationAdvance(row,nextMonthLabel)).join('')}</div>
         ${laterThisMonth.length ? `<details class="reconciliation-details"><summary>Ainda vence neste mês (${laterThisMonth.length})</summary>${reconciliationCommitments(laterThisMonth)}</details>` : ''}
       </section>${reconciliationChart(rows)}<div class="reconciliation-secondary">${(state.data.questions || []).length ? '<button class="text-link" data-page="review">Dúvidas pontuais (' + state.data.questions.length + ')</button>' : ''}<button class="text-link" data-page="history">Histórico de alterações</button></div><div class="only-mobile section-space">${window.JP27_CONFIG?.supabaseUrl ? '<button class="button small" data-action="change-password">Trocar senha</button>' : ''}<button class="button small" data-action="logout">Sair</button></div>`;
+  }
+  function reconciliationMonthChip(month,selectedMonth,currentMonth) {
+    const phase = month.month < currentMonth ? 'past' : month.month > currentMonth ? 'future' : 'current';
+    const label = {past:'Mês passado',current:'Mês atual',future:'Mês futuro'}[phase];
+    const name = monthLabel(month.month).replace(' de ',' ');
+    const title = name.charAt(0).toLocaleUpperCase('pt-BR') + name.slice(1);
+    const selected = month.month === selectedMonth;
+    return `<button class="month-chip month-${phase}${selected ? ' selected' : ''}" data-action="select-reconciliation-month" data-month="${esc(month.month)}" aria-pressed="${selected}"${phase === 'current' ? ' aria-current="date"' : ''}><span class="month-chip-title">${esc(title)}</span><strong class="amount">${money(month.total_due_cents)}</strong><small class="month-chip-status">${label}</small></button>`;
   }
   function ledgerImpact(cents) {
     const value = Number(cents || 0);
@@ -812,7 +820,12 @@
     const action = target.dataset.action, id = target.dataset.id;
     if (action === 'close-modal') $('#modal').close();
     else if (action === 'new-expense') expenseForm();
-    else if (action === 'select-reconciliation-month') { state.reconciliationMonth = target.dataset.month; render(); }
+    else if (action === 'select-reconciliation-month') {
+      const railPosition = $('.month-rail')?.scrollLeft || 0;
+      state.reconciliationMonth = target.dataset.month; render();
+      const rail = $('.month-rail');
+      if (rail) { rail.scrollLeft = railPosition; rail.querySelector('[aria-pressed="true"]')?.focus({preventScroll:true}); }
+    }
     else if (action === 'edit-expense') expenseForm(id);
     else if (action === 'expense-detail') expenseDetail(id);
     else if (action === 'new-payment') paymentForm(id);
