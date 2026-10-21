@@ -160,68 +160,22 @@
     if (!count && !(state.data.review_items || []).length) return '';
     return `<div class="notice"><span aria-hidden="true">ⓘ</span><div class="notice-text"><strong>A conferência ainda está em andamento.</strong><br>${count ? `${count} ${count === 1 ? 'despesa precisa' : 'despesas precisam'} de revisão${state.data.summary?.unverified_cents ? `, somando ${money(state.data.summary.unverified_cents)} em referências` : ''}. ` : ''}Os saldos confirmados podem representar apenas parte da viagem. Veja os registros importados e as dúvidas antes de fazer um acerto.</div><button class="button small" data-page="review">Conferir →</button></div>`;
   }
-  function myFamilyBalance(row, partial = false) {
-    if (!row) return '<strong>A calcular</strong>';
-    const due = Number(row.due_balance_cents || 0), advance = Number(row.advance_cents || 0), held = Number(row.advance_held_cents || 0);
-    return `<strong class="amount ${due < 0 ? 'negative' : due > 0 || advance > 0 ? 'positive' : ''}">${due < 0 ? 'Deve ' + money(-due) : due > 0 ? 'A receber ' + money(due) : advance > 0 ? money(advance) + ' adiantados' : partial ? 'A conferir' : 'Em dia'}</strong>${partial ? '<span class="cell-meta amber">Saldo parcial</span>' : ''}${due !== 0 && advance > 0 ? `<span class="cell-meta">${money(advance)} adiantados</span>` : ''}${held > 0 ? `<span class="cell-meta">${money(held)} recebidos antecipadamente</span>` : ''}`;
-  }
-  function myFamilyExpenseTable(expenses, familyId, ownPurchases = false) {
-    if (!expenses.length) return '<p class="family-empty">Nenhuma compra registrada.</p>';
-    const active = expenses.filter(expense => expense.status !== 'cancelled');
-    const total = knownSum(active.map(expense => ownPurchases ? expense.total_cents : familyExpenseShare(expense, familyId).total_cents));
-    const future = ownPurchases ? null : knownSum(active.map(expense => familyExpenseShare(expense, familyId).future_cents));
-    return `<div class="table-scroll"><table class="family-expenses-table${ownPurchases ? ' family-own-purchases' : ''}"><thead><tr><th scope="col">Compra</th>${ownPurchases ? '<th scope="col" class="family-purchase-date">Data</th>' : ''}<th scope="col" class="text-right">${ownPurchases ? 'Valor total' : 'Sua parte'}</th>${ownPurchases ? '' : '<th scope="col" class="text-right">A vencer</th>'}</tr></thead><tbody>${expenses.map(expense => {
-      const share = familyExpenseShare(expense, familyId);
-      return `<tr><th scope="row"><button class="table-title" data-action="expense-detail" data-id="${esc(expense.id)}" title="${esc(expense.title)}"><span class="purchase-title-text">${esc(expense.title)}</span></button></th>${ownPurchases ? `<td class="family-purchase-date">${expense.incurred_on ? date(expense.incurred_on) : 'Sem data'}</td>` : ''}<td class="text-right amount">${knownMoney(ownPurchases ? expense.total_cents : share.total_cents)}${expense.status === 'cancelled' ? '<span class="cell-meta">Cancelada</span>' : !priceEvidence(expense).documented ? `<span class="cell-meta">${onSiteExpense(expense) ? 'Estimativa' : 'A confirmar'}</span>` : ''}</td>${ownPurchases ? '' : `<td class="text-right amount">${knownMoney(share.future_cents)}</td>`}</tr>`;
-    }).join('')}</tbody><tfoot><tr><th scope="row">Total${ownPurchases ? ' ativo' : ''}</th>${ownPurchases ? '<td class="family-purchase-date"></td>' : ''}<td class="text-right amount">${knownMoney(total)}</td>${ownPurchases ? '' : `<td class="text-right amount">${knownMoney(future)}</td>`}</tr></tfoot></table></div>`;
-  }
-  function myFamilyTransfers(transfers, familyId) {
-    if (!transfers.length) return '<p class="family-empty">Nenhuma transferência registrada.</p>';
-    const total = direction => transfers.filter(transfer => String(transfer[direction]) === familyId).reduce((sum, transfer) => sum + transfer.amount_cents, 0);
-    return `<div class="family-transfer-totals"><span>Enviou <strong class="amount">${money(total('from_id'))}</strong></span><span>Recebeu <strong class="amount">${money(total('to_id'))}</strong></span></div><div class="table-scroll"><table class="family-transfers-table"><thead><tr><th scope="col">Data</th><th scope="col">Transferência</th><th scope="col" class="text-right">Valor</th></tr></thead><tbody>${transfers.map(transfer => {
-      const sent = String(transfer.from_id) === familyId, other = sent ? transfer.to_id : transfer.from_id;
-      return `<tr><td>${transfer.paid_on ? date(transfer.paid_on, { day:'2-digit', month:'2-digit', year:'2-digit' }) : '<span class="amber">Sem data</span>'}</td><td><button class="table-title" data-action="transfer-detail" data-id="${esc(transfer.id)}">${sent ? 'Enviou para' : 'Recebeu de'} ${esc(familyName(other))}</button></td><td class="text-right amount">${money(transfer.amount_cents)}</td></tr>`;
-    }).join('')}</tbody></table></div>`;
-  }
-  function myFamilyForecast(months, familyId, currentMonth, partial = false) {
-    const upcoming = months.filter(month => month.month >= currentMonth);
-    if (!upcoming.length) return '';
-    return `<details class="audit-details family-forecast section-space"><summary>Planejar os próximos meses</summary><p class="family-table-note">Cada previsão acumula o saldo de hoje e os vencimentos até aquele mês.</p><div class="table-scroll"><table class="family-forecast-table"><thead><tr><th scope="col">Mês</th><th scope="col" class="text-right">Sua parte a vencer</th><th scope="col">Acerto previsto</th></tr></thead><tbody>${upcoming.map(month => {
-      const row = (month.forecast_rows || month.families || []).find(item => String(item.family_id) === familyId);
-      const settlements = (month.forecast_payable_settlements || month.payable_settlements || []).filter(item => [item.from_id || item.from_family_id, item.to_id || item.to_family_id].map(String).includes(familyId));
-      return `<tr class="month-${month.month === currentMonth ? 'current' : 'future'}"><th scope="row"><button class="table-title" data-action="family-forecast-month" data-month="${esc(month.month)}" data-family="${esc(familyId)}">${esc(monthLabel(month.month))}</button></th><td class="text-right amount">${knownMoney(row?.share_cents)}</td><td>${!row ? 'A calcular' : settlements.length ? settlements.map(item => {
-        const sent = String(item.from_id || item.from_family_id) === familyId, other = sent ? item.to_id || item.to_family_id : item.from_id || item.from_family_id;
-        return `<span class="family-forecast-route">${sent ? 'Pagar a' : 'Receber de'} ${esc(familyName(other))} <strong class="amount">${money(item.amount_cents)}</strong></span>`;
-      }).join('') : Number(row.advance_cents) > 0 ? money(row.advance_cents) + ' adiantados' : partial ? 'Previsão parcial' : 'Em dia'}</td></tr>`;
-    }).join('')}</tbody></table></div></details>`;
-  }
   function renderMyFamily() {
     const id = myFamilyId();
-    const picker = assignedFamilyId() ? '' : `<div class="field family-picker"><label for="my-family-select">Escolha sua família</label><select id="my-family-select"><option value="">Selecionar</option>${familyOptions(id)}</select></div>`;
-    if (!id) return `${pageHeading('', 'Minha família', '')}<section class="panel">${picker}</section>`;
-    const asOf = (state.data.as_of || today()).slice(0,10), currentMonth = asOf.slice(0,7);
-    const months = state.data.reconciliation?.months || [];
-    const actualMonth = months.find(month => month.month === currentMonth) || [...months].reverse().find(month => month.month < currentMonth);
-    const row = (actualMonth?.as_of_rows || actualMonth?.families || []).find(item => String(item.family_id) === id);
-    const expenses = state.data.expenses || [];
-    const shares = expenses.filter(expense => expense.status !== 'cancelled' && (expense.allocations || []).some(item => String(item.family_id) === id && (item.amount_cents > 0 || item.amount_cents == null)));
-    const own = expenses.filter(expense => String(expensePayerId(expense)) === id);
-    const transfers = (state.data.transfers || []).filter(transfer => !transfer.voided_at && (!transfer.paid_on || transfer.paid_on <= asOf) && [transfer.from_id, transfer.to_id].map(String).includes(id)).sort((a,b) => (b.paid_on || '').localeCompare(a.paid_on || ''));
-    const total = knownSum(shares.map(expense => familyExpenseShare(expense,id).total_cents));
-    const undatedCommitments = (state.data.reconciliation?.undated_commitments || []).filter(item => expenses.some(expense => expense.id === item.expense_id && (String(expensePayerId(expense)) === id || (expense.allocations || []).some(share => String(share.family_id) === id && share.amount_cents > 0))));
-    const undatedTransfers = transfers.filter(transfer => !transfer.paid_on);
-    const partial = undatedCommitments.length > 0 || undatedTransfers.length > 0 || [...shares,...own].some(expense => !expense.verified || supplierUnknown(expense));
-    const settlements = (actualMonth?.as_of_payable_settlements || actualMonth?.payable_settlements || []).filter(item => [item.from_id || item.from_family_id, item.to_id || item.to_family_id].map(String).includes(id));
-    return `${pageHeading('', 'Minha família', esc(familyName(id)) + ' · Até ' + date(asOf), newExpenseButton() + (editable() ? '<button class="button" data-action="family-new-transfer">Novo pagamento</button>' : ''))}
-      ${picker}
-      <dl class="family-summary"><div><dt>Sua parte na viagem</dt><dd class="amount">${knownMoney(total)}</dd></div><div><dt>Saldo entre famílias</dt><dd>${myFamilyBalance(row,partial)}</dd></div></dl>
-      ${partial ? `<div class="notice"><div class="notice-text">Complete as datas e os dados pendentes para fechar o saldo.${undatedTransfers.length ? ' Transferências sem data entram no saldo após informar a data.' : ''} <button class="text-link" data-action="my-family-purchases">Revisar compras</button>${undatedTransfers.length ? ' · <button class="text-link" data-page="transfers">Revisar pagamentos</button>' : ''}</div></div>` : ''}
-      ${settlements.length ? `<section class="family-current-settlement"><h2>Acerto de hoje</h2>${settlements.map(item => reconciliationSettlement(item,false,true)).join('')}</section>` : ''}
-      <section class="table-panel family-section"><div class="family-section-heading"><h2>Sua parte nas despesas</h2><button class="text-link" data-action="my-family-purchases">Ver em Compras</button></div>${myFamilyExpenseTable(shares,id)}<p class="family-table-note">A vencer considera as parcelas futuras de cada compra. As transferências ajustam o saldo entre famílias.</p></section>
-      <section class="table-panel family-section"><div class="family-section-heading"><h2>Compras feitas pela família</h2><span>${own.length} ${own.length === 1 ? 'compra' : 'compras'}</span></div>${myFamilyExpenseTable(own,id,true)}</section>
-      <section class="table-panel family-section"><div class="family-section-heading"><h2>Transferências</h2><span>${transfers.length} ${transfers.length === 1 ? 'pagamento' : 'pagamentos'}</span></div>${myFamilyTransfers(transfers,id)}</section>
-      ${myFamilyForecast(months,id,currentMonth,partial)}
-      <button class="text-link family-monthly-link" data-action="family-monthly" data-family="${esc(id)}">Ver encontro de contas mensal →</button>`;
+    const picker = assignedFamilyId() ? '' : '<div class="field family-picker"><label for="my-family-select">Escolha sua família</label><select id="my-family-select"><option value="">Selecionar</option>' + familyOptions(id) + '</select></div>';
+    const heading = pageHeading('', 'Minha família', id ? esc(familyName(id)) + ' · Até ' + date(state.data.as_of || today()) : '', newExpenseButton() + (id && editable() ? '<button class="button" data-action="family-new-transfer">Novo pagamento</button>' : ''));
+    if (!id) return heading + '<section class="panel">' + picker + '</section>';
+    if (!window.jp27FamilySummary?.build) return heading + '<section class="panel">Atualize a página para carregar o quadro da família.</section>';
+    const summary = window.jp27FamilySummary.build(state.data, id);
+    const balanceCell = amount => Number.isSafeInteger(amount) ? amount === 0 ? money(0) : ledgerImpact(amount) : 'A definir';
+    const columns = (row, estimate = false) => '<td class="text-right amount">' + knownMoney(row.share_cents) + (estimate ? '<span class="cell-meta">Estimativa</span>' : '') + '</td><td class="text-right amount">' + knownMoney(row.due_cents) + '</td><td class="text-right amount" title="' + esc(knownMoney(row.supplier_paid_cents) + ' ao fornecedor + ' + knownMoney(row.sent_cents) + ' transferidos') + '">' + knownMoney(row.paid_cents) + '</td><td class="text-right amount">' + knownMoney(row.received_cents) + '</td><td class="text-right amount ' + (row.balance_cents > 0 ? 'positive' : row.balance_cents < 0 ? 'negative' : '') + '">' + balanceCell(row.balance_cents) + '</td>';
+    const basis = summary.distribution_basis === 'due' ? 'Transferências rateadas pelo vencido.' : summary.distribution_basis === 'share' ? 'Adiantamentos rateados pela sua parte nas compras.' : 'Transferências registradas como adiantamento.';
+    return heading + picker + (summary.partial ? '<p class="family-account-note amber">Saldo parcial. Há valores ou datas a completar.</p>' : '') + '<div class="table-panel"><div class="table-scroll family-account-scroll" tabindex="0" role="region" aria-label="Contas da família" aria-describedby="family-account-rule"><table class="family-account-table"><thead><tr><th scope="col">Compra</th><th scope="col" class="text-right">Minha parte</th><th scope="col" class="text-right">Vencido</th><th scope="col" class="text-right" title="Vencimentos assumidos pela família e transferências enviadas">Valor pago</th><th scope="col" class="text-right">Créditos recebidos</th><th scope="col" class="text-right">Saldo</th></tr></thead><tbody>' + summary.rows.map(row => {
+      const expense = (state.data.expenses || []).find(item => String(item.id) === String(row.expense_id));
+      const title = row.expense_id ? '<button class="table-title" data-action="expense-detail" data-id="' + esc(row.expense_id) + '" title="' + esc(row.title) + '"><span class="family-account-title">' + esc(row.title) + '</span></button>' : '<span class="family-account-title">' + esc(row.title) + '</span>';
+      const estimate = expense && onSiteExpense(expense) && !priceEvidence(expense).documented;
+      return '<tr><th scope="row">' + title + '</th>' + columns(row, estimate) + '</tr>';
+    }).join('') + (!summary.rows.length ? '<tr><td colspan="6">Nenhum lançamento para esta família.</td></tr>' : '') + '</tbody><tfoot><tr><th scope="row">Total</th>' + columns(summary.totals) + '</tr></tfoot></table></div><p class="family-account-note" id="family-account-rule">Pago = fornecedor + transferências enviadas. Saldo = pago − créditos recebidos − vencido. ' + basis + '</p></div>';
   }
   function renderReconciliation() {
     const reconciliation = state.data.reconciliation || {}, months = reconciliation.months || [];
@@ -988,7 +942,6 @@
     else if (action === 'new-transfer') transferForm();
     else if (action === 'family-new-transfer') transferForm({ from: myFamilyId() });
     else if (action === 'my-family-purchases') { state.filters = { search:'', category:'', status:'', family:myFamilyId() }; setPage('expenses'); }
-    else if (action === 'family-forecast-month') { state.reconciliationFamily = target.dataset.family; state.reconciliationMonth = target.dataset.month; setPage('monthly'); }
     else if (action === 'edit-transfer') transferForm({ id });
     else if (action === 'transfer-detail') transferDetail(id);
     else if (action === 'family-monthly') { state.reconciliationFamily = target.dataset.family; setPage('monthly'); }

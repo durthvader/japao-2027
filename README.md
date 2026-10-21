@@ -103,10 +103,15 @@ estimativa da reserva é preservada separadamente do custo efetivo, incluindo IO
 e taxas. Informações do controle original são reconhecidas com sua fonte; o
 comprovante complementa a informação, sem funcionar como bloqueio geral.
 
-Ao entrar, **Minha família** reúne a parte da família nas despesas, as compras que
-ela fez e as transferências enviadas ou recebidas. A família é identificada pelo
-acesso autorizado. Os próximos meses ficam em uma seção recolhida. O filtro de
-família em **Compras** mostra a cota e sua parte a vencer em cada compra.
+Ao entrar, **Minha família** mostra um quadro com compra, parte da família,
+vencido, valor pago, créditos recebidos e saldo, com os totais no rodapé.
+O valor pago soma os vencimentos assumidos pela família e as transferências
+enviadas. As transferências enviadas e recebidas são distribuídas pela proporção
+do vencido de cada compra; antes do primeiro vencimento, usam a proporção das
+cotas. Essa distribuição serve à consulta e preserva os pagamentos originais.
+O saldo soma o pago e desconta os créditos recebidos e a parte vencida.
+A família é identificada pelo acesso autorizado. O filtro de família em
+**Compras** mostra a cota e sua parte a vencer em cada compra.
 
 O painel confere o valor documentado e a composição das taxas separadamente.
 As listas mostram **Estimativa** nas reservas que ainda dependem da cobrança;
