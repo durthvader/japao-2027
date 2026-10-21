@@ -108,6 +108,11 @@ ela fez e as transferências enviadas ou recebidas. A família é identificada p
 acesso autorizado. Os próximos meses ficam em uma seção recolhida. O filtro de
 família em **Compras** mostra a cota e sua parte a vencer em cada compra.
 
+O painel confere o valor documentado e a composição das taxas separadamente.
+As listas mostram **Estimativa** nas reservas que ainda dependem da cobrança;
+os totais documentados ficam sem aviso de confirmação. Os detalhes preservam
+a origem do valor, as taxas informadas e as diferenças registradas.
+
 O encontro de contas mensal mostra vencimentos, posição de cada família,
 transferências realizadas e os pagamentos líquidos para acertar.
 O cálculo usa as despesas e seu rateio; planos de reembolso por compra não criam
