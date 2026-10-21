@@ -131,7 +131,7 @@
       const rows = families.map(f => ({ family_id: f.id, name: f.name, opening_cents: target.raw[f.id],
         advanced_cents: 0, share_cents: 0, sent_cents: 0, received_cents: 0 }));
       const byId = new Map(rows.map(r => [r.family_id, r]));
-      const consumptions = [];
+      const consumptions = [], ledgerEntries = [];
       const consumeAdvances = () => {
         // Circular advances are already offset globally. Remove their common
         // amount before routing credits, so a one-cent debt cannot circulate
@@ -192,6 +192,8 @@
         const after = before + commitment.amount_cents;
         if (!Number.isSafeInteger(after) || after < 0) throw new Error('A devolução excede os compromissos desta despesa.');
         const oldShares = allocate(before, allocations), newShares = allocate(after, allocations);
+        const impacts = zeroes(families);
+        impacts[commitment.payer] += commitment.amount_cents;
         target.funded[commitment.expense_id] = after;
         target.raw[commitment.payer] += commitment.amount_cents;
         target.due[commitment.payer] += commitment.amount_cents;
@@ -200,7 +202,12 @@
           const family = allocation.family_id, amount = newShares[family] - oldShares[family];
           target.raw[family] -= amount; target.due[family] -= amount;
           byId.get(family).share_cents += amount;
+          impacts[family] -= amount;
         });
+        ledgerEntries.push({ id: commitment.id, kind: 'commitment', source_kind: commitment.kind,
+          date: commitment.date, month: calendarMonth, title: commitment.title,
+          expense_id: commitment.expense_id, amount_cents: commitment.amount_cents,
+          payer_family_id: commitment.payer, family_impacts_cents: impacts });
       });
       consumeAdvances();
       [...transfers].sort((a, b) => compare(a.date, b.date) || a.sequence - b.sequence).forEach(transfer => {
@@ -208,6 +215,11 @@
         let remaining = transfer.amount_cents;
         target.raw[from] += remaining; target.raw[to] -= remaining;
         byId.get(from).sent_cents += remaining; byId.get(to).received_cents += remaining;
+        const impacts = zeroes(families);
+        impacts[from] += remaining; impacts[to] -= remaining;
+        ledgerEntries.push({ id: transfer.id, kind: 'transfer', date: transfer.date, month: calendarMonth,
+          title: transfer.title || 'Reembolso entre famílias', expense_id: transfer.expense_id || null,
+          amount_cents: transfer.amount_cents, from_id: from, to_id: to, family_impacts_cents: impacts });
         // Net settlements take precedence over optional advance returns. This
         // lets one transfer settle a route across several original buyers.
         const settled = Math.min(remaining, Math.max(0, -target.due[from]));
@@ -242,6 +254,7 @@
         throw new Error('O encontro de contas precisa fechar em zero.');
       const payable = settlements(rows, 'due_balance_cents');
       return { families: rows, settlements: payable, payable_settlements: payable,
+        ledger_entries: ledgerEntries.sort((a, b) => compare(a.date || a.month, b.date || b.month) || compare(a.id, b.id)),
         raw_settlements: settlements(rows, 'closing_cents'),
         total_due_cents: sum(commitments.map(c => c.amount_cents)),
         total_transferred_cents: sum(transfers.map(t => t.amount_cents)),
@@ -251,13 +264,6 @@
     }
 
     let forecastState = null;
-    const settleSimulation = (target, calendarMonth, suggested) => {
-      if (!suggested.length) return;
-      const simulated = suggested.map((transfer, index) => ({ ...transfer,
-        id: 'simulation-' + calendarMonth + '-' + index, date: calendarMonth + '-01', sequence: index }));
-      runMonth(target, calendarMonth, [], simulated);
-      if (Object.values(target.due).some(value => value !== 0)) throw new Error('A simulação do acerto mensal precisa fechar em zero.');
-    };
     const months = calendarMonths.map(calendarMonth => {
       const commitments = datedCommitments.filter(c => c.month === calendarMonth).sort((a, b) => compare(a.date || a.month, b.date || b.month) || compare(a.id, b.id));
       const transfers = datedTransfers.filter(t => t.month === calendarMonth);
@@ -271,32 +277,31 @@
       const daily = current ? runMonth(before, calendarMonth, asOfCommitments, asOfTransfers) : full;
       let forecast = null;
       if (current) {
-        // Simulation starts at today's actual position. Future transfers are
-        // not presumed performed and never enter actual-transfer totals.
+        // Carry today's actual balances and advances into every later month.
+        // Suggested settlements never change this projected ledger.
         forecastState = cloneState(before);
-        settleSimulation(forecastState, calendarMonth, daily.payable_settlements);
         const maturedIds = new Set(asOfCommitments.map(c => c.id));
         forecast = runMonth(forecastState, calendarMonth, commitments.filter(c => !maturedIds.has(c.id)), []);
-        settleSimulation(forecastState, calendarMonth, forecast.payable_settlements);
       } else if (future && forecastState) {
         forecast = runMonth(forecastState, calendarMonth, commitments, []);
-        settleSimulation(forecastState, calendarMonth, forecast.payable_settlements);
       }
       return { month: calendarMonth, as_of: asOf, future, is_current: current,
         ...full, commitments: commitments.map(c => ({ ...c })), transfers: transfers.map(t => ({ ...t })),
         as_of_rows: daily.families, as_of_settlements: daily.payable_settlements,
+        as_of_ledger_entries: daily.ledger_entries,
         as_of_payable_settlements: daily.payable_settlements,
         as_of_total_due_cents: daily.total_due_cents, as_of_total_transferred_cents: daily.total_transferred_cents,
         as_of_closing_debt_cents: daily.closing_debt_cents,
         as_of_advance_lots: daily.advance_lots, as_of_advance_consumptions: daily.advance_consumptions,
         as_of_commitments: asOfCommitments.map(c => ({ ...c })), as_of_transfers: asOfTransfers.map(t => ({ ...t })),
         ...(forecast ? { forecast_rows: forecast.families,
+          forecast_ledger_entries: forecast.ledger_entries,
           forecast_payable_settlements: forecast.payable_settlements,
           forecast_total_to_settle_cents: forecast.closing_debt_cents,
           forecast_total_due_cents: forecast.total_due_cents,
           forecast_advance_lots: forecast.advance_lots,
           forecast_advance_consumptions: forecast.advance_consumptions,
-          forecast_assumption: 'Considera acerto dos meses anteriores; pagamentos futuros ainda não realizados.' } : {}) };
+          forecast_assumption: 'Carrega os saldos e adiantamentos reais e compensa os compromissos previstos dos próximos meses.' } : {}) };
     });
     return { months, undated_transfers: undatedTransfers, undated_commitments: undatedCommitments };
   }
