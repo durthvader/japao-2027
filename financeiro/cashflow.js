@@ -16,6 +16,30 @@
   const key = (expenseId, from, to) => JSON.stringify([expenseId || null, from || null, to || null]);
   const order = (a, b) => !period(a) && !period(b) ? String(a.id).localeCompare(String(b.id)) : !period(a) ? 1 : !period(b) ? -1 : period(a).localeCompare(period(b)) || String(a.id).localeCompare(String(b.id));
 
+  // Planning date only: weekdays excluding Brazilian national bank holidays.
+  function reimbursementDue(calendarMonth, businessDay = 5) {
+    if (!month(calendarMonth) || !Number.isInteger(Number(businessDay)) || Number(businessDay) < 1 || Number(businessDay) > 20) return null;
+    const [year, calendar] = calendarMonth.split('-').map(Number);
+    const a = year % 19, b = Math.floor(year / 100), c = year % 100;
+    const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3);
+    const h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const n = h + l - 7 * m + 114;
+    const easter = new Date(Date.UTC(year, Math.floor(n / 31) - 1, n % 31 + 1));
+    const holidays = new Set(['01-01','04-21','05-01','09-07','10-12','11-02','11-15','11-20','12-25'].map(value => year + '-' + value));
+    [-48,-47,-2,60].forEach(offset => {
+      const holiday = new Date(easter); holiday.setUTCDate(holiday.getUTCDate() + offset); holidays.add(holiday.toISOString().slice(0,10));
+    });
+    let found = 0;
+    for (let number = 1; number <= 31; number++) {
+      const date = new Date(Date.UTC(year, calendar - 1, number));
+      if (date.getUTCMonth() !== calendar - 1) break;
+      const value = date.toISOString().slice(0,10);
+      if (date.getUTCDay() !== 0 && date.getUTCDay() !== 6 && !holidays.has(value) && ++found === Number(businessDay)) return value;
+    }
+    return null;
+  }
+
   function build(expenses, transfers, families, asOf) {
     const cutoff = day(typeof asOf === 'string' ? asOf.slice(0, 10) : null);
     const familyList = list(families), familyMap = new Map(familyList.map(family => [String(family.id), family]));
@@ -188,5 +212,5 @@
     return { financial_timeline: timeline, reimbursement_installments: installments, reimbursement_plan_totals: totals, monthly_cashflow: monthly, unscheduled_cashflow: unscheduled, due_accrual: dueAccrual };
   }
 
-  window.jp27Cashflow = Object.freeze({ build });
+  window.jp27Cashflow = Object.freeze({ build, reimbursementDue });
 })();

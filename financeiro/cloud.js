@@ -131,7 +131,7 @@
     const cashflow = window.jp27Cashflow ? window.jp27Cashflow.build(expenses, transfers, families, asOf) : {};
     return { as_of: asOf, version: value.version, families, balances: Object.values(balances), summary, expenses, transfers, settlements,
       legacy: settings.legacy || null, audit: data.audit || [], warnings, review_items: settings.review_items || [],
-      receipts: settings.receipts || [], credit_card_schedule: settings.credit_card_schedule || [], card_installments: cardInstallments,
+      receipts: settings.receipts || [], planning_rule: settings.planning_rule || null, credit_card_schedule: settings.credit_card_schedule || [], card_installments: cardInstallments,
       reimbursement_installments: reimbursementInstallments, questions, ...cashflow };
   }
   async function mutate(action, payload) {

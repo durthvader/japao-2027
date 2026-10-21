@@ -107,6 +107,9 @@ mensal mostra os compromissos de cada família e os reembolsos esperados. O sald
 total do acerto inclui parcelas futuras. Vencimentos ainda desconhecidos ficam
 visíveis para programação, e as dúvidas são ligadas à compra ou ao reembolso.
 Há uma linha do tempo financeira separada do histórico de edições.
+Novos planos de reembolso usam os meses da compra e o dia útil configurado pelo
+grupo, preservando as datas já editadas. A referência atual é o quinto dia útil,
+com exclusão de fins de semana e feriados bancários nacionais.
 
 `NAVEGACAO`, em `gerar_site.py`, preserva o acesso nas próximas gerações sem
 incluir o financeiro nas seções ou no payload de dados do roteiro.
