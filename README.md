@@ -101,17 +101,23 @@ estimativa da reserva é preservada separadamente do custo efetivo, incluindo IO
 e taxas. Informações do controle original são reconhecidas com sua fonte; o
 comprovante complementa a informação, sem funcionar como bloqueio geral.
 
-Regra do grupo: despesa vencida é considerada paga pela família responsável;
-somente as transferências entre famílias exigem registro de pagamento. A visão
-mensal mostra os compromissos de cada família e os reembolsos esperados. O saldo
-atual considera somente parcelas vencidas e transferências realizadas. Parcelas
-futuras ficam no valor a pagar; adiantamentos entre famílias permanecem como
-crédito para os próximos compromissos. Vencimentos ainda desconhecidos ficam
-visíveis para programação, e as dúvidas são ligadas à compra ou ao reembolso.
-Há uma linha do tempo financeira separada do histórico de edições.
-Novos planos de reembolso usam os meses da compra e o dia útil configurado pelo
-grupo, preservando as datas já editadas. A referência atual é o quinto dia útil,
-com exclusão de fins de semana e feriados bancários nacionais.
+O acesso principal é o encontro de contas mensal: vencimentos, posição de cada
+família, transferências realizadas e poucos pagamentos líquidos para acertar.
+O cálculo usa as despesas e seu rateio; planos de reembolso por compra não criam
+outra dívida. Quem pagou a compra recebe o crédito correspondente, descontada
+sua própria parte. Pagamentos entre famílias entram uma única vez.
+
+Regra do grupo: vencimentos passados são considerados pagos pelo responsável.
+O saldo diário considera somente vencimentos até a data consultada. O fechamento
+de um mês anterior permanece histórico; seu saldo passa ao mês seguinte.
+Adiantamentos são usados nos próximos compromissos, sem sugerir sua devolução
+como dívida vencida. O cálculo preserva a origem e o uso desses créditos.
+
+As previsões dos meses seguintes simulam o acerto dos meses anteriores para
+mostrar o valor próprio de cada mês. Essa simulação nunca cria pagamentos reais.
+O prazo de planejamento é o quinto dia útil, com exclusão de fins de semana e
+feriados bancários nacionais. Compras, pagamentos e histórico continuam acessíveis
+para edição e conferência, com os detalhes recolhidos por padrão.
 
 `NAVEGACAO`, em `gerar_site.py`, preserva o acesso nas próximas gerações sem
 incluir o financeiro nas seções ou no payload de dados do roteiro.

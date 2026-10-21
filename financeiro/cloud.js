@@ -64,7 +64,7 @@
     return Object.fromEntries(shares.map(a => [a.id, a.amount]));
   }
   function dashboard(value, asOf = currentDay()) {
-    if (!window.jp27Cashflow?.build) throw error('Atualize a página para carregar o cálculo das parcelas.', 503);
+    if (!window.jp27Cashflow?.build || !window.jp27Reconciliation?.build) throw error('Atualize a página para carregar o encontro de contas.', 503);
     const data = value.data, settings = data.settings || {}, families = data.families || [];
     const balances = Object.fromEntries(families.map(f => [f.id, { family_id: f.id, name: f.name, paid_cents: 0, share_paid_cents: 0, sent_cents: 0, received_cents: 0, balance_cents: 0, future_cents: 0 }]));
     const summary = { committed_cents: 0, paid_cents: 0, pending_cents: 0, unverified_count: 0, unverified_cents: 0 };
@@ -150,7 +150,11 @@
       if (q.action === 'edit-transfer' && q.transfer_id) return transfers.some(t => t.id === q.transfer_id && !t.voided_at && !t.paid_on);
       return true;
     });
-    return { as_of: asOf, version: value.version, families, balances: Object.values(balances), summary, expenses, transfers, settlements,
+    const reconciliation = window.jp27Reconciliation.build({ families, expenses, transfers,
+      monthly_cashflow: cashflow.monthly_cashflow || [], unscheduled_cashflow: cashflow.unscheduled_cashflow || [], as_of: asOf });
+    reconciliation.months.forEach(month => { month.settlement_due_on = window.jp27Cashflow.reimbursementDue(month.month,
+      Number(settings.planning_rule?.reimbursement_business_day || 5)); });
+    return { as_of: asOf, version: value.version, families, balances: Object.values(balances), summary, expenses, transfers, settlements, reconciliation,
       legacy: settings.legacy || null, audit: data.audit || [], warnings, review_items: settings.review_items || [],
       receipts: settings.receipts || [], planning_rule: settings.planning_rule || null, credit_card_schedule: settings.credit_card_schedule || [], card_installments: cardInstallments,
       reimbursement_installments: reimbursementInstallments, questions, ...cashflow };

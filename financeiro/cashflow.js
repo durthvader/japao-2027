@@ -121,9 +121,12 @@
           const state = paid ? 'paid' : date || dueMonth ? 'open' : 'unknown';
           const confirmed = Boolean(plan.confirmed), id = 'card-' + expenseId + '-' + number;
           const certainty = state === 'unknown' ? 'unknown' : 'planned';
+          const billTitle = source.card_schedule_type === 'multiple_purchases'
+            ? title + ' · fatura ' + (dueMonth ? dueMonth.slice(5) + '/' + dueMonth.slice(0,4) : number)
+            : title + ' · parcela ' + number + '/' + (plan.count || plan.items.length);
           const description = paid ? 'Vencida — considerada paga pelo responsável, conforme a regra combinada. A data é o vencimento, não o pagamento bancário.' : state === 'open' ? 'Compromisso futuro do responsável, no vencimento informado.' : 'Falta informar o mês de vencimento desta parcela.';
-          addEvent({ id, date, month: dueMonth, month_basis: monthBasis, date_basis: 'due_on', assumed_paid: paid, type: paid ? 'installment_matured' : 'installment_due', title: title + ' · cartão ' + number + '/' + (plan.count || plan.items.length), description, amount_cents: amount, from_id: holder, to_id: null, expense_id: expenseId, evidence: 'pending', receipt_id: item.receipt_id || receiptId, scope: paid ? 'historical' : 'future' });
-          addMovement({ id, date, month: dueMonth, month_basis: monthBasis, date_basis: 'due_on', assumed_paid: paid, kind: 'card', from_family_id: holder, to_family_id: null, title: title + ' · parcela ' + number + '/' + (plan.count || plan.items.length), amount_cents: amount, expense_id: expenseId, confirmed, scope: paid ? 'historical' : 'future', certainty, payment_state: state, overdue: false });
+          addEvent({ id, date, month: dueMonth, month_basis: monthBasis, date_basis: 'due_on', assumed_paid: paid, type: paid ? 'installment_matured' : 'installment_due', title: billTitle, description, amount_cents: amount, from_id: holder, to_id: null, expense_id: expenseId, evidence: 'pending', receipt_id: item.receipt_id || receiptId, scope: paid ? 'historical' : 'future' });
+          addMovement({ id, date, month: dueMonth, month_basis: monthBasis, date_basis: 'due_on', assumed_paid: paid, kind: 'card', from_family_id: holder, to_family_id: null, title: billTitle, amount_cents: amount, expense_id: expenseId, confirmed, scope: paid ? 'historical' : 'future', certainty, payment_state: state, overdue: false });
         });
       }
 
