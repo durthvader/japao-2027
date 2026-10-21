@@ -105,9 +105,9 @@
     if (!['overview', 'expenses', 'transfers', 'timeline', 'upcoming', 'monthly', 'review', 'history'].includes(page)) return;
     state.page = page; render(); window.scrollTo({ top: 0, behavior: 'instant' });
   }
-  const pageHeading = (eyebrow, title, subtitle, actions = '') => `<div class="page-heading"><div><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${subtitle}</p></div>${actions ? `<div class="heading-actions">${actions}</div>` : ''}</div>`;
+  const pageHeading = (eyebrow, title, subtitle, actions = '') => `<div class="page-heading"><div>${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ''}<h1>${title}</h1>${subtitle ? `<p>${subtitle}</p>` : ''}</div>${actions ? `<div class="heading-actions">${actions}</div>` : ''}</div>`;
   const newExpenseButton = () => editable() ? '<button class="button primary" data-action="new-expense"><span class="button-icon" aria-hidden="true">＋</span> Nova compra</button>' : '';
-  const newTransferButton = () => editable() ? '<button class="button" data-action="new-transfer"><span class="button-icon" aria-hidden="true">⇄</span> Registrar pagamento</button>' : '';
+  const newTransferButton = () => editable() ? '<button class="button" data-action="new-transfer"><span class="button-icon" aria-hidden="true">⇄</span> Novo pagamento</button>' : '';
   const empty = (title, message, action = '') => `<div class="empty"><div class="empty-symbol" aria-hidden="true">◌</div><h3>${esc(title)}</h3><p>${esc(message)}</p>${action}</div>`;
   function reviewNotice() {
     const count = Number(state.data.summary?.unverified_count || 0);
@@ -127,7 +127,7 @@
     const transferred = future ? 0 : current ? selected.as_of_total_transferred_cents ?? selected.total_transferred_cents : selected.total_transferred_cents;
     const settlements = current ? selected.as_of_payable_settlements || selected.payable_settlements || [] : future ? selected.forecast_payable_settlements || selected.payable_settlements || [] : selected.payable_settlements || [];
     const closingDate = new Date(Date.UTC(Number(selected.month.slice(0,4)),Number(selected.month.slice(5,7)),0)).toISOString().slice(0,10);
-    const caption = current ? `Até ${date(asOf)}. O saldo considera os vencimentos até essa data.` : future ? `Saldo acumulado de hoje até ${monthLabel(selected.month)}, com as compras previstas. Pagamentos entre famílias só entram quando registrados.` : `Fechamento em ${date(closingDate)}. Saldo histórico levado para ${monthLabel(consecutiveMonths(selected.month,2)[1])}.`;
+    const caption = current ? `Até ${date(asOf)}.` : future ? 'Projeção com o saldo anterior.' : `Fechamento em ${date(closingDate)}.`;
     const advances = rows.filter(row => Number(row.advance_cents) > 0);
     const undatedCount = (reconciliation.undated_commitments || []).length + (reconciliation.undated_transfers || []).length;
     const laterThisMonth = current ? (selected.commitments || []).filter(commitment => commitment.date && commitment.date > asOf) : [];
@@ -137,18 +137,22 @@
   }
   function renderReconciliationMatrix(context) {
     const { months,selected,rows,entries,asOf,currentMonth,current,future,due,transferred,caption,advances,undatedCount,laterThisMonth,nextMonthLabel,settlements,settlementHeading } = context;
-    const columns = families(), byFamily = new Map(rows.map(row => [String(row.family_id),row]));
-    return `${pageHeading('CONTAS DAS FAMÍLIAS', 'Encontro de contas', 'Cada movimentação mostra como o saldo de cada família mudou.', newExpenseButton() + newTransferButton())}
-      ${undatedCount ? `<div class="notice"><div class="notice-text">Há ${undatedCount} registros sem data fora do acerto mensal. Complete o vencimento em Compras ou a data em Pagamentos.</div></div>` : ''}
-      <p class="month-rail-caption">Vencimentos por mês</p><nav class="month-rail" aria-label="Escolher mês do acerto">${months.map(month => reconciliationMonthChip(month,selected.month,currentMonth)).join('')}</nav>
-      <div class="reconciliation-heading"><h2>${esc(monthLabel(selected.month))}</h2><p>${esc(caption)}</p></div>
-      ${future ? '<p class="reconciliation-note">Cada mês já inclui o saldo anterior. Não some os saldos de meses diferentes.</p>' : ''}
-      <section class="panel reconciliation-section ledger-panel"><div class="section-heading"><div><h2>Como o saldo se formou</h2><p class="ledger-summary"><span>${current ? 'Vence até hoje' : 'Vence no mês'}: <strong class="amount">${money(due)}</strong></span><span>${future ? 'Pagamentos futuros não são presumidos.' : 'Transferido entre famílias: <strong class="amount">' + money(transferred) + '</strong>'}</span></p></div></div>
-        <p class="ledger-explanation">Compras: valor assumido menos sua parte. Pagamentos: somam para quem enviou e descontam de quem recebeu.</p><p class="ledger-legend">+ aumenta seu crédito · − reduz seu crédito</p>
-        <div class="table-scroll ledger-scroll"><table class="ledger-matrix"><thead><tr><th>Data</th><th class="ledger-movement">Movimentação</th><th class="text-right">Valor</th>${columns.map(family => `<th class="text-right ledger-family">${esc(family.name)}</th>`).join('')}</tr></thead><tbody><tr class="ledger-opening"><td>—</td><th scope="row" class="ledger-movement">Saldo anterior</th><td>—</td>${columns.map(family => `<td class="text-right amount">${ledgerImpact(byFamily.get(String(family.id))?.opening_cents)}</td>`).join('')}</tr>${entries.map(entry => ledgerEntryRow(entry,columns,future)).join('')}</tbody><tfoot><tr><th colspan="3">Saldo acumulado</th>${columns.map(family => `<td class="text-right">${ledgerClosingBalance(byFamily.get(String(family.id)) || {},nextMonthLabel)}</td>`).join('')}</tr></tfoot></table></div>
-        <div class="net-settlements"><h3>${!current && !future || settlements.length ? esc(settlementHeading) : future ? 'Nenhum pagamento previsto entre famílias' : 'Sem acerto pendente até ' + date(asOf)}</h3>${!settlements.length && advances.length ? '<p class="reconciliation-note">Nenhum pagamento necessário. Adiantamentos abatem as próximas compras.</p>' : ''}${settlements.slice(0,3).map(settlement => reconciliationSettlement(settlement,future,current)).join('')}${advances.map(row => reconciliationAdvance(row,nextMonthLabel)).join('')}</div>
+    const focus = families().some(family => family.id === state.reconciliationFamily) ? state.reconciliationFamily : '';
+    const columns = families().filter(family => !focus || family.id === focus), byFamily = new Map(rows.map(row => [String(row.family_id),row]));
+    const visibleEntries = entries.filter(entry => !focus || Number(entry.family_impacts_cents?.[focus] || 0) !== 0);
+    const visibleSettlements = settlements.filter(settlement => !focus || [settlement.from_id || settlement.from_family_id,settlement.to_id || settlement.to_family_id].includes(focus));
+    const visibleAdvances = advances.filter(row => !focus || row.family_id === focus), focusedRow = byFamily.get(focus);
+    const phase = selected.month < currentMonth ? 'past' : future ? 'future' : 'current';
+    return `${pageHeading('', 'Encontro de contas', '', newExpenseButton() + newTransferButton())}
+      ${undatedCount ? `<div class="notice"><div class="notice-text">${undatedCount} registros sem data. Complete em Compras ou Pagamentos.</div></div>` : ''}
+      <nav class="month-rail" aria-label="Mês do acerto">${months.map(month => reconciliationMonthChip(month,selected.month,currentMonth)).join('')}</nav>
+      <div class="reconciliation-toolbar"><div class="reconciliation-heading"><h2>${esc(monthLabel(selected.month))}</h2><p>${esc(caption)}</p></div><div class="reconciliation-controls"><div class="mobile-month-control month-${phase}"><label for="reconciliation-month">Mês</label><select id="reconciliation-month">${months.map(month => `<option value="${esc(month.month)}" ${month.month === selected.month ? 'selected' : ''}>${esc(monthLabel(month.month))} · ${month.month < currentMonth ? 'Passado' : month.month === currentMonth ? 'Atual' : 'Futuro'}</option>`).join('')}</select></div><div class="family-focus-control"><label for="ledger-family">Família</label><select id="ledger-family"><option value="">Todas as famílias</option>${familyOptions(focus)}</select></div></div></div>
+      <section class="panel reconciliation-section ledger-panel"><div class="section-heading"><div><h2>Movimentações</h2><p class="ledger-summary"><span>${focus ? 'Parte de ' + esc(familyName(focus)) : current ? 'Vence até hoje' : 'Vence no mês'}: <strong class="amount">${money(focus ? focusedRow?.share_cents : due)}</strong></span><span>${future ? 'Projeção acumulada.' : focus ? 'Enviou: <strong class="amount">' + money(focusedRow?.sent_cents) + '</strong> · Recebeu: <strong class="amount">' + money(focusedRow?.received_cents) + '</strong>' : 'Transferido: <strong class="amount">' + money(transferred) + '</strong>'}</span></p></div></div>
+        <div class="table-scroll ledger-scroll" tabindex="0" role="region" aria-label="Movimentações e saldos${focus ? ' de ' + esc(familyName(focus)) : ' das famílias'}"><table class="ledger-matrix${focus ? ' ledger-focused' : ''}"><thead><tr><th scope="col" class="ledger-date-cell">Data</th><th scope="col" class="ledger-movement">Movimentação</th><th scope="col" class="text-right ledger-value-cell">Valor</th>${columns.map(family => `<th scope="col" class="text-right ledger-family">${esc(family.name)}</th>`).join('')}</tr></thead><tbody><tr class="ledger-opening"><td class="ledger-date-cell">—</td><th scope="row" class="ledger-movement">Saldo anterior</th><td class="ledger-value-cell">—</td>${columns.map(family => `<td class="text-right amount">${ledgerImpact(byFamily.get(String(family.id))?.opening_cents)}</td>`).join('')}</tr>${visibleEntries.map(entry => ledgerEntryRow(entry,columns,future)).join('')}${!visibleEntries.length ? `<tr><td class="ledger-date-cell"></td><td class="ledger-movement"><span class="cell-meta">${focus ? 'Sem alterações no saldo desta família.' : 'Sem movimentações no período.'}</span></td><td class="ledger-value-cell"></td>${columns.map(() => '<td>—</td>').join('')}</tr>` : ''}</tbody><tfoot><tr><td class="ledger-date-cell"></td><th scope="row" class="ledger-movement">Saldo acumulado</th><td class="ledger-value-cell"></td>${columns.map(family => `<td class="text-right">${ledgerClosingBalance(byFamily.get(String(family.id)) || {},nextMonthLabel)}</td>`).join('')}</tr></tfoot></table></div>
+        <details class="ledger-help"><summary>Como ler o saldo</summary><p>Compras: valor assumido menos sua parte. Pagamentos: somam para quem enviou e descontam de quem recebeu. + soma ao saldo; − desconta.${future ? ' A projeção inclui o saldo anterior e os vencimentos futuros. Transferências entram quando registradas; não some os saldos de meses diferentes.' : ''}</p></details>
+        <div class="net-settlements"><h3>${!current && !future || visibleSettlements.length ? esc(settlementHeading) : future ? 'Nenhum pagamento previsto' : 'Sem acerto pendente'}</h3>${!visibleSettlements.length && visibleAdvances.length ? '<p class="reconciliation-note">Adiantamentos abatem as próximas compras.</p>' : ''}${visibleSettlements.slice(0,3).map(settlement => reconciliationSettlement(settlement,future,current)).join('')}${visibleAdvances.map(row => reconciliationAdvance(row,nextMonthLabel)).join('')}</div>
         ${laterThisMonth.length ? `<details class="reconciliation-details"><summary>Ainda vence neste mês (${laterThisMonth.length})</summary>${reconciliationCommitments(laterThisMonth)}</details>` : ''}
-      </section>${reconciliationChart(rows)}<div class="reconciliation-secondary">${visibleQuestions().length ? '<button class="text-link" data-page="review">Dúvidas pontuais (' + visibleQuestions().length + ')</button>' : ''}<button class="text-link" data-page="history">Histórico de alterações</button></div><div class="only-mobile section-space">${window.JP27_CONFIG?.supabaseUrl ? '<button class="button small" data-action="change-password">Trocar senha</button>' : ''}<button class="button small" data-action="logout">Sair</button></div>`;
+      </section>${reconciliationChart(rows.filter(row => !focus || row.family_id === focus))}<div class="reconciliation-secondary">${visibleQuestions().length ? '<button class="text-link" data-page="review">Dúvidas (' + visibleQuestions().length + ')</button>' : ''}<button class="text-link" data-page="history">Histórico</button></div>`;
   }
   function reconciliationMonthChip(month,selectedMonth,currentMonth) {
     const phase = month.month < currentMonth ? 'past' : month.month > currentMonth ? 'future' : 'current';
@@ -164,9 +168,9 @@
   }
   function ledgerEntryRow(entry,columns,future) {
     const payment = entry.kind === 'transfer', expense = (state.data.expenses || []).find(expense => expense.id === entry.expense_id);
-    const meta = payment ? `Pagamento · ${familyName(entry.from_id)} → ${familyName(entry.to_id)}` : `Vencimento${future ? ' previsto' : ''} · responsável: ${familyName(entry.payer_family_id)}`;
+    const meta = payment ? `${familyName(entry.from_id)} → ${familyName(entry.to_id)}` : `Responsável: ${familyName(entry.payer_family_id)}`;
     const estimate = !payment && expense && onSiteExpense(expense) && !expense.pricing?.final_confirmed;
-    return `<tr><td class="nowrap">${dueLabel(entry)}</td><td class="ledger-movement">${!payment && entry.expense_id ? `<button class="table-title" data-action="expense-detail" data-id="${esc(entry.expense_id)}">${esc(entry.title)}</button>` : `<strong>${payment ? 'Pagamento entre famílias' : esc(entry.title)}</strong>`}<span class="cell-meta">${esc(meta)}</span>${estimate ? '<span class="cell-meta">Estimativa · pagamento na hospedagem</span>' : ''}</td><td class="text-right amount">${money(entry.amount_cents)}</td>${columns.map(family => `<td class="text-right amount">${ledgerImpact(entry.family_impacts_cents?.[family.id])}</td>`).join('')}</tr>`;
+    return `<tr><td class="nowrap ledger-date-cell">${dueLabel(entry)}</td><td class="ledger-movement">${!payment && entry.expense_id ? `<button class="table-title" data-action="expense-detail" data-id="${esc(entry.expense_id)}">${esc(entry.title)}</button>` : `<strong>${payment ? 'Pagamento entre famílias' : esc(entry.title)}</strong>`}<span class="cell-meta">${esc(meta)}</span><span class="cell-meta ledger-mobile-context">${dueLabel(entry)} · ${money(entry.amount_cents)}</span>${estimate ? '<span class="cell-meta">Estimativa · na hospedagem</span>' : ''}</td><td class="text-right amount ledger-value-cell">${money(entry.amount_cents)}</td>${columns.map(family => `<td class="text-right amount">${ledgerImpact(entry.family_impacts_cents?.[family.id])}</td>`).join('')}</tr>`;
   }
   function ledgerClosingBalance(row,nextMonthLabel) {
     const closing = Number(row.closing_cents || 0), due = Number(row.due_balance_cents ?? closing), advance = Number(row.advance_cents || 0), held = Number(row.advance_held_cents || 0);
@@ -221,15 +225,15 @@
     return `<article class="family-card"><div class="family-head"><span class="family-avatar" style="background:${['#edf1f4','#f8efea','#edf1e8','#f5eff6'][index % 4]}">${esc(balance.name?.slice(0,1) || 'F')}</span>${esc(balance.name)}</div><div class="family-result"><small>${known ? 'Saldo atual entre famílias' : 'Saldo a esclarecer'}</small><strong class="amount ${value > 0 ? 'positive' : value < 0 ? 'negative' : ''}">${known ? money(Math.abs(value)) : 'Desconhecido'}</strong><span class="balance-tag ${value > 0 ? 'positive' : value < 0 ? 'negative' : 'subtle'}">${known ? value > 0 ? 'Tem crédito' : value < 0 ? 'Saldo devedor' : 'Sem diferença registrada' : 'Falta identificar pagamentos'}</span></div><dl class="family-breakdown"><div><dt>Pagou até agora</dt><dd>${money(balance.paid_cents)}</dd></div><div><dt>Sua parte nos pagamentos</dt><dd>${money(balance.share_paid_cents)}</dd></div><div><dt>Reembolsou às famílias</dt><dd>${money(balance.sent_cents)}</dd></div><div><dt>Recebeu das famílias</dt><dd>${money(balance.received_cents)}</dd></div></dl><div class="family-foot"><span>Sua parte futura: <strong class="amount">${balance.future_cents === null ? 'A definir' : money(balance.future_cents)}</strong></span><button class="text-link" data-action="family-monthly" data-family="${esc(balance.family_id)}">Ver mês a mês →</button></div></article>`;
   }
   function purchaseTable(expenses) {
-    if (!expenses.length) return `<div class="table-panel">${(state.data.expenses || []).length ? empty('Nenhuma compra encontrada', 'Altere a busca ou os filtros para ver outras compras.') : empty('Nenhuma compra registrada', 'Adicione uma compra ou reserva para iniciar o controle.', newExpenseButton())}</div>`;
-    return `<div class="table-panel purchase-table-panel"><div class="table-scroll purchase-table-scroll"><table class="purchase-table"><thead><tr><th scope="col" class="purchase-name-cell">Compra / reserva</th><th scope="col">Responsável</th><th scope="col">Data da compra</th><th scope="col" class="text-right">Valor total</th><th scope="col">Situação do pagamento</th><th scope="col">Ações</th></tr></thead><tbody>${expenses.map(expense => {
-      const status = expenseStatus(expense), payer = expensePayerId(expense);
+    if (!expenses.length) return `<div class="table-panel">${(state.data.expenses || []).length ? empty('Nenhuma compra encontrada', 'Altere a busca ou os filtros.') : empty('Nenhuma compra registrada', '', newExpenseButton())}</div>`;
+    return `<div class="table-panel purchase-table-panel"><div class="table-scroll purchase-table-scroll"><table class="purchase-table"><thead><tr><th scope="col" class="purchase-name-cell">Compra</th><th scope="col" class="purchase-payer-cell">Responsável</th><th scope="col" class="purchase-date-cell">Data</th><th scope="col" class="text-right purchase-total-cell">Valor total</th><th scope="col" class="purchase-status-cell">Vencimentos</th><th scope="col" class="purchase-actions-cell">Detalhes</th></tr></thead><tbody>${expenses.map(expense => {
+      const status = expenseStatus(expense), payer = expensePayerId(expense), payerLabel = payer ? familyName(payer) : 'Responsável a definir';
       const totalKnown = Number.isSafeInteger(expense.total_cents) && expense.total_cents >= 0;
-      const pricing = !totalKnown ? 'Valor a esclarecer' : expense.pricing?.final_confirmed ? 'Custo efetivo em reais' : onSiteExpense(expense) ? 'Estimativa da reserva · pagamento na hospedagem' : 'Valor registrado · sujeito a ajustes do cartão';
-      const payment = expense.status === 'cancelled' ? 'Compra / reserva cancelada' : supplierUnknown(expense) || !Number.isSafeInteger(expense.pending_cents) ? 'Situação a esclarecer' : Number(expense.pending_cents) > 0 ? expense.card_progress?.count ? `${money(expense.pending_cents)} em ${compositeCardExpense(expense) ? 'próximas faturas' : 'parcelas futuras'}` : `${money(expense.pending_cents)} a pagar${expense.due_on ? ' · '+date(expense.due_on) : ' · data a definir'}` : 'Pagamentos considerados realizados';
+      const pricing = !totalKnown ? 'Valor a esclarecer' : expense.pricing?.final_confirmed ? 'Valor confirmado' : onSiteExpense(expense) ? 'Estimativa · na hospedagem' : 'Valor a confirmar';
+      const payment = expense.status === 'cancelled' ? 'Cancelada' : supplierUnknown(expense) || !Number.isSafeInteger(expense.pending_cents) ? 'Situação a esclarecer' : Number(expense.pending_cents) > 0 ? `${money(expense.pending_cents)} a pagar${!expense.card_progress?.count && expense.due_on ? ' · '+date(expense.due_on) : ''}` : 'Vencimentos concluídos';
       const installment = !onSiteExpense(expense) && expense.installment_plan ? compositeCardExpense(expense) ? `${Number(expense.installment_plan.count)} faturas` : `${Number(expense.installment_plan.count)}x no cartão` : '';
-      return `<tr><th scope="row" class="purchase-name-cell"><button class="table-title" data-action="expense-detail" data-id="${esc(expense.id)}">${esc(expense.title)}</button><span class="cell-meta">${esc(expense.category || 'Compra')} · ${esc(evidenceLabel(expenseEvidence(expense)))}</span></th><td>${payer ? esc(familyName(payer)) : '<span class="subtle">Ainda não identificado</span>'}</td><td class="purchase-date-cell">${expense.incurred_on ? date(expense.incurred_on) : '<span class="subtle">Data não informada</span>'}</td><td class="text-right purchase-total-cell">${totalKnown ? `<strong class="amount">${money(expense.total_cents)}</strong>` : '<strong class="subtle">A definir</strong>'}<span class="cell-meta">${pricing}</span></td><td class="purchase-status-cell">${tag(status.label,status.color)}${installment ? `<span class="cell-meta">${installment}</span>` : ''}<span class="cell-meta">${payment}</span></td><td><button class="text-link purchase-details" data-action="expense-detail" data-id="${esc(expense.id)}">${editable() ? 'Detalhes e editar' : 'Ver detalhes'} →</button></td></tr>`;
-    }).join('')}</tbody></table></div><div class="table-footer">${expenses.length} ${expenses.length === 1 ? 'compra / reserva' : 'compras / reservas'} · As transferências entre famílias são registradas em Pagamentos.</div></div>`;
+      return `<tr><th scope="row" class="purchase-name-cell"><button class="table-title" data-action="expense-detail" data-id="${esc(expense.id)}">${esc(expense.title)}</button><span class="cell-meta purchase-category">${esc(expense.category || 'Compra')}</span><div class="purchase-compact-meta"><span class="cell-meta">${esc(payerLabel)} · ${expense.incurred_on ? date(expense.incurred_on) : 'Data a definir'}</span>${tag(status.label,status.color)}<span class="cell-meta">${payment}</span></div></th><td class="purchase-payer-cell">${esc(payerLabel)}</td><td class="purchase-date-cell">${expense.incurred_on ? date(expense.incurred_on) : 'A definir'}</td><td class="text-right purchase-total-cell">${totalKnown ? `<strong class="amount">${money(expense.total_cents)}</strong>` : '<strong class="subtle">A definir</strong>'}<span class="cell-meta">${pricing}</span></td><td class="purchase-status-cell">${tag(status.label,status.color)}${installment ? `<span class="cell-meta">${installment}</span>` : ''}<span class="cell-meta">${payment}</span></td><td class="purchase-actions-cell"><button class="text-link purchase-details" data-action="expense-detail" data-id="${esc(expense.id)}">Abrir →</button></td></tr>`;
+    }).join('')}</tbody></table></div><div class="table-footer">${expenses.length} ${expenses.length === 1 ? 'compra' : 'compras'}</div></div>`;
   }
   function renderOverviewLegacy() {
     const data = state.data, s = data.summary || {};
@@ -276,11 +280,11 @@
   }
   function expenseFilters() {
     const cats = [...new Set((state.data.expenses || []).map(e => e.category).filter(Boolean))].sort();
-    return `<div class="filters"><input aria-label="Buscar despesas" type="search" id="filter-search" placeholder="Buscar despesa, hotel, observação…" value="${esc(state.filters.search)}"><select aria-label="Filtrar categoria" id="filter-category"><option value="">Todas as categorias</option>${cats.map(c => `<option ${state.filters.category === c ? 'selected' : ''}>${esc(c)}</option>`).join('')}</select><select aria-label="Filtrar situação" id="filter-status">${[['','Todas as situações'],['review','Situação a esclarecer'],['pending','Em aberto'],['paid','Assumidas / pagas'],['overdue','Vencidas'],['cancelled','Canceladas']].map(([v,l]) => `<option value="${v}" ${state.filters.status === v ? 'selected' : ''}>${l}</option>`).join('')}</select><select aria-label="Filtrar família" id="filter-family"><option value="">Todas as famílias</option>${familyOptions(state.filters.family)}</select></div>`;
+    return `<div class="filters"><input aria-label="Buscar despesas" type="search" id="filter-search" placeholder="Buscar compra…" value="${esc(state.filters.search)}"><select aria-label="Filtrar categoria" id="filter-category"><option value="">Todas as categorias</option>${cats.map(c => `<option ${state.filters.category === c ? 'selected' : ''}>${esc(c)}</option>`).join('')}</select><select aria-label="Filtrar situação" id="filter-status">${[['','Todas as situações'],['review','Situação a esclarecer'],['pending','Em aberto'],['paid','Assumidas / pagas'],['overdue','Vencidas'],['cancelled','Canceladas']].map(([v,l]) => `<option value="${v}" ${state.filters.status === v ? 'selected' : ''}>${l}</option>`).join('')}</select><select aria-label="Filtrar família" id="filter-family"><option value="">Todas as famílias</option>${familyOptions(state.filters.family)}</select></div>`;
   }
   function renderExpenses() {
     const items = filteredExpenses();
-    return `${pageHeading('COMPRAS E RESERVAS', 'Compras da viagem', 'Compras, responsáveis, rateios e vencimentos.', newExpenseButton())}${expenseFilters()}<div id="expenses-table">${purchaseTable(items)}</div>`;
+    return `${pageHeading('', 'Compras', '', newExpenseButton())}${expenseFilters()}<div id="expenses-table">${purchaseTable(items)}</div>`;
   }
   function expenseTable(items) {
     if (!items.length) return `<div class="table-panel">${empty('Nenhuma despesa encontrada', (state.data.expenses || []).length ? 'Tente mudar a busca ou os filtros.' : 'Registre a primeira compra ou revise os dados da planilha antes de começar.', !(state.data.expenses || []).length ? newExpenseButton() : '')}</div>`;
@@ -289,16 +293,24 @@
   function renderTransfers() {
     const transfers = [...(state.data.transfers || [])].sort((a,b) => !a.paid_on ? 1 : !b.paid_on ? -1 : b.paid_on.localeCompare(a.paid_on));
     const total = transfers.filter(transfer => !transfer.voided_at).reduce((sum,transfer) => sum + Number(transfer.amount_cents || 0),0);
-    return `${pageHeading('TRANSFERÊNCIAS ENTRE AS FAMÍLIAS', 'Pagamentos entre famílias', 'Quem enviou, quem recebeu, quanto e quando.', newTransferButton())}<div class="transfer-summary"><strong class="amount">${money(total)}</strong><span>em ${transfers.filter(transfer => !transfer.voided_at).length} transferências registradas</span></div><div class="table-panel">${transfers.length ? `<div class="table-scroll"><table class="transfers-table"><thead><tr><th>Data</th><th>Quem enviou → quem recebeu</th><th class="text-right">Valor</th><th>Origem</th><th>Observação</th>${editable() ? '<th>Corrigir</th>' : ''}</tr></thead><tbody>${transfers.map(transfer => {
+    return `${pageHeading('', 'Pagamentos', '', newTransferButton())}<div class="transfer-summary"><strong class="amount">${money(total)}</strong><span>· ${transfers.filter(transfer => !transfer.voided_at).length} transferências</span></div><div class="table-panel">${transfers.length ? `<div class="table-scroll"><table class="transfers-table"><thead><tr><th scope="col" class="transfer-date-cell">Data</th><th scope="col">Quem enviou → recebeu</th><th scope="col" class="text-right">Valor</th><th scope="col" class="transfer-source-cell">Comprovante</th><th scope="col" class="transfer-observation-cell">Observação</th>${editable() ? '<th scope="col" class="transfer-actions-cell">Ações</th>' : ''}</tr></thead><tbody>${transfers.map(transfer => {
       const receiptId = transfer.receipt_id || transfer.source?.receipt_id;
-      return `<tr><td class="nowrap">${transfer.paid_on ? date(transfer.paid_on) : '<span class="amber">Data não informada</span>'}</td><td><strong>${esc(familyName(transfer.from_id))}</strong><span class="cell-meta">→ ${esc(familyName(transfer.to_id))}</span></td><td class="text-right amount">${money(transfer.amount_cents)}${transfer.voided_at ? '<span class="cell-meta">Estornado</span>' : ''}</td><td>${tag(evidenceLabel(transfer.evidence || transfer.source?.evidence || (transfer.source?.sheet ? 'spreadsheet' : 'manual')))}${receiptId ? '<div class="cell-meta">'+receiptLink(receiptId,'Ver comprovante')+'</div>' : ''}</td><td class="transfer-observation-cell">${transferObservation(transfer)}</td>${editable() ? `<td>${transfer.voided_at ? '' : `<button class="button small" data-action="edit-transfer" data-id="${esc(transfer.id)}">Editar</button><button class="text-link negative row-secondary" data-action="cancel-transfer" data-id="${esc(transfer.id)}">Estornar</button>`}</td>` : ''}</tr>`;
-    }).join('')}</tbody></table></div><div class="table-footer">Cada transferência ajusta o saldo das duas famílias.</div>` : empty('Nenhuma transferência registrada', 'Registre o que já foi transferido entre as famílias.', newTransferButton())}</div><div class="reconciliation-secondary"><button class="button" data-page="overview">Ver encontro de contas →</button></div>`;
+      const proof = `${tag(evidenceLabel(transfer.evidence || transfer.source?.evidence || (transfer.source?.sheet ? 'spreadsheet' : 'manual')))}${receiptId ? '<div class="cell-meta">'+receiptLink(receiptId,'Ver comprovante')+'</div>' : ''}`;
+      const actions = editable() && !transfer.voided_at ? `<button class="button small" data-action="edit-transfer" data-id="${esc(transfer.id)}">Editar</button><button class="text-link negative row-secondary" data-action="cancel-transfer" data-id="${esc(transfer.id)}">Estornar</button>` : '';
+      return `<tr><td class="nowrap transfer-date-cell">${transfer.paid_on ? `<time datetime="${esc(transfer.paid_on)}"><span class="wide-date">${date(transfer.paid_on)}</span><span class="compact-date">${date(transfer.paid_on,{day:'2-digit',month:'2-digit'})}<small>${date(transfer.paid_on,{year:'numeric'})}</small></span></time>` : '<span class="amber">Sem data</span>'}</td><td class="transfer-route-cell"><strong>${esc(familyName(transfer.from_id))}</strong><span class="cell-meta">→ ${esc(familyName(transfer.to_id))}</span><button class="text-link transfer-mobile-details" data-action="transfer-detail" data-id="${esc(transfer.id)}" aria-label="Detalhes do pagamento de ${esc(familyName(transfer.from_id))} para ${esc(familyName(transfer.to_id))}">Detalhes</button></td><td class="text-right amount">${money(transfer.amount_cents)}${transfer.voided_at ? '<span class="cell-meta">Estornado</span>' : ''}</td><td class="transfer-source-cell">${proof}</td><td class="transfer-observation-cell">${transferObservation(transfer)}</td>${editable() ? `<td class="transfer-actions-cell">${actions}</td>` : ''}</tr>`;
+    }).join('')}</tbody></table></div>` : empty('Nenhum pagamento registrado', '', newTransferButton())}</div>`;
   }
   function transferObservation(transfer) {
     const notes = String(transfer.notes || '').trim();
     const characters = Array.from(notes.replace(/\s+/g,' '));
     const preview = characters.length > 90 ? characters.slice(0,90).join('').trimEnd() + '…' : characters.join('');
     return `<span class="transfer-note-preview">${esc(preview || 'Acerto de saldo')}</span>${notes ? `<details class="transfer-note-details"><summary>Ver observação</summary><div class="transfer-note-full"><p>${esc(notes)}</p></div></details>` : ''}`;
+  }
+  function transferDetail(id) {
+    const transfer = (state.data.transfers || []).find(item => String(item.id) === String(id));
+    if (!transfer) return;
+    const receiptId = transfer.receipt_id || transfer.source?.receipt_id;
+    modal('Pagamento entre famílias', `<div class="transfer-detail-route"><strong>${esc(familyName(transfer.from_id))}</strong> → <strong>${esc(familyName(transfer.to_id))}</strong></div><div class="detail-list"><div class="detail-row"><span>Valor</span><strong class="amount">${money(transfer.amount_cents)}</strong></div><div class="detail-row"><span>Data</span><strong>${transfer.paid_on ? date(transfer.paid_on) : 'Não informada'}</strong></div></div>${receiptId ? `<div class="detail-section">${receiptLink(receiptId,'Ver comprovante')}</div>` : ''}${transfer.notes ? `<div class="detail-notes">${esc(transfer.notes)}</div>` : ''}${transfer.voided_at ? tag('Estornado') : ''}`, {eyebrow:'',actions:`<button class="button" type="button" data-action="close-modal">Fechar</button>${editable() && !transfer.voided_at ? `<button class="button" type="button" data-action="edit-transfer" data-id="${esc(transfer.id)}">Editar</button><button class="button danger" type="button" data-action="cancel-transfer" data-id="${esc(transfer.id)}">Estornar</button>` : ''}`});
   }
   function renderTransfersLegacy() {
     const transfers = [...(state.data.transfers || [])].sort((a, b) => (b.paid_on || '').localeCompare(a.paid_on || ''));
@@ -752,7 +764,7 @@
   }
   async function logout() {
     try { await api('/api/logout', { method: 'POST', body: '{}' }); } catch (e) { return toast(e.message); }
-    state.session = null; state.data = null; $('#modal').close(); showGate('login');
+    state.session = null; state.data = null; state.reconciliationFamily = ''; state.reconciliationMonth = ''; $('#modal').close(); showGate('login');
   }
   function formError(message) { $('#modal-error').textContent = message; $('#modal-error').hidden = false; $('.modal-body', $('#modal')).scrollTop = 0; }
   async function submitForm(event) {
@@ -826,8 +838,10 @@
   }
 
   document.addEventListener('click', event => {
+    if (!event.target.closest('#account-menu')) $('#account-menu')?.removeAttribute('open');
     const target = event.target.closest('[data-action], [data-page]');
     if (!target) return;
+    if (target.dataset.page || target.dataset.action) $('#account-menu')?.removeAttribute('open');
     if (target.dataset.page) return setPage(target.dataset.page);
     const action = target.dataset.action, id = target.dataset.id;
     if (action === 'close-modal') $('#modal').close();
@@ -843,7 +857,8 @@
     else if (action === 'new-payment') paymentForm(id);
     else if (action === 'new-transfer') transferForm();
     else if (action === 'edit-transfer') transferForm({ id });
-    else if (action === 'family-monthly') { state.monthlyFilters = { family: target.dataset.family }; setPage('monthly'); }
+    else if (action === 'transfer-detail') transferDetail(id);
+    else if (action === 'family-monthly') { state.reconciliationFamily = target.dataset.family; setPage('monthly'); }
     else if (action === 'schedule-card-dates') scheduleCardDates();
     else if (action === 'schedule-card-months') scheduleCardMonths();
     else if (action === 'suggest-transfer') transferForm({ from: target.dataset.from, to: target.dataset.to, amount: Number(target.dataset.amount) });
@@ -855,6 +870,9 @@
     else if (action === 'logout') logout();
     else if (action === 'change-password') passwordForm();
   });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && $('#account-menu')?.open) { $('#account-menu').removeAttribute('open'); $('#account-menu > summary')?.focus(); }
+  });
   document.addEventListener('submit', submitForm);
   document.addEventListener('input', event => {
     if (event.target.matches('[data-pricing]')) syncPricing();
@@ -864,6 +882,8 @@
     if (event.target.id === 'filter-search') { state.filters.search = event.target.value; $('#expenses-table').innerHTML = purchaseTable(filteredExpenses()); }
   });
   document.addEventListener('change', event => {
+    if (event.target.id === 'reconciliation-month') { state.reconciliationMonth = event.target.value; render(); $('#reconciliation-month')?.focus({preventScroll:true}); }
+    if (event.target.id === 'ledger-family') { state.reconciliationFamily = event.target.value; render(); $('#ledger-family')?.focus({preventScroll:true}); }
     if (event.target.id === 'pricing-final') { syncPricing(); updateInstallmentTotal(); }
     if (event.target.id === 'installment-enabled') { $('#installment-settings').hidden = !event.target.checked; if(event.target.checked && !$$('.installment-row').length) generateInstallments(); }
     if (event.target.matches('.installment-due') && event.target.value) { const row = event.target.closest('.installment-row'); $('.installment-month',row).value = event.target.value.slice(0,7); }
