@@ -104,7 +104,9 @@ comprovante complementa a informação, sem funcionar como bloqueio geral.
 Regra do grupo: despesa vencida é considerada paga pela família responsável;
 somente as transferências entre famílias exigem registro de pagamento. A visão
 mensal mostra os compromissos de cada família e os reembolsos esperados. O saldo
-total do acerto inclui parcelas futuras. Vencimentos ainda desconhecidos ficam
+atual considera somente parcelas vencidas e transferências realizadas. Parcelas
+futuras ficam no valor a pagar; adiantamentos entre famílias permanecem como
+crédito para os próximos compromissos. Vencimentos ainda desconhecidos ficam
 visíveis para programação, e as dúvidas são ligadas à compra ou ao reembolso.
 Há uma linha do tempo financeira separada do histórico de edições.
 Novos planos de reembolso usam os meses da compra e o dia útil configurado pelo

@@ -15,3 +15,4 @@
 .user-chip strong{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media(max-width:760px){.user-chip strong{max-width:155px}}
 
 #app :is(p,span,small,dt,dd,td,th,label,summary,a,button){font-size:max(12px,1em)}#app .nav-item{color:#d1dce2}#app .nav-item.active{color:#fff}#app .metric-caption,#app .cell-meta,#app .review-source,#app .field small{color:#45565e}@media(max-width:760px){#app .sidebar{height:calc(80px + env(safe-area-inset-bottom))}#app .sidebar nav{height:80px}#app .nav-item{padding:6px 1px;gap:3px;color:#45565e;line-height:1.2}#app .nav-item.active{color:#142d3e}#app .nav-item>span:nth-child(2){max-width:62px}#app .nav-icon{font-size:18px}}
+#app .metric.accent .metric-label,#app .metric.accent .metric-caption{color:#dce6eb}

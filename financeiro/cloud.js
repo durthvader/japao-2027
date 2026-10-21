@@ -64,24 +64,49 @@
     return Object.fromEntries(shares.map(a => [a.id, a.amount]));
   }
   function dashboard(value, asOf = currentDay()) {
+    if (!window.jp27Cashflow?.build) throw error('Atualize a página para carregar o cálculo das parcelas.', 503);
     const data = value.data, settings = data.settings || {}, families = data.families || [];
     const balances = Object.fromEntries(families.map(f => [f.id, { family_id: f.id, name: f.name, paid_cents: 0, share_paid_cents: 0, sent_cents: 0, received_cents: 0, balance_cents: 0, future_cents: 0 }]));
     const summary = { committed_cents: 0, paid_cents: 0, pending_cents: 0, unverified_count: 0, unverified_cents: 0 };
     const warnings = [...(settings.warnings || [])];
-    const expenses = (data.expenses || []).map(expense => {
+    const transfers = (data.transfers || []).map(t => ({ ...t, from: balances[t.from_id]?.name || '', to: balances[t.to_id]?.name || '' }));
+    const purchaseViews = (data.expenses || []).map(expense => {
       const payments = (data.payments || []).filter(p => p.expense_id === expense.id);
       const active = payments.filter(p => !p.voided_at && (!p.paid_on || p.paid_on <= asOf));
-      const recordedPaid = active.reduce((sum, p) => sum + p.amount_cents * (p.kind === 'refund' ? -1 : 1), 0);
+      const purchaseNet = active.reduce((sum, p) => sum + p.amount_cents * (p.kind === 'refund' ? -1 : 1), 0);
+      // A card purchase is the full commitment, not a paid bank installment.
+      const recordedPaid = active.filter(p => !p.initial_assumption && p.method !== 'card_purchase')
+        .reduce((sum, p) => sum + p.amount_cents * (p.kind === 'refund' ? -1 : 1), 0);
       const payer = expense.declared_payer_family_id || expense.source?.declared_payer_family_id || null;
-      const paymentStatus = expense.payment_status || expense.source?.payment_status || (recordedPaid >= expense.total_cents ? 'paid' : recordedPaid > 0 ? 'partial' : 'on_site');
-      const hasCardPlan = paymentStatus !== 'on_site' && expense.installment_plan && ['card','credit_card','card_purchase'].includes(expense.installment_plan.kind);
-      const dueReached = expense.due_on ? expense.due_on <= asOf : expense.due_month ? expense.due_month <= asOf.slice(0,7) : false;
-      // The group tracks reimbursements, not the settlement of suppliers' bills.
-      // This derived assumption is never persisted as a bank payment.
-      const assumedDue = expense.status !== 'cancelled' && expense.verified && paymentStatus !== 'unknown' && !hasCardPlan && dueReached && balances[payer]
-        ? Math.max(0, expense.total_cents - recordedPaid) : 0;
-      const paid = recordedPaid + assumedDue;
+      const paymentStatus = expense.payment_status || expense.source?.payment_status || (active.some(p => p.method === 'card_purchase') ? 'card_charged' : purchaseNet >= expense.total_cents ? 'paid' : purchaseNet > 0 ? 'partial' : 'on_site');
+      return { ...expense, declared_payer_family_id: payer, payment_status: paymentStatus, payments,
+        recorded_paid_cents: recordedPaid, paid_cents: recordedPaid,
+        pending_cents: expense.status === 'cancelled' ? 0 : expense.total_cents - recordedPaid };
+    });
+    // Use the same dated movements for the totals, family balances and calendar.
+    // Future installments never enter "paid", even when the purchase is charged.
+    const cashflow = window.jp27Cashflow.build(purchaseViews, transfers, families, asOf);
+    const externalMovements = [...(cashflow.monthly_cashflow || []).flatMap(m => m.movements), ...(cashflow.unscheduled_cashflow || [])]
+      .filter(m => m.kind !== 'reimbursement');
+    const expenses = purchaseViews.map(expense => {
+      const external = externalMovements.filter(m => m.expense_id === expense.id);
+      const past = external.filter(m => m.scope === 'historical');
+      const contributions = Object.fromEntries(families.map(f => [f.id, 0]));
+      past.forEach(movement => {
+        if (balances[movement.from_family_id]) contributions[movement.from_family_id] += movement.amount_cents;
+        if (balances[movement.to_family_id]) contributions[movement.to_family_id] -= movement.amount_cents;
+      });
+      const paid = Object.values(contributions).reduce((sum, amount) => sum + amount, 0);
+      const assumedDue = past.filter(m => m.kind === 'supplier' && m.assumed_paid).reduce((sum, m) => sum + m.amount_cents, 0);
       const pending = expense.status === 'cancelled' ? 0 : expense.total_cents - paid;
+      const cards = external.filter(m => m.kind === 'card');
+      const cardProgress = expense.payment_status !== 'on_site' && expense.installment_plan?.kind === 'card' ? {
+        count: expense.installment_plan.count,
+        matured_count: cards.filter(m => m.scope === 'historical').length,
+        matured_cents: cards.filter(m => m.scope === 'historical').reduce((sum, m) => sum + m.amount_cents, 0),
+        future_count: cards.filter(m => m.scope === 'future').length,
+        future_cents: cards.filter(m => m.scope === 'future').reduce((sum, m) => sum + m.amount_cents, 0)
+      } : null;
       if (!expense.verified) {
         summary.unverified_count++;
         if (expense.status !== 'cancelled') summary.unverified_cents += expense.total_cents;
@@ -89,14 +114,11 @@
         summary.paid_cents += paid;
         if (expense.status !== 'cancelled') { summary.committed_cents += expense.total_cents; summary.pending_cents += pending; }
         const shares = allocate(paid, expense.allocations);
-        active.forEach(p => { balances[p.family_id].paid_cents += p.amount_cents * (p.kind === 'refund' ? -1 : 1); });
-        if (assumedDue) balances[payer].paid_cents += assumedDue;
+        Object.entries(contributions).forEach(([family, amount]) => { balances[family].paid_cents += amount; });
         expense.allocations.forEach(a => { balances[a.family_id].share_paid_cents += shares[a.family_id]; if (expense.status !== 'cancelled') balances[a.family_id].future_cents += a.amount_cents - shares[a.family_id]; });
       }
-      return { ...expense, declared_payer_family_id: payer, payment_status: paymentStatus,
-        payments, recorded_paid_cents: recordedPaid, assumed_due_cents: assumedDue, paid_cents: paid, pending_cents: pending };
+      return { ...expense, assumed_due_cents: assumedDue, card_progress: cardProgress, paid_cents: paid, pending_cents: pending };
     });
-    const transfers = (data.transfers || []).map(t => ({ ...t, from: balances[t.from_id]?.name || '', to: balances[t.to_id]?.name || '' }));
     transfers.forEach(t => { if (!t.voided_at && (!t.paid_on || t.paid_on <= asOf)) { balances[t.from_id].sent_cents += t.amount_cents; balances[t.to_id].received_cents += t.amount_cents; } });
     Object.values(balances).forEach(b => { b.balance_cents = b.paid_cents + b.sent_cents - b.received_cents - b.share_paid_cents; });
     if (Object.values(balances).reduce((sum, b) => sum + b.balance_cents, 0) !== 0) throw error('Os saldos precisam ser conferidos antes de continuar.', 500);
@@ -128,7 +150,6 @@
       if (q.action === 'edit-transfer' && q.transfer_id) return transfers.some(t => t.id === q.transfer_id && !t.voided_at && !t.paid_on);
       return true;
     });
-    const cashflow = window.jp27Cashflow ? window.jp27Cashflow.build(expenses, transfers, families, asOf) : {};
     return { as_of: asOf, version: value.version, families, balances: Object.values(balances), summary, expenses, transfers, settlements,
       legacy: settings.legacy || null, audit: data.audit || [], warnings, review_items: settings.review_items || [],
       receipts: settings.receipts || [], planning_rule: settings.planning_rule || null, credit_card_schedule: settings.credit_card_schedule || [], card_installments: cardInstallments,
