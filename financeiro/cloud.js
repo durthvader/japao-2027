@@ -71,7 +71,16 @@
     const expenses = (data.expenses || []).map(expense => {
       const payments = (data.payments || []).filter(p => p.expense_id === expense.id);
       const active = payments.filter(p => !p.voided_at && (!p.paid_on || p.paid_on <= asOf));
-      const paid = active.reduce((sum, p) => sum + p.amount_cents * (p.kind === 'refund' ? -1 : 1), 0);
+      const recordedPaid = active.reduce((sum, p) => sum + p.amount_cents * (p.kind === 'refund' ? -1 : 1), 0);
+      const payer = expense.declared_payer_family_id || expense.source?.declared_payer_family_id || null;
+      const paymentStatus = expense.payment_status || expense.source?.payment_status || (recordedPaid >= expense.total_cents ? 'paid' : recordedPaid > 0 ? 'partial' : 'on_site');
+      const hasCardPlan = paymentStatus !== 'on_site' && expense.installment_plan && ['card','credit_card','card_purchase'].includes(expense.installment_plan.kind);
+      const dueReached = expense.due_on ? expense.due_on <= asOf : expense.due_month ? expense.due_month <= asOf.slice(0,7) : false;
+      // The group tracks reimbursements, not the settlement of suppliers' bills.
+      // This derived assumption is never persisted as a bank payment.
+      const assumedDue = expense.status !== 'cancelled' && expense.verified && paymentStatus !== 'unknown' && !hasCardPlan && dueReached && balances[payer]
+        ? Math.max(0, expense.total_cents - recordedPaid) : 0;
+      const paid = recordedPaid + assumedDue;
       const pending = expense.status === 'cancelled' ? 0 : expense.total_cents - paid;
       if (!expense.verified) {
         summary.unverified_count++;
@@ -81,9 +90,11 @@
         if (expense.status !== 'cancelled') { summary.committed_cents += expense.total_cents; summary.pending_cents += pending; }
         const shares = allocate(paid, expense.allocations);
         active.forEach(p => { balances[p.family_id].paid_cents += p.amount_cents * (p.kind === 'refund' ? -1 : 1); });
+        if (assumedDue) balances[payer].paid_cents += assumedDue;
         expense.allocations.forEach(a => { balances[a.family_id].share_paid_cents += shares[a.family_id]; if (expense.status !== 'cancelled') balances[a.family_id].future_cents += a.amount_cents - shares[a.family_id]; });
       }
-      return { ...expense, payments, paid_cents: paid, pending_cents: pending };
+      return { ...expense, declared_payer_family_id: payer, payment_status: paymentStatus,
+        payments, recorded_paid_cents: recordedPaid, assumed_due_cents: assumedDue, paid_cents: paid, pending_cents: pending };
     });
     const transfers = (data.transfers || []).map(t => ({ ...t, from: balances[t.from_id]?.name || '', to: balances[t.to_id]?.name || '' }));
     transfers.forEach(t => { if (!t.voided_at && (!t.paid_on || t.paid_on <= asOf)) { balances[t.from_id].sent_cents += t.amount_cents; balances[t.to_id].received_cents += t.amount_cents; } });
@@ -101,10 +112,27 @@
         if (!c.amount) ci++; if (!d.amount) di++;
       }
     } else warnings.push(`${summary.unverified_count} despesas importadas ainda em conferência. Os saldos e os compromissos confirmados representam somente lançamentos já revisados.`);
-    const cardInstallments = expenses.flatMap(e => (e.installment_plan?.items || []).map(item => ({ ...item, expense_id: e.id, title: e.title, count: e.installment_plan.count, kind: e.installment_plan.kind, confirmed: e.installment_plan.confirmed && e.verified, payer_family_id: e.installment_plan.payer_family_id, family_id: e.installment_plan.payer_family_id, family_name: balances[e.installment_plan.payer_family_id]?.name || 'Titular a confirmar' })));
+    const cardInstallments = expenses.filter(e => e.status !== 'cancelled' && e.payment_status !== 'on_site').flatMap(e => (e.installment_plan?.items || []).map(item => ({ ...item, expense_id: e.id, title: e.title, count: e.installment_plan.count, kind: e.installment_plan.kind, confirmed: e.installment_plan.confirmed && e.verified, payer_family_id: e.installment_plan.payer_family_id, family_id: e.installment_plan.payer_family_id, family_name: balances[e.installment_plan.payer_family_id]?.name || 'Titular a confirmar' })));
+    const reimbursementInstallments = expenses.filter(e => e.status !== 'cancelled').flatMap(e => (e.reimbursement_plans || []).flatMap(plan => (plan.items || []).map(item => ({
+      ...item, expense_id: e.id, title: e.title, plan_id: plan.id || `${plan.from_family_id}-${plan.to_family_id}`,
+      from_family_id: plan.from_family_id, to_family_id: plan.to_family_id,
+      from_name: balances[plan.from_family_id]?.name || 'Família a confirmar',
+      to_name: balances[plan.to_family_id]?.name || 'Família a confirmar',
+      count: plan.count, confirmed: Boolean(plan.confirmed && e.verified)
+    }))));
+    const unclearPayments = expenses.filter(e => e.status !== 'cancelled' && e.payment_status === 'unknown');
+    summary.unknown_payment_count = unclearPayments.length;
+    summary.unknown_payment_cents = unclearPayments.reduce((sum, e) => sum + e.total_cents, 0);
+    const questions = [...(settings.questions || [])].filter(q => {
+      if (q.id === 'payment-la-vista') return expenses.some(e => e.id === q.expense_id && e.payment_status === 'unknown');
+      if (q.action === 'edit-transfer' && q.transfer_id) return transfers.some(t => t.id === q.transfer_id && !t.voided_at && !t.paid_on);
+      return true;
+    });
+    const cashflow = window.jp27Cashflow ? window.jp27Cashflow.build(expenses, transfers, families, asOf) : {};
     return { as_of: asOf, version: value.version, families, balances: Object.values(balances), summary, expenses, transfers, settlements,
       legacy: settings.legacy || null, audit: data.audit || [], warnings, review_items: settings.review_items || [],
-      receipts: settings.receipts || [], credit_card_schedule: settings.credit_card_schedule || [], card_installments: cardInstallments };
+      receipts: settings.receipts || [], credit_card_schedule: settings.credit_card_schedule || [], card_installments: cardInstallments,
+      reimbursement_installments: reimbursementInstallments, questions, ...cashflow };
   }
   async function mutate(action, payload) {
     if (!snapshot) await read();
@@ -141,6 +169,7 @@
     if (path.startsWith('/api/expenses/') && method === 'PUT') return mutate('update_expense', { ...body, id: decodeURIComponent(path.split('/').pop()) });
     if (path === '/api/payments' && method === 'POST') return mutate('add_payment', body);
     if (path === '/api/transfers' && method === 'POST') return mutate('add_transfer', body);
+    if (path.startsWith('/api/transfers/') && method === 'PUT') return mutate('update_transfer', { ...body, id: decodeURIComponent(path.split('/').pop()) });
     if (path.startsWith('/api/payments/') && method === 'DELETE') return mutate('void_payment', { ...body, id: decodeURIComponent(path.split('/').pop()) });
     if (path.startsWith('/api/transfers/') && method === 'DELETE') return mutate('void_transfer', { ...body, id: decodeURIComponent(path.split('/').pop()) });
     throw error('Operação não encontrada.', 404);

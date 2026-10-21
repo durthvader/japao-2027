@@ -96,10 +96,17 @@ repositório público. Não colocar senhas ou dados financeiros no JavaScript ne
 usar arquivos públicos como banco. A sessão de autenticação permanece na aba;
 os lançamentos são persistidos na base protegida.
 
-Compras, pagamentos a fornecedores, parcelas de cartão e reembolsos entre famílias
-são movimentos distintos. A estimativa da reserva é preservada separadamente do
-custo efetivo, incluindo IOF e taxas. Registros importados ainda em conferência
-não entram nos saldos confirmados nem geram sugestões de cobrança.
+Compras, parcelas e reembolsos entre famílias são movimentos distintos. A
+estimativa da reserva é preservada separadamente do custo efetivo, incluindo IOF
+e taxas. Informações do controle original são reconhecidas com sua fonte; o
+comprovante complementa a informação, sem funcionar como bloqueio geral.
+
+Regra do grupo: despesa vencida é considerada paga pela família responsável;
+somente as transferências entre famílias exigem registro de pagamento. A visão
+mensal mostra os compromissos de cada família e os reembolsos esperados. O saldo
+total do acerto inclui parcelas futuras. Vencimentos ainda desconhecidos ficam
+visíveis para programação, e as dúvidas são ligadas à compra ou ao reembolso.
+Há uma linha do tempo financeira separada do histórico de edições.
 
 `NAVEGACAO`, em `gerar_site.py`, preserva o acesso nas próximas gerações sem
 incluir o financeiro nas seções ou no payload de dados do roteiro.
