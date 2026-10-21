@@ -53,6 +53,23 @@
     snapshot = value;
     return value;
   }
+  async function sessionResponse(value, authUser = null) {
+    const identity = value?.identity;
+    if (identity == null) {
+      const user = authUser || await http('/auth/v1/user', undefined, { method: 'GET', token: await accessToken() });
+      if (typeof user?.email !== 'string' || !user.email.trim()) throw error('A base privada não retornou a identificação do seu acesso.', 503);
+      return { user: { username: user.email, role: 'viewer', family_id: null },
+        identity: null, csrf: 'supabase-bearer-session' };
+    }
+    if (!identity || typeof identity !== 'object' || Array.isArray(identity)
+      || typeof identity.email !== 'string' || !identity.email.trim()
+      || !['admin', 'editor', 'viewer'].includes(identity.role)
+      || (identity.family_id != null && (typeof identity.family_id !== 'string' || !identity.family_id.trim()))) {
+      throw error('A base privada não retornou a identificação do seu acesso. Tente novamente após atualizar a página.', 503);
+    }
+    return { user: { ...identity, username: identity.email, family_id: identity.family_id ?? null },
+      identity: { ...identity }, csrf: 'supabase-bearer-session' };
+  }
   function allocate(paid, allocations) {
     const total = allocations.reduce((sum, a) => sum + a.amount_cents, 0);
     if (!total) return Object.fromEntries(allocations.map(a => [a.family_id, 0]));
@@ -171,8 +188,7 @@
     if (path === '/api/login' && method === 'POST') {
       const value = await http('/auth/v1/token?grant_type=password', { email: String(body.username || '').trim(), password: body.password });
       saveSession({ ...value, expires_at: Math.floor(Date.now() / 1000) + value.expires_in });
-      try { await read(); } catch (cause) { saveSession(null); throw cause; }
-      return { user: { username: value.user.email, role: 'editor' }, csrf: 'supabase-bearer-session' };
+      try { return await sessionResponse(await read(), value.user); } catch (cause) { saveSession(null); throw cause; }
     }
     if (path === '/api/logout') {
       try { if (session) await http('/auth/v1/logout', {}, { token: await accessToken() }); } finally { saveSession(null); }
@@ -184,9 +200,7 @@
       return { ok: true };
     }
     if (path === '/api/session') {
-      const user = await http('/auth/v1/user', undefined, { method: 'GET', token: await accessToken() });
-      await read();
-      return { user: { username: user.email, role: 'editor' }, csrf: 'supabase-bearer-session' };
+      return sessionResponse(await read());
     }
     if (path === '/api/dashboard') return dashboard(await read());
     if (path === '/api/export') return { ...dashboard(await read()), exported_at: new Date().toISOString(), schema_version: 1 };

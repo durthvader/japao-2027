@@ -103,8 +103,13 @@ estimativa da reserva é preservada separadamente do custo efetivo, incluindo IO
 e taxas. Informações do controle original são reconhecidas com sua fonte; o
 comprovante complementa a informação, sem funcionar como bloqueio geral.
 
-O acesso principal é o encontro de contas mensal: vencimentos, posição de cada
-família, transferências realizadas e poucos pagamentos líquidos para acertar.
+Ao entrar, **Minha família** reúne a parte da família nas despesas, as compras que
+ela fez e as transferências enviadas ou recebidas. A família é identificada pelo
+acesso autorizado. Os próximos meses ficam em uma seção recolhida. O filtro de
+família em **Compras** mostra a cota e sua parte a vencer em cada compra.
+
+O encontro de contas mensal mostra vencimentos, posição de cada família,
+transferências realizadas e os pagamentos líquidos para acertar.
 O cálculo usa as despesas e seu rateio; planos de reembolso por compra não criam
 outra dívida. Quem pagou a compra recebe o crédito correspondente, descontada
 sua própria parte. Pagamentos entre famílias entram uma única vez.

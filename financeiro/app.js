@@ -3,7 +3,7 @@
 (() => {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const state = { session: null, data: null, page: 'overview', filters: { search: '', category: '', status: '', family: '' }, toastTimer: null };
+  const state = { session: null, data: null, page: 'family', myFamily: '', filters: { search: '', category: '', status: '', family: '' }, toastTimer: null };
   const money = cents => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(cents || 0) / 100);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const today = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Fortaleza', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
@@ -22,6 +22,32 @@
     return Number.isFinite(n) && n <= 999999999 ? Math.round(n * 100) : NaN;
   };
   const families = () => state.data?.families || [];
+  const assignedFamilyId = () => {
+    const family = families().find(item => String(item.id) === String(state.session?.user?.family_id));
+    return family ? String(family.id) : '';
+  };
+  const myFamilyId = () => {
+    const id = assignedFamilyId() || state.myFamily;
+    return families().some(family => String(family.id) === String(id)) ? String(id) : '';
+  };
+  const knownSum = amounts => amounts.every(Number.isSafeInteger) ? amounts.reduce((sum, amount) => sum + amount, 0) : null;
+  const knownMoney = amount => Number.isSafeInteger(amount) ? money(amount) : 'A definir';
+  function familyExpenseShare(expense, familyId) {
+    const allocations = expense.allocations || [];
+    const allocation = allocations.find(item => String(item.family_id) === String(familyId));
+    const total = allocation ? allocation.amount_cents : 0;
+    if (!Number.isSafeInteger(total) || total < 0) return { total_cents: null, future_cents: null };
+    if (expense.status === 'cancelled') return { total_cents: total, future_cents: 0 };
+    const denominator = knownSum(allocations.map(item => item.amount_cents));
+    if (supplierUnknown(expense) || allocations.some(item => !Number.isSafeInteger(item.amount_cents) || item.amount_cents < 0) || !Number.isSafeInteger(expense.total_cents) || denominator !== expense.total_cents || !Number.isSafeInteger(expense.pending_cents) || expense.pending_cents < 0 || expense.pending_cents > denominator) return { total_cents: total, future_cents: null };
+    if (!denominator) return { total_cents: total, future_cents: 0 };
+    const paid = BigInt(denominator - expense.pending_cents), divisor = BigInt(denominator);
+    const shares = allocations.map(item => ({ id: String(item.family_id), paid: Number(paid * BigInt(item.amount_cents) / divisor), remainder: paid * BigInt(item.amount_cents) % divisor }));
+    let remainder = Number(paid) - shares.reduce((sum, item) => sum + item.paid, 0);
+    shares.sort((a, b) => a.remainder === b.remainder ? a.id.localeCompare(b.id) : a.remainder > b.remainder ? -1 : 1);
+    for (const share of shares) if (remainder-- > 0) share.paid++;
+    return { total_cents: total, future_cents: total - (shares.find(item => item.id === String(familyId))?.paid || 0) };
+  }
   const visibleQuestions = () => (state.data?.questions || []).filter(question => question.field !== 'reimbursement_plans');
   const familyName = id => families().find(f => String(f.id) === String(id))?.name || 'Família não identificada';
   const editable = () => !!state.session && state.session.user?.role !== 'viewer';
@@ -95,14 +121,14 @@
     const count = visibleQuestions().length;
     $('#review-count').textContent = count; $('#review-count').hidden = count === 0;
     $('#updated-at').textContent = `Atualizado em ${date(state.data.as_of || new Date().toISOString(), { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`;
-    if (!preservePage) state.page = 'overview'; render();
+    if (!preservePage) state.page = 'family'; render();
   }
   function toast(message) {
     clearTimeout(state.toastTimer); $('#toast').textContent = message; $('#toast').hidden = false;
     state.toastTimer = setTimeout(() => { $('#toast').hidden = true; }, 5000);
   }
   function setPage(page) {
-    if (!['overview', 'expenses', 'transfers', 'timeline', 'upcoming', 'monthly', 'review', 'history'].includes(page)) return;
+    if (!['family', 'overview', 'expenses', 'transfers', 'timeline', 'upcoming', 'monthly', 'review', 'history'].includes(page)) return;
     state.page = page; render(); window.scrollTo({ top: 0, behavior: 'instant' });
   }
   const pageHeading = (eyebrow, title, subtitle, actions = '') => `<div class="page-heading"><div>${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ''}<h1>${title}</h1>${subtitle ? `<p>${subtitle}</p>` : ''}</div>${actions ? `<div class="heading-actions">${actions}</div>` : ''}</div>`;
@@ -113,6 +139,69 @@
     const count = Number(state.data.summary?.unverified_count || 0);
     if (!count && !(state.data.review_items || []).length) return '';
     return `<div class="notice"><span aria-hidden="true">ⓘ</span><div class="notice-text"><strong>A conferência ainda está em andamento.</strong><br>${count ? `${count} ${count === 1 ? 'despesa precisa' : 'despesas precisam'} de revisão${state.data.summary?.unverified_cents ? `, somando ${money(state.data.summary.unverified_cents)} em referências` : ''}. ` : ''}Os saldos confirmados podem representar apenas parte da viagem. Veja os registros importados e as dúvidas antes de fazer um acerto.</div><button class="button small" data-page="review">Conferir →</button></div>`;
+  }
+  function myFamilyBalance(row, partial = false) {
+    if (!row) return '<strong>A calcular</strong>';
+    const due = Number(row.due_balance_cents || 0), advance = Number(row.advance_cents || 0), held = Number(row.advance_held_cents || 0);
+    return `<strong class="amount ${due < 0 ? 'negative' : due > 0 || advance > 0 ? 'positive' : ''}">${due < 0 ? 'Deve ' + money(-due) : due > 0 ? 'A receber ' + money(due) : advance > 0 ? money(advance) + ' adiantados' : partial ? 'A conferir' : 'Em dia'}</strong>${partial ? '<span class="cell-meta amber">Saldo parcial</span>' : ''}${due !== 0 && advance > 0 ? `<span class="cell-meta">${money(advance)} adiantados</span>` : ''}${held > 0 ? `<span class="cell-meta">${money(held)} recebidos antecipadamente</span>` : ''}`;
+  }
+  function myFamilyExpenseTable(expenses, familyId, ownPurchases = false) {
+    if (!expenses.length) return '<p class="family-empty">Nenhuma compra registrada.</p>';
+    const active = expenses.filter(expense => expense.status !== 'cancelled');
+    const total = knownSum(active.map(expense => ownPurchases ? expense.total_cents : familyExpenseShare(expense, familyId).total_cents));
+    const future = ownPurchases ? null : knownSum(active.map(expense => familyExpenseShare(expense, familyId).future_cents));
+    return `<div class="table-scroll"><table class="family-expenses-table${ownPurchases ? ' family-own-purchases' : ''}"><thead><tr><th scope="col">Compra</th>${ownPurchases ? '<th scope="col" class="family-purchase-date">Data</th>' : ''}<th scope="col" class="text-right">${ownPurchases ? 'Valor total' : 'Sua parte'}</th>${ownPurchases ? '' : '<th scope="col" class="text-right">A vencer</th>'}</tr></thead><tbody>${expenses.map(expense => {
+      const share = familyExpenseShare(expense, familyId);
+      return `<tr><th scope="row"><button class="table-title" data-action="expense-detail" data-id="${esc(expense.id)}" title="${esc(expense.title)}"><span class="purchase-title-text">${esc(expense.title)}</span></button></th>${ownPurchases ? `<td class="family-purchase-date">${expense.incurred_on ? date(expense.incurred_on) : 'Sem data'}</td>` : ''}<td class="text-right amount">${knownMoney(ownPurchases ? expense.total_cents : share.total_cents)}${expense.status === 'cancelled' ? '<span class="cell-meta">Cancelada</span>' : !expense.pricing?.final_confirmed ? `<span class="cell-meta">${onSiteExpense(expense) ? 'Estimativa' : 'A confirmar'}</span>` : ''}</td>${ownPurchases ? '' : `<td class="text-right amount">${knownMoney(share.future_cents)}</td>`}</tr>`;
+    }).join('')}</tbody><tfoot><tr><th scope="row">Total${ownPurchases ? ' ativo' : ''}</th>${ownPurchases ? '<td class="family-purchase-date"></td>' : ''}<td class="text-right amount">${knownMoney(total)}</td>${ownPurchases ? '' : `<td class="text-right amount">${knownMoney(future)}</td>`}</tr></tfoot></table></div>`;
+  }
+  function myFamilyTransfers(transfers, familyId) {
+    if (!transfers.length) return '<p class="family-empty">Nenhuma transferência registrada.</p>';
+    const total = direction => transfers.filter(transfer => String(transfer[direction]) === familyId).reduce((sum, transfer) => sum + transfer.amount_cents, 0);
+    return `<div class="family-transfer-totals"><span>Enviou <strong class="amount">${money(total('from_id'))}</strong></span><span>Recebeu <strong class="amount">${money(total('to_id'))}</strong></span></div><div class="table-scroll"><table class="family-transfers-table"><thead><tr><th scope="col">Data</th><th scope="col">Transferência</th><th scope="col" class="text-right">Valor</th></tr></thead><tbody>${transfers.map(transfer => {
+      const sent = String(transfer.from_id) === familyId, other = sent ? transfer.to_id : transfer.from_id;
+      return `<tr><td>${transfer.paid_on ? date(transfer.paid_on, { day:'2-digit', month:'2-digit', year:'2-digit' }) : '<span class="amber">Sem data</span>'}</td><td><button class="table-title" data-action="transfer-detail" data-id="${esc(transfer.id)}">${sent ? 'Enviou para' : 'Recebeu de'} ${esc(familyName(other))}</button></td><td class="text-right amount">${money(transfer.amount_cents)}</td></tr>`;
+    }).join('')}</tbody></table></div>`;
+  }
+  function myFamilyForecast(months, familyId, currentMonth, partial = false) {
+    const upcoming = months.filter(month => month.month >= currentMonth);
+    if (!upcoming.length) return '';
+    return `<details class="audit-details family-forecast section-space"><summary>Planejar os próximos meses</summary><p class="family-table-note">Cada previsão acumula o saldo de hoje e os vencimentos até aquele mês.</p><div class="table-scroll"><table class="family-forecast-table"><thead><tr><th scope="col">Mês</th><th scope="col" class="text-right">Sua parte a vencer</th><th scope="col">Acerto previsto</th></tr></thead><tbody>${upcoming.map(month => {
+      const row = (month.forecast_rows || month.families || []).find(item => String(item.family_id) === familyId);
+      const settlements = (month.forecast_payable_settlements || month.payable_settlements || []).filter(item => [item.from_id || item.from_family_id, item.to_id || item.to_family_id].map(String).includes(familyId));
+      return `<tr class="month-${month.month === currentMonth ? 'current' : 'future'}"><th scope="row"><button class="table-title" data-action="family-forecast-month" data-month="${esc(month.month)}" data-family="${esc(familyId)}">${esc(monthLabel(month.month))}</button></th><td class="text-right amount">${knownMoney(row?.share_cents)}</td><td>${!row ? 'A calcular' : settlements.length ? settlements.map(item => {
+        const sent = String(item.from_id || item.from_family_id) === familyId, other = sent ? item.to_id || item.to_family_id : item.from_id || item.from_family_id;
+        return `<span class="family-forecast-route">${sent ? 'Pagar a' : 'Receber de'} ${esc(familyName(other))} <strong class="amount">${money(item.amount_cents)}</strong></span>`;
+      }).join('') : Number(row.advance_cents) > 0 ? money(row.advance_cents) + ' adiantados' : partial ? 'Previsão parcial' : 'Em dia'}</td></tr>`;
+    }).join('')}</tbody></table></div></details>`;
+  }
+  function renderMyFamily() {
+    const id = myFamilyId();
+    const picker = assignedFamilyId() ? '' : `<div class="field family-picker"><label for="my-family-select">Escolha sua família</label><select id="my-family-select"><option value="">Selecionar</option>${familyOptions(id)}</select></div>`;
+    if (!id) return `${pageHeading('', 'Minha família', '')}<section class="panel">${picker}</section>`;
+    const asOf = (state.data.as_of || today()).slice(0,10), currentMonth = asOf.slice(0,7);
+    const months = state.data.reconciliation?.months || [];
+    const actualMonth = months.find(month => month.month === currentMonth) || [...months].reverse().find(month => month.month < currentMonth);
+    const row = (actualMonth?.as_of_rows || actualMonth?.families || []).find(item => String(item.family_id) === id);
+    const expenses = state.data.expenses || [];
+    const shares = expenses.filter(expense => expense.status !== 'cancelled' && (expense.allocations || []).some(item => String(item.family_id) === id && (item.amount_cents > 0 || item.amount_cents == null)));
+    const own = expenses.filter(expense => String(expensePayerId(expense)) === id);
+    const transfers = (state.data.transfers || []).filter(transfer => !transfer.voided_at && (!transfer.paid_on || transfer.paid_on <= asOf) && [transfer.from_id, transfer.to_id].map(String).includes(id)).sort((a,b) => (b.paid_on || '').localeCompare(a.paid_on || ''));
+    const total = knownSum(shares.map(expense => familyExpenseShare(expense,id).total_cents));
+    const undatedCommitments = (state.data.reconciliation?.undated_commitments || []).filter(item => expenses.some(expense => expense.id === item.expense_id && (String(expensePayerId(expense)) === id || (expense.allocations || []).some(share => String(share.family_id) === id && share.amount_cents > 0))));
+    const undatedTransfers = transfers.filter(transfer => !transfer.paid_on);
+    const partial = undatedCommitments.length > 0 || undatedTransfers.length > 0 || [...shares,...own].some(expense => !expense.verified || supplierUnknown(expense));
+    const settlements = (actualMonth?.as_of_payable_settlements || actualMonth?.payable_settlements || []).filter(item => [item.from_id || item.from_family_id, item.to_id || item.to_family_id].map(String).includes(id));
+    return `${pageHeading('', 'Minha família', esc(familyName(id)) + ' · Até ' + date(asOf), newExpenseButton() + (editable() ? '<button class="button" data-action="family-new-transfer">Novo pagamento</button>' : ''))}
+      ${picker}
+      <dl class="family-summary"><div><dt>Sua parte na viagem</dt><dd class="amount">${knownMoney(total)}</dd></div><div><dt>Saldo entre famílias</dt><dd>${myFamilyBalance(row,partial)}</dd></div></dl>
+      ${partial ? `<div class="notice"><div class="notice-text">Complete as datas e os dados pendentes para fechar o saldo.${undatedTransfers.length ? ' Transferências sem data entram no saldo após informar a data.' : ''} <button class="text-link" data-action="my-family-purchases">Revisar compras</button>${undatedTransfers.length ? ' · <button class="text-link" data-page="transfers">Revisar pagamentos</button>' : ''}</div></div>` : ''}
+      ${settlements.length ? `<section class="family-current-settlement"><h2>Acerto de hoje</h2>${settlements.map(item => reconciliationSettlement(item,false,true)).join('')}</section>` : ''}
+      <section class="table-panel family-section"><div class="family-section-heading"><h2>Sua parte nas despesas</h2><button class="text-link" data-action="my-family-purchases">Ver em Compras</button></div>${myFamilyExpenseTable(shares,id)}<p class="family-table-note">A vencer considera as parcelas futuras de cada compra. As transferências ajustam o saldo entre famílias.</p></section>
+      <section class="table-panel family-section"><div class="family-section-heading"><h2>Compras feitas pela família</h2><span>${own.length} ${own.length === 1 ? 'compra' : 'compras'}</span></div>${myFamilyExpenseTable(own,id,true)}</section>
+      <section class="table-panel family-section"><div class="family-section-heading"><h2>Transferências</h2><span>${transfers.length} ${transfers.length === 1 ? 'pagamento' : 'pagamentos'}</span></div>${myFamilyTransfers(transfers,id)}</section>
+      ${myFamilyForecast(months,id,currentMonth,partial)}
+      <button class="text-link family-monthly-link" data-action="family-monthly" data-family="${esc(id)}">Ver encontro de contas mensal →</button>`;
   }
   function renderReconciliation() {
     const reconciliation = state.data.reconciliation || {}, months = reconciliation.months || [];
@@ -226,15 +315,19 @@
   }
   function purchaseTable(expenses) {
     if (!expenses.length) return `<div class="table-panel">${(state.data.expenses || []).length ? empty('Nenhuma compra encontrada', 'Altere a busca ou os filtros.') : empty('Nenhuma compra registrada', '', newExpenseButton())}</div>`;
-    return `<div class="table-panel purchase-table-panel"><div class="table-scroll purchase-table-scroll"><table class="purchase-table"><thead><tr><th scope="col" class="purchase-name-cell">Compra</th><th scope="col" class="purchase-payer-cell">Responsável</th><th scope="col" class="purchase-date-cell">Data</th><th scope="col" class="text-right purchase-total-cell">Valor total</th><th scope="col" class="purchase-status-cell">Vencimentos</th><th scope="col" class="purchase-actions-cell">Detalhes</th></tr></thead><tbody>${expenses.map(expense => {
+    const selectedFamily = families().find(family => String(family.id) === String(state.filters.family));
+    const shareTotal = selectedFamily ? knownSum(expenses.filter(expense => expense.status !== 'cancelled').map(expense => familyExpenseShare(expense, selectedFamily.id).total_cents)) : null;
+    return `<div class="table-panel purchase-table-panel"><div class="table-scroll purchase-table-scroll"><table class="purchase-table"><thead><tr><th scope="col" class="purchase-name-cell">Compra</th><th scope="col" class="purchase-payer-cell">Responsável</th><th scope="col" class="purchase-date-cell">Data</th><th scope="col" class="text-right purchase-total-cell">${selectedFamily ? 'Parte de ' + esc(selectedFamily.name) : 'Valor total'}</th><th scope="col" class="purchase-status-cell">Vencimentos</th><th scope="col" class="purchase-actions-cell">Detalhes</th></tr></thead><tbody>${expenses.map(expense => {
       const status = expenseStatus(expense), payer = expensePayerId(expense), payerLabel = payer ? familyName(payer) : 'A definir';
-      const totalKnown = Number.isSafeInteger(expense.total_cents) && expense.total_cents >= 0;
+      const share = selectedFamily ? familyExpenseShare(expense, selectedFamily.id) : null;
+      const total = selectedFamily ? share.total_cents : expense.total_cents;
+      const totalKnown = Number.isSafeInteger(total) && total >= 0;
       const pricing = totalKnown && !expense.pricing?.final_confirmed ? onSiteExpense(expense) ? 'Estimativa' : 'A confirmar' : '';
       const pendingKnown = !supplierUnknown(expense) && Number.isSafeInteger(expense.pending_cents);
       const schedule = expense.status === 'cancelled' ? 'Cancelada' : !pendingKnown ? 'A esclarecer' : onSiteExpense(expense) ? `Na hospedagem${expense.due_on ? ' · '+date(expense.due_on,{day:'2-digit',month:'2-digit',year:'2-digit'}) : ''}` : compositeCardExpense(expense) && expense.installment_plan ? `${Number(expense.installment_plan.count)} faturas` : esc(status.label);
-      const payment = expense.status !== 'cancelled' && pendingKnown && expense.pending_cents > 0 ? `${money(expense.pending_cents)} a pagar` : '';
-      return `<tr><th scope="row" class="purchase-name-cell"><button class="table-title" data-action="expense-detail" data-id="${esc(expense.id)}" title="${esc(expense.title)}"><span class="purchase-title-text">${esc(expense.title)}</span></button></th><td class="purchase-payer-cell">${esc(payerLabel)}</td><td class="purchase-date-cell">${expense.incurred_on ? date(expense.incurred_on) : 'A definir'}</td><td class="text-right purchase-total-cell">${totalKnown ? `<strong class="amount">${money(expense.total_cents)}</strong>` : '<strong class="subtle">A definir</strong>'}${pricing ? `<span class="cell-meta purchase-value-note">${pricing}</span>` : ''}<span class="cell-meta purchase-mobile-owner" title="${esc(payerLabel)}${pricing ? ' · '+pricing : ''}">${esc(payerLabel)}${pricing ? ` · <abbr title="${pricing}" aria-label="${pricing}">${onSiteExpense(expense) ? 'Est.' : 'A conf.'}</abbr>` : ''}</span></td><td class="purchase-status-cell"><span class="purchase-schedule ${status.color === 'green' ? 'positive' : status.color === 'red' ? 'negative' : status.color === 'amber' ? 'amber' : ''}" title="${schedule}">${schedule}</span>${payment ? `<span class="cell-meta purchase-pending">${payment}</span>` : ''}</td><td class="purchase-actions-cell"><button class="text-link purchase-details" data-action="expense-detail" data-id="${esc(expense.id)}">Abrir →</button></td></tr>`;
-    }).join('')}</tbody></table></div><div class="table-footer">${expenses.length} ${expenses.length === 1 ? 'compra' : 'compras'}</div></div>`;
+      const payment = expense.status === 'cancelled' ? '' : selectedFamily ? Number.isSafeInteger(share.future_cents) ? share.future_cents > 0 ? `${money(share.future_cents)} da sua parte a vencer` : '' : 'Parte a vencer: a esclarecer' : pendingKnown && expense.pending_cents > 0 ? `${money(expense.pending_cents)} a pagar` : '';
+      return `<tr><th scope="row" class="purchase-name-cell"><button class="table-title" data-action="expense-detail" data-id="${esc(expense.id)}" title="${esc(expense.title)}"><span class="purchase-title-text">${esc(expense.title)}</span></button></th><td class="purchase-payer-cell">${esc(payerLabel)}</td><td class="purchase-date-cell">${expense.incurred_on ? date(expense.incurred_on) : 'A definir'}</td><td class="text-right purchase-total-cell">${totalKnown ? `<strong class="amount">${money(total)}</strong>` : `<strong class="subtle">${selectedFamily ? 'A esclarecer' : 'A definir'}</strong>`}${pricing ? `<span class="cell-meta purchase-value-note">${pricing}</span>` : ''}<span class="cell-meta purchase-mobile-owner" title="${esc(payerLabel)}${pricing ? ' · '+pricing : ''}">${esc(payerLabel)}${pricing ? ` · <abbr title="${pricing}" aria-label="${pricing}">${onSiteExpense(expense) ? 'Est.' : 'A conf.'}</abbr>` : ''}</span></td><td class="purchase-status-cell"><span class="purchase-schedule ${status.color === 'green' ? 'positive' : status.color === 'red' ? 'negative' : status.color === 'amber' ? 'amber' : ''}" title="${schedule}">${schedule}</span>${payment ? `<span class="cell-meta purchase-pending">${payment}</span>` : ''}</td><td class="purchase-actions-cell"><button class="text-link purchase-details" data-action="expense-detail" data-id="${esc(expense.id)}">Abrir →</button></td></tr>`;
+    }).join('')}</tbody></table></div><div class="table-footer">${expenses.length} ${expenses.length === 1 ? 'compra' : 'compras'}${selectedFamily ? ` · Total das cotas ativas: <strong class="amount">${Number.isSafeInteger(shareTotal) ? money(shareTotal) : 'A esclarecer'}</strong>` : ''}</div></div>`;
   }
   function renderOverviewLegacy() {
     const data = state.data, s = data.summary || {};
@@ -266,11 +359,12 @@
   }
   function filteredExpenses({ reviewOnly = false } = {}) {
     const f = state.filters;
+    const selectedFamily = families().find(family => String(family.id) === String(f.family));
     return (state.data.expenses || []).filter(e => {
       if (reviewOnly && e.verified) return false;
       if (f.search && !`${e.title} ${e.notes || ''} ${e.category || ''}`.toLocaleLowerCase('pt-BR').includes(f.search.toLocaleLowerCase('pt-BR'))) return false;
       if (f.category && e.category !== f.category) return false;
-      if (f.family && !(e.allocations || []).some(a => String(a.family_id) === f.family)) return false;
+      if (selectedFamily && !(e.allocations || []).some(a => String(a.family_id) === String(selectedFamily.id) && Number.isSafeInteger(a.amount_cents) && a.amount_cents > 0)) return false;
       if (f.status === 'review' && !supplierUnknown(e)) return false;
       if (f.status === 'paid' && !(!supplierUnknown(e) && e.pending_cents <= 0 && e.status !== 'cancelled')) return false;
       if (f.status === 'pending' && !(!supplierUnknown(e) && e.pending_cents > 0 && e.status !== 'cancelled')) return false;
@@ -509,7 +603,7 @@
   }
   function render() {
     $$('#navigation [data-page]').forEach(button => { const selected = button.dataset.page === state.page || button.dataset.page === 'overview' && ['monthly','timeline','upcoming'].includes(state.page); button.classList.toggle('active', selected); if (selected) button.setAttribute('aria-current', 'page'); else button.removeAttribute('aria-current'); });
-    const views = { overview: renderReconciliation, expenses: renderExpenses, transfers: renderTransfers, timeline: renderReconciliation, upcoming: renderReconciliation, monthly: renderReconciliation, review: renderQuestions, history: renderHistory };
+    const views = { family: renderMyFamily, overview: renderReconciliation, expenses: renderExpenses, transfers: renderTransfers, timeline: renderReconciliation, upcoming: renderReconciliation, monthly: renderReconciliation, review: renderQuestions, history: renderHistory };
     $('#page-content').innerHTML = views[state.page]();
   }
   function familyOptions(selected = '', excluded = '') {
@@ -765,7 +859,7 @@
   }
   async function logout() {
     try { await api('/api/logout', { method: 'POST', body: '{}' }); } catch (e) { return toast(e.message); }
-    state.session = null; state.data = null; state.reconciliationFamily = ''; state.reconciliationMonth = ''; $('#modal').close(); showGate('login');
+    state.session = null; state.data = null; state.myFamily = ''; state.filters = { search: '', category: '', status: '', family: '' }; state.reconciliationFamily = ''; state.reconciliationMonth = ''; $('#modal').close(); showGate('login');
   }
   function formError(message) { $('#modal-error').textContent = message; $('#modal-error').hidden = false; $('.modal-body', $('#modal')).scrollTop = 0; }
   async function submitForm(event) {
@@ -857,6 +951,9 @@
     else if (action === 'expense-detail') expenseDetail(id);
     else if (action === 'new-payment') paymentForm(id);
     else if (action === 'new-transfer') transferForm();
+    else if (action === 'family-new-transfer') transferForm({ from: myFamilyId() });
+    else if (action === 'my-family-purchases') { state.filters = { search:'', category:'', status:'', family:myFamilyId() }; setPage('expenses'); }
+    else if (action === 'family-forecast-month') { state.reconciliationFamily = target.dataset.family; state.reconciliationMonth = target.dataset.month; setPage('monthly'); }
     else if (action === 'edit-transfer') transferForm({ id });
     else if (action === 'transfer-detail') transferDetail(id);
     else if (action === 'family-monthly') { state.reconciliationFamily = target.dataset.family; setPage('monthly'); }
@@ -883,6 +980,7 @@
     if (event.target.id === 'filter-search') { state.filters.search = event.target.value; $('#expenses-table').innerHTML = purchaseTable(filteredExpenses()); }
   });
   document.addEventListener('change', event => {
+    if (event.target.id === 'my-family-select' && !assignedFamilyId()) { state.myFamily = event.target.value; render(); }
     if (event.target.id === 'reconciliation-month') { state.reconciliationMonth = event.target.value; render(); $('#reconciliation-month')?.focus({preventScroll:true}); }
     if (event.target.id === 'ledger-family') { state.reconciliationFamily = event.target.value; render(); $('#ledger-family')?.focus({preventScroll:true}); }
     if (event.target.id === 'pricing-final') { syncPricing(); updateInstallmentTotal(); }
