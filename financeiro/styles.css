@@ -37,7 +37,6 @@
 
 .ledger-panel{overflow:hidden}.ledger-summary{display:flex;gap:12px 28px;flex-wrap:wrap;margin-top:10px!important;font-size:13px!important;color:#344b56!important}.ledger-summary strong{color:#173042}.ledger-explanation{font-size:13px;line-height:1.8;color:#344b56;margin:5px 0 7px;max-width:900px}.ledger-legend{font-size:12px;color:#45565e;margin-bottom:17px}.ledger-scroll{isolation:isolate;max-width:100%;border:1px solid #d3dcd7;border-radius:8px}.ledger-matrix{min-width:1020px;border-collapse:separate;border-spacing:0;width:100%}.ledger-matrix td,.ledger-matrix th{padding:15px 13px;font-size:13px;vertical-align:top;border-bottom:1px solid #dde4df}.ledger-matrix thead th{background:#edf2ee;color:#203d48;font-weight:650;font-size:13px}.ledger-matrix .ledger-family{min-width:138px}.ledger-matrix .ledger-movement{position:sticky;left:0;z-index:2;min-width:235px;max-width:285px;background:#fff;box-shadow:2px 0 0 #ccd7d0}.ledger-matrix thead .ledger-movement{background:#edf2ee;z-index:3}.ledger-matrix .ledger-movement .table-title{font-size:13px;line-height:1.65;min-width:0;white-space:normal}.ledger-matrix .ledger-movement>strong{display:block;font-size:13px;line-height:1.65}.ledger-matrix .cell-meta{font-size:12px;line-height:1.7;color:#45565e;font-weight:400}.ledger-matrix .ledger-opening>td,.ledger-matrix .ledger-opening>.ledger-movement{background:#f5f7f3;font-weight:600}.ledger-matrix tfoot th,.ledger-matrix tfoot td{background:#eef3ef;border-top:2px solid #9caf9f;border-bottom:0;padding-top:18px;padding-bottom:18px}.ledger-matrix tfoot strong{font-size:14px}.ledger-matrix tfoot .cell-meta{white-space:normal;min-width:125px}.ledger-panel .net-settlements{margin-top:22px}.ledger-panel .net-settlements>.reconciliation-note{margin:0 0 13px}.ledger-panel .section-heading{margin-bottom:12px}@media(max-width:760px){.ledger-panel{padding:18px 12px}.ledger-summary{gap:7px;font-size:12px!important;display:grid}.ledger-explanation,.ledger-legend{font-size:12px;line-height:1.75}.ledger-matrix{min-width:975px}.ledger-matrix .ledger-movement{min-width:190px;max-width:215px}.ledger-matrix td,.ledger-matrix th{padding:14px 11px;font-size:12px}.ledger-matrix .ledger-movement .table-title,.ledger-matrix .ledger-movement>strong{font-size:12px}.ledger-matrix tfoot strong{font-size:13px}.ledger-matrix .cell-meta{font-size:12px}.ledger-panel .reconciliation-settlement{font-size:12px}.ledger-panel .section-heading h2{font-size:19px}}
 
-.purchase-table-panel{overflow:hidden}.purchase-table-scroll{isolation:isolate}.purchase-table{min-width:960px;width:100%;border-collapse:separate;border-spacing:0}.purchase-table th,.purchase-table td{padding:16px 13px;font-size:13px;vertical-align:top}.purchase-table thead th{background:#edf2ee;color:#203d48;font-weight:650}.purchase-table .purchase-name-cell{position:sticky;left:0;z-index:1;min-width:225px;max-width:280px;background:#fff;text-align:left;box-shadow:2px 0 0 #d3dcd7;font-weight:400}.purchase-table thead .purchase-name-cell{background:#edf2ee;z-index:2}.purchase-table .table-title{font-size:14px;line-height:1.6;min-width:0;text-align:left}.purchase-table .cell-meta{font-size:12px;line-height:1.65;white-space:normal;font-weight:400}.purchase-table .purchase-date-cell{min-width:115px}.purchase-table .purchase-total-cell{min-width:160px;max-width:190px}.purchase-table .purchase-total-cell>strong{font-size:16px}.purchase-table .purchase-status-cell{min-width:210px;max-width:260px}.purchase-table .tag{white-space:normal;font-size:12px}.purchase-table .purchase-details{display:inline-block;min-width:100px;line-height:1.7;text-align:left;white-space:normal}.purchase-table tbody tr:last-child>th,.purchase-table tbody tr:last-child>td{border-bottom:0}@media(max-width:760px){.purchase-table{min-width:900px}.purchase-table th,.purchase-table td{padding:14px 11px;font-size:12px}.purchase-table .purchase-name-cell{min-width:175px;max-width:205px}.purchase-table .table-title{font-size:13px}.purchase-table .purchase-total-cell>strong{font-size:14px}.purchase-table .cell-meta{font-size:12px}}
 
 .transfers-table{min-width:930px}.transfers-table th,.transfers-table td{padding:12px 15px;vertical-align:top}.transfer-observation-cell{width:34%;min-width:260px;max-width:440px}.transfer-note-preview{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;line-height:1.65;color:#344b56;font-size:12px;overflow-wrap:anywhere}.transfer-note-details{margin-top:5px}.transfer-note-details>summary{cursor:pointer;color:#173042;font-size:12px;font-weight:600;text-decoration:underline;text-underline-offset:3px}.transfer-note-full{margin-top:9px;padding:10px 12px;border-left:2px solid #cbd5ce;background:#f5f7f3}.transfer-note-full>p{font-size:12px;line-height:1.7;color:#344b56;white-space:pre-wrap;overflow-wrap:anywhere}@media(max-width:760px){.transfers-table th,.transfers-table td{padding:11px 12px}.transfer-observation-cell{min-width:240px;max-width:300px}}
 
@@ -156,7 +155,7 @@ dialog{width:min(760px,calc(100% - 32px));max-width:calc(100% - 32px);max-height
 .reconciliation-controls label{display:block;font-size:12px;font-weight:600;color:#45565e;margin-bottom:5px}
 .reconciliation-controls select{min-height:44px;max-width:100%;padding:10px 34px 10px 12px;border:1px solid #bfcfc4;border-radius:8px;background:#fff;color:#173042;font-size:16px}
 .family-focus-control{min-width:180px}
-.mobile-month-control,.ledger-mobile-context,.purchase-compact-meta,.transfer-mobile-details,.compact-date{display:none}
+.mobile-month-control,.ledger-mobile-context,.transfer-mobile-details,.compact-date{display:none}
 .month-rail{gap:8px;margin-bottom:16px;padding:3px 3px 9px}
 .month-chip{flex-basis:145px;min-height:108px;padding:10px;gap:7px}
 .month-chip>strong{font-size:17px}
@@ -168,8 +167,6 @@ dialog{width:min(760px,calc(100% - 32px));max-width:calc(100% - 32px);max-height
 .ledger-help summary{min-height:44px;display:flex;align-items:center;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .ledger-help p{max-width:850px;line-height:1.7;padding-bottom:8px;color:#45565e}
 .ledger-panel .net-settlements{margin-top:8px;padding-top:16px}
-.purchase-table .table-title{display:inline-block;min-height:44px}
-.purchase-table .purchase-category{margin-bottom:0}
 .transfer-detail-route{font-size:17px;line-height:1.7;margin-bottom:15px}
 .transfer-summary{margin-bottom:16px;gap:10px;flex-wrap:wrap}
 .transfer-summary>strong{font-size:24px}
@@ -206,17 +203,6 @@ dialog{width:min(760px,calc(100% - 32px));max-width:calc(100% - 32px);max-height
   .reconciliation-settlement>.amount{font-size:14px}
   .reconciliation-secondary{gap:16px;flex-wrap:wrap}
   .reconciliation-secondary .text-link{min-height:44px;display:inline-flex;align-items:center}
-  .purchase-table{min-width:0;width:100%;table-layout:fixed}
-  .purchase-table .purchase-payer-cell,.purchase-table .purchase-date-cell,.purchase-table .purchase-status-cell,.purchase-table .purchase-actions-cell{display:none}
-  .purchase-table .purchase-name-cell{position:static;min-width:0;max-width:none;width:auto;box-shadow:none;padding:12px 9px;overflow-wrap:anywhere}
-  .purchase-table .purchase-total-cell{min-width:0;max-width:none;width:116px;padding:12px 9px}
-  .purchase-table .purchase-total-cell>strong{font-size:13px}
-  .purchase-table .table-title{font-size:13px;line-height:1.6;min-height:44px}
-  .purchase-table .cell-meta{font-size:12px;line-height:1.6}
-  .purchase-table .purchase-category{display:none}
-  .purchase-compact-meta{display:block;margin-top:4px}
-  .purchase-compact-meta .tag{display:inline-block;margin:5px 0 2px;line-height:1.5;font-size:12px}
-  .purchase-table .purchase-compact-meta .cell-meta{margin-top:3px}
   .transfers-table{min-width:0;width:100%;table-layout:fixed}
   .transfers-table .transfer-source-cell,.transfers-table .transfer-observation-cell,.transfers-table .transfer-actions-cell,.wide-date{display:none}
   .transfers-table th,.transfers-table td{padding:11px 7px;font-size:12px}
@@ -233,7 +219,6 @@ dialog{width:min(760px,calc(100% - 32px));max-width:calc(100% - 32px);max-height
 }
 @media(max-width:380px){
   .reconciliation-controls{grid-template-columns:minmax(0,1fr)}
-  .purchase-table .purchase-total-cell{width:108px;padding-left:6px;padding-right:7px}
   .transfers-table th:nth-child(3){width:101px}
   .ledger-focused .ledger-family{width:112px}
 }
@@ -246,3 +231,38 @@ dialog{width:min(760px,calc(100% - 32px));max-width:calc(100% - 32px);max-height
 
 .app-menu .nav-count{position:static}
 #toast{left:50%}
+
+/* Purchase rows use at most two text lines; full details open from the title. */
+.purchase-table-panel{overflow:hidden}
+.purchase-table-scroll{isolation:isolate}
+.purchase-table{min-width:900px;width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0}
+#app .purchase-table th,#app .purchase-table td{padding:6px 10px;font-size:13px;line-height:1.35;vertical-align:middle}
+.purchase-table thead th{padding-top:9px!important;padding-bottom:9px!important;background:#edf2ee;color:#203d48;font-weight:650}
+.purchase-table .purchase-name-cell{width:28%;text-align:left;font-weight:400;background:#fff}
+.purchase-table thead .purchase-name-cell{background:#edf2ee;font-weight:650}
+.purchase-table .purchase-payer-cell{width:10%}
+.purchase-table .purchase-date-cell{width:11%;white-space:nowrap}
+.purchase-table .purchase-total-cell{width:16%}
+.purchase-table .purchase-status-cell{width:27%}
+.purchase-table .purchase-actions-cell{width:8%}
+#app .purchase-table .table-title{display:block;width:100%;min-width:0;min-height:0;padding:0;font-size:13px;line-height:1.35;text-align:left}
+.purchase-title-text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
+#app .purchase-table .cell-meta{margin-top:2px;font-size:12px;line-height:1.35;font-weight:400}
+.purchase-table .purchase-total-cell>strong{font-size:14px}
+.purchase-schedule,.purchase-pending,.purchase-value-note{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.purchase-mobile-owner{display:none}
+#app .purchase-table .purchase-details{display:inline-flex;align-items:center;min-height:28px;font-size:12px;line-height:1.35;white-space:nowrap}
+.purchase-table tbody tr:last-child>th,.purchase-table tbody tr:last-child>td{border-bottom:0}
+@media(max-width:760px){
+  .purchase-table{min-width:0;table-layout:fixed}
+  .purchase-table .purchase-payer-cell,.purchase-table .purchase-date-cell,.purchase-table .purchase-status-cell,.purchase-table .purchase-actions-cell,.purchase-table .purchase-value-note{display:none}
+  #app .purchase-table th,#app .purchase-table td{padding:4px 8px}
+  .purchase-table .purchase-name-cell{width:auto}
+  .purchase-table .purchase-total-cell{width:124px}
+  #app .purchase-table .table-title{min-height:44px;display:flex;align-items:center;font-size:13px}
+  .purchase-title-text{width:100%}
+  #app .purchase-table .purchase-total-cell>strong{font-size:13px}
+  #app .purchase-table .purchase-mobile-owner{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+  .purchase-mobile-owner abbr{text-decoration:none}
+}
+@media(max-width:380px){.purchase-table .purchase-total-cell{width:118px}}
