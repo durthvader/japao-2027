@@ -5,7 +5,7 @@ para cada dia que tiver camada geografica em mapa/pontos.json.
 Uso:  python gerar_site.py
 Reextrai a planilha sozinho se ela estiver mais nova que dados.json.
 """
-import os, io, json, subprocess, sys, re
+import os, io, json, subprocess, sys, re, argparse
 if sys.stdout and hasattr(sys.stdout, 'reconfigure'):
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -20,7 +20,14 @@ GEO_F = os.path.join(BASE, 'mapa', 'pontos.json')
 DTPL = os.path.join(BASE, 'dia_template.html')
 OUT = os.path.join(BASE, 'index.html')
 
-if not os.path.exists(DADOS) or os.path.getmtime(XLSX) > os.path.getmtime(DADOS):
+parser = argparse.ArgumentParser(description='Gera as páginas do roteiro Japão 2027.')
+parser.add_argument('--usar-extrato-existente', action='store_true',
+                    help='Usa o dados.json existente para revisar a apresentação.')
+args = parser.parse_args()
+if args.usar_extrato_existente and not os.path.exists(DADOS):
+    parser.error('O arquivo dados.json precisa existir para usar esta opção.')
+
+if not args.usar_extrato_existente and (not os.path.exists(DADOS) or os.path.getmtime(XLSX) > os.path.getmtime(DADOS)):
     print('planilha mudou — reextraindo...')
     subprocess.run([sys.executable, os.path.join(BASE, 'extrair.py')], check=True)
 
@@ -51,8 +58,8 @@ def podar(o):
 # verdade por uma operacao em ajustes.json, escrita para quem le o roteiro.
 dados = json.dumps(podar(djs), ensure_ascii=False, indent=1)
 
-DESC = ('Roteiro completo da viagem ao Japao em marco de 2027: 18 dias entre Osaka, Kyoto, '
-        'Kawaguchiko e Tokyo, com roteiro diário, distancias, custos, mapa, restaurantes, '
+DESC = ('Roteiro da viagem ao Japão em março de 2027: 18 dias entre Osaka, Kyoto, '
+        'Kawaguchiko e Tokyo, com roteiro diário, distâncias, custos, mapa, restaurantes, '
         'compras e plano B.')
 ICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'"
         "%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%BB%3C/text%3E%3C/svg%3E")
@@ -222,7 +229,7 @@ if os.path.exists(GEO_F) and os.path.exists(DTPL):
                    .replace('__FOTOS__', json.dumps(
                        {k.split('-', 3)[3]: v for k, v in fpar.items()
                         if k.startswith(dia['data'] + '-')}, ensure_ascii=False)))
-        head = ('<meta name="description" content="Mapa do dia %d da viagem ao Japao: %s.">'
+        head = ('<meta name="description" content="Mapa do dia %d da viagem ao Japão: %s.">'
                 % (n, g['titulo']))
         alvo = os.path.join(BASE, 'dia-%02d.html' % n)
         _html = _travar(montar(pag, head), 'dia-%02d.html' % n)
@@ -238,7 +245,7 @@ PAGINAS = [
         'arquivo': 'index.html',
         'label': 'Início',
         'titulo': 'Japão 2027 — 18 dias de Osaka a Tokyo',
-        'desc': 'Roteiro completo da viagem ao Japão em março de 2027: 18 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com roteiro diário, distâncias, custos, mapa, restaurantes, compras e plano B.',
+        'desc': 'Roteiro da viagem ao Japão em março de 2027: 18 dias entre Osaka, Kyoto, Kawaguchiko e Tokyo, com roteiro diário, distâncias, custos, mapa, restaurantes, compras e plano B.',
     },
     {
         'id': 'roteiro',
@@ -252,21 +259,21 @@ PAGINAS = [
         'arquivo': 'mapa.html',
         'label': 'Mapa',
         'titulo': 'Mapa da Rota · Japão 2027',
-        'desc': 'Trajeto de ponta a ponta de percursos entre as bases entre Osaka, Kyoto, Kawaguchiko e Tokyo com conexões e pernas.',
+        'desc': 'Percursos entre Osaka, Kyoto, Kawaguchiko e Tokyo, com transportes e conexões.',
     },
     {
         'id': 'atlas',
         'arquivo': 'atlas.html',
         'label': 'Atlas',
-        'titulo': 'Atlas · Tudo o que vamos ver · Japão 2027',
-        'desc': 'As paradas dos 18 dias num mapa só, com filtro por cidade, por tipo de lugar e pelo que o carrinho aguenta.',
+        'titulo': 'Atlas de Paradas · Japão 2027',
+        'desc': 'Paradas dos 18 dias no mapa, com filtros por cidade, tipo de lugar e acesso com carrinho.',
     },
     {
         'id': 'timelapse',
         'arquivo': 'timelapse.html',
         'label': 'Timelapse',
         'titulo': 'Timelapse · Japão 2027',
-        'desc': 'Player dinâmico dia a dia em 18 quadros com mapa animado e métricas de cada etapa.',
+        'desc': 'Percorra os 18 dias no mapa e consulte as distâncias e o tempo de cada etapa.',
     },
     {
         'id': 'numeros',
@@ -308,7 +315,7 @@ PAGINAS = [
         'arquivo': 'preparacao.html',
         'label': 'Preparação',
         'titulo': 'Preparação & Checklist · Japão 2027',
-        'desc': 'Cronograma de reservas e compras obrigatórias com datas-limite: ingressos, transportes, vistos, teamLab, DisneySea, Sumô e muito mais.',
+        'desc': 'Prazos de compras e reservas para teamLab, DisneySea, Sumô e transportes, além dos documentos e da lista de bagagem.',
     },
 ]
 

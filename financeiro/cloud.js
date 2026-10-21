@@ -23,7 +23,7 @@
         headers: { apikey: config.publishableKey, ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}) },
         ...(body !== undefined ? { body: JSON.stringify(body) } : {})
       });
-    } catch { throw error('Não foi possível conectar à base privada. Confira a conexão e tente novamente.', 503); }
+    } catch { throw error('Falha ao conectar à área privada. Confira a conexão e tente novamente.', 503); }
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) {
       let message = payload.msg || payload.message || payload.error_description || payload.error || 'Não foi possível concluir a operação.';
@@ -215,10 +215,10 @@
         if (!snapshot) await read();
         const id = decodeURIComponent(path.split('/').pop());
         const receipt = snapshot.data.settings?.receipts?.find(r => r.id === id);
-        if (!receipt?.storage_path) throw error('Este comprovante ainda não foi carregado para a área privada.', 404);
+        if (!receipt?.storage_path) throw error('Comprovante pendente de envio à área privada.', 404);
         const objectPath = receipt.storage_path.split('/').map(encodeURIComponent).join('/');
         const signed = await http('/storage/v1/object/sign/jp27-receipts/' + objectPath, { expiresIn: 60 }, { token: await accessToken() });
-        if (!signed.signedURL) throw error('Não foi possível abrir o comprovante.');
+        if (!signed.signedURL) throw error('Falha ao abrir o comprovante. Tente novamente.');
         const url = root + '/storage/v1' + signed.signedURL;
         if (tab) tab.location.replace(url); else window.location.assign(url);
       } catch (cause) { if (tab) tab.close(); alert(cause.message); }

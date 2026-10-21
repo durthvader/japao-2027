@@ -580,7 +580,7 @@ footer{padding:40px var(--pad) 28px;text-align:center;color:var(--ink-3);font-si
 
 <footer>
   Gerado a partir de <span class="mono">Roteiro Japão.xlsx</span> · Câmbio ¥1 = R$ 0,033<br>
-  Ingressos com valor de adulto, referência 2026 — confirme antes de comprar.
+  Ingressos com valor de adulto, referência 2026. Confirme antes de comprar.
   <p id="creditos" class="creditos"></p>
 </footer>
 
@@ -878,7 +878,7 @@ function montarNums(){
     {b:nf(r("caminhada total"),1),u:"km a pé, no total",i:"Média de ~"+nf(r("caminhada total")/(DADOS.nDias),1)+" km por dia, só entre paradas"},
     {b:nf(DADOS.nParadas||0),u:"paradas mapeadas",i:"Com distância, custo e acesso com carrinho"},
     {b:"¥"+nf(r("transporte no japão")),c:brl(r("transporte no japão")),u:"em transporte (parcial)",i:"Acessos de Gion/Bentencho e JR para KIX ainda a cotar"},
-    {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor adulto — adolescente e bebê pagam menos"},
+    {b:"¥"+nf(r("ingressos e atrações")),c:brl(r("ingressos e atrações")),u:"em ingressos",i:"Valor de adulto; confira as tarifas de adolescentes e bebês"},
     {b:"¥"+nf(COMIDA),c:brl(COMIDA),u:"em comida (estimado)",i:"¥6.000 por dia x "+nf(DADOS.nDias)+" dias, cenário médio"},
     {b:"¥"+nf(yen+COMIDA),c:brl(yen+COMIDA),u:"subtotal parcial por adulto",i:"Transporte e ingressos registrados: ¥"+nf(yen)+" ("+brl(yen).replace("≈ ","")+"). Faltam os novos acessos de Gion e Bentencho."}
   ];
@@ -1049,36 +1049,36 @@ function montarTrilho(){
    7. CARROSSÉIS CURADOS
    ================================================================ */
 const COMER=[
- {c:"osaka",d:"16/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'580 m de mercado coberto — a "cozinha de Osaka". Ostra grelhada, sashimi, atum, wagyu na brasa e melão, tudo feito na hora para comer em pé.',g:"09:00–18:00 · ir até 10:00"},
- {c:"osaka",d:"17 e 30/03",n:"Dotonbori",b:"Namba",t:"Takoyaki, okonomiyaki e kushikatsu à beira do canal, sob o letreiro do Glico. A multidão pesa das 19h às 21h.",g:"24h · cruzeiro ¥1.200"},
- {c:"osaka",d:"17/03",n:"Shinsekai",b:"Naniwa",t:"Bairro retrô dos anos 1950 aos pés da Tsūtenkaku, e a capital do kushikatsu.",g:"10:00–20:00"},
+ {c:"osaka",d:"16/03",n:"Kuromon Ichiba",b:"Nipponbashi",t:'Mercado coberto de 580 m, conhecido como a "cozinha de Osaka". Há ostra grelhada, sashimi, atum, wagyu na brasa e melão para comer nas barracas.',g:"09:00–18:00 · ir até 10:00"},
+ {c:"osaka",d:"17 e 30/03",n:"Dotonbori",b:"Namba",t:"Takoyaki, okonomiyaki e kushikatsu à beira do canal, sob o letreiro do Glico. O movimento é maior das 19h às 21h.",g:"24h · cruzeiro ¥1.200"},
+ {c:"osaka",d:"17/03",n:"Shinsekai",b:"Naniwa",t:"Bairro retrô dos anos 1950 aos pés da Tsūtenkaku, com restaurantes de kushikatsu.",g:"10:00–20:00"},
  {c:"osaka",d:"16/03",n:"Naniwa Kuishinbo Yokocho",b:"Tempozan",t:"Praça de alimentação cenográfica que reproduz a Osaka dos anos 1960. Opção prática de almoço; talvez seja necessário dividir o grupo para encontrar lugares.",g:"11:00–20:00 · fraldário no piso 2"},
- {c:"osaka",d:"17/03",n:"Hozenji Yokocho",b:"Namba",t:"Beco de pedra ao lado do Dotonbori, com o templo coberto de musgo. O contraponto silencioso ao neon.",g:"24h"},
+ {c:"osaka",d:"17/03",n:"Hozenji Yokocho",b:"Namba",t:"Beco de pedra ao lado do Dotonbori, com o templo coberto de musgo. Uma parada mais tranquila perto do canal.",g:"24h"},
  {c:"kyoto",d:"19 e 21/03",n:"Pontocho",b:"Gion",t:"Beco de 2 m de largura à beira do rio Kamo, com restaurantes dos dois lados. Carrinho não entra.",g:"noite · leve o canguru"},
  {c:"fuji", d:"22/03",n:"Jantar no ryokan",b:"Kawaguchiko",t:"Onsen antes, jantar depois, sem sair do hotel. Confirmar no comprovante se o jantar está incluído e reservar o horário do grupo.",g:"La Vista Fujikawaguchiko"},
  {c:"tokyo",d:"27/03",n:"Toyosu Market",b:"Toyosu",t:"O mercado de peixes que substituiu o Tsukiji. Sushi de café da manhã nos restaurantes do prédio.",g:"manhã cedo"},
  {c:"tokyo",d:"26/03",n:"Hoppy-dori",b:"Asakusa",t:"Rua de izakayas ao ar livre atrás do Sensoji. Almoço e cerveja em mesa de calçada.",g:"tarde"},
- {c:"tokyo",d:"26/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Resolve o jantar de 13 com elevador e fraldário.",g:"jantar"},
- {c:"tokyo",d:"25/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Fumaça, lanterna e nenhum espaço para carrinho.",g:"17:00–00:00"}
+ {c:"tokyo",d:"26/03",n:"Solamachi",b:"Skytree",t:"Shopping na base do Skytree com dezenas de restaurantes. Opção para o jantar das 13 pessoas, com elevador e fraldário.",g:"jantar"},
+ {c:"tokyo",d:"25/03",n:"Omoide Yokocho",b:"Shinjuku",t:"Becos de 1,5 m com bares de 6 lugares e yakitori na brasa. Os corredores estreitos dificultam a passagem com carrinho.",g:"17:00–00:00"}
 ];
 const COMPRAS=[
  {c:"osaka",d:"alternativa",n:"Senba Center Building",b:"Hommachi",t:"800 m de galeria de atacado no subsolo, embaixo do viaduto. Roupa e tecido a preço de atacado.",g:"⚠ fecha domingo · 10:00–18:30"},
- {c:"osaka",d:"31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka: eletrônicos, anime, games e figuras. Lojas apertadas — revezem na porta.",g:"11:00–20:00"},
- {c:"osaka",d:"30 e 31/03",n:"Shinsaibashi-suji",b:"Shinsaibashi",t:"Galeria coberta de 600 m que emenda direto no Dotonbori. Funciona com chuva e concentra quase tudo.",g:"11:00–21:00 · última chance de tax-free"},
+ {c:"osaka",d:"31/03",n:"Den Den Town",b:"Nipponbashi",t:"A Akihabara de Osaka, com lojas de eletrônicos, anime, games e figuras. Nas lojas apertadas, revezem a entrada.",g:"11:00–20:00"},
+ {c:"osaka",d:"30 e 31/03",n:"Shinsaibashi-suji",b:"Shinsaibashi",t:"Galeria coberta de 600 m que emenda direto no Dotonbori. Opção de compras em dias de chuva.",g:"11:00–21:00 · última chance de tax-free"},
  {c:"tokyo",d:"26/03",n:"Nakamise-dori",b:"Asakusa",t:"A rua de lojinhas que leva ao Sensoji: souvenir tradicional, leque e doce quente feito na hora.",g:"manhã"},
- {c:"tokyo",d:"28/03",n:"Akihabara",b:"Akihabara",t:"Eletrônicos, anime, games e lojas de vários andares. O dia inteiro cabe aqui, se deixarem.",g:"domingo · Chuo-dori vira calçadão à tarde"},
- {c:"tokyo",d:"28/03",n:"Ameyoko",b:"Ueno",t:"Feira de rua sob a linha do trem: comida, tênis, cosmético e barulho. O preço mais baixo de Tokyo.",g:"colado no Ueno Park"},
- {c:"tokyo",d:"29/03",n:"Takeshita-dori",b:"Harajuku",t:"350 m por 3 m de largura de puro kawaii: crepes, purikura e lojas alternativas. Segurem as crianças pela mão.",g:"11:00–20:00 · carrinho não entra"},
+ {c:"tokyo",d:"28/03",n:"Akihabara",b:"Akihabara",t:"Eletrônicos, anime, games e lojas de vários andares. Reserve tempo para as lojas de vários andares.",g:"domingo · Chuo-dori vira calçadão à tarde"},
+ {c:"tokyo",d:"28/03",n:"Ameyoko",b:"Ueno",t:"Feira de rua sob a linha do trem: comida, tênis, cosmético e barulho. Compare os preços entre as barracas.",g:"colado no Ueno Park"},
+ {c:"tokyo",d:"29/03",n:"Takeshita-dori",b:"Harajuku",t:"Rua de 350 m por 3 m de largura, com crepes, purikura e lojas alternativas. Segurem as crianças pela mão.",g:"11:00–20:00 · carrinho não entra"},
  {c:"tokyo",d:"29/03",n:"Omotesando + Kiddy Land",b:"Omotesando",t:"A avenida arborizada das grifes, e cinco andares de brinquedo no Kiddy Land. Calçada larga, com elevador.",g:"11:00–21:00"}
 ];
 const PLANOB=[
- {c:"osaka",d:"qualquer dia",n:"Chuva em Osaka",b:"tudo coberto",t:"Kaiyukan em espiral por 8 andares, Umeda Sky pelo elevador interno, Senba Center no subsolo, Kuromon coberto e 600 m de galeria em Shinsaibashi. Dá para passar o dia sem tomar chuva.",g:"nenhum deles depende do tempo"},
+ {c:"osaka",d:"qualquer dia",n:"Chuva em Osaka",b:"Opções cobertas",t:"Kaiyukan em espiral por 8 andares, Umeda Sky pelo elevador interno, Senba Center no subsolo, Kuromon coberto e 600 m de galeria em Shinsaibashi. Confira os acessos entre os lugares nos trechos ao ar livre.",g:"Confira os trechos ao ar livre"},
  {c:"osaka",d:"16/03",n:"HEP Five no lugar de Nakazakicho",b:"Umeda",t:"Se o bairro retrô de cafés não render, a roda-gigante vermelha do HEP Five custa ¥800 e também está no Amazing Pass.",g:"¥800 · a 10 min a pé"},
- {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"a pior hipótese",t:"Conferir lotação, acesso dos carrinhos e alternativas por trem/metrô. Se cotar táxi ou van, informar 13 pessoas, crianças, carrinhos e malas; o número de veículos depende da capacidade real.",g:"feriadão de 20 a 22/03"},
- {c:"fuji", d:"22 e 23/03",n:"Fuji na nuvem",b:"Kawaguchiko",t:"Oishi Park vale pela margem do lago mesmo sem o topo à vista. O onsen e o jantar do ryokan seguram o dia, e o teleférico Kachi-Kachi vira saída antecipada para Tokyo.",g:"o topo aparece em poucos dias do mês"},
- {c:"tokyo",d:"qualquer dia",n:"Chuva em Tokyo",b:"tudo coberto",t:"teamLab PLANETS, Miraikan, Solamachi, o observatório gratuito do Governo Metropolitano e os andares de Akihabara. Só o Skytree perde a graça com o céu fechado.",g:"o observatório abre até 22:00"},
+ {c:"kyoto",d:"20 e 21/03",n:"Ônibus de Kyoto lotado",b:"Lotação no feriado",t:"Conferir lotação, acesso dos carrinhos e alternativas por trem/metrô. Se cotar táxi ou van, informar 13 pessoas, crianças, carrinhos e malas; o número de veículos depende da capacidade real.",g:"feriadão de 20 a 22/03"},
+ {c:"fuji", d:"22 e 23/03",n:"Fuji na nuvem",b:"Kawaguchiko",t:"Passeie pela margem do lago no Oishi Park e aproveite o onsen e o jantar do ryokan. Se cortar o teleférico Kachi-Kachi, poderá antecipar a saída para Tokyo.",g:"Confira a visibilidade no dia"},
+ {c:"tokyo",d:"qualquer dia",n:"Chuva em Tokyo",b:"Opções cobertas",t:"teamLab PLANETS, Miraikan, Solamachi, o observatório gratuito do Governo Metropolitano e os andares de Akihabara. A vista do Skytree depende da visibilidade.",g:"o observatório abre até 22:00"},
  {c:"tokyo",d:"27/03",n:"Troca do dia de Shinjuku",b:"alternativa mapeada",t:"Se Shinjuku não empolgar, a troca já prevista é Palácio Imperial + Koishikawa Korakuen, colados um no outro e a 20 min de Ojima.",g:"¥300 · da lista original"},
- {c:"tokyo",d:"29/03",n:"Shibuya Sky esgotado",b:"Shibuya",t:"O horário do pôr do sol some primeiro, e em 29/03 o sol se põe ~17:55. Sem ele, o observatório do Governo Metropolitano é grátis e tem elevador direto ao 45º andar.",g:"grátis · Shinjuku"},
+ {c:"tokyo",d:"29/03",n:"Shibuya Sky esgotado",b:"Shibuya",t:"O horário do pôr do sol costuma esgotar primeiro. Em 29/03, o sol se põe ~17:55. Se estiver esgotado, considere o observatório gratuito do Governo Metropolitano, com elevador direto ao 45º andar.",g:"grátis · Shinjuku"},
  {c:"osaka",d:"02/04",b:"voos via Doha",n:"Conexões na volta",t:"Doha: 1h20, seguir direto ao portão. GRU: 2h55 para entrada no Brasil e redespacho. Confirmar assistência e proteção dos bilhetes.",g:"Doha e Guarulhos"}
 ];
 function montarCarro(alvo,itens){

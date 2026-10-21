@@ -240,8 +240,8 @@ body{padding-bottom:0}
   <div class="painel">
     <p class="resumo" id="resumo"></p>
     <div class="kpis" id="kpis"></div>
-    <a class="gbtn" id="gdia" target="_blank" rel="noopener">Ver a volta inteira no Google Maps ↗
-      <u>desenho e ordem das paradas · o transporte real de cada trecho está no <b>ir ↗</b> abaixo</u></a>
+    <a class="gbtn" id="gdia" target="_blank" rel="noopener">Abrir o percurso do dia no Google Maps ↗
+      <u>Percurso em modo carro para mostrar a ordem das paradas. Consulte transporte ou caminhada nos links de cada trecho.</u></a>
 
     <p class="eyebrow">Hora a hora</p>
     <div class="trilha" id="trilha"></div>
@@ -254,10 +254,10 @@ body{padding-bottom:0}
 
     __FIM_DIA_NAV__
 
-    <p class="rodape">Os traçados no mapa são aproximados — para trechos a pé o desenho é uma reta e
-    para o metrô é uma linha tracejada, porque o trilho é subterrâneo. O botão <b>ir ↗</b> de cada
-    trecho abre a rota exata e turn-by-turn no Google Maps. Horários são uma sugestão de ritmo, não
-    reserva. Mapa © OpenStreetMap · tiles CARTO.</p>
+    <p class="rodape">Os traçados no mapa são aproximados. As caminhadas aparecem como linhas retas e
+    os trechos de metrô, como linhas tracejadas. Os links de cada
+    trecho abrem o trajeto e as orientações no Google Maps. Os horários sugerem um ritmo para o dia.
+    Confirme as reservas separadamente. Mapa © OpenStreetMap · tiles CARTO.</p>
   </div>
 </div>
 
@@ -477,7 +477,7 @@ const html = GEO.paradas.map((p,idx)=>{
     <div class="chips">${chips.join("")}</div>
     <div class="p-det">
       ${foto(p)}
-      ${bloco("Não pode perder", p.must)}
+      ${bloco("O que ver", p.must)}
       ${bloco("Comer", p.comidas)}
       ${bloco("Comprar", p.compras)}
       ${a.terreno&&a.terreno!=="—"?`<div class="bloco"><p class="lbl">Com carrinho</p><p class="nota">${esc(a.terreno)}</p></div>`:""}
@@ -539,7 +539,7 @@ if(map) GEO.alternativas.forEach((x,i)=>{
 {
   const tipos = [...new Set(GEO.alternativas.filter(x=>x.ponto).map(x=>LBL[x.tipo]||x.tipo))];
   el("altleg").innerHTML = tipos.length
-    ? "No mapa, os pinos tracejados s\u00e3o estas alternativas \u2014 "
+    ? "Pinos tracejados: "
       + tipos.map(l=>`<b>${esc(l[0])}</b>${esc(l.toLowerCase())}`).join(" \u00b7 ")
       + ". Clique num pino ou num card para destacar."
     : "";

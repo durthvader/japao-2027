@@ -1,5 +1,7 @@
 # Japão 2027
 
+As regras de escrita do roteiro e do painel financeiro estão em [core/regras.md](core/regras.md).
+
 Site do roteiro da viagem ao Japão de 15/03 a 01/04/2027 — 18 dias e 17 noites
 entre Osaka, Kyoto, Kawaguchiko e Tokyo, para 13 pessoas.
 
@@ -113,14 +115,27 @@ de um mês anterior permanece histórico; seu saldo passa ao mês seguinte.
 Adiantamentos são usados nos próximos compromissos, sem sugerir sua devolução
 como dívida vencida. O cálculo preserva a origem e o uso desses créditos.
 
-As previsões dos meses seguintes simulam o acerto dos meses anteriores para
-mostrar o valor próprio de cada mês. Essa simulação nunca cria pagamentos reais.
-O prazo de planejamento é o quinto dia útil, com exclusão de fins de semana e
-feriados bancários nacionais. Compras, pagamentos e histórico continuam acessíveis
-para edição e conferência, com os detalhes recolhidos por padrão.
+As previsões dos meses seguintes incluem o saldo anterior e os vencimentos
+futuros. As transferências entram quando as famílias registram o pagamento.
+Para planejar um pagamento, use o saldo acumulado do mês escolhido. O prazo
+de planejamento é o quinto dia útil, descontados os fins de semana e os feriados
+bancários nacionais. As famílias podem editar os registros nas telas de compras
+e pagamentos e consultar as alterações no histórico.
 
 `NAVEGACAO`, em `gerar_site.py`, preserva o acesso nas próximas gerações sem
 incluir o financeiro nas seções ou no payload de dados do roteiro.
+
+## Revisar textos
+
+Leia [core/regras.md](core/regras.md). Os textos do roteiro ficam nos templates e
+na camada de apresentação. Para regerar com o extrato existente:
+
+```bash
+python gerar_site.py --usar-extrato-existente
+```
+
+Esse comando usa o arquivo local dados.json. O financeiro tem sua própria
+interface na pasta financeiro/ e recebe os dados pela API privada.
 
 ## Regerar depois de mexer na planilha
 
