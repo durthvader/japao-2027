@@ -232,14 +232,23 @@ dialog{width:min(760px,calc(100% - 32px));max-width:calc(100% - 32px);max-height
 .app-menu .nav-count{position:static}
 #toast{left:50%}
 
-/* The family account keeps all six columns inside its own scroll region. */
-.family-picker{max-width:320px;margin-bottom:18px}
-.family-picker select{width:100%;min-height:44px;font-size:16px}
+/* Family accounts and the forecast share one table with local horizontal scrolling. */
+.family-view-menu{position:relative}
+.family-view-menu>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:9px}
+.family-view-menu>summary::-webkit-details-marker{display:none}
+.family-view-options{position:absolute;top:calc(100% + 8px);right:0;width:250px;max-width:calc(100vw - 40px);padding:14px;background:#fff;border:1px solid #cbd7d1;border-radius:8px;box-shadow:0 8px 24px #142d3e20;z-index:5}
+.family-view-options label{display:block;margin-bottom:6px;font-size:13px;font-weight:600}
+.family-view-options select{width:100%;min-height:44px;font-size:16px}
+.family-view-options .text-link{display:block;margin-top:10px;min-height:44px;text-align:left}
 .family-account-scroll{display:block;width:100%;min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;isolation:isolate}
-#app .family-account-table{width:100%;min-width:820px;table-layout:fixed;border-collapse:separate;border-spacing:0}
+#app .family-account-table{width:100%;min-width:1040px;table-layout:fixed;border-collapse:separate;border-spacing:0}
 #app .family-account-table th,#app .family-account-table td{padding:7px 10px;vertical-align:middle;font-size:13px;line-height:1.35;border-bottom:1px solid #dde4df}
-#app .family-account-table th:first-child,#app .family-account-table td:first-child{width:28%;text-align:left}
-#app .family-account-table th:not(:first-child),#app .family-account-table td:not(:first-child){width:14.4%;text-align:right;font-variant-numeric:tabular-nums}
+#app .family-account-table th:first-child,#app .family-account-table td:first-child{width:25%;text-align:left}
+#app .family-account-table th:not(:first-child),#app .family-account-table td:not(:first-child){width:12%;text-align:right;font-variant-numeric:tabular-nums}
+#app .family-account-table th.family-forecast-cell,#app .family-account-table td.family-forecast-cell{width:15%;background:#f3f6f3;border-left:1px solid #d3dfd5}
+#app .family-account-table th.family-forecast-cell{background:#e5eee6}
+.family-forecast-cell label{display:block;margin-bottom:4px}
+.family-forecast-cell select{width:100%;min-width:0;min-height:34px;padding:5px 20px 5px 7px;font-size:12px;background:#fff;border:1px solid #a8bdae;border-radius:5px;color:#203d48}
 #app .family-account-table thead th{padding-top:10px;padding-bottom:10px;background:#edf2ee;color:#203d48;font-size:12px;font-weight:650;line-height:1.35;white-space:normal}
 #app .family-account-table tbody th{background:#fff;font-weight:400;white-space:normal}
 #app .family-account-table .table-title{display:flex;align-items:center;width:100%;min-width:0;min-height:44px;padding:0;font-size:13px;line-height:1.35;text-align:left;white-space:normal}
@@ -249,15 +258,22 @@ dialog{width:min(760px,calc(100% - 32px));max-width:calc(100% - 32px);max-height
 #app .family-account-table tfoot th,#app .family-account-table tfoot td{padding-top:12px;padding-bottom:12px;border-top:2px solid #9caf9f;border-bottom:0;background:#eef3ef;font-weight:700}
 #app .family-account-table tfoot .amount{font-size:14px}
 .family-account-note,.family-empty{margin:0;padding:12px;font-size:12px;line-height:1.6;color:#45565e}
+.family-account-notes{padding:8px 12px}
+.family-account-notes .family-account-note{padding:2px 0}
 @media(min-width:761px) and (max-width:1000px){
   .app-header-inner{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand more" "navigation navigation";gap:8px 12px}
 }
 @media(max-width:760px){
   #app .app-topnav .nav-item{font-size:12px;white-space:normal;line-height:1.35}
-  #app .family-account-table{min-width:800px}
+  #app .family-account-table{min-width:1000px}
   #app .family-account-table th,#app .family-account-table td{padding:6px 9px;font-size:12px}
   #app .family-account-table th:first-child,#app .family-account-table td:first-child{width:25%}
-  #app .family-account-table th:not(:first-child),#app .family-account-table td:not(:first-child){width:15%}
+  #app .family-account-table th:not(:first-child),#app .family-account-table td:not(:first-child){width:12%}
+  #app .family-account-table th.family-forecast-cell,#app .family-account-table td.family-forecast-cell{width:15%}
+  .family-forecast-cell select{min-height:44px;font-size:16px}
+  .heading-actions{position:relative}
+  .family-view-menu{position:static}
+  .family-view-options{left:0;right:auto;max-width:100%}
   #app .family-account-table thead th{padding-top:10px;padding-bottom:10px}
   #app .family-account-table .table-title{font-size:12px;min-height:44px}
   #app .family-account-table tfoot .amount{font-size:13px}

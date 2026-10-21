@@ -113,6 +113,19 @@ O saldo soma o pago e desconta os créditos recebidos e a parte vencida.
 A família é identificada pelo acesso autorizado. O filtro de família em
 **Compras** mostra a cota e sua parte a vencer em cada compra.
 
+**Ver outra família** permite consultar o quadro de qualquer família cadastrada.
+Cada acesso abre por padrão na própria família; a escolha de outra família vale
+durante a consulta e preserva a identidade de quem está conectado.
+
+A coluna **Quanto separar até** começa no próximo mês e permite escolher os
+meses seguintes. A previsão soma a cota dos vencimentos após a data atual até o
+fim do mês escolhido, acrescenta o débito atual e desconta o crédito disponível.
+Os créditos compensam as compras em conjunto. O resultado, limitado a zero, é
+distribuído por compra para consulta; os pagamentos registrados permanecem iguais.
+O valor acumula os meses do período e considera as despesas cadastradas. Datas ou
+valores desconhecidos aparecem como pendência. As colunas anteriores continuam
+mostrando a posição atual.
+
 O painel confere o valor documentado e a composição das taxas separadamente.
 As listas mostram **Estimativa** nas reservas que ainda dependem da cobrança;
 os totais documentados ficam sem aviso de confirmação. Os detalhes preservam

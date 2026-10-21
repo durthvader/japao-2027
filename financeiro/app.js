@@ -3,7 +3,7 @@
 (() => {
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-  const state = { session: null, data: null, page: 'family', myFamily: '', filters: { search: '', category: '', status: '', family: '' }, toastTimer: null };
+  const state = { session: null, data: null, page: 'family', myFamily: '', familyForecastMonth: '', filters: { search: '', category: '', status: '', family: '' }, toastTimer: null };
   const money = cents => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(cents || 0) / 100);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const today = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Fortaleza', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
@@ -27,8 +27,8 @@
     return family ? String(family.id) : '';
   };
   const myFamilyId = () => {
-    const id = assignedFamilyId() || state.myFamily;
-    return families().some(family => String(family.id) === String(id)) ? String(id) : '';
+    const selected = families().find(family => String(family.id) === String(state.myFamily));
+    return selected ? String(selected.id) : assignedFamilyId();
   };
   const knownSum = amounts => amounts.every(Number.isSafeInteger) ? amounts.reduce((sum, amount) => sum + amount, 0) : null;
   const knownMoney = amount => Number.isSafeInteger(amount) ? money(amount) : 'A definir';
@@ -162,20 +162,33 @@
   }
   function renderMyFamily() {
     const id = myFamilyId();
-    const picker = assignedFamilyId() ? '' : '<div class="field family-picker"><label for="my-family-select">Escolha sua família</label><select id="my-family-select"><option value="">Selecionar</option>' + familyOptions(id) + '</select></div>';
-    const heading = pageHeading('', 'Minha família', id ? esc(familyName(id)) + ' · Até ' + date(state.data.as_of || today()) : '', newExpenseButton() + (id && editable() ? '<button class="button" data-action="family-new-transfer">Novo pagamento</button>' : ''));
-    if (!id) return heading + '<section class="panel">' + picker + '</section>';
+    const own = assignedFamilyId(), viewingOther = own && id && own !== id;
+    const picker = '<details class="family-view-menu" id="family-view-menu"><summary class="button" id="family-view-toggle">Ver outra família <span aria-hidden="true">⌄</span></summary><div class="family-view-options"><label for="my-family-select">Família</label><select id="my-family-select">' + (!id ? '<option value="">Selecionar</option>' : '') + familyOptions(id) + '</select>' + (viewingOther ? '<button class="text-link" data-action="view-own-family">Voltar para minha família</button>' : '') + '</div></details>';
+    const heading = pageHeading('', viewingOther ? 'Família de ' + esc(familyName(id)) : 'Minha família', id ? esc(familyName(id)) + ' · Até ' + date(state.data.as_of || today()) : '', picker + newExpenseButton() + (id && editable() ? '<button class="button" data-action="family-new-transfer">Novo pagamento</button>' : ''));
+    if (!id) return heading + '<section class="panel">Selecione uma família em “Ver outra família”.</section>';
     if (!window.jp27FamilySummary?.build) return heading + '<section class="panel">Atualize a página para carregar o quadro da família.</section>';
     const summary = window.jp27FamilySummary.build(state.data, id);
+    const forecastMonths = window.jp27FamilySummary.months?.(state.data) || [];
+    const forecastMonth = forecastMonths.includes(state.familyForecastMonth) ? state.familyForecastMonth : forecastMonths[0];
+    state.familyForecastMonth = forecastMonth || '';
+    const forecast = forecastMonth && window.jp27FamilySummary.forecast ? window.jp27FamilySummary.forecast(state.data, id, forecastMonth) : null;
+    const forecastRows = new Map((forecast?.rows || []).map(row => [String(row.expense_id ?? row.id), row]));
+    const accountRows = [...summary.rows], accountIds = new Set(accountRows.map(row => String(row.expense_id ?? row.id)));
+    for (const row of forecast?.rows || []) if (!accountIds.has(String(row.expense_id ?? row.id))) {
+      accountRows.push({ ...row, share_cents: 0, due_cents: 0, supplier_paid_cents: 0, sent_cents: 0, paid_cents: 0, received_cents: 0, balance_cents: 0 });
+      accountIds.add(String(row.expense_id ?? row.id));
+    }
+    const forecastCell = row => '<td class="text-right amount family-forecast-cell">' + knownMoney(row?.forecast_cents) + '</td>';
+    const forecastHeading = '<th scope="col" class="text-right family-forecast-cell"><label for="family-forecast-month">Quanto separar até</label><select id="family-forecast-month" aria-describedby="family-forecast-rule">' + forecastMonths.map(value => '<option value="' + esc(value) + '" title="' + esc(monthLabel(value)) + '"' + (value === forecastMonth ? ' selected' : '') + '>' + esc(date(value + '-01', { month: 'short', year: 'numeric' }).replace('.', '').replace(' de ', '/')) + '</option>').join('') + '</select></th>';
     const balanceCell = amount => Number.isSafeInteger(amount) ? amount === 0 ? money(0) : ledgerImpact(amount) : 'A definir';
     const columns = (row, estimate = false) => '<td class="text-right amount">' + knownMoney(row.share_cents) + (estimate ? '<span class="cell-meta">Estimativa</span>' : '') + '</td><td class="text-right amount">' + knownMoney(row.due_cents) + '</td><td class="text-right amount" title="' + esc(knownMoney(row.supplier_paid_cents) + ' ao fornecedor + ' + knownMoney(row.sent_cents) + ' transferidos') + '">' + knownMoney(row.paid_cents) + '</td><td class="text-right amount">' + knownMoney(row.received_cents) + '</td><td class="text-right amount ' + (row.balance_cents > 0 ? 'positive' : row.balance_cents < 0 ? 'negative' : '') + '">' + balanceCell(row.balance_cents) + '</td>';
     const basis = summary.distribution_basis === 'due' ? 'Transferências rateadas pelo vencido.' : summary.distribution_basis === 'share' ? 'Adiantamentos rateados pela sua parte nas compras.' : 'Transferências registradas como adiantamento.';
-    return heading + picker + (summary.partial ? '<p class="family-account-note amber">Saldo parcial. Há valores ou datas a completar.</p>' : '') + '<div class="table-panel"><div class="table-scroll family-account-scroll" tabindex="0" role="region" aria-label="Contas da família" aria-describedby="family-account-rule"><table class="family-account-table"><thead><tr><th scope="col">Compra</th><th scope="col" class="text-right">Minha parte</th><th scope="col" class="text-right">Vencido</th><th scope="col" class="text-right" title="Vencimentos assumidos pela família e transferências enviadas">Valor pago</th><th scope="col" class="text-right">Créditos recebidos</th><th scope="col" class="text-right">Saldo</th></tr></thead><tbody>' + summary.rows.map(row => {
+    return heading + (summary.partial ? '<p class="family-account-note amber">Saldo parcial. Há valores ou datas a completar.</p>' : '') + '<div class="table-panel"><div class="table-scroll family-account-scroll" tabindex="0" role="region" aria-label="Contas de ' + esc(familyName(id)) + '" aria-describedby="family-account-rule family-forecast-rule"><table class="family-account-table"><thead><tr><th scope="col">Compra</th><th scope="col" class="text-right">' + (viewingOther ? 'Parte da família' : 'Minha parte') + '</th><th scope="col" class="text-right">Vencido</th><th scope="col" class="text-right" title="Vencimentos assumidos pela família e transferências enviadas">Valor pago</th><th scope="col" class="text-right">Créditos recebidos</th><th scope="col" class="text-right">Saldo</th>' + forecastHeading + '</tr></thead><tbody>' + accountRows.map(row => {
       const expense = (state.data.expenses || []).find(item => String(item.id) === String(row.expense_id));
       const title = row.expense_id ? '<button class="table-title" data-action="expense-detail" data-id="' + esc(row.expense_id) + '" title="' + esc(row.title) + '"><span class="family-account-title">' + esc(row.title) + '</span></button>' : '<span class="family-account-title">' + esc(row.title) + '</span>';
       const estimate = expense && onSiteExpense(expense) && !priceEvidence(expense).documented;
-      return '<tr><th scope="row">' + title + '</th>' + columns(row, estimate) + '</tr>';
-    }).join('') + (!summary.rows.length ? '<tr><td colspan="6">Nenhum lançamento para esta família.</td></tr>' : '') + '</tbody><tfoot><tr><th scope="row">Total</th>' + columns(summary.totals) + '</tr></tfoot></table></div><p class="family-account-note" id="family-account-rule">Pago = fornecedor + transferências enviadas. Saldo = pago − créditos recebidos − vencido. ' + basis + '</p></div>';
+      return '<tr><th scope="row">' + title + '</th>' + columns(row, estimate) + forecastCell(forecastRows.get(String(row.expense_id ?? row.id))) + '</tr>';
+    }).join('') + (!accountRows.length ? '<tr><td colspan="7">Nenhum lançamento para esta família.</td></tr>' : '') + '</tbody><tfoot><tr><th scope="row">Total</th>' + columns(summary.totals) + forecastCell({ forecast_cents: forecast?.total_cents }) + '</tr></tfoot></table></div><div class="family-account-notes"><p class="family-account-note" id="family-account-rule">Pago = fornecedor + transferências enviadas. Saldo = pago − créditos recebidos − vencido. ' + basis + '</p><p class="family-account-note" id="family-forecast-rule">Previsão acumulada até o mês escolhido, com o débito ou crédito atual. Créditos abatem as compras em conjunto.' + (forecast?.partial ? ' Há valores ou vencimentos a completar.' : '') + '</p></div></div>';
   }
   function renderReconciliation() {
     const reconciliation = state.data.reconciliation || {}, months = reconciliation.months || [];
@@ -858,7 +871,7 @@
   }
   async function logout() {
     try { await api('/api/logout', { method: 'POST', body: '{}' }); } catch (e) { return toast(e.message); }
-    state.session = null; state.data = null; state.myFamily = ''; state.filters = { search: '', category: '', status: '', family: '' }; state.reconciliationFamily = ''; state.reconciliationMonth = ''; $('#modal').close(); showGate('login');
+    state.session = null; state.data = null; state.myFamily = ''; state.familyForecastMonth = ''; state.filters = { search: '', category: '', status: '', family: '' }; state.reconciliationFamily = ''; state.reconciliationMonth = ''; $('#modal').close(); showGate('login');
   }
   function formError(message) { $('#modal-error').textContent = message; $('#modal-error').hidden = false; $('.modal-body', $('#modal')).scrollTop = 0; }
   async function submitForm(event) {
@@ -936,6 +949,7 @@
 
   document.addEventListener('click', event => {
     if (!event.target.closest('#account-menu')) $('#account-menu')?.removeAttribute('open');
+    if (!event.target.closest('#family-view-menu')) $('#family-view-menu')?.removeAttribute('open');
     const target = event.target.closest('[data-action], [data-page]');
     if (!target) return;
     if (target.dataset.page || target.dataset.action) $('#account-menu')?.removeAttribute('open');
@@ -953,7 +967,8 @@
     else if (action === 'expense-detail') expenseDetail(id);
     else if (action === 'new-payment') paymentForm(id);
     else if (action === 'new-transfer') transferForm();
-    else if (action === 'family-new-transfer') transferForm({ from: myFamilyId() });
+    else if (action === 'family-new-transfer') transferForm({ from: assignedFamilyId() || myFamilyId() });
+    else if (action === 'view-own-family') { state.myFamily = ''; render(); $('#family-view-toggle')?.focus({preventScroll:true}); }
     else if (action === 'my-family-purchases') { state.filters = { search:'', category:'', status:'', family:myFamilyId() }; setPage('expenses'); }
     else if (action === 'edit-transfer') transferForm({ id });
     else if (action === 'transfer-detail') transferDetail(id);
@@ -971,6 +986,7 @@
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && $('#account-menu')?.open) { $('#account-menu').removeAttribute('open'); $('#account-menu > summary')?.focus(); }
+    if (event.key === 'Escape' && $('#family-view-menu')?.open) { $('#family-view-menu').removeAttribute('open'); $('#family-view-toggle')?.focus({preventScroll:true}); }
   });
   document.addEventListener('submit', submitForm);
   document.addEventListener('input', event => {
@@ -981,7 +997,13 @@
     if (event.target.id === 'filter-search') { state.filters.search = event.target.value; $('#expenses-table').innerHTML = purchaseTable(filteredExpenses()); }
   });
   document.addEventListener('change', event => {
-    if (event.target.id === 'my-family-select' && !assignedFamilyId()) { state.myFamily = event.target.value; render(); }
+    if (event.target.id === 'my-family-select' && families().some(family => String(family.id) === event.target.value)) { state.myFamily = event.target.value; render(); $('#family-view-toggle')?.focus({preventScroll:true}); }
+    if (event.target.id === 'family-forecast-month' && window.jp27FamilySummary?.months?.(state.data).includes(event.target.value)) {
+      const position = $('.family-account-scroll')?.scrollLeft || 0;
+      state.familyForecastMonth = event.target.value; render();
+      const scroll = $('.family-account-scroll'); if (scroll) scroll.scrollLeft = position;
+      $('#family-forecast-month')?.focus({preventScroll:true});
+    }
     if (event.target.id === 'reconciliation-month') { state.reconciliationMonth = event.target.value; render(); $('#reconciliation-month')?.focus({preventScroll:true}); }
     if (event.target.id === 'ledger-family') { state.reconciliationFamily = event.target.value; render(); $('#ledger-family')?.focus({preventScroll:true}); }
     if (event.target.id === 'pricing-final') { syncPricing(); updateInstallmentTotal(); }
@@ -1003,7 +1025,7 @@
     event.preventDefault(); const form = event.target, button = $('button', form); button.disabled = true; $('#login-error').hidden = true;
     try {
       await api('/api/login', { method: 'POST', body: JSON.stringify({ username: $('#username').value.trim(), password: $('#password').value }) });
-      $('#password').value = ''; state.session = await api('/api/session'); await loadDashboard({ preservePage: false });
+      $('#password').value = ''; state.session = await api('/api/session'); state.myFamily = ''; state.familyForecastMonth = ''; await loadDashboard({ preservePage: false });
     } catch (error) { $('#login-error').textContent = error.message; $('#login-error').hidden = false; $('#password').value = ''; }
     finally { button.disabled = false; }
   });
