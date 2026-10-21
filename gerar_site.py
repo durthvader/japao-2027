@@ -362,6 +362,11 @@ def obter_dados_pagina(pid):
     return {}
 
 PAGINAS.sort(key=lambda p: 0 if p['id'] == 'inicio' else 1)
+# O financeiro possui aplicação própria e API autenticada. Este item só cria o
+# acesso no menu; ele não faz parte das seções nem dos dados do roteiro público.
+NAVEGACAO = PAGINAS + [
+    {'id': 'financeiro', 'arquivo': 'financeiro/index.html', 'label': 'Financeiro'},
+]
 
 for marca in ('__DADOS__', '__FOTOS__', '__MAPAS__'):
     assert marca in tpl, 'template.html perdeu o marcador ' + marca
@@ -379,11 +384,11 @@ shell = re.sub(r'<!-- SECOES_INICIO -->[\s\S]*?<!-- SECOES_FIM -->', '__CONTEUDO
 for pag in PAGINAS:
     nav_top = ''.join(
         f'<a href="{p["arquivo"]}"{" aria-current=\"page\"" if p["id"] == pag["id"] else ""}>{p["label"]}</a>'
-        for p in PAGINAS
+        for p in NAVEGACAO
     )
     nav_bot = ''.join(
         f'<a href="{p["arquivo"]}"{" aria-current=\"page\"" if p["id"] == pag["id"] else ""}>{p["label"]}</a>'
-        for p in PAGINAS
+        for p in NAVEGACAO
     )
     conteudo = secoes[pag['id']]
     dados_pag_str = json.dumps(obter_dados_pagina(pag['id']), ensure_ascii=False)

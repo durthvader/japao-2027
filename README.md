@@ -76,6 +76,34 @@ custos, alternativas — continua funcionando.
 | Logística | Voos, hospedagens atuais e histórico recolhido de reservas |
 | Mapa do dia | Uma página por dia: rota no mapa, hora a hora, transporte, custos, must-see, comidas, compras, alternativas e uma foto por parada |
 
+## Financeiro restrito
+
+O menu **Financeiro** abre `financeiro/index.html`, uma interface independente do
+gerador do roteiro. Os arquivos públicos dessa pasta contêm apenas a interface;
+nomes, lançamentos, saldos, credenciais e comprovantes devem vir de uma API que
+verifique a sessão antes de responder. O link no menu não concede acesso aos dados.
+
+A versão compartilhada usa Supabase Auth e um banco exclusivo do Japão. O arquivo
+`config.js` contém somente o endereço e a chave publicável, que não concede acesso
+ao livro financeiro. O banco verifica a identidade confirmada e uma lista privada
+de acessos em cada operação; escrita, auditoria e controle de concorrência são
+transacionais. Comprovantes ficam em um bucket privado, com links temporários
+gerados apenas após autenticação.
+
+Os dados de importação, a análise, as credenciais iniciais, o SQL de infraestrutura
+e o serviço local alternativo ficam em `../financeiro-private/`, fora deste
+repositório público. Não colocar senhas ou dados financeiros no JavaScript nem
+usar arquivos públicos como banco. A sessão de autenticação permanece na aba;
+os lançamentos são persistidos na base protegida.
+
+Compras, pagamentos a fornecedores, parcelas de cartão e reembolsos entre famílias
+são movimentos distintos. A estimativa da reserva é preservada separadamente do
+custo efetivo, incluindo IOF e taxas. Registros importados ainda em conferência
+não entram nos saldos confirmados nem geram sugestões de cobrança.
+
+`NAVEGACAO`, em `gerar_site.py`, preserva o acesso nas próximas gerações sem
+incluir o financeiro nas seções ou no payload de dados do roteiro.
+
 ## Regerar depois de mexer na planilha
 
 O site é gerado a partir de `Roteiro Japão.xlsx`, que fica **fora deste repositório**

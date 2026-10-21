@@ -1,0 +1,174 @@
+'use strict';
+
+/* Same interface as the local private API; all writes are validated atomically in Postgres. */
+(() => {
+  const config = window.JP27_CONFIG;
+  if (!config?.supabaseUrl || !config?.publishableKey) return;
+  const root = config.supabaseUrl.replace(/\/$/, '');
+  const sessionKey = 'jp27-auth-session';
+  let session = null, snapshot = null, refreshPromise = null;
+  try { session = JSON.parse(sessionStorage.getItem(sessionKey) || 'null'); } catch { sessionStorage.removeItem(sessionKey); }
+  const error = (message, status = 400) => Object.assign(new Error(message), { status });
+  const currentDay = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Fortaleza', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  function saveSession(value) {
+    session = value; snapshot = null;
+    if (value) sessionStorage.setItem(sessionKey, JSON.stringify(value));
+    else sessionStorage.removeItem(sessionKey);
+  }
+  async function http(path, body, { method = 'POST', token = null } = {}) {
+    let response;
+    try {
+      response = await fetch(root + path, {
+        method, cache: 'no-store', referrerPolicy: 'no-referrer',
+        headers: { apikey: config.publishableKey, ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}) },
+        ...(body !== undefined ? { body: JSON.stringify(body) } : {})
+      });
+    } catch { throw error('Não foi possível conectar à base privada. Confira a conexão e tente novamente.', 503); }
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      let message = payload.msg || payload.message || payload.error_description || payload.error || 'Não foi possível concluir a operação.';
+      const match = String(message).match(/^(400|401|403|404|409):\s*([\s\S]*)$/);
+      const status = match ? Number(match[1]) : response.status;
+      if (match) message = match[2];
+      if (message === 'Invalid login credentials') message = 'E-mail ou senha inválidos.';
+      if (message === 'Email not confirmed') message = 'Este acesso ainda não foi confirmado.';
+      throw error(String(message), status);
+    }
+    return payload;
+  }
+  async function accessToken() {
+    if (!session?.access_token) throw error('Entre com o acesso da sua família.', 401);
+    if (session.expires_at && session.expires_at * 1000 < Date.now() + 60_000) {
+      if (!refreshPromise) refreshPromise = http('/auth/v1/token?grant_type=refresh_token', { refresh_token: session.refresh_token })
+        .then(value => { saveSession({ ...value, expires_at: Math.floor(Date.now() / 1000) + value.expires_in }); return session.access_token; })
+        .catch(cause => { saveSession(null); throw error('Sua sessão expirou. Entre novamente.', 401); })
+        .finally(() => { refreshPromise = null; });
+      return refreshPromise;
+    }
+    return session.access_token;
+  }
+  async function read() {
+    const value = await http('/rest/v1/rpc/jp27_read', {}, { token: await accessToken() });
+    if (!value?.data || !Number.isInteger(Number(value.version))) throw error('A base privada retornou um formato inesperado.', 503);
+    snapshot = value;
+    return value;
+  }
+  function allocate(paid, allocations) {
+    const total = allocations.reduce((sum, a) => sum + a.amount_cents, 0);
+    if (!total) return Object.fromEntries(allocations.map(a => [a.family_id, 0]));
+    const denominator = BigInt(total), p = BigInt(paid);
+    const shares = allocations.map(a => ({ id: a.family_id, amount: Number(p * BigInt(a.amount_cents) / denominator), remainder: p * BigInt(a.amount_cents) % denominator }));
+    let missing = paid - shares.reduce((sum, a) => sum + a.amount, 0);
+    shares.sort((a, b) => a.remainder === b.remainder ? a.id.localeCompare(b.id) : a.remainder > b.remainder ? -1 : 1);
+    for (const share of shares) { if (missing-- > 0) share.amount++; }
+    return Object.fromEntries(shares.map(a => [a.id, a.amount]));
+  }
+  function dashboard(value, asOf = currentDay()) {
+    const data = value.data, settings = data.settings || {}, families = data.families || [];
+    const balances = Object.fromEntries(families.map(f => [f.id, { family_id: f.id, name: f.name, paid_cents: 0, share_paid_cents: 0, sent_cents: 0, received_cents: 0, balance_cents: 0, future_cents: 0 }]));
+    const summary = { committed_cents: 0, paid_cents: 0, pending_cents: 0, unverified_count: 0, unverified_cents: 0 };
+    const warnings = [...(settings.warnings || [])];
+    const expenses = (data.expenses || []).map(expense => {
+      const payments = (data.payments || []).filter(p => p.expense_id === expense.id);
+      const active = payments.filter(p => !p.voided_at && (!p.paid_on || p.paid_on <= asOf));
+      const paid = active.reduce((sum, p) => sum + p.amount_cents * (p.kind === 'refund' ? -1 : 1), 0);
+      const pending = expense.status === 'cancelled' ? 0 : expense.total_cents - paid;
+      if (!expense.verified) {
+        summary.unverified_count++;
+        if (expense.status !== 'cancelled') summary.unverified_cents += expense.total_cents;
+      } else {
+        summary.paid_cents += paid;
+        if (expense.status !== 'cancelled') { summary.committed_cents += expense.total_cents; summary.pending_cents += pending; }
+        const shares = allocate(paid, expense.allocations);
+        active.forEach(p => { balances[p.family_id].paid_cents += p.amount_cents * (p.kind === 'refund' ? -1 : 1); });
+        expense.allocations.forEach(a => { balances[a.family_id].share_paid_cents += shares[a.family_id]; if (expense.status !== 'cancelled') balances[a.family_id].future_cents += a.amount_cents - shares[a.family_id]; });
+      }
+      return { ...expense, payments, paid_cents: paid, pending_cents: pending };
+    });
+    const transfers = (data.transfers || []).map(t => ({ ...t, from: balances[t.from_id]?.name || '', to: balances[t.to_id]?.name || '' }));
+    transfers.forEach(t => { if (!t.voided_at && (!t.paid_on || t.paid_on <= asOf)) { balances[t.from_id].sent_cents += t.amount_cents; balances[t.to_id].received_cents += t.amount_cents; } });
+    Object.values(balances).forEach(b => { b.balance_cents = b.paid_cents + b.sent_cents - b.received_cents - b.share_paid_cents; });
+    if (Object.values(balances).reduce((sum, b) => sum + b.balance_cents, 0) !== 0) throw error('Os saldos precisam ser conferidos antes de continuar.', 500);
+    const settlements = [];
+    if (!summary.unverified_count) {
+      const creditors = Object.values(balances).filter(b => b.balance_cents > 0).map(b => ({ id: b.family_id, amount: b.balance_cents })).sort((a, b) => b.amount - a.amount || a.id.localeCompare(b.id));
+      const debtors = Object.values(balances).filter(b => b.balance_cents < 0).map(b => ({ id: b.family_id, amount: -b.balance_cents })).sort((a, b) => b.amount - a.amount || a.id.localeCompare(b.id));
+      let ci = 0, di = 0;
+      while (ci < creditors.length && di < debtors.length) {
+        const c = creditors[ci], d = debtors[di], amount = Math.min(c.amount, d.amount);
+        settlements.push({ from_id: d.id, to_id: c.id, from: balances[d.id].name, to: balances[c.id].name, amount_cents: amount });
+        c.amount -= amount; d.amount -= amount;
+        if (!c.amount) ci++; if (!d.amount) di++;
+      }
+    } else warnings.push(`${summary.unverified_count} despesas importadas ainda em conferência. Os saldos e os compromissos confirmados representam somente lançamentos já revisados.`);
+    const cardInstallments = expenses.flatMap(e => (e.installment_plan?.items || []).map(item => ({ ...item, expense_id: e.id, title: e.title, count: e.installment_plan.count, kind: e.installment_plan.kind, confirmed: e.installment_plan.confirmed && e.verified, payer_family_id: e.installment_plan.payer_family_id, family_id: e.installment_plan.payer_family_id, family_name: balances[e.installment_plan.payer_family_id]?.name || 'Titular a confirmar' })));
+    return { as_of: asOf, version: value.version, families, balances: Object.values(balances), summary, expenses, transfers, settlements,
+      legacy: settings.legacy || null, audit: data.audit || [], warnings, review_items: settings.review_items || [],
+      receipts: settings.receipts || [], credit_card_schedule: settings.credit_card_schedule || [], card_installments: cardInstallments };
+  }
+  async function mutate(action, payload) {
+    if (!snapshot) await read();
+    const result = await http('/rest/v1/rpc/jp27_mutate', { action, payload, expected_version: Number(snapshot.version) }, { token: await accessToken() });
+    snapshot = result;
+    return { ok: true, version: result.version };
+  }
+  async function request(path, options = {}) {
+    const method = options.method || 'GET';
+    const body = typeof options.body === 'string' ? JSON.parse(options.body) : options.body || {};
+    if (path === '/api/login' && method === 'POST') {
+      const value = await http('/auth/v1/token?grant_type=password', { email: String(body.username || '').trim(), password: body.password });
+      saveSession({ ...value, expires_at: Math.floor(Date.now() / 1000) + value.expires_in });
+      try { await read(); } catch (cause) { saveSession(null); throw cause; }
+      return { user: { username: value.user.email, role: 'editor' }, csrf: 'supabase-bearer-session' };
+    }
+    if (path === '/api/logout') {
+      try { if (session) await http('/auth/v1/logout', {}, { token: await accessToken() }); } finally { saveSession(null); }
+      return { ok: true };
+    }
+    if (path === '/api/password' && method === 'POST') {
+      if (typeof body.password !== 'string' || body.password.length < 12) throw error('Use uma senha com pelo menos 12 caracteres.');
+      await http('/auth/v1/user', { password: body.password }, { method: 'PUT', token: await accessToken() });
+      return { ok: true };
+    }
+    if (path === '/api/session') {
+      const user = await http('/auth/v1/user', undefined, { method: 'GET', token: await accessToken() });
+      await read();
+      return { user: { username: user.email, role: 'editor' }, csrf: 'supabase-bearer-session' };
+    }
+    if (path === '/api/dashboard') return dashboard(await read());
+    if (path === '/api/export') return { ...dashboard(await read()), exported_at: new Date().toISOString(), schema_version: 1 };
+    if (path === '/api/expenses' && method === 'POST') return mutate('create_expense', body);
+    if (path.startsWith('/api/expenses/') && method === 'PUT') return mutate('update_expense', { ...body, id: decodeURIComponent(path.split('/').pop()) });
+    if (path === '/api/payments' && method === 'POST') return mutate('add_payment', body);
+    if (path === '/api/transfers' && method === 'POST') return mutate('add_transfer', body);
+    if (path.startsWith('/api/payments/') && method === 'DELETE') return mutate('void_payment', { ...body, id: decodeURIComponent(path.split('/').pop()) });
+    if (path.startsWith('/api/transfers/') && method === 'DELETE') return mutate('void_transfer', { ...body, id: decodeURIComponent(path.split('/').pop()) });
+    throw error('Operação não encontrada.', 404);
+  }
+  document.addEventListener('click', async event => {
+    const anchor = event.target.closest('a');
+    if (!anchor) return;
+    const path = anchor.getAttribute('href') || '';
+    if (path === '/api/export') {
+      event.preventDefault();
+      try { const data = await request(path); const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })); const link = document.createElement('a'); link.href = url; link.download = `japao-contas-${currentDay()}.json`; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+      catch (cause) { alert(cause.message); }
+    } else if (path.startsWith('/api/receipts/')) {
+      event.preventDefault();
+      const tab = window.open('about:blank', '_blank');
+      if (tab) tab.opener = null;
+      try {
+        if (!snapshot) await read();
+        const id = decodeURIComponent(path.split('/').pop());
+        const receipt = snapshot.data.settings?.receipts?.find(r => r.id === id);
+        if (!receipt?.storage_path) throw error('Este comprovante ainda não foi carregado para a área privada.', 404);
+        const objectPath = receipt.storage_path.split('/').map(encodeURIComponent).join('/');
+        const signed = await http('/storage/v1/object/sign/jp27-receipts/' + objectPath, { expiresIn: 60 }, { token: await accessToken() });
+        if (!signed.signedURL) throw error('Não foi possível abrir o comprovante.');
+        const url = root + '/storage/v1' + signed.signedURL;
+        if (tab) tab.location.replace(url); else window.location.assign(url);
+      } catch (cause) { if (tab) tab.close(); alert(cause.message); }
+    }
+  }, true);
+  window.jp27Cloud = { request, dashboard, allocate };
+})();

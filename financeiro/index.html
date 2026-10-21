@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="same-origin">
+  <meta name="theme-color" content="#142d3e">
+  <title>Contas da viagem · Japão 2027</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23f7f5f0'/%3E%3Ccircle cx='20' cy='20' r='10' fill='%23c4443d'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="cloud.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <div id="gate" class="gate">
+    <section class="gate-art">
+      <a class="brand" href="../index.html"><span class="brand-mark">日</span><span>JAPÃO <b>2027</b></span></a>
+      <div class="gate-copy"><span class="eyebrow">A VIAGEM É NOSSA. AS CONTAS TAMBÉM.</span><h1>Boas memórias.<br>Contas em dia.</h1><p>Um lugar para combinar, registrar e acertar os gastos de cada família.</p></div>
+      <div class="landscape" aria-hidden="true"><span class="sun"></span><span class="mountain back"></span><span class="mountain front"></span><span class="ground"></span></div>
+      <span class="gate-footer">JAPÃO · MARÇO DE 2027</span>
+    </section>
+    <main class="gate-form" id="main">
+      <a class="back-link" href="../index.html">← Voltar ao roteiro</a>
+      <div id="gate-status" class="gate-content" role="status"><div class="loading-mark"></div><h2>Preparando as contas…</h2><p>Verificando a conexão privada.</p></div>
+      <form id="login-form" class="gate-content" hidden>
+        <span class="eyebrow">ÁREA DAS FAMÍLIAS</span>
+        <h2>Vamos organizar<br>essa viagem?</h2>
+        <p>Entre com o acesso da sua família. Os lançamentos ficam registrados com o nome de quem fez a alteração.</p>
+        <label for="username">Usuário da família</label><input id="username" name="username" autocomplete="username" required maxlength="100" spellcheck="false">
+        <label for="password">Senha</label><input id="password" name="password" type="password" autocomplete="current-password" required>
+        <p id="login-error" class="form-error" role="alert" hidden></p>
+        <button class="button primary full" type="submit">Entrar nas contas <span aria-hidden="true">→</span></button>
+        <div class="private-note"><span aria-hidden="true">◈</span><span>Acesso restrito às famílias da viagem.</span></div>
+      </form>
+      <noscript><p class="notice">Ative o JavaScript para consultar este painel com segurança.</p></noscript>
+    </main>
+  </div>
+
+  <div id="app" class="app-shell" hidden>
+    <aside class="sidebar">
+      <a class="brand" href="../index.html"><span class="brand-mark">日</span><span>JAPÃO <b>2027</b></span></a>
+      <div class="workspace-label">CONTAS DA VIAGEM</div>
+      <nav aria-label="Painel financeiro" id="navigation">
+        <button class="nav-item active" data-page="overview"><span class="nav-icon" aria-hidden="true">◫</span><span>Visão geral</span></button>
+        <button class="nav-item" data-page="expenses"><span class="nav-icon" aria-hidden="true">▤</span><span>Despesas</span></button>
+        <button class="nav-item" data-page="transfers"><span class="nav-icon" aria-hidden="true">⇄</span><span>Reembolsos</span></button>
+        <button class="nav-item" data-page="review"><span class="nav-icon" aria-hidden="true">✓</span><span>Conferência</span><span id="review-count" class="nav-count" hidden></span></button>
+        <button class="nav-item" data-page="history"><span class="nav-icon" aria-hidden="true">◷</span><span>Histórico</span></button>
+      </nav>
+      <div class="sidebar-note"><span class="little-sun"></span><p>Mais tempo para o Japão.<br>Menos tempo fazendo contas.</p></div>
+      <div class="sidebar-bottom"><a href="../index.html">↗ Abrir roteiro da viagem</a><a id="export-link" href="/api/export" download>↓ Exportar registros</a><button data-action="change-password" class="logout" hidden>Trocar minha senha <span aria-hidden="true">↗</span></button><button id="logout" class="logout">Sair da minha conta <span aria-hidden="true">↗</span></button></div>
+    </aside>
+    <div class="main-shell">
+      <header class="topbar"><a href="../index.html" class="mobile-brand">日 <b>JAPÃO 2027</b></a><div class="breadcrumb">Nosso Japão <span>/</span> Contas da viagem</div><div class="user-chip"><span class="user-avatar" id="user-avatar">F</span><div><strong id="user-name"></strong><span id="user-role">Acesso da família</span></div></div></header>
+      <main id="dashboard" tabindex="-1">
+        <div id="page-content"></div>
+        <footer class="page-footer"><span>Todos os valores do acerto estão em reais (BRL).</span><span id="updated-at"></span></footer>
+      </main>
+    </div>
+  </div>
+  <dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

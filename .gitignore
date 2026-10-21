@@ -12,3 +12,21 @@ ajustes.json
 mapa/lista.json
 # a planilha, em qualquer lugar da arvore
 *.xlsx
+
+# Financeiro: apenas HTML/CSS/JS sem dados podem entrar no site público.
+financeiro-private/
+financeiro/private/
+financeiro/data/
+financeiro/dados*.json
+financeiro/*seed*.json
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
+.env
+.env.*
+!.env.example
