@@ -117,14 +117,16 @@ A família é identificada pelo acesso autorizado. O filtro de família em
 Cada acesso abre por padrão na própria família; a escolha de outra família vale
 durante a consulta e preserva a identidade de quem está conectado.
 
-A coluna **Quanto separar até** começa no próximo mês e permite escolher os
-meses seguintes. A previsão soma a cota dos vencimentos após a data atual até o
-fim do mês escolhido, acrescenta o débito atual e desconta o crédito disponível.
-Os créditos compensam as compras em conjunto. O resultado, limitado a zero, é
-distribuído por compra para consulta; os pagamentos registrados permanecem iguais.
-O valor acumula os meses do período e considera as despesas cadastradas. Datas ou
-valores desconhecidos aparecem como pendência. As colunas anteriores continuam
-mostrando a posição atual.
+A coluna **Acerto até** começa no próximo mês e permite escolher os meses
+seguintes. A projeção soma o saldo atual às contribuições integrais da família
+nas faturas e nos fornecedores futuros e desconta sua cota nesses vencimentos.
+Ela considera que os responsáveis pagarão no vencimento e confere com o saldo
+acumulado do acerto mensal. Valores positivos indicam crédito; negativos, débito.
+Os créditos compensam as compras em conjunto. O líquido é distribuído por compra
+para consulta; os pagamentos registrados permanecem iguais. Adiantamentos
+continuam como crédito, conforme o controle mensal. O valor acumula os meses do
+período e considera as despesas cadastradas. Datas ou valores desconhecidos
+aparecem como pendência. As colunas anteriores mostram a posição atual.
 
 O painel confere o valor documentado e a composição das taxas separadamente.
 As listas mostram **Estimativa** nas reservas que ainda dependem da cobrança;

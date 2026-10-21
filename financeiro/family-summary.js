@@ -194,7 +194,7 @@
   }
 
   // Future shares are marginal allocations of each purchase's cumulative cost.
-  // The current credit offsets all purchases before distributing the remaining total.
+  // The projected balance includes the responsible family's full future payments.
   function forecast(data = {}, familyId, selectedMonth) {
     const current = build(data, familyId), id = current.family_id, asOf = current.as_of;
     const currentMonth = asOf.slice(0, 7), through = month(selectedMonth);
@@ -204,7 +204,8 @@
     const warn = message => { partial = true; if (!warningSet.has(message)) { warningSet.add(message); warnings.push(message); } };
     const familyIds = new Set(list(data.families).map(family => String(family.id)));
     const states = new Map(list(data.expenses).map(expense => [String(expense.id), {
-      expense, before: [], future: [], beforeUnknown: false, futureUnknown: false, hasFuture: false, count: 0
+      expense, before: [], future: [], futureOwn: [], beforeUnknown: false, futureUnknown: false,
+      futureOwnUnknown: false, potentialOwn: false, hasFuture: false, count: 0
     }]));
     const seen = new Map();
     externalMovements(data).forEach((item, index) => {
@@ -221,7 +222,9 @@
         const previous = seen.get(key);
         if (previous.signature !== signature) {
           state.futureUnknown = true;
+          state.futureOwnUnknown = true;
           states.get(previous.expenseId).futureUnknown = true;
+          states.get(previous.expenseId).futureOwnUnknown = true;
           warn('Há movimentos repetidos com dados diferentes na previsão.');
         }
         return;
@@ -230,25 +233,32 @@
       if (!historical) state.hasFuture = true;
       const from = item.from_family_id == null ? null : String(item.from_family_id);
       const to = item.to_family_id == null ? null : String(item.to_family_id);
+      const touchesOwn = from === id || to === id;
+      const unknownParty = (from !== null && !familyIds.has(from)) || (to !== null && !familyIds.has(to))
+        || (from === null && to === null);
+      if (!historical) state.potentialOwn ||= touchesOwn || unknownParty;
       const valid = nonnegative(item.amount_cents) && (familyIds.has(from) || familyIds.has(to))
         && (from === null || familyIds.has(from)) && (to === null || familyIds.has(to));
       const invalidDate = item.date != null && item.date !== '' && !date;
       const conflictingMonth = date && item.month != null && item.month !== '' && month(item.month) !== date.slice(0, 7);
       if (!valid || invalidDate || conflictingMonth) {
-        if (historical) state.beforeUnknown = true; else state.futureUnknown = true;
+        if (historical) state.beforeUnknown = true;
+        else { state.futureUnknown = true; state.futureOwnUnknown ||= touchesOwn || unknownParty; }
         return;
       }
       if (historical) {
         state.before.push((familyIds.has(from) ? item.amount_cents : 0) - (familyIds.has(to) ? item.amount_cents : 0));
       } else if (!period || (date && date <= asOf) || (!date && period < currentMonth)) {
         state.futureUnknown = true;
+        state.futureOwnUnknown ||= touchesOwn || unknownParty;
       } else {
         state.future.push((familyIds.has(from) ? item.amount_cents : 0) - (familyIds.has(to) ? item.amount_cents : 0));
+        state.futureOwn.push((from === id ? item.amount_cents : 0) - (to === id ? item.amount_cents : 0));
       }
     });
 
     const currentRows = new Map(current.rows.map(row => [row.id, row]));
-    const rows = [], futureShares = [];
+    const rows = [], futureShares = [], futureContributions = [];
     const sourceAvailable = Array.isArray(data.monthly_cashflow) || Array.isArray(data.unscheduled_cashflow);
     for (const [expenseId, state] of states) {
       const expense = state.expense, allocations = list(expense.allocations), existing = currentRows.get(expenseId);
@@ -259,6 +269,12 @@
       const unknownPayment = expense.payment_status === 'unknown' || expense.payment_unknown === true
         || expense.payment_status_unknown === true || expense.pending_cents === null;
       const missingCalendar = expense.status !== 'cancelled' && expense.total_cents !== 0 && (!sourceAvailable || !state.count || unknownPayment);
+      const declaredPayer = expense.declared_payer_family_id || expense.source?.declared_payer_family_id
+        || expense.installment_plan?.payer_family_id
+        || list(expense.payments).find(payment => !payment.voided_at && payment.kind !== 'refund')?.family_id;
+      const missingOwnCalendar = missingCalendar && (!familyIds.has(String(declaredPayer)) || String(declaredPayer) === id);
+      const futureContribution = state.futureOwnUnknown || missingOwnCalendar || (state.potentialOwn && expense.verified !== true)
+        ? null : sum(state.futureOwn);
       let futureShare = 0;
       if (ownShare !== 0 && (state.hasFuture || state.futureUnknown || missingCalendar)) {
         const before = sum(state.before), extra = sum(state.future), after = sum([before, extra]);
@@ -270,30 +286,42 @@
           futureShare = (newShares.get(id) ?? 0) - (oldShares.get(id) ?? 0);
         } else futureShare = null;
       }
-      if (futureShare === null) warn('Informe os valores e vencimentos de ' + String(expense.title || 'uma compra') + ' para completar a previsão.');
+      if (futureShare === null || futureContribution === null) warn('Informe os valores e vencimentos de ' + String(expense.title || 'uma compra') + ' para completar a previsão.');
       futureShares.push(futureShare);
+      futureContributions.push(futureContribution);
       const historicalDebt = existing ? cents(existing.balance_cents) ? Math.max(0, -existing.balance_cents) : null : 0;
-      if (!existing && futureShare === 0 && historicalDebt === 0) continue;
-      const weight = cents(futureShare) ? sum([Math.max(0, futureShare), historicalDebt]) : null;
+      const rawBalance = sum([existing ? existing.balance_cents : 0, futureContribution, cents(futureShare) ? -futureShare : null]);
+      if (!existing && futureShare === 0 && futureContribution === 0 && rawBalance === 0) continue;
       rows.push({ id: expenseId, expense_id: expenseId, title: String(expense.title || 'Compra'),
-        future_share_cents: futureShare, historical_debt_cents: historicalDebt,
-        weight_cents: cents(weight) ? weight : null, forecast_cents: null });
+        future_share_cents: futureShare, future_contribution_cents: futureContribution,
+        historical_debt_cents: historicalDebt, raw_projected_balance_cents: rawBalance,
+        weight_cents: null, forecast_cents: null });
     }
     for (const existing of current.rows.filter(row => row.expense_id === null)) {
       const debt = cents(existing.balance_cents) ? Math.max(0, -existing.balance_cents) : null;
       rows.push({ id: existing.id, expense_id: null, title: existing.title, future_share_cents: 0,
-        historical_debt_cents: debt, weight_cents: debt, forecast_cents: null });
+        future_contribution_cents: 0, historical_debt_cents: debt,
+        raw_projected_balance_cents: existing.balance_cents, weight_cents: null, forecast_cents: null });
     }
     const balance = cents(current.reference_balance_cents) ? current.reference_balance_cents : current.totals.balance_cents;
-    const future = sum(futureShares), net = sum([future, cents(balance) ? -balance : null]);
-    const total = cents(current.totals.balance_cents) && cents(net) && current.reconciled !== false ? Math.max(0, net) : null;
+    const future = sum(futureShares), contribution = sum(futureContributions);
+    const net = sum([balance, contribution, cents(future) ? -future : null]);
+    const total = cents(current.totals.balance_cents) && cents(net) && current.reconciled !== false ? net : null;
+    const direction = cents(total) ? Math.sign(total) : null;
+    rows.forEach(row => {
+      row.weight_cents = cents(direction) && cents(row.raw_projected_balance_cents)
+        ? Math.max(0, direction * row.raw_projected_balance_cents) : null;
+    });
     const weights = rows.map(row => ({ id: row.id, weight: row.weight_cents }));
     const distributed = cents(total) && weights.every(item => nonnegative(item.weight)) && sum(weights.map(item => item.weight)) > 0
       ? allocate(total, weights) : null;
-    rows.forEach(row => { row.forecast_cents = total === 0 || row.weight_cents === 0 ? 0 : distributed?.get(row.id) ?? null; });
+    rows.forEach(row => {
+      const value = total === 0 || row.weight_cents === 0 ? 0 : distributed?.get(row.id) ?? null;
+      row.forecast_cents = value === 0 ? 0 : value;
+    });
     if (total === null || rows.some(row => row.forecast_cents === null)) warn('A previsão está parcial. Confira os valores e vencimentos pendentes.');
-    return { family_id: id, as_of: asOf, through_month: through, rows, total_cents: total,
-      current_balance_cents: cents(balance) ? balance : null, future_share_cents: future,
+    return { family_id: id, as_of: asOf, through_month: through, rows, total_cents: total, projected_balance_cents: total,
+      current_balance_cents: cents(balance) ? balance : null, future_share_cents: future, future_contribution_cents: contribution,
       partial, warnings, months: months(data) };
   }
 
