@@ -526,11 +526,12 @@
   }
   function scheduleCardDates() {
     try {
-      if (!$$('.installment-row').length) generateInstallments();
+      if (!$$('.installment-row').length && !generateInstallments()) return;
       const fields = $$('.installment-due', $('#expense-form')), dates = monthlyDates($('#installment-first-due').value,fields.length);
       fields.forEach((input,index) => { input.value = dates[index]; $('.installment-month',input.closest('.installment-row')).value = dates[index].slice(0,7); });
       updateCardDueStatuses();
-    } catch (error) { formError(error.message); }
+      installmentFeedback('');
+    } catch (error) { installmentFeedback(error.message, true); }
   }
   function scheduleReimbursementDates() {
     try {
@@ -545,11 +546,12 @@
   }
   function scheduleCardMonths() {
     try {
-      if (!$$('.installment-row').length) generateInstallments();
+      if (!$$('.installment-row').length && !generateInstallments()) return;
       const rows = $$('.installment-row', $('#expense-form')), months = consecutiveMonths($('#installment-first-month').value,rows.length);
       rows.forEach((row,index) => { $('.installment-month',row).value = months[index]; $('.installment-due',row).value = ''; });
       updateCardDueStatuses();
-    } catch (error) { formError(error.message); }
+      installmentFeedback('');
+    } catch (error) { installmentFeedback(error.message, true); }
   }
   function scheduleReimbursementMonths() {
     try {
@@ -600,7 +602,7 @@
     if (!onSiteExpense(e) && e?.installment_plan?.items) renderInstallmentRows(e.installment_plan.items);
   }
   function installmentFields(plan) {
-    return '<div class="field full form-section"><label class="checkbox-label"><input id="installment-enabled" type="checkbox" ' + (plan ? 'checked' : '') + '><span>A compra no cartão será paga em parcelas.</span></label><small>Cada parcela da fatura entra no acerto no mês do vencimento.</small><div id="installment-settings" ' + (plan ? '' : 'hidden') + '><div class="form-grid"><div class="field full"><label for="installment-kind">O que está sendo parcelado?</label><select id="installment-kind"><option value="to_confirm" ' + (plan?.kind === 'to_confirm' ? 'selected' : '') + '>Ainda a confirmar</option><option value="card" ' + (!plan || plan.kind === 'card' ? 'selected' : '') + '>Fatura do cartão</option>' + (plan?.kind === 'family_reimbursement' ? '<option value="family_reimbursement" selected>Calendário anterior · revisar vencimentos</option>' : '') + '</select></div><div class="field"><label for="installment-count">Número de parcelas</label><input id="installment-count" type="number" min="1" max="36" step="1" value="' + Number(plan?.count || 4) + '"></div><div class="field"><label for="installment-payer">Titular ou família responsável</label><select id="installment-payer"><option value="">A confirmar</option>' + familyOptions(plan?.payer_family_id || '') + '</select></div><div class="field full"><div class="schedule-shortcut"><label for="installment-first-month">Primeiro mês do cartão <small>sem definir o dia</small></label><input id="installment-first-month" type="month"><button class="button small" type="button" data-action="schedule-card-months">Programar os meses</button><label for="installment-first-due">Primeiro vencimento do cartão <small>se souber o dia</small></label><input id="installment-first-due" type="date"><button class="button small" type="button" data-action="schedule-card-dates">Programar mensalmente</button><small>Use o mesmo dia nos meses seguintes e ajuste as datas se precisar.</small></div><button class="button small" type="button" data-action="generate-installments">Gerar parcelas iguais</button><small>Confira os valores e os vencimentos das parcelas.</small><div id="installment-rows" class="table-scroll"></div><div id="installment-total" class="allocation-total"></div></div><div class="field full"><p class="form-help">Consideramos a parcela paga pelo responsável no vencimento.</p></div></div></div></div>';
+    return '<div class="field full form-section"><label class="checkbox-label"><input id="installment-enabled" type="checkbox" ' + (plan ? 'checked' : '') + '><span>A compra no cartão será paga em parcelas.</span></label><small>Cada parcela da fatura entra no acerto no mês do vencimento.</small><div id="installment-settings" ' + (plan ? '' : 'hidden') + '><div class="form-grid"><div class="field full"><label for="installment-kind">O que está sendo parcelado?</label><select id="installment-kind"><option value="to_confirm" ' + (plan?.kind === 'to_confirm' ? 'selected' : '') + '>Ainda a confirmar</option><option value="card" ' + (!plan || plan.kind === 'card' ? 'selected' : '') + '>Fatura do cartão</option>' + (plan?.kind === 'family_reimbursement' ? '<option value="family_reimbursement" selected>Calendário anterior · revisar vencimentos</option>' : '') + '</select></div><div class="field"><label for="installment-count">Número de parcelas</label><input id="installment-count" type="number" min="1" max="36" step="1" value="' + Number(plan?.count || 4) + '"></div><div class="field"><label for="installment-payer">Titular ou família responsável</label><select id="installment-payer"><option value="">A confirmar</option>' + familyOptions(plan?.payer_family_id || '') + '</select></div><div class="field full"><div class="schedule-shortcut"><label for="installment-first-month">Primeiro mês do cartão <small>sem definir o dia</small></label><input id="installment-first-month" type="month"><button class="button small" type="button" data-action="schedule-card-months">Programar os meses</button><label for="installment-first-due">Primeiro vencimento do cartão <small>se souber o dia</small></label><input id="installment-first-due" type="date"><button class="button small" type="button" data-action="schedule-card-dates">Programar mensalmente</button><small>Use o mesmo dia nos meses seguintes e ajuste as datas se precisar.</small></div><button class="button small" type="button" data-action="generate-installments">Gerar parcelas iguais</button><small>Confira os valores e os vencimentos das parcelas.</small><p id="installment-feedback" class="form-help" role="status" aria-live="polite" hidden></p><div id="installment-rows" class="table-scroll"></div><div id="installment-total" class="allocation-total"></div></div><div class="field full"><p class="form-help">Consideramos a parcela paga pelo responsável no vencimento.</p></div></div></div></div>';
   }
   function reimbursementFields(expense) {
     const plans = expense?.reimbursement_plans || [];
@@ -720,12 +722,22 @@
     }).join('') + '</tbody></table>';
     updateInstallmentTotal();
   }
-  function generateInstallments() {
+  function installmentFeedback(message, error = false) {
+    const feedback = $('#installment-feedback');
+    if (!feedback) return;
+    feedback.textContent = message;
+    feedback.className = error ? 'form-error' : 'form-help';
+    feedback.hidden = !message;
+  }
+  function generateInstallments({ automatic = false } = {}) {
     const count = Number($('#installment-count').value);
     const total = parseMoney($('#expense-total').value);
-    if (!Number.isInteger(count) || count < 1 || count > 36 || !Number.isFinite(total) || total <= 0) return formError('Informe o valor da despesa e de 1 a 36 parcelas.');
+    const message = !Number.isSafeInteger(total) || total <= 0 ? 'Informe o valor da compra para gerar as parcelas.' : !Number.isInteger(count) || count < 1 || count > 36 ? 'Informe de 1 a 36 parcelas.' : total < count ? 'Cada parcela precisa ter pelo menos R$ 0,01.' : '';
+    if (message) { installmentFeedback(message, !automatic); return false; }
     const previous = $$('.installment-row').map(row => ({due_on:$('.installment-due',row).value,due_month:$('.installment-month',row).value}));
     renderInstallmentRows(Array.from({length:count},(_,i) => ({number:i+1,amount_cents:Math.floor(total/count)+(i<total%count?1:0),due_on:previous[i]?.due_on || null,due_month:previous[i]?.due_month || null})));
+    installmentFeedback('');
+    return true;
   }
   function updateInstallmentTotal() {
     if (!$('#installment-total')) return;
@@ -783,6 +795,7 @@
       }
       updateAllocationTotal();
     }
+    if ($('#installment-enabled')?.checked && $$('.installment-row').length) updateInstallmentTotal();
   }
   function splitEqual() {
     const total = parseMoney($('#expense-total')?.value), fields = $$('.allocation-input', $('#modal'));
@@ -972,7 +985,9 @@
     if (event.target.id === 'reconciliation-month') { state.reconciliationMonth = event.target.value; render(); $('#reconciliation-month')?.focus({preventScroll:true}); }
     if (event.target.id === 'ledger-family') { state.reconciliationFamily = event.target.value; render(); $('#ledger-family')?.focus({preventScroll:true}); }
     if (event.target.id === 'pricing-final') { syncPricing(); updateInstallmentTotal(); }
-    if (event.target.id === 'installment-enabled') { $('#installment-settings').hidden = !event.target.checked; if(event.target.checked && !$$('.installment-row').length) generateInstallments(); }
+    if ((event.target.matches('[data-pricing]') || event.target.id === 'pricing-final') && $('#installment-enabled')?.checked && !$$('.installment-row').length) generateInstallments({ automatic: true });
+    if (event.target.id === 'installment-enabled') { $('#installment-settings').hidden = !event.target.checked; installmentFeedback(''); if(event.target.checked && !$$('.installment-row').length) generateInstallments({ automatic: true }); }
+    if (event.target.id === 'installment-count' && $('#installment-enabled')?.checked && !$$('.installment-row').length) generateInstallments({ automatic: true });
     if (event.target.matches('.installment-due') && event.target.value) { const row = event.target.closest('.installment-row'); $('.installment-month',row).value = event.target.value.slice(0,7); }
     if (event.target.matches('.installment-month')) { const row = event.target.closest('.installment-row'), day = $('.installment-due',row); if (day.value && day.value.slice(0,7) !== event.target.value) day.value = ''; }
     if (event.target.matches('.installment-due, .installment-month')) updateCardDueStatuses();
