@@ -47,6 +47,8 @@
   function build(input = {}) {
     const asOf = dayOf(input.as_of);
     if (!asOf) throw new Error('Informe uma data válida para o encontro de contas.');
+    const periodBasis = input.period_basis === 'month' ? 'month' : 'day';
+    const settlementMonth = monthOf(input.settlement_month) || asOf.slice(0, 7);
     const families = list(input.families).map(f => ({ id: String(f.id), name: String(f.name || f.id) }));
     const familyMap = new Map(families.map(f => [f.id, f]));
     if (familyMap.size !== families.length) throw new Error('Há famílias repetidas no encontro de contas.');
@@ -68,7 +70,7 @@
 
     const externalById = new Map(), conflictingExternal = new Set();
     const addExternal = (movement, bucketMonth, index) => {
-      if (!movement || !['card', 'supplier'].includes(movement.kind) || movement.voided_at) return;
+      if (!movement || !['card', 'supplier', 'family_accrual'].includes(movement.kind) || movement.voided_at) return;
       const date = dayOf(movement.date), month = date?.slice(0, 7) || monthOf(movement.month) || monthOf(bucketMonth);
       const outgoing = movement.from_family_id == null ? null : String(movement.from_family_id);
       const incoming = movement.to_family_id == null ? null : String(movement.to_family_id);
@@ -270,7 +272,7 @@
       const before = cloneState(state), full = runMonth(state, calendarMonth, commitments, transfers);
       const current = calendarMonth === asOf.slice(0, 7), future = calendarMonth > asOf.slice(0, 7);
       const monthEnd = new Date(Number(calendarMonth.slice(0, 4)), Number(calendarMonth.slice(5, 7)), 0).getDate();
-      const matured = commitment => commitment.date ? commitment.date <= asOf :
+      const matured = commitment => periodBasis === 'month' ? commitment.month <= settlementMonth : commitment.date ? commitment.date <= asOf :
         Number(asOf.slice(8, 10)) === monthEnd || commitment.assumed_paid === true || commitment.payment_state === 'paid' || commitment.scope === 'historical';
       const asOfCommitments = current ? commitments.filter(matured) : commitments;
       const asOfTransfers = current ? transfers.filter(t => t.date <= asOf) : transfers;
@@ -285,7 +287,7 @@
       } else if (future && forecastState) {
         forecast = runMonth(forecastState, calendarMonth, commitments, []);
       }
-      return { month: calendarMonth, as_of: asOf, future, is_current: current,
+      return { month: calendarMonth, as_of: asOf, period_basis: periodBasis, settlement_month: settlementMonth, future, is_current: current,
         ...full, commitments: commitments.map(c => ({ ...c })), transfers: transfers.map(t => ({ ...t })),
         as_of_rows: daily.families, as_of_settlements: daily.payable_settlements,
         as_of_ledger_entries: daily.ledger_entries,
@@ -303,7 +305,7 @@
           forecast_advance_consumptions: forecast.advance_consumptions,
           forecast_assumption: 'Carrega os saldos e adiantamentos reais e compensa os compromissos previstos dos próximos meses.' } : {}) };
     });
-    return { months, undated_transfers: undatedTransfers, undated_commitments: undatedCommitments };
+    return { months, period_basis: periodBasis, settlement_month: settlementMonth, undated_transfers: undatedTransfers, undated_commitments: undatedCommitments };
   }
 
   window.jp27Reconciliation = Object.freeze({ build });

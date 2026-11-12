@@ -40,15 +40,61 @@
     return null;
   }
 
-  function build(expenses, transfers, families, asOf) {
+  // Compare a saved calendar with the documented purchases and refunds. This
+  // reports a disagreement without rewriting either source or ledger entries.
+  function cardScheduleCheck(expense) {
+    if (expense?.installment_plan?.kind === 'family_reimbursement') return null;
+    const components = list(expense?.source?.card_components);
+    if (expense?.source?.card_schedule_type !== 'multiple_purchases' || !components.length) return null;
+    const expected = new Map();
+    let net = 0;
+    for (const component of components) {
+      const refund = component.kind === 'refund';
+      const count = refund ? 1 : Number(component.installment_count || 1);
+      const first = month(refund ? component.due_month : component.first_due_month);
+      if (!['purchase', 'refund'].includes(component.kind) || !['receipt', 'user'].includes(component.evidence) ||
+          !Number.isSafeInteger(component.amount_cents) || component.amount_cents <= 0 || !first ||
+          !Number.isInteger(count) || count < 1 || count > 36) return null;
+      net += component.amount_cents * (refund ? -1 : 1);
+      const [year, calendar] = first.split('-').map(Number);
+      for (let index = 0; index < count; index++) {
+        const value = new Date(Date.UTC(year, calendar - 1 + index, 1)).toISOString().slice(0, 7);
+        const amount = (Math.floor(component.amount_cents / count) + (index < component.amount_cents % count ? 1 : 0)) * (refund ? -1 : 1);
+        expected.set(value, (expected.get(value) || 0) + amount);
+      }
+    }
+    if (net !== expense.total_cents || [...expected.values()].some(amount => amount < 0)) return null;
+    const recorded = new Map();
+    for (const item of list(expense.installment_plan?.items)) {
+      const value = day(item.due_on)?.slice(0, 7) || month(item.due_month);
+      if (!value || !Number.isSafeInteger(item.amount_cents) || item.amount_cents < 0) return null;
+      recorded.set(value, (recorded.get(value) || 0) + item.amount_cents);
+    }
+    const months = [...new Set([...expected.keys(), ...recorded.keys()])].sort().map(value => ({
+      month: value, expected_cents: expected.get(value) || 0, recorded_cents: recorded.get(value) || 0
+    }));
+    return { matches: months.every(row => row.expected_cents === row.recorded_cents), months };
+  }
+
+  function settlementDue(calendarMonth) {
+    if (!month(calendarMonth)) return null;
+    const [year, calendar] = calendarMonth.split('-').map(Number);
+    return new Date(Date.UTC(year, calendar - 1, 0)).toISOString().slice(0, 10);
+  }
+
+  function build(expenses, transfers, families, asOf, options = {}) {
     const cutoff = day(typeof asOf === 'string' ? asOf.slice(0, 10) : null);
+    const periodBasis = options.period_basis === 'month' ? 'month' : 'day';
+    const settlementMonth = month(options.settlement_month) || cutoff?.slice(0, 7);
     const familyList = list(families), familyMap = new Map(familyList.map(family => [String(family.id), family]));
     const familyName = id => familyMap.get(String(id))?.name || 'Família a definir';
     const timeline = [], movements = [], installments = [], totals = [];
     const activeTransfers = list(transfers).filter(transfer => !transfer.voided_at && cents(transfer.amount_cents) > 0);
     const transferCredit = new Map(), unallocatedCredit = new Map();
     const recordedBy = date => !date || !cutoff || date <= cutoff;
-    const maturedBy = (date, calendarMonth) => Boolean(cutoff && (date ? date <= cutoff : calendarMonth && calendarMonth <= cutoff.slice(0, 7)));
+    const maturedBy = (date, calendarMonth) => Boolean(cutoff && (periodBasis === 'month'
+      ? (date?.slice(0, 7) || calendarMonth) && (date?.slice(0, 7) || calendarMonth) <= settlementMonth
+      : date ? date <= cutoff : calendarMonth && calendarMonth <= cutoff.slice(0, 7)));
     const addEvent = event => timeline.push({ ...event, date: day(event.date), month: day(event.date)?.slice(0, 7) || month(event.month), evidence: sourceEvidence(event.evidence), receipt_id: event.receipt_id || null });
     const addMovement = movement => {
       if (!cents(movement.amount_cents)) return;
@@ -56,7 +102,7 @@
         ...movement, date: day(movement.date), month: day(movement.date)?.slice(0, 7) || month(movement.month),
         from_family_id: movement.from_family_id || null, to_family_id: movement.to_family_id || null,
         from_name: movement.from_name || (movement.from_family_id ? familyName(movement.from_family_id) : 'Pagador a definir'),
-        to_name: movement.to_name || (movement.to_family_id ? familyName(movement.to_family_id) : movement.kind === 'card' ? 'Cartão' : 'Fornecedor'),
+        to_name: movement.to_name || (movement.to_family_id ? familyName(movement.to_family_id) : movement.kind === 'family_accrual' ? 'Acerto entre famílias' : movement.kind === 'card' ? 'Cartão' : 'Fornecedor'),
         confirmed: Boolean(movement.confirmed)
       });
     };
@@ -94,6 +140,8 @@
       const activePayments = list(expense.payments).filter(payment => !payment.voided_at && cents(payment.amount_cents) > 0);
       const plan = expense.installment_plan;
       const cardPlan = expense.payment_status !== 'on_site' && plan && (plan.kind === 'card' || plan.kind === 'credit_card' || plan.kind === 'card_purchase');
+      const familyPlan = Boolean(plan && plan.kind === 'family_reimbursement');
+      const recognitionPlan = cardPlan || familyPlan;
       addEvent({ id: 'purchase-' + expenseId, date: purchaseDate, type: 'purchase', title, description: cancelled ? 'Compra ou reserva cancelada; movimentações realizadas permanecem no histórico.' : 'Custo da compra ou reserva. Parcelas e reembolsos não são novas despesas.', amount_cents: total, from_id: payer, to_id: null, expense_id: expenseId, evidence, receipt_id: receiptId, scope: purchaseDate && cutoff && purchaseDate > cutoff ? 'future' : 'historical' });
 
       // A full purchase charged to a card is not a bank cash outflow on purchase day.
@@ -101,14 +149,18 @@
       activePayments.forEach((payment, paymentIndex) => {
         if (payment.initial_assumption || payment.method === 'card_purchase') return;
         const amount = cents(payment.amount_cents), refund = payment.kind === 'refund';
-        const date = day(payment.paid_on), historical = recordedBy(date);
+        const date = day(payment.paid_on), historical = periodBasis === 'month' ? maturedBy(date, date?.slice(0, 7)) || !date : recordedBy(date);
         const id = payment.id || expenseId + '-' + paymentIndex;
         const paymentEvidence = sourceEvidence(payment.evidence || payment.meta?.evidence || (payment.receipt_id ? 'receipt' : evidence));
-        addEvent({ id: 'payment-' + id, date, type: refund ? 'supplier_refund' : 'supplier_payment', title, description: refund ? 'Devolução registrada pelo fornecedor.' : 'Pagamento direto ao fornecedor registrado.', amount_cents: amount, from_id: refund ? null : payment.family_id, to_id: refund ? payment.family_id : null, expense_id: expenseId, evidence: paymentEvidence, receipt_id: payment.receipt_id || null, scope: historical ? 'historical' : 'future' });
+        addEvent({ id: 'payment-' + id, date, type: refund ? 'supplier_refund' : 'supplier_payment', title, description: familyPlan ? refund ? 'Devolução bancária registrada para consulta. O acordo entre famílias mantém as parcelas combinadas.' : 'Pagamento bancário registrado para consulta. O acordo entre famílias mantém as parcelas combinadas.' : refund ? 'Devolução registrada pelo fornecedor.' : 'Pagamento direto ao fornecedor registrado.', amount_cents: amount, from_id: refund ? null : payment.family_id, to_id: refund ? payment.family_id : null, expense_id: expenseId, evidence: paymentEvidence, receipt_id: payment.receipt_id || null, documentary_only: familyPlan, settlement_excluded: familyPlan, scope: historical ? 'historical' : 'future' });
+        // The family's agreement already recognizes the full purchase. Bank
+        // payments and refunds document that separate history without accruing
+        // the purchase again or changing the agreed family installments.
+        if (familyPlan) return;
         addMovement({ id: 'payment-' + id, date, kind: 'supplier', from_family_id: refund ? null : payment.family_id, to_family_id: refund ? payment.family_id : null, from_name: refund ? 'Fornecedor' : familyName(payment.family_id), title, amount_cents: amount, expense_id: expenseId, confirmed: historical, scope: historical ? 'historical' : 'future', certainty: historical ? 'recorded' : 'planned' });
       });
 
-      if (cardPlan) {
+      if (recognitionPlan) {
         list(plan.items).forEach((item, itemIndex) => {
           const number = item.number || itemIndex + 1, amount = cents(item.amount_cents);
           const date = day(item.due_on), dueMonth = date?.slice(0, 7) || month(item.due_month);
@@ -118,15 +170,16 @@
           if (cancelled && !paid) return;
           const monthBasis = 'due_month';
           const holder = plan.payer_family_id || payer;
-          const state = paid ? 'paid' : date || dueMonth ? 'open' : 'unknown';
-          const confirmed = Boolean(plan.confirmed), id = 'card-' + expenseId + '-' + number;
+          const state = paid ? familyPlan || periodBasis === 'month' ? 'accounted' : 'paid' : date || dueMonth ? 'open' : 'unknown';
+          const confirmed = Boolean(plan.confirmed), id = (familyPlan ? 'family-accrual-' : 'card-') + expenseId + '-' + number;
           const certainty = state === 'unknown' ? 'unknown' : 'planned';
-          const billTitle = source.card_schedule_type === 'multiple_purchases'
+          const billTitle = familyPlan ? title + ' · acerto ' + number + '/' + (plan.count || plan.items.length) : source.card_schedule_type === 'multiple_purchases'
             ? title + ' · fatura ' + (dueMonth ? dueMonth.slice(5) + '/' + dueMonth.slice(0,4) : number)
             : title + ' · parcela ' + number + '/' + (plan.count || plan.items.length);
-          const description = paid ? 'Vencida — considerada paga pelo responsável, conforme a regra combinada. A data é o vencimento, não o pagamento bancário.' : state === 'open' ? 'Compromisso futuro do responsável, no vencimento informado.' : 'Falta informar o mês de vencimento desta parcela.';
-          addEvent({ id, date, month: dueMonth, month_basis: monthBasis, date_basis: 'due_on', assumed_paid: paid, type: paid ? 'installment_matured' : 'installment_due', title: billTitle, description, amount_cents: amount, from_id: holder, to_id: null, expense_id: expenseId, evidence: 'pending', receipt_id: item.receipt_id || receiptId, scope: paid ? 'historical' : 'future' });
-          addMovement({ id, date, month: dueMonth, month_basis: monthBasis, date_basis: 'due_on', assumed_paid: paid, kind: 'card', from_family_id: holder, to_family_id: null, title: billTitle, amount_cents: amount, expense_id: expenseId, confirmed, scope: paid ? 'historical' : 'future', certainty, payment_state: state, overdue: false });
+          const description = familyPlan ? paid ? 'Parcela incluída no acerto entre famílias do mês combinado.' : 'Parcela prevista no acordo entre famílias.' : periodBasis === 'month' ? paid ? 'Compromisso incluído no acerto do mês. O vencimento da fatura permanece disponível para consulta.' : 'Compromisso previsto para o acerto do mês informado.' : paid ? 'Vencida — considerada paga pelo responsável, conforme a regra combinada. A data é o vencimento, não o pagamento bancário.' : state === 'open' ? 'Compromisso futuro do responsável, no vencimento informado.' : 'Falta informar o mês de vencimento desta parcela.';
+          const metadata = { settlement_basis: familyPlan ? 'family_agreement' : 'external_commitment', accounted: paid, assumed_paid: !familyPlan && periodBasis === 'day' && paid };
+          addEvent({ id, date, month: dueMonth, month_basis: monthBasis, date_basis: 'due_on', ...metadata, type: familyPlan ? 'family_accrual' : paid ? 'installment_matured' : 'installment_due', title: billTitle, description, amount_cents: amount, from_id: holder, to_id: null, expense_id: expenseId, evidence: familyPlan ? evidence : 'pending', receipt_id: item.receipt_id || receiptId, scope: paid ? 'historical' : 'future' });
+          addMovement({ id, date, month: dueMonth, month_basis: monthBasis, date_basis: 'due_on', ...metadata, kind: familyPlan ? 'family_accrual' : 'card', from_family_id: holder, to_family_id: null, title: billTitle, amount_cents: amount, expense_id: expenseId, confirmed, scope: paid ? 'historical' : 'future', certainty, payment_state: state, overdue: false });
         });
       }
 
@@ -156,7 +209,7 @@
           totals.push({ plan_id: planId, expense_id: expenseId, from_family_id: from, to_family_id: to, original_amount_cents: originalTotal, total_cents: originalTotal, covered_by_transfers_cents: coveredTotal, unallocated_credit_applied_cents: freeCoveredTotal, remaining_cents: originalTotal - coveredTotal, confirmed: Boolean(reimbursement.confirmed) });
         });
 
-        if (!cardPlan) {
+        if (!recognitionPlan) {
           const hasCardPurchase = activePayments.some(payment => payment.method === 'card_purchase');
           const cardCharged = expense.payment_status === 'card_charged' || hasCardPurchase;
           const pending = expense.assumed_due_cents > 0 ? Math.max(0, total - cents(expense.recorded_paid_cents)) : expense.pending_cents === undefined ? Math.max(0, total - cents(expense.paid_cents)) : cents(expense.pending_cents);
@@ -167,10 +220,10 @@
             const dueMonth = unknownPayment || cardCharged ? null : date?.slice(0, 7) || month(expense.due_month);
             const kind = cardCharged && !unknownPayment ? 'card' : 'supplier';
             const matured = !unknownPayment && !cardCharged && maturedBy(date, dueMonth);
-            const description = unknownPayment ? 'Situação do pagamento desconhecida. Este valor precisa ser esclarecido; não é uma cobrança futura confirmada.' : kind === 'card' ? 'Compra lançada no cartão sem calendário de vencimento informado.' : matured ? 'Vencida — considerada paga pelo responsável, conforme a regra combinada. A data é o vencimento.' : 'Pagamento direto ao fornecedor previsto no vencimento informado.';
+            const description = unknownPayment ? 'Situação do pagamento desconhecida. Este valor precisa ser esclarecido; não é uma cobrança futura confirmada.' : kind === 'card' ? 'Compra lançada no cartão sem calendário de vencimento informado.' : matured ? periodBasis === 'month' ? 'Compromisso incluído no acerto do mês da hospedagem.' : 'Vencida — considerada paga pelo responsável, conforme a regra combinada. A data é o vencimento.' : 'Pagamento direto ao fornecedor previsto no vencimento informado.';
             const id = 'pending-' + expenseId;
-            addEvent({ id, date, month: dueMonth, date_basis: 'due_on', assumed_paid: matured, type: matured ? 'installment_matured' : 'installment_due', title, description, amount_cents: amount, from_id: payer, to_id: null, expense_id: expenseId, evidence: 'pending', receipt_id: receiptId, scope: matured ? 'historical' : 'future' });
-            addMovement({ id, date, month: dueMonth, date_basis: 'due_on', assumed_paid: matured, kind, from_family_id: payer, to_family_id: null, title, amount_cents: amount, expense_id: expenseId, confirmed: !unknownPayment && !cardCharged && Boolean(expense.verified), scope: matured ? 'historical' : 'future', certainty: unknownPayment || cardCharged ? 'unknown' : 'planned', payment_unknown: unknownPayment, overdue: false });
+            addEvent({ id, date, month: dueMonth, date_basis: 'due_on', accounted: matured, assumed_paid: periodBasis === 'day' && matured, type: matured ? 'installment_matured' : 'installment_due', title, description, amount_cents: amount, from_id: payer, to_id: null, expense_id: expenseId, evidence: 'pending', receipt_id: receiptId, scope: matured ? 'historical' : 'future' });
+            addMovement({ id, date, month: dueMonth, date_basis: 'due_on', accounted: matured, assumed_paid: periodBasis === 'day' && matured, kind, from_family_id: payer, to_family_id: null, title, amount_cents: amount, expense_id: expenseId, confirmed: !unknownPayment && !cardCharged && Boolean(expense.verified), scope: matured ? 'historical' : 'future', certainty: unknownPayment || cardCharged ? 'unknown' : 'planned', payment_unknown: unknownPayment, overdue: false });
           }
         }
       }
@@ -192,13 +245,14 @@
       months.get(calendarMonth).push(movement);
     });
     const monthly = [...months.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([month, monthMovements]) => {
-      const rows = familyList.map(family => ({ family_id: family.id, name: family.name, outgoing_cents: 0, incoming_cents: 0, net_cents: 0, card_cents: 0, reimbursement_out_cents: 0, supplier_cents: 0 }));
+      const rows = familyList.map(family => ({ family_id: family.id, name: family.name, outgoing_cents: 0, incoming_cents: 0, net_cents: 0, card_cents: 0, agreement_cents: 0, reimbursement_out_cents: 0, supplier_cents: 0 }));
       const byId = new Map(rows.map(row => [String(row.family_id), row]));
       monthMovements.forEach(movement => {
         const from = byId.get(String(movement.from_family_id)), to = byId.get(String(movement.to_family_id));
         if (from) {
           from.outgoing_cents += movement.amount_cents;
           if (movement.kind === 'card') from.card_cents += movement.amount_cents;
+          else if (movement.kind === 'family_accrual') from.agreement_cents += movement.amount_cents;
           else if (movement.kind === 'reimbursement') from.reimbursement_out_cents += movement.amount_cents;
           else from.supplier_cents += movement.amount_cents;
         }
@@ -212,8 +266,8 @@
       const external = movements.filter(movement => movement.expense_id === expense.id && movement.kind !== 'reimbursement' && !movement.to_family_id);
       return { expense_id: expense.id, matured_cents: external.filter(movement => movement.scope === 'historical').reduce((sum, movement) => sum + movement.amount_cents, 0), future_cents: external.filter(movement => movement.scope === 'future' && period(movement)).reduce((sum, movement) => sum + movement.amount_cents, 0), undated_cents: external.filter(movement => movement.scope === 'future' && !period(movement)).reduce((sum, movement) => sum + movement.amount_cents, 0) };
     });
-    return { financial_timeline: timeline, reimbursement_installments: installments, reimbursement_plan_totals: totals, monthly_cashflow: monthly, unscheduled_cashflow: unscheduled, due_accrual: dueAccrual };
+    return { financial_timeline: timeline, reimbursement_installments: installments, reimbursement_plan_totals: totals, monthly_cashflow: monthly, unscheduled_cashflow: unscheduled, due_accrual: dueAccrual, period_basis: periodBasis, settlement_month: settlementMonth };
   }
 
-  window.jp27Cashflow = Object.freeze({ build, reimbursementDue });
+  window.jp27Cashflow = Object.freeze({ build, reimbursementDue, settlementDue, cardScheduleCheck });
 })();

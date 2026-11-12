@@ -103,9 +103,11 @@ estimativa da reserva é preservada separadamente do custo efetivo, incluindo IO
 e taxas. Informações do controle original são reconhecidas com sua fonte; o
 comprovante complementa a informação, sem funcionar como bloqueio geral.
 
-Ao entrar, **Minha família** mostra um quadro com compra, parte da família,
-vencido, valor pago, créditos recebidos e saldo, com os totais no rodapé.
-O valor pago soma os vencimentos assumidos pela família e as transferências
+Ao entrar, **Minha família** separa o acerto do mês atual da previsão
+acumulada até o mês escolhido. O resumo mostra as transferências entre famílias
+que faltam registrar e os adiantamentos usados nas próximas compras. O detalhe
+por compra reúne a parte da família, os vencimentos e as transferências.
+O valor considerado no acerto soma os compromissos assumidos pela família e as transferências
 enviadas. As transferências enviadas e recebidas são distribuídas pela proporção
 do vencido de cada compra; antes do primeiro vencimento, usam a proporção das
 cotas. Essa distribuição serve à consulta e preserva os pagamentos originais.
@@ -117,7 +119,7 @@ A família é identificada pelo acesso autorizado. O filtro de família em
 Cada acesso abre por padrão na própria família; a escolha de outra família vale
 durante a consulta e preserva a identidade de quem está conectado.
 
-A coluna **Acerto até** começa no próximo mês e permite escolher os meses
+O seletor **Previsão até** começa no próximo mês e permite escolher os meses
 seguintes. A projeção soma o saldo atual às contribuições integrais da família
 nas faturas e nos fornecedores futuros e desconta sua cota nesses vencimentos.
 Ela considera que os responsáveis pagarão no vencimento e confere com o saldo
@@ -133,23 +135,43 @@ As listas mostram **Estimativa** nas reservas que ainda dependem da cobrança;
 os totais documentados ficam sem aviso de confirmação. Os detalhes preservam
 a origem do valor, as taxas informadas e as diferenças registradas.
 
-O encontro de contas mensal mostra vencimentos, posição de cada família,
-transferências realizadas e os pagamentos líquidos para acertar.
+O encontro de contas mensal mostra a situação das famílias, incluindo as que
+estão sem transferência pendente, os vencimentos e os pagamentos para acertar.
+Cada mês inclui todas as suas parcelas e compras, mesmo quando o dia da fatura
+ainda está por chegar. As previsões carregam os saldos atuais, consideram que os
+responsáveis pagarão as faturas e os fornecedores e supõem que nenhum novo Pix
+será registrado. Cada transferência registrada atualiza as previsões seguintes;
+os valores acumulados de meses diferentes não devem ser somados.
 O cálculo usa as despesas e seu rateio; planos de reembolso por compra não criam
 outra dívida. Quem pagou a compra recebe o crédito correspondente, descontada
 sua própria parte. Pagamentos entre famílias entram uma única vez.
 
-Regra do grupo: vencimentos passados são considerados pagos pelo responsável.
-O saldo diário considera somente vencimentos até a data consultada. O fechamento
+Regra do grupo: o mês reúne os compromissos assumidos por cada responsável.
+Os dias de vencimento permanecem nos detalhes para consultar o cartão ou o
+fornecedor. As transferências entram pela data real registrada. O fechamento
 de um mês anterior permanece histórico; seu saldo passa ao mês seguinte.
 Adiantamentos são usados nos próximos compromissos, sem sugerir sua devolução
 como dívida vencida. O cálculo preserva a origem e o uso desses créditos.
 
+O detalhe da compra distingue o calendário do acerto do pagamento ao cartão ou
+fornecedor. O tipo `family_reimbursement` identifica as parcelas combinadas
+entre famílias; seus valores entram no acerto no mês cadastrado. Os lançamentos
+originais do cartão ficam nos documentos da compra. As famílias acertam o conjunto
+das compras e compensam os créditos já registrados. Esse cálculo não registra a
+data da quitação bancária.
+
+Compras que reúnem lançamentos e reembolsos em faturas diferentes preservam os
+valores de cada fatura. O formulário impede dividi-las automaticamente em partes
+iguais quando o calendário representa as faturas. Um acordo explícito entre
+famílias permite dividir o total sem alterar os lançamentos originais do cartão.
+Quando o calendário das faturas diverge dos componentes documentados, o painel
+mostra a divergência e mantém os valores de acerto sob conferência. O aviso não
+reescreve os lançamentos nem substitui os documentos.
+
 As previsões dos meses seguintes incluem o saldo anterior e os vencimentos
 futuros. As transferências entram quando as famílias registram o pagamento.
-Para planejar um pagamento, use o saldo acumulado do mês escolhido. O prazo
-de planejamento é o quinto dia útil, descontados os fins de semana e os feriados
-bancários nacionais. As famílias podem editar os registros nas telas de compras
+Para planejar um pagamento, use o saldo acumulado do mês escolhido. O prazo do
+acerto é o último dia do mês anterior. As famílias podem editar os registros nas telas de compras
 e pagamentos e consultar as alterações no histórico.
 
 `NAVEGACAO`, em `gerar_site.py`, preserva o acesso nas próximas gerações sem

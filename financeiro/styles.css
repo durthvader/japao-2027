@@ -314,3 +314,76 @@ dialog{width:min(760px,calc(100% - 32px));max-width:calc(100% - 32px);max-height
   .purchase-mobile-owner abbr{text-decoration:none}
 }
 @media(max-width:380px){.purchase-table .purchase-total-cell{width:118px}}
+
+/* Put the amount to transfer before the detailed allocation by purchase. */
+.family-position-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:24px;align-items:start}
+.family-position-summary>.panel{margin-top:0}
+.position-card h2{font-size:18px;margin-bottom:12px}
+.position-card .position-main{font-size:clamp(22px,2.2vw,30px);font-weight:700;line-height:1.3;white-space:normal;color:#173848;margin-bottom:12px}
+.position-card .reconciliation-settlement{gap:12px;flex-wrap:wrap}
+.position-card .reconciliation-settlement>div{min-width:140px}
+.position-card .reconciliation-settlement>.amount{font-size:16px}
+.position-card .reconciliation-settlement>.button{margin-left:auto}
+.position-card>.text-link{display:inline-flex;align-items:center;min-height:44px;margin-top:12px;text-align:left}
+.position-projection{background:#fcfaf3;border-color:#dac9a5}
+.position-month-picker{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.position-month-picker label{font-weight:650;font-size:16px}
+.position-month-picker select{min-height:44px;max-width:100%;padding:8px 34px 8px 12px;border:1px solid #bfcfc4;border-radius:8px;background:#fff;color:#173042}
+.position-adjustments{padding:12px 0;margin-top:8px;border-bottom:1px solid #dde4df}
+.position-adjustments p,.position-card .reconciliation-note{font-size:12px;line-height:1.65;color:#45565e}
+.position-adjustments p+p{margin-top:5px}
+.pix-totals{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;margin-top:16px;color:#45565e}
+.family-calculation>summary{font-size:14px;font-weight:650;min-height:44px;cursor:pointer;display:flex;align-items:center}
+.family-calculation .family-account-table{min-width:1180px!important}
+.reconciliation-period{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.projection-notice .notice-text p{font-size:13px;line-height:1.7;margin-top:7px;color:inherit}
+.period-note{margin:0 0 16px}
+.settlement-panel>h2{font-size:19px;margin-bottom:8px}
+.all-family-status{margin-top:24px}
+.all-family-status>h3{font-size:16px;margin-bottom:12px}
+.family-status-table{width:100%;min-width:690px}
+.family-status-table th,.family-status-table td{font-size:13px!important;padding:14px 12px!important;vertical-align:top}
+.family-status-table tbody th{font-weight:650;text-align:left}
+.family-status-table thead th{white-space:normal}
+.upcoming-month-panel .section-heading{align-items:center;flex-wrap:wrap}
+.upcoming-month-panel .section-heading p{font-size:12px;line-height:1.6;margin-top:6px}
+.month-chip>.month-chip-basis{display:block;font-size:10px;line-height:1.4;white-space:normal;margin:0;color:#45565e}
+.schedule-conflict-notice{border-color:#d7ad6e;background:#fff5e5;margin-bottom:24px}
+.schedule-conflict-notice p{font-size:13px;line-height:1.65;margin:6px 0;color:#694c21}
+.schedule-conflict-notice .text-link{min-height:40px;display:inline-flex;align-items:center;margin-right:16px}
+.schedule-conflict-detail{background:#fff5e5;border:1px solid #d7ad6e;border-radius:8px;padding:16px}
+.schedule-conflict-detail .button,.expense-family-context .button{margin-top:12px}
+.schedule-conflict-detail .form-help,.expense-family-context .form-help{font-size:13px;line-height:1.65}
+.ledger-month-rule{margin:0 0 18px;padding:10px 12px;background:#f1f5f0;border-radius:6px}
+.trip-final-summary{margin-bottom:20px}
+.trip-final-summary .section-heading h2{font-size:23px}
+.trip-final-summary .section-heading p{font-size:13px;line-height:1.65;margin-top:7px}
+.trip-final-family-table{width:100%;min-width:0;border-collapse:collapse}
+.trip-final-family-table th,.trip-final-family-table td{padding:15px 12px!important;font-size:14px!important;white-space:normal}
+.trip-final-family-table thead th{background:#edf2ee;font-size:12px!important}
+.trip-final-family-table tbody th{font-weight:650;text-align:left}
+.trip-final-family-table strong{font-size:20px}
+.trip-final-family-table .cell-meta{max-width:none;font-size:12px;line-height:1.6}
+.trip-final-routes{margin-top:24px}
+.trip-final-routes h3{font-size:16px;margin-bottom:8px}
+.trip-final-choice{margin-top:16px;background:#f1f5f0;border-radius:8px;padding:14px;font-size:13px;line-height:1.7;color:#344b56}
+.monthly-family-details>summary{display:flex;align-items:center;min-height:48px;font-size:15px;font-weight:650;cursor:pointer}
+.monthly-family-details>.family-position-summary{margin-top:18px}
+.monthly-settlement-note{margin-bottom:12px}
+.monthly-settlement-note .text-link{display:inline-flex;align-items:center;min-height:40px}
+@media(max-width:760px){.trip-final-summary .section-heading{display:block}.trip-final-summary .section-heading h2{font-size:21px}.trip-final-summary .section-heading .tag{margin-top:12px}.trip-final-family-table th,.trip-final-family-table td{padding:13px 8px!important;font-size:13px!important}.trip-final-family-table strong{font-size:18px}.trip-final-family-table .cell-meta{font-size:12px}}
+@media(max-width:900px){.family-position-summary{grid-template-columns:1fr}.position-card .position-main{font-size:25px}}
+@media(max-width:760px){
+  .family-position-summary{gap:14px;margin-bottom:18px}
+  .position-card{padding:18px}
+  .position-card .reconciliation-settlement{display:flex!important;font-size:13px;align-items:center}
+  .position-card .reconciliation-settlement>div{flex:1;min-width:130px}
+  .position-card .reconciliation-settlement>.button{flex-basis:100%;min-height:44px;margin-left:0}
+  .position-month-picker{align-items:flex-start;flex-direction:column;gap:7px}
+  .position-month-picker select{width:100%;font-size:16px}
+  .family-status-table{min-width:640px}
+  .family-status-table th,.family-status-table td{font-size:12px!important;padding:12px 10px!important}
+  .settlement-panel>h2{font-size:18px}
+  .reconciliation-period>.button{min-height:44px;white-space:normal;text-align:left}
+  .month-chip-basis{font-size:10px}
+}

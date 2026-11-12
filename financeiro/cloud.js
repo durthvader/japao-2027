@@ -80,9 +80,12 @@
     for (const share of shares) { if (missing-- > 0) share.amount++; }
     return Object.fromEntries(shares.map(a => [a.id, a.amount]));
   }
-  function dashboard(value, asOf = currentDay()) {
+  function dashboard(value, asOf = currentDay(), options = {}) {
     if (!window.jp27Cashflow?.build || !window.jp27Reconciliation?.build) throw error('Atualize a página para carregar o encontro de contas.', 503);
     const data = value.data, settings = data.settings || {}, families = data.families || [];
+    const periodBasis = options.period_basis === 'day' ? 'day' : 'month';
+    const settlementMonth = asOf.slice(0, 7);
+    const settlementCutoff = periodBasis === 'month' ? new Date(Date.UTC(Number(settlementMonth.slice(0, 4)), Number(settlementMonth.slice(5, 7)), 0)).toISOString().slice(0, 10) : asOf;
     const balances = Object.fromEntries(families.map(f => [f.id, { family_id: f.id, name: f.name, paid_cents: 0, share_paid_cents: 0, sent_cents: 0, received_cents: 0, balance_cents: 0, future_cents: 0 }]));
     const summary = { committed_cents: 0, paid_cents: 0, pending_cents: 0, unverified_count: 0, unverified_cents: 0 };
     const warnings = [...(settings.warnings || [])];
@@ -96,13 +99,14 @@
         .reduce((sum, p) => sum + p.amount_cents * (p.kind === 'refund' ? -1 : 1), 0);
       const payer = expense.declared_payer_family_id || expense.source?.declared_payer_family_id || null;
       const paymentStatus = expense.payment_status || expense.source?.payment_status || (active.some(p => p.method === 'card_purchase') ? 'card_charged' : purchaseNet >= expense.total_cents ? 'paid' : purchaseNet > 0 ? 'partial' : 'on_site');
-      return { ...expense, declared_payer_family_id: payer, payment_status: paymentStatus, payments,
+      const scheduleCheck = window.jp27Cashflow.cardScheduleCheck?.(expense) || null;
+      return { ...expense, declared_payer_family_id: payer, payment_status: paymentStatus, payments, schedule_check: scheduleCheck,
         recorded_paid_cents: recordedPaid, paid_cents: recordedPaid,
         pending_cents: expense.status === 'cancelled' ? 0 : expense.total_cents - recordedPaid };
     });
     // Use the same dated movements for the totals, family balances and calendar.
     // Future installments never enter "paid", even when the purchase is charged.
-    const cashflow = window.jp27Cashflow.build(purchaseViews, transfers, families, asOf);
+    const cashflow = window.jp27Cashflow.build(purchaseViews, transfers, families, asOf, { period_basis: periodBasis, settlement_month: settlementMonth });
     const externalMovements = [...(cashflow.monthly_cashflow || []).flatMap(m => m.movements), ...(cashflow.unscheduled_cashflow || [])]
       .filter(m => m.kind !== 'reimbursement');
     const expenses = purchaseViews.map(expense => {
@@ -134,10 +138,19 @@
         Object.entries(contributions).forEach(([family, amount]) => { balances[family].paid_cents += amount; });
         expense.allocations.forEach(a => { balances[a.family_id].share_paid_cents += shares[a.family_id]; if (expense.status !== 'cancelled') balances[a.family_id].future_cents += a.amount_cents - shares[a.family_id]; });
       }
-      return { ...expense, assumed_due_cents: assumedDue, card_progress: cardProgress, paid_cents: paid, pending_cents: pending };
+      const agreements = external.filter(m => m.kind === 'family_accrual');
+      const agreementProgress = expense.installment_plan?.kind === 'family_reimbursement' ? {
+        count: expense.installment_plan.count,
+        accounted_count: agreements.filter(m => m.scope === 'historical').length,
+        accounted_cents: agreements.filter(m => m.scope === 'historical').reduce((sum, m) => sum + m.amount_cents, 0),
+        future_count: agreements.filter(m => m.scope === 'future').length,
+        future_cents: agreements.filter(m => m.scope === 'future').reduce((sum, m) => sum + m.amount_cents, 0)
+      } : null;
+      return { ...expense, assumed_due_cents: assumedDue, card_progress: cardProgress, agreement_progress: agreementProgress, settlement_basis: agreementProgress ? 'family_agreement' : 'external_commitment', accounted_cents: paid, paid_cents: paid, pending_cents: pending };
     });
     transfers.forEach(t => { if (!t.voided_at && (!t.paid_on || t.paid_on <= asOf)) { balances[t.from_id].sent_cents += t.amount_cents; balances[t.to_id].received_cents += t.amount_cents; } });
-    Object.values(balances).forEach(b => { b.balance_cents = b.paid_cents + b.sent_cents - b.received_cents - b.share_paid_cents; });
+    Object.values(balances).forEach(b => { b.balance_cents = b.paid_cents + b.sent_cents - b.received_cents - b.share_paid_cents; b.accounted_cents = b.paid_cents; b.share_accounted_cents = b.share_paid_cents; });
+    summary.accounted_cents = summary.paid_cents;
     if (Object.values(balances).reduce((sum, b) => sum + b.balance_cents, 0) !== 0) throw error('Os saldos precisam ser conferidos antes de continuar.', 500);
     const settlements = [];
     if (!summary.unverified_count) {
@@ -168,10 +181,12 @@
       return true;
     });
     const reconciliation = window.jp27Reconciliation.build({ families, expenses, transfers,
-      monthly_cashflow: cashflow.monthly_cashflow || [], unscheduled_cashflow: cashflow.unscheduled_cashflow || [], as_of: asOf });
-    reconciliation.months.forEach(month => { month.settlement_due_on = window.jp27Cashflow.reimbursementDue(month.month,
-      Number(settings.planning_rule?.reimbursement_business_day || 5)); });
-    return { as_of: asOf, version: value.version, families, balances: Object.values(balances), summary, expenses, transfers, settlements, reconciliation,
+      monthly_cashflow: cashflow.monthly_cashflow || [], unscheduled_cashflow: cashflow.unscheduled_cashflow || [], as_of: asOf,
+      period_basis: periodBasis, settlement_month: settlementMonth });
+    reconciliation.months.forEach(month => { month.settlement_due_on = window.jp27Cashflow.settlementDue(month.month); });
+    const scheduleConflicts = expenses.filter(expense => expense.status !== 'cancelled' && expense.schedule_check?.matches === false)
+      .map(expense => ({ expense_id: expense.id, title: expense.title, months: expense.schedule_check.months }));
+    return { as_of: asOf, period_basis: periodBasis, settlement_month: settlementMonth, settlement_cutoff: settlementCutoff, version: value.version, families, balances: Object.values(balances), summary, expenses, transfers, settlements, reconciliation, schedule_conflicts: scheduleConflicts,
       legacy: settings.legacy || null, audit: data.audit || [], warnings, review_items: settings.review_items || [],
       receipts: settings.receipts || [], planning_rule: settings.planning_rule || null, credit_card_schedule: settings.credit_card_schedule || [], card_installments: cardInstallments,
       reimbursement_installments: reimbursementInstallments, questions, ...cashflow };

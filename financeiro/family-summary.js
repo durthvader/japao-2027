@@ -16,6 +16,11 @@
   };
   const month = value => typeof value === 'string' && /^(?!0000)\d{4}-(0[1-9]|1[0-2])$/.test(value) ? value : null;
   const fields = ['share_cents', 'due_cents', 'supplier_paid_cents', 'sent_cents', 'paid_cents', 'received_cents', 'balance_cents'];
+  const recognitionCutoff = (data, asOf) => {
+    if (data.period_basis !== 'month') return asOf;
+    const selected = month(data.settlement_month) || asOf.slice(0, 7);
+    return day(data.settlement_cutoff) || new Date(Date.UTC(Number(selected.slice(0, 4)), Number(selected.slice(5, 7)), 0)).toISOString().slice(0, 10);
+  };
 
   // Signed, symmetric largest remainders. IDs settle ties regardless of input order.
   function allocate(amount, weights) {
@@ -34,6 +39,7 @@
   function build(data = {}, familyId) {
     const asOf = day(typeof data.as_of === 'string' ? data.as_of.slice(0, 10) : null);
     if (!asOf) throw new Error('Informe uma data válida para o resumo da família.');
+    const cutoff = recognitionCutoff(data, asOf);
     const id = String(familyId), families = list(data.families), familyIds = new Set(families.map(f => String(f.id)));
     if (!familyIds.has(id)) throw new Error('Escolha uma família cadastrada.');
     const warnings = [], warningSet = new Set();
@@ -45,12 +51,12 @@
     const contributions = new Map(), uncertain = new Set(), seen = new Map();
     for (const expense of expenses) contributions.set(String(expense.id), new Map(families.map(f => [String(f.id), 0])));
     movements.forEach((movement, index) => {
-      if (!movement || !['card', 'supplier'].includes(movement.kind) || movement.voided_at) return;
+      if (!movement || !['card', 'supplier', 'family_accrual'].includes(movement.kind) || movement.voided_at) return;
       const expenseId = String(movement.expense_id), expense = byExpense.get(expenseId);
       if (!expense) return;
       const date = day(movement.date), calendarMonth = date?.slice(0, 7) || month(movement.month);
       if (!date && !calendarMonth) uncertain.add(expenseId);
-      if (movement.scope !== 'historical' || (date && date > asOf) || (calendarMonth && calendarMonth > asOf.slice(0, 7))) return;
+      if (movement.scope !== 'historical' || (date && date > cutoff) || (calendarMonth && calendarMonth > cutoff.slice(0, 7))) return;
       const key = movement.id == null ? 'movement-' + index : String(movement.id);
       const signature = JSON.stringify([expenseId, movement.kind, movement.from_family_id, movement.to_family_id, movement.amount_cents, date, calendarMonth]);
       if (seen.has(key)) {
@@ -162,7 +168,7 @@
     const referenceBalance = cents(reference?.balance_cents) ? reference.balance_cents : null;
     const reconciled = referenceBalance === null ? null : referenceBalance === knownTotals.balance_cents;
     if (reconciled === false) warn('A decomposição precisa ser conferida com o saldo geral. Os valores desconhecidos continuam separados.');
-    return { family_id: id, as_of: asOf, rows, totals, known_totals: knownTotals,
+    return { family_id: id, as_of: asOf, period_basis: data.period_basis || 'day', settlement_cutoff: cutoff, rows, totals, known_totals: knownTotals,
       reference_balance_cents: referenceBalance, reconciled, partial,
       distribution_basis: distributionBasis,
       distribution_note: 'Transferências distribuídas para apresentar o total por compra; a distribuição não identifica a finalidade dos pagamentos.',
@@ -171,7 +177,7 @@
 
   const externalMovements = data => [
     ...list(data.monthly_cashflow).flatMap(bucket => list(bucket.movements)), ...list(data.unscheduled_cashflow)
-  ].filter(item => item && ['card', 'supplier'].includes(item.kind) && !item.voided_at);
+  ].filter(item => item && ['card', 'supplier', 'family_accrual'].includes(item.kind) && !item.voided_at);
   const nextMonth = value => {
     const [year, number] = value.split('-').map(Number);
     return number < 12 ? String(year).padStart(4, '0') + '-' + String(number + 1).padStart(2, '0')
@@ -197,6 +203,7 @@
   // The projected balance includes the responsible family's full future payments.
   function forecast(data = {}, familyId, selectedMonth) {
     const current = build(data, familyId), id = current.family_id, asOf = current.as_of;
+    const cutoff = recognitionCutoff(data, asOf);
     const currentMonth = asOf.slice(0, 7), through = month(selectedMonth);
     if (!through || through <= currentMonth) throw new Error('Escolha um mês futuro válido para a previsão.');
     const warnings = [...current.warnings], warningSet = new Set(warnings);
@@ -213,7 +220,7 @@
       if (!state) return;
       state.count++;
       const date = day(item.date), period = date?.slice(0, 7) || month(item.month);
-      const historical = item.scope === 'historical' && (!date || date <= asOf) && (!period || period <= currentMonth);
+      const historical = item.scope === 'historical' && (!date || date <= cutoff) && (!period || period <= currentMonth);
       const included = !historical && (!period || period <= through);
       if (!historical && !included) return;
       const key = item.id == null ? 'movement-' + index : String(item.id);
